@@ -16,8 +16,8 @@
     "test": "./node_modules/.bin/jest",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --watch",
-    "dev-OLD": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open",
-    "dev": "./devserver.js"
+    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open",
+    "dev-ALT": "./devserver.js"
   },
   "files": [
     "./src/**/*.{js,json,jsx}"
