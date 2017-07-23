@@ -14,6 +14,9 @@ import ToolBar from './ToolBar.jsx';
 import ProfileImg from './ProfileImg.jsx';
 import ProfileStats from './ProfileStats.jsx';
 import Avatar from './Avatar.jsx';
+import Album from './Album.jsx';
+import Spacer from './Spacer.jsx';
+
 
 //const URL = `./data/dinnermenu.json`;
 
@@ -73,6 +76,9 @@ class Profile extends React.Component {
                   <ProfileImg />
                   <ProfileStats />
                   <Avatar />
+                  <Spacer />
+                  <Album />
+                  <Spacer />
               </div>
           </MuiThemeProvider>
 		  );
