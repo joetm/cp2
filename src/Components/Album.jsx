@@ -188,7 +188,7 @@ const defaultValues = new CellMeasurerCache({
 })
 
 
-const masonryWidth = window.innerWidth;
+const masonryWidth = +window.innerWidth;
 
 
 const cellPositioner = createMasonryCellPositioner({

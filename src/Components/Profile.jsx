@@ -16,6 +16,7 @@ import ProfileStats from './ProfileStats.jsx';
 import Avatar from './Avatar.jsx';
 import Album from './Album.jsx';
 import Spacer from './Spacer.jsx';
+import AjaxLoader from './AjaxLoader.jsx';
 
 
 //const URL = `./data/dinnermenu.json`;
@@ -79,6 +80,7 @@ class Profile extends React.Component {
                   <Spacer />
                   <Album />
                   <Spacer />
+                  <AjaxLoader />
               </div>
           </MuiThemeProvider>
 		  );
