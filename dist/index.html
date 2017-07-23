@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="./node_modules/deepstream.io-client-js/dist/deepstream.min.js"></script>
+    <script src="js/deepstream/deepstream.min.js"></script>
   </head>
   <body>
 
-    <input type="text" />
+    <div id="app"></div>
+
+    <script type="text/javascript" src="js/profile.js"></script>
 
     <script type="text/javascript">
       //js goes here
     	var client = deepstream('localhost:6020').login();
 		var record = client.record.getRecord('some-name');
 
-		var input = document.querySelector('input')
+//		var input = document.querySelector('input')
 
-		input.onkeyup = (function() {
-		  record.set('firstname', input.value)
-		})
+		// input.onkeyup = (function() {
+		//   record.set('firstname', input.value)
+		// })
 
-		record.subscribe('firstname', function(value) {
-		  input.value = value
-		})
+		// record.subscribe('firstname', function(value) {
+		//   input.value = value
+		// })
 
     </script>
   </body>

@@ -15,10 +15,10 @@ module.exports = {
     //   "whatwg-fetch", // AJAX fetch polyfill - https://github.com/github/fetch
     //   "material-ui/styles/MuiThemeProvider"
     // ],
-    bundle: "./src/index.js"
+    profile: "./src/profile.js"
   },
   output: {
-    path: path.resolve('./dist'),
+    path: path.resolve('./dist/js'),
     publicPath: '/',
     filename: "[name].js"
   },
@@ -28,7 +28,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|vendor|venv)/,
-        loader: 'babel', //-loader (optional)
+        loader: 'babel-loader', //-loader (optional)
         query: {
           // cacheDirectory: true,
           presets: ['es2015', 'stage-0', 'react'],
@@ -44,12 +44,12 @@ module.exports = {
       // images
       {
         test: /\.(ico|jpe?g|png|gif)$/,
-        loader: "file"
+        loader: "file-loader"
       },
       {
         test: /\.scss$/,
         exclude: [ /vendor/, /node_modules/, /venv/ ],
-        loader: ExtractTextPlugin.extract("style", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
+        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
       },
       {
         test: /\.css$/,
@@ -58,11 +58,11 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.jsx', '.js', '.scss', '.css'],
-    modulesDirectories: [
-      'node_modules',
-      'src/Components'
-    ]
+    extensions: ['.jsx', '.js', '.scss', '.css']
+    //modules: [
+    //  'node_modules',
+    //  'src/Components'
+    //]
   },
   plugins: debug ?
   //DEV
