@@ -16,7 +16,8 @@
     "test": "./node_modules/.bin/jest",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack --watch",
-    "dev": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open"
+    "dev-OLD": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open",
+    "dev": "./devserver.js"
   },
   "files": [
     "./src/**/*.{js,json,jsx}"
@@ -64,6 +65,7 @@
     "file-loader": "^0.11.2",
     "jest": "^20.0.4",
     "node-sass": "^4.5.3",
+    "pushstate-server": "^3.0.1",
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^15.6.1",
     "react-to-html-webpack-plugin": "^2.2.0",
