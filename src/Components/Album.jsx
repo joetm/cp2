@@ -30,26 +30,34 @@ export default class Album extends PureComponent {
     render() {
       return (
         <div>
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
-          <AlbumImg src={'img/dummyimg.jpg'} />
+
+          <div>
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+            <AlbumImg src={'img/dummyimg.jpg'} />
+          </div>
+
+          <div>
+              <AjaxLoader />
+          </div>
+
         </div>
       );
     }

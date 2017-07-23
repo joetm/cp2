@@ -8,6 +8,7 @@ import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline';
 import ContactsPin from 'material-ui/svg-icons/communication/contacts';
 import LikesPin from 'material-ui/svg-icons/action/thumb-up';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Route, Link} from 'react-router-dom'
 
 
 import {
@@ -63,26 +64,36 @@ const StatText = (props) => (
 );
 
 
-//<RaisedButton style={styles.followButtonStyle} label="Follow" />
-
 const ProfileStats = () => (
 	<div style={styles.statBarStyle}>
         <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}
-                label={<StatText title="Posts" value="45" />}
+                label={<Link to="/profile/updates">
+                        <StatText title="Posts" value="45" />
+                        </Link>
+                }
             />
             <Tab
                 icon={<PhotoPin />}
-                label={<StatText title="Pics" value="234" />}
+                label={<Link to="/profile/album">
+                        <StatText title="Pics" value="234" />
+                        </Link>
+                }
             />
             <Tab
                 icon={<ContactsPin />}
-                label={<StatText title="Followers" value="99" />}
+                label={<Link to="/profile/followers">
+                        <StatText title="Followers" value="99" />
+                        </Link>
+                }
             />
             <Tab
                 icon={<LikesPin />}
-                label={<StatText title="Likes" value="23" />}
+                label={<Link to="/profile/likes">
+                        <StatText title="Likes" value="23" />
+                        </Link>
+                }
             />
             <Tab
                 label={'Follow'}
