@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const ajaxLoaderStyleContainer = {
-	marginTop: '30px',
+	marginTop: '10px',
 	marginBottom: '30px',
 }
 const ajaxLoaderStyle = {

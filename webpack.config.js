@@ -15,7 +15,8 @@ module.exports = {
     //   "whatwg-fetch", // AJAX fetch polyfill - https://github.com/github/fetch
     //   "material-ui/styles/MuiThemeProvider"
     // ],
-    profile: "./src/profile.js"
+    // profile: "./src/profile.js"
+    main: "./src/main.js",
   },
   output: {
     path: path.resolve('./dist/js'),

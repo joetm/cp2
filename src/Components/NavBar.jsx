@@ -1,14 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import SettingsIcon from 'material-ui/svg-icons/action/settings';
-import Badge from 'material-ui/Badge';
-import IconButton from 'material-ui/IconButton';
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications';
-import MenuItem from 'material-ui/MenuItem';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import HomePin from 'material-ui/svg-icons/action/account-balance';
+import SettingsIcon from 'material-ui/svg-icons/action/settings'
+import Badge from 'material-ui/Badge'
+import IconButton from 'material-ui/IconButton'
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
+import MenuItem from 'material-ui/MenuItem'
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
+import HomePin from 'material-ui/svg-icons/action/account-balance'
+import {Link} from 'react-router-dom'
+
 
 import ExpandButton from './ExpandButton.jsx';
+import Avatar from './Avatar.jsx'
 
 
 const styles = {
@@ -19,7 +22,7 @@ const styles = {
     firstItem: {
         paddingLeft: '20px',
     },
-};
+}
 
 
 const Notifications = () => (
@@ -32,7 +35,7 @@ const Notifications = () => (
         <NotificationsIcon />
       </IconButton>
     </Badge>
-);
+)
 
 
 export default class NavBar extends React.Component {
@@ -47,7 +50,9 @@ export default class NavBar extends React.Component {
         return (
             <Toolbar style={styles.navBarStyle}>
                 <ToolbarGroup firstChild={true}>
-                    <HomePin style={styles.firstItem} />
+                    <Link to="/">
+                        <HomePin style={styles.firstItem} />
+                    </Link>
                     <ToolbarSeparator />
                     <Notifications />
                 </ToolbarGroup>
@@ -55,9 +60,14 @@ export default class NavBar extends React.Component {
                     <ToolbarTitle text="CP" />
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <SettingsIcon />
+                    <Link to="/profile">
+                        <Avatar mini={true} />
+                    </Link>
+                    <Link to="/settings">
+                        <SettingsIcon />
+                    </Link>
                 </ToolbarGroup>
             </Toolbar>
-        );
+        )
     }
-};
+}

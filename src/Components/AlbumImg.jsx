@@ -1,9 +1,9 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 
-//function randomImgHeight() {
-//  return Math.floor(270 * Math.random()) + 30;
-//}
+function randomImgHeight() {
+ return Math.floor(270 * Math.random()) + 30;
+}
 
 const albumImgContainerStyle = {
   width: '155px',
@@ -19,14 +19,14 @@ const albumImgStyle = {
 };
 
 
-const AlbumImg = () => {
-  // let imgHeight = randomImgHeight();
-  // albumImgStyle.height = imgHeight + 'px';
+const AlbumImg = (props) => {
+  let imgHeight = randomImgHeight();
+  albumImgStyle.height = imgHeight + 'px';
   // albumImgContainerStyle.height = imgHeight + 5 + 'px';
   return (
     <Paper zDepth={1} style={albumImgContainerStyle}>
       <div>
-      <img src="img/dummyimg.jpg" alt="" style={albumImgStyle} />
+      <img src={props.src} alt="" style={albumImgStyle} />
       </div>
       xxx
     </Paper>

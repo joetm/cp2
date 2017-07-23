@@ -14,7 +14,7 @@ let styles = {
 };
 
 
-export default class ToolbarExamplesSimple extends React.Component {
+class ToolbarSimple extends React.Component {
 
   state = {
       visible: false
@@ -57,3 +57,5 @@ export default class ToolbarExamplesSimple extends React.Component {
     );
   }
 }
+
+export default ToolbarSimple;
