@@ -43,9 +43,9 @@ export default class NavBar extends React.Component {
         return (
             <Toolbar>
                 <ToolbarGroup firstChild={true}>
-                    <MenuItem primaryText={<HomePin />} />
+                    <HomePin />
                     <ToolbarSeparator />
-                    <MenuItem primaryText={<Notifications />} />
+                    <Notifications />
                 </ToolbarGroup>
                 <ToolbarGroup>
                     <ToolbarTitle text="CP" />

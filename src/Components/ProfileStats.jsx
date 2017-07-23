@@ -10,47 +10,54 @@ import LikesPin from 'material-ui/svg-icons/action/thumb-up';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-const tabsStyle = {
-    paddingLeft: '300px',
-};
-
-const inkBarStyle = {
-    backgroundColor: 'yellow',
-};
-
-
-const statStyle = {
-    color: '#fff',
-};
-
-const followButtonContainerStyle = {
-    width: '200px',
-    margin: 'auto auto',
-};
-
-const followButtonStyle = {
-    backgroundColor: '#fff',
-    color: '#000',
+const styles = {
+    tabsStyle: {
+        paddingLeft: '300px',
+    },
+    inkBarStyle: {
+        backgroundColor: 'yellow',
+    },
+    statStyle: {
+        marginTop: '0.4em',
+    },
+    statTitleStyle: {
+        fontSize: '0.6em',
+        lineHeight: '0.6em',
+        marginBottom: '0.4em',
+    },
+    statValueStyle: {
+        color: '#fff',
+        fontSize: '1em',
+        lineHeight: '1em',
+        marginTop: '0.2em',
+        marginBottom: '0.2em',
+    },
+    followButtonContainerStyle: {
+        width: '200px',
+        margin: 'auto auto',
+    },
+    followButtonStyle: {
+        backgroundColor: '#fff',
+        color: '#000',
+    },
 };
 
 
 const StatText = (props) => (
-    <div>
-        <div>
+    <div style={styles.statStyle}>
+        <div style={styles.statTitleStyle}>
             {props.title}
         </div>
-        <div style={statStyle}>
+        <div style={styles.statValueStyle}>
             {props.value}
         </div>
     </div>
 );
 
 
-
-
 const ProfileStats = () => (
 	<div>
-        <Tabs style={tabsStyle} initialSelectedIndex={1} inkBarStyle={inkBarStyle}>
+        <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}
                 label={<StatText title="Posts" value="45" />}
@@ -67,8 +74,8 @@ const ProfileStats = () => (
                 icon={<LikesPin />}
                 label={<StatText title="Likes" value="23" />}
             />
-            <div style={followButtonContainerStyle}>
-                <RaisedButton style={followButtonStyle} label="Follow" />
+            <div style={styles.followButtonContainerStyle}>
+                <RaisedButton style={styles.followButtonStyle} label="Follow" />
             </div>
         </Tabs>
     </div>
