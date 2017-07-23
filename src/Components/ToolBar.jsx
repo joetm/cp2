@@ -8,6 +8,12 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
+
+let styles = {
+  toolBarStyle: {},
+};
+
+
 export default class ToolbarExamplesSimple extends React.Component {
 
   state = {
@@ -17,8 +23,9 @@ export default class ToolbarExamplesSimple extends React.Component {
   handleChange = (event, index, value) => this.setState({value});
 
   render() {
+    styles.toolBarStyle.display = this.visible === true ? 'block' : 'none';
     return (
-      <Toolbar style={{display: this.visible === true ? 'block' : 'none'}}>
+      <Toolbar style={styles.toolBarStyle}>
         <ToolbarGroup firstChild={true}>
           <DropDownMenu value={this.state.value} onChange={this.handleChange}>
             <MenuItem value={1} primaryText="All Broadcasts" />

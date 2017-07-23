@@ -10,7 +10,15 @@ import LikesPin from 'material-ui/svg-icons/action/thumb-up';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
+import {
+  pinkA200,
+} from 'material-ui/styles/colors';
+
+
 const styles = {
+    statBarStyle: {
+        backgroundColor: pinkA200,
+    },
     tabsStyle: {
         paddingLeft: '300px',
     },
@@ -55,8 +63,10 @@ const StatText = (props) => (
 );
 
 
+//<RaisedButton style={styles.followButtonStyle} label="Follow" />
+
 const ProfileStats = () => (
-	<div>
+	<div style={styles.statBarStyle}>
         <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}
@@ -74,9 +84,9 @@ const ProfileStats = () => (
                 icon={<LikesPin />}
                 label={<StatText title="Likes" value="23" />}
             />
-            <div style={styles.followButtonContainerStyle}>
-                <RaisedButton style={styles.followButtonStyle} label="Follow" />
-            </div>
+            <Tab
+                label={'Follow'}
+            />
         </Tabs>
     </div>
 );

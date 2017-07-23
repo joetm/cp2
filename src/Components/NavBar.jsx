@@ -11,11 +11,15 @@ import HomePin from 'material-ui/svg-icons/action/account-balance';
 import ExpandButton from './ExpandButton.jsx';
 
 
-const navBarStyle = {
-    backgroundColor: '#fff',
-    color: '#020202',
+const styles = {
+    navBarStyle: {
+        // backgroundColor: '#fff',
+        color: '#020202',
+    },
+    firstItem: {
+        paddingLeft: '20px',
+    },
 };
-
 
 
 const Notifications = () => (
@@ -41,9 +45,9 @@ export default class NavBar extends React.Component {
 
     render() {
         return (
-            <Toolbar>
+            <Toolbar style={styles.navBarStyle}>
                 <ToolbarGroup firstChild={true}>
-                    <HomePin />
+                    <HomePin style={styles.firstItem} />
                     <ToolbarSeparator />
                     <Notifications />
                 </ToolbarGroup>
