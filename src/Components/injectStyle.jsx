@@ -9,6 +9,6 @@ const injectStyle = (style) => {
   styleSheet = styleElement.sheet;
 
   styleSheet.insertRule(style, styleSheet.cssRules.length);
-};
+}
 
-export default injectStyle;
+export default injectStyle

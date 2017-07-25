@@ -1,21 +1,21 @@
 /** @flow */
 
-import React from 'react';
+import React from 'react'
 
-import {Tabs, Tab} from 'material-ui/Tabs';
-import FontIcon from 'material-ui/FontIcon';
-//import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
-import PhotoPin from 'material-ui/svg-icons/image/photo';
-import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline';
-import ContactsPin from 'material-ui/svg-icons/communication/contacts';
-import LikesPin from 'material-ui/svg-icons/action/thumb-up';
-import RaisedButton from 'material-ui/RaisedButton';
+import {Tabs, Tab} from 'material-ui/Tabs'
+import FontIcon from 'material-ui/FontIcon'
+//import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin'
+import PhotoPin from 'material-ui/svg-icons/image/photo'
+import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
+import ContactsPin from 'material-ui/svg-icons/communication/contacts'
+import LikesPin from 'material-ui/svg-icons/action/thumb-up'
+import RaisedButton from 'material-ui/RaisedButton'
 import {Route, Link} from 'react-router-dom'
 
 
 import {
   pinkA200,
-} from 'material-ui/styles/colors';
+} from 'material-ui/styles/colors'
 
 
 const styles = {
@@ -55,7 +55,7 @@ const styles = {
         textDecoration: 'none',
         color: '#fff',
     },
-};
+}
 
 
 const StatText = (props) => (
@@ -67,7 +67,7 @@ const StatText = (props) => (
             {props.value}
         </div>
     </div>
-);
+)
 
 
 const ProfileStats = () => (
@@ -106,6 +106,6 @@ const ProfileStats = () => (
             />
         </Tabs>
     </div>
-);
+)
 
-export default ProfileStats;
+export default ProfileStats

@@ -16,7 +16,9 @@ module.exports = {
     //   "material-ui/styles/MuiThemeProvider"
     // ],
     // profile: "./src/profile.js"
-    main: "./src/main.js",
+    main: "./src/main.js"
+    // devhotserver: "webpack/hot/dev-server",
+    // devserver: "webpack-dev-server/client?http://localhost:8081"
   },
   output: {
     path: path.resolve('./dist/js'),

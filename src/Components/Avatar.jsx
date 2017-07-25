@@ -19,7 +19,7 @@ const avatarOffset = {
   marginLeft: '50px',
 }
 
-const AvatarBubble = (props : any) => {
+const AvatarBubble = (props) => {
   // avatar style
   let avatarStyle = {}
   if (props.mini === true) {

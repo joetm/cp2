@@ -1,0 +1,3 @@
+[submodule "src/Components/External/react-simple-masonry"]
+	path = src/Components/External/react-simple-masonry
+	url = https://github.com/awkward/react-simple-masonry.git

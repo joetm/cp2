@@ -1,21 +1,21 @@
 /** @flow */
 
-import React from 'react';
+import React from 'react'
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import fetch from 'unfetch';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import fetch from 'unfetch'
 import {Route, Link} from 'react-router-dom'
 
-import NavBar from './NavBar.jsx';
+import NavBar from './NavBar'
 import Home from './Home'
-import Profile from './Profile.jsx';
-import Settings from './Settings.jsx';
+import Profile from './Profile'
+import Settings from './Settings'
 
 import {
   cyan500, cyan700,
@@ -29,8 +29,8 @@ const customTheme = {
     primary2Color: cyan700,
     primary3Color: grey400
   }
-};
-const theme = getMuiTheme(customTheme);
+}
+const theme = getMuiTheme(customTheme)
 
 
 const RoutedApp = () => (

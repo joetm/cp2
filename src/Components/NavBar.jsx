@@ -12,8 +12,8 @@ import HomePin from 'material-ui/svg-icons/action/account-balance'
 import {Link} from 'react-router-dom'
 
 
-import ExpandButton from './ExpandButton.jsx';
-import Avatar from './Avatar.jsx'
+import ExpandButton from './ExpandButton'
+import Avatar from './Avatar'
 
 
 const styles = {

@@ -1,26 +1,26 @@
 /** @flow */
 
-import React from 'react';
+import React from 'react'
 import {Route, Link} from 'react-router-dom'
 
-// import ToolBar from './ToolBar.jsx';
-import ProfileImg from './ProfileImg.jsx';
-import ProfileStats from './ProfileStats.jsx';
-import Avatar from './Avatar.jsx';
-import Album from './Album.jsx';
-import Spacer from './Spacer.jsx';
-import AjaxLoader from './AjaxLoader.jsx';
-import Followers from './Followers.jsx';
-import Likes from './Likes.jsx';
+// import ToolBar from './ToolBar'
+import ProfileImg from './ProfileImg'
+import ProfileStats from './ProfileStats'
+import Avatar from './Avatar'
+import Album from './Album'
+import Spacer from './Spacer'
+import AjaxLoader from './AjaxLoader'
+import Followers from './Followers'
+import Likes from './Likes'
 
 
-export default class Profile extends React.PureComponent {
+class Profile extends React.PureComponent {
 
   state = {
       loading: true,
-  };
+  }
 
-  serverRequest = null;
+  serverRequest = null
 
 	// componentDidMount() {
 	// 	//fetch the data
@@ -50,14 +50,16 @@ export default class Profile extends React.PureComponent {
               <Avatar mini={false} offset={true} />
               <Spacer />
 
-              <Route path={this.props.match + '/updates'} component={Album}/>
-              <Route path={this.props.match + '/album'} component={Album}/>
-              <Route path={this.props.match + '/followers'} component={Followers}/>
-              <Route path={this.props.match + '/likes'} component={Likes}/>
+              <Route path={this.props.match.url + '/updates'} component={Album}/>
+              <Route path={this.props.match.url + '/album'} component={Album}/>
+              <Route path={this.props.match.url + '/followers'} component={Followers}/>
+              <Route path={this.props.match.url + '/likes'} component={Likes}/>
 
               <Spacer />
           </div>
-		  );
+		  )
 	}
 
 }
+
+export default  Profile

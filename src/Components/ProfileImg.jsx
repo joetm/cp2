@@ -1,6 +1,6 @@
 /** @flow */
 
-import React from 'react';
+import React from 'react'
 
 
 const styles = {
@@ -12,14 +12,15 @@ const styles = {
     overflow: 'hidden',
   },
   imgStyle: {
-
+    width: '100%',
+    height: 'auto',
   },
-};
+}
 
 const ProfileImg = () => (
   <div style={styles.containerStyle}>
         <img src="img/dummyimg.jpg" alt="" style={styles.imgStyle} />
   </div>
-);
+)
 
-export default ProfileImg;
+export default ProfileImg
