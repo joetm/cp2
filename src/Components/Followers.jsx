@@ -31,46 +31,48 @@ const rightIconMenu = (
 )
 
 
-export default class Followers extends React.PureComponent {
+class Followers extends React.PureComponent {
     render () {
           return (
               <List>
                 <ListItem
                   primaryText="Brendan Lim"
-                  leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
                 <ListItem
                   primaryText="Eric Hoffman"
-                  leftAvatar={<Avatar src="images/kolage-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
                 <ListItem
                   primaryText="Grace Ng"
-                  leftAvatar={<Avatar src="images/uxceo-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
                 <ListItem
                   primaryText="Kerem Suer"
-                  leftAvatar={<Avatar src="images/kerem-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
                 <ListItem
                   primaryText="Raquel Parrado"
-                  leftAvatar={<Avatar src="images/raquelromanp-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
                 <ListItem
                   primaryText="Chelsea Otakan"
-                  leftAvatar={<Avatar src="images/chexee-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
                 <ListItem
                   primaryText="James Anderson"
-                  leftAvatar={<Avatar src="images/jsa-128.jpg" />}
+                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
                   rightIconButton={rightIconMenu}
                 />
               </List>
           )
     }
 }
+
+export default Followers

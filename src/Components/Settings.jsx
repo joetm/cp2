@@ -13,9 +13,11 @@ import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import Avatar from './Avatar.jsx'
 import Spacer from './Spacer.jsx'
 
+const blockMaxWidth = '80%'; // 250
+
 const styles = {
   settingsBlock: {
-    maxWidth: 250,
+    maxWidth: blockMaxWidth,
     margin: 'auto auto',
   },
   toggle: {
@@ -45,7 +47,7 @@ const styles = {
 }
 
 
-const ToggleExampleSimple = () => (
+const Toggles = () => (
   <div style={styles.settingsBlock}>
     <Toggle
       label="Simple"
@@ -54,16 +56,6 @@ const ToggleExampleSimple = () => (
     <Toggle
       label="Toggled by default"
       defaultToggled={true}
-      style={styles.toggle}
-    />
-    <Toggle
-      label="Disabled"
-      disabled={true}
-      style={styles.toggle}
-    />
-    <Toggle
-      label="Label on the right"
-      labelPosition="right"
       style={styles.toggle}
     />
     <Toggle
@@ -128,21 +120,66 @@ const dropzoneEventHandlers = {
     queuecomplete: null,
 }
 
-export default class Settings extends React.PureComponent {
+class Settings extends React.PureComponent {
 
 	render () {
 		  return (
-          <div>
+          <div style={{textAlign: 'center'}}>
             <h1>Settings</h1>
-            <Avatar />
-            <DropzoneComponent
-              style={styles.dropzone}
-              config={dropzoneConfig}
-              eventHandlers={dropzoneEventHandlers}
-              djsConfig={dropzoneJsConfig} />
-            <ToggleExampleSimple />
+            <h2>ProfileImg</h2>
+                <div
+                    id="profileImg-settings"
+                    style={{
+                      width: '80%',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      maxWidth: blockMaxWidth,
+                    }}
+                >
+                    <img
+                        src={'/img/dummyimg.jpg'}
+                        style={{
+                            width: '100%',
+                            height: 'auto',
+                        }}
+                    />
+                    <DropzoneComponent
+                      style={styles.dropzone}
+                      config={dropzoneConfig}
+                      eventHandlers={dropzoneEventHandlers}
+                      djsConfig={dropzoneJsConfig}
+                    />
+                </div>
+                <Spacer />
+            <h2>Avatar</h2>
+                <div id="avatar-settings"
+                    style={{
+                      width: '80%',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      maxWidth: blockMaxWidth,
+                    }}
+                >
+                    <Avatar
+                        src={'/img/avatar/face.jpg'}
+                    />
+                    <DropzoneComponent
+                      style={styles.dropzone}
+                      config={dropzoneConfig}
+                      eventHandlers={dropzoneEventHandlers}
+                      djsConfig={dropzoneJsConfig}
+                    />
+                </div>
+                <Spacer />
+            <h2>Privacy</h2>
+                <div style={{textAlign: 'left'}}>
+                    <Toggles />
+                </div>
+                <Spacer />
           </div>
 		  )
 	}
 
 }
+
+export default Settings

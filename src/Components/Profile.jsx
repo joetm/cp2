@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
+// import { Record } from 'immutable'
 
 // import ToolBar from './ToolBar'
 import ProfileImg from './ProfileImg'
@@ -12,6 +13,14 @@ import Spacer from './Spacer'
 import AjaxLoader from './AjaxLoader'
 import Followers from './Followers'
 import Likes from './Likes'
+
+
+const userRecord = {
+	id: 1,
+	name: 'Tester',
+	avatar: '/img/avatar/face.jpg',
+	profileimg: '/img/dummyimg.jpg',
+}
 
 
 class Profile extends React.PureComponent {
@@ -35,19 +44,19 @@ class Profile extends React.PureComponent {
  //    });
 	// }
 
-  // abort the running ajax request, if component is unmounted
-  componentWillUnmount() {
-      if (this.serverRequest) {
-          this.serverRequest.abort();
-      }
-  }
+    // abort the running ajax request, if component is unmounted
+    componentWillUnmount() {
+        if (this.serverRequest) {
+            this.serverRequest.abort()
+        }
+    }
 
 	render () {
 		  return (
           <div>
-              <ProfileImg />
+              <ProfileImg src={userRecord.profileimg} />
               <ProfileStats />
-              <Avatar mini={false} offset={true} />
+              <Avatar src={userRecord.avatar} mini={false} offset={true} />
               <Spacer />
 
               <Route path={this.props.match.url + '/updates'} component={Album}/>

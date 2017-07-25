@@ -11,7 +11,6 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 import HomePin from 'material-ui/svg-icons/action/account-balance'
 import {Link} from 'react-router-dom'
 
-
 import ExpandButton from './ExpandButton'
 import Avatar from './Avatar'
 
@@ -24,14 +23,27 @@ const styles = {
     firstItem: {
         paddingLeft: '20px',
     },
+    badgeStyle: {
+        top: 12,
+        right: 12,
+    },
+    separator: {
+        margin: 0,
+        padding: '10px',
+    },
 }
+
+
+const NavbarSeparator = (props) => (
+    <div style={styles.separator}></div>
+)
 
 
 const Notifications = () => (
     <Badge
       badgeContent={10}
       secondary={true}
-      badgeStyle={{top: 12, right: 12}}
+      badgeStyle={styles.badgeStyle}
     >
       <IconButton tooltip="Notifications">
         <NotificationsIcon />
@@ -44,9 +56,9 @@ class NavBar extends React.PureComponent {
 
     state = {
         value: 3,
-    };
+    }
 
-    handleChange = (event, index, value) => this.setState({value});
+    handleChange = (event, index, value) => this.setState({value})
 
     render() {
         return (
@@ -55,7 +67,6 @@ class NavBar extends React.PureComponent {
                     <Link to="/">
                         <HomePin style={styles.firstItem} />
                     </Link>
-                    <ToolbarSeparator />
                     <Notifications />
                 </ToolbarGroup>
                 <ToolbarGroup>
@@ -63,8 +74,9 @@ class NavBar extends React.PureComponent {
                 </ToolbarGroup>
                 <ToolbarGroup>
                     <Link to="/profile">
-                        <Avatar mini={true} />
+                        <Avatar src={'/img/avatar/face.jpg'} mini={true} />
                     </Link>
+                    <NavbarSeparator />
                     <Link to="/settings">
                         <SettingsIcon />
                     </Link>
