@@ -1,12 +1,11 @@
+/** @flow */
+
 import React from 'react';
 
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+)
 
-export default class Home extends React.Component {
-	render () {
-		  return (
-          <div>
-              Homepage
-          </div>
-		  );
-	}
-}
+export default Home

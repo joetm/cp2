@@ -1,8 +1,9 @@
 /** @flow */
-import Immutable from "immutable";
+
 import React, { PureComponent } from "react";
 
-import AlbumImg from './AlbumImg.jsx';
+import AlbumImg from './AlbumImg';
+import AjaxLoader from './AjaxLoader';
 
 
 function randomImgHeight() {

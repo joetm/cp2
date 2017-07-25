@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
 
@@ -17,7 +19,7 @@ const avatarOffset = {
   marginLeft: '50px',
 }
 
-const AvatarBubble = (props) => {
+const AvatarBubble = (props : any) => {
   // avatar style
   let avatarStyle = {}
   if (props.mini === true) {

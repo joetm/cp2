@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react';
 
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -49,6 +51,10 @@ const styles = {
         backgroundColor: '#fff',
         color: '#000',
     },
+    linkStyle: {
+        textDecoration: 'none',
+        color: '#fff',
+    },
 };
 
 
@@ -69,28 +75,28 @@ const ProfileStats = () => (
         <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}
-                label={<Link to="/profile/updates">
+                label={<Link to="/profile/updates" style={styles.linkStyle}>
                         <StatText title="Posts" value="45" />
                         </Link>
                 }
             />
             <Tab
                 icon={<PhotoPin />}
-                label={<Link to="/profile/album">
+                label={<Link to="/profile/album" style={styles.linkStyle}>
                         <StatText title="Pics" value="234" />
                         </Link>
                 }
             />
             <Tab
                 icon={<ContactsPin />}
-                label={<Link to="/profile/followers">
+                label={<Link to="/profile/followers" style={styles.linkStyle}>
                         <StatText title="Followers" value="99" />
                         </Link>
                 }
             />
             <Tab
                 icon={<LikesPin />}
-                label={<Link to="/profile/likes">
+                label={<Link to="/profile/likes" style={styles.linkStyle}>
                         <StatText title="Likes" value="23" />
                         </Link>
                 }

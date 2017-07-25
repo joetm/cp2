@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react';
 import {Route, Link} from 'react-router-dom'
 
@@ -12,7 +14,7 @@ import Followers from './Followers.jsx';
 import Likes from './Likes.jsx';
 
 
-export default class Profile extends React.Component {
+export default class Profile extends React.PureComponent {
 
   state = {
       loading: true,

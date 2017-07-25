@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react';
 import Paper from 'material-ui/Paper';
 
@@ -13,13 +15,14 @@ const albumImgContainerStyle = {
   padding: '10px 10px',
 };
 
-const albumImgStyle = {
+let albumImgStyle = {
   width: '150px',
-  border:0,
+  height: '150px',
+  border: 0,
 };
 
 
-const AlbumImg = (props) => {
+const AlbumImg = (props: any) => {
   let imgHeight = randomImgHeight();
   albumImgStyle.height = imgHeight + 'px';
   // albumImgContainerStyle.height = imgHeight + 5 + 'px';

@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react';
 
 // Needed for onTouchTap
@@ -8,9 +10,10 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import fetch from 'unfetch';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 
 import NavBar from './NavBar.jsx';
+import Home from './Home'
 import Profile from './Profile.jsx';
 import Settings from './Settings.jsx';
 
@@ -31,25 +34,14 @@ const theme = getMuiTheme(customTheme);
 
 
 const RoutedApp = () => (
-  <Router>
       <MuiThemeProvider muiTheme={theme}>
         <div>
-
           <NavBar />
-
           <Route exact path="/" component={Home}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/settings" component={Settings}/>
-
         </div>
       </MuiThemeProvider>
-  </Router>
-)
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
 )
 
 export default RoutedApp

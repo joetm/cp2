@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react'
 
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
@@ -38,7 +40,7 @@ const Notifications = () => (
 )
 
 
-export default class NavBar extends React.Component {
+class NavBar extends React.PureComponent {
 
     state = {
         value: 3,
@@ -71,3 +73,5 @@ export default class NavBar extends React.Component {
         )
     }
 }
+
+export default NavBar

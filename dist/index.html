@@ -13,20 +13,19 @@
     <script type="text/javascript" src="js/main.js"></script>
 
     <script type="text/javascript">
-      //js goes here
-    	var client = deepstream('localhost:6020').login();
-		var record = client.record.getRecord('some-name');
-
-//		var input = document.querySelector('input')
-
-		// input.onkeyup = (function() {
-		//   record.set('firstname', input.value)
-		// })
-
-		// record.subscribe('firstname', function(value) {
-		//   input.value = value
-		// })
-
+      try {
+        var client = deepstream('localhost:6020').login();
+        var record = client.record.getRecord('some-name');
+        //    var input = document.querySelector('input')
+        // input.onkeyup = (function() {
+        //   record.set('firstname', input.value)
+        // })
+        // record.subscribe('firstname', function(value) {
+        //   input.value = value
+        // })
+      } catch(err) {
+        console.error(err);
+      }
     </script>
   </body>
 </html>
