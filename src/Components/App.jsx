@@ -10,12 +10,15 @@ injectTapEventPlugin()
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import fetch from 'unfetch'
-import {Route, Link} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 import NavBar from './NavBar'
 import Home from './Home'
+import Notifications from './Notifications'
+import Updates from './Updates'
 import Profile from './Profile'
 import Settings from './Settings'
+import Error404 from './Error404'
 
 import {
   cyan500, cyan700,
@@ -37,9 +40,14 @@ const RoutedApp = () => (
       <MuiThemeProvider muiTheme={theme}>
         <div>
           <NavBar />
-          <Route exact path="/" component={Home}/>
-          <Route path="/profile" component={Profile}/>
-          <Route path="/settings" component={Settings}/>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/notifications" component={Notifications}/>
+            <Route path="/updates" component={Updates}/>
+            <Route path="/profile" component={Profile}/>
+            <Route path="/settings" component={Settings}/>
+            <Route component={Error404}/>
+          </Switch>
         </div>
       </MuiThemeProvider>
 )

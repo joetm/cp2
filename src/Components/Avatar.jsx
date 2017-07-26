@@ -15,34 +15,18 @@ const styles = {
     width: '200px',
     border: '5px solid #fff',
   },
-  avatarOffset: {
-    marginTop: '-150px',
-    marginLeft: '50px',
-  },
 }
 
 
 
 const AvatarBubble = (props) => {
-    // avatar style
+    // avatar size
     let avatarStyle = {}
     if (props.mini === true) {
       avatarStyle = styles.avatarStyleMini
     } else {
       avatarStyle = styles.avatarStyleMaxi
     }
-    // offset for profile
-    // TODO - move this into profile
-  	if (props.offset === true) {
-  		avatarStyle.marginTop = styles.avatarOffset.marginTop
-  		avatarStyle.marginLeft = styles.avatarOffset.marginLeft
-  	} else {
-  		avatarStyle.marginTop = 0
-  		avatarStyle.marginLeft = 0
-  	}
-
-    console.log(props.avatar);
-
     return (
         <Avatar
             style={avatarStyle}

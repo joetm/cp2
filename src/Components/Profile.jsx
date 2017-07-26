@@ -17,10 +17,27 @@ import Likes from './Likes'
 
 const userRecord = {
 	id: 1,
-	name: 'Tester',
+	username: 'Tester',
 	avatar: '/img/avatar/face.jpg',
 	profileimg: '/img/dummyimg.jpg',
 }
+
+const styles = {
+    profileUsernameStyle: {
+        color: '#202020',
+        fontSize: '1.5em',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    },
+    avatarBoxOffset: {
+        marginTop: '-150px',
+        marginLeft: '50px',
+    },
+}
+
+const ProfileUsername = (props) => (
+    <div style={styles.profileUsernameStyle}>{props.name}</div>
+)
 
 
 class Profile extends React.PureComponent {
@@ -56,7 +73,10 @@ class Profile extends React.PureComponent {
           <div>
               <ProfileImg src={userRecord.profileimg} />
               <ProfileStats />
-              <Avatar src={userRecord.avatar} mini={false} offset={true} />
+              <div style={styles.avatarBoxOffset}>
+                  <Avatar src={userRecord.avatar} mini={false} />
+                  <ProfileUsername name={userRecord.username} />
+              </div>
               <Spacer />
 
               <Route path={this.props.match.url + '/updates'} component={Album}/>

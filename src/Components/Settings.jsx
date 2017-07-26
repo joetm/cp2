@@ -2,6 +2,10 @@
 
 import React from 'react'
 import Toggle from 'material-ui/Toggle'
+import Subheader from 'material-ui/Subheader'
+import Divider from 'material-ui/Divider'
+import {List, ListItem} from 'material-ui/List'
+import {Route, Link, Switch} from 'react-router-dom'
 
 // dropzone css
 import 'react-dropzone-component/styles/filepicker.css'
@@ -10,13 +14,15 @@ import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 
 // import ToolBar from './ToolBar.jsx'
-import Avatar from './Avatar.jsx'
-import Spacer from './Spacer.jsx'
+import Avatar from './Avatar'
+import Spacer from './Spacer'
 
-const blockMaxWidth = '80%'; // 250
+const blockMaxWidth = '80%' // 250
 
 const styles = {
   settingsBlock: {
+    //display: 'flex',
+    //flexWrap: 'wrap',
     maxWidth: blockMaxWidth,
     margin: 'auto auto',
   },
@@ -46,28 +52,6 @@ const styles = {
   },
 }
 
-
-const Toggles = () => (
-  <div style={styles.settingsBlock}>
-    <Toggle
-      label="Simple"
-      style={styles.toggle}
-    />
-    <Toggle
-      label="Toggled by default"
-      defaultToggled={true}
-      style={styles.toggle}
-    />
-    <Toggle
-      label="Styling"
-      thumbStyle={styles.thumbOff}
-      trackStyle={styles.trackOff}
-      thumbSwitchedStyle={styles.thumbSwitched}
-      trackSwitchedStyle={styles.trackSwitched}
-      labelStyle={styles.labelStyle}
-    />
-  </div>
-)
 
 
 const dropzoneConfig = {
@@ -120,62 +104,124 @@ const dropzoneEventHandlers = {
     queuecomplete: null,
 }
 
+
+
+const AvatarDropzone = (props) => (
+    <div id="avatar-settings"
+        style={{
+          width: '80%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: blockMaxWidth,
+        }}
+    >
+        <h2>Avatar</h2>
+        <Avatar
+            src={'/img/avatar/face.jpg'}
+        />
+        <DropzoneComponent
+          style={styles.dropzone}
+          config={dropzoneConfig}
+          eventHandlers={dropzoneEventHandlers}
+          djsConfig={dropzoneJsConfig}
+        />
+    </div>
+)
+
+const ProfileImgDropzone = (props) => (
+    <div
+        id="profileImg-settings"
+        style={{
+          width: '80%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: blockMaxWidth,
+        }}
+    >
+        <h2>ProfileImg</h2>
+        <img
+            src={'/img/dummyimg.jpg'}
+            style={{
+                width: '100%',
+                height: 'auto',
+            }}
+        />
+        <DropzoneComponent
+          style={styles.dropzone}
+          config={dropzoneConfig}
+          eventHandlers={dropzoneEventHandlers}
+          djsConfig={dropzoneJsConfig}
+        />
+    </div>
+)
+
+const privacySettings = (props) => (
+    <div style={{textAlign: 'left'}}>
+          <Divider />
+          <List>
+            <Subheader>Notifications</Subheader>
+            <Toggle
+              label="Simple"
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Toggled by default"
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Styling"
+              thumbStyle={styles.thumbOff}
+              trackStyle={styles.trackOff}
+              thumbSwitchedStyle={styles.thumbSwitched}
+              trackSwitchedStyle={styles.trackSwitched}
+              labelStyle={styles.labelStyle}
+            />
+        </List>
+    </div>
+)
+
+
 class Settings extends React.PureComponent {
 
 	render () {
 		  return (
           <div style={{textAlign: 'center'}}>
             <h1>Settings</h1>
-            <h2>ProfileImg</h2>
-                <div
-                    id="profileImg-settings"
-                    style={{
-                      width: '80%',
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                      maxWidth: blockMaxWidth,
-                    }}
-                >
-                    <img
-                        src={'/img/dummyimg.jpg'}
-                        style={{
-                            width: '100%',
-                            height: 'auto',
-                        }}
+
+            <Link to={this.props.match.url + '/image'}>Profile Image</Link>
+            <Link to={this.props.match.url + '/avatar'}>Avatar</Link>
+            <Link to={this.props.match.url + '/privacy'}>Privacy</Link>
+
+            <div style={styles.settingsBlock}>
+
+                <List>
+                    <ListItem
+                      primaryText="Profile photo"
+                      secondaryText="Change your profile photo"
+                      onclick={this.props.history.push(this.props.match.url + '/image')}
                     />
-                    <DropzoneComponent
-                      style={styles.dropzone}
-                      config={dropzoneConfig}
-                      eventHandlers={dropzoneEventHandlers}
-                      djsConfig={dropzoneJsConfig}
+                    <ListItem
+                      primaryText="Avatar"
+                      secondaryText="Change your avatar photo"
+                      onclick={this.props.history.push(this.props.match.url + '/avatar')}
                     />
-                </div>
-                <Spacer />
-            <h2>Avatar</h2>
-                <div id="avatar-settings"
-                    style={{
-                      width: '80%',
-                      marginLeft: 'auto',
-                      marginRight: 'auto',
-                      maxWidth: blockMaxWidth,
-                    }}
-                >
-                    <Avatar
-                        src={'/img/avatar/face.jpg'}
+                    <ListItem
+                      primaryText="Privacy"
+                      secondaryText="Change your privacy settings"
+                      onclick={this.props.history.push(this.props.match.url + '/privacy')}
                     />
-                    <DropzoneComponent
-                      style={styles.dropzone}
-                      config={dropzoneConfig}
-                      eventHandlers={dropzoneEventHandlers}
-                      djsConfig={dropzoneJsConfig}
-                    />
-                </div>
-                <Spacer />
-            <h2>Privacy</h2>
-                <div style={{textAlign: 'left'}}>
-                    <Toggles />
-                </div>
-                <Spacer />
+                </List>
+
+                <Switch>
+                <Route path={this.props.match.url + '/image'} component={ProfileImgDropzone}/>
+                <Route path={this.props.match.url + '/avatar'} component={AvatarDropzone}/>
+                <Route path={this.props.match.url + '/privacy'} component={privacySettings}/>
+                </Switch>
+
+            </div>
+
+            <Spacer />
           </div>
 		  )
 	}

@@ -5,7 +5,9 @@ import React from 'react'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import Badge from 'material-ui/Badge'
 import IconButton from 'material-ui/IconButton'
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
+//import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
+import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
+import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import MenuItem from 'material-ui/MenuItem'
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
 import HomePin from 'material-ui/svg-icons/action/account-balance'
@@ -23,13 +25,17 @@ const styles = {
     firstItem: {
         paddingLeft: '20px',
     },
-    badgeStyle: {
-        top: 12,
-        right: 12,
-    },
     separator: {
         margin: 0,
         padding: '10px',
+    },
+    badgeRootStyle: {
+        margin: 0,
+        padding: '0px 10px',
+    },
+    badgeStyle: {
+        top: -6,
+        right: 0,
     },
 }
 
@@ -44,9 +50,23 @@ const Notifications = () => (
       badgeContent={10}
       secondary={true}
       badgeStyle={styles.badgeStyle}
+      style={styles.badgeRootStyle}
     >
       <IconButton tooltip="Notifications">
-        <NotificationsIcon />
+        <EmailIcon />
+      </IconButton>
+    </Badge>
+)
+
+const Updates = () => (
+    <Badge
+      badgeContent={23}
+      secondary={true}
+      badgeStyle={styles.badgeStyle}
+      style={styles.badgeRootStyle}
+    >
+      <IconButton tooltip="New Updates">
+        <UpdatesIcon />
       </IconButton>
     </Badge>
 )
@@ -67,7 +87,12 @@ class NavBar extends React.PureComponent {
                     <Link to="/">
                         <HomePin style={styles.firstItem} />
                     </Link>
-                    <Notifications />
+                    <Link to="/notifications">
+                        <Notifications />
+                    </Link>
+                    <Link to="/updates">
+                        <Updates />
+                    </Link>
                 </ToolbarGroup>
                 <ToolbarGroup>
                     <ToolbarTitle text="CP" />
