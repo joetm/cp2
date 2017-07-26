@@ -14,11 +14,13 @@ import {Route, Switch} from 'react-router-dom'
 
 import NavBar from './NavBar'
 import Home from './Home'
+import Forum from './Forum/'
 import Notifications from './Notifications'
 import Updates from './Updates'
 import Profile from './Profile'
-import Settings from './Settings'
+import Settings from './Settings/SettingsHome'
 import Error404 from './Error404'
+
 
 import {
   cyan500, cyan700,
@@ -42,6 +44,7 @@ const RoutedApp = () => (
           <NavBar />
           <Switch>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/forum" component={Forum}/>
             <Route path="/notifications" component={Notifications}/>
             <Route path="/updates" component={Updates}/>
             <Route path="/profile" component={Profile}/>

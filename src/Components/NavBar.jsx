@@ -11,6 +11,7 @@ import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import MenuItem from 'material-ui/MenuItem'
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar'
 import HomePin from 'material-ui/svg-icons/action/account-balance'
+import ForumPin from 'material-ui/svg-icons/communication/chat'
 import {Link} from 'react-router-dom'
 
 import ExpandButton from './ExpandButton'
@@ -87,6 +88,11 @@ class NavBar extends React.PureComponent {
                     <Link to="/">
                         <IconButton tooltip="Home" style={styles.firstItem}>
                             <HomePin />
+                        </IconButton>
+                    </Link>
+                    <Link to="/forum">
+                        <IconButton tooltip="Forum">
+                            <ForumPin />
                         </IconButton>
                     </Link>
                     <Link to="/notifications">
