@@ -5,7 +5,7 @@ import Toggle from 'material-ui/Toggle'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import {List, ListItem} from 'material-ui/List'
-import {Route, Link, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 
 // dropzone css
 import 'react-dropzone-component/styles/filepicker.css'
@@ -16,6 +16,7 @@ import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 // import ToolBar from './ToolBar.jsx'
 import Avatar from './Avatar'
 import Spacer from './Spacer'
+import SettingsMenuEntry from './SettingsMenuEntry'
 
 const blockMaxWidth = '80%' // 250
 
@@ -153,11 +154,75 @@ const ProfileImgDropzone = (props) => (
     </div>
 )
 
-const privacySettings = (props) => (
+const PrivacySettings = (props) => (
     <div style={{textAlign: 'left'}}>
           <Divider />
           <List>
             <Subheader>Notifications</Subheader>
+            <Toggle
+              label="Simple"
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Toggled by default"
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Styling"
+              thumbStyle={styles.thumbOff}
+              trackStyle={styles.trackOff}
+              thumbSwitchedStyle={styles.thumbSwitched}
+              trackSwitchedStyle={styles.trackSwitched}
+              labelStyle={styles.labelStyle}
+            />
+        </List>
+          <Divider />
+          <List>
+            <Subheader>XXXX</Subheader>
+            <Toggle
+              label="Simple"
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Toggled by default"
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Styling"
+              thumbStyle={styles.thumbOff}
+              trackStyle={styles.trackOff}
+              thumbSwitchedStyle={styles.thumbSwitched}
+              trackSwitchedStyle={styles.trackSwitched}
+              labelStyle={styles.labelStyle}
+            />
+        </List>
+    </div>
+)
+
+const GeneralSettings = (props) => (
+    <div style={{textAlign: 'left'}}>
+          <Divider />
+          <List>
+            <Subheader>General</Subheader>
+            <Toggle
+              label="Simple"
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Toggled by default"
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Styling"
+              thumbStyle={styles.thumbOff}
+              trackStyle={styles.trackOff}
+              thumbSwitchedStyle={styles.thumbSwitched}
+              trackSwitchedStyle={styles.trackSwitched}
+              labelStyle={styles.labelStyle}
+            />
             <Toggle
               label="Simple"
               style={styles.toggle}
@@ -181,63 +246,45 @@ const privacySettings = (props) => (
 
 
 class Settings extends React.PureComponent {
-  state = {
-    selected: 0
-  }
-  selectProfileImg () {
-    this.setState({selected: 1})
-  }
-  selectAvatar () {
-    this.setState({selected: 2})
-  }
-  selectPrivacy () {
-    this.setState({selected: 3})
-  }
 	render () {
 		  return (
           <div style={{textAlign: 'center'}}>
             <h1>Settings</h1>
-
-            <Link to={this.props.match.url + '/image'}>Profile Image</Link>
-            <Link to={this.props.match.url + '/avatar'}>Avatar</Link>
-            <Link to={this.props.match.url + '/privacy'}>Privacy</Link>
-
             <div style={styles.settingsBlock}>
-
-                <List>
-                    <ListItem
-                      primaryText="Profile photo"
-                      secondaryText="Change your profile photo"
-                      style={{color: this.state.selected === 1 ? 'red' : '#000'}}
-                      onTouchTap={this.selectProfileImg.bind(this)}
-                    />
-                    <ListItem
-                      primaryText="Avatar"
-                      secondaryText="Change your avatar photo"
-                      style={{color: this.state.selected === 2 ? 'red' : '#000'}}
-                      onTouchTap={this.selectAvatar.bind(this)}
-                    />
-                    <ListItem
-                      primaryText="Privacy"
-                      secondaryText="Change your privacy settings"
-                      style={{color: this.state.selected === 3 ? 'red' : '#000'}}
-                      onTouchTap={this.selectPrivacy.bind(this)}
-                    />
-                </List>
-
-                <Switch>
+              <List>
+                  <SettingsMenuEntry
+                    primaryText="General"
+                    secondaryText="General settings"
+                    url="/general"
+                  />
+                  <SettingsMenuEntry
+                    primaryText="Profile photo"
+                    secondaryText="Change your profile photo"
+                    url="/image"
+                  />
+                  <SettingsMenuEntry
+                    primaryText="Avatar"
+                    secondaryText="Change your avatar photo"
+                    url="/avatar"
+                  />
+                  <SettingsMenuEntry
+                    primaryText="Privacy"
+                    secondaryText="Change your privacy settings"
+                    url="/privacy"
+                  />
+              </List>
+              <Spacer />
+              <Switch>
+                <Route path={this.props.match.url + '/general'} component={GeneralSettings}/>
                 <Route path={this.props.match.url + '/image'} component={ProfileImgDropzone}/>
                 <Route path={this.props.match.url + '/avatar'} component={AvatarDropzone}/>
-                <Route path={this.props.match.url + '/privacy'} component={privacySettings}/>
-                </Switch>
-
+                <Route path={this.props.match.url + '/privacy'} component={PrivacySettings}/>
+              </Switch>
             </div>
-
             <Spacer />
           </div>
 		  )
 	}
-
 }
 
 export default Settings

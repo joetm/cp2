@@ -31,59 +31,62 @@ const rightIconMenu = (
 )
 
 
-class Notifications extends React.PureComponent {
+
+// TODO
+const Update = (props) => (
+          <ListItem
+          leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
+          primaryText={props.primaryText}
+          secondaryText={<p>
+              <span style={{color: darkBlack}}>{props.fromUsername}</span> --
+              {props.secondaryText}
+            </p>}
+          secondaryTextLines={2}
+        />
+)
+
+const updatesList = {
+  today: [
+    {
+        primaryText: "Brunch this weekend?",
+        secondaryText: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
+        fromUsername: "Brandan Lim",
+    },
+    {
+        primaryText: "Oui oui",
+        secondaryText: "Do you have Paris recommendations? Have you ever been?",
+        fromUsername: "Grace Ng",
+    },
+    {
+        primaryText: "Birdthday gift",
+        secondaryText: "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
+        fromUsername: "Kerem Suer",
+    },
+    {
+        primaryText: "Recipe to try",
+        secondaryText: "We should eat this: grated squash. Corn and tomatillo tacos.",
+        fromUsername: "Raquel Parrado",
+    },
+  ],
+  yesterday: [],
+}
+
+class Updates extends React.PureComponent {
     render () {
           return (
             <div>
 <List>
         <Subheader>Today</Subheader>
-        <ListItem
-          leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-          primaryText="Brunch this weekend?"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Brendan Lim</span> --
-              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-          primaryText="Oui oui"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Grace Ng</span> --
-              Do you have Paris recommendations? Have you ever been?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-          primaryText="Birdthday gift"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Kerem Suer</span> --
-              Do you have any ideas what we can get Heidi for her birthday? How about a pony?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-        <Divider inset={true} />
-        <ListItem
-          leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-          primaryText="Recipe to try"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Raquel Parrado</span> --
-              We should eat this: grated squash. Corn and tomatillo tacos.
-            </p>
-          }
-          secondaryTextLines={2}
-        />
+        {updatesList.today.map((item) => (
+          <div>
+            <Update
+              primaryText={item.primaryText}
+              secondaryText={item.secondaryText}
+              fromUsername={item.fromUsername}
+            />
+          </div>
+        ))}
+
       </List>
       <Divider />
 <List>
@@ -158,4 +161,4 @@ class Notifications extends React.PureComponent {
     }
 }
 
-export default Notifications
+export default Updates

@@ -85,7 +85,9 @@ class NavBar extends React.PureComponent {
             <Toolbar style={styles.navBarStyle}>
                 <ToolbarGroup firstChild={true}>
                     <Link to="/">
-                        <HomePin style={styles.firstItem} />
+                        <IconButton tooltip="Home" style={styles.firstItem}>
+                            <HomePin />
+                        </IconButton>
                     </Link>
                     <Link to="/notifications">
                         <Notifications />
@@ -99,11 +101,15 @@ class NavBar extends React.PureComponent {
                 </ToolbarGroup>
                 <ToolbarGroup>
                     <Link to="/profile">
-                        <Avatar src={'/img/avatar/face.jpg'} mini={true} />
+                        <IconButton tooltip="Your Profile">
+                            <Avatar src={'/img/avatar/face.jpg'} mini={true} />
+                        </IconButton>
                     </Link>
                     <NavbarSeparator />
                     <Link to="/settings">
-                        <SettingsIcon />
+                        <IconButton tooltip="Settings">
+                            <SettingsIcon />
+                        </IconButton>
                     </Link>
                 </ToolbarGroup>
             </Toolbar>

@@ -8,6 +8,8 @@ const styles = {
   avatarStyleMini: {
     height: '30px',
     width: '30px',
+    marginTop:'-5px',
+    marginLeft:'-5px',
     border: '2px solid #fff',
   },
   avatarStyleMaxi: {
