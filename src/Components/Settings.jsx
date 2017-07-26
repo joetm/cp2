@@ -115,7 +115,6 @@ const AvatarDropzone = (props) => (
           maxWidth: blockMaxWidth,
         }}
     >
-        <h2>Avatar</h2>
         <Avatar
             src={'/img/avatar/face.jpg'}
         />
@@ -138,7 +137,6 @@ const ProfileImgDropzone = (props) => (
           maxWidth: blockMaxWidth,
         }}
     >
-        <h2>ProfileImg</h2>
         <img
             src={'/img/dummyimg.jpg'}
             style={{
@@ -183,7 +181,18 @@ const privacySettings = (props) => (
 
 
 class Settings extends React.PureComponent {
-
+  state = {
+    selected: 0
+  }
+  selectProfileImg () {
+    this.setState({selected: 1})
+  }
+  selectAvatar () {
+    this.setState({selected: 2})
+  }
+  selectPrivacy () {
+    this.setState({selected: 3})
+  }
 	render () {
 		  return (
           <div style={{textAlign: 'center'}}>
@@ -199,17 +208,20 @@ class Settings extends React.PureComponent {
                     <ListItem
                       primaryText="Profile photo"
                       secondaryText="Change your profile photo"
-                      onclick={this.props.history.push(this.props.match.url + '/image')}
+                      style={{color: this.state.selected === 1 ? 'red' : '#000'}}
+                      onTouchTap={this.selectProfileImg.bind(this)}
                     />
                     <ListItem
                       primaryText="Avatar"
                       secondaryText="Change your avatar photo"
-                      onclick={this.props.history.push(this.props.match.url + '/avatar')}
+                      style={{color: this.state.selected === 2 ? 'red' : '#000'}}
+                      onTouchTap={this.selectAvatar.bind(this)}
                     />
                     <ListItem
                       primaryText="Privacy"
                       secondaryText="Change your privacy settings"
-                      onclick={this.props.history.push(this.props.match.url + '/privacy')}
+                      style={{color: this.state.selected === 3 ? 'red' : '#000'}}
+                      onTouchTap={this.selectPrivacy.bind(this)}
                     />
                 </List>
 
