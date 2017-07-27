@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-
+var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   // context: path.join(__dirname, "src"),
@@ -82,6 +82,7 @@ module.exports = {
   ]
   :
   [
+    new FaviconsWebpackPlugin('logo.png'),
     new ExtractTextPlugin('style.css', {
       // allChunks: true
     }),
