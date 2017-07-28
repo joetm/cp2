@@ -1,20 +1,20 @@
 /** @flow */
 
 import React from 'react'
-import PropTypes from 'prop-types'
+import Subheader from 'material-ui/Subheader'
+import Divider from 'material-ui/Divider'
 
-const Posts = () => {
-  return (
+import Post from './Post'
+
+
+const Posts = (props) => {
+	const { posts } = props
+    return (
       <div>
-        <ul>
-          {this.props.posts.map((post, i) => <li key={i}>{post.title}</li>)}
-        </ul>
+          <Subheader>Category here</Subheader>
+          {posts.map((post, i) => <Post key={i} post={post} />)}
       </div>
-  )
+    )
 }
 
 export default Posts
-
-Posts.propTypes = {
-  posts: PropTypes.array.isRequired
-}

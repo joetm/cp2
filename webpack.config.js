@@ -30,7 +30,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|vendor|venv)/,
+        exclude: /(node_modules|vendor|venv|__tests__|BAK)/,
         loader: 'babel-loader', //-loader (optional)
         query: {
           // cacheDirectory: true,
@@ -51,7 +51,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: [ /vendor/, /node_modules/, /venv/ ],
+        exclude: [ /vendor/, /node_modules/, /venv/, /__tests__/, /BAK/ ],
         loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
       },
       {
@@ -82,7 +82,10 @@ module.exports = {
   ]
   :
   [
-    new FaviconsWebpackPlugin('logo.png'),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+    // new FaviconsWebpackPlugin('logo.png'),
     new ExtractTextPlugin('style.css', {
       // allChunks: true
     }),
@@ -91,9 +94,6 @@ module.exports = {
     //]),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    }),
   	new webpack.optimize.UglifyJsPlugin({
         // mangle: false,
         compress: {

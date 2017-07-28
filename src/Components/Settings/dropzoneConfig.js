@@ -2,13 +2,13 @@ export const dropzoneConfig = {
     iconFiletypes: ['.jpg', '.jpeg', '.png', '.gif'],
     showFiletypeIcon: true,
     postUrl: '/uploadHandler',
-}
+};
 export const dropzoneJsConfig = {
     addRemoveLinks: true,
     params: {
         myParameter: "I'm a parameter!"
     },
-}
+};
 export const dropzoneEventHandlers = {
     // This one receives the dropzone object as the first parameter
     // and can be used to additional work with the dropzone.js
@@ -46,4 +46,4 @@ export const dropzoneEventHandlers = {
     totaluploadprogress: null,
     reset: null,
     queuecomplete: null,
-}
+};

@@ -6,20 +6,20 @@ import React from 'react'
 // http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
-
+//--
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import fetch from 'unfetch'
 import {Route, Switch} from 'react-router-dom'
 
-import NavBar from './NavBar'
-import Home from './Home'
+import NavBar from './NavBar/'
+import Home from './Home/'
 import Forum from './Forum/'
-import Notifications from './Notifications'
-import Updates from './Updates'
-import Profile from './Profile'
-import Settings from './Settings/SettingsHome'
-import Error404 from './Error404'
+import Notifications from './Stream/Notifications'
+import Updates from './Stream/'
+import Profile from './Profile/'
+import Settings from './Settings/'
+import Error from './Error/'
 
 
 import {
@@ -49,7 +49,7 @@ const RoutedApp = () => (
             <Route path="/updates" component={Updates}/>
             <Route path="/profile" component={Profile}/>
             <Route path="/settings" component={Settings}/>
-            <Route component={Error404}/>
+            <Route component={Error} code="404" />
           </Switch>
         </div>
       </MuiThemeProvider>
