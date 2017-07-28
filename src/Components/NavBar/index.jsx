@@ -101,8 +101,8 @@ class NavBar extends React.PureComponent {
     toggleState = (num) => {
         if(num.id) {num = num.id}
         else if(! +num) {num = 0}
-        console.log('activeBadge', num)
         this.setState({activeBadge: num})
+        // console.log('activeBadge', num)
     }
     render() {
         return (

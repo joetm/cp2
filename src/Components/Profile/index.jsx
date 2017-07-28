@@ -12,7 +12,7 @@ import Album from '../Album/'
 import Spacer from '../Spacer'
 import AjaxLoader from '../AjaxLoader'
 import Followers from '../Followers/'
-import Likes from '../Feed/Likes'
+import Likes from '../Stream/Likes'
 
 
 const userRecord = {

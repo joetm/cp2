@@ -33,10 +33,11 @@ const rightIconMenu = (
 
 class Notification extends React.PureComponent {
     render () {
+        let ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
         return (
             <ListItem
               leftAvatar={this.props.avatar}
-              rightIconButton={rightIconMenu}
+              rightIconButton={ListItemMenu}
               primaryText={this.props.primaryText}
               secondaryText={
                 <p>

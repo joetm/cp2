@@ -25,6 +25,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Brunch this weekend?"
                   secondaryText="I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?"
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -32,6 +33,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Summer BBQ&nbsp;&nbsp;<span style={{color: lightBlack}}>4</span>"
                   secondaryText="Wish I could come, but I&apos;m out of town this weekend."
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -39,6 +41,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Oui oui"
                   secondaryText="Do you have Paris recommendations? Have you ever been?"
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -46,6 +49,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Birdthday gift"
                   secondaryText="Do you have any ideas what we can get Heidi for her birthday? How about a pony?"
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -53,6 +57,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Recipe to try"
                   secondaryText="We should eat this: grated squash. Corn and tomatillo tacos."
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -60,6 +65,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Me"
                   secondaryText="I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?"
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -67,6 +73,7 @@ class Notifications extends React.PureComponent {
                   primaryText="What?"
                   secondaryText="Wish I could come, but I&apos;m out of town this weekend."
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -74,6 +81,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Post Title?"
                   secondaryText="Do you have any Paris recs? Have you ever been?"
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -81,6 +89,7 @@ class Notifications extends React.PureComponent {
                   primaryText="What's up?"
                   secondaryText="Do you have any ideas what we can get Heidi for her birthday? How about a pony?"
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
@@ -88,6 +97,7 @@ class Notifications extends React.PureComponent {
                   primaryText="Okay, then..."
                   secondaryText="We should eat this: grated squash. Corn and tomatillo tacos."
                   secondaryTextLines={2}
+                  showMenu={true}
                 />
               </List>
               <Spacer />
