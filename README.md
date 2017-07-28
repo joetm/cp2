@@ -9,9 +9,11 @@ n/a
 DEV
 ----
 
-> yarn run dev
-
 > vagrant up
+>
+> yarn install
+>
+> yarn run dev
 
 To monitor deepstream:
 
