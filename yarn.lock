@@ -2226,6 +2226,10 @@ deepstream.io-client-js@^2.2.1:
     bufferutil "^2.0.1"
     utf-8-validate "^3.0.1"
 
+deepstream.io-tools-react@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/deepstream.io-tools-react/-/deepstream.io-tools-react-0.1.5.tgz#ebefdd63b5398cb6a1e099249a59b2e751d9b216"
+
 default-require-extensions@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/default-require-extensions/-/default-require-extensions-1.0.0.tgz#f37ea15d3e13ffd9b437d33e1a75b5fb97874cb8"
@@ -6731,6 +6735,13 @@ react-materialui-notifications@^0.5.0:
     react-tap-event-plugin "^2.0.1"
     react-transition-group "^1.1.3"
 
+react-mixin@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-mixin/-/react-mixin-3.0.5.tgz#e0b7b6713fdc9ddc429267df808b6ac5184c6706"
+  dependencies:
+    object-assign "^4.0.1"
+    smart-mixin "^2.0.0"
+
 react-paginate@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/react-paginate/-/react-paginate-4.4.3.tgz#11817ece628fa59c54a2df7968c854ed64b99077"
@@ -7423,6 +7434,10 @@ slash@^1.0.0:
 slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
+
+smart-mixin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/smart-mixin/-/smart-mixin-2.0.0.tgz#a34a1055e32a75b30d2b4e3ca323dc99cb53f437"
 
 sntp@1.x.x:
   version "1.0.9"

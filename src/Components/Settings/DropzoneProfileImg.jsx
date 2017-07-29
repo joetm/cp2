@@ -2,7 +2,7 @@
 
 import React from 'react'
 // dropzone css
-import '../../../lib/dropzone/dist/dropzone.css'
+import '../External/dropzone/dist/dropzone.css'
 // react dropzone css
 import 'react-dropzone-component/styles/filepicker.css'
 // dropzone component

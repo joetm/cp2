@@ -8,15 +8,14 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 module.exports = {
   // context: path.join(__dirname, "src"),
   entry: {
-    // vendor: [
-    //   "react",
-    //   "react-dom",
-    //   "react-tap-event-plugin",
-    //   "whatwg-fetch", // AJAX fetch polyfill - https://github.com/github/fetch
-    //   "material-ui/styles/MuiThemeProvider"
-    // ],
-    // profile: "./src/profile.js"
-    main: "./src/main.js"
+    main: "./src/main.js",
+    vendor: [
+        "deepstream.io-client-js/dist/deepstream"
+        //   "react",
+        //   "react-dom",
+        //   "react-tap-event-plugin",
+        //   "material-ui/styles/MuiThemeProvider"
+    ]
     // devhotserver: "webpack/hot/dev-server",
     // devserver: "webpack-dev-server/client?http://localhost:8081"
   },
@@ -25,7 +24,7 @@ module.exports = {
     publicPath: '/',
     filename: "[name].js"
   },
-  devtool: debug ? "inline-sourcemap" : null,
+  devtool: debug ? "inline-sourcemap" : false,
   module: {
     loaders: [
       {
@@ -69,7 +68,9 @@ module.exports = {
     //]
   },
   plugins: debug ?
-  //DEV
+  // -----------
+  // DEVELOPMENT
+  // -----------
   [
     new ExtractTextPlugin({
       // allChunks: true
@@ -83,6 +84,9 @@ module.exports = {
     })
   ]
   :
+  // -----------
+  // PRODUCTION
+  // -----------
   [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
@@ -95,8 +99,7 @@ module.exports = {
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}
     //]),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
   	new webpack.optimize.UglifyJsPlugin({
         // mangle: false,
         compress: {

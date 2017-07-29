@@ -7,10 +7,15 @@ import React from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 //--
+// deepstream mixins
+import DeepstreamMixin from 'deepstream.io-tools-react'
+import reactMixin from 'react-mixin'
+//--
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import fetch from 'unfetch'
 import {Route, Switch} from 'react-router-dom'
+
 
 import NavBar from './NavBar/'
 import Home from './Home/'
@@ -38,21 +43,34 @@ const customTheme = {
 const theme = getMuiTheme(customTheme)
 
 
-const RoutedApp = () => (
-      <MuiThemeProvider muiTheme={theme}>
-        <div>
-          <NavBar />
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/forum" component={Forum}/>
-            <Route path="/notifications" component={Notifications}/>
-            <Route path="/updates" component={Updates}/>
-            <Route path="/profile" component={Profile}/>
-            <Route path="/settings" component={Settings}/>
-            <Route component={Error} code="404" />
-          </Switch>
-        </div>
-      </MuiThemeProvider>
-)
+class RoutedApp extends React.Component {
+    constructor(props) {
+      super(props)
+      this.state = {}
+    }
+    componentDidMount() {
+
+    }
+    render() {
+        return (
+            <MuiThemeProvider muiTheme={theme}>
+              <div>
+                <NavBar />
+                <Switch>
+                  <Route exact path="/" component={Home}/>
+                  <Route exact path="/forum" component={Forum}/>
+                  <Route path="/notifications" component={Notifications}/>
+                  <Route path="/updates" component={Updates}/>
+                  <Route path="/profile" component={Profile}/>
+                  <Route path="/settings" component={Settings}/>
+                  <Route component={Error} code="404" />
+                </Switch>
+              </div>
+            </MuiThemeProvider>
+        )
+    }
+}
+
+reactMixin(RoutedApp, DeepstreamMixin)
 
 export default RoutedApp
