@@ -19,6 +19,9 @@ const actionButtonsStyle = {
 }
 
 
+//        <CardText expandable={false} actAsExpander={false}>
+//          {secondaryText}
+//        </CardText>
 const Update = (props) => {
   const {id, fromUsername, primaryText, secondaryText, datetime,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone} = props
@@ -42,15 +45,11 @@ const Update = (props) => {
         />
         <CardTitle
           title={primaryText}
-          subtitle={datetime.formattedTime}
           onClick={navigateTo.bind(this)}
           actAsExpander={false}
           expandable={false}
         />
-        <CardText expandable={false} actAsExpander={false}>
-      		{secondaryText}
-        </CardText>
-        <CardActions>
+        <CardActions actAsExpander={false} expandable={false}>
           <LikeButton     id={id} tooltip="Like"     icon={<LikeAction     />} />
           <FavoriteButton id={id} tooltip="Favorite" icon={<FavoriteAction />} />
           <CommentButton  id={id} tooltip="Comment"  icon={<CommentAction  />} />

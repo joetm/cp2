@@ -15,11 +15,14 @@
   "scripts": {
     "flow": "./node_modules/.bin/flow",
     "test": "./node_modules/.bin/jest",
-    "build": "NODE_ENV=production ./node_modules/.bin/babel ./src/ -d ./lib/ && ./node_modules/.bin/webpack -p",
-    "prepublish": "yarn run build",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack -p",
     "watch": "./node_modules/.bin/webpack --watch",
     "dev": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open",
     "dev-ALT": "./devserver.js"
+  },
+  "BAK": {
+  	"build": "./node_modules/.bin/babel ./src/ -d ./lib/ && ",
+    "prepublish": "yarn run build"
   },
   "files": [
     "./src/**/*.{js,json,jsx}"
