@@ -1,9 +1,9 @@
-var debug = process.env.NODE_ENV !== "production";
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const debug = process.env.NODE_ENV !== "production";
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   // context: path.join(__dirname, "src"),
@@ -51,12 +51,13 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        exclude: [ /vendor/, /node_modules/, /venv/, /__tests__/, /BAK/ ],
-        loader: ExtractTextPlugin.extract("style-loader", "css?sourceMap!postcss!sass?sourceMap&outputStyle=expanded")
+        // exclude: [ /vendor/, /venv/, /__tests__/, /BAK/ ],
+        // loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!postcss-loader!sass-loader?sourceMap&outputStyle=expanded")
+        loader: ExtractTextPlugin.extract("css-loader?sourceMap!sass-loader?sourceMap&outputStyle=expanded")
       },
       {
         test: /\.css$/,
-        loader: [ 'style-loader', 'css-loader' ].join("!")
+        loader: ['style-loader', 'css-loader'].join("!")
       },
     ]
   },
@@ -70,8 +71,9 @@ module.exports = {
   plugins: debug ?
   //DEV
   [
-    new ExtractTextPlugin('style.css', {
+    new ExtractTextPlugin({
       // allChunks: true
+      filename: 'style.css',
     }),
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}
@@ -86,8 +88,9 @@ module.exports = {
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
     // new FaviconsWebpackPlugin('logo.png'),
-    new ExtractTextPlugin('style.css', {
+    new ExtractTextPlugin({
       // allChunks: true
+      filename: 'style.css',
     }),
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}

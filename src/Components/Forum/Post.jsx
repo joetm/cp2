@@ -9,21 +9,19 @@ function openThread() {
   console.log(this)
 }
 
-const Post = (props) => {
+const Post = props => {
   const { post } = props
   return (
       <ListItem
         key={`upd_${post.id}`}
         leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-        primaryText={post.title}
+        primaryText={post.username}
         secondaryText={<p>
-            <span style={{color: darkBlack}}>{post.username}</span>
-            --
-            {post.content}
+            {post.title}
           </p>}
         secondaryTextLines={2}
         autoGenerateNestedIndicator={true}
-        onTouchTap={openThread}
+        onTouchTap={openThread.bind(this)}
       />
   )
 }

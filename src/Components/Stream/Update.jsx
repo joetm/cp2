@@ -29,17 +29,17 @@ const Update = (props) => {
       <Card
           key={`upd_${id}`}
       >
+        <CardMedia
+          onClick={navigateTo.bind(this)}
+        >
+          <img src="/img/dummyimg.jpg" alt="" />
+        </CardMedia>
         <CardHeader
           title={fromUsername}
           subtitle={'Master Jedi'}
           avatar="/img/avatar/face.jpg"
           onClick={navigateTo.bind(this)}
         />
-        <CardMedia
-          onClick={navigateTo.bind(this)}
-        >
-          <img src="/img/dummyimg.jpg" alt="" />
-        </CardMedia>
         <CardTitle
           title={primaryText}
           subtitle={datetime.formattedTime}
