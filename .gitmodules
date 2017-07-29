@@ -4,6 +4,3 @@
 [submodule "lib/dropzone"]
 	path = lib/dropzone
 	url = https://github.com/enyo/dropzone.git
-[submodule "lib/deepstream.io"]
-	path = lib/deepstream.io
-	url = https://github.com/deepstreamIO/deepstream.io.git
