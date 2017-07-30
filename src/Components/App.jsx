@@ -19,7 +19,7 @@ import {Route, Switch} from 'react-router-dom'
 
 import NavBar from './NavBar/'
 import Home from './Home/'
-import Forum from './Forum/'
+//import Forum from './Forum/'
 import Notifications from './Stream/Notifications'
 import Updates from './Stream/'
 import Profile from './Profile/'
@@ -51,6 +51,7 @@ class RoutedApp extends React.Component {
     componentDidMount() {
 
     }
+    // <Route exact path="/forum" component={Forum}/>
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>
@@ -58,7 +59,7 @@ class RoutedApp extends React.Component {
                 <NavBar />
                 <Switch>
                   <Route exact path="/" component={Home}/>
-                  <Route exact path="/forum" component={Forum}/>
+
                   <Route path="/notifications" component={Notifications}/>
                   <Route path="/updates" component={Updates}/>
                   <Route path="/profile" component={Profile}/>
