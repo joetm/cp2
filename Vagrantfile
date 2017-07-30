@@ -84,9 +84,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # installs deepstream. -y skips "are you sure?" question
       apt-get install -y deepstream.io
 
-      cp /vagrant_data/provision/deepstream /etc/init.d/
-	  chmod +x /etc/init.d/deepstream
-	  update-rc.d deepstream defaults
+      # cp /vagrant_data/provision/deepstream /etc/init.d/
+  	  # chmod +x /etc/init.d/deepstream
+  	  # update-rc.d deepstream defaults
+
+      cp /vagrant_data/rc.local /etc/
 
       # copy config
       cd ~

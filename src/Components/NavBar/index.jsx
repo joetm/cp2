@@ -11,7 +11,7 @@ import {darkBlack} from 'material-ui/styles/colors'
 // import Popover from 'material-ui/Popover';
 // --
 import HomePin from 'material-ui/svg-icons/action/account-balance'
-import GroupPin from 'material-ui/svg-icons/social/group'
+// import GroupPin from 'material-ui/svg-icons/social/group'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 // --
@@ -92,6 +92,21 @@ const NavbarSeparator = () => (
 // }
 
 
+/*
+                    <Link to="/forum">
+                        <CustomBadge
+                            badgeContent={123}
+                            secondary={true}
+                            badgeStyle={styles.badgeStyle}
+                            style={styles.badgeRootStyle}
+                            tooltip="New Forum Activity"
+                            icon={<GroupPin />}
+                            toggleState={this.toggleState}
+                            id={1}
+                            active={this.state.activeBadge === 1}
+                        />
+                    </Link>
+*/
 
 
 class NavBar extends React.PureComponent {
@@ -118,19 +133,6 @@ class NavBar extends React.PureComponent {
                             <HomePin
                             />
                         </IconButton>
-                    </Link>
-                    <Link to="/forum">
-                        <CustomBadge
-                            badgeContent={123}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="New Forum Activity"
-                            icon={<GroupPin />}
-                            toggleState={this.toggleState}
-                            id={1}
-                            active={this.state.activeBadge === 1}
-                        />
                     </Link>
                     <Link to="/updates/notifications">
                         <CustomBadge

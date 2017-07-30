@@ -1,3 +1,0 @@
-#/usr/bin/bash
-
-deepstream start -c ~/config.yml

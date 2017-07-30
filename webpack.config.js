@@ -67,6 +67,12 @@ module.exports = {
     //  'src/Components'
     //]
   },
+  devServer: {
+    inline: true,
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
+  },
   plugins: debug ?
   // -----------
   // DEVELOPMENT
