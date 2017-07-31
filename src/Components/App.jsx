@@ -8,14 +8,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 //--
 // deepstream mixins
-import DeepstreamMixin from 'deepstream.io-tools-react'
-import reactMixin from 'react-mixin'
+//import DeepstreamMixin from 'deepstream.io-tools-react'
+//import reactMixin from 'react-mixin'
 //--
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import fetch from 'unfetch'
 import {Route, Switch} from 'react-router-dom'
-
 
 import NavBar from './NavBar/'
 import Home from './Home/'
@@ -72,6 +71,6 @@ class RoutedApp extends React.Component {
     }
 }
 
-reactMixin(RoutedApp, DeepstreamMixin)
+//reactMixin(RoutedApp, DeepstreamMixin)
 
 export default RoutedApp

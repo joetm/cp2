@@ -12,7 +12,7 @@ import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import Notification from '../Stream/Notification'
-import Spacer from '../Spacer'
+import Spacer from '../Shared/Spacer'
 
 
 const boxStyle = {

@@ -12,10 +12,9 @@ import MenuItem from 'material-ui/MenuItem'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { humanReadableDate, humanRelativeDate } from '../helpers'
+import { humanReadableDate, humanRelativeDate, classifyByDateAgo } from '../../shared/helpers'
 import Update from './Update'
-import Spacer from '../Spacer'
-import {classifyByDateAgo} from '../helpers'
+import Spacer from '../Shared/Spacer'
 
 
 const iconButtonElement = (

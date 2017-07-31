@@ -6,7 +6,7 @@ import Masonry from '../External/react-simple-masonry/src/'
 import Block from '../External/react-simple-masonry/src/block'
 
 import AlbumImg from './AlbumImg'
-import AjaxLoader from '../AjaxLoader'
+import AjaxLoader from '../Shared/AjaxLoader'
 
 
 function randomImgHeight() {

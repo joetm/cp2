@@ -19,10 +19,11 @@ import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 
-import {navigateTo} from '../actions'
-import Avatar from '../Avatar'
+import { navigateTo } from '../../shared/actions'
+import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
 import RouterMenuItem from './RouterMenuItem'
+
 
 const styles = {
     navBarStyle: {

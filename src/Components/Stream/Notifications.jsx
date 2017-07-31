@@ -9,7 +9,7 @@ import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bu
 import {darkBlack, lightBlack} from 'material-ui/styles/colors'
 
 import Notification from './Notification'
-import Spacer from '../Spacer'
+import Spacer from '../Shared/Spacer'
 
 
 class Notifications extends React.PureComponent {

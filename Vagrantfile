@@ -73,7 +73,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
       apt-get update
-      apt-get install -g winston
+
+      # npm install -g winston
 
       # install deepstream
       source /etc/lsb-release && echo "deb http://dl.bintray.com/deepstreamio/deb ${DISTRIB_CODENAME} main" | sudo tee -a /etc/apt/sources.list

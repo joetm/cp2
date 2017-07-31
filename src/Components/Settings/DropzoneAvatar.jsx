@@ -10,7 +10,7 @@ import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 
 import {dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers} from './dropzoneConfig'
 
-import Avatar from '../Avatar'
+import Avatar from '../Shared/Avatar'
 
 
 const blockMaxWidth = '80%' // 250
