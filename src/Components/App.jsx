@@ -60,7 +60,7 @@ class RoutedApp extends React.Component {
                   <Route exact path="/" component={Home}/>
 
                   <Route path="/notifications" component={Notifications}/>
-                  <Route path="/updates" component={Updates}/>
+                  <Route path="/stream" component={Updates}/>
                   <Route path="/profile" component={Profile}/>
                   <Route path="/settings" component={Settings}/>
                   <Route component={Error} code="404" />

@@ -12,7 +12,7 @@ import {darkBlack} from 'material-ui/styles/colors'
 // --
 import HomePin from 'material-ui/svg-icons/action/account-balance'
 // import GroupPin from 'material-ui/svg-icons/social/group'
-import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
+// import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 // --
 import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
@@ -92,6 +92,21 @@ const NavbarSeparator = () => (
 //   }
 // }
 
+/*
+                    <Link to="/updates/notifications">
+                        <CustomBadge
+                            badgeContent={10}
+                            secondary={true}
+                            badgeStyle={styles.badgeStyle}
+                            style={styles.badgeRootStyle}
+                            tooltip="Notifications"
+                            icon={<EmailIcon />}
+                            toggleState={this.toggleState}
+                            id={2}
+                            active={this.state.activeBadge === 2}
+                        />
+                    </Link>
+*/
 
 /*
                     <Link to="/forum">
@@ -135,26 +150,13 @@ class NavBar extends React.PureComponent {
                             />
                         </IconButton>
                     </Link>
-                    <Link to="/updates/notifications">
-                        <CustomBadge
-                            badgeContent={10}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="Notifications"
-                            icon={<EmailIcon />}
-                            toggleState={this.toggleState}
-                            id={2}
-                            active={this.state.activeBadge === 2}
-                        />
-                    </Link>
-                    <Link to="/updates">
+                    <Link to="/stream">
                         <CustomBadge
                             badgeContent={23}
                             secondary={true}
                             badgeStyle={styles.badgeStyle}
                             style={styles.badgeRootStyle}
-                            tooltip="New Updates"
+                            tooltip="New Activity"
                             icon={<UpdatesIcon />}
                             toggleState={this.toggleState}
                             id={3}
@@ -164,16 +166,15 @@ class NavBar extends React.PureComponent {
                 </ToolbarGroup>
                 <ToolbarGroup>
                     <IconMenu
-                      iconButtonElement={
-                        <IconButton
-                            id={4}
-                            tooltip="Your Profile"
-                            iconStyle={{borderColor: this.state.activeBadge === 4 ? 'red' : darkBlack}}
-                            onTouchTap={this.toggleState.bind(this)}
-                        >
-                            <Avatar src={'/img/avatar/face.jpg'} mini={true} />
-                        </IconButton>
-                      }
+                        iconButtonElement={<IconButton
+                                id={4}
+                                tooltip="Your Profile"
+                                iconStyle={{borderColor: this.state.activeBadge === 4 ? 'red' : darkBlack}}
+                                onTouchTap={this.toggleState.bind(this)}
+                            >
+                                <Avatar src={'/img/avatar/face.jpg'} mini={true} />
+                            </IconButton>
+                        }
                     >
                         <RouterMenuItem url={'/profile'} primaryText="Your Profile" icon={<ProfileIcon />} />
                         <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />

@@ -14,13 +14,8 @@ import AjaxLoader from '../Shared/AjaxLoader'
 import Followers from '../Followers/'
 import Likes from '../Stream/Likes'
 
+import fakeUserRecord from './userRecord'
 
-const userRecord = {
-	id: 1,
-	username: 'Tester',
-	avatar: '/img/avatar/face.jpg',
-	profileimg: '/img/dummyimg.jpg',
-}
 
 const styles = {
     profileUsernameStyle: {
@@ -48,8 +43,8 @@ class Profile extends React.PureComponent {
 
   serverRequest = null
 
-	// componentDidMount() {
-	// 	//fetch the data
+    // componentDidMount() {
+    //  //fetch the data
  //    this.serverRequest = fetch(URL)
  //    .then(r => r.json())
  //    .then((dinnermenu) => {
@@ -59,35 +54,36 @@ class Profile extends React.PureComponent {
  //            loading: false
  //        });
  //    });
-	// }
+    // }
 
     // abort the running ajax request, if component is unmounted
     componentWillUnmount() {
         if (this.serverRequest) {
             this.serverRequest.abort()
         }
+        this.setState({loading: false})
     }
 
-	render () {
-		  return (
-          <div>
-              <ProfileImg src={userRecord.profileimg} />
-              <ProfileStats />
-              <div style={styles.avatarBoxOffset}>
-                  <Avatar src={userRecord.avatar} mini={false} />
-                  <ProfileUsername name={userRecord.username} />
-              </div>
-              <Spacer />
+    render () {
+          return (
+            <div>
+                <ProfileImg src={fakeUserRecord.profileimg} />
+                <ProfileStats />
+                <div style={styles.avatarBoxOffset}>
+                    <Avatar src={fakeUserRecord.avatar} mini={false} />
+                    <ProfileUsername name={fakeUserRecord.username} />
+                </div>
+                <Spacer />
 
-              <Route path={this.props.match.url + '/updates'} component={Album}/>
-              <Route path={this.props.match.url + '/album'} component={Album}/>
-              <Route path={this.props.match.url + '/followers'} component={Followers}/>
-              <Route path={this.props.match.url + '/likes'} component={Likes}/>
+                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/updates`} component={Album}/>
+                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/album`} component={Album}/>
+                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/followers`} component={Followers}/>
+                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/likes`} component={Likes}/>
 
-              <Spacer />
-          </div>
-		  )
-	}
+                <Spacer />
+            </div>
+          )
+    }
 
 }
 

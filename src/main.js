@@ -14,7 +14,7 @@ import App from './Components/App.jsx';
 
 // https://deepstream.io/tutorials/integrations/frontend-react/
 // dsRecord="some-input"
-const client = deepstream('localhost:6020').login({}, () => {
+//const client = deepstream('localhost:6020').login({}, () => {
 	render(
 		(
 			<BrowserRouter>
@@ -23,5 +23,5 @@ const client = deepstream('localhost:6020').login({}, () => {
 		),
 		document.getElementById("app")
 	)
-})
+//})
 //DeepstreamMixin.setDeepstreamClient(client)

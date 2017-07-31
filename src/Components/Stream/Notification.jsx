@@ -31,6 +31,12 @@ const rightIconMenu = (
 )
 
 
+//                <p>
+//                  <span style={{color: darkBlack}}>Brendan Lim</span> --
+//                  {this.props.secondaryText}
+//                </p>
+
+
 class Notification extends React.PureComponent {
     render () {
         let ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
@@ -40,10 +46,7 @@ class Notification extends React.PureComponent {
               rightIconButton={ListItemMenu}
               primaryText={this.props.primaryText}
               secondaryText={
-                <p>
-                  <span style={{color: darkBlack}}>Brendan Lim</span> --
-                  {this.props.secondaryText}
-                </p>
+                'xxxxxxxx'
               }
               secondaryTextLines={2}
             />

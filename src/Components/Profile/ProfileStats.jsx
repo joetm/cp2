@@ -3,6 +3,7 @@
 import React from 'react'
 
 import {Tabs, Tab} from 'material-ui/Tabs'
+import {pinkA200} from 'material-ui/styles/colors'
 import FontIcon from 'material-ui/FontIcon'
 //import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin'
 import PhotoPin from 'material-ui/svg-icons/image/photo'
@@ -12,9 +13,7 @@ import LikesPin from 'material-ui/svg-icons/action/thumb-up'
 import RaisedButton from 'material-ui/RaisedButton'
 import {Route, Link} from 'react-router-dom'
 
-import {
-  pinkA200,
-} from 'material-ui/styles/colors'
+import fakeUserRecord from './userRecord'
 
 
 const styles = {
@@ -74,28 +73,28 @@ const ProfileStats = () => (
         <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}
-                label={<Link to="/profile/updates" style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.userid}/updates`} style={styles.linkStyle}>
                         <StatText title="Posts" value="45" />
                         </Link>
                 }
             />
             <Tab
                 icon={<PhotoPin />}
-                label={<Link to="/profile/album" style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.userid}/album`} style={styles.linkStyle}>
                         <StatText title="Pics" value="234" />
                         </Link>
                 }
             />
             <Tab
                 icon={<ContactsPin />}
-                label={<Link to="/profile/followers" style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.userid}/followers`} style={styles.linkStyle}>
                         <StatText title="Followers" value="99" />
                         </Link>
                 }
             />
             <Tab
                 icon={<LikesPin />}
-                label={<Link to="/profile/likes" style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.userid}/likes`} style={styles.linkStyle}>
                         <StatText title="Likes" value="23" />
                         </Link>
                 }

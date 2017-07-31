@@ -2,73 +2,66 @@
 
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
-import {List, ListItem} from 'material-ui/List'
-import Subheader from 'material-ui/Subheader'
-import Divider from 'material-ui/Divider'
-import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
-import IconButton from 'material-ui/IconButton'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
-import IconMenu from 'material-ui/IconMenu'
-import MenuItem from 'material-ui/MenuItem'
+import {List} from 'material-ui/List'
+// import Subheader from 'material-ui/Subheader'
+// import Divider from 'material-ui/Divider'
+// import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
+import {grey400, darkBlack} from 'material-ui/styles/colors'
+
+import Follower from './Follower'
 
 
-const iconButtonElement = (
-  <IconButton
-    touch={true}
-    tooltip="more"
-    tooltipPosition="bottom-left"
-  >
-    <MoreVertIcon color={grey400} />
-  </IconButton>
-)
-const rightIconMenu = (
-  <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Reply</MenuItem>
-    <MenuItem>Forward</MenuItem>
-    <MenuItem>Delete</MenuItem>
-  </IconMenu>
-)
+function randomNum() {
+    const min = 1
+    const max = 13
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
 
 
 class Followers extends React.PureComponent {
+    constructor(props) {
+      super(props)
+
+
+
+    }
     render () {
           return (
               <List>
-                <ListItem
-                  primaryText="Brendan Lim"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="Brendan Lim"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
-                <ListItem
-                  primaryText="Eric Hoffman"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="Eric Hoffman"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
-                <ListItem
-                  primaryText="Grace Ng"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="Grace Ng"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
-                <ListItem
-                  primaryText="Kerem Suer"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="Kerem Suer"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
-                <ListItem
-                  primaryText="Raquel Parrado"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="Raquel Parrado"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
-                <ListItem
-                  primaryText="Chelsea Otakan"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="Chelsea Otakan"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
-                <ListItem
-                  primaryText="James Anderson"
-                  leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-                  rightIconButton={rightIconMenu}
+                <Follower
+                  username="James Anderson"
+                  userid={randomNum()}
+                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
                 />
               </List>
           )
