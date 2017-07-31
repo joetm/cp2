@@ -23,7 +23,7 @@ class Button extends React.PureComponent {
         this.setState({active: !this.state.active})
     }
     render() {
-        const {iconTooltip, icon} = this.props
+        const {tooltip, icon} = this.props
         let iconButtonStyle
         if (this.state.deactivated) {
             iconButtonStyle = {
@@ -41,7 +41,7 @@ class Button extends React.PureComponent {
         }
         return (
             <IconButton
-                tooltip={iconTooltip}
+                tooltip={tooltip}
                 iconStyle={iconButtonStyle}
                 hoveredStyle={iconButtonStyleHovered}
                 onTouchTap={this.launchAction.bind(this)}

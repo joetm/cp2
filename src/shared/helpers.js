@@ -74,3 +74,14 @@ export function classifyByDateAgo(obj) {
 	return { ...obj, daysAgo }
 }
 
+export function translateDayOffset(offset) {
+    const dayNames = [
+        'Today',
+        'Yesterday',
+    ]
+    if (!dayNames[offset]) {
+        return `${offset} days ago`
+    } else {
+        return dayNames[offset]
+    }
+}
