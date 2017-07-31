@@ -45,9 +45,6 @@ const styles = {
 
 
 
-
-
-
 const PrivacySettings = (props) => (
     <div style={{textAlign: 'left'}}>
           <Divider />

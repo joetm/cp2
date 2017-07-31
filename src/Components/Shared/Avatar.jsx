@@ -21,20 +21,31 @@ const styles = {
 
 
 
-const AvatarBubble = (props) => {
-    // avatar size
-    let avatarStyle = {}
-    if (props.mini === true) {
-      avatarStyle = styles.avatarStyleMini
-    } else {
-      avatarStyle = styles.avatarStyleMaxi
+class AvatarBubble extends React.PureComponent {
+    toggleActive() {
+        this.props.toggleState(this.props.id)
     }
-    return (
+    render() {
+      const {mini, active, src} = this.props
+      // avatar size
+      let avatarStyle = {}
+      if (mini === true) {
+        avatarStyle = styles.avatarStyleMini
+      } else {
+        avatarStyle = styles.avatarStyleMaxi
+      }
+      if (active) {
+        avatarStyle.borderColor = 'red'
+      } else {
+        avatarStyle.borderColor = '#fff'
+      }
+      return (
         <Avatar
             style={avatarStyle}
-            src={props.src}
+            src={src}
         />
-    )
+      )
+    }
 }
 
 export default AvatarBubble

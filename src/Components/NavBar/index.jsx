@@ -130,10 +130,12 @@ class NavBar extends React.PureComponent {
         activeBadge: 0,
     }
     toggleState = (num) => {
+        // TODO
+        // console.log('num', num)
         if(num.id) {num = num.id}
         else if(! +num) {num = 0}
         this.setState({activeBadge: num})
-        // console.log('activeBadge', num)
+        console.log('activeBadge', num)
     }
     render() {
         return (
@@ -152,6 +154,7 @@ class NavBar extends React.PureComponent {
                     </Link>
                     <Link to="/stream">
                         <CustomBadge
+                            id={3}
                             badgeContent={23}
                             secondary={true}
                             badgeStyle={styles.badgeStyle}
@@ -159,7 +162,6 @@ class NavBar extends React.PureComponent {
                             tooltip="New Activity"
                             icon={<UpdatesIcon />}
                             toggleState={this.toggleState}
-                            id={3}
                             active={this.state.activeBadge === 3}
                         />
                     </Link>
@@ -167,12 +169,15 @@ class NavBar extends React.PureComponent {
                 <ToolbarGroup>
                     <IconMenu
                         iconButtonElement={<IconButton
-                                id={4}
                                 tooltip="Your Profile"
-                                iconStyle={{borderColor: this.state.activeBadge === 4 ? 'red' : darkBlack}}
-                                onTouchTap={this.toggleState.bind(this)}
                             >
-                                <Avatar src={'/img/avatar/face.jpg'} mini={true} />
+                                <Avatar
+                                    id={4}
+                                    src={'/img/avatar/face.jpg'}
+                                    mini={true}
+                                    onTouchTap={this.toggleState}
+                                    active={this.state.activeBadge === 4}
+                                />
                             </IconButton>
                         }
                     >
