@@ -23,12 +23,16 @@ import { navigateTo } from '../../shared/actions'
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
 import RouterMenuItem from './RouterMenuItem'
+import userRecord from '../Profile/userRecord'
+import LoginButton from './LoginButton'
+import SignupButton from './SignupButton'
+import { colors } from '../../shared/theme'
 
 
 const styles = {
     navBarStyle: {
-        // backgroundColor: '#fff',
-        color: '#020202',
+        backgroundColor: '#fff',
+        color: darkBlack,
     },
     firstItem: {
         paddingLeft: '20px',
@@ -146,13 +150,13 @@ class NavBar extends React.PureComponent {
                             tooltip="Home"
                             style={styles.firstItem}
                             onTouchTap={this.toggleState}
-                            iconStyle={{color: this.state.activeBadge === 0 ? 'red' : darkBlack}}
+                            iconStyle={{color: this.state.activeBadge === 0 ? colors.palette.primary1Color : darkBlack}}
                         >
                             <HomePin
                             />
                         </IconButton>
                     </Link>
-                    <Link to="/stream">
+                    <Link to="/stream/1">
                         <CustomBadge
                             id={3}
                             badgeContent={23}
@@ -181,11 +185,13 @@ class NavBar extends React.PureComponent {
                             </IconButton>
                         }
                     >
-                        <RouterMenuItem url={'/profile'} primaryText="Your Profile" icon={<ProfileIcon />} />
+                        <RouterMenuItem url={`/profile/${userRecord.userid}`} primaryText="Your Profile" icon={<ProfileIcon />} />
                         <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />
                         <Divider />
                         <RouterMenuItem url={'/logout'} primaryText="Log Out" icon={<LogOutIcon />} />
                     </IconMenu>
+                    <SignupButton />
+                    <LoginButton />
                 </ToolbarGroup>
             </Toolbar>
         )

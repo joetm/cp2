@@ -32,6 +32,13 @@ function randomImgHeight() {
 
 export default class Album extends PureComponent {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            userid: this.props.match.params.userid
+        }
+    }
+
     componentWillMount () {
         this.setState({
           width: document.body.clientWidth
@@ -39,6 +46,7 @@ export default class Album extends PureComponent {
         this.onresizeListener = this.onResize.bind(this)
         window.addEventListener('resize', this.onresizeListener)
     }
+
     onResize () {
         this.setState({
             width: document.body.clientWidth

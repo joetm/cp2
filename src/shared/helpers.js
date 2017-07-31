@@ -1,7 +1,3 @@
-/*
- * Redux reducers
- */
-
 
 export function humanReadableDate(datestamp) {
 	let date = new Date(datestamp * 1000)

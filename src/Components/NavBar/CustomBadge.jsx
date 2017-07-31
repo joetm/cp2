@@ -3,7 +3,7 @@
 import React from 'react'
 import Badge from 'material-ui/Badge'
 import IconButton from 'material-ui/IconButton'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import { colors } from '../../shared/theme'
 
 const styles = {
     badgeRootStyle: {
@@ -27,12 +27,12 @@ class CustomBadge extends React.PureComponent {
   render() {
     let IconColor
     if (this.state.deactivated) {
-      IconColor = {color: grey400}
+      IconColor = {color: colors.grey}
     }
     else if (this.props.active) {
-      IconColor = {color: 'red'}
+      IconColor = {color: colors.palette.primary1Color}
     } else {
-      IconColor = {color: darkBlack}
+      IconColor = {color: colors.darkBlack}
     }
     return (
       <Badge

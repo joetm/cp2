@@ -75,10 +75,11 @@ class Profile extends React.PureComponent {
                 </div>
                 <Spacer />
 
-                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/updates`} component={Album}/>
-                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/album`} component={Album}/>
-                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/followers`} component={Followers}/>
-                <Route path={`${this.props.match.url}/${fakeUserRecord.userid}/likes`} component={Likes}/>
+                <Route path={`${this.props.match.url}/:userid/updates`} component={Album}/>
+                <Route path={`${this.props.match.url}/:userid/album`} component={Album}/>
+                <Route path={`${this.props.match.url}/:userid/followers`} component={Followers}/>
+                <Route path={`${this.props.match.url}/:userid/likes`} component={Likes}/>
+                <Route component={Album} />
 
                 <Spacer />
             </div>
