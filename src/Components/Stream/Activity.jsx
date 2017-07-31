@@ -6,9 +6,9 @@ import {CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-
 import {colors} from '../../shared/theme'
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
-import LikeAction from 'material-ui/svg-icons/action/thumb-up'
-import FavoriteAction from 'material-ui/svg-icons/action/favorite'
-import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
+//import LikeAction from 'material-ui/svg-icons/action/thumb-up'
+//import FavoriteAction from 'material-ui/svg-icons/action/favorite'
+//import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
 // Material Component: Layout (Grid)
 // import '@material/layout-grid/dist/mdc.layout-grid.css'
 

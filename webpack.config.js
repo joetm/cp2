@@ -10,11 +10,11 @@ module.exports = {
   entry: {
     main: "./src/main.js",
     vendor: [
-        "deepstream.io-client-js/dist/deepstream"
-        //   "react",
-        //   "react-dom",
+        "react",
+        "react-dom",
         //   "react-tap-event-plugin",
         //   "material-ui/styles/MuiThemeProvider"
+        "deepstream.io-client-js/dist/deepstream"
     ]
     // devhotserver: "webpack/hot/dev-server",
     // devserver: "webpack-dev-server/client?http://localhost:8081"
