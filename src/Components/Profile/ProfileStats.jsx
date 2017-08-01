@@ -10,7 +10,6 @@ import PhotoPin from 'material-ui/svg-icons/image/photo'
 import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsPin from 'material-ui/svg-icons/communication/contacts'
 import LikesPin from 'material-ui/svg-icons/action/thumb-up'
-import RaisedButton from 'material-ui/RaisedButton'
 import {Route, Link} from 'react-router-dom'
 
 import fakeUserRecord from './userRecord'

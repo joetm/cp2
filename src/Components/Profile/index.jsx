@@ -14,27 +14,16 @@ import Followers from '../Followers/'
 import Likes from '../Stream/Likes'
 // import ProfileStats from './ProfileStats'
 import ProfileDivider from './ProfileDivider'
+import ProfileUsername from './ProfileUsername'
 
 import fakeUserRecord from './userRecord'
 
 
-const styles = {
-    profileUsernameStyle: {
-        color: '#202020',
-        fontSize: '1.5em',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-    },
-    avatarBoxOffset: {
-        marginTop: '-150px',
-        marginLeft: '50px',
-    },
+const avatarBoxOffsetStyle = {
+    marginTop: '-150px',
+    marginLeft: '50px',
 }
 
-
-const ProfileUsername = (props) => (
-    <div style={styles.profileUsernameStyle}>{props.name}</div>
-)
 
 
 /*
@@ -46,20 +35,32 @@ const ProfileUsername = (props) => (
 
 class Profile extends React.PureComponent {
     state = {
+        blurredImg: false,
         loading: true,
     }
+    toggleProfileDetails() {
+        this.setState({blurredImg: !this.state.blurredImg})
+        // if (this.state.blurredImg) {
+        //  document.body.style.overflow = 'visible'
+        // } else {
+        //  document.body.style.overflow = 'hidden'
+        // }
+    }
     render () {
+          const {username, avatar, profileimg} = fakeUserRecord
           return (
             <div>
                 <ProfileImg
-                    username={fakeUserRecord.username}
-                    avatar={fakeUserRecord.avatar}
-                    src={fakeUserRecord.profileimg}
+                    username={username}
+                    avatar={avatar}
+                    src={profileimg}
+                    blurredImg={this.state.blurredImg}
+                    toggleProfileDetails={this.toggleProfileDetails.bind(this)}
                 />
                 <ProfileDivider />
-                <div style={styles.avatarBoxOffset}>
-                    <Avatar src={fakeUserRecord.avatar} mini={false} />
-                    <ProfileUsername name={fakeUserRecord.username} />
+                <div style={avatarBoxOffsetStyle}>
+                    <Avatar visible={!this.state.blurredImg} src={avatar} mini={false} />
+                    <ProfileUsername name={username} />
                 </div>
                 <Spacer />
 

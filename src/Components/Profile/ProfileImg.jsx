@@ -8,9 +8,9 @@ import Scrollbutton from '../Shared/Scrollbutton'
 import ProfileDetails from './ProfileDetails'
 
 
-const _OFFSET = 100
-
+const _OFFSET = 56
 const blurIntensity = 25
+
 
 const blurFilters = {
   '-webkit-filter': `blur(${blurIntensity}px)`,
@@ -19,11 +19,15 @@ const blurFilters = {
   '-ms-filter': `blur(${blurIntensity}px)`,
   filter: `blur(${blurIntensity}px)`,
 }
+const profileImgContainerStyle = {
+    textAlign:'center',
+    backgroundColor:'#808080',
+	position: 'relative',
+}
 
 
 class ProfileImg extends React.PureComponent {
 	state = {
-		blurredImg: false,
 		pageIsScrolled: false,
 		profileImgHeight: window.innerHeight - _OFFSET,
 	}
@@ -31,14 +35,11 @@ class ProfileImg extends React.PureComponent {
         // show scroll button (overlay)
         window.onscroll = function (e) {
             let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
-            // console.log('scrollTop', scrollTop)
             this.setState({pageIsScrolled: scrollTop > 0})
         }.bind(this)
         // resize profile image
         window.onresize = function (e) {
-            let height = window.innerHeight
-            height = height - _OFFSET
-            console.log('window height', height)
+            let height = window.innerHeight - _OFFSET
             this.setState({profileImgHeight: height})
         }.bind(this)
     }
@@ -46,21 +47,9 @@ class ProfileImg extends React.PureComponent {
 	    window.onscroll = null
 	    window.onresize = null
 	}
-	toggleProfileDetails() {
-		this.setState({blurredImg: !this.state.blurredImg})
-		if (this.state.blurredImg) {
-			document.body.style.overflow = 'visible'
-		} else {
-			document.body.style.overflow = 'hidden'
-		}
-	}
 	render() {
+		const {username, avatar} = this.props
 	    //--
-		let profileImgContainerStyle = {
-	        textAlign:'center',
-	        backgroundColor:'#808080',
-			position: 'relative',
-	    }
 		let profileImgStyle = {
 			position: 'relative',
 	        width:'100%',
@@ -72,7 +61,7 @@ class ProfileImg extends React.PureComponent {
 	        backgroundPosition: 'center center',
 	        backgroundSize: 'cover',
 	    }
-	    if (this.state.blurredImg) {
+	    if (this.props.blurredImg) {
 			profileImgStyle = { ...profileImgStyle, ...blurFilters }
 	    }
 	    //--
@@ -82,16 +71,16 @@ class ProfileImg extends React.PureComponent {
 			bottom: '50px',
 			opacity: 0.5,
 			zIndex: 999,
-			display: this.state.pageIsScrolled || this.state.blurredImg ? 'none' : 'block',
+			display: this.state.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
 		}
 	    return (
-	    	<div onClick={this.toggleProfileDetails.bind(this)}>
+	    	<div onClick={this.props.toggleProfileDetails}>
 		    	<div style={profileImgContainerStyle}>
 					<ProfileDetails
-						username={this.props.username}
-						avatar={this.props.avatar}
-						visible={this.state.blurredImg}
-						unblur={this.toggleProfileDetails}
+						username={username}
+						avatar={avatar}
+						visible={this.props.blurredImg}
+						toggleProfileDetails={this.props.toggleProfileDetails}
 					/>
 			        <div style={profileImgStyle}></div>
 		    	</div>
