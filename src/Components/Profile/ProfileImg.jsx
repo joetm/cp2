@@ -5,29 +5,61 @@ import DownIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 import UpIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
 
 import Scrollbutton from '../Shared/Scrollbutton'
+import ProfileDetails from './ProfileDetails'
 
 
-// TODO
-const profileImgHeight = window.innerHeight - 100
+const _OFFSET = 100
 
+const blurIntensity = 25
 
+const blurFilters = {
+  '-webkit-filter': `blur(${blurIntensity}px)`,
+  '-moz-filter': `blur(${blurIntensity}px)`,
+  '-o-filter': `blur(${blurIntensity}px)`,
+  '-ms-filter': `blur(${blurIntensity}px)`,
+  filter: `blur(${blurIntensity}px)`,
+}
 
 
 class ProfileImg extends React.PureComponent {
 	state = {
-		scrolled: false,
+		blurredImg: true,
+		pageIsScrolled: false,
+		profileImgHeight: window.innerHeight - _OFFSET,
 	}
     componentDidMount() {
+        // show scroll button (overlay)
         window.onscroll = function (e) {
-            let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-            // console.log('scrollTop', scrollTop);
-            this.setState({scrolled: scrollTop > 0});
-        }.bind(this);
+            let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+            // console.log('scrollTop', scrollTop)
+            this.setState({pageIsScrolled: scrollTop > 0})
+        }.bind(this)
+        // resize profile image
+        window.onresize = function (e) {
+            let height = window.innerHeight
+            height = height - _OFFSET
+            console.log('window height', height)
+            this.setState({profileImgHeight: height})
+        }.bind(this)
     }
+    componentWillUnmount() {
+	    window.onscroll = null
+	    window.onresize = null
+	}
+	toggleProfileDetails() {
+		this.setState({blurredImg: !this.state.blurredImg})
+	}
 	render() {
-		const containerStyle = {
+	    //--
+		let profileImgContainerStyle = {
+	        textAlign:'center',
+	        backgroundColor:'#808080',
+			position: 'relative',
+	    }
+		let profileImgStyle = {
+			position: 'relative',
 	        width:'100%',
-	        height: `${profileImgHeight}px`, // '350px'
+	        height: `${this.state.profileImgHeight}px`,
 	        textAlign:'center',
 	        backgroundColor:'#808080',
 	        overflow: 'hidden',
@@ -35,17 +67,24 @@ class ProfileImg extends React.PureComponent {
 	        backgroundPosition: 'center center',
 	        backgroundSize: 'cover',
 	    }
+	    if (this.state.blurredImg) {
+			profileImgStyle = { ...profileImgStyle, ...blurFilters }
+	    }
+	    //--
 		const scrollButton = {
 			position: 'fixed',
 			left: '50%',
 			bottom: '50px',
 			opacity:0.5,
 			zIndex: 999,
-			display: this.state.scrolled ? 'none' : 'block',
+			display: this.state.pageIsScrolled ? 'none' : 'block',
 		}
 	    return (
-	    	<div>
-		        <div style={containerStyle}></div>
+	    	<div onClick={this.toggleProfileDetails.bind(this)}>
+		    	<div style={profileImgContainerStyle}>
+					<ProfileDetails visible={this.state.blurredImg} />
+			        <div style={profileImgStyle}></div>
+		    	</div>
 	    	    <Scrollbutton
 	    	    	style={scrollButton}
 	    	    	secondary={true}

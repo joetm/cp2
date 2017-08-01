@@ -11,11 +11,13 @@ const styles = {
     marginTop:'-5px',
     marginLeft:'-5px',
     border: '2px solid #fff',
+    zIndex:214748364,
   },
   avatarStyleMaxi: {
     height: '200px',
     width: '200px',
     border: '5px solid #fff',
+    zIndex:214748364,
   },
 }
 

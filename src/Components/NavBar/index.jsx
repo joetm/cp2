@@ -18,6 +18,7 @@ import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 import { navigateTo } from '../../shared/actions'
 import Avatar from '../Shared/Avatar'
@@ -171,25 +172,24 @@ class NavBar extends React.PureComponent {
                     </Link>
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <IconMenu
-                        iconButtonElement={<IconButton
-                                tooltip="Your Profile"
-                            >
-                                <Avatar
-                                    id={4}
-                                    src={'/img/avatar/face.jpg'}
-                                    mini={true}
-                                    onTouchTap={this.toggleState}
-                                    active={this.state.activeBadge === 4}
-                                />
-                            </IconButton>
-                        }
-                    >
-                        <RouterMenuItem url={`/profile/${userRecord.userid}`} primaryText="Your Profile" icon={<ProfileIcon />} />
+
+                    <Link to={`/profile/${userRecord.userid}`}>
+                        <Avatar
+                            id={4}
+                            src={'/img/avatar/face.jpg'}
+                            mini={true}
+                            tooltip="Your Profile"
+                            onTouchTap={this.toggleState}
+                            active={this.state.activeBadge === 4}
+                        />
+                    </Link>
+
+                    <IconMenu style={{cursor:'pointer'}} iconButtonElement={<MoreVertIcon tooltip="More" />}>
                         <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />
                         <Divider />
                         <RouterMenuItem url={'/logout'} primaryText="Log Out" icon={<LogOutIcon />} />
                     </IconMenu>
+
                     <SignupButton />
                     <LoginButton />
                 </ToolbarGroup>

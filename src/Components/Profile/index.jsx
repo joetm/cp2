@@ -6,13 +6,14 @@ import {Route, Link} from 'react-router-dom'
 
 // import ToolBar from './ToolBar'
 import ProfileImg from './ProfileImg'
-import ProfileStats from './ProfileStats'
 import Avatar from '../Shared/Avatar'
 import Album from '../Album/'
 import Spacer from '../Shared/Spacer'
 import AjaxLoader from '../Shared/AjaxLoader'
 import Followers from '../Followers/'
 import Likes from '../Stream/Likes'
+// import ProfileStats from './ProfileStats'
+import ProfileDivider from './ProfileDivider'
 
 import fakeUserRecord from './userRecord'
 
@@ -30,55 +31,34 @@ const styles = {
     },
 }
 
+
 const ProfileUsername = (props) => (
     <div style={styles.profileUsernameStyle}>{props.name}</div>
 )
 
 
+/*
+                <Route path={`${this.props.match.url}/:userid/updates`} component={Album}/>
+                <Route path={`${this.props.match.url}/:userid/album`} component={Album}/>
+                <Route path={`${this.props.match.url}/:userid/followers`} component={Followers}/>
+                <Route path={`${this.props.match.url}/:userid/likes`} component={Likes}/>
+*/
+
 class Profile extends React.PureComponent {
-
-  state = {
-      loading: true,
-  }
-
-  serverRequest = null
-
-    // componentDidMount() {
-    //  //fetch the data
- //    this.serverRequest = fetch(URL)
- //    .then(r => r.json())
- //    .then((dinnermenu) => {
- //        console.log('dinnermenu.json', dinnermenu);
- //        this.setState({
- //            dinnermenu: dinnermenu.menu,
- //            loading: false
- //        });
- //    });
-    // }
-
-    // abort the running ajax request, if component is unmounted
-    componentWillUnmount() {
-        if (this.serverRequest) {
-            this.serverRequest.abort()
-        }
-        this.setState({loading: false})
+    state = {
+        loading: true,
     }
-
     render () {
           return (
             <div>
                 <ProfileImg src={fakeUserRecord.profileimg} />
-                <ProfileStats />
+                <ProfileDivider />
                 <div style={styles.avatarBoxOffset}>
                     <Avatar src={fakeUserRecord.avatar} mini={false} />
                     <ProfileUsername name={fakeUserRecord.username} />
                 </div>
                 <Spacer />
 
-                <Route path={`${this.props.match.url}/:userid/updates`} component={Album}/>
-                <Route path={`${this.props.match.url}/:userid/album`} component={Album}/>
-                <Route path={`${this.props.match.url}/:userid/followers`} component={Followers}/>
-                <Route path={`${this.props.match.url}/:userid/likes`} component={Likes}/>
                 <Route component={Album} />
 
                 <Spacer />
