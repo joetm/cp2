@@ -5,9 +5,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import {List} from 'material-ui/List'
 import Avatar from 'material-ui/Avatar';
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
-
-
+import {darkBlack} from 'material-ui/styles/colors'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 

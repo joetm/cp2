@@ -2,7 +2,7 @@
 
 import React from 'react'
 import DownIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
-import UpIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
+// import UpIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
 
 import Scrollbutton from '../Shared/Scrollbutton'
 import ProfileDetails from './ProfileDetails'
@@ -23,7 +23,7 @@ const blurFilters = {
 
 class ProfileImg extends React.PureComponent {
 	state = {
-		blurredImg: true,
+		blurredImg: false,
 		pageIsScrolled: false,
 		profileImgHeight: window.innerHeight - _OFFSET,
 	}
@@ -48,6 +48,11 @@ class ProfileImg extends React.PureComponent {
 	}
 	toggleProfileDetails() {
 		this.setState({blurredImg: !this.state.blurredImg})
+		if (this.state.blurredImg) {
+			document.body.style.overflow = 'visible'
+		} else {
+			document.body.style.overflow = 'hidden'
+		}
 	}
 	render() {
 	    //--
@@ -75,14 +80,19 @@ class ProfileImg extends React.PureComponent {
 			position: 'fixed',
 			left: '50%',
 			bottom: '50px',
-			opacity:0.5,
+			opacity: 0.5,
 			zIndex: 999,
-			display: this.state.pageIsScrolled ? 'none' : 'block',
+			display: this.state.pageIsScrolled || this.state.blurredImg ? 'none' : 'block',
 		}
 	    return (
 	    	<div onClick={this.toggleProfileDetails.bind(this)}>
 		    	<div style={profileImgContainerStyle}>
-					<ProfileDetails visible={this.state.blurredImg} />
+					<ProfileDetails
+						username={this.props.username}
+						avatar={this.props.avatar}
+						visible={this.state.blurredImg}
+						unblur={this.toggleProfileDetails}
+					/>
 			        <div style={profileImgStyle}></div>
 		    	</div>
 	    	    <Scrollbutton

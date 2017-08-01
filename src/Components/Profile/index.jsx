@@ -51,7 +51,11 @@ class Profile extends React.PureComponent {
     render () {
           return (
             <div>
-                <ProfileImg src={fakeUserRecord.profileimg} />
+                <ProfileImg
+                    username={fakeUserRecord.username}
+                    avatar={fakeUserRecord.avatar}
+                    src={fakeUserRecord.profileimg}
+                />
                 <ProfileDivider />
                 <div style={styles.avatarBoxOffset}>
                     <Avatar src={fakeUserRecord.avatar} mini={false} />
