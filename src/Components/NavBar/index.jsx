@@ -176,6 +176,7 @@ class NavBar extends React.PureComponent {
                     <Link to={`/profile/${userRecord.userid}`}>
                         <Avatar
                             id={4}
+                            visible={true}
                             src={'/img/avatar/face.jpg'}
                             mini={true}
                             tooltip="Your Profile"

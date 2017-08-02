@@ -68,12 +68,12 @@ module.exports = {
     //]
   },
   devServer: {
-    inline: true,
     contentBase: path.join(__dirname, "dist"),
     publicPath: '/assets/',
     compress: true,
     port: 9000,
     hot: true,
+    inline: true,
     historyApiFallback: true,
   },
   plugins: debug ?
