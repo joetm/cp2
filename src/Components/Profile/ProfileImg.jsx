@@ -28,15 +28,9 @@ const profileImgContainerStyle = {
 
 class ProfileImg extends React.PureComponent {
 	state = {
-		pageIsScrolled: false,
 		profileImgHeight: window.innerHeight - _OFFSET,
 	}
     componentDidMount() {
-        // show scroll button (overlay)
-        window.onscroll = function (e) {
-            let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
-            this.setState({pageIsScrolled: scrollTop > 0})
-        }.bind(this)
         // resize profile image
         window.onresize = function (e) {
             let height = window.innerHeight - _OFFSET
@@ -44,7 +38,6 @@ class ProfileImg extends React.PureComponent {
         }.bind(this)
     }
     componentWillUnmount() {
-	    window.onscroll = null
 	    window.onresize = null
 	}
 	render() {
@@ -71,7 +64,7 @@ class ProfileImg extends React.PureComponent {
 			bottom: '50px',
 			opacity: 0.5,
 			zIndex: 999,
-			display: this.state.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
+			display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
 		}
 	    return (
 	    	<div onClick={this.props.toggleProfileDetails}>

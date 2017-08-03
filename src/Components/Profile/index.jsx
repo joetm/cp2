@@ -40,11 +40,6 @@ class Profile extends React.PureComponent {
     }
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
-        // if (this.state.blurredImg) {
-        //  document.body.style.overflow = 'visible'
-        // } else {
-        //  document.body.style.overflow = 'hidden'
-        // }
     }
     render () {
           const {username, avatar, profileimg} = fakeUserRecord
@@ -55,6 +50,7 @@ class Profile extends React.PureComponent {
                     avatar={avatar}
                     src={profileimg}
                     blurredImg={this.state.blurredImg}
+                    pageIsScrolled={this.props.scrollPosition > 0}
                     toggleProfileDetails={this.toggleProfileDetails.bind(this)}
                 />
                 <ProfileDivider />

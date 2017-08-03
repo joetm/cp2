@@ -23,17 +23,24 @@ import Updates from './Stream/'
 import Profile from './Profile/'
 import Settings from './Settings/'
 import Error from './Error/'
+import ScrollIndicator from './Shared/ScrollIndicator'
 //--
 import theme from '../shared/theme'
 
 
 class RoutedApp extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {}
+    state = {
+        scrollPosition: 0,
     }
     componentDidMount() {
-
+        // show scroll button (overlay)
+        window.onscroll = function (e) {
+            let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+            this.setState({scrollPosition: scrollTop})
+        }.bind(this)
+    }
+    componentWillUnmount() {
+        window.onscroll = null
     }
     // <Route exact path="/forum" component={Forum}/>
     render() {
@@ -46,10 +53,17 @@ class RoutedApp extends React.Component {
 
                   <Route path="/notifications/:userid" component={Notifications}/>
                   <Route path="/stream/:userid" component={Updates}/>
-                  <Route path="/profile/:userid" component={Profile}/>
+
+                  <Route path='/profile/:userid' render={props => (
+                      <Profile scrollPosition={this.state.scrollPosition} />
+                  )} />
+
                   <Route path="/settings" component={Settings}/>
                   <Route component={Error} code="404" />
                 </Switch>
+
+                <ScrollIndicator scrollPosition={this.state.scrollPosition} primary={true} />
+
               </div>
             </MuiThemeProvider>
         )
