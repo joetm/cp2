@@ -28,6 +28,8 @@ import ScrollIndicator from './Shared/ScrollIndicator'
 import theme from '../shared/theme'
 
 
+//                <ScrollIndicator scrollPosition={this.state.scrollPosition} primary={true} />
+
 class RoutedApp extends React.Component {
     state = {
         scrollPosition: 0,
@@ -35,8 +37,11 @@ class RoutedApp extends React.Component {
     componentDidMount() {
         // show scroll button (overlay)
         window.onscroll = function (e) {
+            // only update the scroll pos in Xpx intervals
             let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
-            this.setState({scrollPosition: scrollTop})
+            if (scrollTop % 5 === 0) {
+              this.setState({scrollPosition: scrollTop})
+            }
         }.bind(this)
     }
     componentWillUnmount() {
@@ -61,8 +66,6 @@ class RoutedApp extends React.Component {
                   <Route path="/settings" component={Settings}/>
                   <Route component={Error} code="404" />
                 </Switch>
-
-                <ScrollIndicator scrollPosition={this.state.scrollPosition} primary={true} />
 
               </div>
             </MuiThemeProvider>

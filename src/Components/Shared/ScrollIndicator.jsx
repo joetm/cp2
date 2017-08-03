@@ -13,16 +13,22 @@ class ScrollIndicator extends React.PureComponent {
 		return height - window.innerHeight
 	}
 	render() {
+		// console.log('doc height', this.getDocumentHeight())
+		// console.log('scrollPos', this.props.scrollPosition)
+		// console.log('percent', this.getDocumentHeight() / this.props.scrollPosition)
+		let pos = ( this.getDocumentHeight() - this.props.scrollPosition ) / this.getDocumentHeight()
+		if (pos <= 0) {pos = 0}
 		const indicatorStyle = {
 			position: 'fixed',
 			right: '16px',
 			top: '16px',
 			zIndex: 99999,
-			display: !this.props.scrollPosition ? 'none' : 'block'
+			display: !pos ? 'none' : 'block'
 		}
-		console.log('doc height', this.getDocumentHeight())
-		console.log('scrollPos', this.props.scrollPosition)
-		console.log('percent', this.getDocumentHeight() / this.props.scrollPosition)
+		// two decimals
+		pos = Math.round(pos * 100 * 100) / 100
+		// no decimals
+		pos = Math.floor(pos)
 		return (
 			<div style={indicatorStyle}>
 			    <FloatingActionButton
@@ -30,7 +36,7 @@ class ScrollIndicator extends React.PureComponent {
 			    	secondary={this.props.secondary || false}
 			    	style={this.props.style}
 			    >
-			        {this.getDocumentHeight() / this.props.scrollPosition}
+			        {`${pos}%`}
 			    </FloatingActionButton>
 			</div>
 		)
