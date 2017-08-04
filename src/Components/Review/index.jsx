@@ -21,6 +21,12 @@ import { updatesList } from './store'
 
 
 class Review extends React.PureComponent {
+	approve(id) {
+	    console.log('approve', id)
+	}
+	reject(id) {
+	    console.log('reject', id)
+	}
     render () {
           return (
             <div>
@@ -43,6 +49,8 @@ class Review extends React.PureComponent {
 		                                    gridColumnsFull={4}
 		                                    gridColumnsTablet={3}
 		                                    gridColumnsPhone={1}
+		                                    approve={this.approve.bind(this)}
+		                                    reject={this.reject.bind(this)}
 		                                />
 	                            	</div>
 	                            )

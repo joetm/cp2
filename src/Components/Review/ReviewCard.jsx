@@ -33,12 +33,6 @@ class ReviewCard extends React.PureComponent {
       id: props.id
     }
   }
-  approve() {
-    console.log('approve', this.state.id)
-  }
-  reject() {
-    console.log('reject', this.state.id)
-  }
   render() {
     const {id, fromUsername, primaryText, secondaryText, datetime} = this.props
     return (
@@ -69,7 +63,7 @@ class ReviewCard extends React.PureComponent {
               style={styles.button}
               icon={<LoginIcon />}
               tooltip="Approve this Update"
-              onClick={this.approve.bind(this)}
+              onClick={this.props.approve.bind(this)}
             />
             <RaisedButton
               label="Reject"
@@ -77,7 +71,7 @@ class ReviewCard extends React.PureComponent {
               style={styles.button}
               icon={<LoginIcon />}
               tooltip="Reject this Update"
-              onClick={this.reject.bind(this)}
+              onClick={this.props.reject.bind(this)}
             />
 
           </CardActions>
