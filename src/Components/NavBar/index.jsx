@@ -14,6 +14,7 @@ import HomePin from 'material-ui/svg-icons/action/account-balance'
 // import GroupPin from 'material-ui/svg-icons/social/group'
 // import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
+import ReviewPin from 'material-ui/svg-icons/action/find-replace'
 // --
 import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
@@ -42,6 +43,10 @@ const styles = {
         margin: 0,
         padding: '10px',
     },
+    normalIcon: {
+        paddingLeft: '20px',
+        cursor: 'pointer',
+    }
 }
 
 
@@ -170,12 +175,19 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === 3}
                         />
                     </Link>
-                </ToolbarGroup>
-                <ToolbarGroup>
+                    <Link to="/review">
+                            <ReviewPin
+                                style={styles.normalIcon}
+                                tooltip="Review Activity"
+                            />
+                    </Link>
 
+                </ToolbarGroup>
+
+                <ToolbarGroup>
                     <Link to={`/profile/${userRecord.userid}`}>
                         <Avatar
-                            id={4}
+                            id={5}
                             visible={true}
                             src={'/img/avatar/face.jpg'}
                             mini={true}
@@ -184,16 +196,15 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === 4}
                         />
                     </Link>
-
                     <IconMenu style={{cursor:'pointer'}} iconButtonElement={<MoreVertIcon tooltip="More" />}>
                         <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />
                         <Divider />
                         <RouterMenuItem url={'/logout'} primaryText="Log Out" icon={<LogOutIcon />} />
                     </IconMenu>
-
                     <SignupButton />
                     <LoginButton />
                 </ToolbarGroup>
+
             </Toolbar>
         )
     }

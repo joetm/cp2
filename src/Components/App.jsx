@@ -21,6 +21,7 @@ import Home from './Home/'
 import Notifications from './Stream/Notifications'
 import Updates from './Stream/'
 import Profile from './Profile/'
+import Review from './Review/'
 import Settings from './Settings/'
 import Error from './Error/'
 import ScrollIndicator from './Shared/ScrollIndicator'
@@ -58,6 +59,8 @@ class RoutedApp extends React.Component {
 
                   <Route path="/notifications/:userid" component={Notifications}/>
                   <Route path="/stream/:userid" component={Updates}/>
+
+                  <Route path="/review" component={Review}/>
 
                   <Route path='/profile/:userid' render={props => (
                       <Profile scrollPosition={this.state.scrollPosition} />
