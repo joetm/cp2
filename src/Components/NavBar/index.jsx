@@ -154,6 +154,7 @@ class NavBar extends React.PureComponent {
                     <Link to="/">
                         <IconButton
                             tooltip="Home"
+                            id={0}
                             style={styles.firstItem}
                             onTouchTap={this.toggleState}
                             iconStyle={{color: this.state.activeBadge === 0 ? colors.palette.primary1Color : darkBlack}}
@@ -164,7 +165,7 @@ class NavBar extends React.PureComponent {
                     </Link>
                     <Link to="/stream/1">
                         <CustomBadge
-                            id={3}
+                            id={1}
                             badgeContent={23}
                             secondary={true}
                             badgeStyle={styles.badgeStyle}
@@ -177,6 +178,7 @@ class NavBar extends React.PureComponent {
                     </Link>
                     <Link to="/review">
                             <ReviewPin
+                                id={2}
                                 style={styles.normalIcon}
                                 tooltip="Review Activity"
                             />
@@ -187,7 +189,7 @@ class NavBar extends React.PureComponent {
                 <ToolbarGroup>
                     <Link to={`/profile/${userRecord.userid}`}>
                         <Avatar
-                            id={5}
+                            id={3}
                             visible={true}
                             src={'/img/avatar/face.jpg'}
                             mini={true}

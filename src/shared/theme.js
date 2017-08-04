@@ -18,6 +18,7 @@ export const colors = {
   black: darkBlack,
   lightBlack: lightBlack,
   white: white,
+  bg: '#F1F1F1',
 }
 const theme = getMuiTheme(colors)
 

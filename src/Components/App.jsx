@@ -26,7 +26,7 @@ import Settings from './Settings/'
 import Error from './Error/'
 import ScrollIndicator from './Shared/ScrollIndicator'
 //--
-import theme from '../shared/theme'
+import {theme, colors} from '../shared/theme'
 
 
 //                <ScrollIndicator scrollPosition={this.state.scrollPosition} primary={true} />
@@ -52,7 +52,7 @@ class RoutedApp extends React.Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>
-              <div>
+              <div style={{backgroundColor: colors.bg}}>
                 <NavBar />
                 <Switch>
                   <Route exact path="/" component={Home}/>
