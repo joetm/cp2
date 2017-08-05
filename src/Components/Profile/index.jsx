@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 // import { Record } from 'immutable'
 
 // import ToolBar from './ToolBar'

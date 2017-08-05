@@ -49,5 +49,3 @@ export const updatesList = [
         timestamp: 1500000057,
     },
 ]
-
-export const activityList = updatesList

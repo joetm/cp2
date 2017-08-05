@@ -62,7 +62,6 @@ class ReviewCard extends React.PureComponent {
               primary={true}
               style={styles.button}
               icon={<LoginIcon />}
-              tooltip="Approve this Update"
               onClick={this.props.approve.bind(this)}
             />
             <RaisedButton
@@ -70,7 +69,6 @@ class ReviewCard extends React.PureComponent {
               secondary={true}
               style={styles.button}
               icon={<LoginIcon />}
-              tooltip="Reject this Update"
               onClick={this.props.reject.bind(this)}
             />
 

@@ -180,7 +180,6 @@ class NavBar extends React.PureComponent {
                             <ReviewPin
                                 id={2}
                                 style={styles.normalIcon}
-                                tooltip="Review Activity"
                             />
                     </Link>
 
@@ -198,7 +197,7 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === 4}
                         />
                     </Link>
-                    <IconMenu style={{cursor:'pointer'}} iconButtonElement={<MoreVertIcon tooltip="More" />}>
+                    <IconMenu style={{cursor:'pointer'}} iconButtonElement={<MoreVertIcon />}>
                         <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />
                         <Divider />
                         <RouterMenuItem url={'/logout'} primaryText="Log Out" icon={<LogOutIcon />} />
