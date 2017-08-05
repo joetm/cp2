@@ -2,9 +2,9 @@
 
 import React from 'react'
 import {Link} from 'react-router-dom'
-import IconButton from 'material-ui/IconButton'
 import Menu from 'material-ui/Menu';
 import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar'
 import {darkBlack} from 'material-ui/styles/colors'
@@ -154,7 +154,14 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === 4}
                         />
                     </Link>
-                    <IconMenu style={{cursor:'pointer'}} iconButtonElement={<MoreVertIcon />}>
+                    <IconMenu
+                        style={{cursor:'pointer'}}
+                        iconButtonElement={
+                            <IconButton>
+                                <MoreVertIcon />
+                            </IconButton>
+                        }
+                    >
                         <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />
                         <Divider />
                         <RouterMenuItem url={'/logout'} primaryText="Log Out" icon={<LogOutIcon />} />

@@ -46,7 +46,7 @@ class ToolbarSimple extends React.Component {
           <RaisedButton label="Create Broadcast" primary={true} />
           <IconMenu
             iconButtonElement={
-              <IconButton touch={true}>
+              <IconButton>
                 <NavigationExpandMoreIcon />
               </IconButton>
             }

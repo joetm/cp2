@@ -26,7 +26,7 @@ class Help extends React.PureComponent {
     return (
         <Dialog
           style={{display: this.props.isOpen ? 'block': 'none'}}
-          title="Dialog With Actions"
+          title="How does this work?"
           actions={actions}
           modal={false}
           open={this.props.isOpen}
