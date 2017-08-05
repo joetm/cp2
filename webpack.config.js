@@ -56,7 +56,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader'].join("!")
+        loader: ExtractTextPlugin.extract(['style-loader', 'css-loader'].join("!"))
       },
     ]
   },
