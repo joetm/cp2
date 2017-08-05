@@ -2,7 +2,6 @@
 
 import React from 'react'
 import DownIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
-// import UpIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
 
 import Scrollbutton from '../Shared/Scrollbutton'
 import ProfileDetails from './ProfileDetails'
