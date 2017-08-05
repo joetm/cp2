@@ -24,26 +24,27 @@ import Profile from './Profile/'
 import Review from './Review/'
 import Settings from './Settings/'
 import Error from './Error/'
-import ScrollIndicator from './Shared/ScrollIndicator'
+import Scrollbutton from './Shared/Scrollbutton'
 //--
 import {theme, colors} from '../shared/theme'
 
 
-//                <ScrollIndicator scrollPosition={this.state.scrollPosition} primary={true} />
-
 class RoutedApp extends React.Component {
     state = {
-        scrollPosition: 0,
+        scrollPosition: this.getScrollPosition(),
+    }
+    getScrollPosition() {
+        return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
     }
     componentDidMount() {
         // show scroll button (overlay)
-        window.onscroll = function (e) {
+        window.onscroll = (e) => {
             // only update the scroll pos in Xpx intervals
-            let scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+            let scrollTop = this.getScrollPosition()
             if (scrollTop % 5 === 0) {
               this.setState({scrollPosition: scrollTop})
             }
-        }.bind(this)
+        }
     }
     componentWillUnmount() {
         window.onscroll = null
@@ -71,6 +72,11 @@ class RoutedApp extends React.Component {
                   <Route path="/settings" component={Settings}/>
                   <Route component={Error} code="404" />
                 </Switch>
+
+                <Scrollbutton
+                    visible={this.state.scrollPosition > 80}
+                    secondary={true}
+                />
 
               </div>
             </MuiThemeProvider>
