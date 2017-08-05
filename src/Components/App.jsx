@@ -13,8 +13,16 @@ injectTapEventPlugin()
 //--
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import fetch from 'unfetch'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, browserHistory} from 'react-router-dom'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+// import createHistory from 'history/createBrowserHistory'
+import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
 
+
+//--
+import reducers from './root-reducers'
+//--
 import NavBar from './NavBar/'
 import Home from './Home/'
 //import Forum from './Forum/'
@@ -27,6 +35,20 @@ import Error from './Error/'
 import Scrollbutton from './Shared/Scrollbutton'
 //--
 import {theme, colors} from '../shared/theme'
+
+
+// see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
+const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
+
+// Add the reducer to your store on the `router` key and apply middleware for navigating
+const store = createStore(
+    combineReducers({
+      ...reducers,
+      router: routerReducer
+    }),
+    applyMiddleware(middleware)
+)
+
 
 
 class RoutedApp extends React.Component {
@@ -55,28 +77,34 @@ class RoutedApp extends React.Component {
             <MuiThemeProvider muiTheme={theme}>
               <div style={{backgroundColor: colors.bg}}>
 
-                <NavBar scrollPosition={this.state.scrollPosition} />
+                <Provider store={store}>
+<ConnectedRouter history={browserHistory}>
 
-                <Switch>
-                  <Route exact path="/" component={Home}/>
+                    <NavBar scrollPosition={this.state.scrollPosition} />
 
-                  <Route path="/notifications/:userid" component={Notifications}/>
-                  <Route path="/stream/:userid" component={Updates}/>
+                    <Switch>
+                      <Route exact path="/" component={Home}/>
 
-                  <Route path="/review" component={Review}/>
+                      <Route path="/notifications/:userid" component={Notifications}/>
+                      <Route path="/stream/:userid" component={Updates}/>
 
-                  <Route path='/profile/:userid' render={props => (
-                      <Profile scrollPosition={this.state.scrollPosition} />
-                  )} />
+                      <Route path="/review" component={Review}/>
 
-                  <Route path="/settings" component={Settings}/>
-                  <Route component={Error} code="404" />
-                </Switch>
+                      <Route path='/profile/:userid' render={props => (
+                          <Profile scrollPosition={this.state.scrollPosition} />
+                      )} />
 
-                <Scrollbutton
-                    visible={this.state.scrollPosition > 80}
-                    secondary={true}
-                />
+                      <Route path="/settings" component={Settings}/>
+                      <Route component={Error} code="404" />
+                    </Switch>
+
+                    <Scrollbutton
+                        visible={this.state.scrollPosition > 80}
+                        secondary={true}
+                    />
+
+</ConnectedRouter>
+                </Provider>
 
               </div>
             </MuiThemeProvider>
