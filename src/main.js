@@ -2,8 +2,9 @@ import React from 'react';
 import { render } from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
 //--
-// import './default.scss'
-import "../node_modules/@material/typography/dist/mdc.typography.css"
+import './default.scss'
+//--
+// import "../node_modules/@material/typography/dist/mdc.typography.css"
 //--
 // deepstream
 //import deepstream from 'deepstream.io-client-js'

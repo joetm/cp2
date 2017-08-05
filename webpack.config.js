@@ -56,7 +56,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(['style-loader', 'css-loader'].join("!"))
+        // loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        use: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
+        })
       },
     ]
   },
@@ -83,7 +87,7 @@ module.exports = {
   [
     new ExtractTextPlugin({
       // allChunks: true
-      filename: 'style.css',
+      filename: '../css/style.css',
     }),
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}
@@ -103,7 +107,7 @@ module.exports = {
     // new FaviconsWebpackPlugin('logo.png'),
     new ExtractTextPlugin({
       // allChunks: true
-      filename: 'style.css',
+      filename: '../css/style.css',
     }),
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}

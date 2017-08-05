@@ -6,7 +6,7 @@ import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import './style.css'
+import './style.scss'
 //--
 import reviewStore from './store'
 //--
