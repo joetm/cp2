@@ -10,7 +10,7 @@ import ReviewCard from './ReviewCard'
 import Spacer from '../Shared/Spacer'
 import Help from './Help'
 //--
-import { updatesList } from './store'
+import reviewStore from './store'
 
 
 const styles = {
@@ -41,7 +41,8 @@ class Review extends React.PureComponent {
     }
     //--
     render () {
-          return (
+        const activityList = reviewStore.getState().updatesList
+        return (
             <div>
                 <h2>Crowd Review <HelpIcon style={styles.helpIconStyle} onClick={this.toggleHelp} /></h2>
 
@@ -58,7 +59,7 @@ class Review extends React.PureComponent {
                       <div class="mdc-layout-grid__inner">
                         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
                         {
-                            updatesList.map((item, i) => {
+                            activityList.map((item, i) => {
                                 return (
                                     <div style={{marginBottom: '16px'}} key={i}>
                                         <ReviewCard
@@ -84,7 +85,7 @@ class Review extends React.PureComponent {
                 </div>
                 <Spacer />
             </div>
-          )
+        )
     }
 }
 
