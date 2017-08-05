@@ -67,7 +67,8 @@ class Review extends React.PureComponent {
                         <ReactCSSTransitionGroup
                           transitionName="reviewcard"
                           transitionEnterTimeout={500}
-                          transitionLeaveTimeout={300}>
+                          transitionLeaveTimeout={300}
+                        >
 
                             {
                                 activityList.map((item, i) => {
