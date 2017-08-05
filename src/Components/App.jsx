@@ -53,7 +53,9 @@ class RoutedApp extends React.Component {
         return (
             <MuiThemeProvider muiTheme={theme}>
               <div style={{backgroundColor: colors.bg}}>
-                <NavBar />
+
+                <NavBar scrollPosition={this.state.scrollPosition} />
+
                 <Switch>
                   <Route exact path="/" component={Home}/>
 

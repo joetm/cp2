@@ -32,10 +32,6 @@ import { colors } from '../../shared/theme'
 
 
 const styles = {
-    navBarStyle: {
-        backgroundColor: '#fff',
-        color: darkBlack,
-    },
     firstItem: {
         paddingLeft: '20px',
     },
@@ -55,53 +51,6 @@ const NavbarSeparator = () => (
 )
 
 
-// TODO
-// class PopoverMenu extends React.PureComponent {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       open: false,
-//     }
-//   }
-//   handleTouchTap = (event) => {
-//     // This prevents ghost click.
-//     event.preventDefault()
-//     this.setState({
-//       open: true,
-//       anchorEl: event.currentTarget,
-//     })
-//   }
-//   handleRequestClose = () => {
-//     this.setState({
-//       open: false,
-//     })
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <RaisedButton
-//           onTouchTap={this.handleTouchTap}
-//           label="Click me"
-//         />
-//         <Popover
-//           open={this.state.open}
-//           anchorEl={this.state.anchorEl}
-//           anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-//           targetOrigin={{horizontal: 'left', vertical: 'top'}}
-//           onRequestClose={this.handleRequestClose}
-//         >
-//           <Menu>
-//             <MenuItem primaryText="Refresh" />
-//             <MenuItem primaryText="Help &amp; feedback" />
-//             <MenuItem primaryText="Settings" />
-//             <MenuItem primaryText="Sign out" />
-//           </Menu>
-//         </Popover>
-//       </div>
-//     )
-//   }
-// }
-
 /*
                     <Link to="/updates/notifications">
                         <CustomBadge
@@ -116,9 +65,6 @@ const NavbarSeparator = () => (
                             active={this.state.activeBadge === 2}
                         />
                     </Link>
-*/
-
-/*
                     <Link to="/forum">
                         <CustomBadge
                             badgeContent={123}
@@ -148,8 +94,19 @@ class NavBar extends React.PureComponent {
         console.log('activeBadge', num)
     }
     render() {
+        const navbarIsAffixed = this.props.scrollPosition > 250
+        const navbarStyle = {
+                    position: navbarIsAffixed ? 'fixed' : 'relative',
+                    top: '0px',
+                    zIndex: 9999999,
+                    backgroundColor: '#fff',
+                    width: '100%',
+                    color: darkBlack,
+                }
         return (
-            <Toolbar style={styles.navBarStyle}>
+            <Toolbar
+                style={navbarStyle}
+            >
                 <ToolbarGroup firstChild={true}>
                     <Link to="/">
                         <IconButton
