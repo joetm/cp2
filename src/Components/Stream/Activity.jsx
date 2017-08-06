@@ -74,7 +74,7 @@ const Activity = (props) => {
       >
 
           <div style={styles.activity}>
-              <Thumbnail src="/img/dummyimg.jpg" style={styles.thumbnail} />
+              <Thumbnail src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" style={styles.thumbnail} />
               <div style={styles.activitytext}>
                   <span style={styles.activitytitle}>{primaryText}</span>
                   <span style={styles.activitysubtitle}>

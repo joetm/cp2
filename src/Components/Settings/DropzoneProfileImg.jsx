@@ -34,7 +34,7 @@ const DropzoneProfileImg = (props) => (
         }}
     >
         <img
-            src={'/img/dummyimg.jpg'}
+            src={'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg'}
             style={{
                 width: '100%',
                 height: 'auto',

@@ -14,23 +14,7 @@ function randomImgHeight() {
 }
 
 
-
-
-// Array of images with captions
-// const dummyImgs = [
-//   {caption: 'x1', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x2', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x3', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x4', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x5', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x6', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x7', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x8', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-//   {caption: 'x9', imageHeight: randomImgHeight(), imageWidth:'200', source: '/img/dummyimg.jpg'},
-// ]
-
-
-export default class Album extends PureComponent {
+class Album extends PureComponent {
 
     constructor(props) {
         super(props)
@@ -79,70 +63,70 @@ export default class Album extends PureComponent {
               centering={true}
       >
         <Block original-width={300} original-height={900}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={750}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={850}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={850}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={300} original-height={900}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={750}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={850}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={850}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
         <Block original-width={500} original-height={1000}>
-            <AlbumImg src="/img/dummyimg.jpg" />
+            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
         </Block>
       </Masonry>
 
@@ -157,3 +141,5 @@ export default class Album extends PureComponent {
       )
     }
 }
+
+export default Album

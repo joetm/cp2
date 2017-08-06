@@ -35,7 +35,7 @@ const Update = (props) => {
         <CardMedia
           onClick={navigateTo.bind(this)}
         >
-          <img src="/img/dummyimg.jpg" alt="" />
+          <img src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" alt="" />
         </CardMedia>
         <CardHeader
           title={fromUsername}
