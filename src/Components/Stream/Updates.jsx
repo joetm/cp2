@@ -54,6 +54,7 @@ class Updates extends React.PureComponent {
                                             group.map((item, i) => (
                                               <Update
                                                 id={i}
+                                                key={i}
                                                 primaryText={item.primaryText}
                                                 secondaryText={item.secondaryText}
                                                 fromUsername={item.fromUsername}

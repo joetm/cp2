@@ -4,6 +4,9 @@ import React from 'react'
 
 import Spacer from '../Shared/Spacer'
 
+// DEV
+const DMCApolicy = null
+
 
 const DMCA = () => (
     <div style={{textAlign: 'center'}}>

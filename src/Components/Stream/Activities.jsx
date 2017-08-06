@@ -46,6 +46,7 @@ class Activities extends React.PureComponent {
                                         group.map((item, i) => (
                                           <Activity
                                             id={i}
+                                            key={`act_${i}`}
                                             primaryText={item.primaryText}
                                             secondaryText={item.secondaryText}
                                             fromUsername={item.fromUsername}

@@ -29,9 +29,7 @@ const Update = (props) => {
     <div
       class={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
     >
-      <Card
-          key={`upd_${id}`}
-      >
+      <Card>
         <CardMedia
           onClick={navigateTo.bind(this)}
         >

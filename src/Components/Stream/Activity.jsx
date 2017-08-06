@@ -69,9 +69,7 @@ const Activity = (props) => {
   const {id, fromUsername, primaryText, secondaryText, datetime,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone} = props
   return (
-      <div
-        key={`upd_${id}`}
-      >
+      <div>
 
           <div style={styles.activity}>
               <Thumbnail src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" style={styles.thumbnail} />

@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import {Link, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 // the default
 import Activities from './Activities'
@@ -9,7 +9,7 @@ import Activities from './Activities'
 import Updates from './Updates'
 import Likes from './Likes'
 import Notifications from './Notifications'
-
+import Tabs from './Tabs'
 
 
 class Feed extends React.PureComponent {
@@ -22,12 +22,11 @@ class Feed extends React.PureComponent {
     render () {
           return (
             <div>
-              <div style={{textAlign:'center'}}>
-                <Link to={this.ROUTES.all}>All</Link>&nbsp;-&nbsp;
-                <Link to={this.ROUTES.notifications}>Notifications</Link>&nbsp;-&nbsp;
-                <Link to={this.ROUTES.updates}>Updates</Link>&nbsp;-&nbsp;
-                <Link to={this.ROUTES.likes}>Likes</Link>
+
+              <div>
+                  <Tabs routes={this.ROUTES} />
               </div>
+
               <Switch>
                 <Route path={this.ROUTES.notifications} component={Notifications} />
                 <Route path={this.ROUTES.updates} component={Updates} />
