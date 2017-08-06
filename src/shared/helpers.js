@@ -81,3 +81,12 @@ export function translateDayOffset(offset) {
         return dayNames[offset]
     }
 }
+
+/*
+ * Other actions
+ */
+
+export function navigateTo(arg) {
+    // TODO
+    console.log(arg)
+}

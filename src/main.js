@@ -14,13 +14,14 @@ import App from './Components/App.jsx';
 // https://deepstream.io/tutorials/integrations/frontend-react/
 // dsRecord="some-input"
 // const client = deepstream('localhost:6020').login({}, () => {
-    render(
-        (
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        ),
-        document.getElementById("app")
-    )
+render(
+    (
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    ),
+    document.getElementById("app")
+)
+
 // })
 // DeepstreamMixin.setDeepstreamClient(client)

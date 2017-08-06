@@ -11,7 +11,7 @@ import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outli
 
 import { LikeButton, FavoriteButton, CommentButton} from './Button'
 
-import {navigateTo} from '../../shared/actions'
+import {navigateTo} from '../../shared/helpers'
 
 
 const actionButtonsStyle = {

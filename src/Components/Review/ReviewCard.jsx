@@ -11,7 +11,8 @@ import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outli
 import RaisedButton from 'material-ui/RaisedButton'
 import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
 
-import {navigateTo} from '../../shared/actions'
+import {navigateTo} from '../../shared/helpers'
+
 
 const _CLOSEDELAY = 1000
 

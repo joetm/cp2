@@ -12,7 +12,7 @@ import Divider from 'material-ui/Divider';
 // Material Component: Layout (Grid)
 // import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import {navigateTo} from '../../shared/actions'
+import {navigateTo} from '../../shared/helpers'
 import Avatar from '../Shared/Avatar'
 import Thumbnail from './Thumbnail'
 

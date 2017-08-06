@@ -21,7 +21,8 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
-import { navigateTo } from '../../shared/actions'
+import { navigateTo } from '../../shared/helpers'
+// --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
 import RouterMenuItem from './RouterMenuItem'

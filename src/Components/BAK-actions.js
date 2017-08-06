@@ -47,11 +47,3 @@ export const removePost       = makeActionCreator(REMOVE_POST,     'postid', 'bo
 //    return {type: SET_VISIBILITY_FILTER, filter}
 // }
 
-/*
- * Other actions
- */
-
-export function navigateTo(arg) {
-    // TODO
-    console.log(arg)
-}
