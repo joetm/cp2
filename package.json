@@ -13,12 +13,14 @@
   "author": "JO",
   "license": "MIT",
   "scripts": {
+    "eslint": "./node_modules/.bin/eslint ./src --config ./.eslintrc.json --ext jsx,js",
     "flow": "./node_modules/.bin/flow",
     "test": "./node_modules/.bin/jest",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack -p",
     "watch": "./node_modules/.bin/webpack --watch",
     "dev": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open",
-    "dev-ALT": "./devserver.js"
+    "dev-ALT": "./devserver.js",
+    "depcheck": "depcheck . --ignore-dirs=dist,node_modules"
   },
   "BAK": {
     "build": "./node_modules/.bin/babel ./src/ -d ./lib/ && ",

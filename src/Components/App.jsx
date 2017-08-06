@@ -14,14 +14,14 @@ injectTapEventPlugin()
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import fetch from 'unfetch'
 import {Route, Switch, browserHistory} from 'react-router-dom'
-import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 // import createHistory from 'history/createBrowserHistory'
-import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
+import {ConnectedRouter, push} from 'react-router-redux'
 
 
 //--
 import reducers from './root-reducers'
+import store from './root-store'
 //--
 import NavBar from './NavBar/'
 import Home from './Home/'
@@ -37,18 +37,10 @@ import Scrollbutton from './Shared/Scrollbutton'
 import {theme, colors} from '../shared/theme'
 
 
-// see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
-const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
-
-// Add the reducer to your store on the `router` key and apply middleware for navigating
-const store = createStore(
-    combineReducers({
-      ...reducers,
-      router: routerReducer
-    }),
-    applyMiddleware(middleware)
-)
-
+//                <Provider store={store}>
+//<ConnectedRouter history={browserHistory}>
+//</ConnectedRouter>
+//                </Provider>
 
 
 class RoutedApp extends React.Component {
@@ -71,14 +63,10 @@ class RoutedApp extends React.Component {
     componentWillUnmount() {
         window.onscroll = null
     }
-    // <Route exact path="/forum" component={Forum}/>
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>
               <div style={{backgroundColor: colors.bg}}>
-
-                <Provider store={store}>
-<ConnectedRouter history={browserHistory}>
 
                     <NavBar scrollPosition={this.state.scrollPosition} />
 
@@ -102,9 +90,6 @@ class RoutedApp extends React.Component {
                         visible={this.state.scrollPosition > 80}
                         secondary={true}
                     />
-
-</ConnectedRouter>
-                </Provider>
 
               </div>
             </MuiThemeProvider>
