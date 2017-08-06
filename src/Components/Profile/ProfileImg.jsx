@@ -62,25 +62,31 @@ class ProfileImg extends React.PureComponent {
             left: '50%',
             bottom: '50px',
             opacity: 0.5,
-            zIndex: 999,
+            zIndex: 999999999,
             display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
         }
         return (
-            <div onClick={this.props.toggleProfileDetails}>
-                <div style={profileImgContainerStyle}>
-                    <ProfileDetails
-                        username={username}
-                        avatar={avatar}
-                        visible={this.props.blurredImg}
-                        toggleProfileDetails={this.props.toggleProfileDetails}
-                    />
-                    <div style={profileImgStyle}></div>
+            <div>
+                <div onClick={this.props.toggleProfileDetails}>
+                    <div style={profileImgContainerStyle}>
+                        <ProfileDetails
+                            username={username}
+                            avatar={avatar}
+                            visible={this.props.blurredImg}
+                            toggleProfileDetails={this.props.toggleProfileDetails}
+                        />
+                        <div style={profileImgStyle}></div>
+                    </div>
                 </div>
+
                 <Scrollbutton
                     style={scrollButton}
+                    visible={!this.props.blurredImg}
                     secondary={true}
+                    clickable={false}
                     icon={<DownIcon />}
                 />
+
             </div>
         )
     }

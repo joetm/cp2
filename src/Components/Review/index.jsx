@@ -43,6 +43,8 @@ class Review extends React.PureComponent {
         this.reject = this.reject.bind(this)
         this.approve = this.approve.bind(this)
         this.closeAlert = this.closeAlert.bind(this)
+        this.openAlert = this.openAlert.bind(this)
+        this.closeAlert = this.closeAlert.bind(this)
     }
     // --
     toggleHelp() {
@@ -78,63 +80,59 @@ class Review extends React.PureComponent {
     }
     // --
     render () {
-        const activityList = reviewStore.getState().updatesList
+        const updatesList = reviewStore.getState().updatesList
         return (
             <div>
                 <h2>
-                    Crowd Review <HelpIcon style={styles.helpIconStyle} onClick={this.toggleHelp} />
+                    Crowd Review <HelpIcon
+                                    style={styles.helpIconStyle}
+                                    onClick={this.toggleHelp}
+                                 />
                 </h2>
 
-                <div>
-                    <Dialog
-                        title="How does this work?"
-                        msg="HELP TEXT HERE"
-                        isOpen={this.state.helpIsOpen}
-                        toggleHelp={this.toggleHelp}
-                    />
-                </div>
+                <Dialog
+                    title="How does this work?"
+                    msg="HELP TEXT HERE"
+                    isOpen={this.state.helpIsOpen}
+                    toggleHelp={this.toggleHelp}
+                />
 
-                <div>
+                <div class="mdc-layout-grid">
+                  <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell
+                                mdc-layout-grid__cell--span-6
+                                mdc-layout-grid__cell--span-6-tablet
+                                mdc-layout-grid__cell--span-4-phone">
 
-                    <div class="mdc-layout-grid">
-                      <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell
-                                    mdc-layout-grid__cell--span-6
-                                    mdc-layout-grid__cell--span-6-tablet
-                                    mdc-layout-grid__cell--span-4-phone">
+                        <ReactCSSTransitionGroup
+                          transitionName="reviewcard"
+                          transitionEnterTimeout={500}
+                          transitionLeaveTimeout={300}
+                        >
 
-                            <ReactCSSTransitionGroup
-                              transitionName="reviewcard"
-                              transitionEnterTimeout={500}
-                              transitionLeaveTimeout={300}
-                            >
+                        {
+                            updatesList.map((item, i) => {
+                                return (
+                                    <ReviewCard
+                                        key={i}
+                                        id={i}
+                                        {...item}
+                                        datetime={humanRelativeDate(item.timestamp)}
+                                        gridColumnsFull={4}
+                                        gridColumnsTablet={3}
+                                        gridColumnsPhone={1}
+                                        approve={this.approve}
+                                        reject={this.reject}
+                                        handleImageClick={this.handleImageClick}
+                                    />
+                                )
+                            })
+                        }
 
-                            {
-                                activityList.map((item, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <ReviewCard
-                                                id={i}
-                                                {...item}
-                                                datetime={humanRelativeDate(item.timestamp)}
-                                                gridColumnsFull={4}
-                                                gridColumnsTablet={3}
-                                                gridColumnsPhone={1}
-                                                approve={this.approve}
-                                                reject={this.reject}
-                                                handleImageClick={this.handleImageClick}
-                                            />
-                                        </div>
-                                    )
-                                })
-                            }
+                        </ReactCSSTransitionGroup>
 
-                            </ReactCSSTransitionGroup>
-
-                        </div>
-                      </div>
                     </div>
-
+                  </div>
                 </div>
 
                 <Alert
