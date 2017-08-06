@@ -5,7 +5,7 @@ import Avatar from 'material-ui/Avatar'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 import {ApproveButton, RejectButton, LikeButton, DisapproveButton} from '../Shared/Buttons/'
-// --
+import LazyLoad from 'react-lazy-load'
 
 import { navigateTo } from '../../shared/helpers'
 
@@ -13,9 +13,20 @@ import { navigateTo } from '../../shared/helpers'
 const _CLOSEDELAY = 1000
 
 
-//        <CardText expandable={false} actAsExpander={false}>
-//          {secondaryText}
-//        </CardText>
+const styles = {
+    cardMedia: {
+        cursor: 'pointer',
+        overflow: 'hidden',
+    },
+    cardImage: {
+        minWidth: '100%',
+        maxWidth: '100%',
+        height: 'auto',
+        marginRight: 'auto',
+        marginLeft: 'auto',
+    },
+}
+
 
 class ReviewCard extends React.PureComponent {
   constructor(props) {
@@ -38,17 +49,16 @@ class ReviewCard extends React.PureComponent {
       return null
     }
     return (
-      <div
-        class={`mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone`}
-      >
         <Card
             key={`upd_${id}`}
         >
           <CardMedia
-            style={{cursor: 'pointer'}}
-            onTouchTap={this.props.handleImageClick}
+              style={styles.cardMedia}
+              onTouchTap={this.props.handleImageClick}
           >
-            <img src="/img/dummyimg.jpg" alt="" />
+              <LazyLoad height={350} offsetVertical={250}>
+                  <img src="/img/dummyimg.jpg" alt="" style={styles.cardImage} />
+              </LazyLoad>
           </CardMedia>
           <CardHeader
               title={primaryText}
@@ -76,7 +86,6 @@ class ReviewCard extends React.PureComponent {
 
           </CardActions>
         </Card>
-      </div>
     )
   }
 }

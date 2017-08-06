@@ -4,7 +4,7 @@ import React from 'react'
 import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import './style.scss'
 // --
@@ -93,7 +93,10 @@ class Review extends React.PureComponent {
 
                     <div class="mdc-layout-grid">
                       <div class="mdc-layout-grid__inner">
-                        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
+                        <div class="mdc-layout-grid__cell
+                                    mdc-layout-grid__cell--span-6
+                                    mdc-layout-grid__cell--span-6-tablet
+                                    mdc-layout-grid__cell--span-4-phone">
 
                         <ReactCSSTransitionGroup
                           transitionName="reviewcard"
