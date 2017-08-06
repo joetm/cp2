@@ -2,19 +2,31 @@
 
 import React from 'react'
 import Paper from 'material-ui/Paper'
+import Block from '../External/react-simple-masonry/src/block'
+
+
+// https://codepen.io/Awkward/pen/XdGaKL/
+
 
 function randomImgHeight() {
- return Math.floor(270 * Math.random()) + 30;
+   return Math.floor(270 * Math.random()) + 30;
 }
 
 const styles = {
-  albumImgContainerStyle: {
-    width: '155px',
-    overflow: 'hidden',
-    float: 'left',
-    margin: '10px 10px 0px 0px',
-    padding: '10px 10px',
-  },
+    albumImgContainer: {
+        overflow: 'hidden',
+    },
+    albumBlock: {
+        position: 'absolute',
+        overflow: 'hidden',
+        transition: 'transform .2s',
+    },
+    albumImg: {
+        // height: `${randomImgHeight()}px`,
+        objectFit: 'cover',
+        objectPosition: '50% 50%',
+        minWidth:'100%',
+    },
 }
 
 
@@ -22,22 +34,16 @@ const styles = {
  * AlbumImg class
  * @class
  */
+
+//            <Paper zDepth={1} style={styles.albumImgContainer}>
+//            </Paper>
+
 const AlbumImg = (props) => {
-  const albumImgStyle = {
-    width: '150px',
-    height: '150px',
-    border: 0,
-    height: `${randomImgHeight()}px`,
-  };
-  // albumImgContainerStyle.height = imgHeight + 5 + 'px';
-  return (
-    <Paper zDepth={1} style={styles.albumImgContainerStyle}>
-      <div>
-      <img src={props.src} alt="" style={albumImgStyle} />
-      </div>
-      xxx
-    </Paper>
-  );
+    return (
+        <Block original-width={300} original-height={900} style={styles.albumBlock}>
+            <img src={props.src} alt="" style={styles.albumImg} />
+        </Block>
+    )
 }
 
 export default AlbumImg

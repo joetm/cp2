@@ -3,10 +3,10 @@
 import React, { PureComponent } from "react"
 
 import Masonry from '../External/react-simple-masonry/src/'
-import Block from '../External/react-simple-masonry/src/block'
 
 import AlbumImg from './AlbumImg'
 import AjaxLoader from '../Shared/AjaxLoader'
+import Spacer from '../Shared/Spacer'
 
 
 /**
@@ -24,11 +24,8 @@ function randomImgHeight() {
  */
 class Album extends PureComponent {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            userid: this.props.match.params.userid
-        }
+    state = {
+        userid: this.props.match.params.userid
     }
 
     componentWillMount () {
@@ -58,90 +55,44 @@ class Album extends PureComponent {
         <div>
           <div>
 
-
-
-      <Masonry
-              width={this.state.width}
-              columns={4}
-              gutterX={20}
-              gutterY={20}
-              maxHeight={550}
-              collapsing={true}
-              customize={this.customizeRectangles}
-              centering={true}
-      >
-        <Block original-width={300} original-height={900}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={750}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={850}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={850}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={300} original-height={900}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={750}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={850}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={850}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-        <Block original-width={500} original-height={1000}>
-            <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-        </Block>
-      </Masonry>
-
-
-
+            <Masonry
+                      width={500}
+                      columns={4}
+                      gutterX={20}
+                      gutterY={20}
+                      maxHeight={550}
+                      collapsing={true}
+                      customize={this.customizeRectangles}
+                      centering={true}
+            >
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
+            </Masonry>
 
           </div>
+
+          <Spacer />
+
           <div>
               <AjaxLoader />
           </div>
