@@ -14,7 +14,7 @@ import Alert from '../Shared/Alert'
 import Spacer from '../Shared/Spacer'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../shared/helpers'
 import ReviewCard from './ReviewCard'
-import Help from './Help'
+import HelpDialog from './HelpDialog'
 
 
 const styles = {
@@ -37,17 +37,24 @@ class Review extends React.PureComponent {
         this.toggleHelp = this.toggleHelp.bind(this)
         this.reject = this.reject.bind(this)
         this.approve = this.approve.bind(this)
+        this.closeAlert = this.closeAlert.bind(this)
     }
     // --
     toggleHelp() {
-        this.setState({helpIsOpen: !this.state.helpIsOpen})
+        this.setState({
+            helpIsOpen: !this.state.helpIsOpen
+        })
     }
     // --
     openAlert() {
-        this.setState({alertIsOpen: true})
+        this.setState({
+            alertIsOpen: true
+        })
     }
     closeAlert() {
-        this.setState({alertIsOpen: false})
+        this.setState({
+            alertIsOpen: false
+        })
     }
     // --
     approve() {
@@ -64,6 +71,7 @@ class Review extends React.PureComponent {
     }
     // --
     handleImageClick() {
+        // TODO
         console.log('open popover', this)
         // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
     }
@@ -75,7 +83,7 @@ class Review extends React.PureComponent {
                 <h2>Crowd Review <HelpIcon style={styles.helpIconStyle} onClick={this.toggleHelp} /></h2>
 
                 <div>
-                    <Help
+                    <HelpDialog
                         isOpen={this.state.helpIsOpen}
                         toggleHelp={this.toggleHelp}
                     />

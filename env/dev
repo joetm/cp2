@@ -1,0 +1,4 @@
+export API_USERS="http://..."
+export API_THREADS="http://..."
+export API_PROFILE="http://..."
+export API_VIDEOS="http://..."

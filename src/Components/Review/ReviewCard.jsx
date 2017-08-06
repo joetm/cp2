@@ -71,7 +71,6 @@ class ReviewCard extends React.PureComponent {
                 number={123}
             />
             <DisapproveButton
-                secondary={true}
                 number={8}
             />
 

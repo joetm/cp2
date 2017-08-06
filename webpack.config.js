@@ -95,8 +95,19 @@ module.exports = {
     //]),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+        //'process.env': {
+        //  'API_USERS': process.env.API_USERS,
+        //  'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+        //}
     }),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+        title: "CP v2",
+        filename: 'index.html',
+        template: '!!handlebars-loader!src/index.hbs',
+        hash: true,
+        cache: true,
+        showErrors: true
+    })
   ]
   :
   // -----------
@@ -150,7 +161,7 @@ module.exports = {
         },
         hash: true,
         cache: true,
-        showErrors: true
+        showErrors: false
     })
   ]
 };
