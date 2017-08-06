@@ -11,7 +11,7 @@ const DMCA = () => (
         <h1>DMCA Policy</h1>
 
         <div>
-            xxxxxxxxxxxxxxxx
+            {DMCApolicy}
         </div>
 
         <Spacer />

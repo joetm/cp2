@@ -11,7 +11,9 @@ const Privacy = () => (
         <h1>Privacy Policy</h1>
 
         <div>
-            xxxxxxxxxxxxxxxx
+
+        {PrivacyPolicy}
+
         </div>
 
         <Spacer />
