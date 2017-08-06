@@ -5,3 +5,4 @@ node_modules
 ./env/prod
 src/Components/Legal/policy-DMCA.txt
 src/Components/Legal/policy-privacy.txt
+src/Components/Legal/policy-community.txt
