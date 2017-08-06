@@ -8,14 +8,13 @@ import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar'
 import {darkBlack} from 'material-ui/styles/colors'
-// import Popover from 'material-ui/Popover';
 // --
-import HomePin from 'material-ui/svg-icons/action/account-balance'
+// import Popover from 'material-ui/Popover';
 // import GroupPin from 'material-ui/svg-icons/social/group'
 // import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
+import HomePin from 'material-ui/svg-icons/action/account-balance'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import ReviewPin from 'material-ui/svg-icons/action/find-replace'
-// --
 import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
@@ -97,11 +96,11 @@ class NavBar extends React.PureComponent {
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
         const navbarStyle = {
-                    position: navbarIsAffixed ? 'fixed' : 'relative',
-                    top: '0px',
+                    // position: navbarIsAffixed ? 'fixed' : 'relative',
+                    // top: '0px',
+                    // width: '100%',
                     zIndex: 9999999,
                     backgroundColor: '#fff',
-                    width: '100%',
                     color: darkBlack,
                 }
         return (

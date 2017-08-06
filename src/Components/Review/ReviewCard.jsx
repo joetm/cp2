@@ -4,23 +4,13 @@ import React from 'react'
 import Avatar from 'material-ui/Avatar'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
-import IconButton from 'material-ui/IconButton';
-import LikeAction from 'material-ui/svg-icons/action/thumb-up'
-import FavoriteAction from 'material-ui/svg-icons/action/favorite'
-import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
-import RaisedButton from 'material-ui/RaisedButton'
-import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
+import {ApproveButton, RejectButton, LikeButton, DisapproveButton} from '../Shared/Buttons/'
+// --
 
-import {navigateTo} from '../../shared/helpers'
+import { navigateTo } from '../../shared/helpers'
 
 
 const _CLOSEDELAY = 1000
-
-const styles = {
-  button: {
-    margin: 12,
-  },
-}
 
 
 //        <CardText expandable={false} actAsExpander={false}>
@@ -59,32 +49,21 @@ class ReviewCard extends React.PureComponent {
           <CardMedia
             onClick={navigateTo.bind(this)}
           >
-
             <img src="/img/dummyimg.jpg" alt="" />
-
           </CardMedia>
           <CardHeader
-            title={primaryText}
-            subtitle={fromUsername}
-            avatar="/img/avatar/face.jpg"
-            onClick={navigateTo.bind(this)}
+              title={primaryText}
+              subtitle={fromUsername}
+              avatar="/img/avatar/face.jpg"
+              onClick={navigateTo.bind(this)}
           />
           <CardActions>
 
-            <RaisedButton
-              label="Approve"
-              primary={true}
-              style={styles.button}
-              icon={<LoginIcon />}
-              onClick={this.props.approve.bind(this)}
-            />
-            <RaisedButton
-              label="Reject"
-              secondary={true}
-              style={styles.button}
-              icon={<LoginIcon />}
-              onClick={this.props.reject.bind(this)}
-            />
+            <ApproveButton primary={true} />
+            <RejectButton secondary={true} />
+
+            <LikeButton number={123} />
+            <DisapproveButton secondary={true} number={8} />
 
           </CardActions>
         </Card>
