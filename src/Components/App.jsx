@@ -7,6 +7,10 @@ import React from 'react'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 // --
+// object-fit-images css polyfill for IE
+import objectFitImages from 'object-fit-images'
+objectFitImages()
+// --
 // deepstream mixins
 // import DeepstreamMixin from 'deepstream.io-tools-react'
 // import reactMixin from 'react-mixin'

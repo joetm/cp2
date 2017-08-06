@@ -7,7 +7,7 @@ import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 import {ApproveButton, RejectButton, LikeButton, DisapproveButton} from '../Shared/Buttons/'
 import LazyLoad from 'react-lazy-load'
 
-import { navigateTo } from '../../shared/helpers'
+import { navigateTo, getRandomInt } from '../../shared/helpers'
 
 
 const _CLOSEDELAY = 1000
@@ -24,8 +24,9 @@ const styles = {
         minWidth: '100%',
         // maxWidth: '100%',
         // height: 'auto',
-        'object-fit': 'cover',
         margin: 'auto auto',
+        objectFit: 'cover',
+        objectPosition: '50% 50%',
     },
 }
 
@@ -46,7 +47,7 @@ class ReviewCard extends React.PureComponent {
     }, _CLOSEDELAY)
   }
   render() {
-    const {id, fromUsername, primaryText, secondaryText, datetime} = this.props
+    const {id, fromUsername, primaryText, secondaryText, datetime, src} = this.props
     if (!this.state.visible) {
       return null
     }
@@ -60,7 +61,7 @@ class ReviewCard extends React.PureComponent {
           >
 
               <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
-                  <img src="/img/dummyimg.jpg" alt="" style={styles.cardImage} />
+                  <img src={src} alt="" style={styles.cardImage} />
               </LazyLoad>
 
           </CardMedia>

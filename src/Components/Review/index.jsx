@@ -110,9 +110,7 @@ class Review extends React.PureComponent {
                                         <div style={{marginBottom: '16px'}} key={i}>
                                             <ReviewCard
                                                 id={i}
-                                                primaryText={item.primaryText}
-                                                secondaryText={item.secondaryText}
-                                                fromUsername={item.fromUsername}
+                                                {...item}
                                                 datetime={humanRelativeDate(item.timestamp)}
                                                 gridColumnsFull={4}
                                                 gridColumnsTablet={3}
