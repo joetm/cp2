@@ -7,7 +7,7 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-// import {colors} from '../../shared/theme'
+// import {colors} from '../../common/theme'
 import Avatar from '../Shared/Avatar'
 import ProfileUsername from './ProfileUsername'
 

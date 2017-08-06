@@ -26,19 +26,22 @@ import {ConnectedRouter, push} from 'react-router-redux'
 // --
 import reducers from './root-reducers'
 import store from './root-store'
+import {theme, colors} from '../common/theme'
+// --
+import Scrollbutton from './Shared/Scrollbutton'
 // --
 import NavBar from './NavBar/'
 import Home from './Home/'
-// import Forum from './Forum/'
+import Forum from './Forum/'
 import Notifications from './Stream/Notifications'
 import Updates from './Stream/'
 import Profile from './Profile/'
 import Review from './Review/'
 import Settings from './Settings/'
 import Error from './Error/'
-import Scrollbutton from './Shared/Scrollbutton'
-// --
-import {theme, colors} from '../shared/theme'
+import Guidelines from './Legal/Guidelines'
+import Privacy from './Legal/Privacy'
+import DMCA from './Legal/DMCA'
 
 
 //                <Provider store={store}>
@@ -75,19 +78,27 @@ class RoutedApp extends React.Component {
                     <NavBar scrollPosition={this.state.scrollPosition} />
 
                     <Switch>
-                      <Route exact path="/" component={Home}/>
+                        <Route exact path="/" component={Home} />
 
-                      <Route path="/notifications/:userid" component={Notifications}/>
-                      <Route path="/stream/:userid" component={Updates}/>
+                        <Route path="/forum" component={Forum} />
 
-                      <Route path="/review" component={Review}/>
+                        <Route path="/notifications/:userid" component={Notifications} />
+                        <Route path="/stream/:userid" component={Updates} />
 
-                      <Route path='/profile/:userid' render={props => (
-                          <Profile scrollPosition={this.state.scrollPosition} />
-                      )} />
+                        <Route path="/review" component={Review} />
 
-                      <Route path="/settings" component={Settings}/>
-                      <Route component={Error} code="404" />
+                        <Route path='/profile/:userid' render={props => (
+                            <Profile scrollPosition={this.state.scrollPosition} />
+                        )} />
+
+                        <Route path="/settings" component={Settings} />
+
+                        <Route path="/community-guidelines" component={Guidelines} />
+                        <Route path="/privacy-policy" component={Privacy} />
+                        <Route path="/dmca-policy" component={DMCA} />
+
+                        <Route component={Error} code="404" />
+
                     </Switch>
 
                     <Scrollbutton

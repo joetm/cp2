@@ -7,7 +7,7 @@ import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 import {ApproveButton, RejectButton, LikeButton, DisapproveButton} from '../Shared/Buttons/'
 import LazyLoad from 'react-lazy-load'
 
-import { navigateTo, getRandomInt } from '../../shared/helpers'
+import { navigateTo, getRandomInt } from '../../common/helpers'
 import Spacer from '../Shared/Spacer'
 
 

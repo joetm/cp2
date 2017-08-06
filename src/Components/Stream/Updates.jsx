@@ -12,7 +12,7 @@ import MenuItem from 'material-ui/MenuItem'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../shared/helpers'
+import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
 import Update from './Update'
 import Spacer from '../Shared/Spacer'
 // --

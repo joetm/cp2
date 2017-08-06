@@ -6,7 +6,7 @@ import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import {grey400} from 'material-ui/styles/colors'
 
-import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../shared/helpers'
+import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
 import Activity from './Activity'
 import Spacer from '../Shared/Spacer'
 // --

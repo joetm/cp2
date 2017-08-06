@@ -9,12 +9,12 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './style.scss'
 // --
 import reviewStore from './store'
-import { colors } from '../../shared/theme'
+import { colors } from '../../common/theme'
 
 // --
 import Alert from '../Shared/Alert'
 import Spacer from '../Shared/Spacer'
-import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../shared/helpers'
+import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
 

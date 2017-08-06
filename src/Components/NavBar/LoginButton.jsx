@@ -6,13 +6,13 @@ import IconButton from 'material-ui/IconButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
 
-import fakeAuth  from '../../shared/fakeAuth'
+import fakeAuth  from '../../common/fakeAuth'
 
 
 const styles = {
-  button: {
-    margin: 12,
-  },
+    button: {
+        margin: 12,
+    },
 }
 
         // {

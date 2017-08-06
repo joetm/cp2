@@ -11,6 +11,7 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import Notification from '../Stream/Notification'
 import Spacer from '../Shared/Spacer'
+import Footer from '../Footer/'
 
 
 const boxStyle = {
@@ -148,6 +149,9 @@ const Home = () => (
         </div>
       </div>
     </div>
+
+    <Footer />
+
   </div>
 )
 

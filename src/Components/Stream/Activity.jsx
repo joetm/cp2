@@ -3,7 +3,7 @@
 import React from 'react'
 // import Avatar from 'material-ui/Avatar'
 import {CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {colors} from '../../shared/theme'
+import {colors} from '../../common/theme'
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 // import LikeAction from 'material-ui/svg-icons/action/thumb-up'
@@ -12,7 +12,7 @@ import Divider from 'material-ui/Divider';
 // Material Component: Layout (Grid)
 // import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import {navigateTo} from '../../shared/helpers'
+import {navigateTo} from '../../common/helpers'
 import Avatar from '../Shared/Avatar'
 import Thumbnail from './Thumbnail'
 

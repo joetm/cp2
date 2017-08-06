@@ -3,7 +3,7 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import {colors} from '../../../shared/theme'
+import {colors} from '../../../common/theme'
 
 
 const followButtonStyle = {

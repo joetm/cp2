@@ -6,17 +6,6 @@ import { Provider, connect } from 'react-redux'
 import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
 
-
-// TODO
-// import configureStore from './configureStore'
-// const store = configureStore()
-// import {
-//   selectSubreddit,
-//   fetchPostsIfNeeded,
-//   invalidateSubreddit
-// } from './actions'
-
-
 // DEV
 const posts = [
     {
@@ -76,6 +65,7 @@ const posts = [
 class ForumHome extends React.Component {
     // constructor(props) {
        //  super(props)
+       //  // bindings
        //  this.handleChange = this.handleChange.bind(this)
        //  this.handleRefreshClick = this.handleRefreshClick.bind(this)
     // }
