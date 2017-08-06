@@ -19,9 +19,13 @@ import ProfileUsername from './ProfileUsername'
 import fakeUserRecord from './userRecord'
 
 
-const avatarBoxOffsetStyle = {
-    marginTop: '-150px',
-    marginLeft: '50px',
+const styles = {
+    avatarBox: {
+        position: 'relative',
+        marginTop: '-150px',
+        marginLeft: '50px',
+        zIndex: 29999999
+    }
 }
 
 
@@ -45,6 +49,7 @@ class Profile extends React.PureComponent {
           const {username, avatar, profileimg} = fakeUserRecord
           return (
             <div>
+
                 <ProfileImg
                     username={username}
                     avatar={avatar}
@@ -53,16 +58,21 @@ class Profile extends React.PureComponent {
                     pageIsScrolled={this.props.scrollPosition > 0}
                     toggleProfileDetails={this.toggleProfileDetails.bind(this)}
                 />
+
                 <ProfileDivider />
-                <div style={avatarBoxOffsetStyle}>
-                    <Avatar visible={!this.state.blurredImg} src={avatar} mini={false} />
+
+                <div style={styles.avatarBox}>
+                    <Avatar
+                        visible={!this.state.blurredImg}
+                        src={avatar}
+                    />
                     <ProfileUsername name={username} />
                 </div>
-                <Spacer />
 
+                <Spacer />
                 <Route component={Album} />
-
                 <Spacer />
+
             </div>
           )
     }

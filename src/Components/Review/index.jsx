@@ -9,17 +9,22 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './style.scss'
 // --
 import reviewStore from './store'
+import { colors } from '../../shared/theme'
+
 // --
 import Alert from '../Shared/Alert'
 import Spacer from '../Shared/Spacer'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../shared/helpers'
 import ReviewCard from './ReviewCard'
-import HelpDialog from './HelpDialog'
+import Dialog from '../Shared/Dialog'
 
 
 const styles = {
     helpIconStyle: {
         cursor: 'pointer',
+        color: colors.grey,
+        verticalAlign: 'middle',
+        lineHeight: '1em',
     },
 }
 
@@ -29,9 +34,9 @@ class Review extends React.PureComponent {
         super(props)
         // state
         this.state = {
-          helpIsOpen: false,
-          alertIsOpen: false,
-          // popOverImageIsOpen: false,
+            helpIsOpen: false,
+            alertIsOpen: false,
+            // popOverImageIsOpen: false,
         }
         // bindings
         this.toggleHelp = this.toggleHelp.bind(this)
@@ -47,14 +52,10 @@ class Review extends React.PureComponent {
     }
     // --
     openAlert() {
-        this.setState({
-            alertIsOpen: true
-        })
+        this.setState({alertIsOpen: true})
     }
     closeAlert() {
-        this.setState({
-            alertIsOpen: false
-        })
+        this.setState({alertIsOpen: false})
     }
     // --
     approve() {
@@ -80,10 +81,14 @@ class Review extends React.PureComponent {
         const activityList = reviewStore.getState().updatesList
         return (
             <div>
-                <h2>Crowd Review <HelpIcon style={styles.helpIconStyle} onClick={this.toggleHelp} /></h2>
+                <h2>
+                    Crowd Review <HelpIcon style={styles.helpIconStyle} onClick={this.toggleHelp} />
+                </h2>
 
                 <div>
-                    <HelpDialog
+                    <Dialog
+                        title="How does this work?"
+                        msg="HELP TEXT HERE"
                         isOpen={this.state.helpIsOpen}
                         toggleHelp={this.toggleHelp}
                     />
@@ -98,16 +103,16 @@ class Review extends React.PureComponent {
                                     mdc-layout-grid__cell--span-6-tablet
                                     mdc-layout-grid__cell--span-4-phone">
 
-                        <ReactCSSTransitionGroup
-                          transitionName="reviewcard"
-                          transitionEnterTimeout={500}
-                          transitionLeaveTimeout={300}
-                        >
+                            <ReactCSSTransitionGroup
+                              transitionName="reviewcard"
+                              transitionEnterTimeout={500}
+                              transitionLeaveTimeout={300}
+                            >
 
                             {
                                 activityList.map((item, i) => {
                                     return (
-                                        <div style={{marginBottom: '16px'}} key={i}>
+                                        <div key={i}>
                                             <ReviewCard
                                                 id={i}
                                                 {...item}
@@ -124,7 +129,7 @@ class Review extends React.PureComponent {
                                 })
                             }
 
-                        </ReactCSSTransitionGroup>
+                            </ReactCSSTransitionGroup>
 
                         </div>
                       </div>
@@ -138,6 +143,7 @@ class Review extends React.PureComponent {
                 />
 
                 <Spacer />
+
             </div>
         )
     }

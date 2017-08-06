@@ -3,19 +3,21 @@
 import React from 'react'
 
 import {colors} from '../../shared/theme'
-import FollowButton from './FollowButton'
+import FollowButton from '../Shared/Buttons/FollowButton'
 
 
 const styles = {
-    dividerBarStyle: {
+    dividerBar: {
         backgroundColor: colors.palette.primary1Color,
     },
 }
 
 
 const ProfileDivider = () => (
-    <div style={styles.dividerBarStyle}>
-        <FollowButton label={"Follow"} />
+    <div style={styles.dividerBar}>
+        <FollowButton
+        	label={"Follow"}
+        />
     </div>
 )
 

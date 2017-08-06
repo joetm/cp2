@@ -8,10 +8,11 @@ import {ApproveButton, RejectButton, LikeButton, DisapproveButton} from '../Shar
 import LazyLoad from 'react-lazy-load'
 
 import { navigateTo, getRandomInt } from '../../shared/helpers'
+import Spacer from '../Shared/Spacer'
 
 
 const _CLOSEDELAY = 1000
-const _IMAGE_HEIGHT = 450
+const _IMAGE_HEIGHT = 475
 const _LAZYLOAD_OFFSET = 250
 
 
@@ -22,6 +23,7 @@ const styles = {
     },
     cardImage: {
         minWidth: '100%',
+        minHeight: `${_IMAGE_HEIGHT}px`,
         // maxWidth: '100%',
         // height: 'auto',
         margin: 'auto auto',
@@ -43,15 +45,18 @@ class ReviewCard extends React.PureComponent {
     // TODO: add an animation to the card
     console.log('hiding card')
     setTimeout(() => {
-      this.setState({visible: false})
+        this.setState({visible: false})
     }, _CLOSEDELAY)
   }
+//              <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
+//              </LazyLoad>
   render() {
     const {id, fromUsername, primaryText, secondaryText, datetime, src} = this.props
     if (!this.state.visible) {
       return null
     }
     return (
+        <div>
         <Card
             key={`upd_${id}`}
         >
@@ -60,9 +65,7 @@ class ReviewCard extends React.PureComponent {
               onTouchTap={this.props.handleImageClick}
           >
 
-              <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
-                  <img src={src} alt="" style={styles.cardImage} />
-              </LazyLoad>
+              <img src={src} alt="" style={styles.cardImage} />
 
           </CardMedia>
           <CardHeader
@@ -91,6 +94,8 @@ class ReviewCard extends React.PureComponent {
 
           </CardActions>
         </Card>
+        <Spacer />
+        </div>
     )
   }
 }
