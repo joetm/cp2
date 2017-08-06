@@ -8,7 +8,7 @@ import Post from './Post'
 
 
 const Posts = (props) => {
-	const { posts } = props
+    const { posts } = props
     return (
       <div>
           <Subheader>Category here</Subheader>

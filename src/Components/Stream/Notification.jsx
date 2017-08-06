@@ -8,7 +8,7 @@ import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
-//import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
+// import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 
 
@@ -31,10 +31,10 @@ const rightIconMenu = (
 )
 
 
-//                <p>
-//                  <span style={{color: darkBlack}}>Brendan Lim</span> --
-//                  {this.props.secondaryText}
-//                </p>
+// <p>
+// <span style={{color: darkBlack}}>Brendan Lim</span> --
+// {this.props.secondaryText}
+// </p>
 
 
 class Notification extends React.PureComponent {

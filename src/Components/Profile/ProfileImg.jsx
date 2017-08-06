@@ -21,14 +21,14 @@ const blurFilters = {
 const profileImgContainerStyle = {
     textAlign:'center',
     backgroundColor:'#808080',
-	position: 'relative',
+    position: 'relative',
 }
 
 
 class ProfileImg extends React.PureComponent {
-	state = {
-		profileImgHeight: window.innerHeight - _OFFSET,
-	}
+    state = {
+        profileImgHeight: window.innerHeight - _OFFSET,
+    }
     componentDidMount() {
         // resize profile image
         window.onresize = function (e) {
@@ -37,53 +37,53 @@ class ProfileImg extends React.PureComponent {
         }.bind(this)
     }
     componentWillUnmount() {
-	    window.onresize = null
-	}
-	render() {
-		const {username, avatar} = this.props
-	    //--
-		let profileImgStyle = {
-			position: 'relative',
-	        width:'100%',
-	        height: `${this.state.profileImgHeight}px`,
-	        textAlign:'center',
-	        backgroundColor:'#808080',
-	        overflow: 'hidden',
-	        backgroundImage: `url(${this.props.src})`,
-	        backgroundPosition: 'center center',
-	        backgroundSize: 'cover',
-	    }
-	    if (this.props.blurredImg) {
-			profileImgStyle = { ...profileImgStyle, ...blurFilters }
-	    }
-	    //--
-		const scrollButton = {
-			position: 'fixed',
-			left: '50%',
-			bottom: '50px',
-			opacity: 0.5,
-			zIndex: 999,
-			display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
-		}
-	    return (
-	    	<div onClick={this.props.toggleProfileDetails}>
-		    	<div style={profileImgContainerStyle}>
-					<ProfileDetails
-						username={username}
-						avatar={avatar}
-						visible={this.props.blurredImg}
-						toggleProfileDetails={this.props.toggleProfileDetails}
-					/>
-			        <div style={profileImgStyle}></div>
-		    	</div>
-	    	    <Scrollbutton
-	    	    	style={scrollButton}
-	    	    	secondary={true}
-	    	    	icon={<DownIcon />}
-	    	    />
-	        </div>
-	    )
-	}
+        window.onresize = null
+    }
+    render() {
+        const {username, avatar} = this.props
+        // --
+        let profileImgStyle = {
+            position: 'relative',
+            width:'100%',
+            height: `${this.state.profileImgHeight}px`,
+            textAlign:'center',
+            backgroundColor:'#808080',
+            overflow: 'hidden',
+            backgroundImage: `url(${this.props.src})`,
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover',
+        }
+        if (this.props.blurredImg) {
+            profileImgStyle = { ...profileImgStyle, ...blurFilters }
+        }
+        // --
+        const scrollButton = {
+            position: 'fixed',
+            left: '50%',
+            bottom: '50px',
+            opacity: 0.5,
+            zIndex: 999,
+            display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
+        }
+        return (
+            <div onClick={this.props.toggleProfileDetails}>
+                <div style={profileImgContainerStyle}>
+                    <ProfileDetails
+                        username={username}
+                        avatar={avatar}
+                        visible={this.props.blurredImg}
+                        toggleProfileDetails={this.props.toggleProfileDetails}
+                    />
+                    <div style={profileImgStyle}></div>
+                </div>
+                <Scrollbutton
+                    style={scrollButton}
+                    secondary={true}
+                    icon={<DownIcon />}
+                />
+            </div>
+        )
+    }
 }
 
 export default ProfileImg

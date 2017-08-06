@@ -5,7 +5,7 @@ import React from 'react'
 import {Tabs, Tab} from 'material-ui/Tabs'
 import {pinkA200} from 'material-ui/styles/colors'
 import FontIcon from 'material-ui/FontIcon'
-//import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin'
+// import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin'
 import PhotoPin from 'material-ui/svg-icons/image/photo'
 import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsPin from 'material-ui/svg-icons/communication/contacts'
@@ -68,7 +68,7 @@ const StatText = (props) => (
 
 
 const ProfileStats = () => (
-	<div style={styles.statBarStyle}>
+    <div style={styles.statBarStyle}>
         <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}

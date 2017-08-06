@@ -22,7 +22,7 @@ import rootReducer from './root-reducers'
 // }
 
 const reducers = {
-	rootReducer,
+    rootReducer,
 }
 
 // see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux

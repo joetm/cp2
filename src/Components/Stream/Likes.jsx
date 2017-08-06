@@ -4,11 +4,11 @@ import React from 'react'
 
 
 export default class Likes extends React.PureComponent {
-	render () {
-		  return (
+    render () {
+          return (
           <div>
               Likes
           </div>
-		  );
-	}
+          );
+    }
 }

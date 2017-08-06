@@ -14,7 +14,7 @@ const styles = {
 
 
 const ProfileDivider = () => (
-	<div style={styles.dividerBarStyle}>
+    <div style={styles.dividerBarStyle}>
         <FollowButton label={"Follow"} />
     </div>
 )

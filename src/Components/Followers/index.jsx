@@ -19,12 +19,6 @@ function randomNum() {
 
 
 class Followers extends React.PureComponent {
-    constructor(props) {
-      super(props)
-
-
-
-    }
     render () {
           return (
               <List>

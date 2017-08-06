@@ -18,8 +18,8 @@ const blockMaxWidth = '80%' // 250
 
 const styles = {
   settingsBlock: {
-    //display: 'flex',
-    //flexWrap: 'wrap',
+    // display: 'flex',
+    // flexWrap: 'wrap',
     maxWidth: blockMaxWidth,
     margin: 'auto auto',
   },
@@ -137,8 +137,8 @@ const GeneralSettings = (props) => (
 
 
 class Settings extends React.PureComponent {
-	render () {
-		  return (
+    render () {
+          return (
           <div style={{textAlign: 'center'}}>
             <h1>Settings</h1>
             <div style={styles.settingsBlock}>
@@ -174,8 +174,8 @@ class Settings extends React.PureComponent {
             </div>
             <Spacer />
           </div>
-		  )
-	}
+          )
+    }
 }
 
 export default Settings

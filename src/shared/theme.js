@@ -5,8 +5,11 @@ import {
   red500,
   red200,
   red50,
+  white,
+  grey400,
+  darkBlack,
+  lightBlack
 } from 'material-ui/styles/colors';
-import {white, grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 
 export const colors = {
   palette: {

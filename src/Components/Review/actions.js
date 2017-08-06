@@ -9,7 +9,7 @@ export const REMOVE = 'REMOVE'
 
 export function remove(id) {
     return {
-    	type: REMOVE,
-    	id,
+        type: REMOVE,
+        id,
     }
 }

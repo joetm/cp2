@@ -6,11 +6,11 @@ import React from 'react'
 // http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
-//--
+// --
 // deepstream mixins
-//import DeepstreamMixin from 'deepstream.io-tools-react'
-//import reactMixin from 'react-mixin'
-//--
+// import DeepstreamMixin from 'deepstream.io-tools-react'
+// import reactMixin from 'react-mixin'
+// --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import fetch from 'unfetch'
 import {Route, Switch, browserHistory} from 'react-router-dom'
@@ -19,13 +19,13 @@ import {Provider} from 'react-redux'
 import {ConnectedRouter, push} from 'react-router-redux'
 
 
-//--
+// --
 import reducers from './root-reducers'
 import store from './root-store'
-//--
+// --
 import NavBar from './NavBar/'
 import Home from './Home/'
-//import Forum from './Forum/'
+// import Forum from './Forum/'
 import Notifications from './Stream/Notifications'
 import Updates from './Stream/'
 import Profile from './Profile/'
@@ -33,13 +33,13 @@ import Review from './Review/'
 import Settings from './Settings/'
 import Error from './Error/'
 import Scrollbutton from './Shared/Scrollbutton'
-//--
+// --
 import {theme, colors} from '../shared/theme'
 
 
 //                <Provider store={store}>
-//<ConnectedRouter history={browserHistory}>
-//</ConnectedRouter>
+// <ConnectedRouter history={browserHistory}>
+// </ConnectedRouter>
 //                </Provider>
 
 
@@ -97,6 +97,6 @@ class RoutedApp extends React.Component {
     }
 }
 
-//reactMixin(RoutedApp, DeepstreamMixin)
+// reactMixin(RoutedApp, DeepstreamMixin)
 
 export default RoutedApp

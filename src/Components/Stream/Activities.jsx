@@ -9,7 +9,7 @@ import {grey400} from 'material-ui/styles/colors'
 import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../shared/helpers'
 import Activity from './Activity'
 import Spacer from '../Shared/Spacer'
-//--
+// --
 import { activityList } from './store'
 
 

@@ -7,9 +7,9 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import './style.scss'
-//--
+// --
 import reviewStore from './store'
-//--
+// --
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../shared/helpers'
 import ReviewCard from './ReviewCard'
 import Spacer from '../Shared/Spacer'
@@ -31,11 +31,11 @@ class Review extends React.PureComponent {
         }
         this.toggleHelp = this.toggleHelp.bind(this)
     }
-    //--
+    // --
     toggleHelp() {
         this.setState({helpIsOpen: !this.state.helpIsOpen})
     }
-    //--
+    // --
     approve() {
         console.log('approve', this.props.id)
         this.hide()
@@ -44,7 +44,7 @@ class Review extends React.PureComponent {
         console.log('reject', this.props.id)
         this.hide()
     }
-    //--
+    // --
     render () {
         const activityList = reviewStore.getState().updatesList
         return (

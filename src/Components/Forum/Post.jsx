@@ -6,7 +6,7 @@ import {ListItem} from 'material-ui/List'
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 
 function openThread() {
-  console.log(this)
+    console.log(this)
 }
 
 const Post = props => {

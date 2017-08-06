@@ -11,18 +11,18 @@ const initialState = {
 
 
 function reviewApp(state = initialState, action) {
-	switch (action.type) {
-		// case SET_VISIBILITY_FILTER:
-		//     return Object.assign({}, state, {
-		//         visibilityFilter: action.filter
+    switch (action.type) {
+        // case SET_VISIBILITY_FILTER:
+        //     return Object.assign({}, state, {
+        //         visibilityFilter: action.filter
         //       })
-	    case REMOVE:
-			return {
-			   updatesList: state.updatesList.filter((item, index) => item.id !== action.id)
-			}
-		default:
+        case REMOVE:
+            return {
+               updatesList: state.updatesList.filter((item, index) => item.id !== action.id)
+            }
+        default:
             return state
-	}
+    }
 }
 
 export default reviewApp

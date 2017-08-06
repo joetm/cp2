@@ -15,7 +15,7 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../shared/helpers'
 import Update from './Update'
 import Spacer from '../Shared/Spacer'
-//--
+// --
 import { updatesList } from './store'
 
 

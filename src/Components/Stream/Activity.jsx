@@ -6,9 +6,9 @@ import {CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-
 import {colors} from '../../shared/theme'
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
-//import LikeAction from 'material-ui/svg-icons/action/thumb-up'
-//import FavoriteAction from 'material-ui/svg-icons/action/favorite'
-//import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
+// import LikeAction from 'material-ui/svg-icons/action/thumb-up'
+// import FavoriteAction from 'material-ui/svg-icons/action/favorite'
+// import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
 // Material Component: Layout (Grid)
 // import '@material/layout-grid/dist/mdc.layout-grid.css'
 
@@ -24,8 +24,8 @@ const styles = {
     },
     activitytext: {
       display: 'inline-block',
-      //flex: 1,
-      //flexBasis: '0.000000001px',
+      // flex: 1,
+      // flexBasis: '0.000000001px',
       margin: 0,
       padding: 0,
       border: 0,
@@ -66,7 +66,7 @@ const styles = {
 
 
 
-//              <Avatar src={'/img/avatar/face-1.jpg'} mini={true} />
+// <Avatar src={'/img/avatar/face-1.jpg'} mini={true} />
 const Activity = (props) => {
   const {id, fromUsername, primaryText, secondaryText, datetime,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone} = props
