@@ -11,6 +11,8 @@ import { navigateTo } from '../../shared/helpers'
 
 
 const _CLOSEDELAY = 1000
+const _IMAGE_HEIGHT = 450
+const _LAZYLOAD_OFFSET = 250
 
 
 const styles = {
@@ -20,10 +22,10 @@ const styles = {
     },
     cardImage: {
         minWidth: '100%',
-        maxWidth: '100%',
-        height: 'auto',
-        marginRight: 'auto',
-        marginLeft: 'auto',
+        // maxWidth: '100%',
+        // height: 'auto',
+        'object-fit': 'cover',
+        margin: 'auto auto',
     },
 }
 
@@ -56,9 +58,11 @@ class ReviewCard extends React.PureComponent {
               style={styles.cardMedia}
               onTouchTap={this.props.handleImageClick}
           >
-              <LazyLoad height={350} offsetVertical={250}>
+
+              <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
                   <img src="/img/dummyimg.jpg" alt="" style={styles.cardImage} />
               </LazyLoad>
+
           </CardMedia>
           <CardHeader
               title={primaryText}
