@@ -58,7 +58,7 @@ class RoutedApp extends React.Component {
         // show scroll button (overlay)
         window.onscroll = (e) => {
             // only update the scroll pos in Xpx intervals
-            let scrollTop = this.getScrollPosition()
+            const scrollTop = this.getScrollPosition()
             if (scrollTop % 5 === 0) {
               this.setState({scrollPosition: scrollTop})
             }

@@ -12,7 +12,7 @@ const RouterMenuItem = withRouter(props => {
             primaryText={primaryText}
             leftIcon={icon}
             onClick={() => {
-            	props.history.push(props.url)
+                props.history.push(props.url)
             }}
         />
     )

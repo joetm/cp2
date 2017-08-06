@@ -9,11 +9,19 @@ import AlbumImg from './AlbumImg'
 import AjaxLoader from '../Shared/AjaxLoader'
 
 
+/**
+ * [DEV] Return a random integer to simulate different image heights
+ * @returns {number} Random integer
+ */
 function randomImgHeight() {
-  return Math.floor(270 * Math.random()) + 30;
+    return Math.floor(270 * Math.random()) + 30;
 }
 
 
+/**
+ * Album class
+ * @class
+ */
 class Album extends PureComponent {
 
     constructor(props) {

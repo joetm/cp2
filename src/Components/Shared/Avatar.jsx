@@ -34,7 +34,10 @@ const styles = {
 }
 
 
-
+/**
+ * Avatar class
+ * @class
+ */
 class AvatarBubble extends React.PureComponent {
     toggleActive() {
         this.props.toggleState(this.props.id)
@@ -51,7 +54,7 @@ class AvatarBubble extends React.PureComponent {
           avatarStyle = styles.avatarStyleMaxi
       }
       // visibility
-      avatarStyle.display = this.props.visible ? 'inline-block' : 'none'
+      avatarStyle.visibility = this.props.visible ? 'visible' : 'hidden'
       // status
       if (active) {
         avatarStyle.borderColor = 'red'
@@ -62,6 +65,7 @@ class AvatarBubble extends React.PureComponent {
           <Avatar
               style={avatarStyle}
               src={src}
+              onTouchTap={this.props.onTouchTap}
           />
       )
     }

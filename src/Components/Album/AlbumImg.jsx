@@ -18,12 +18,16 @@ const styles = {
 }
 
 
+/**
+ * AlbumImg class
+ * @class
+ */
 const AlbumImg = (props) => {
   const albumImgStyle = {
     width: '150px',
     height: '150px',
     border: 0,
-    height: randomImgHeight() + 'px',
+    height: `${randomImgHeight()}px`,
   };
   // albumImgContainerStyle.height = imgHeight + 5 + 'px';
   return (

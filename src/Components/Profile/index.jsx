@@ -37,10 +37,19 @@ const styles = {
                 <Route path={`${this.props.match.url}/:userid/likes`} component={Likes}/>
 */
 
+
+/**
+ * Profile class
+ * @class
+ */
 class Profile extends React.PureComponent {
-    state = {
-        blurredImg: false,
-        loading: true,
+    constructor(props) {
+        super(props)
+        this.state = {
+            blurredImg: false,
+            loading: true,
+        }
+        this.toggleProfileDetails = this.toggleProfileDetails.bind(this)
     }
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -56,7 +65,7 @@ class Profile extends React.PureComponent {
                     src={profileimg}
                     blurredImg={this.state.blurredImg}
                     pageIsScrolled={this.props.scrollPosition > 0}
-                    toggleProfileDetails={this.toggleProfileDetails.bind(this)}
+                    toggleProfileDetails={this.toggleProfileDetails}
                 />
 
                 <ProfileDivider />
@@ -65,6 +74,7 @@ class Profile extends React.PureComponent {
                     <Avatar
                         visible={!this.state.blurredImg}
                         src={avatar}
+                        onTouchTap={this.toggleProfileDetails}
                     />
                     <ProfileUsername name={username} />
                 </div>

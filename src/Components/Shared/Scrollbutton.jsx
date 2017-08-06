@@ -17,15 +17,15 @@ const scrollButtonDefaultStyle = {
 class Scrollbutton extends React.PureComponent {
     // see http://stackoverflow.com/a/24559613/426266
     scrollToTop(scrollDuration : number) {
-        let scrollStep = -window.scrollY / (scrollDuration / 15),
+        const scrollStep = -window.scrollY / (scrollDuration / 15),
             scrollInterval = setInterval(function(){
-            if ( window.scrollY !== 0 ) {
-                window.scrollBy( 0, scrollStep );
-            }
-            else {
-                clearInterval(scrollInterval);
-            }
-        }, 15);
+                if ( window.scrollY !== 0 ) {
+                    window.scrollBy( 0, scrollStep );
+                }
+                else {
+                    clearInterval(scrollInterval);
+                }
+            }, 15);
     }
     onBtnClick() {
         this.scrollToTop(400)

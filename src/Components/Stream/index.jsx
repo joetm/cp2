@@ -15,9 +15,9 @@ import Notifications from './Notifications'
 class Feed extends React.PureComponent {
     ROUTES = {
         all: this.props.match.url,
-        notifications: this.props.match.url + '/notifications',
-        updates: this.props.match.url + '/updates',
-        likes: this.props.match.url + '/likes',
+        notifications: `${this.props.match.url}/notifications`,
+        updates: `${this.props.match.url}/updates`,
+        likes: `${this.props.match.url}/likes`,
     }
     render () {
           return (

@@ -166,10 +166,10 @@ class Settings extends React.PureComponent {
               </List>
               <Spacer />
               <Switch>
-                <Route path={this.props.match.url + '/general'} component={GeneralSettings}/>
-                <Route path={this.props.match.url + '/image'} component={DropzoneProfileImg}/>
-                <Route path={this.props.match.url + '/avatar'} component={DropzoneAvatar}/>
-                <Route path={this.props.match.url + '/privacy'} component={PrivacySettings}/>
+                <Route path={`${this.props.match.url}/general`} component={GeneralSettings}/>
+                <Route path={`${this.props.match.url}/image`}   component={DropzoneProfileImg}/>
+                <Route path={`${this.props.match.url}/avatar`}  component={DropzoneAvatar}/>
+                <Route path={`${this.props.match.url}/privacy`} component={PrivacySettings}/>
               </Switch>
             </div>
             <Spacer />

@@ -16,7 +16,7 @@ import { activityList } from './store'
 class Activities extends React.PureComponent {
     categorize(updatesList) {
         // console.log(updatesList)
-        let annotatedList = updatesList.map(obj => {
+        const annotatedList = updatesList.map(obj => {
             return classifyByDateAgo(obj)
         })
         // console.log(annotatedList)
@@ -32,7 +32,7 @@ class Activities extends React.PureComponent {
         return categorizedList
     }
     render () {
-        let categorizedActivities = this.categorize(activityList)
+        const categorizedActivities = this.categorize(activityList)
         return (
             <div>
                 <h2>Updates</h2>

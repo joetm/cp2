@@ -23,11 +23,11 @@ const iconButtonElement = (
 )
 
 const rightIconMenu = (
-  <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Reply</MenuItem>
-    <MenuItem>Forward</MenuItem>
-    <MenuItem>Delete</MenuItem>
-  </IconMenu>
+    <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem>Reply</MenuItem>
+        <MenuItem>Forward</MenuItem>
+        <MenuItem>Delete</MenuItem>
+    </IconMenu>
 )
 
 
@@ -39,7 +39,7 @@ const rightIconMenu = (
 
 class Notification extends React.PureComponent {
     render () {
-        let ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
+        const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
         return (
             <ListItem
               leftAvatar={this.props.avatar}
