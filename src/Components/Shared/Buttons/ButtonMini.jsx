@@ -15,6 +15,7 @@ class ButtonMini extends React.PureComponent {
             active: false,
         }
         this.id = props.id
+        this.toggleButtonState = this.toggleButtonState.bind(this)
     }
     toggleButtonState() {
         this.setState({active: !this.state.active})

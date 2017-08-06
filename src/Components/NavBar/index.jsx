@@ -157,14 +157,20 @@ class NavBar extends React.PureComponent {
                     <IconMenu
                         style={{cursor:'pointer'}}
                         iconButtonElement={
-                            <IconButton>
-                                <MoreVertIcon />
-                            </IconButton>
+                            <IconButton><MoreVertIcon /></IconButton>
                         }
                     >
-                        <RouterMenuItem url={'/settings'} primaryText="Settings" icon={<SettingsIcon />} />
+                        <RouterMenuItem
+                            url={'/settings'}
+                            primaryText="Settings"
+                            icon={<SettingsIcon />}
+                        />
                         <Divider />
-                        <RouterMenuItem url={'/logout'} primaryText="Log Out" icon={<LogOutIcon />} />
+                        <RouterMenuItem
+                            url={'/logout'}
+                            primaryText="Log Out"
+                            icon={<LogOutIcon />}
+                        />
                     </IconMenu>
                     <SignupButton />
                     <LoginButton />

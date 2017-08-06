@@ -14,12 +14,17 @@ class ButtonRaised extends React.PureComponent {
             active: false,
         }
         this.id = props.id
+        this.toggleButtonState = this.toggleButtonState.bind(this)
     }
     toggleButtonState() {
         this.setState({active: !this.state.active})
     }
+    // launchAction() {
+    //     console.log('button clicked', this)
+    //     // this.toggleButtonState()
+    //     this.props.action() // .bind(this)
+    // }
     render() {
-        // const {tooltip} = this.props
         return (
             <RaisedButton
               label={this.msg}
@@ -27,7 +32,7 @@ class ButtonRaised extends React.PureComponent {
               secondary={this.props.secondary}
               style={styles.buttonStyle}
               icon={this.Icon}
-              onTouchTap={this.launchAction}
+              onTouchTap={this.props.action}
             />
         )
     }

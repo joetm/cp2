@@ -22,6 +22,7 @@ export class LikeButtonMini extends ButtonMini {
     launchAction() {
         console.log('like clicked', this)
         this.toggleButtonState()
+        this.props.action()
     }
 }
 export class DisapproveButtonMini extends ButtonMini {
@@ -29,6 +30,7 @@ export class DisapproveButtonMini extends ButtonMini {
     launchAction() {
         console.log('disapprove clicked', this)
         this.toggleButtonState()
+        this.props.action()
     }
 }
 export class FavoriteButtonMini extends ButtonMini {
@@ -36,6 +38,7 @@ export class FavoriteButtonMini extends ButtonMini {
     launchAction() {
         console.log('favorite clicked', this)
         this.toggleButtonState()
+        this.props.action()
     }
 }
 export class CommentButtonMini extends ButtonMini {
@@ -43,6 +46,7 @@ export class CommentButtonMini extends ButtonMini {
     launchAction() {
         console.log('comment clicked', this)
         this.toggleButtonState()
+        this.props.action()
     }
 }
 
@@ -57,6 +61,7 @@ export class LikeButton extends ButtonFlat {
     launchAction() {
         console.log('like clicked', this)
         this.toggleButtonState()
+        this.props.action()
     }
 }
 export class DisapproveButton extends ButtonFlat {
@@ -66,6 +71,7 @@ export class DisapproveButton extends ButtonFlat {
     launchAction() {
         console.log('disapprove clicked', this)
         this.toggleButtonState()
+        this.props.action()
     }
 }
 
@@ -77,19 +83,9 @@ export class ApproveButton extends ButtonRaised {
     msg = "Approve"
     tooltip = "Approve"
     Icon = <LoginIcon />
-    launchAction() {
-        console.log('approve button clicked', this)
-        this.toggleButtonState()
-        // this.props.approve.bind(this)
-    }
 }
 export class RejectButton extends ButtonRaised {
     msg = "Reject"
     tooltip = "Reject"
     Icon = <LoginIcon />
-    launchAction() {
-        console.log('approve button clicked', this)
-        this.toggleButtonState()
-        // this.props.reject.bind(this)
-    }
 }

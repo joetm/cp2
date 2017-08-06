@@ -65,8 +65,6 @@ const styles = {
 }
 
 
-
-// <Avatar src={'/img/avatar/face-1.jpg'} mini={true} />
 const Activity = (props) => {
   const {id, fromUsername, primaryText, secondaryText, datetime,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone} = props
@@ -76,15 +74,16 @@ const Activity = (props) => {
       >
 
           <div style={styles.activity}>
-
-            <Thumbnail src="/img/dummyimg.jpg" style={styles.thumbnail} />
-
-            <div style={styles.activitytext}>
-                <span style={styles.activitytitle}>{primaryText}</span>
-                <span style={styles.activitysubtitle}>{fromUsername}</span>
-            </div>
-
+              <Thumbnail src="/img/dummyimg.jpg" style={styles.thumbnail} />
+              <div style={styles.activitytext}>
+                  <span style={styles.activitytitle}>{primaryText}</span>
+                  <span style={styles.activitysubtitle}>
+                      <Avatar src={'/img/avatar/face-1.jpg'} micro={true} />
+                      {fromUsername}
+                  </span>
+              </div>
           </div>
+
           <Divider />
 
       </div>

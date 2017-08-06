@@ -23,7 +23,7 @@ class Feed extends React.PureComponent {
           return (
             <div>
               <div style={{textAlign:'center'}}>
-                <Link to={this.ROUTES.all}>Activities</Link>&nbsp;-&nbsp;
+                <Link to={this.ROUTES.all}>All</Link>&nbsp;-&nbsp;
                 <Link to={this.ROUTES.notifications}>Notifications</Link>&nbsp;-&nbsp;
                 <Link to={this.ROUTES.updates}>Updates</Link>&nbsp;-&nbsp;
                 <Link to={this.ROUTES.likes}>Likes</Link>

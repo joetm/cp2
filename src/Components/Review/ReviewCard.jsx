@@ -27,9 +27,7 @@ class ReviewCard extends React.PureComponent {
   }
   hide() {
     // TODO: add an animation to the card
-
-
-
+    console.log('hiding card')
     setTimeout(() => {
       this.setState({visible: false})
     }, _CLOSEDELAY)
@@ -47,7 +45,8 @@ class ReviewCard extends React.PureComponent {
             key={`upd_${id}`}
         >
           <CardMedia
-            onClick={navigateTo.bind(this)}
+            style={{cursor: 'pointer'}}
+            onTouchTap={this.props.handleImageClick}
           >
             <img src="/img/dummyimg.jpg" alt="" />
           </CardMedia>
@@ -59,11 +58,22 @@ class ReviewCard extends React.PureComponent {
           />
           <CardActions>
 
-            <ApproveButton primary={true} />
-            <RejectButton secondary={true} />
+            <ApproveButton
+                primary={true}
+                action={this.props.approve}
+            />
+            <RejectButton
+                secondary={true}
+                action={this.props.reject}
+            />
 
-            <LikeButton number={123} />
-            <DisapproveButton secondary={true} number={8} />
+            <LikeButton
+                number={123}
+            />
+            <DisapproveButton
+                secondary={true}
+                number={8}
+            />
 
           </CardActions>
         </Card>

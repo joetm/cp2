@@ -5,17 +5,19 @@ import {withRouter} from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem'
 
 
-// {...props} gives a warning about unknown props on MenuItem
 const RouterMenuItem = withRouter(props => {
     const {primaryText, icon} = props
     return (
         <MenuItem
             primaryText={primaryText}
             leftIcon={icon}
-            onClick={() => { props.history.push(props.url) }}
+            onClick={() => {
+            	props.history.push(props.url)
+            }}
         />
     )
 })
+
 // fix to close the open menu on click
 // see https://github.com/callemall/material-ui/issues/6105
 RouterMenuItem.muiName = 'MenuItem';

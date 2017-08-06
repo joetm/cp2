@@ -10,9 +10,10 @@ import './style.scss'
 // --
 import reviewStore from './store'
 // --
+import Alert from '../Shared/Alert'
+import Spacer from '../Shared/Spacer'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../shared/helpers'
 import ReviewCard from './ReviewCard'
-import Spacer from '../Shared/Spacer'
 import Help from './Help'
 
 
@@ -26,23 +27,45 @@ const styles = {
 class Review extends React.PureComponent {
     constructor(props) {
         super(props)
+        // state
         this.state = {
-          helpIsOpen: false
+          helpIsOpen: false,
+          alertIsOpen: false,
+          // popOverImageIsOpen: false,
         }
+        // bindings
         this.toggleHelp = this.toggleHelp.bind(this)
+        this.reject = this.reject.bind(this)
+        this.approve = this.approve.bind(this)
     }
     // --
     toggleHelp() {
         this.setState({helpIsOpen: !this.state.helpIsOpen})
     }
     // --
+    openAlert() {
+        this.setState({alertIsOpen: true})
+    }
+    closeAlert() {
+        this.setState({alertIsOpen: false})
+    }
+    // --
     approve() {
-        console.log('approve', this.props.id)
-        this.hide()
+        console.log('approve update', this)
+        // TODO
+        // this.reviewcard.hide()
+        this.openAlert()
     }
     reject() {
-        console.log('reject', this.props.id)
-        this.hide()
+        console.log('reject update', this)
+        // TODO
+        // this.reviewcard.hide()
+        this.openAlert()
+    }
+    // --
+    handleImageClick() {
+        console.log('open popover', this)
+        // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
     }
     // --
     render () {
@@ -85,6 +108,7 @@ class Review extends React.PureComponent {
                                                 gridColumnsPhone={1}
                                                 approve={this.approve}
                                                 reject={this.reject}
+                                                handleImageClick={this.handleImageClick}
                                             />
                                         </div>
                                     )
@@ -98,6 +122,12 @@ class Review extends React.PureComponent {
                     </div>
 
                 </div>
+
+                <Alert
+                    open={this.state.alertIsOpen}
+                    close={this.closeAlert}
+                />
+
                 <Spacer />
             </div>
         )

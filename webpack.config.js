@@ -4,6 +4,7 @@ const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // context: path.join(__dirname, "src"),
@@ -20,9 +21,9 @@ module.exports = {
     // devserver: "webpack-dev-server/client?http://localhost:8081"
   },
   output: {
-    path: path.resolve('./dist/js'),
+    path: path.resolve('./dist'),
     publicPath: '/',
-    filename: "[name].js"
+    filename: "js/[name].js"
   },
   devtool: debug ? "inline-sourcemap" : false,
   module: {
@@ -87,14 +88,15 @@ module.exports = {
   [
     new ExtractTextPlugin({
       // allChunks: true
-      filename: '../css/style.css',
+      filename: './css/style.css',
     }),
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}
     //]),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-    })
+    }),
+    new HtmlWebpackPlugin()
   ]
   :
   // -----------
@@ -104,20 +106,51 @@ module.exports = {
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
     }),
-    // new FaviconsWebpackPlugin('logo.png'),
+    new FaviconsWebpackPlugin({
+        logo: './logo.png',
+        prefix: 'icons-[hash]/',
+        emitStats: false,
+        statsFilename: 'iconstats-[hash].json',
+        persistentCache: true,
+        inject: true,
+        background: '#fff',
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          opengraph: false,
+          twitter: false,
+          yandex: false,
+          windows: true
+        }
+    }),
     new ExtractTextPlugin({
       // allChunks: true
-      filename: '../css/style.css',
+      filename: './css/style.css',
     }),
     //new CopyWebpackPlugin([
     //  {from: './data', to: './data'}
     //]),
     new webpack.optimize.OccurrenceOrderPlugin(),
-  	new webpack.optimize.UglifyJsPlugin({
-        // mangle: false,
+    new webpack.optimize.UglifyJsPlugin({
+        mangle: false,
         compress: {
             warnings: false
         }
-     })
+    }),
+    new HtmlWebpackPlugin({
+        title: "CP v2",
+        filename: 'index.html',
+        template: '!!handlebars-loader!src/index.hbs',
+        minify: {
+            collapseWhitespace: true
+        },
+        hash: true,
+        cache: true,
+        showErrors: true
+    })
   ]
 };
