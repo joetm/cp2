@@ -31,7 +31,24 @@ import LoginButton from './LoginButton'
 import SignupButton from './SignupButton'
 
 
+const _NAVITEM_ID = {
+    HOME: 1,
+    FORUM: 2,
+    STREAM: 3,
+    REVIEW: 4,
+    PROFILE: 98,
+    SETTINGS: 99,
+}
+
 const styles = {
+    navbar: {
+        // position: navbarIsAffixed ? 'fixed' : 'relative',
+        // top: '0px',
+        // width: '100%',
+        zIndex: 9999999,
+        backgroundColor: '#fff',
+        color: darkBlack,
+    },
     firstItem: {
         paddingLeft: '20px',
     },
@@ -52,19 +69,19 @@ const NavbarSeparator = () => (
 
 
 /*
-                    <Link to="/updates/notifications">
-                        <CustomBadge
-                            badgeContent={10}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="Notifications"
-                            icon={<EmailIcon />}
-                            toggleState={this.toggleState}
-                            id={2}
-                            active={this.state.activeBadge === 2}
-                        />
-                    </Link>
+    <Link to="/updates/notifications">
+        <CustomBadge
+            badgeContent={10}
+            secondary={true}
+            badgeStyle={styles.badgeStyle}
+            style={styles.badgeRootStyle}
+            tooltip="Notifications"
+            icon={<EmailIcon />}
+            toggleState={this.toggleState}
+            id={2}
+            active={this.state.activeBadge === 2}
+        />
+    </Link>
 */
 
 
@@ -82,34 +99,26 @@ class NavBar extends React.PureComponent {
     }
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
-        const navbarStyle = {
-                    // position: navbarIsAffixed ? 'fixed' : 'relative',
-                    // top: '0px',
-                    // width: '100%',
-                    zIndex: 9999999,
-                    backgroundColor: '#fff',
-                    color: darkBlack,
-                }
+        styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}
         return (
             <Toolbar
-                style={navbarStyle}
+                style={styles.navbar}
             >
                 <ToolbarGroup firstChild={true}>
                     <Link to="/">
                         <IconButton
-                            id={1}
+                            id={_NAVITEM_ID.HOME}
                             tooltip="Home"
                             style={styles.firstItem}
                             onTouchTap={this.toggleState}
-                            iconStyle={{color: this.state.activeBadge === 1 ? colors.palette.primary1Color : darkBlack}}
+                            iconStyle={{color: this.state.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                         >
-                            <HomePin
-                            />
+                            <HomePin />
                         </IconButton>
                     </Link>
                     <Link to="/forum">
                         <CustomBadge
-                            id={2}
+                            id={_NAVITEM_ID.FORUM}
                             badgeContent={123}
                             secondary={true}
                             badgeStyle={styles.badgeStyle}
@@ -117,12 +126,12 @@ class NavBar extends React.PureComponent {
                             tooltip="New Forum Activity"
                             icon={<ForumPin />}
                             toggleState={this.toggleState}
-                            active={this.state.activeBadge === 2}
+                            active={this.state.activeBadge === _NAVITEM_ID.FORUM}
                         />
                     </Link>
                     <Link to="/stream/1">
                         <CustomBadge
-                            id={3}
+                            id={_NAVITEM_ID.STREAM}
                             badgeContent={23}
                             secondary={true}
                             badgeStyle={styles.badgeStyle}
@@ -130,14 +139,15 @@ class NavBar extends React.PureComponent {
                             tooltip="New Activity"
                             icon={<UpdatesIcon />}
                             toggleState={this.toggleState}
-                            active={this.state.activeBadge === 3}
+                            active={this.state.activeBadge === _NAVITEM_ID.STREAM}
                         />
                     </Link>
                     <Link to="/review">
-                            <ReviewPin
-                                id={4}
-                                style={styles.normalIcon}
-                            />
+                        <ReviewPin
+                            id={_NAVITEM_ID.REVIEW}
+                            style={styles.normalIcon}
+                            onTouchTap={this.toggleState}
+                        />
                     </Link>
 
                 </ToolbarGroup>
@@ -145,17 +155,18 @@ class NavBar extends React.PureComponent {
                 <ToolbarGroup>
                     <Link to={`/profile/${userRecord.userid}`}>
                         <Avatar
-                            id={5}
+                            id={_NAVITEM_ID.PROFILE}
                             visible={true}
                             src={'/img/avatar/face.jpg'}
                             mini={true}
                             tooltip="Your Profile"
                             onTouchTap={this.toggleState}
-                            active={this.state.activeBadge === 5}
+                            active={this.state.activeBadge === _NAVITEM_ID.PROFILE}
                         />
                     </Link>
                     <IconMenu
-                        style={{cursor:'pointer'}}
+                        id={_NAVITEM_ID.SETTINGS}
+                        style={{cursor:'pointer', color: this.state.activeBadge === _NAVITEM_ID.SETTINGS ? colors.palette.primary1Color : darkBlack}}
                         iconButtonElement={
                             <IconButton><MoreVertIcon /></IconButton>
                         }

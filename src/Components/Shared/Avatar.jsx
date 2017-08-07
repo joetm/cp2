@@ -3,7 +3,7 @@
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
 
-const _SIZE_MICRO = 12
+const _SIZE_MICRO = 16
 const _SIZE_MINI  = 30
 const _SIZE_MAXI  = 200
 
@@ -12,8 +12,10 @@ const styles = {
   avatarStyleMicro: {
     height: `${_SIZE_MICRO}px`,
     width: `${_SIZE_MICRO}px`,
-    marginTop:'-5px',
-    marginLeft:'-5px',
+    marginTop:'0px',
+    marginLeft:'0px',
+    marginRight:`${_SIZE_MICRO/2}px`,
+    verticalAlign: 'middle',
     border: '1px solid #fff',
     zIndex:21448364,
   },
@@ -43,7 +45,7 @@ class AvatarBubble extends React.PureComponent {
         this.props.toggleState(this.props.id)
     }
     render() {
-      const {micro, mini, active, src} = this.props
+      const {micro, mini, active, src, visible} = this.props
       // avatar size
       let avatarStyle = {}
       if (micro === true) {
@@ -54,7 +56,11 @@ class AvatarBubble extends React.PureComponent {
           avatarStyle = styles.avatarStyleMaxi
       }
       // visibility
-      avatarStyle.visibility = this.props.visible ? 'visible' : 'hidden'
+      if (visible) {
+          avatarStyle.visibility = visible ? 'visible' : 'hidden'
+      } else {
+          avatarStyle.visibility = 'visible'
+      }
       // status
       if (active) {
         avatarStyle.borderColor = 'red'
