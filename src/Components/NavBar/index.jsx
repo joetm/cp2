@@ -9,8 +9,7 @@ import Divider from 'material-ui/Divider';
 import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar'
 import {darkBlack} from 'material-ui/styles/colors'
 // --
-// import Popover from 'material-ui/Popover';
-// import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
+import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import ForumPin from 'material-ui/svg-icons/social/group'
 import HomePin from 'material-ui/svg-icons/action/account-balance'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
@@ -35,7 +34,8 @@ const _NAVITEM_ID = {
     HOME: 1,
     FORUM: 2,
     STREAM: 3,
-    REVIEW: 4,
+    NOTIFICATIONS: 4,
+    REVIEW: 5,
     PROFILE: 98,
     SETTINGS: 99,
 }
@@ -66,23 +66,6 @@ const styles = {
 const NavbarSeparator = () => (
     <div style={styles.separator}></div>
 )
-
-
-/*
-    <Link to="/updates/notifications">
-        <CustomBadge
-            badgeContent={10}
-            secondary={true}
-            badgeStyle={styles.badgeStyle}
-            style={styles.badgeRootStyle}
-            tooltip="Notifications"
-            icon={<EmailIcon />}
-            toggleState={this.toggleState}
-            id={2}
-            active={this.state.activeBadge === 2}
-        />
-    </Link>
-*/
 
 
 class NavBar extends React.PureComponent {
@@ -141,6 +124,19 @@ class NavBar extends React.PureComponent {
                             icon={<UpdatesIcon />}
                             toggleState={this.toggleState}
                             active={this.state.activeBadge === _NAVITEM_ID.STREAM}
+                        />
+                    </Link>
+                    <Link to="/notifications/1">
+                        <CustomBadge
+                            id={_NAVITEM_ID.NOTIFICATIONS}
+                            badgeContent={10}
+                            secondary={true}
+                            badgeStyle={styles.badgeStyle}
+                            style={styles.badgeRootStyle}
+                            tooltip="Notifications"
+                            icon={<EmailIcon />}
+                            toggleState={this.toggleState}
+                            active={this.state.activeBadge === _NAVITEM_ID.NOTIFICATIONS}
                         />
                     </Link>
                     <Link to="/review">

@@ -5,6 +5,8 @@ import { Provider, connect } from 'react-redux'
 
 import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
+import Sidebar from './Sidebar'
+
 
 // DEV
 const posts = [
@@ -109,6 +111,7 @@ class ForumHome extends React.Component {
                       </div>
                     }
                 </div>
+                <Sidebar />
                 <Spacer />
             </div>
         )

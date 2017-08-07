@@ -39,7 +39,7 @@ class Activities extends React.PureComponent {
                     {
                         categorizedActivities.map((group, daysAgo) => {
                             return (
-                                <div>
+                                <div key={`grp_${daysAgo}`}>
                                     <Subheader>{translateDayOffset(daysAgo)}</Subheader>
                                     <Divider />
                                     {

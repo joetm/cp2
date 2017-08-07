@@ -47,6 +47,14 @@ class Contact extends React.PureComponent {
                 </SelectField>
                 </div>
 
+                <div>
+                <TextField
+                  hintText=""
+                  multiLine={true}
+                  floatingLabelText="Message Text"
+                />
+                </div>
+
                 <div style={{marginTop:'1em'}}>
                 <RaisedButton label="Submit" secondary={true} />
                 </div>

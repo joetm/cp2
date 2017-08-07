@@ -8,10 +8,10 @@ import fetch from 'unfetch'
 export const FOLLOW_USER     = 'FOLLOW_USER'     ; // Symbol('FOLLOW_USER')
 export const REPLY_THREAD    = 'REPLY_THREAD'    ; // Symbol('REPLY_THREAD')
 export const COMMENT_PROFILE = 'COMMENT_PROFILE' ; // Symbol('COMMENT_PROFILE')
-export const TOGGLE_SITEMENU = 'TOGGLE_SITEMENU' ; // Symbol('TOGGLE_SITEMENU')
 export const LOAD_POST       = 'LOAD_POST'       ; // Symbol('LOAD_POST')
 export const EDIT_POST       = 'EDIT_POST'       ; // Symbol('EDIT_POST')
 export const REMOVE_POST     = 'REMOVE_POST'     ; // Symbol('REMOVE_POST')
+export const TOGGLE_SIDEBAR  = 'TOGGLE_SIDEBAR'  ; // Symbol('TOGGLE_SIDEBAR')
 
 /*
  * Redux action creators
@@ -33,7 +33,7 @@ function makeActionCreator(type, ...argNames) {
 export const followUser       = makeActionCreator(FOLLOW_USER,     'userid')
 export const replyThread      = makeActionCreator(REPLY_THREAD,    'threadid')
 export const commentProfile   = makeActionCreator(COMMENT_PROFILE, 'userid')
-export const toggleSiteMenu   = makeActionCreator(TOGGLE_SITEMENU, 'bool')
+export const toggleSidebar    = makeActionCreator(TOGGLE_SIDEBAR,  'bool')
 
 // other actions
 export const loadPost         = makeActionCreator(LOAD_POST,       'postid', 'response')

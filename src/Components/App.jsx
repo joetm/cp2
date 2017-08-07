@@ -24,8 +24,8 @@ import {ConnectedRouter, push} from 'react-router-redux'
 
 
 // --
-import reducers from './root-reducers'
-import store from './root-store'
+import reducers from './reducers'
+import store from './store'
 import {theme, colors} from '../common/theme'
 // --
 import Scrollbutton from './Shared/Scrollbutton'
