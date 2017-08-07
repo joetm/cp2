@@ -3,5 +3,7 @@
 node_modules
 ./env/dev
 ./env/prod
-src/docs/**
-dist/docs/**
+src/docs/policy-privacy.txt
+src/docs/policy-DMCA.txt
+dist/docs/policy-privacy.txt
+dist/docs/policy-DMCA.txt
