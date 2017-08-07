@@ -6,24 +6,49 @@ import Spacer from '../Shared/Spacer'
 import Footer from '../Footer/'
 
 
-// DEV
-const DMCApolicy = 'xxxxxxxxxxxxxxx'
+const policyDoc = '/docs/policy-DMCA.txt'
 
 
-const DMCA = () => (
-    <div style={{textAlign: 'center'}}>
+class DMCA extends React.PureComponent {
+    request = null
+    state = {
+        loading: true,
+        policyTxt: ''
+    }
+    componentDidMount() {
+        this.request = fetch(policyDoc)
+            .then((response) => {
+                return response.text()
+            }).then((txt) => {
+            this.setState({
+                policyTxt: txt,
+                loading: false,
+            })
+        })
+    }
+    componentWillUnmount() {
+        if (this.request) {
+            if (this.state.loading) {
+                this.request.abort()
+            }
+            this.request = null
+        }
+    }
+    render() {
+        return (
+            <div style={{textAlign: 'center'}}>
 
-        <h1>DMCA Policy</h1>
+                <h1>DMCA Policy</h1>
 
-        <div>
-            {DMCApolicy}
-        </div>
+                <div dangerouslySetInnerHTML={{__html: this.state.policyTxt}}></div>
 
-        <Spacer />
+                <Spacer />
 
-        <Footer />
+                <Footer />
 
-    </div>
-)
+            </div>
+        )
+    }
+}
 
 export default DMCA

@@ -13,19 +13,26 @@ const policyDoc = '/docs/policy-privacy.txt'
 class Privacy extends React.PureComponent {
     request = null
     state = {
-        policyTxt: ''
+        policyTxt: '',
+        loading: true,
     }
     componentDidMount() {
         this.request = fetch(policyDoc)
             .then((response) => {
                 return response.text()
             }).then((txt) => {
-            this.setState({policyTxt: txt})
+            this.setState({
+                policyTxt: txt,
+                loading: false,
+            })
         })
     }
     componentWillUnmount() {
         if (this.request) {
-            this.request.abort()
+            if (this.state.loading) {
+                this.request.abort()
+            }
+            this.request = null
         }
     }
     render() {
