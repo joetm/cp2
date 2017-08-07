@@ -90,9 +90,9 @@ module.exports = {
       // allChunks: true
       filename: './css/style.css',
     }),
-    //new CopyWebpackPlugin([
-    //  {from: './data', to: './data'}
-    //]),
+    new CopyWebpackPlugin([
+      {from: './src/docs', to: './docs'}
+    ]),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         //'process.env': {
@@ -142,9 +142,9 @@ module.exports = {
       // allChunks: true
       filename: './css/style.css',
     }),
-    //new CopyWebpackPlugin([
-    //  {from: './data', to: './data'}
-    //]),
+    new CopyWebpackPlugin([
+      {from: './src/docs', to: './docs'}
+    ]),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
         mangle: false,

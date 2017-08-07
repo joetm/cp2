@@ -42,6 +42,7 @@ import Error from './Error/'
 import Guidelines from './Legal/Guidelines'
 import Privacy from './Legal/Privacy'
 import DMCA from './Legal/DMCA'
+import Contact from './Contact/'
 
 
 //                <Provider store={store}>
@@ -96,6 +97,8 @@ class RoutedApp extends React.Component {
                         <Route path="/community-guidelines" component={Guidelines} />
                         <Route path="/privacy-policy" component={Privacy} />
                         <Route path="/dmca-policy" component={DMCA} />
+
+                        <Route path="/contact" component={Contact} />
 
                         <Route component={Error} code="404" />
 

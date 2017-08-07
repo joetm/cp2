@@ -5,6 +5,7 @@ import fetch from 'unfetch'
 
 import Spacer from '../Shared/Spacer'
 import Footer from '../Footer/'
+import './style.scss'
 
 
 const policyDoc = '/docs/policy-privacy.txt'

@@ -28,8 +28,8 @@ const Footer = (props) => (
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell
-                  mdc-layout-grid__cell--span-4
-                  mdc-layout-grid__cell--span-4-tablet
+                  mdc-layout-grid__cell--span-3
+                  mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
               >
                     <ul style={styles.unorderedList}>
@@ -39,8 +39,8 @@ const Footer = (props) => (
                     </ul>
               </div>
               <div class="mdc-layout-grid__cell
-                  mdc-layout-grid__cell--span-4
-                  mdc-layout-grid__cell--span-4-tablet
+                  mdc-layout-grid__cell--span-3
+                  mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
               >
                     <ul style={styles.unorderedList}>
@@ -50,13 +50,24 @@ const Footer = (props) => (
                     </ul>
               </div>
               <div class="mdc-layout-grid__cell
-                  mdc-layout-grid__cell--span-4
-                  mdc-layout-grid__cell--span-4-tablet
+                  mdc-layout-grid__cell--span-3
+                  mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
               >
                     <ul style={styles.unorderedList}>
                     <li style={styles.listItem}>
                         <Link to="/dmca-policy" style={{color: colors.grey}}>DMCA Policy</Link>
+                    </li>
+                    </ul>
+              </div>
+              <div class="mdc-layout-grid__cell
+                  mdc-layout-grid__cell--span-3
+                  mdc-layout-grid__cell--span-2-tablet
+                  mdc-layout-grid__cell--span-2-phone"
+              >
+                    <ul style={styles.unorderedList}>
+                    <li style={styles.listItem}>
+                        <Link to="/contact" style={{color: colors.grey}}>Contact</Link>
                     </li>
                     </ul>
               </div>
