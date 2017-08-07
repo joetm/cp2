@@ -53,7 +53,7 @@ import Contact from './Contact/'
 
 class RoutedApp extends React.Component {
     state = {
-        scrollPosition: this.getScrollPosition(),
+        isScrolled: false,
     }
     getScrollPosition() {
         return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
@@ -61,10 +61,10 @@ class RoutedApp extends React.Component {
     componentDidMount() {
         // show scroll button (overlay)
         window.onscroll = (e) => {
-            // only update the scroll pos in Xpx intervals
-            const scrollTop = this.getScrollPosition()
-            if (scrollTop % 5 === 0) {
-              this.setState({scrollPosition: scrollTop})
+            if (this.getScrollPosition() > 0) {
+              this.setState({isScrolled: true})
+            } else {
+              this.setState({isScrolled: false})
             }
         }
     }
@@ -89,7 +89,7 @@ class RoutedApp extends React.Component {
                         <Route path="/review" component={Review} />
 
                         <Route path='/profile/:userid' render={props => (
-                            <Profile scrollPosition={this.state.scrollPosition} />
+                            <Profile isScrolled={this.state.isScrolled} />
                         )} />
 
                         <Route path="/settings" component={Settings} />
@@ -105,7 +105,7 @@ class RoutedApp extends React.Component {
                     </Switch>
 
                     <Scrollbutton
-                        visible={this.state.scrollPosition > 80}
+                        visible={this.state.isScrolled}
                         secondary={true}
                     />
 

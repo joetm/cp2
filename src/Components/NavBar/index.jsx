@@ -104,6 +104,7 @@ class NavBar extends React.PureComponent {
             <Toolbar
                 style={styles.navbar}
             >
+
                 <ToolbarGroup firstChild={true}>
                     <Link to="/">
                         <IconButton
@@ -149,7 +150,6 @@ class NavBar extends React.PureComponent {
                             onTouchTap={this.toggleState}
                         />
                     </Link>
-
                 </ToolbarGroup>
 
                 <ToolbarGroup>

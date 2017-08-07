@@ -64,7 +64,7 @@ class Profile extends React.PureComponent {
                     avatar={avatar}
                     src={profileimg}
                     blurredImg={this.state.blurredImg}
-                    pageIsScrolled={this.props.scrollPosition > 0}
+                    pageIsScrolled={this.props.isScrolled}
                     toggleProfileDetails={this.toggleProfileDetails}
                 />
 
