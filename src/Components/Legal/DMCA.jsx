@@ -3,9 +3,11 @@
 import React from 'react'
 
 import Spacer from '../Shared/Spacer'
+import Footer from '../Footer/'
+
 
 // DEV
-const DMCApolicy = null
+const DMCApolicy = 'xxxxxxxxxxxxxxx'
 
 
 const DMCA = () => (
@@ -18,6 +20,8 @@ const DMCA = () => (
         </div>
 
         <Spacer />
+
+        <Footer />
 
     </div>
 )

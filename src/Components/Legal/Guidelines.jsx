@@ -3,6 +3,7 @@
 import React from 'react'
 
 import Spacer from '../Shared/Spacer'
+import Footer from '../Footer/'
 
 
 const Guidelines = () => (
@@ -15,6 +16,8 @@ const Guidelines = () => (
         </div>
 
         <Spacer />
+
+        <Footer />
 
     </div>
 )
