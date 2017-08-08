@@ -1,13 +1,13 @@
 /** @flow */
 
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Menu from 'material-ui/Menu';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
-import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar'
-import {darkBlack} from 'material-ui/styles/colors'
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
+import { darkBlack } from 'material-ui/styles/colors'
 // --
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import ForumPin from 'material-ui/svg-icons/social/group'
@@ -22,12 +22,13 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { navigateTo } from '../../common/helpers'
 import { colors } from '../../common/theme'
 // --
+import userRecord from '../Profile/userRecord'
+// --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
 import RouterMenuItem from './RouterMenuItem'
-import userRecord from '../Profile/userRecord'
-import LoginButton from './LoginButton'
-import SignupButton from './SignupButton'
+import LoginButton from '../Shared/Buttons/LoginButton'
+import SignupButton from '../Shared/Buttons/SignupButton'
 
 
 const _NAVITEM_ID = {
@@ -82,14 +83,14 @@ class NavBar extends React.PureComponent {
     }
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
-        styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}
+        // styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}
         return (
             <Toolbar
                 style={styles.navbar}
             >
 
                 <ToolbarGroup firstChild={true}>
-                    <Link to="/">
+                    <Link to="/" activeStyle={{color: colors.palette.primary1Color}}>
                         <IconButton
                             id={_NAVITEM_ID.HOME}
                             tooltip="Home"
@@ -100,7 +101,7 @@ class NavBar extends React.PureComponent {
                             <HomePin />
                         </IconButton>
                     </Link>
-                    <Link to="/forum">
+                    <Link to="/forum" activeStyle={{color: colors.palette.primary1Color}}>
                         <CustomBadge
                             id={_NAVITEM_ID.FORUM}
                             badgeContent={123}
@@ -113,7 +114,7 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === _NAVITEM_ID.FORUM}
                         />
                     </Link>
-                    <Link to="/stream/1">
+                    <Link to="/stream/1" activeStyle={{color: colors.palette.primary1Color}}>
                         <CustomBadge
                             id={_NAVITEM_ID.STREAM}
                             badgeContent={23}
@@ -126,7 +127,7 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === _NAVITEM_ID.STREAM}
                         />
                     </Link>
-                    <Link to="/notifications/1">
+                    <Link to="/notifications/1" activeStyle={{color: colors.palette.primary1Color}}>
                         <CustomBadge
                             id={_NAVITEM_ID.NOTIFICATIONS}
                             badgeContent={10}
@@ -139,7 +140,7 @@ class NavBar extends React.PureComponent {
                             active={this.state.activeBadge === _NAVITEM_ID.NOTIFICATIONS}
                         />
                     </Link>
-                    <Link to="/review">
+                    <Link to="/review" activeStyle={{color: colors.palette.primary1Color}}>
                         <ReviewPin
                             id={_NAVITEM_ID.REVIEW}
                             style={styles.normalIcon}
@@ -162,7 +163,7 @@ class NavBar extends React.PureComponent {
                     </Link>
                     <IconMenu
                         id={_NAVITEM_ID.SETTINGS}
-                        style={{cursor:'pointer', color: this.state.activeBadge === _NAVITEM_ID.SETTINGS ? colors.palette.primary1Color : darkBlack}}
+                        style={{cursor:'pointer'}}
                         iconButtonElement={
                             <IconButton><MoreVertIcon /></IconButton>
                         }
@@ -179,8 +180,10 @@ class NavBar extends React.PureComponent {
                             icon={<LogOutIcon />}
                         />
                     </IconMenu>
+
                     <SignupButton />
                     <LoginButton />
+
                 </ToolbarGroup>
 
             </Toolbar>

@@ -17,8 +17,8 @@ objectFitImages()
 // --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import fetch from 'unfetch'
-import {Route, Switch, browserHistory} from 'react-router-dom'
-import {Provider} from 'react-redux'
+import { Route, Switch, browserHistory } from 'react-router-dom'
+import { Provider } from 'react-redux'
 // import createHistory from 'history/createBrowserHistory'
 import {ConnectedRouter, push} from 'react-router-redux'
 
@@ -26,23 +26,25 @@ import {ConnectedRouter, push} from 'react-router-redux'
 // --
 import reducers from './reducers'
 import store from './store'
-import {theme, colors} from '../common/theme'
+import { theme, colors } from '../common/theme'
 // --
 import Scrollbutton from './Shared/Scrollbutton'
 // --
-import NavBar from './NavBar/'
-import Home from './Home/'
-import Forum from './Forum/'
+import NavBar from './NavBar'
+import Home from './Home'
+import Forum from './Forum'
 import Notifications from './Stream/Notifications'
-import Updates from './Stream/'
-import Profile from './Profile/'
-import Review from './Review/'
-import Settings from './Settings/'
-import Error from './Error/'
+import Updates from './Stream'
+import Profile from './Profile'
+import Review from './Review'
+import Settings from './Settings'
+import Error from './Error'
 import Guidelines from './Legal/Guidelines'
+import Login from './Login'
+import Signup from './Signup'
 import Privacy from './Legal/Privacy'
 import DMCA from './Legal/DMCA'
-import Contact from './Contact/'
+import Contact from './Contact'
 
 
 //                <Provider store={store}>
@@ -93,6 +95,9 @@ class RoutedApp extends React.Component {
                         )} />
 
                         <Route path="/settings" component={Settings} />
+
+                        <Route path="/login" component={Login} />
+                        <Route path="/signup" component={Signup} />
 
                         <Route path="/community-guidelines" component={Guidelines} />
                         <Route path="/privacy-policy" component={Privacy} />
