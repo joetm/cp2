@@ -9,6 +9,8 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
+app.use(express.static('./dist/'))
+
 app.get('/login', function (req, res) {
 	console.log('login request')
     res.send('Hello World!')
@@ -17,5 +19,5 @@ app.get('/login', function (req, res) {
 const port = process.env.AUTHPORT || 3000
 
 app.listen(port, function () {
-    console.log(`Auth listening on port ${port}`)
+    console.log(`Auth listening on http://localhost:${port}`)
 })

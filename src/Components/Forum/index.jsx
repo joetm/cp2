@@ -65,36 +65,20 @@ const posts = [
 
 
 class ForumHome extends React.Component {
-    // constructor(props) {
-       //  super(props)
-       //  // bindings
-       //  this.handleChange = this.handleChange.bind(this)
-       //  this.handleRefreshClick = this.handleRefreshClick.bind(this)
-    // }
-    // componentDidMount() {
-       //  const { dispatch, selectedSubreddit } = this.props
-    //  dispatch(fetchPostsIfNeeded(selectedSubreddit))
-    // }
-    // componentDidUpdate(prevProps) {
-       //  if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-       //    const { dispatch, selectedSubreddit } = this.props
-       //    dispatch(fetchPostsIfNeeded(selectedSubreddit))
-       //  }
-    // }
-    // handleChange(nextSubreddit) {
-       //  this.props.dispatch(selectSubreddit(nextSubreddit))
-    //  this.props.dispatch(fetchPostsIfNeeded(nextSubreddit))
-    // }
-    // handleRefreshClick(e) {
-       //  e.preventDefault()
-       //  const { dispatch, selectedSubreddit } = this.props
-       //  dispatch(invalidateSubreddit(selectedSubreddit))
-       //  dispatch(fetchPostsIfNeeded(selectedSubreddit))
-    // }
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            // TODO: move this into redux application state
+            sidebarIsOpen: true,
+        }
+        this.toggleSidebar = this.toggleSidebar.bind(this)
+    }
+    toggleSidebar() {
+        // TODO: move this into redux actions
+        this.setState({sidebarIsOpen: !this.state.sidebarIsOpen})
+    }
 //          <Provider store={store}>
 //          </Provider>
-
     render() {
         // const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
         // const { isFetching } = this.props
@@ -111,7 +95,10 @@ class ForumHome extends React.Component {
                       </div>
                     }
                 </div>
-                <Sidebar />
+                <Sidebar
+                    open={this.state.sidebarIsOpen}
+                    toggleSidebar={this.toggleSidebar}
+                />
                 <Spacer />
             </div>
         )

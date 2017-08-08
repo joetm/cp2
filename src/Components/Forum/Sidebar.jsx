@@ -32,14 +32,12 @@ const styles = {
 
 class Sidebar extends React.Component {
     state = {
-        open: true,
         selected: 0,
     }
-    handleToggle = () => this.setState({open: !this.state.open})
     render() {
         return (
             <Drawer
-                open={this.state.open}
+                open={this.props.open}
                 openSecondary={true}
                 disableSwipeToOpen={false}
                 docked={true}
@@ -60,7 +58,7 @@ class Sidebar extends React.Component {
                     <ToolbarGroup>
                         <CloseIcon
                             style={styles.icon}
-                            onTouchTap={() => this.setState({open:false})}
+                            onTouchTap={this.props.toggleSidebar}
                         />
                     </ToolbarGroup>
                 </Toolbar>
