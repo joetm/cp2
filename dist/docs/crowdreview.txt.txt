@@ -1,0 +1,41 @@
+<p>
+Our policy is to consider all DMCA abuse reports and take appropriate action.
+</p>
+
+<h2>How to Write a Proper DMCA Notice</h2>
+
+<p>
+A DMCA notice will notify us of particular facts in a document signed under penalty of perjury. To write a DMCA notice, please provide the following information:
+</p>
+
+<ul class="nobullet nopadding">
+<li>
+Identify yourself as either:
+The owner of a copyrighted work(s), or A person "authorized to act on behalf of the owner of an exclusive right that is allegedly infringed."
+</li>
+<li>
+State your contact information, including your TRUE NAME, street address, telephone number, and email address.
+</li>
+<li>
+Identify the copyrighted work that you believe is being infringed, or if a large number of works are appearing at a single website, a representative list of the works.
+</li>
+<li>
+Identify the material that you claim is infringing your copyrighted work, to which you are requesting that us disable access over the World Wide Web.
+</li>
+<li>
+Identify the location of the material on the World Wide Web by providing "information reasonably sufficient to permit us to locate the material."
+</li>
+<li>
+State that you have "a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agents, or the law."
+</li>
+<li>
+State that the information in the notice is accurate, under penalty of perjury.
+</li>
+<li>
+Sign the notice with an electronic signature and email it to admin@thisdomain.com.
+</li>
+</ul>
+
+<p>
+If you have any other questions, you can <a href="/contact">contact us</a>.
+</p>

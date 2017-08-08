@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import fetch from 'unfetch'
 import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
@@ -19,6 +20,8 @@ import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
 
 
+const _HELPTXT = 'docs/crowdreview.txt'
+
 const styles = {
     helpIconStyle: {
         cursor: 'pointer',
@@ -30,12 +33,14 @@ const styles = {
 
 
 class Review extends React.PureComponent {
+    request = null
     constructor(props) {
         super(props)
         // state
         this.state = {
             helpIsOpen: false,
             alertIsOpen: false,
+            helpText: '',
             // popOverImageIsOpen: false,
         }
         // bindings
@@ -54,6 +59,16 @@ class Review extends React.PureComponent {
     }
     // --
     openAlert() {
+        if (this.state.helpText === '') {
+            this.request = fetch(_HELPTXT)
+                .then((response) => {
+                    return response.text()
+                }).then((txt) => {
+                this.setState({
+                    helpText: txt,
+                })
+            })
+        }
         this.setState({alertIsOpen: true})
     }
     closeAlert() {
@@ -92,16 +107,23 @@ class Review extends React.PureComponent {
 
                 <Dialog
                     title="How does this work?"
-                    msg="HELP TEXT HERE"
+                    msg={this.state.helpText}
                     isOpen={this.state.helpIsOpen}
                     toggleHelp={this.toggleHelp}
                 />
 
                 <div class="mdc-layout-grid">
                   <div class="mdc-layout-grid__inner">
+
+                    <div class="mdc-layout-grid__cell
+                                mdc-layout-grid__cell--span-3
+                                mdc-layout-grid__cell--span-1-tablet
+                                mdc-layout-grid__cell--span-4-phone">
+                    </div>
+
                     <div class="mdc-layout-grid__cell
                                 mdc-layout-grid__cell--span-6
-                                mdc-layout-grid__cell--span-6-tablet
+                                mdc-layout-grid__cell--span-4-tablet
                                 mdc-layout-grid__cell--span-4-phone">
 
                         <ReactCSSTransitionGroup
