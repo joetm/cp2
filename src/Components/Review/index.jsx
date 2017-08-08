@@ -110,24 +110,16 @@ class Review extends React.PureComponent {
                           transitionLeaveTimeout={300}
                         >
 
-                        {
-                            updatesList.map((item, i) => {
-                                return (
-                                    <ReviewCard
-                                        key={i}
-                                        id={i}
-                                        {...item}
-                                        datetime={humanRelativeDate(item.timestamp)}
-                                        gridColumnsFull={4}
-                                        gridColumnsTablet={3}
-                                        gridColumnsPhone={1}
-                                        approve={this.approve}
-                                        reject={this.reject}
-                                        handleImageClick={this.handleImageClick}
-                                    />
-                                )
-                            })
-                        }
+                            <ReviewCard
+                                {...updatesList[0]}
+                                datetime={humanRelativeDate(updatesList[0].timestamp)}
+                                gridColumnsFull={4}
+                                gridColumnsTablet={3}
+                                gridColumnsPhone={1}
+                                approve={this.approve}
+                                reject={this.reject}
+                                handleImageClick={this.handleImageClick}
+                            />
 
                         </ReactCSSTransitionGroup>
 
