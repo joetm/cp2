@@ -33,6 +33,7 @@ const styles = {
 class Sidebar extends React.Component {
     state = {
         selected: 0,
+        previousSearchTerms: [],
     }
     render() {
         return (
@@ -53,6 +54,11 @@ class Sidebar extends React.Component {
                             hintText="Search"
                             fullWidth={false}
                             style={{width:'170px'}}
+                            onChange={(event, value) => {
+                                const previousSearchTerms = this.state.previousSearchTerms
+                                previousSearchTerms.push(value)
+                                this.setState({previousSearchTerms})
+                            }}
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
@@ -90,6 +96,12 @@ class Sidebar extends React.Component {
                 >
                     XXX
                 </MenuItem>
+
+                <Divider />
+
+                {
+                    this.state.previousSearchTerms.map((value, i) => (<div>{value}</div>))
+                }
 
             </Drawer>
         )

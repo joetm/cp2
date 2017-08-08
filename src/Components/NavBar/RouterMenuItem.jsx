@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import MenuItem from 'material-ui/MenuItem'
 
 

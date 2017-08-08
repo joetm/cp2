@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import Menu from 'material-ui/Menu';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
@@ -90,7 +90,10 @@ class NavBar extends React.PureComponent {
             >
 
                 <ToolbarGroup firstChild={true}>
-                    <Link to="/" activeStyle={{color: colors.palette.primary1Color}}>
+                    <NavLink
+                        to="/"
+                        activeStyle={{color: colors.palette.primary1Color}}
+                    >
                         <IconButton
                             id={_NAVITEM_ID.HOME}
                             tooltip="Home"
@@ -100,8 +103,10 @@ class NavBar extends React.PureComponent {
                         >
                             <HomePin />
                         </IconButton>
-                    </Link>
-                    <Link to="/forum" activeStyle={{color: colors.palette.primary1Color}}>
+                    </NavLink>
+                    <NavLink
+                        to="/forum"
+                    >
                         <CustomBadge
                             id={_NAVITEM_ID.FORUM}
                             badgeContent={123}
@@ -113,8 +118,11 @@ class NavBar extends React.PureComponent {
                             toggleState={this.toggleState}
                             active={this.state.activeBadge === _NAVITEM_ID.FORUM}
                         />
-                    </Link>
-                    <Link to="/stream/1" activeStyle={{color: colors.palette.primary1Color}}>
+                    </NavLink>
+                    <NavLink
+                        to="/stream/1"
+                        activeStyle={{color: colors.palette.primary1Color}}
+                    >
                         <CustomBadge
                             id={_NAVITEM_ID.STREAM}
                             badgeContent={23}
@@ -126,8 +134,11 @@ class NavBar extends React.PureComponent {
                             toggleState={this.toggleState}
                             active={this.state.activeBadge === _NAVITEM_ID.STREAM}
                         />
-                    </Link>
-                    <Link to="/notifications/1" activeStyle={{color: colors.palette.primary1Color}}>
+                    </NavLink>
+                    <NavLink
+                        to="/notifications/1"
+                        activeStyle={{color: colors.palette.primary1Color}}
+                    >
                         <CustomBadge
                             id={_NAVITEM_ID.NOTIFICATIONS}
                             badgeContent={10}
@@ -139,18 +150,23 @@ class NavBar extends React.PureComponent {
                             toggleState={this.toggleState}
                             active={this.state.activeBadge === _NAVITEM_ID.NOTIFICATIONS}
                         />
-                    </Link>
-                    <Link to="/review" activeStyle={{color: colors.palette.primary1Color}}>
+                    </NavLink>
+                    <NavLink
+                        to="/review"
+                        activeStyle={{color: colors.palette.primary1Color}}
+                    >
                         <ReviewPin
                             id={_NAVITEM_ID.REVIEW}
                             style={styles.normalIcon}
                             onTouchTap={this.toggleState}
                         />
-                    </Link>
+                    </NavLink>
                 </ToolbarGroup>
 
                 <ToolbarGroup>
-                    <Link to={`/profile/${userRecord.userid}`}>
+                    <Link
+                        to={`/profile/${userRecord.userid}`}
+                    >
                         <Avatar
                             id={_NAVITEM_ID.PROFILE}
                             visible={true}
