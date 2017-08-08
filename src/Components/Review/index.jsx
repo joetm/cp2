@@ -20,7 +20,7 @@ import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
 
 
-const _HELPTXT = 'docs/crowdreview.txt'
+const _HELPTXT_URL = '/docs/crowdreview.txt'
 
 const styles = {
     helpIconStyle: {
@@ -30,6 +30,12 @@ const styles = {
         lineHeight: '1em',
     },
 }
+
+const CellPadding = (<div class="mdc-layout-grid__cell
+                        mdc-layout-grid__cell--span-2
+                        mdc-layout-grid__cell--span-1-tablet
+                        mdc-layout-grid__cell--span-4-phone">
+                     </div>)
 
 
 class Review extends React.PureComponent {
@@ -53,14 +59,8 @@ class Review extends React.PureComponent {
     }
     // --
     toggleHelp() {
-        this.setState({
-            helpIsOpen: !this.state.helpIsOpen
-        })
-    }
-    // --
-    openAlert() {
         if (this.state.helpText === '') {
-            this.request = fetch(_HELPTXT)
+            this.request = fetch(_HELPTXT_URL)
                 .then((response) => {
                     return response.text()
                 }).then((txt) => {
@@ -69,6 +69,12 @@ class Review extends React.PureComponent {
                 })
             })
         }
+        this.setState({
+            helpIsOpen: !this.state.helpIsOpen
+        })
+    }
+    // --
+    openAlert() {
         this.setState({alertIsOpen: true})
     }
     closeAlert() {
@@ -115,15 +121,11 @@ class Review extends React.PureComponent {
                 <div class="mdc-layout-grid">
                   <div class="mdc-layout-grid__inner">
 
-                    <div class="mdc-layout-grid__cell
-                                mdc-layout-grid__cell--span-3
-                                mdc-layout-grid__cell--span-1-tablet
-                                mdc-layout-grid__cell--span-4-phone">
-                    </div>
+                    {CellPadding}
 
                     <div class="mdc-layout-grid__cell
-                                mdc-layout-grid__cell--span-6
-                                mdc-layout-grid__cell--span-4-tablet
+                                mdc-layout-grid__cell--span-8
+                                mdc-layout-grid__cell--span-6-tablet
                                 mdc-layout-grid__cell--span-4-phone">
 
                         <ReactCSSTransitionGroup
