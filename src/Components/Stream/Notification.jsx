@@ -31,23 +31,20 @@ const rightIconMenu = (
 )
 
 
-// <p>
-// <span style={{color: darkBlack}}>Brendan Lim</span> --
-// {this.props.secondaryText}
-// </p>
-
-
 class Notification extends React.PureComponent {
+    state = {
+      showMenu: false
+    }
     render () {
-        const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
+        // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
         return (
             <ListItem
               leftAvatar={this.props.avatar}
-              rightIconButton={ListItemMenu}
+              rightIconButton={this.state.showMenu ? rightIconMenu : (<span></span>)}
               primaryText={this.props.primaryText}
-              secondaryText={
-                'xxxxxxxx'
-              }
+              secondaryText={this.props.username}
+              onMouseEnter={() => this.setState({showMenu: true})}
+              onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
             />
         )

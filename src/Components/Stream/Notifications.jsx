@@ -30,7 +30,7 @@ class Notifications extends React.PureComponent {
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
                   username="John G."
-                  primaryText="Summer BBQ&nbsp;&nbsp;<span style={{color: lightBlack}}>4</span>"
+                  primaryText="Summer BBQ"
                   secondaryText="Wish I could come, but I&apos;m out of town this weekend."
                   secondaryTextLines={2}
                   showMenu={true}
@@ -59,6 +59,7 @@ class Notifications extends React.PureComponent {
                   secondaryTextLines={2}
                   showMenu={true}
                 />
+                <Subheader>Yesterday</Subheader>
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}
                   username="Brendan Lim"
