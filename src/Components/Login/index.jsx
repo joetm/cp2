@@ -1,52 +1,72 @@
 /** @flow */
 
 import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
-import { Card, CardText } from 'material-ui/Card'
-import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
+import LoginForm from './LoginForm.jsx'
 
 
-const LoginForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user
-}) => (
-  <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Login</h2>
+class LoginPage extends React.Component {
 
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+  /**
+   * Class constructor.
+   */
+  constructor(props) {
+    super(props)
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
-        />
-      </div>
+    // set the initial component state
+    this.state = {
+      errors: {},
+      user: {
+        email: '',
+        password: ''
+      }
+    }
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
-          type="password"
-          name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
-        />
-      </div>
+    this.processForm = this.processForm.bind(this)
+    this.changeUser = this.changeUser.bind(this)
+  }
 
-      <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
-      </div>
+  /**
+   * Process the form.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  processForm(event) {
+    // prevent default action. in this case, action is the form submission event
+    event.preventDefault()
 
-      <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
-    </form>
-  </Card>
-)
+    console.log('email:', this.state.user.email)
+    console.log('password:', this.state.user.password)
+  }
 
-export default LoginForm
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  changeUser(event) {
+    const field = event.target.name
+    const user = this.state.user
+    user[field] = event.target.value
+
+    this.setState({
+      user
+    })
+  }
+
+  /**
+   * Render the component.
+   */
+  render() {
+    return (
+      <LoginForm
+        onSubmit={this.processForm}
+        onChange={this.changeUser}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
+    )
+  }
+
+}
+
+export default LoginPage

@@ -23,7 +23,7 @@ const Home = () => (
   <div>
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--order-2">
             <Paper style={boxStyle} zDepth={1}>
                 <List>
                     <Notification
@@ -142,7 +142,7 @@ const Home = () => (
                 </List>
             </Paper>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4  mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4  mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--order-1">
             <Paper style={boxStyle} zDepth={1}>
                 activity stream
             </Paper>

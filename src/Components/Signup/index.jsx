@@ -1,62 +1,74 @@
 /** @flow */
 
-import React, { PropTypes } from 'react'
-import { Link } from 'react-router'
-import { Card, CardText } from 'material-ui/Card'
-import RaisedButton from 'material-ui/RaisedButton'
-import TextField from 'material-ui/TextField'
+import React from 'react'
+import SignUpForm from './SignupForm.jsx'
 
 
-const SignUpForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user,
-}) => (
-  <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+class SignUpPage extends React.Component {
 
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+  /**
+   * Class constructor
+   */
+  constructor(props) {
+    super(props)
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Name"
-          name="name"
-          errorText={errors.name}
-          onChange={onChange}
-          value={user.name}
-        />
-      </div>
+    // set the initial component state
+    this.state = {
+      errors: {},
+      user: {
+        email: '',
+        name: '',
+        password: ''
+      }
+    }
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
-        />
-      </div>
+    this.processForm = this.processForm.bind(this)
+    this.changeUser = this.changeUser.bind(this)
+  }
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Password"
-          type="password"
-          name="password"
-          onChange={onChange}
-          errorText={errors.password}
-          value={user.password}
-        />
-      </div>
+  /**
+   * Change the user object.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  changeUser(event) {
+    const field = event.target.name
+    const user = this.state.user
+    user[field] = event.target.value
 
-      <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
-      </div>
+    this.setState({
+      user
+    })
+  }
 
-      <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
-    </form>
-  </Card>
-)
+  /**
+   * Process the form.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  processForm(event) {
+    // prevent default action. in this case, action is the form submission event
+    event.preventDefault()
 
-export default SignUpForm
+    console.log('name:', this.state.user.name)
+    console.log('email:', this.state.user.email)
+    console.log('password:', this.state.user.password)
+  }
+
+  /**
+   * Render the component.
+   */
+  render() {
+    return (
+      <SignUpForm
+        onSubmit={this.processForm}
+        onChange={this.changeUser}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
+    )
+  }
+
+}
+
+export default SignUpPage

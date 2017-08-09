@@ -40,8 +40,8 @@ import Review from './Review'
 import Settings from './Settings'
 import Error from './Error'
 import Guidelines from './Legal/Guidelines'
-import Login from './Login'
-import Signup from './Signup'
+import LoginPage from './Login'
+import SignupPage from './Signup'
 import Privacy from './Legal/Privacy'
 import DMCA from './Legal/DMCA'
 import Contact from './Contact'
@@ -96,8 +96,8 @@ class RoutedApp extends React.Component {
 
                         <Route path="/settings" component={Settings} />
 
-                        <Route path="/login" component={Login} />
-                        <Route path="/signup" component={Signup} />
+                        <Route path="/login" component={LoginPage} />
+                        <Route path="/signup" component={SignupPage} />
 
                         <Route path="/community-guidelines" component={Guidelines} />
                         <Route path="/privacy-policy" component={Privacy} />
