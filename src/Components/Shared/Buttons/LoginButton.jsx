@@ -1,10 +1,10 @@
 /** @flow */
 
 import React from 'react'
-import { Redirect, withRouter } from 'react-router-dom'
 import IconButton from 'material-ui/IconButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
+import { Route } from 'react-router-dom'
 
 import fakeAuth  from '../../../common/fakeAuth'
 
@@ -23,14 +23,17 @@ class LoginButton extends React.PureComponent {
   render() {
     const { history } = this.props
     return (
-        <RaisedButton
-          label="Login"
-          secondary={true}
-          style={styles.button}
-          icon={<LoginIcon />}
-        />
+        <Route render={({ history }) => (
+            <RaisedButton
+              label="Login"
+              secondary={true}
+              style={styles.button}
+              icon={<LoginIcon />}
+              onClick={() => { history.push('/login') }}
+            />
+        )} />
     )
   }
 }
 
-export default withRouter(LoginButton)
+export default LoginButton

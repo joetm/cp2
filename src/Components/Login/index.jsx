@@ -1,7 +1,7 @@
 /** @flow */
 
 import React, { PropTypes } from 'react'
-import LoginForm from './LoginForm.jsx'
+import LoginForm from './LoginForm'
 
 
 class LoginPage extends React.Component {
@@ -20,7 +20,7 @@ class LoginPage extends React.Component {
         password: ''
       }
     }
-
+    // bindings
     this.processForm = this.processForm.bind(this)
     this.changeUser = this.changeUser.bind(this)
   }
@@ -58,12 +58,12 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
-      <LoginForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+        <LoginForm
+            onSubmit={this.processForm}
+            onChange={this.changeUser}
+            errors={this.state.errors}
+            user={this.state.user}
+        />
     )
   }
 
