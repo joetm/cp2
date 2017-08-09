@@ -44,7 +44,7 @@ class DMCA extends React.PureComponent {
 
                 <h1>DMCA Policy</h1>
 
-                <div dangerouslySetInnerHTML={{__html: this.state.policyTxt}}></div>
+                <div class="legal" dangerouslySetInnerHTML={{__html: this.state.policyTxt}}></div>
 
                 <Spacer />
 

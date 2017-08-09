@@ -34,6 +34,7 @@ import NavBar from './NavBar'
 import Home from './Home'
 import Forum from './Forum'
 import Notifications from './Stream/Notifications'
+import MessageHistory from './MessageHistory'
 import Updates from './Stream'
 import Profile from './Profile'
 import Review from './Review'
@@ -92,6 +93,8 @@ class RoutedApp extends React.Component {
                         <Route path="/stream/:userid" component={Updates} />
 
                         <Route path="/review" component={Review} />
+
+                        <Route path="/messages/:opponentid" component={MessageHistory} />
 
                         <Route path='/profile/:userid' render={props => (
                             <Profile isScrolled={this.state.isScrolled} />

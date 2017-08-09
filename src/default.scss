@@ -20,6 +20,16 @@ a {
 	text-decoration: none;
 }
 
+strong {
+    font-weight: 900;
+}
+
 .inline-block {
     display: inline-block;
+}
+.nobullet {
+    list-style-type: none;
+}
+.nopadding {
+    padding: 0;
 }

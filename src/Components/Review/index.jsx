@@ -18,6 +18,7 @@ import Spacer from '../Shared/Spacer'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
+import CellPadding from '../Shared/CellPadding'
 
 
 const _HELPTXT_URL = '/docs/crowdreview.txt'
@@ -30,12 +31,6 @@ const styles = {
         lineHeight: '1em',
     },
 }
-
-const CellPadding = (<div class="mdc-layout-grid__cell
-                        mdc-layout-grid__cell--span-2
-                        mdc-layout-grid__cell--span-1-tablet
-                        mdc-layout-grid__cell--span-4-phone">
-                     </div>)
 
 
 class Review extends React.PureComponent {

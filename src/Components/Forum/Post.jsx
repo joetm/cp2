@@ -18,10 +18,8 @@ const Post = props => {
       <ListItem
         key={`upd_${post.id}`}
         leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
-        primaryText={post.username}
-        secondaryText={<p>
-            {post.title}
-          </p>}
+        primaryText={post.title}
+        secondaryText={post.username}
         secondaryTextLines={2}
         autoGenerateNestedIndicator={true}
         onTouchTap={openThread.bind(this)}
