@@ -1,142 +1,25 @@
 /** @flow */
 
 import React from 'react'
-import Toggle from 'material-ui/Toggle'
 import Subheader from 'material-ui/Subheader'
-import Divider from 'material-ui/Divider'
-import {List, ListItem} from 'material-ui/List'
-import {Route, Switch, withRouter} from 'react-router-dom'
+import { List } from 'material-ui/List'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Avatar from '../Shared/Avatar'
 import Spacer from '../Shared/Spacer'
 import SettingsMenuEntry from './SettingsMenuEntry'
-import DropzoneAvatar from './DropzoneAvatar'
-import DropzoneProfileImg from './DropzoneProfileImg'
+import AvatarImg from './DropzoneAvatar'
+import ProfileImg from './DropzoneProfileImg'
+// --
+import General from './General'
+import Privacy from './Privacy'
+import styles from './styles'
 
 
-const blockMaxWidth = '80%' // 250
-
-const styles = {
-  settingsBlock: {
-    // display: 'flex',
-    // flexWrap: 'wrap',
-    maxWidth: blockMaxWidth,
-    margin: 'auto auto',
-  },
-  toggle: {
-    marginBottom: 16,
-  },
-  thumbOff: {
-    backgroundColor: '#ffcccc',
-  },
-  trackOff: {
-    backgroundColor: '#ff9d9d',
-  },
-  thumbSwitched: {
-    backgroundColor: 'red',
-  },
-  trackSwitched: {
-    backgroundColor: '#ff9d9d',
-  },
-  labelStyle: {
-    color: 'red',
-  },
-}
-
-
-
-const PrivacySettings = (props) => (
-    <div style={{textAlign: 'left'}}>
-          <Divider />
-          <List>
-            <Subheader>Notifications</Subheader>
-            <Toggle
-              label="Simple"
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Toggled by default"
-              defaultToggled={true}
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Styling"
-              thumbStyle={styles.thumbOff}
-              trackStyle={styles.trackOff}
-              thumbSwitchedStyle={styles.thumbSwitched}
-              trackSwitchedStyle={styles.trackSwitched}
-              labelStyle={styles.labelStyle}
-            />
-        </List>
-          <Divider />
-          <List>
-            <Subheader>XXXX</Subheader>
-            <Toggle
-              label="Simple"
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Toggled by default"
-              defaultToggled={true}
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Styling"
-              thumbStyle={styles.thumbOff}
-              trackStyle={styles.trackOff}
-              thumbSwitchedStyle={styles.thumbSwitched}
-              trackSwitchedStyle={styles.trackSwitched}
-              labelStyle={styles.labelStyle}
-            />
-        </List>
-    </div>
-)
-
-const GeneralSettings = (props) => (
-    <div style={{textAlign: 'left'}}>
-          <Divider />
-          <List>
-            <Subheader>General</Subheader>
-            <Toggle
-              label="Simple"
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Toggled by default"
-              defaultToggled={true}
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Styling"
-              thumbStyle={styles.thumbOff}
-              trackStyle={styles.trackOff}
-              thumbSwitchedStyle={styles.thumbSwitched}
-              trackSwitchedStyle={styles.trackSwitched}
-              labelStyle={styles.labelStyle}
-            />
-            <Toggle
-              label="Simple"
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Toggled by default"
-              defaultToggled={true}
-              style={styles.toggle}
-            />
-            <Toggle
-              label="Styling"
-              thumbStyle={styles.thumbOff}
-              trackStyle={styles.trackOff}
-              thumbSwitchedStyle={styles.thumbSwitched}
-              trackSwitchedStyle={styles.trackSwitched}
-              labelStyle={styles.labelStyle}
-            />
-        </List>
-    </div>
-)
-
-
-class Settings extends React.PureComponent {
+class Settings extends React.Component {
+    /**
+     * Render the component.
+     */
     render () {
           return (
           <div style={{textAlign: 'center'}}>
@@ -166,10 +49,10 @@ class Settings extends React.PureComponent {
               </List>
               <Spacer />
               <Switch>
-                <Route path={`${this.props.match.url}/general`} component={GeneralSettings}/>
-                <Route path={`${this.props.match.url}/image`}   component={DropzoneProfileImg}/>
-                <Route path={`${this.props.match.url}/avatar`}  component={DropzoneAvatar}/>
-                <Route path={`${this.props.match.url}/privacy`} component={PrivacySettings}/>
+                <Route path={`${this.props.match.url}/general`} component={General}/>
+                <Route path={`${this.props.match.url}/image`}   component={ProfileImg}/>
+                <Route path={`${this.props.match.url}/avatar`}  component={AvatarImg}/>
+                <Route path={`${this.props.match.url}/privacy`} component={Privacy}/>
               </Switch>
             </div>
             <Spacer />

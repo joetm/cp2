@@ -10,6 +10,14 @@ import Reducers from '../reducers'
 export const initialState = {
     sidebarOpen: false,
     threads: [],
+    posts: [],
+    albums: [],
+    albumimgs: [],
+    followers: [],
+    user: {
+        name: '',
+        email: '',
+    },
 }
 
 
