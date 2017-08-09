@@ -8,19 +8,24 @@ import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { darkBlack } from 'material-ui/styles/colors'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
-import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
-import ForumPin from 'material-ui/svg-icons/social/group'
-import HomePin from 'material-ui/svg-icons/action/account-balance'
-import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
-import ReviewPin from 'material-ui/svg-icons/action/find-replace'
+import HomeIcon from 'material-ui/svg-icons/action/account-balance'
+import ReviewIcon from 'material-ui/svg-icons/action/find-replace'
 import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
+import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
+import ForumIcon from 'material-ui/svg-icons/social/group'
+import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
+import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
+import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import { navigateTo } from '../../common/helpers'
 import { colors } from '../../common/theme'
+import './style.css'
 // --
 import userRecord from '../Profile/userRecord'
 // --
@@ -31,12 +36,22 @@ import LoginButton from '../Shared/Buttons/LoginButton'
 import SignupButton from '../Shared/Buttons/SignupButton'
 
 
+// DEV
+let NUMS = {
+    FORUM: 123,
+    STREAM: 45,
+    NOTIFICATIONS: 10
+}
+NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.NOTIFICATIONS
+
+
 const _NAVITEM_ID = {
     HOME: 1,
-    FORUM: 2,
-    STREAM: 3,
-    NOTIFICATIONS: 4,
-    REVIEW: 5,
+    ALLNOTIFICATIONS: 10,
+      FORUM: 12,
+      STREAM: 13,
+      NOTIFICATIONS: 14,
+    REVIEW: 55,
     PROFILE: 98,
     SETTINGS: 99,
 }
@@ -69,9 +84,18 @@ const NavbarSeparator = () => (
 )
 
 
-class NavBar extends React.PureComponent {
-    state = {
-        activeBadge: 0,
+class NavBar extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            activeBadge: 0,
+            notificationDetailsShowing: false,
+        }
+        // bindings
+        this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
+    }
+    toggleNotificationBadges() {
+        this.setState({notificationDetailsShowing: !this.state.notificationDetailsShowing})
     }
     toggleState = (num) => {
         // TODO
@@ -84,6 +108,14 @@ class NavBar extends React.PureComponent {
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
         // styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}
+        let AllNotificationsIcons;
+        if (!this.state.notificationDetailsShowing && !NUMS.ALLNOTIFICATIONS) {
+            AllNotificationsIcons = NotificationsNoneIcon
+        } else if (this.state.notificationDetailsShowing) {
+            AllNotificationsIcons = NotificationsActiveIcon
+        } else {
+            AllNotificationsIcons = NotificationsIcon
+        }
         return (
             <Toolbar
                 style={styles.navbar}
@@ -101,61 +133,92 @@ class NavBar extends React.PureComponent {
                             onTouchTap={this.toggleState}
                             iconStyle={{color: this.state.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                         >
-                            <HomePin />
+                            <HomeIcon />
                         </IconButton>
                     </NavLink>
-                    <NavLink
-                        to="/forum"
+
+                    <CustomBadge
+                        id={_NAVITEM_ID.ALLNOTIFICATIONS}
+                        badgeContent={NUMS.ALLNOTIFICATIONS}
+                        secondary={true}
+                        badgeStyle={styles.badgeStyle}
+                        style={styles.badgeRootStyle}
+                        tooltip="New Activity"
+                        icon={<AllNotificationsIcons />}
+                        toggleState={this.toggleNotificationBadges}
+                    />
+
+                    <ReactCSSTransitionGroup
+                        transitionName="badgeTransition"
+                        transitionEnterTimeout={500}
+                        transitionLeaveTimeout={300}
+                        transitionAppear={true}
+                        transitionAppearTimeout={500}
+                        style={{display:'inline-block'}}
                     >
-                        <CustomBadge
-                            id={_NAVITEM_ID.FORUM}
-                            badgeContent={123}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="New Forum Activity"
-                            icon={<ForumPin />}
-                            toggleState={this.toggleState}
-                            active={this.state.activeBadge === _NAVITEM_ID.FORUM}
-                        />
-                    </NavLink>
-                    <NavLink
-                        to="/stream/1"
-                        activeStyle={{color: colors.palette.primary1Color}}
-                    >
-                        <CustomBadge
-                            id={_NAVITEM_ID.STREAM}
-                            badgeContent={23}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="New Activity"
-                            icon={<UpdatesIcon />}
-                            toggleState={this.toggleState}
-                            active={this.state.activeBadge === _NAVITEM_ID.STREAM}
-                        />
-                    </NavLink>
-                    <NavLink
-                        to="/notifications/1"
-                        activeStyle={{color: colors.palette.primary1Color}}
-                    >
-                        <CustomBadge
-                            id={_NAVITEM_ID.NOTIFICATIONS}
-                            badgeContent={10}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="Notifications"
-                            icon={<EmailIcon />}
-                            toggleState={this.toggleState}
-                            active={this.state.activeBadge === _NAVITEM_ID.NOTIFICATIONS}
-                        />
-                    </NavLink>
+                        {
+                        !this.state.notificationDetailsShowing ? null :
+                        [
+                            <NavLink
+                                to="/forum"
+                                key={`badge_${_NAVITEM_ID.FORUM}`}
+                                activeStyle={{color: colors.palette.primary1Color}}
+                            >
+                                <CustomBadge
+                                    id={_NAVITEM_ID.FORUM}
+                                    badgeContent={NUMS.FORUM}
+                                    secondary={true}
+                                    badgeStyle={styles.badgeStyle}
+                                    style={styles.badgeRootStyle}
+                                    tooltip="New Forum Activity"
+                                    icon={<ForumIcon />}
+                                    toggleState={this.toggleState}
+                                    active={this.state.activeBadge === _NAVITEM_ID.FORUM}
+                                />
+                            </NavLink>,
+                            <NavLink
+                                to="/stream/1"
+                                key={`badge_${_NAVITEM_ID.STREAM}`}
+                                activeStyle={{color: colors.palette.primary1Color}}
+                            >
+                                <CustomBadge
+                                    id={_NAVITEM_ID.STREAM}
+                                    badgeContent={NUMS.STREAM}
+                                    secondary={true}
+                                    badgeStyle={styles.badgeStyle}
+                                    style={styles.badgeRootStyle}
+                                    tooltip="New Activity"
+                                    icon={<UpdatesIcon />}
+                                    toggleState={this.toggleState}
+                                    active={this.state.activeBadge === _NAVITEM_ID.STREAM}
+                                />
+                            </NavLink>,
+                            <NavLink
+                                to="/notifications/1"
+                                key={`badge_${_NAVITEM_ID.NOTIFICATIONS}`}
+                                activeStyle={{color: colors.palette.primary1Color}}
+                            >
+                                <CustomBadge
+                                    id={_NAVITEM_ID.NOTIFICATIONS}
+                                    badgeContent={NUMS.NOTIFICATIONS}
+                                    secondary={true}
+                                    badgeStyle={styles.badgeStyle}
+                                    style={styles.badgeRootStyle}
+                                    tooltip="Notifications"
+                                    icon={<EmailIcon />}
+                                    toggleState={this.toggleState}
+                                    active={this.state.activeBadge === _NAVITEM_ID.NOTIFICATIONS}
+                                />
+                            </NavLink>
+                        ]
+                        }
+                    </ReactCSSTransitionGroup>
+
                     <NavLink
                         to="/review"
                         activeStyle={{color: colors.palette.primary1Color}}
                     >
-                        <ReviewPin
+                        <ReviewIcon
                             id={_NAVITEM_ID.REVIEW}
                             style={styles.normalIcon}
                             onTouchTap={this.toggleState}

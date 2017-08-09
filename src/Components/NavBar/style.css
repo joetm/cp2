@@ -1,0 +1,26 @@
+.badgeTransition-enter {
+  opacity: 0.01;
+}
+
+.badgeTransition-enter.badgeTransition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.badgeTransition-leave {
+  opacity: 1;
+}
+
+.badgeTransition-leave.badgeTransition-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.badgeTransition-appear {
+  opacity: 0.01;
+}
+
+.badgeTransition-appear.badgeTransition-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
