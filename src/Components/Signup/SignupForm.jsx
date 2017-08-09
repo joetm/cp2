@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
 import '../Shared/style-loginforms.css'
+import Spacer from '../Shared/Spacer'
 
 
 const SignUpForm = ({
@@ -17,12 +18,15 @@ const SignUpForm = ({
 }) => (
     <Card className="container">
         <h2 className="card-heading">Sign Up</h2>
-        We are in public beta. Signup is closed.
-        <br />
-        Check back at a later time.
-        <br />
-        <br />
-        Note: If you have an old account, it will still work.
+        <p>
+            We are in public beta. Signup is closed.
+            <br />
+            Check back at a later time.
+            <br />
+            <br />
+            Note: If you have an old account, it will still work.
+        </p>
+        <Spacer />
     </Card>
 )
 
