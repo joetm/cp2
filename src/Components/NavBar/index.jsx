@@ -40,9 +40,9 @@ import SignupButton from '../Shared/Buttons/SignupButton'
 let NUMS = {
     FORUM: 123,
     STREAM: 45,
-    NOTIFICATIONS: 10
+    MESSAGES: 10
 }
-NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.NOTIFICATIONS
+NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.MESSAGES
 
 
 const _NAVITEM_ID = {
@@ -50,7 +50,7 @@ const _NAVITEM_ID = {
     ALLNOTIFICATIONS: 10,
       FORUM: 12,
       STREAM: 13,
-      NOTIFICATIONS: 14,
+      MESSAGES: 14,
     REVIEW: 55,
     PROFILE: 98,
     SETTINGS: 99,
@@ -116,9 +116,9 @@ class NavBar extends React.Component {
             AllNotificationsIcons = NotificationsNoneIcon
         } else {
             if (!this.state.notificationDetailsShowing) {
-                AllNotificationsIcons = NotificationsActiveIcon
-            } else {
                 AllNotificationsIcons = NotificationsIcon
+            } else {
+                AllNotificationsIcons = NotificationsActiveIcon
             }
         }
         return (
@@ -205,19 +205,19 @@ class NavBar extends React.Component {
                                 </NavLink>,
                                 <NavLink
                                     to="/notifications/1"
-                                    key={`badge_${_NAVITEM_ID.NOTIFICATIONS}`}
+                                    key={`badge_${_NAVITEM_ID.MESSAGES}`}
                                     activeStyle={{color: colors.palette.primary1Color}}
                                 >
                                     <CustomBadge
-                                        id={_NAVITEM_ID.NOTIFICATIONS}
-                                        badgeContent={NUMS.NOTIFICATIONS}
+                                        id={_NAVITEM_ID.MESSAGES}
+                                        badgeContent={NUMS.MESSAGES}
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
                                         style={styles.badgeRootStyle}
-                                        tooltip="Notifications"
+                                        tooltip="Messages"
                                         icon={<EmailIcon />}
                                         toggleState={this.toggleState}
-                                        active={this.state.activeBadge === _NAVITEM_ID.NOTIFICATIONS}
+                                        active={this.state.activeBadge === _NAVITEM_ID.MESSAGES}
                                     />
                                 </NavLink>
                             ]

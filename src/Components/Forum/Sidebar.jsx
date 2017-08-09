@@ -7,15 +7,17 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { darkBlack } from 'material-ui/styles/colors'
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
+import Chip from 'material-ui/Chip'
+// --
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
+import EnterIcon from 'material-ui/svg-icons/action/get-app'
 
 
 const _MENUITEM = {
     TODAY: 1,
     XXX: 2,
 }
-
 
 const styles = {
     navbar: {
@@ -27,13 +29,49 @@ const styles = {
         margin: '0 8px',
         cursor: 'pointer',
     },
+    chip: {
+        margin: 4,
+    },
+    wrapper: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
 }
 
 
 class Sidebar extends React.Component {
-    state = {
-        selected: 0,
-        previousSearchTerms: [],
+    inputValue = ''
+    constructor(props) {
+        super(props)
+        this.state = {
+            selected: 0,
+            filterTerms: [],
+        }
+        // bindings
+        this.handleTouchTap = this.handleTouchTap.bind(this)
+        this.enterValueIntoList = this.enterValueIntoList.bind(this)
+    }
+    enterValueIntoList() {
+        console.log(this.inputValue)
+        const values = this.state.filterTerms
+        if (this.inputValue != '' && values.indexOf(this.inputValue) === -1) {
+            values.push(this.inputValue)
+            this.setState({filterTerms: values})
+        }
+    }
+    handleChangeSearchField(event, inputValue) {
+        this.inputValue = inputValue
+    }
+    handleRequestDelete() {
+        const chipValues = this.state.filterTerms
+        const index = chipValues.indexOf(value)
+        if (index > -1) {
+            chipValues.splice(index, 1);
+            this.setState({filterTerms: chipValues});
+        }
+    }
+    handleTouchTap() {
+        alert('You clicked the Chip.')
     }
     /**
      * Render the component.
@@ -56,12 +94,12 @@ class Sidebar extends React.Component {
                         <TextField
                             hintText="Search"
                             fullWidth={false}
-                            style={{width:'170px'}}
-                            onChange={(event, value) => {
-                                const previousSearchTerms = this.state.previousSearchTerms
-                                previousSearchTerms.push(value)
-                                this.setState({previousSearchTerms})
-                            }}
+                            style={{width:'130px'}}
+                            onChange={(event, inputValue) => this.handleChangeSearchField}
+                        />
+                        <EnterIcon
+                            style={styles.icon}
+                            onTouchTap={() => this.enterValueIntoList}
                         />
                     </ToolbarGroup>
                     <ToolbarGroup>
@@ -103,7 +141,16 @@ class Sidebar extends React.Component {
                 <Divider />
 
                 {
-                    this.state.previousSearchTerms.map((value, i) => (<div>{value}</div>))
+                    this.state.filterTerms.map((value, i) => (
+                        <Chip
+                            key={`fi_${i}`}
+                            onRequestDelete={this.handleRequestDelete}
+                            onTouchTap={this.handleTouchTap}
+                            style={styles.chip}
+                        >
+                            {value}
+                        </Chip>
+                    ))
                 }
 
             </Drawer>

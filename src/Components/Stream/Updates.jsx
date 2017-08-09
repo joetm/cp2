@@ -74,7 +74,6 @@ class Updates extends React.PureComponent {
                             )
                         })
                     }
-                <Spacer />
             </div>
         )
     }
