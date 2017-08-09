@@ -35,6 +35,9 @@ class Sidebar extends React.Component {
         selected: 0,
         previousSearchTerms: [],
     }
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <Drawer

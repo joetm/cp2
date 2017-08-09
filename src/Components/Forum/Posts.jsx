@@ -9,6 +9,9 @@ import Post from './Post'
 
 const Posts = (props) => {
     const { posts } = props
+    /**
+     * Render the component.
+     */
     return (
       <div>
           <Subheader>Category here</Subheader>

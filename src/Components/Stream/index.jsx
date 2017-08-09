@@ -19,6 +19,9 @@ class Feed extends React.PureComponent {
         updates: `${this.props.match.url}/updates`,
         likes: `${this.props.match.url}/likes`,
     }
+    /**
+     * Render the component.
+     */
     render () {
           return (
             <div>

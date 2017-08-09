@@ -50,6 +50,9 @@ class ReviewCard extends React.PureComponent {
   }
 //              <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
 //              </LazyLoad>
+  /**
+   * Render the component.
+   */
   render() {
     const {id, fromUsername, primaryText, secondaryText, datetime, src} = this.props
     if (!this.state.visible) {

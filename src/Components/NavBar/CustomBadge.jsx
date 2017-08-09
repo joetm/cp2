@@ -24,6 +24,9 @@ class CustomBadge extends React.PureComponent {
   toggleActive() {
     this.props.toggleState(this.props.id)
   }
+  /**
+   * Render the component.
+   */
   render() {
     let IconColor
     if (this.state.deactivated) {

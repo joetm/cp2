@@ -25,6 +25,9 @@ class SubToolbar extends React.Component {
         value: _ID.ALL,
     }
     handleChange = (event, index, value) => this.setState({value})
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <Toolbar>

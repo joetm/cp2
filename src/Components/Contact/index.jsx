@@ -10,11 +10,18 @@ import Spacer from '../Shared/Spacer'
 import Footer from '../Footer/'
 
 
+/**
+ * Contact class
+ * @class
+ */
 class Contact extends React.PureComponent {
     state = {
         selectedField: 1,
     }
     handleChange = (event, index, value) => this.setState({selectedField: value})
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <div style={{textAlign: 'center'}}>

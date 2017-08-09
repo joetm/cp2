@@ -105,6 +105,9 @@ class NavBar extends React.Component {
         this.setState({activeBadge: num})
         console.log('activeBadge', num)
     }
+    /**
+     * Render the component.
+     */
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
         // styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}

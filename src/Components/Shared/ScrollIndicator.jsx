@@ -12,6 +12,9 @@ class ScrollIndicator extends React.PureComponent {
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
         return height - window.innerHeight
     }
+    /**
+     * Render the component.
+     */
     render() {
         // console.log('doc height', this.getDocumentHeight())
         // console.log('scrollPos', this.props.scrollPosition)

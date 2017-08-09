@@ -35,6 +35,9 @@ class DMCA extends React.PureComponent {
             this.request = null
         }
     }
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <div style={{textAlign: 'center'}}>

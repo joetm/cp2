@@ -20,6 +20,10 @@ const styles = {
 }
 
 
+/**
+ * Footer class
+ * @class
+ */
 const Footer = (props) => (
     <div style={{textAlign: 'center'}}>
 

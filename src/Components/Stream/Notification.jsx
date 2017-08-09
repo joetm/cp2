@@ -35,6 +35,9 @@ class Notification extends React.PureComponent {
     state = {
       showMenu: false
     }
+    /**
+     * Render the component.
+     */
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
         return (

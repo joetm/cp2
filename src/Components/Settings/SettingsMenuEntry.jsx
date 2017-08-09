@@ -11,6 +11,9 @@ class SettingsMenuEntry extends React.PureComponent {
   state = {
     selected: false
   }
+  /**
+   * Render the component.
+   */
   render() { // {primaryText,secondaryText, match, history}
     return (
         <ListItem

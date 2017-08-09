@@ -21,9 +21,10 @@ class ToolbarSimple extends React.Component {
   state = {
       visible: false
   }
-
   handleChange = (event, index, value) => this.setState({value})
-
+    /**
+     * Render the component.
+     */
   render() {
     styles.toolBarStyle.display = this.visible === true ? 'block' : 'none';
     return (

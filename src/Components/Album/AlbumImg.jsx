@@ -38,6 +38,9 @@ const styles = {
 //            <Paper zDepth={1} style={styles.albumImgContainer}>
 //            </Paper>
 
+/**
+* AlbumImg class
+*/
 const AlbumImg = (props) => {
     return (
         <Block original-width={300} original-height={900} style={styles.albumBlock}>

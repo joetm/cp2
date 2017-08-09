@@ -39,6 +39,9 @@ class ProfileImg extends React.PureComponent {
     componentWillUnmount() {
         window.onresize = null
     }
+    /**
+     * Render the component.
+     */
     render() {
         const {username, avatar} = this.props
         // --

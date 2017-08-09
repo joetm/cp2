@@ -24,6 +24,9 @@ class ButtonRaised extends React.PureComponent {
     //     // this.toggleButtonState()
     //     this.props.action() // .bind(this)
     // }
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <RaisedButton

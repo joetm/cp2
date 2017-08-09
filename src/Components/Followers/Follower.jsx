@@ -6,6 +6,10 @@ import {ListItem} from 'material-ui/List'
 import {grey400, darkBlack} from 'material-ui/styles/colors'
 
 
+/**
+ * Follower class
+ * @class
+ */
 class Follower extends React.PureComponent {
     constructor(props) {
         super(props)
@@ -18,6 +22,9 @@ class Follower extends React.PureComponent {
     handleClick() {
         console.log(`clicked follower: ${this.state.userid}`)
     }
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <ListItem

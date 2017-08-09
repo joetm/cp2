@@ -20,6 +20,9 @@ class LoginButton extends React.PureComponent {
   state = {
     visible: true,
   }
+  /**
+   * Render the component.
+   */
   render() {
     const { history } = this.props
     return (

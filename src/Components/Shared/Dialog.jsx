@@ -15,6 +15,9 @@ const styles = {
 
 
 class CustomDialog extends React.PureComponent {
+    /**
+     * Render the component.
+     */
     render() {
         const defaultActions = [
             <FlatButton

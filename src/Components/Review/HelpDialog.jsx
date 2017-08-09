@@ -15,6 +15,9 @@ const styles = {
 
 
 class HelpDialog extends React.PureComponent {
+  /**
+   * Render the component.
+   */
   render() {
     const actions = [
       <FlatButton

@@ -11,6 +11,9 @@ function openThread() {
 
 const Post = props => {
   const { post } = props
+  /**
+   * Render the component.
+   */
   return (
       <ListItem
         key={`upd_${post.id}`}

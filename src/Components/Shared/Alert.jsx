@@ -7,6 +7,9 @@ const _DEFAULT_DURATION = 2000
 
 
 class SnackbarAlert extends React.Component {
+    /**
+     * Render the component.
+     */
     render() {
         const msg = this.props.msg || 'Thanks. Your vote has been recorded.'
         const duration = this.props.duration || _DEFAULT_DURATION

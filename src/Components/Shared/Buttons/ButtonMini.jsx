@@ -20,6 +20,9 @@ class ButtonMini extends React.PureComponent {
     toggleButtonState() {
         this.setState({active: !this.state.active})
     }
+    /**
+     * Render the component.
+     */
     render() {
         const {tooltip} = this.props
         let iconButtonStyle

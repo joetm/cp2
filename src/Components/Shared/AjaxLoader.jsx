@@ -18,6 +18,9 @@ const styles = {
 
 
 class AjaxLoader extends React.PureComponent {
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <div style={styles.ajaxLoaderStyleContainer}>

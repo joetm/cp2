@@ -19,6 +19,9 @@ class Tabs extends Component {
       this.setState({selectedIndex: index})
       console.log('selected', index)
     }
+    /**
+     * Render the component.
+     */
     render() {
         return (
           <div>

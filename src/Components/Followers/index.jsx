@@ -18,7 +18,14 @@ function randomNum() {
 }
 
 
+/**
+ * Followers class
+ * @class
+ */
 class Followers extends React.PureComponent {
+    /**
+     * Render the component.
+     */
     render () {
           return (
               <List>

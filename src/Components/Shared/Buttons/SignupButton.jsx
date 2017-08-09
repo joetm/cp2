@@ -18,6 +18,9 @@ class SignupButton extends React.PureComponent {
     state = {
       visible: true,
     }
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <Route render={({ history }) => (

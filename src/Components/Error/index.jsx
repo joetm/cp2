@@ -7,8 +7,12 @@ const getMsg = (code) => {
   return `${code} - ${Msgs[code]}.`
 }
 
-const Error = () => (
 
+/**
+ * Error class
+ * @class
+ */
+const Error = () => (
   <div>
     <h2>{getMsg(404)}</h2>
   </div>

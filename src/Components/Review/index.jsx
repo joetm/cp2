@@ -99,7 +99,9 @@ class Review extends React.PureComponent {
         console.log('open popover', this)
         // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
     }
-    // --
+    /**
+     * Render the component.
+     */
     render () {
         const updatesList = reviewStore.getState().updatesList
         return (

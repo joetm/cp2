@@ -50,6 +50,9 @@ class Album extends PureComponent {
         return rectangle
     }
 
+    /**
+     * Render the component.
+     */
     render() {
       return (
         <div>

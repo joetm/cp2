@@ -13,6 +13,9 @@ import Spacer from '../Shared/Spacer'
 
 
 class Notifications extends React.PureComponent {
+    /**
+     * Render the component.
+     */
     render () {
           return (
             <div>

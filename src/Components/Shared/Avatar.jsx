@@ -44,6 +44,9 @@ class AvatarBubble extends React.PureComponent {
     toggleActive() {
         this.props.toggleState(this.props.id)
     }
+    /**
+     * Render the component.
+     */
     render() {
       const {micro, mini, active, src, visible} = this.props
       // avatar size

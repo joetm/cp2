@@ -79,6 +79,9 @@ class ForumHome extends React.Component {
     }
 //          <Provider store={store}>
 //          </Provider>
+    /**
+     * Render the component.
+     */
     render() {
         // const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
         // const { isFetching } = this.props

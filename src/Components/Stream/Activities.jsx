@@ -31,6 +31,9 @@ class Activities extends React.PureComponent {
         // console.log(categorizedList)
         return categorizedList
     }
+    /**
+     * Render the component.
+     */
     render () {
         const categorizedActivities = this.categorize(activityList)
         return (

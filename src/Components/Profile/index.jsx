@@ -54,6 +54,9 @@ class Profile extends React.PureComponent {
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
     }
+    /**
+     * Render the component.
+     */
     render () {
           const {username, avatar, profileimg} = fakeUserRecord
           return (

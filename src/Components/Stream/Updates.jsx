@@ -37,6 +37,9 @@ class Updates extends React.PureComponent {
         // console.log(categorizedList)
         return categorizedList
     }
+    /**
+     * Render the component.
+     */
     render () {
         const categorizedUpdates = this.categorize(updatesList)
         return (

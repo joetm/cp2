@@ -40,6 +40,9 @@ class Scrollbutton extends React.PureComponent {
         if (!this.state.clickable) { return }
         this.scrollToTop(400)
     }
+    /**
+     * Render the component.
+     */
     render() {
         if (!this.props.visible) {
             return null
