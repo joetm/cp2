@@ -7,20 +7,51 @@ import Footer from '../Footer/'
 import './style.scss'
 
 
-const Guidelines = () => (
-    <div style={{textAlign: 'center'}}>
+const guidelineDoc = 'https://raw.githubusercontent.com/joetm/cp2/master/src/docs/policy-community.txt'
 
-        <h1>Community Guidelines</h1>
 
-        <div>
-            xxxxxxxxxxxxxxxx
-        </div>
+class Guidelines extends React.PureComponent {
+    state = {
+        txt: '',
+        loading: true,
+    }
+    componentDidMount() {
+        this.request = fetch(guidelineDoc)
+            .then((response) => {
+                return response.text()
+            }).then((txt) => {
+            this.setState({
+                txt,
+                loading: false,
+            })
+        })
+    }
+    componentWillUnmount() {
+        if (this.request) {
+            if (this.state.loading) {
+                this.request.abort()
+            }
+            this.request = null
+        }
+    }
+    /**
+     * Render the component.
+     */
+    render () {
+        return (
+            <div style={{textAlign: 'center'}}>
 
-        <Spacer />
+                <h1>Community Guidelines</h1>
 
-        <Footer />
+                <div dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
 
-    </div>
-)
+                <Spacer />
+
+                <Footer />
+
+            </div>
+        )
+    }
+}
 
 export default Guidelines

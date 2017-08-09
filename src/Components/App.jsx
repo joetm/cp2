@@ -24,8 +24,8 @@ import {ConnectedRouter, push} from 'react-router-redux'
 
 
 // --
-import reducers from './reducers'
-import store from './store'
+import reducers from '../reducers'
+import store from '../store'
 import { theme, colors } from '../common/theme'
 // --
 import Scrollbutton from './Shared/Scrollbutton'
@@ -73,6 +73,9 @@ class RoutedApp extends React.Component {
     componentWillUnmount() {
         window.onscroll = null
     }
+    /**
+     * Render the component.
+     */
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>
