@@ -1,14 +1,16 @@
 
-import {browserHistory} from 'react-router-dom'
-import {routerReducer, routerMiddleware} from 'react-router-redux'
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import { browserHistory } from 'react-router-dom'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-import Reducers from '../reducers'
+import reducers from '../reducers'
 
 
 // TODO
 export const initialState = {
+    // -- state --
     sidebarOpen: false,
+    // -- content --
     threads: [],
     posts: [],
     albums: [],
@@ -16,7 +18,7 @@ export const initialState = {
     followers: [],
     user: {
         name: '',
-        email: '',
+        // email: '',
     },
 }
 
@@ -26,7 +28,7 @@ const middleware = routerMiddleware(browserHistory) // Build the middleware for 
 // Add the reducer to your store on the `router` key and apply middleware for navigating
 const store = createStore(
     combineReducers({
-      ...{ Reducers },
+      ...{ reducers },
       router: routerReducer
     }),
     applyMiddleware(middleware)

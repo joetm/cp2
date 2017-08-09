@@ -20,7 +20,7 @@ import fetch from 'unfetch'
 import { Route, Switch, browserHistory } from 'react-router-dom'
 import { Provider } from 'react-redux'
 // import createHistory from 'history/createBrowserHistory'
-import {ConnectedRouter, push} from 'react-router-redux'
+import { ConnectedRouter } from 'react-router-redux'
 
 
 // --
@@ -47,10 +47,8 @@ import DMCA from './Legal/DMCA'
 import Contact from './Contact'
 
 
-//                <Provider store={store}>
 // <ConnectedRouter history={browserHistory}>
 // </ConnectedRouter>
-//                </Provider>
 
 
 class RoutedApp extends React.Component {
@@ -79,6 +77,8 @@ class RoutedApp extends React.Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>
+            <Provider store={store}>
+
               <div style={{backgroundColor: colors.bg}}>
 
                     <NavBar scrollPosition={this.state.scrollPosition} />
@@ -118,6 +118,8 @@ class RoutedApp extends React.Component {
                     />
 
               </div>
+
+            </Provider>
             </MuiThemeProvider>
         )
     }

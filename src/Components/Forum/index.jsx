@@ -3,6 +3,9 @@
 import React from 'react'
 import { Provider, connect } from 'react-redux'
 
+import { toggleSidebar } from '../../actions'
+import store from '../../store'
+// --
 import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
 import Sidebar from './Sidebar'
@@ -45,38 +48,17 @@ const posts = [
 ]
 
 
-// function mapStateToProps(state) {
-//   const { selectedSubreddit, postsBySubreddit } = state
-//   const {
-//     isFetching,
-//     lastUpdated,
-//     items: posts
-//   } = postsBySubreddit[selectedSubreddit] || {
-//     isFetching: true,
-//     items: []
-//   }
-//   return {
-//     selectedSubreddit,
-//     posts,
-//     isFetching,
-//     lastUpdated
-//   }
-// }
-
-
 class ForumHome extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // TODO: move this into redux application state
             sidebarIsOpen: true,
         }
-        this.toggleSidebar = this.toggleSidebar.bind(this)
     }
-    toggleSidebar() {
-        // TODO: move this into redux actions
-        this.setState({sidebarIsOpen: !this.state.sidebarIsOpen})
-    }
+    // toggleSidebar() {
+    //     // TODO: move this into redux actions
+    //     this.setState({sidebarIsOpen: !this.state.sidebarIsOpen})
+    // }
 //          <Provider store={store}>
 //          </Provider>
     /**
@@ -100,7 +82,7 @@ class ForumHome extends React.Component {
                 </div>
                 <Sidebar
                     open={this.state.sidebarIsOpen}
-                    toggleSidebar={this.toggleSidebar}
+                    toggleSidebar={store.dispatch(toggleSidebar())}
                 />
                 <Spacer />
             </div>
