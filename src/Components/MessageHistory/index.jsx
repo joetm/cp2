@@ -9,6 +9,7 @@ import Avatar from 'material-ui/Avatar'
 import Chip from 'material-ui/Chip';
 import SendIcon from 'material-ui/svg-icons/content/send'
 import TextField from 'material-ui/TextField'
+import parser from 'bbcode-to-react'
 
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
@@ -45,6 +46,10 @@ class MessageHistory extends React.PureComponent {
     componentDidMount() {
         this.setState({loading: false})
     }
+    /**
+     * Handle key press event on message field.
+     * @param e - Event
+     */
     _handleKeyPress(e) {
         if (!e.shiftKey && e.key === 'Enter') {
             const messages = this.state.messages
@@ -97,7 +102,7 @@ class MessageHistory extends React.PureComponent {
                                         style={{...styles.chip, ...{float: MYUSERID === item.userid ? 'right': 'left'}}}
                                     >
                                         <Avatar src={item.avatar} />
-                                        {item.msg}
+                                        {parser.toReact(item.msg)}
                                     </Chip>
                                 </div>
                             ))

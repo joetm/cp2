@@ -36,7 +36,7 @@ const mockState = {
                 username: "Gonzales",
                 userid: 2,
                 avatar: '/img/avatar/face-13.jpg',
-                msg: "Wassup, homie?",
+                msg: "Wassup, [b]homie[/b]?",
             },
             {
                 username: "me",
@@ -48,7 +48,7 @@ const mockState = {
                 username: "Gonzales",
                 userid: 2,
                 avatar: '/img/avatar/face-13.jpg',
-                msg: "wassssuuuuup?",
+                msg: "[quote]wha?[/quote][i]wassss[/i]uuuuup?",
             },
             {
                 username: "me",
