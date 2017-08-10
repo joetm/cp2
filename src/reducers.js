@@ -6,8 +6,7 @@
 import fetch from 'unfetch'
 import { combineReducers } from 'redux'
 
-import { makeActionCreator } from './boilerplate'
-import { initialState } from '../store'
+import { initialState } from './store'
 
 
 /*
@@ -28,6 +27,21 @@ export const MARK_POST_READ   = 'FORUM::MARK_POST_READ'
 export const MARK_ALL_READ    = 'FORUM::MARK_ALL_READ'
 export const SELECT_THREAD    = 'FORUM::SELECT_THREAD'
 export const SEND_MESSAGE     = 'CHAT::SEND_MESSAGE'
+
+
+/*
+ * Function to reduce redux boilerplate code
+ * See: http://redux.js.org/docs/recipes/ReducingBoilerplate.html
+ */
+function makeActionCreator(type, ...argNames) {
+  return function (...args) {
+    let action = { type }
+    argNames.forEach((arg, index) => {
+      action[argNames[index]] = args[index]
+    })
+    return action
+  }
+}
 
 
 /*

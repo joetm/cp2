@@ -4,7 +4,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import cuid from 'cuid'
 
-import reducers from '../reducers'
+import reducers from './reducers'
 
 
 /********************************
@@ -34,7 +34,7 @@ export const initialState = {
     user: {
         userid: 0,
         username: 'Anonymous',
-        online: false,
+        status: 'unknown',
         lastActivity: 0,
         // email: '',
     },
