@@ -1,10 +1,10 @@
 /** @flow */
 
 import React from 'react'
-import { Provider, connect } from 'react-redux'
+import { connect } from 'react-redux'
 
 import store from '../../store'
-import { toggleSidebar } from '../../reducers'
+import { toggleSidebar, mapStateToProps } from '../../reducers'
 // --
 import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
@@ -68,30 +68,24 @@ class ForumHome extends React.Component {
      */
     render() {
         return (
-            <Provider store={store}>
+            <div>
+                <h2>Forum</h2>
+                <button onClick={this.toggleSidebar}>Toggle Sidebar</button>
                 <div>
-                    <h2>Forum</h2>
-                    <button onClick={this.toggleSidebar}>Toggle Sidebar</button>
-                    <div>
-                        {posts.length > 0 &&
-                          <div>
-                            <Posts posts={posts} />
-                          </div>
-                        }
-                    </div>
-                    <Sidebar
-                        toggleSidebar={this.toggleSidebar}
-                        sidebarOpen={store.getState().app.sidebarOpen}
-                    />
-                    <Spacer />
+                    {posts.length > 0 &&
+                      <div>
+                        <Posts posts={posts} />
+                      </div>
+                    }
                 </div>
-            </Provider>
+                <Sidebar
+                    toggleSidebar={this.toggleSidebar}
+                    sidebarOpen={store.getState().app.sidebarOpen}
+                />
+                <Spacer />
+            </div>
         )
     }
-}
-
-function mapStateToProps(state) {
-    return { app: state.app }
 }
 
 export default connect(mapStateToProps)(ForumHome)

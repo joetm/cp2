@@ -6,16 +6,17 @@ import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { connect } from 'react-redux'
 
 import './style.scss'
 // --
-import reviewStore from './store'
+import store from '../../store'
+import { reviewApprove, reviewDisapprove, like, dislike, mapStateToProps } from '../../reducers'
 import { colors } from '../../common/theme'
-
+import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
 import Spacer from '../Shared/Spacer'
-import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
 import CellPadding from '../Shared/CellPadding'
@@ -77,15 +78,15 @@ class Review extends React.PureComponent {
     }
     // --
     approve() {
-        console.log('approve update', this)
+        console.log('approve update', this.props.app.reviewitem.id)
         // TODO
-        // this.reviewcard.hide()
+        // store.dispatch(reviewApprove(this.props.app.reviewitem.id))
         this.openAlert()
     }
     reject() {
-        console.log('reject update', this)
+        console.log('reject update', this.props.app.reviewitem.id)
         // TODO
-        // this.reviewcard.hide()
+        // store.dispatch(reviewDisapprove(this.props.app.reviewitem.id))
         this.openAlert()
     }
     // --
@@ -98,7 +99,7 @@ class Review extends React.PureComponent {
      * Render the component.
      */
     render () {
-        const updatesList = reviewStore.getState().updatesList
+        const reviewitem = store.getState().app.reviewitem
         return (
             <div>
                 <h2>
@@ -130,18 +131,18 @@ class Review extends React.PureComponent {
                           transitionEnterTimeout={500}
                           transitionLeaveTimeout={300}
                         >
-
                             <ReviewCard
-                                {...updatesList[0]}
-                                datetime={humanRelativeDate(updatesList[0].timestamp)}
+                                {...reviewitem}
+                                datetime={humanRelativeDate(reviewitem.timestamp)}
                                 gridColumnsFull={4}
                                 gridColumnsTablet={3}
                                 gridColumnsPhone={1}
                                 approve={this.approve}
                                 reject={this.reject}
+                                likes={reviewitem.likes}
+                                dislikes={reviewitem.dislikes}
                                 handleImageClick={this.handleImageClick}
                             />
-
                         </ReactCSSTransitionGroup>
 
                     </div>
@@ -160,4 +161,4 @@ class Review extends React.PureComponent {
     }
 }
 
-export default Review
+export default connect(mapStateToProps)(Review)

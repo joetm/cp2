@@ -54,7 +54,7 @@ class ReviewCard extends React.PureComponent {
    * Render the component.
    */
   render() {
-    const {id, fromUsername, primaryText, secondaryText, datetime, src} = this.props
+    const {id, fromUsername, primaryText, secondaryText, datetime, src, likes, dislikes} = this.props
     if (!this.state.visible) {
       return null
     }
@@ -89,10 +89,10 @@ class ReviewCard extends React.PureComponent {
             />
 
             <LikeButton
-                number={123}
+                number={likes}
             />
             <DisapproveButton
-                number={8}
+                number={dislikes}
             />
 
           </CardActions>
