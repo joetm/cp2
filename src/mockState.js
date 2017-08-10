@@ -28,6 +28,54 @@ const mockState = {
         src: '',
         title: '',
     },
+    messageHistory: {
+        username: "Gonzales",
+        userid: 2,
+        messages: [
+            {
+                username: "Gonzales",
+                userid: 2,
+                avatar: '/img/avatar/face-13.jpg',
+                msg: "Wassup, homie?",
+            },
+            {
+                username: "me",
+                userid: 1,
+                avatar: '/img/avatar/face.jpg',
+                msg: "wha?",
+            },
+            {
+                username: "Gonzales",
+                userid: 2,
+                avatar: '/img/avatar/face-13.jpg',
+                msg: "wassssuuuuup?",
+            },
+            {
+                username: "me",
+                userid: 1,
+                avatar: '/img/avatar/face.jpg',
+                msg: "wassssuuuuup?",
+            },
+            {
+                username: "Gonzales",
+                userid: 2,
+                avatar: '/img/avatar/face-13.jpg',
+                msg: "...uuuuu...",
+            },
+            {
+                username: "me",
+                userid: 1,
+                avatar: '/img/avatar/face.jpg',
+                msg: "...uuuuu...",
+            },
+            {
+                username: "me",
+                userid: 1,
+                avatar: '/img/avatar/face.jpg',
+                msg: "...uuuuup?!",
+            },
+        ]
+    },
     reviewitem: {
         id: 123,
         primaryText: "Brunch this weekend?",

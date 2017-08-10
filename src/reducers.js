@@ -66,6 +66,7 @@ export const like             = makeActionCreator(LIKE,              'itemid')
 export const dislike          = makeActionCreator(DISLIKE,           'itemid')
 export const reviewApprove    = makeActionCreator(REVIEW_APPROVE,    'itemid')
 export const reviewDisapprove = makeActionCreator(REVIEW_DISAPPROVE, 'itemid')
+export const sendMessage      = makeActionCreator(SEND_MESSAGE,      'toUserid', 'msg')
 
 // forum actions
 export const loadPost         = makeActionCreator(LOAD_POST,         'postid', 'response')

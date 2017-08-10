@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
 import { List } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
@@ -11,6 +12,8 @@ import TextField from 'material-ui/TextField'
 
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
+import store from '../../store'
+import { sendMessage, mapStateToProps } from '../../reducers'
 
 
 // DEV
@@ -38,50 +41,6 @@ class MessageHistory extends React.PureComponent {
         // DEV
         user: { userid: 1, name: "Joe"},
         opponent: { userid: 2, name: "Gonzales"},
-        messages: [
-            {
-                username: "Gonzales",
-                userid: 2,
-                avatar: '/img/avatar/face-13.jpg',
-                msg: "Wassup, homie?",
-            },
-            {
-                username: "me",
-                userid: 1,
-                avatar: '/img/avatar/face.jpg',
-                msg: "wha?",
-            },
-            {
-                username: "Gonzales",
-                userid: 2,
-                avatar: '/img/avatar/face-13.jpg',
-                msg: "wassssuuuuup?",
-            },
-            {
-                username: "me",
-                userid: 1,
-                avatar: '/img/avatar/face.jpg',
-                msg: "wassssuuuuup?",
-            },
-            {
-                username: "Gonzales",
-                userid: 2,
-                avatar: '/img/avatar/face-13.jpg',
-                msg: "...uuuuu...",
-            },
-            {
-                username: "me",
-                userid: 1,
-                avatar: '/img/avatar/face.jpg',
-                msg: "...uuuuu...",
-            },
-            {
-                username: "me",
-                userid: 1,
-                avatar: '/img/avatar/face.jpg',
-                msg: "...uuuuup?!",
-            },
-        ],
     }
     componentDidMount() {
         this.setState({loading: false})
@@ -104,13 +63,14 @@ class MessageHistory extends React.PureComponent {
      * Render the component.
      */
     render () {
+        const msgHistory = store.getState().app.messageHistory
         return (
             <div>
 
                 <h2>Private Message History</h2>
 
                 <Subheader style={styles.subheader}>
-                    with {this.state.opponent.name}
+                    with {msgHistory.username}
                 </Subheader>
 
                 <div class="mdc-layout-grid">
@@ -127,41 +87,39 @@ class MessageHistory extends React.PureComponent {
                                 mdc-layout-grid__cell--span-6-tablet
                                 mdc-layout-grid__cell--span-4-phone">
 
-                    {
-                        this.state.messages.map((item, i) => (
-                            <div
-                                key={`msg_${i}`}
-                                style={{clear:'both'}}
-                            >
-                                <Chip
-                                    style={{...styles.chip, ...{float: MYUSERID === item.userid ? 'right': 'left'}}}
+                        {
+                            msgHistory.messages.map((item, i) => (
+                                <div
+                                    key={`msg_${i}`}
+                                    style={{clear:'both'}}
                                 >
-                                    <Avatar src={item.avatar} />
-                                    {item.msg}
-                                </Chip>
-                            </div>
-                        ))
-                    }
+                                    <Chip
+                                        style={{...styles.chip, ...{float: MYUSERID === item.userid ? 'right': 'left'}}}
+                                    >
+                                        <Avatar src={item.avatar} />
+                                        {item.msg}
+                                    </Chip>
+                                </div>
+                            ))
+                        }
 
-                    <div style={styles.messageField}>
-                        <TextField
-                            id="new-message"
-                            hintText="Enter Message..."
-                            floatingLabelText="New Message"
-                            ref="inputfield"
-                            fullWidth={true}
-                            multiLine={true}
-                            rows={1}
-                            onKeyPress={this._handleKeyPress.bind(this)}
-                        />
-                        <SendIcon />
-                    </div>
+                        <div style={styles.messageField}>
+                            <TextField
+                                id="new-message"
+                                hintText="Enter Message..."
+                                floatingLabelText="New Message"
+                                ref="inputfield"
+                                fullWidth={true}
+                                multiLine={true}
+                                rows={1}
+                                onKeyPress={this._handleKeyPress.bind(this)}
+                            />
+                            <SendIcon />
+                        </div>
 
                     </div>
                   </div>
                 </div>
-
-                <Divider />
 
                 <Spacer />
 
