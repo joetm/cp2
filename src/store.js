@@ -4,7 +4,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import cuid from 'cuid'
 
-import reducers from './reducers'
+import { cpApp } from './reducers'
 
 
 /**
@@ -30,6 +30,13 @@ export const initialState = {
         src: '',
         title: '',
     },
+    reviewitem: {
+        id: 0,
+        title: '',
+        src: '',
+        userid: 0,
+        username: '',
+    },
     followers: [],
     user: {
         userid: 0,
@@ -43,11 +50,12 @@ export const initialState = {
 
 // see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
 const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
-// Add the reducer to your store on the `router` key and apply middleware for navigating
+// Add the routerReducer to your store on the `router` key
+// and apply middleware for navigating
 const store = createStore(
     combineReducers({
-      ...{ reducers },
-      router: routerReducer
+        ...cpApp,
+        router: routerReducer
     }),
     applyMiddleware(middleware)
 )

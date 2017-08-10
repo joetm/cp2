@@ -7,6 +7,7 @@ import fetch from 'unfetch'
 import { combineReducers } from 'redux'
 
 import { initialState } from './store'
+// console.log('initialState', initialState)
 
 
 /*
@@ -27,6 +28,7 @@ export const MARK_POST_READ   = 'FORUM::MARK_POST_READ'
 export const MARK_ALL_READ    = 'FORUM::MARK_ALL_READ'
 export const SELECT_THREAD    = 'FORUM::SELECT_THREAD'
 export const SEND_MESSAGE     = 'CHAT::SEND_MESSAGE'
+       const UNKNOWN          = 'APP::UNKNOWN'
 
 
 /*
@@ -49,9 +51,9 @@ function makeActionCreator(type, ...argNames) {
  **/
 
 // user facing actions
-export const followUser       = makeActionCreator(FOLLOW_USER,     'userid')
-export const replyThread      = makeActionCreator(REPLY_THREAD,    'threadid')
-export const commentProfile   = makeActionCreator(COMMENT_PROFILE, 'userid')
+export const followUser       = makeActionCreator(FOLLOW_USER,      'userid')
+export const replyThread      = makeActionCreator(REPLY_THREAD,     'threadid')
+export const commentProfile   = makeActionCreator(COMMENT_PROFILE,  'userid')
 export const toggleSidebar    = makeActionCreator(TOGGLE_SIDEBAR)
 export const closeSidebar     = makeActionCreator(CLOSE_SIDEBAR)
 export const openSidebar      = makeActionCreator(OPEN_SIDEBAR)
@@ -66,12 +68,14 @@ export const markThreadRead   = makeActionCreator(MARK_THREAD_READ, 'threadid')
 export const markPostRead     = makeActionCreator(MARK_POST_READ,   'threadid')
 export const markAllRead      = makeActionCreator(MARK_ALL_READ,    'threadid')
 
+const unknownAction = { type: UNKNOWN }
+
 
 /**
  * Redux reducers
  **/
 
-export function forumApp(state = initialState, action = { type: 'UNKNOWN' }) {
+export function cpApp(state = initialState, action = unknownAction) {
     switch (action.type) {
         case OPEN_SIDEBAR:
             return {...state, sidebarOpen: true}

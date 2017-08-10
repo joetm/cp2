@@ -3,7 +3,7 @@
 import React from 'react'
 import { Provider, connect } from 'react-redux'
 
-import { toggleSidebar } from '../../actions'
+import { toggleSidebar } from '../../reducers'
 import store from '../../store'
 // --
 import Posts from './Posts'
