@@ -55,10 +55,6 @@ class ForumHome extends React.Component {
             sidebarIsOpen: true,
         }
     }
-    // toggleSidebar() {
-    //     // TODO: move this into redux actions
-    //     this.setState({sidebarIsOpen: !this.state.sidebarIsOpen})
-    // }
 //          <Provider store={store}>
 //          </Provider>
     /**

@@ -118,7 +118,7 @@ class Review extends React.PureComponent {
                 <div class="mdc-layout-grid">
                   <div class="mdc-layout-grid__inner">
 
-                    {CellPadding}
+                    <CellPadding />
 
                     <div class="mdc-layout-grid__cell
                                 mdc-layout-grid__cell--span-8

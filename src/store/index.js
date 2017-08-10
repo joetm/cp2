@@ -2,22 +2,40 @@
 import { browserHistory } from 'react-router-dom'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
+import cuid from 'cuid'
 
 import reducers from '../reducers'
 
 
-// TODO
+/********************************
+ * INITIAL STATE OF APPLICATION
+ ********************************/
+
 export const initialState = {
     // -- state --
     sidebarOpen: false,
     // -- content --
     threads: [],
     posts: [],
+    post: {
+        id: cuid(),
+        msg: '',
+        username: 'Anonymous',
+        userid: 0,
+        timeStamp: Date.now() / 1000, // Unix Timestamp in seconds
+    },
     albums: [],
     albumimgs: [],
+    albumimg: {
+        src: '',
+        title: '',
+    },
     followers: [],
     user: {
-        name: '',
+        userid: 0,
+        username: 'Anonymous',
+        online: false,
+        lastActivity: 0,
         // email: '',
     },
 }

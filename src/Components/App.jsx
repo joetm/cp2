@@ -33,6 +33,7 @@ import Scrollbutton from './Shared/Scrollbutton'
 import NavBar from './NavBar'
 import Home from './Home'
 import Forum from './Forum'
+import Thread from './Forum/Thread'
 import Notifications from './Stream/Notifications'
 import MessageHistory from './MessageHistory'
 import Updates from './Stream'
@@ -101,6 +102,8 @@ class RoutedApp extends React.Component {
                         )} />
 
                         <Route path="/settings" component={Settings} />
+
+                        <Route path="/thread/:threadid" component={Thread} />
 
                         <Route path="/login" component={LoginPage} />
                         <Route path="/signup" component={SignupPage} />

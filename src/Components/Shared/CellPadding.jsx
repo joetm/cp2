@@ -2,10 +2,17 @@
 
 import React from 'react'
 
-const CellPadding = (<div class="mdc-layout-grid__cell
-                        mdc-layout-grid__cell--span-2
-                        mdc-layout-grid__cell--span-1-tablet
-                        mdc-layout-grid__cell--span-4-phone">
-                     </div>)
+const CellPadding = ({ full, tablet, phone }) => {
+    if (!full)   { full = 2 }
+    if (!tablet) { tablet = 1 }
+    if (!phone)  { phone = 4 }
+    return (
+        <div class={`mdc-layout-grid__cell
+                     mdc-layout-grid__cell--span-${full}
+                     mdc-layout-grid__cell--span-${tablet}-tablet
+                     mdc-layout-grid__cell--span-${phone}-phone`}>
+        </div>
+    )
+}
 
 export default CellPadding

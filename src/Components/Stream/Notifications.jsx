@@ -13,9 +13,6 @@ import Spacer from '../Shared/Spacer'
 
 
 class Notifications extends React.PureComponent {
-    redirectTo() {
-        console.log(this)
-    }
     /**
      * Render the component.
      */
@@ -33,7 +30,6 @@ class Notifications extends React.PureComponent {
                   secondaryText="I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?"
                   secondaryTextLines={2}
                   showMenu={true}
-                  onTouchTap={this.redirectTo}
                 />
                 <Notification
                   avatar={<Avatar src="/img/avatar/face.jpg" />}

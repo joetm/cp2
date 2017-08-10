@@ -5,12 +5,9 @@ import Avatar from 'material-ui/Avatar'
 import {ListItem} from 'material-ui/List'
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
 
-function openThread() {
-    console.log(this)
-}
 
 const Post = props => {
-  const { post } = props
+  const { post, history } = props
   /**
    * Render the component.
    */
@@ -22,7 +19,7 @@ const Post = props => {
         secondaryText={post.username}
         secondaryTextLines={2}
         autoGenerateNestedIndicator={true}
-        onTouchTap={openThread.bind(this)}
+        onTouchTap={() => history.push(`/thread/${post.id}`)}
       />
   )
 }
