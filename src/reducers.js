@@ -6,7 +6,7 @@
 import fetch from 'unfetch'
 import { combineReducers } from 'redux'
 
-import { initialState } from './store'
+import initialState from './initialState'
 // console.log('initialState', initialState)
 
 

@@ -3,8 +3,8 @@
 import React from 'react'
 import { Provider, connect } from 'react-redux'
 
-import { toggleSidebar } from '../../reducers'
 import store from '../../store'
+import { toggleSidebar } from '../../reducers'
 // --
 import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
@@ -51,40 +51,47 @@ const posts = [
 class ForumHome extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            sidebarIsOpen: true,
-        }
+        // bindings
+        this.toggleSidebar = this.toggleSidebar.bind(this)
     }
-//          <Provider store={store}>
-//          </Provider>
+    /**
+     * Toggle the sidebar.
+     */
+    toggleSidebar() {
+        console.log('dispatch action:', toggleSidebar())
+        // console.log('before', store.getState())
+        store.dispatch(toggleSidebar())
+        // console.log('after', store.getState())
+    }
     /**
      * Render the component.
      */
     render() {
-        // const { selectedSubreddit, posts, isFetching, lastUpdated } = this.props
-        // const { isFetching } = this.props
-        //                  {isFetching && posts.length === 0 && <h2>Loading...</h2>}
-        //                  {!isFetching && posts.length === 0 && <h2>Empty.</h2>}
-        // style={{ opacity: isFetching ? 0.5 : 1 }}>
         return (
-            <div>
-                <h2>Forum</h2>
+            <Provider store={store}>
                 <div>
-                    {posts.length > 0 &&
-                      <div>
-                        <Posts posts={posts} />
-                      </div>
-                    }
+                    <h2>Forum</h2>
+                    <button onClick={this.toggleSidebar}>Toggle Sidebar</button>
+                    <div>
+                        {posts.length > 0 &&
+                          <div>
+                            <Posts posts={posts} />
+                          </div>
+                        }
+                    </div>
+                    <Sidebar
+                        toggleSidebar={this.toggleSidebar}
+                        sidebarOpen={store.getState().app.sidebarOpen}
+                    />
+                    <Spacer />
                 </div>
-                <Sidebar
-                    open={this.state.sidebarIsOpen}
-                    toggleSidebar={store.dispatch(toggleSidebar())}
-                />
-                <Spacer />
-            </div>
+            </Provider>
         )
     }
 }
 
-// export default connect(mapStateToProps)(ForumHome)
-export default ForumHome
+function mapStateToProps(state) {
+    return { app: state.app }
+}
+
+export default connect(mapStateToProps)(ForumHome)

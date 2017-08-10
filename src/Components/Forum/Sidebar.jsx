@@ -92,7 +92,7 @@ class Sidebar extends React.Component {
     render() {
         return (
             <Drawer
-                open={this.props.open}
+                open={this.props.sidebarOpen}
                 openSecondary={true}
                 disableSwipeToOpen={false}
                 docked={true}
@@ -118,7 +118,7 @@ class Sidebar extends React.Component {
                     <ToolbarGroup>
                         <CloseIcon
                             style={styles.icon}
-                            onTouchTap={this.props.toggleSidebar}
+                            onTouchTap={ this.props.toggleSidebar }
                         />
                     </ToolbarGroup>
                 </Toolbar>
