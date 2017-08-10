@@ -34,7 +34,7 @@
         "comma-spacing": 2,
         "eol-last": 2,
         "no-array-constructor": 2,
-        "no-lonely-if": 2,
+        "no-lonely-if": 0,
         "no-mixed-spaces-and-tabs": 2,
         "no-multiple-empty-lines": 0,
         "no-plusplus": 0,

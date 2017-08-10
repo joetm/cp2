@@ -26,7 +26,7 @@ class Updates extends React.PureComponent {
             return classifyByDateAgo(obj)
         })
         // console.log(annotatedList)
-        let categorizedList = []
+        const categorizedList = []
         annotatedList.forEach(obj => {
             if (categorizedList[obj.daysAgo]) {
                 categorizedList[obj.daysAgo].push(obj)

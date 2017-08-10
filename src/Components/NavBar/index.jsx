@@ -144,8 +144,8 @@ class NavBar extends React.Component {
 
                     <div
                         class="inline-block"
-                        onMouseEnter={() => {this.setState({notificationDetailsShowing: true})}}
-                        onMouseLeave={() => {this.setState({notificationDetailsShowing: false})}}
+                        onMouseEnter={() => { this.setState({notificationDetailsShowing: true}) }}
+                        onMouseLeave={() => { this.setState({notificationDetailsShowing: false}) }}
                     >
                         <CustomBadge
                             id={_NAVITEM_ID.ALLNOTIFICATIONS}

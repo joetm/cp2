@@ -1,7 +1,7 @@
 
-/*********************
+/**
  * Redux actions
- *********************/
+ **/
 
 import fetch from 'unfetch'
 import { combineReducers } from 'redux'
@@ -35,7 +35,7 @@ export const SEND_MESSAGE     = 'CHAT::SEND_MESSAGE'
  */
 function makeActionCreator(type, ...argNames) {
   return function (...args) {
-    let action = { type }
+    const action = { type }
     argNames.forEach((arg, index) => {
       action[argNames[index]] = args[index]
     })
@@ -44,9 +44,9 @@ function makeActionCreator(type, ...argNames) {
 }
 
 
-/*
+/**
  * Redux action creators
- */
+ **/
 
 // user facing actions
 export const followUser       = makeActionCreator(FOLLOW_USER,     'userid')
@@ -57,19 +57,19 @@ export const closeSidebar     = makeActionCreator(CLOSE_SIDEBAR)
 export const openSidebar      = makeActionCreator(OPEN_SIDEBAR)
 
 // forum actions
-export const loadPost         = makeActionCreator(LOAD_POST,       'postid', 'response')
-export const editPost         = makeActionCreator(EDIT_POST,       'postid', 'response')
-export const removePost       = makeActionCreator(REMOVE_POST,     'postid', 'bool')
-export const selectThread     = makeActionCreator(SELECT_THREAD,   'threadid')
+export const loadPost         = makeActionCreator(LOAD_POST,        'postid', 'response')
+export const editPost         = makeActionCreator(EDIT_POST,        'postid', 'response')
+export const removePost       = makeActionCreator(REMOVE_POST,      'postid', 'bool')
+export const selectThread     = makeActionCreator(SELECT_THREAD,    'threadid')
 
-export const markThreadRead   = makeActionCreator(MARK_THREAD_READ,'threadid')
-export const markPostRead     = makeActionCreator(MARK_POST_READ,  'threadid')
-export const markAllRead      = makeActionCreator(MARK_ALL_READ,   'threadid')
+export const markThreadRead   = makeActionCreator(MARK_THREAD_READ, 'threadid')
+export const markPostRead     = makeActionCreator(MARK_POST_READ,   'threadid')
+export const markAllRead      = makeActionCreator(MARK_ALL_READ,    'threadid')
 
 
-/********************
+/**
  * Redux reducers
- ********************/
+ **/
 
 export function forumApp(state = initialState, action = {}) {
     switch (action.type) {

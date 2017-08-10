@@ -7,9 +7,9 @@ import cuid from 'cuid'
 import reducers from './reducers'
 
 
-/********************************
+/**
  * INITIAL STATE OF APPLICATION
- ********************************/
+ **/
 
 export const initialState = {
     // -- state --

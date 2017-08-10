@@ -41,6 +41,10 @@ const styles = {
 
 class Sidebar extends React.Component {
     inputValue = ''
+    /**
+     * Constructor.
+     * @param props
+     */
     constructor(props) {
         super(props)
         this.state = {
@@ -51,14 +55,20 @@ class Sidebar extends React.Component {
         this.handleTouchTap = this.handleTouchTap.bind(this)
         this.enterValueIntoList = this.enterValueIntoList.bind(this)
     }
+    /**
+     * Add the value to the filter list.
+     */
     enterValueIntoList() {
         console.log(this.inputValue)
         const values = this.state.filterTerms
-        if (this.inputValue != '' && values.indexOf(this.inputValue) === -1) {
+        if (this.inputValue !== '' && values.indexOf(this.inputValue) === -1) {
             values.push(this.inputValue)
             this.setState({filterTerms: values})
         }
     }
+    /**
+     * Handle the change of the search field.
+     */
     handleChangeSearchField(event, inputValue) {
         this.inputValue = inputValue
     }
@@ -70,6 +80,9 @@ class Sidebar extends React.Component {
             this.setState({filterTerms: chipValues});
         }
     }
+    /**
+     * Handle the click on a filter item.
+     */
     handleTouchTap() {
         alert('You clicked the Chip.')
     }
@@ -132,7 +145,7 @@ class Sidebar extends React.Component {
                         this.setState({
                             // open:false,
                             selected: _MENUITEM.XXX,
-                        })}
+                        }) }
                     }
                 >
                     XXX
