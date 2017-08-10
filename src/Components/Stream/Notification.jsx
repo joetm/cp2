@@ -1,7 +1,8 @@
 /** @flow */
 
 import React from 'react'
-import {ListItem} from 'material-ui/List'
+import { withRouter } from 'react-router-dom'
+import { ListItem } from 'material-ui/List'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
@@ -40,6 +41,7 @@ class Notification extends React.PureComponent {
      */
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
+        const history = this.props.history
         return (
             <ListItem
               leftAvatar={this.props.avatar}
@@ -49,9 +51,11 @@ class Notification extends React.PureComponent {
               onMouseEnter={() => this.setState({showMenu: true})}
               onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
+              onClick={() => history.push(`/messages/${this.props.userid}`)}
+              onTouchTap={this.props.onTouchTap}
             />
         )
     }
 }
 
-export default Notification
+export default withRouter(Notification)
