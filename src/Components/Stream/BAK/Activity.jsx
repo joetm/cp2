@@ -14,7 +14,7 @@ import Divider from 'material-ui/Divider';
 
 import {navigateTo} from '../../common/helpers'
 import Avatar from '../Shared/Avatar'
-import Thumbnail from './Thumbnail'
+import Thumbnail from '../Shared/Thumbnail'
 
 
 const styles = {

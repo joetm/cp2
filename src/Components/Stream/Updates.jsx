@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 import Avatar from 'material-ui/Avatar'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
@@ -16,7 +17,8 @@ import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOf
 import Update from './Update'
 import Spacer from '../Shared/Spacer'
 // --
-import { updatesList } from './store'
+import store from '../../store'
+import { mapStateToProps } from '../../reducers'
 
 
 class Updates extends React.PureComponent {
@@ -41,42 +43,44 @@ class Updates extends React.PureComponent {
      * Render the component.
      */
     render () {
+        const updatesList = store.getState().app.activities
         const categorizedUpdates = this.categorize(updatesList)
         return (
             <div>
                 <h2>Updates</h2>
-                    {
-                        categorizedUpdates.map((group, daysAgo) => {
-                            return (
-                                <div>
-                                    <Subheader>{translateDayOffset(daysAgo)}</Subheader>
-                                    <Divider />
-                                    <div class="mdc-layout-grid">
-                                        <div class="mdc-layout-grid__inner">
-                                        {
-                                            group.map((item, i) => (
-                                              <Update
-                                                id={i}
-                                                key={i}
-                                                primaryText={item.primaryText}
-                                                secondaryText={item.secondaryText}
-                                                fromUsername={item.fromUsername}
-                                                datetime={humanRelativeDate(item.timestamp)}
-                                                gridColumnsFull={4}
-                                                gridColumnsTablet={3}
-                                                gridColumnsPhone={1}
-                                              />
-                                            ))
-                                        }
-                                        </div>
+                {
+                    categorizedUpdates.map((group, daysAgo) => {
+                        return (
+                            <div>
+                                <Subheader>{translateDayOffset(daysAgo)}</Subheader>
+                                <Divider />
+                                <div class="mdc-layout-grid">
+                                    <div class="mdc-layout-grid__inner">
+                                    {
+                                        group.map((item, i) => (
+                                          <Update
+                                            id={i}
+                                            key={i}
+                                            src={item.src}
+                                            primaryText={item.primaryText}
+                                            secondaryText={item.secondaryText}
+                                            fromUsername={item.fromUsername}
+                                            datetime={humanRelativeDate(item.timestamp)}
+                                            gridColumnsFull={4}
+                                            gridColumnsTablet={3}
+                                            gridColumnsPhone={1}
+                                          />
+                                        ))
+                                    }
                                     </div>
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                        )
+                    })
+                }
             </div>
         )
     }
 }
 
-export default Updates
+export default connect(mapStateToProps)(Updates)
