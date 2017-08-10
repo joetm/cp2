@@ -71,14 +71,14 @@ export const markAllRead      = makeActionCreator(MARK_ALL_READ,    'threadid')
  * Redux reducers
  **/
 
-export function forumApp(state = initialState, action = {}) {
+export function forumApp(state = initialState, action = { type: 'UNKNOWN' }) {
     switch (action.type) {
         case OPEN_SIDEBAR:
             return {...state, sidebarOpen: true}
         case CLOSE_SIDEBAR:
             return {...state, sidebarOpen: false}
         case TOGGLE_SIDEBAR:
-            return {...state, sidebarOpen: !this.state.sidebarOpen}
+            return {...state, sidebarOpen: !state.sidebarOpen}
         default:
             return state
     }
