@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 import './style.scss'
 // --
-import store from '../../store'
+// import store from '../../store'
 import { reviewApprove, reviewDisapprove, like, dislike, mapStateToProps } from '../../reducers'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
@@ -34,7 +34,7 @@ const styles = {
 }
 
 
-class Review extends React.PureComponent {
+class Review extends React.Component {
     request = null
     constructor(props) {
         super(props)
@@ -53,7 +53,18 @@ class Review extends React.PureComponent {
         this.openAlert = this.openAlert.bind(this)
         this.closeAlert = this.closeAlert.bind(this)
     }
-    // --
+    /*
+     * Abort a running ajax request.
+     */
+    componentWillUnmount() {
+        if (this.request) {
+            this.request.abort()
+            this.request = null
+        }
+    }
+    /*
+     * Toggle the help dialog.
+     */
     toggleHelp() {
         if (this.state.helpText === '') {
             this.request = fetch(_HELPTXT_URL)
@@ -69,27 +80,39 @@ class Review extends React.PureComponent {
             helpIsOpen: !this.state.helpIsOpen
         })
     }
-    // --
+    /*
+     * Open the snack bar alert.
+     */
     openAlert() {
         this.setState({alertIsOpen: true})
     }
+    /*
+     * Close the snack bar alert.
+     */
     closeAlert() {
         this.setState({alertIsOpen: false})
     }
-    // --
+    /*
+     * Approve the update.
+     */
     approve() {
-        console.log('approve update', this.props.app.reviewitem.id)
+        console.log('approve update', this.props.store.reviewitem.id)
         // TODO
-        // store.dispatch(reviewApprove(this.props.app.reviewitem.id))
+        // this.props.reviewApprove(this.props.store.reviewitem.id)
         this.openAlert()
     }
+    /*
+     * Reject the update.
+     */
     reject() {
-        console.log('reject update', this.props.app.reviewitem.id)
+        console.log('reject update', this.props.store.reviewitem.id)
         // TODO
-        // store.dispatch(reviewDisapprove(this.props.app.reviewitem.id))
+        // this.props.reviewDisapprove(this.props.store.reviewitem.id)
         this.openAlert()
     }
-    // --
+    /*
+     * Handle the event when the image is clicked.
+     */
     handleImageClick() {
         // TODO
         console.log('open popover', this)
@@ -99,7 +122,7 @@ class Review extends React.PureComponent {
      * Render the component.
      */
     render () {
-        const reviewitem = store.getState().app.reviewitem
+        const reviewitem = this.props.store.reviewitem
         return (
             <div>
                 <h2>
@@ -161,4 +184,7 @@ class Review extends React.PureComponent {
     }
 }
 
-export default connect(mapStateToProps)(Review)
+export default connect(
+    mapStateToProps,
+    { reviewApprove, reviewDisapprove }
+)(Review)

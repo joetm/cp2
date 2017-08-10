@@ -82,11 +82,11 @@ const unknownAction = { type: UNKNOWN }
 
 
 /**
- * Redux wiring
+ * Merges the application state into the properties of the connected component
  **/
 
 export function mapStateToProps(state) {
-    return { app: state.app }
+    return { store: state.app }
 }
 
 /**

@@ -52,6 +52,14 @@ class MessageHistory extends React.PureComponent {
      */
     _handleKeyPress(e) {
         if (!e.shiftKey && e.key === 'Enter') {
+            // send the message
+            // TODO
+            // this.props.sendMessage(msg)
+
+
+
+
+
             const messages = this.state.messages
             messages.push({
                 username: 'me',
@@ -68,7 +76,7 @@ class MessageHistory extends React.PureComponent {
      * Render the component.
      */
     render () {
-        const msgHistory = store.getState().app.messageHistory
+        const msgHistory = this.props.store.messageHistory
         return (
             <div>
 
@@ -133,4 +141,7 @@ class MessageHistory extends React.PureComponent {
     }
 }
 
-export default MessageHistory
+export default connect(
+    mapStateToProps,
+    { sendMessage }
+)(MessageHistory)
