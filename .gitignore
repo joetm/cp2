@@ -1,3 +1,4 @@
+.coveralls.yml
 .vagrant
 .README.md.swp
 node_modules
