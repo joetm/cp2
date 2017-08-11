@@ -1,10 +1,11 @@
 /** @flow */
 
 import React from 'react'
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
+import RaisedButton from 'material-ui/RaisedButton'
+import ReCaptcha from 'react-google-recaptcha'
 
 import Spacer from '../Shared/Spacer'
 import Footer from '../Footer/'
@@ -19,6 +20,9 @@ class Contact extends React.PureComponent {
         selectedField: 1,
     }
     handleChange = (event, index, value) => this.setState({selectedField: value})
+    recaptchaSuccess() {
+      console.log('recaptcha success')
+    }
     /**
      * Render the component.
      */
@@ -60,6 +64,14 @@ class Contact extends React.PureComponent {
                   multiLine={true}
                   floatingLabelText="Message Text"
                 />
+                </div>
+
+                <div>
+                    <ReCAPTCHA
+                        ref="recaptcha"
+                        sitekey="<client site key>"
+                        onChange={recaptchaSuccess}
+                    />
                 </div>
 
                 <div style={{marginTop:'1em'}}>
