@@ -82,12 +82,11 @@ const unknownAction = { type: UNKNOWN }
 
 
 /**
- * Merges the application state into the properties of the connected component
+ * Merges the application state into the properties of the connected components under the key `store`
  **/
-
-export function mapStateToProps(state) {
-    return { store: state.app }
-}
+export const mapStateToProps = (state) => ({
+    store: state.app
+})
 
 /**
  * Redux reducers

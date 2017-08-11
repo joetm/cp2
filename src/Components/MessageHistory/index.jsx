@@ -14,7 +14,7 @@ import parser from 'bbcode-to-react'
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
 import store from '../../store'
-import { sendMessage, mapStateToProps } from '../../reducers'
+import { sendMessage } from '../../reducers'
 
 
 // DEV
@@ -52,17 +52,20 @@ class MessageHistory extends React.PureComponent {
      */
     _handleKeyPress(e) {
         if (!e.shiftKey && e.key === 'Enter') {
-            // TODO: detect and insert line breaks
             this.props.sendMessage(2, e.target.value)
             // clear input
             e.target.value = ''
+        } else if (e.key === 'Enter') {
+            // TODO: detect and insert line breaks
+
+
         }
     }
     /**
      * Render the component.
      */
     render () {
-        const msgHistory = this.props.store.messageHistory
+        const msgHistory = this.props.messageHistory
         return (
             <div>
 
@@ -126,6 +129,10 @@ class MessageHistory extends React.PureComponent {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    messageHistory: state.app.messageHistory
+})
 
 export default connect(
     mapStateToProps,

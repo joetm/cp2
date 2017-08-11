@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import './style.scss'
 // --
 // import store from '../../store'
-import { reviewApprove, reviewDisapprove, like, dislike, mapStateToProps } from '../../reducers'
+import { reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 // --
@@ -96,18 +96,18 @@ class Review extends React.Component {
      * Approve the update.
      */
     approve() {
-        console.log('approve update', this.props.app.reviewitem.id)
+        console.log('approve update', this.props.reviewitem.id)
         // TODO
-        // this.props.reviewApprove(this.props.app.reviewitem.id)
+        // this.props.reviewApprove(this.props.reviewitem.id)
         this.openAlert()
     }
     /*
      * Reject the update.
      */
     reject() {
-        console.log('reject update', this.props.app.reviewitem.id)
+        console.log('reject update', this.props.reviewitem.id)
         // TODO
-        // this.props.reviewDisapprove(this.props.app.reviewitem.id)
+        // this.props.reviewDisapprove(this.props.reviewitem.id)
         this.openAlert()
     }
     /*
@@ -122,7 +122,7 @@ class Review extends React.Component {
      * Render the component.
      */
     render () {
-        const reviewitem = this.props.app.reviewitem
+        const { reviewitem } = this.props
         return (
             <div>
                 <h2>
@@ -183,6 +183,10 @@ class Review extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    reviewitem: state.app.reviewitem
+})
 
 export default connect(
     mapStateToProps,

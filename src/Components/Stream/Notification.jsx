@@ -10,7 +10,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import { grey400 } from 'material-ui/styles/colors'
 
 
 const iconButtonElement = (
@@ -51,8 +51,7 @@ class Notification extends React.PureComponent {
               onMouseEnter={() => this.setState({showMenu: true})}
               onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              onClick={() => history.push(`/messages/${this.props.userid}`)}
-              onTouchTap={this.props.onTouchTap}
+              onTouchTap={() => history.push(`/messages/${this.props.userid}`)}
             />
         )
     }
