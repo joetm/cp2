@@ -11,44 +11,30 @@ import Spacer from '../Shared/Spacer'
 import Sidebar from './Sidebar'
 
 
-class ForumHome extends React.Component {
-    /**
-     * Toggle the sidebar.
-     */
-    toggleSidebar() {
-        // console.log('dispatch action:', toggleSidebar())
-        // console.log('before', store.getState())
+const ForumHome = (props) => (
+    <div>
+        <h2>Forum</h2>
+        <button onClick={props.toggleSidebar}>Toggle Sidebar</button>
+        <div>
+            {props.posts.length > 0 &&
+              <div>
+                <Posts posts={props.posts} />
+              </div>
+            }
+        </div>
+        <Sidebar
+            toggleSidebar={props.toggleSidebar}
+            sidebarOpen={props.sidebarOpen}
+        />
+        <Spacer />
+    </div>
+)
 
-        // console.log('after', store.getState())
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        return (
-            <div>
-                <h2>Forum</h2>
-                <button onClick={this.props.toggleSidebar}>Toggle Sidebar</button>
-                <div>
-                    {this.props.app.posts.length > 0 &&
-                      <div>
-                        <Posts posts={this.props.app.posts} />
-                      </div>
-                    }
-                </div>
-                <Sidebar
-                    toggleSidebar={this.props.toggleSidebar}
-                    sidebarOpen={this.props.app.sidebarOpen}
-                />
-                <Spacer />
-            </div>
-        )
-    }
-}
 
 const mapStateToProps = (state) => ({
-    // TODO - do not use the whole state
-    app: state.app
+    // add selected fields from the state as props to the component
+    sidebarOpen: state.app.sidebarOpen,
+    posts: state.app.posts,
 })
 
 export default connect(
