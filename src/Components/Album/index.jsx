@@ -1,12 +1,15 @@
 /** @flow */
 
 import React, { PureComponent } from "react"
-
 import Masonry from '../External/react-simple-masonry/src/'
+import LazyLoad from 'react-lazy-load'
 
 import AlbumImg from './AlbumImg'
 import AjaxLoader from '../Shared/AjaxLoader'
 import Spacer from '../Shared/Spacer'
+
+
+const _LAZYLOAD_OFFSET = 250
 
 
 /**
@@ -53,6 +56,8 @@ class Album extends PureComponent {
     /**
      * Render the component.
      */
+//                <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
+//                </LazyLoad>
     render() {
       return (
         <div>

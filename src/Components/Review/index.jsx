@@ -57,7 +57,7 @@ class Review extends React.Component {
      * Abort a running ajax request.
      */
     componentWillUnmount() {
-        if (this.request) {
+        if (typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
         }
@@ -96,18 +96,20 @@ class Review extends React.Component {
      * Approve the update.
      */
     approve() {
-        console.log('approve update', this.props.reviewitem.id)
+        // console.log('approve update', this.props.reviewitem.id)
         // TODO
-        // this.props.reviewApprove(this.props.reviewitem.id)
+        this.props.reviewApprove(this.props.reviewitem.id)
+        console.log('reviewitem after', this.props.reviewitem)
         this.openAlert()
     }
     /*
      * Reject the update.
      */
     reject() {
-        console.log('reject update', this.props.reviewitem.id)
+        // console.log('reject update', this.props.reviewitem.id)
         // TODO
-        // this.props.reviewDisapprove(this.props.reviewitem.id)
+        this.props.reviewDisapprove(this.props.reviewitem.id)
+        console.log('reviewitem after', this.props.reviewitem)
         this.openAlert()
     }
     /*
@@ -185,7 +187,7 @@ class Review extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    reviewitem: state.app.reviewitem
+    reviewitem: state.reviewitem
 })
 
 export default connect(

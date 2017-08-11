@@ -84,33 +84,54 @@ const unknownAction = { type: UNKNOWN }
 /**
  * Merges the application state into the properties of the connected components under the key `store`
  **/
-export const mapStateToProps = (state) => ({
-    store: state.app
-})
+// export const mapStateToProps = (state) => ({
+//     store: state.app
+// })
 
 /**
  * Redux reducers
  **/
 
-export function cpApp(state = initialState, action = unknownAction) {
+export function chatReducer(chatState = initialState.messageHistory, action) {
     switch (action.type) {
-        case OPEN_SIDEBAR:
-            return {...state, sidebarOpen: true}
-        case CLOSE_SIDEBAR:
-            return {...state, sidebarOpen: false}
-        case TOGGLE_SIDEBAR:
-            return {...state, sidebarOpen: !state.sidebarOpen}
         case SEND_MESSAGE:
             // TODO: structure of state.messageHistory
-            const messageHistory = {...state.messageHistory}
-            messageHistory.messages.push({
-                msg: action.msg,
+            // console.log('chatState before', chatState)
+            const messageHistoryState = {...chatState}
+            messageHistoryState.messages.push({
+                msg: action.msg.trim(),
                 username: 'me',
                 userid: 1,
                 avatar: '/img/avatar/face.jpg',
+                timestamp: Math.round(Date.now() / 1000),
             })
-            return {...state, messageHistory}
+            console.log('chatState after', messageHistoryState)
+            return messageHistoryState
         default:
-            return state
+            return chatState
+    }
+}
+
+export function reviewReducer(reviewState = initialState.reviewitem, action) {
+    switch (action.type) {
+        case REVIEW_APPROVE:
+            return {...reviewState, approvals: reviewState.approvals + 1}
+        case REVIEW_DISAPPROVE:
+            return {...reviewState, disapprovals: reviewState.disapprovals + 1}
+        default:
+            return reviewState
+    }
+}
+
+export function cpAppReducer(appState = initialState, action) {
+    switch (action.type) {
+        case OPEN_SIDEBAR:
+            return {...appState, sidebarOpen: true}
+        case CLOSE_SIDEBAR:
+            return {...appState, sidebarOpen: false}
+        case TOGGLE_SIDEBAR:
+            return {...appState, sidebarOpen: !appState.sidebarOpen}
+        default:
+            return appState
     }
 }

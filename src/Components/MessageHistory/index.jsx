@@ -37,11 +37,14 @@ const styles = {
 
 
 class MessageHistory extends React.PureComponent {
-    state = {
-        loading: true,
-        // DEV
-        user: { userid: 1, name: "Joe"},
-        opponent: { userid: 2, name: "Gonzales"},
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: true,
+            inputRows: 1,
+        }
+        // bindings
+        this._handleKeyPress = this._handleKeyPress.bind(this)
     }
     componentDidMount() {
         this.setState({loading: false})
@@ -51,14 +54,25 @@ class MessageHistory extends React.PureComponent {
      * @param e - Event
      */
     _handleKeyPress(e) {
-        if (!e.shiftKey && e.key === 'Enter') {
-            this.props.sendMessage(2, e.target.value)
-            // clear input
-            e.target.value = ''
-        } else if (e.key === 'Enter') {
-            // TODO: detect and insert line breaks
-
-
+        if (e.key === 'Enter') {
+            if (!e.shiftKey) {
+                this.submitMsg(e.target.value)
+            }
+        }
+    }
+    /**
+     * Submit the input field.
+     */
+    submitMsg(msg) {
+        msg = msg.trim()
+        if (msg) {
+            this.props.sendMessage(this.props.messageHistory.userid, msg)
+            // clear the input field
+            this.refs.inputfield.getInputNode().value = ''
+            // reset number of rows in the input field
+            this.setState({inputRows: 1})
+            // TODO: reset the height of the text field
+            // this.refs.inputfield.input.state.height = 24
         }
     }
     /**
@@ -66,9 +80,9 @@ class MessageHistory extends React.PureComponent {
      */
     render () {
         const msgHistory = this.props.messageHistory
+        // console.log('render', msgHistory)
         return (
             <div>
-
                 <h2>Private Message History</h2>
 
                 <Subheader style={styles.subheader}>
@@ -113,10 +127,12 @@ class MessageHistory extends React.PureComponent {
                                 ref="inputfield"
                                 fullWidth={true}
                                 multiLine={true}
-                                rows={1}
-                                onKeyPress={this._handleKeyPress.bind(this)}
+                                rows={this.state.inputRows}
+                                onKeyPress={this._handleKeyPress}
                             />
-                            <SendIcon />
+                            <SendIcon
+                                onTouchTap={() => {}}
+                            />
                         </div>
 
                     </div>
@@ -131,7 +147,7 @@ class MessageHistory extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    messageHistory: state.app.messageHistory
+    messageHistory: state.messageHistory
 })
 
 export default connect(
