@@ -56,7 +56,7 @@ class Review extends React.Component {
      * Abort a running ajax request.
      */
     componentWillUnmount() {
-        if (typeof this.request.abort === "function") {
+        if (this.request && typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
         }
