@@ -86,10 +86,6 @@ const mockState = {
     },
     albums: [],
     albumimgs: [],
-    albumimg: {
-        src: '',
-        title: '',
-    },
     messageHistory: {
         username: "Gonzales",
         userid: 2,
