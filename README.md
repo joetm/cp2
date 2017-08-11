@@ -1,4 +1,4 @@
-CP v2
+CP v2 [![Build Status](https://travis-ci.org/joetm/cp2.svg?branch=master)](https://travis-ci.org/joetm/cp2)
 =====
 
 PROD
