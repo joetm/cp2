@@ -52,22 +52,8 @@ class MessageHistory extends React.PureComponent {
      */
     _handleKeyPress(e) {
         if (!e.shiftKey && e.key === 'Enter') {
-            // send the message
-            // TODO
-            // this.props.sendMessage(msg)
-
-
-
-
-
-            const messages = this.state.messages
-            messages.push({
-                username: 'me',
-                userid: 1,
-                avatar: '/img/avatar/face.jpg',
-                msg: e.target.value
-            })
-            this.setState(messages)
+            // TODO: detect and insert line breaks
+            this.props.sendMessage(2, e.target.value)
             // clear input
             e.target.value = ''
         }
@@ -76,7 +62,7 @@ class MessageHistory extends React.PureComponent {
      * Render the component.
      */
     render () {
-        const msgHistory = this.props.app.messageHistory
+        const msgHistory = this.props.store.messageHistory
         return (
             <div>
 

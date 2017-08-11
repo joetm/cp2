@@ -101,6 +101,16 @@ export function cpApp(state = initialState, action = unknownAction) {
             return {...state, sidebarOpen: false}
         case TOGGLE_SIDEBAR:
             return {...state, sidebarOpen: !state.sidebarOpen}
+        case SEND_MESSAGE:
+            // TODO: structure of state.messageHistory
+            const messageHistory = {...state.messageHistory}
+            messageHistory.messages.push({
+                msg: action.msg,
+                username: 'me',
+                userid: 1,
+                avatar: '/img/avatar/face.jpg',
+            })
+            return {...state, messageHistory}
         default:
             return state
     }
