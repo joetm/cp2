@@ -37,7 +37,7 @@
       "json"
     ],
     "moduleNameMapper": {
-      "\\.(css|less|scss)$": "<rootDir>/env/CSSstub.js"
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/CSSstub.js"
     }
   },
   "BAK": {
