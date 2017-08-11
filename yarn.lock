@@ -7370,6 +7370,15 @@ recompose@0.23.4:
     hoist-non-react-statics "^1.0.0"
     symbol-observable "^1.0.4"
 
+recompose@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.24.0.tgz#262e93f974439eb17e7779824d88cce90492a5dd"
+  dependencies:
+    change-emitter "^0.1.2"
+    fbjs "^0.8.1"
+    hoist-non-react-statics "^1.0.0"
+    symbol-observable "^1.0.4"
+
 redbox-noreact@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/redbox-noreact/-/redbox-noreact-1.1.0.tgz#970d6f68574dae17554a34d55321057297ac8b37"

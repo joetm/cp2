@@ -10,8 +10,11 @@ import cuid from 'cuid'
  **/
 
 const mockState = {
-    // -- state --
     sidebarOpen: false,
+    // -- state --
+    navbar: {
+        activeBadge: 0,
+    },
     // -- content --
     activities: [
         {

@@ -33,6 +33,7 @@ export const REVIEW_DISAPPROVE = 'REVIEW::DISAPPROVE'
 export const LIKE              = 'SOCIAL::LIKE'
 export const DISLIKE           = 'SOCIAL::DISLIKE'
 export const FOLLOW_USER       = 'SOCIAL::FOLLOW_USER'
+export const SET_ACTIVE_BADGE  = 'NAV::SET_ACTIVE_BADGE'
        const UNKNOWN           = 'APP::UNKNOWN'
 
 
@@ -73,10 +74,12 @@ export const loadPost         = makeActionCreator(LOAD_POST,         'postid', '
 export const editPost         = makeActionCreator(EDIT_POST,         'postid', 'response')
 export const removePost       = makeActionCreator(REMOVE_POST,       'postid', 'bool')
 export const selectThread     = makeActionCreator(SELECT_THREAD,     'threadid')
-
 export const markThreadRead   = makeActionCreator(MARK_THREAD_READ,  'threadid')
 export const markPostRead     = makeActionCreator(MARK_POST_READ,    'threadid')
 export const markAllRead      = makeActionCreator(MARK_ALL_READ,     'threadid')
+
+// oter app actions
+export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,  'id')
 
 const unknownAction = { type: UNKNOWN }
 
@@ -123,6 +126,15 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
     }
 }
 
+export function navBarReducer(state = initialState.navbar, action) {
+    switch (action.type) {
+        case SET_ACTIVE_BADGE:
+            return {...state, activeBadge: +action.id}
+        default:
+            return state
+    }
+}
+
 export function cpAppReducer(appState = initialState, action) {
     switch (action.type) {
         case OPEN_SIDEBAR:
@@ -131,6 +143,8 @@ export function cpAppReducer(appState = initialState, action) {
             return {...appState, sidebarOpen: false}
         case TOGGLE_SIDEBAR:
             return {...appState, sidebarOpen: !appState.sidebarOpen}
+        case SET_ACTIVE_BADGE:
+            return {...appState, activeBadge: +action.id}
         default:
             return appState
     }

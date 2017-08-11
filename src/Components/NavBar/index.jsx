@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
 import Menu from 'material-ui/Menu';
 import IconMenu from 'material-ui/IconMenu';
@@ -23,6 +24,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
+import { setActiveBadge } from '../../reducers'
 import { navigateTo } from '../../common/helpers'
 import { colors } from '../../common/theme'
 import './style.css'
@@ -88,7 +90,6 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            activeBadge: 0,
             notificationDetailsShowing: false,
         }
         // bindings
@@ -98,12 +99,9 @@ class NavBar extends React.Component {
         this.setState({notificationDetailsShowing: !this.state.notificationDetailsShowing})
     }
     toggleState = (num) => {
-        // TODO
-        // console.log('num', num)
         if(num.id) { num = num.id }
         else if(! +num) { num = 0 }
-        this.setState({activeBadge: num})
-        console.log('activeBadge', num)
+        this.props.setActiveBadge(num)
     }
     /**
      * Render the component.
@@ -111,7 +109,9 @@ class NavBar extends React.Component {
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
         // styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}
-        let AllNotificationsIcons;
+
+// TODO
+        let AllNotificationsIcons
         if (!NUMS.ALLNOTIFICATIONS) {
             AllNotificationsIcons = NotificationsNoneIcon
         } else {
@@ -121,6 +121,8 @@ class NavBar extends React.Component {
                 AllNotificationsIcons = NotificationsActiveIcon
             }
         }
+        console.log('this.props.activeBadge', this.props.activeBadge)
+        console.log('this.props.sidebarOpen', this.props.sidebarOpen)
         return (
             <Toolbar
                 style={styles.navbar}
@@ -136,7 +138,7 @@ class NavBar extends React.Component {
                             tooltip="Home"
                             style={styles.firstItem}
                             onTouchTap={this.toggleState}
-                            iconStyle={{color: this.state.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
+                            iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                         >
                             <HomeIcon />
                         </IconButton>
@@ -183,7 +185,7 @@ class NavBar extends React.Component {
                                         tooltip="New Forum Activity"
                                         icon={<ForumIcon />}
                                         toggleState={this.toggleState}
-                                        active={this.state.activeBadge === _NAVITEM_ID.FORUM}
+                                        active={this.props.activeBadge === _NAVITEM_ID.FORUM}
                                     />
                                 </NavLink>,
                                 <NavLink
@@ -200,7 +202,7 @@ class NavBar extends React.Component {
                                         tooltip="New Activity"
                                         icon={<UpdatesIcon />}
                                         toggleState={this.toggleState}
-                                        active={this.state.activeBadge === _NAVITEM_ID.STREAM}
+                                        active={this.props.activeBadge === _NAVITEM_ID.STREAM}
                                     />
                                 </NavLink>,
                                 <NavLink
@@ -217,7 +219,7 @@ class NavBar extends React.Component {
                                         tooltip="Messages"
                                         icon={<EmailIcon />}
                                         toggleState={this.toggleState}
-                                        active={this.state.activeBadge === _NAVITEM_ID.MESSAGES}
+                                        active={this.props.activeBadge === _NAVITEM_ID.MESSAGES}
                                     />
                                 </NavLink>
                             ]
@@ -248,7 +250,7 @@ class NavBar extends React.Component {
                             mini={true}
                             tooltip="Your Profile"
                             onTouchTap={this.toggleState}
-                            active={this.state.activeBadge === _NAVITEM_ID.PROFILE}
+                            active={this.props.activeBadge === _NAVITEM_ID.PROFILE}
                         />
                     </Link>
                     <IconMenu
@@ -281,4 +283,12 @@ class NavBar extends React.Component {
     }
 }
 
-export default NavBar
+const mapStateToProps = (state) => ({
+    activeBadge: state.navbar.activeBadge,
+    sidebarOpen: state.app.sidebarOpen,
+})
+
+export default connect(
+    mapStateToProps,
+    { setActiveBadge }
+)(NavBar)

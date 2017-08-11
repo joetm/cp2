@@ -51,7 +51,7 @@ class Updates extends React.PureComponent {
                 {
                     categorizedUpdates.map((group, daysAgo) => {
                         return (
-                            <div>
+                            <div key={`grp_${daysAgo}`}>
                                 <Subheader>{translateDayOffset(daysAgo)}</Subheader>
                                 <Divider />
                                 <div class="mdc-layout-grid">
@@ -60,7 +60,7 @@ class Updates extends React.PureComponent {
                                         group.map((item, i) => (
                                           <Update
                                             id={i}
-                                            key={i}
+                                            key={`upd_${i}`}
                                             src={item.src}
                                             primaryText={item.primaryText}
                                             secondaryText={item.secondaryText}
