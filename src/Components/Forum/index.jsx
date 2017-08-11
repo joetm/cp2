@@ -11,43 +11,6 @@ import Spacer from '../Shared/Spacer'
 import Sidebar from './Sidebar'
 
 
-// DEV
-const posts = [
-    {
-        id: 1,
-        title: "Cars & Dinos",
-        content: "Dinosaurs are like cars.",
-        username: "Joe",
-        tags: ["cars", "thread-123"],
-        timestamp: 1501135362,
-    },
-    {
-        id: 2,
-        title: "Dinos & Cars",
-        content: "Cars are like dinosaurs.",
-        username: "Moe",
-        tags: ["dinosaurs", "thread-123"],
-        timestamp: 1501185342,
-    },
-    {
-        id: 3,
-        title: "Testing the Forums",
-        content: "Forums are like dinosaurs.",
-        username: "Toe",
-        tags: ["forums", "dinosaurs", "thread-124"],
-        timestamp: 1501188342,
-    },
-    {
-        id: 4,
-        title: "Testing the Dinos",
-        content: "Dinos are like forums.",
-        username: "Hogo",
-        tags: ["forums", "dinosaurs", "thread-124"],
-        timestamp: 1501198342,
-    },
-]
-
-
 class ForumHome extends React.Component {
     /**
      * Toggle the sidebar.
@@ -67,9 +30,9 @@ class ForumHome extends React.Component {
                 <h2>Forum</h2>
                 <button onClick={this.props.toggleSidebar}>Toggle Sidebar</button>
                 <div>
-                    {posts.length > 0 &&
+                    {this.props.app.posts.length > 0 &&
                       <div>
-                        <Posts posts={posts} />
+                        <Posts posts={this.props.app.posts} />
                       </div>
                     }
                 </div>
@@ -84,6 +47,7 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    // TODO - do not use the whole state
     app: state.app
 })
 
