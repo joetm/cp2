@@ -118,7 +118,7 @@ class Sidebar extends React.Component {
                     <ToolbarGroup>
                         <CloseIcon
                             style={styles.icon}
-                            onTouchTap={ this.props.toggleSidebar }
+                            onTouchTap={this.props.toggleSidebar}
                         />
                     </ToolbarGroup>
                 </Toolbar>

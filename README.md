@@ -21,6 +21,6 @@ To monitor deepstream:
 
 > vagrant ssh
 >
-> tail -f /var/log/deepstream/deepstream.2017-07-23
+> tail -f /var/log/deepstream/deepstream.<2017-07-23>
 
 

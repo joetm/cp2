@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import store from '../../store'
-import { toggleSidebar, mapStateToProps } from '../../reducers'
+import { toggleSidebar } from '../../reducers'
 // --
 import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
@@ -49,18 +49,13 @@ const posts = [
 
 
 class ForumHome extends React.Component {
-    constructor(props) {
-        super(props)
-        // bindings
-        this.toggleSidebar = this.toggleSidebar.bind(this)
-    }
     /**
      * Toggle the sidebar.
      */
     toggleSidebar() {
-        console.log('dispatch action:', toggleSidebar())
+        // console.log('dispatch action:', toggleSidebar())
         // console.log('before', store.getState())
-        store.dispatch(toggleSidebar())
+
         // console.log('after', store.getState())
     }
     /**
@@ -70,7 +65,7 @@ class ForumHome extends React.Component {
         return (
             <div>
                 <h2>Forum</h2>
-                <button onClick={this.toggleSidebar}>Toggle Sidebar</button>
+                <button onClick={this.props.toggleSidebar}>Toggle Sidebar</button>
                 <div>
                     {posts.length > 0 &&
                       <div>
@@ -79,8 +74,8 @@ class ForumHome extends React.Component {
                     }
                 </div>
                 <Sidebar
-                    toggleSidebar={this.toggleSidebar}
-                    sidebarOpen={store.getState().app.sidebarOpen}
+                    toggleSidebar={this.props.toggleSidebar}
+                    sidebarOpen={this.props.app.sidebarOpen}
                 />
                 <Spacer />
             </div>
@@ -88,4 +83,11 @@ class ForumHome extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(ForumHome)
+const mapStateToProps = (state) => ({
+    app: state.app
+})
+
+export default connect(
+    mapStateToProps,
+    { toggleSidebar }
+)(ForumHome)

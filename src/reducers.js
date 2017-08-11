@@ -8,7 +8,7 @@ import { combineReducers } from 'redux'
 
 // import initialState from './initialState'
 // DEV:
-import initialState from './mockState'
+import initialState from '../__mocks__/mockState'
 
 
 /*
