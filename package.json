@@ -25,12 +25,20 @@
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+    "verbose": true,
+    "roots": [
+      "src"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js",
+      "jsx",
       "json"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss)$": "<rootDir>/env/CSSstub.js"
+    }
   },
   "BAK": {
     "build": "./node_modules/.bin/babel ./src/ -d ./lib/ && ",
