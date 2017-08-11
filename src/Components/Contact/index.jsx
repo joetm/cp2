@@ -16,12 +16,19 @@ import Footer from '../Footer/'
  * @class
  */
 class Contact extends React.PureComponent {
-    state = {
-        selectedField: 1,
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectedField: 1,
+        }
+        // bindings
+        this.recaptchaSuccess = this.recaptchaSuccess.bind(this)
     }
-    handleChange = (event, index, value) => this.setState({selectedField: value})
+    handleChange(event, index, value) {
+        this.setState({selectedField: value})
+    }
     recaptchaSuccess() {
-      console.log('recaptcha success')
+        console.log('recaptcha success')
     }
     /**
      * Render the component.
@@ -66,11 +73,11 @@ class Contact extends React.PureComponent {
                 />
                 </div>
 
-                <div>
-                    <ReCAPTCHA
+                <div style={{margin:'1em auto',display:'inline-block'}}>
+                    <ReCaptcha
                         ref="recaptcha"
                         sitekey="<client site key>"
-                        onChange={recaptchaSuccess}
+                        onChange={this.recaptchaSuccess}
                     />
                 </div>
 
