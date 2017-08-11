@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: common/helpers.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: common/helpers.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Return a unix timestamp as a human-readable date
+ * @param {number} datestamp - Unix timestamp
+ * @returns {Object} formattedTime - Human-readable time
+ */
+export function humanReadableDate(datestamp) {
+    const date = new Date(datestamp * 1000)
+    const hours = date.getHours()
+    const minutes = `0${date.getMinutes()}`
+    const seconds = `0${date.getSeconds()}`
+    const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`
+    return {
+        formattedTime,
+    }
+}
+
+/**
+ * Return a human-readable relative date, e.g. '3 days ago'
+ * @param {number} datestamp - Unix timestamp
+ * @returns {Object} formattedTime - Human-readable time
+ */
+export function humanRelativeDate(datestamp) {
+    const delta = Math.round((+new Date - (datestamp * 1000)) / 1000);
+    const minute = 60,
+        hour = minute * 60,
+        day = hour * 24,
+        week = day * 7,
+        month = day * 30;
+    let formattedTime;
+    if (delta &lt; 30) {
+        formattedTime = 'just now'
+    } else if (delta &lt; minute) {
+        formattedTime = `${delta} seconds ago`
+    } else if (delta &lt; 2 * minute) {
+        formattedTime = 'a minute ago'
+    } else if (delta &lt; hour) {
+        formattedTime = `${Math.floor(delta / minute)} minutes ago`
+    } else if (Math.floor(delta / hour) === 1) {
+        formattedTime = '1 hour ago'
+    } else if (delta &lt; day) {
+        formattedTime = `${Math.floor(delta / hour)} hours ago`
+    } else if (delta &lt; day * 2) {
+        formattedTime = 'yesterday'
+    } else if (delta &lt; day * 7) {
+        formattedTime = 'one week ago'
+    } else if (delta &lt; day * 14) {
+        formattedTime = 'two weeks ago'
+    } else if (delta &lt; day * 14) {
+        formattedTime = 'three weeks ago'
+    } else if (delta &lt; day * month) {
+        formattedTime = 'one month ago'
+    } else if (delta &lt; day * 2 * month) {
+        formattedTime = 'two months ago'
+    } else if (delta &lt; day * 3 * month) {
+        formattedTime = 'three months ago'
+    } else if (delta &lt; day * 6 * month) {
+        formattedTime = 'half a year ago'
+    } else {
+        formattedTime = 'more than half a year ago'
+    }
+    return {
+        formattedTime,
+    }
+}
+
+export function classifyByDateAgo(obj) {
+
+    const day = 60 * 60 * 24
+
+    const ts = obj.timestamp || obj.datestamp
+    const delta = Math.round((+new Date - (ts * 1000)) / 1000);
+
+    const daysAgo = Math.floor(delta / day)
+    // console.log('daysAgo', daysAgo)
+
+    // let returnObj = { ...obj, classifier }
+    // console.log('returnObj', returnObj)
+
+    return { ...obj, daysAgo }
+}
+
+export function translateDayOffset(offset) {
+    const dayNames = [
+        'Today',
+        'Yesterday',
+    ]
+    if (!dayNames[offset]) {
+        return `${offset} days ago`
+    } else {
+        return dayNames[offset]
+    }
+}
+
+/**
+ * Return a random integer
+ * @param {number} min - Minimum of the range
+ * @param {number} max - Maximum of the range
+ * @returns {number} Integer between min and max
+ */
+export function getRandomInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
+}
+
+/*
+ * Other actions
+ */
+
+/**
+ * Navigation function [TODO]
+ * @param {number} arg - Argument
+ * @returns {null} null
+ */
+export function navigateTo(arg) {
+    // TODO
+    console.log(arg)
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Album.html">Album</a></li><li><a href="AvatarBubble.html">AvatarBubble</a></li><li><a href="Contact.html">Contact</a></li><li><a href="Error.html">Error</a></li><li><a href="EventPropagators.html">EventPropagators</a></li><li><a href="Follower.html">Follower</a></li><li><a href="Followers.html">Followers</a></li><li><a href="Footer.html">Footer</a></li><li><a href="ForEachBookKeeping.html">ForEachBookKeeping</a></li><li><a href="LoginPage.html">LoginPage</a></li><li><a href="MapBookKeeping.html">MapBookKeeping</a></li><li><a href="Profile.html">Profile</a></li><li><a href="ReactClass.html">ReactClass</a></li><li><a href="ReactDOMComponent.html">ReactDOMComponent</a></li><li><a href="ReactDOMTextComponent.html">ReactDOMTextComponent</a></li><li><a href="ReactMountReady.html">ReactMountReady</a></li><li><a href="ReactMultiChild.html">ReactMultiChild</a></li><li><a href="ReactOwner.html">ReactOwner</a></li><li><a href="ReactReconcileTransaction.html">ReactReconcileTransaction</a></li><li><a href="Sidebar.html">Sidebar</a></li><li><a href="SignUpPage.html">SignUpPage</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Interfaces</h3><ul><li><a href="DragEvent.html">DragEvent</a></li><li><a href="Event.html">Event</a></li><li><a href="FocusEvent.html">FocusEvent</a></li><li><a href="KeyboardEvent.html">KeyboardEvent</a></li><li><a href="MouseEvent.html">MouseEvent</a></li><li><a href="ReactClassInterface.html">ReactClassInterface</a></li><li><a href="TouchEvent.html">TouchEvent</a></li><li><a href="UIEvent.html">UIEvent</a></li><li><a href="WheelEvent.html">WheelEvent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AlbumImg">AlbumImg</a></li><li><a href="global.html#chatReducer">chatReducer</a></li><li><a href="global.html#construct">construct</a></li><li><a href="global.html#DEFINE_MANY">DEFINE_MANY</a></li><li><a href="global.html#DEFINE_MANY_MERGED">DEFINE_MANY_MERGED</a></li><li><a href="global.html#DEFINE_ONCE">DEFINE_ONCE</a></li><li><a href="global.html#destructor">destructor</a></li><li><a href="global.html#enqueue">enqueue</a></li><li><a href="global.html#ensureScrollValueMonitoring">ensureScrollValueMonitoring</a></li><li><a href="global.html#followUser">followUser</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getRandomInt">getRandomInt</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#humanReadableDate">humanReadableDate</a></li><li><a href="global.html#humanRelativeDate">humanRelativeDate</a></li><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#isEnabled">isEnabled</a></li><li><a href="global.html#isPersistent">isPersistent</a></li><li><a href="global.html#listenTo">listenTo</a></li><li><a href="global.html#mountComponent">mountComponent</a></li><li><a href="global.html#navigateTo">navigateTo</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#OVERRIDE_BASE">OVERRIDE_BASE</a></li><li><a href="global.html#persist">persist</a></li><li><a href="global.html#randomImgHeight">randomImgHeight</a></li><li><a href="global.html#ReactEventListener">ReactEventListener</a></li><li><a href="global.html#receiveComponent">receiveComponent</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#setEnabled">setEnabled</a></li><li><a href="global.html#userRecord">userRecord</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Fri Aug 11 2017 17:54:56 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

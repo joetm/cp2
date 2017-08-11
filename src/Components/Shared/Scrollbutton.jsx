@@ -25,7 +25,7 @@ class Scrollbutton extends React.PureComponent {
         }
     }
     // see http://stackoverflow.com/a/24559613/426266
-    scrollToTop(scrollDuration : number) {
+    scrollToTop(scrollDuration) {
         const scrollStep = -window.scrollY / (scrollDuration / 15),
             scrollInterval = setInterval(function(){
                 if ( window.scrollY !== 0 ) {

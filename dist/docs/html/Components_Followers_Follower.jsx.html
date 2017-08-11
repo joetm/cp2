@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Followers/Follower.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Followers/Follower.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @flow */
+
+import React from 'react'
+import Avatar from 'material-ui/Avatar'
+import {ListItem} from 'material-ui/List'
+import {grey400, darkBlack} from 'material-ui/styles/colors'
+
+
+/**
+ * Follower class
+ * @class
+ */
+class Follower extends React.PureComponent {
+    constructor(props) {
+        super(props)
+        console.log('props', props)
+        this.state = {
+            ...props
+        }
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick() {
+        console.log(`clicked follower: ${this.state.userid}`)
+    }
+    /**
+     * Render the component.
+     */
+    render() {
+        return (
+            &lt;ListItem
+              primaryText={this.props.username}
+              leftAvatar={&lt;Avatar src={this.props.avatar} />}
+              onClick={this.handleClick}
+            />
+        )
+    }
+}
+
+export default Follower
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Album.html">Album</a></li><li><a href="AvatarBubble.html">AvatarBubble</a></li><li><a href="Contact.html">Contact</a></li><li><a href="Error.html">Error</a></li><li><a href="EventPropagators.html">EventPropagators</a></li><li><a href="Follower.html">Follower</a></li><li><a href="Followers.html">Followers</a></li><li><a href="Footer.html">Footer</a></li><li><a href="ForEachBookKeeping.html">ForEachBookKeeping</a></li><li><a href="LoginPage.html">LoginPage</a></li><li><a href="MapBookKeeping.html">MapBookKeeping</a></li><li><a href="Profile.html">Profile</a></li><li><a href="ReactClass.html">ReactClass</a></li><li><a href="ReactDOMComponent.html">ReactDOMComponent</a></li><li><a href="ReactDOMTextComponent.html">ReactDOMTextComponent</a></li><li><a href="ReactMountReady.html">ReactMountReady</a></li><li><a href="ReactMultiChild.html">ReactMultiChild</a></li><li><a href="ReactOwner.html">ReactOwner</a></li><li><a href="ReactReconcileTransaction.html">ReactReconcileTransaction</a></li><li><a href="Sidebar.html">Sidebar</a></li><li><a href="SignUpPage.html">SignUpPage</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Interfaces</h3><ul><li><a href="DragEvent.html">DragEvent</a></li><li><a href="Event.html">Event</a></li><li><a href="FocusEvent.html">FocusEvent</a></li><li><a href="KeyboardEvent.html">KeyboardEvent</a></li><li><a href="MouseEvent.html">MouseEvent</a></li><li><a href="ReactClassInterface.html">ReactClassInterface</a></li><li><a href="TouchEvent.html">TouchEvent</a></li><li><a href="UIEvent.html">UIEvent</a></li><li><a href="WheelEvent.html">WheelEvent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AlbumImg">AlbumImg</a></li><li><a href="global.html#chatReducer">chatReducer</a></li><li><a href="global.html#construct">construct</a></li><li><a href="global.html#DEFINE_MANY">DEFINE_MANY</a></li><li><a href="global.html#DEFINE_MANY_MERGED">DEFINE_MANY_MERGED</a></li><li><a href="global.html#DEFINE_ONCE">DEFINE_ONCE</a></li><li><a href="global.html#destructor">destructor</a></li><li><a href="global.html#enqueue">enqueue</a></li><li><a href="global.html#ensureScrollValueMonitoring">ensureScrollValueMonitoring</a></li><li><a href="global.html#followUser">followUser</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getRandomInt">getRandomInt</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#humanReadableDate">humanReadableDate</a></li><li><a href="global.html#humanRelativeDate">humanRelativeDate</a></li><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#isEnabled">isEnabled</a></li><li><a href="global.html#isPersistent">isPersistent</a></li><li><a href="global.html#listenTo">listenTo</a></li><li><a href="global.html#mountComponent">mountComponent</a></li><li><a href="global.html#navigateTo">navigateTo</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#OVERRIDE_BASE">OVERRIDE_BASE</a></li><li><a href="global.html#persist">persist</a></li><li><a href="global.html#randomImgHeight">randomImgHeight</a></li><li><a href="global.html#ReactEventListener">ReactEventListener</a></li><li><a href="global.html#receiveComponent">receiveComponent</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#setEnabled">setEnabled</a></li><li><a href="global.html#userRecord">userRecord</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Fri Aug 11 2017 17:54:56 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

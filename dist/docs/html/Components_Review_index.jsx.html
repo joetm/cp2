@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/Review/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/Review/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** @flow */
+
+import React from 'react'
+import fetch from 'unfetch'
+import HelpIcon from 'material-ui/svg-icons/action/help-outline'
+// Material Component: Layout (Grid)
+import '@material/layout-grid/dist/mdc.layout-grid.css'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { connect } from 'react-redux'
+
+import './style.scss'
+// --
+// import store from '../../store'
+import { reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
+import { colors } from '../../common/theme'
+import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
+// --
+import Alert from '../Shared/Alert'
+import Spacer from '../Shared/Spacer'
+import ReviewCard from './ReviewCard'
+import Dialog from '../Shared/Dialog'
+import CellPadding from '../Shared/CellPadding'
+
+
+const _HELPTXT_URL = '/docs/crowdreview.txt'
+
+const styles = {
+    helpIconStyle: {
+        cursor: 'pointer',
+        color: colors.grey,
+        verticalAlign: 'middle',
+        lineHeight: '1em',
+    },
+}
+
+
+class Review extends React.Component {
+    request = null
+    constructor(props) {
+        super(props)
+        // state
+        this.state = {
+            helpIsOpen: false,
+            alertIsOpen: false,
+            helpText: '',
+            // popOverImageIsOpen: false,
+        }
+        // bindings
+        this.toggleHelp = this.toggleHelp.bind(this)
+        this.reject = this.reject.bind(this)
+        this.approve = this.approve.bind(this)
+        this.closeAlert = this.closeAlert.bind(this)
+        this.openAlert = this.openAlert.bind(this)
+        this.closeAlert = this.closeAlert.bind(this)
+    }
+    /*
+     * Abort a running ajax request.
+     */
+    componentWillUnmount() {
+        if (typeof this.request.abort === "function") {
+            this.request.abort()
+            this.request = null
+        }
+    }
+    /*
+     * Toggle the help dialog.
+     */
+    toggleHelp() {
+        if (this.state.helpText === '') {
+            this.request = fetch(_HELPTXT_URL)
+                .then((response) => {
+                    return response.text()
+                }).then((txt) => {
+                this.setState({
+                    helpText: txt,
+                })
+            })
+        }
+        this.setState({
+            helpIsOpen: !this.state.helpIsOpen
+        })
+    }
+    /*
+     * Open the snack bar alert.
+     */
+    openAlert() {
+        this.setState({alertIsOpen: true})
+    }
+    /*
+     * Close the snack bar alert.
+     */
+    closeAlert() {
+        this.setState({alertIsOpen: false})
+    }
+    /*
+     * Approve the update.
+     */
+    approve() {
+        // console.log('approve update', this.props.reviewitem.id)
+        // TODO
+        this.props.reviewApprove(this.props.reviewitem.id)
+        console.log('reviewitem after', this.props.reviewitem)
+        this.openAlert()
+    }
+    /*
+     * Reject the update.
+     */
+    reject() {
+        // console.log('reject update', this.props.reviewitem.id)
+        // TODO
+        this.props.reviewDisapprove(this.props.reviewitem.id)
+        console.log('reviewitem after', this.props.reviewitem)
+        this.openAlert()
+    }
+    /*
+     * Handle the event when the image is clicked.
+     */
+    handleImageClick() {
+        // TODO
+        console.log('open popover', this)
+        // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
+    }
+    /**
+     * Render the component.
+     */
+    render () {
+        const { reviewitem } = this.props
+        return (
+            &lt;div>
+                &lt;h2>
+                    Crowd Review &lt;HelpIcon
+                                    style={styles.helpIconStyle}
+                                    onClick={this.toggleHelp}
+                                 />
+                &lt;/h2>
+
+                &lt;Dialog
+                    title="How does this work?"
+                    msg={this.state.helpText}
+                    isOpen={this.state.helpIsOpen}
+                    toggleHelp={this.toggleHelp}
+                />
+
+                &lt;div class="mdc-layout-grid">
+                  &lt;div class="mdc-layout-grid__inner">
+
+                    &lt;CellPadding />
+
+                    &lt;div class="mdc-layout-grid__cell
+                                mdc-layout-grid__cell--span-8
+                                mdc-layout-grid__cell--span-6-tablet
+                                mdc-layout-grid__cell--span-4-phone">
+
+                        &lt;ReactCSSTransitionGroup
+                          transitionName="reviewcard"
+                          transitionEnterTimeout={500}
+                          transitionLeaveTimeout={300}
+                        >
+                            &lt;ReviewCard
+                                {...reviewitem}
+                                datetime={humanRelativeDate(reviewitem.timestamp)}
+                                gridColumnsFull={4}
+                                gridColumnsTablet={3}
+                                gridColumnsPhone={1}
+                                approve={this.approve}
+                                reject={this.reject}
+                                likes={reviewitem.likes}
+                                dislikes={reviewitem.dislikes}
+                                handleImageClick={this.handleImageClick}
+                            />
+                        &lt;/ReactCSSTransitionGroup>
+
+                    &lt;/div>
+                  &lt;/div>
+                &lt;/div>
+
+                &lt;Alert
+                    open={this.state.alertIsOpen}
+                    close={this.closeAlert}
+                />
+
+                &lt;Spacer />
+
+            &lt;/div>
+        )
+    }
+}
+
+const mapStateToProps = (state) => ({
+    reviewitem: state.reviewitem
+})
+
+export default connect(
+    mapStateToProps,
+    { reviewApprove, reviewDisapprove }
+)(Review)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Album.html">Album</a></li><li><a href="AvatarBubble.html">AvatarBubble</a></li><li><a href="Contact.html">Contact</a></li><li><a href="Error.html">Error</a></li><li><a href="EventPropagators.html">EventPropagators</a></li><li><a href="Follower.html">Follower</a></li><li><a href="Followers.html">Followers</a></li><li><a href="Footer.html">Footer</a></li><li><a href="ForEachBookKeeping.html">ForEachBookKeeping</a></li><li><a href="LoginPage.html">LoginPage</a></li><li><a href="MapBookKeeping.html">MapBookKeeping</a></li><li><a href="Profile.html">Profile</a></li><li><a href="ReactClass.html">ReactClass</a></li><li><a href="ReactDOMComponent.html">ReactDOMComponent</a></li><li><a href="ReactDOMTextComponent.html">ReactDOMTextComponent</a></li><li><a href="ReactMountReady.html">ReactMountReady</a></li><li><a href="ReactMultiChild.html">ReactMultiChild</a></li><li><a href="ReactOwner.html">ReactOwner</a></li><li><a href="ReactReconcileTransaction.html">ReactReconcileTransaction</a></li><li><a href="Sidebar.html">Sidebar</a></li><li><a href="SignUpPage.html">SignUpPage</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Interfaces</h3><ul><li><a href="DragEvent.html">DragEvent</a></li><li><a href="Event.html">Event</a></li><li><a href="FocusEvent.html">FocusEvent</a></li><li><a href="KeyboardEvent.html">KeyboardEvent</a></li><li><a href="MouseEvent.html">MouseEvent</a></li><li><a href="ReactClassInterface.html">ReactClassInterface</a></li><li><a href="TouchEvent.html">TouchEvent</a></li><li><a href="UIEvent.html">UIEvent</a></li><li><a href="WheelEvent.html">WheelEvent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AlbumImg">AlbumImg</a></li><li><a href="global.html#chatReducer">chatReducer</a></li><li><a href="global.html#construct">construct</a></li><li><a href="global.html#DEFINE_MANY">DEFINE_MANY</a></li><li><a href="global.html#DEFINE_MANY_MERGED">DEFINE_MANY_MERGED</a></li><li><a href="global.html#DEFINE_ONCE">DEFINE_ONCE</a></li><li><a href="global.html#destructor">destructor</a></li><li><a href="global.html#enqueue">enqueue</a></li><li><a href="global.html#ensureScrollValueMonitoring">ensureScrollValueMonitoring</a></li><li><a href="global.html#followUser">followUser</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getRandomInt">getRandomInt</a></li><li><a href="global.html#getText">getText</a></li><li><a href="global.html#humanReadableDate">humanReadableDate</a></li><li><a href="global.html#humanRelativeDate">humanRelativeDate</a></li><li><a href="global.html#initialState">initialState</a></li><li><a href="global.html#isEnabled">isEnabled</a></li><li><a href="global.html#isPersistent">isPersistent</a></li><li><a href="global.html#listenTo">listenTo</a></li><li><a href="global.html#mountComponent">mountComponent</a></li><li><a href="global.html#navigateTo">navigateTo</a></li><li><a href="global.html#notifyAll">notifyAll</a></li><li><a href="global.html#OVERRIDE_BASE">OVERRIDE_BASE</a></li><li><a href="global.html#persist">persist</a></li><li><a href="global.html#randomImgHeight">randomImgHeight</a></li><li><a href="global.html#ReactEventListener">ReactEventListener</a></li><li><a href="global.html#receiveComponent">receiveComponent</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#reset">reset</a></li><li><a href="global.html#setEnabled">setEnabled</a></li><li><a href="global.html#userRecord">userRecord</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.4</a> on Fri Aug 11 2017 17:54:56 GMT+0200 (CEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

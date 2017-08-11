@@ -21,7 +21,9 @@
     "dev": "./node_modules/.bin/concurrently --kill-others \"yarn run watch\" \"yarn run dev-server\"",
     "dev-server": "./node_modules/.bin/webpack-dev-server --hot --inline --content-base ./dist/ --open",
     "dev-ALT": "./devserver.js",
-    "depcheck": "depcheck . --ignore-dirs=dist,node_modules"
+    "depcheck": "depcheck . --ignore-dirs=dist,node_modules",
+    "jsdoc": "jsdoc -r -d ./dist/docs/html -c jsdoc-config.json src",
+    "docs": "yarn run jsdoc"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
@@ -138,6 +140,7 @@
     "handlebars-loader": "^1.5.0",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^20.0.4",
+    "jsdoc": "^3.5.4",
     "node-sass": "^4.5.3",
     "nwb": "^0.18.8",
     "postcss-loader": "^2.0.6",
