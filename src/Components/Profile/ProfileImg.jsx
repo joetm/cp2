@@ -31,7 +31,7 @@ class ProfileImg extends React.PureComponent {
     }
     componentDidMount() {
         // resize profile image
-        window.onresize = function (e) {
+        window.onresize = function () {
             const height = window.innerHeight - _OFFSET
             this.setState({profileImgHeight: height})
         }.bind(this)

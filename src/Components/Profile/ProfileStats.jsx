@@ -2,15 +2,13 @@
 
 import React from 'react'
 
-import {Tabs, Tab} from 'material-ui/Tabs'
-import {pinkA200} from 'material-ui/styles/colors'
-import FontIcon from 'material-ui/FontIcon'
-// import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin'
+import { Tabs, Tab } from 'material-ui/Tabs'
+import { pinkA200 } from 'material-ui/styles/colors'
 import PhotoPin from 'material-ui/svg-icons/image/photo'
 import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsPin from 'material-ui/svg-icons/communication/contacts'
 import LikesPin from 'material-ui/svg-icons/action/thumb-up'
-import {Route, Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import fakeUserRecord from './userRecord'
 

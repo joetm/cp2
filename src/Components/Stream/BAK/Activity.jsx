@@ -4,7 +4,6 @@ import React from 'react'
 // import Avatar from 'material-ui/Avatar'
 import {CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {colors} from '../../common/theme'
-import IconButton from 'material-ui/IconButton';
 import Divider from 'material-ui/Divider';
 // import LikeAction from 'material-ui/svg-icons/action/thumb-up'
 // import FavoriteAction from 'material-ui/svg-icons/action/favorite'

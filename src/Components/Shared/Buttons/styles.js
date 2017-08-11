@@ -1,5 +1,5 @@
 
-import {red400, grey400, darkBlack} from 'material-ui/styles/colors'
+import { red400 } from 'material-ui/styles/colors'
 
 const styles = {
     buttonStyle: {

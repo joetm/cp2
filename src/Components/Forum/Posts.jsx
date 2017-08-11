@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Subheader from 'material-ui/Subheader'
-import Divider from 'material-ui/Divider'
 
 import Post from './Post'
 

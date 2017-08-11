@@ -1,12 +1,9 @@
 /** @flow */
 
 import React from 'react'
-import IconButton from 'material-ui/IconButton'
 import RaisedButton from 'material-ui/RaisedButton'
 import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
 import { Route } from 'react-router-dom'
-
-import fakeAuth  from '../../../common/fakeAuth'
 
 
 const styles = {

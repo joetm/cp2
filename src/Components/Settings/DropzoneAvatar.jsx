@@ -1,6 +1,6 @@
-/** @flow */
+ /** @flow */
 
-import React from 'react'
+ import React from 'react'
 // dropzone css
 import '../External/dropzone/dist/dropzone.css'
 // react dropzone css
@@ -8,7 +8,7 @@ import 'react-dropzone-component/styles/filepicker.css'
 // dropzone component
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 
-import {dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers} from './dropzoneConfig'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
 
 import Avatar from '../Shared/Avatar'
 

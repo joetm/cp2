@@ -2,23 +2,16 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import Avatar from 'material-ui/Avatar'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
-import {grey400} from 'material-ui/styles/colors'
-import IconButton from 'material-ui/IconButton'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
-import IconMenu from 'material-ui/IconMenu'
-import MenuItem from 'material-ui/MenuItem'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
-import Update from './Update'
-import Spacer from '../Shared/Spacer'
-// --
 import store from '../../store'
 import { mapStateToProps } from '../../reducers'
+import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
+// --
+import Update from './Update'
 
 
 class Updates extends React.PureComponent {

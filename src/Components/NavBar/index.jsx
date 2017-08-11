@@ -3,17 +3,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
-import Menu from 'material-ui/Menu';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import Divider from 'material-ui/Divider';
+import IconMenu from 'material-ui/IconMenu'
+import IconButton from 'material-ui/IconButton'
+import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { darkBlack } from 'material-ui/styles/colors'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import ReviewIcon from 'material-ui/svg-icons/action/find-replace'
-import ProfileIcon  from 'material-ui/svg-icons/action/perm-identity'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
@@ -25,7 +23,6 @@ import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-no
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import { setActiveBadge } from '../../reducers'
-import { navigateTo } from '../../common/helpers'
 import { colors } from '../../common/theme'
 import './style.css'
 // --
@@ -108,9 +105,7 @@ class NavBar extends React.Component {
      */
     render() {
         const navbarIsAffixed = this.props.scrollPosition > 250
-        // styles.normalIcon = {...styles.normalIcon, ...{color: this.state.activeBadge === _NAVITEM_ID.REVIEW ? colors.palette.primary1Color : darkBlack}}
-
-// TODO
+        // TODO
         let AllNotificationsIcons
         if (!NUMS.ALLNOTIFICATIONS) {
             AllNotificationsIcons = NotificationsNoneIcon
@@ -121,8 +116,6 @@ class NavBar extends React.Component {
                 AllNotificationsIcons = NotificationsActiveIcon
             }
         }
-        console.log('this.props.activeBadge', this.props.activeBadge)
-        console.log('this.props.sidebarOpen', this.props.sidebarOpen)
         return (
             <Toolbar
                 style={styles.navbar}

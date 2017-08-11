@@ -3,8 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
-import { List } from 'material-ui/List'
-import Divider from 'material-ui/Divider'
 import Avatar from 'material-ui/Avatar'
 import Chip from 'material-ui/Chip';
 import SendIcon from 'material-ui/svg-icons/content/send'
@@ -13,7 +11,6 @@ import parser from 'bbcode-to-react'
 
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
-import store from '../../store'
 import { sendMessage } from '../../reducers'
 
 

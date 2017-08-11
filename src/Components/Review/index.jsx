@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 
 import './style.scss'
 // --
-// import store from '../../store'
 import { reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'

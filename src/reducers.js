@@ -3,8 +3,7 @@
  * Redux actions
  **/
 
-import fetch from 'unfetch'
-import { combineReducers } from 'redux'
+// import fetch from 'unfetch'
 
 // import initialState from './initialState'
 // DEV:
@@ -34,13 +33,14 @@ export const LIKE              = 'SOCIAL::LIKE'
 export const DISLIKE           = 'SOCIAL::DISLIKE'
 export const FOLLOW_USER       = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE  = 'NAV::SET_ACTIVE_BADGE'
-       const UNKNOWN           = 'APP::UNKNOWN'
+//        const UNKNOWN           = 'APP::UNKNOWN'
 
 
-/*
+/**
  * Function to reduce redux boilerplate code
  * See: http://redux.js.org/docs/recipes/ReducingBoilerplate.html
- */
+ * @returns action
+ **/
 function makeActionCreator(type, ...argNames) {
   return function (...args) {
     const action = { type }
@@ -81,7 +81,7 @@ export const markAllRead      = makeActionCreator(MARK_ALL_READ,     'threadid')
 // oter app actions
 export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,  'id')
 
-const unknownAction = { type: UNKNOWN }
+// const unknownAction = { type: UNKNOWN }
 
 
 /**
@@ -95,6 +95,10 @@ const unknownAction = { type: UNKNOWN }
  * Redux reducers
  **/
 
+/**
+ * chatReducer
+ * @returns chatState
+ **/
 export function chatReducer(chatState = initialState.messageHistory, action) {
     switch (action.type) {
         case SEND_MESSAGE:
@@ -115,6 +119,10 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
     }
 }
 
+/**
+ * reviewReducer
+ * @returns reviewState
+ **/
 export function reviewReducer(reviewState = initialState.reviewitem, action) {
     switch (action.type) {
         case REVIEW_APPROVE:
@@ -126,6 +134,10 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
     }
 }
 
+/**
+ * navBarReducer
+ * @returns state
+ **/
 export function navBarReducer(state = initialState.navbar, action) {
     switch (action.type) {
         case SET_ACTIVE_BADGE:
@@ -135,6 +147,10 @@ export function navBarReducer(state = initialState.navbar, action) {
     }
 }
 
+/**
+ * cpAppReducer
+ * @returns appState
+ **/
 export function cpAppReducer(appState = initialState, action) {
     switch (action.type) {
         case OPEN_SIDEBAR:

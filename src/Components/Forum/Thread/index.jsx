@@ -1,14 +1,11 @@
 /** @flow */
 
 import React from 'react'
-import Subheader from 'material-ui/Subheader'
-import { List } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import SendIcon from 'material-ui/svg-icons/content/send'
 import TextField from 'material-ui/TextField'
 
 import Spacer from '../../Shared/Spacer'
-import CellPadding from '../../Shared/CellPadding'
 import Post from '../Post'
 
 

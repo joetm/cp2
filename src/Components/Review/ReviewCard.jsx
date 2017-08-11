@@ -1,16 +1,13 @@
 /** @flow */
 
 import React from 'react'
-import Avatar from 'material-ui/Avatar'
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card';
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons/'
 
-import { navigateTo, getRandomInt } from '../../common/helpers'
+import { navigateTo } from '../../common/helpers'
 
 
-const _CLOSEDELAY = 1000
 const _IMAGE_HEIGHT = 475
-const _LAZYLOAD_OFFSET = 250
 
 
 const styles = {

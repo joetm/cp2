@@ -1,10 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import Avatar from 'material-ui/Avatar'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
-import IconButton from 'material-ui/IconButton';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card';
 import LikeAction from 'material-ui/svg-icons/action/thumb-up'
 import FavoriteAction from 'material-ui/svg-icons/action/favorite'
 import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
@@ -14,14 +11,6 @@ import { LikeButton, FavoriteButton, CommentButton} from './Button'
 import {navigateTo} from '../../common/helpers'
 
 
-const actionButtonsStyle = {
-  float:'right',
-}
-
-
-//        <CardText expandable={false} actAsExpander={false}>
-//          {secondaryText}
-//        </CardText>
 const Update = (props) => {
   const {id, fromUsername, primaryText, secondaryText, datetime,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone} = props

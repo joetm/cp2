@@ -1,7 +1,7 @@
-/** @flow */
+ /**  @flow */
 
 import React from 'react'
-import {Route} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 // import { Record } from 'immutable'
 
 // import ToolBar from './ToolBar'
@@ -9,9 +9,6 @@ import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
 import Album from '../Album/'
 import Spacer from '../Shared/Spacer'
-import AjaxLoader from '../Shared/AjaxLoader'
-import Followers from '../Followers/'
-import Likes from '../Stream/Likes'
 // import ProfileStats from './ProfileStats'
 import ProfileDivider from './ProfileDivider'
 import ProfileUsername from './ProfileUsername'

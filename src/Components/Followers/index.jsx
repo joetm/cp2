@@ -1,12 +1,10 @@
 /** @flow */
 
 import React from 'react'
-import Avatar from 'material-ui/Avatar'
-import {List} from 'material-ui/List'
+import { List } from 'material-ui/List'
 // import Subheader from 'material-ui/Subheader'
 // import Divider from 'material-ui/Divider'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
-import {grey400, darkBlack} from 'material-ui/styles/colors'
 
 import Follower from './Follower'
 

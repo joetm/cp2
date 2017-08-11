@@ -1,11 +1,9 @@
 /** @flow */
 
 import React from 'react'
-import Subheader from 'material-ui/Subheader'
 import { List } from 'material-ui/List'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
-import Avatar from '../Shared/Avatar'
 import Spacer from '../Shared/Spacer'
 import SettingsMenuEntry from './SettingsMenuEntry'
 import AvatarImg from './DropzoneAvatar'

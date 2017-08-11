@@ -3,12 +3,10 @@
 import React from 'react'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
-import FontIcon from 'material-ui/FontIcon'
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
 import MenuItem from 'material-ui/MenuItem'
 import DropDownMenu from 'material-ui/DropDownMenu'
-import RaisedButton from 'material-ui/RaisedButton'
-import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar'
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 
 const _ID = {
@@ -44,27 +42,27 @@ class SubToolbar extends React.Component {
                         <MenuItem
                             value={_ID.ALL}
                             primaryText="All"
-                            onTouchTap={() => {history.push(`${this.props.match.url}`)}}
+                            onTouchTap={() => { history.push(`${this.props.match.url}`) }}
                         />
                         <MenuItem
                             value={_ID.PICTURES}
                             primaryText="Pictures"
-                            onTouchTap={() => {history.push(`${this.props.match.url}/pictures`)}}
+                            onTouchTap={() => { history.push(`${this.props.match.url}/pictures`) }}
                         />
                         <MenuItem
                             value={_ID.VIDEOS}
                             primaryText="Videos"
-                            onTouchTap={() => {history.push(`${this.props.match.url}/videos`)}}
+                            onTouchTap={() => { history.push(`${this.props.match.url}/videos`) }}
                         />
                         <MenuItem
                             value={_ID.LIKES}
                             primaryText="Likes"
-                            onTouchTap={() => {history.push(`${this.props.match.url}/likes`)}}
+                            onTouchTap={() => { history.push(`${this.props.match.url}/likes`) }}
                         />
                         <MenuItem
                             value={_ID.NOTIFICATIONS}
                             primaryText="Notifications"
-                            onTouchTap={() => {history.push(`${this.props.match.url}/notifications`)}}
+                            onTouchTap={() => { history.push(`${this.props.match.url}/notifications`) }}
                         />
                     </DropDownMenu>
                 </ToolbarGroup>
