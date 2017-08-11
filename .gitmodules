@@ -1,9 +1,6 @@
-[submodule "./src/Components/External/react-simple-masonry"]
-	path = ./src/Components/External/react-simple-masonry
+[submodule "src/Components/External/react-simple-masonry"]
+	path = src/Components/External/react-simple-masonry
 	url = https://github.com/awkward/react-simple-masonry.git
-[submodule "lib/dropzone"]
-	path = lib/dropzone
-	url = https://github.com/enyo/dropzone.git
 [submodule "src/Components/External/dropzone"]
 	path = src/Components/External/dropzone
 	url = https://github.com/enyo/dropzone.git
