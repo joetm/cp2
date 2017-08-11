@@ -7,8 +7,8 @@ import fetch from 'unfetch'
 import { combineReducers } from 'redux'
 
 // import initialState from './initialState'
+// DEV:
 import initialState from './mockState'
-// console.log('initialState', initialState)
 
 
 /*

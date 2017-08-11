@@ -96,18 +96,18 @@ class Review extends React.Component {
      * Approve the update.
      */
     approve() {
-        console.log('approve update', this.props.store.reviewitem.id)
+        console.log('approve update', this.props.app.reviewitem.id)
         // TODO
-        // this.props.reviewApprove(this.props.store.reviewitem.id)
+        // this.props.reviewApprove(this.props.app.reviewitem.id)
         this.openAlert()
     }
     /*
      * Reject the update.
      */
     reject() {
-        console.log('reject update', this.props.store.reviewitem.id)
+        console.log('reject update', this.props.app.reviewitem.id)
         // TODO
-        // this.props.reviewDisapprove(this.props.store.reviewitem.id)
+        // this.props.reviewDisapprove(this.props.app.reviewitem.id)
         this.openAlert()
     }
     /*
@@ -122,7 +122,7 @@ class Review extends React.Component {
      * Render the component.
      */
     render () {
-        const reviewitem = this.props.store.reviewitem
+        const reviewitem = this.props.app.reviewitem
         return (
             <div>
                 <h2>

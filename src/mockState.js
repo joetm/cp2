@@ -153,7 +153,13 @@ const mockState = {
     user: {
         userid: 1,
         username: 'me',
+        hash: '239SAHJ#*HKDGB(#JDS)(U$WJ$KJDSJHOIDSHG*#J',
         status: 'online',
+        dailyUploadLimitReached: false,
+        dailyUploadLimits: {
+            images: 1,
+            videos: 1,
+        },
         lastActivity: 1502379924,
         // email: 'admin@thisdomain.com',
     },

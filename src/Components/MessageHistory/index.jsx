@@ -76,7 +76,7 @@ class MessageHistory extends React.PureComponent {
      * Render the component.
      */
     render () {
-        const msgHistory = this.props.store.messageHistory
+        const msgHistory = this.props.app.messageHistory
         return (
             <div>
 
