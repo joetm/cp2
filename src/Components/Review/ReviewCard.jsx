@@ -4,8 +4,6 @@ import React from 'react'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card';
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons/'
 
-import { navigateTo } from '../../common/helpers'
-
 
 const _IMAGE_HEIGHT = 475
 

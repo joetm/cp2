@@ -43,7 +43,7 @@ class Guidelines extends React.PureComponent {
 
                 <h1>Community Guidelines</h1>
 
-                <div class="legal" dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
+                <div className="legal" dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
 
                 <Spacer />
 

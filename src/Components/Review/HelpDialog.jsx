@@ -5,11 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 
-class HelpDialog extends React.PureComponent {
-  /**
-   * Render the component.
-   */
-  render() {
+const HelpDialog = () => {
     const actions = [
       <FlatButton
         label="Close"
@@ -19,7 +15,7 @@ class HelpDialog extends React.PureComponent {
     ]
     return (
         <Dialog
-          style={{display: this.props.isOpen ? 'block': 'none'}}
+          style={{display: this.props.isOpen ? 'block' : 'none'}}
           title="How does this work?"
           actions={actions}
           modal={false}
@@ -29,7 +25,6 @@ class HelpDialog extends React.PureComponent {
           HELP TEXT
         </Dialog>
     )
-  }
 }
 
 export default HelpDialog

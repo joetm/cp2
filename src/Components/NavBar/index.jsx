@@ -36,7 +36,7 @@ import SignupButton from '../Shared/Buttons/SignupButton'
 
 
 // DEV
-let NUMS = {
+const NUMS = {
     FORUM: 123,
     STREAM: 45,
     MESSAGES: 10
@@ -78,9 +78,9 @@ const styles = {
 }
 
 
-const NavbarSeparator = () => (
-    <div style={styles.separator}></div>
-)
+// const NavbarSeparator = () => (
+//     <div style={styles.separator}></div>
+// )
 
 
 class NavBar extends React.Component {
@@ -96,16 +96,18 @@ class NavBar extends React.Component {
         this.setState({notificationDetailsShowing: !this.state.notificationDetailsShowing})
     }
     toggleState = (num) => {
-        if(num.id) { num = num.id }
-        else if(! +num) { num = 0 }
-        this.props.setActiveBadge(num)
+        let n = num
+        if (n.id) { n = n.id }
+        else if (! +n) { n = 0 }
+        this.props.setActiveBadge(n)
     }
     /**
      * Render the component.
      */
     render() {
-        const navbarIsAffixed = this.props.scrollPosition > 250
         // TODO
+        // const navbarIsAffixed = this.props.scrollPosition > 250
+        //
         let AllNotificationsIcons
         if (!NUMS.ALLNOTIFICATIONS) {
             AllNotificationsIcons = NotificationsNoneIcon
@@ -138,7 +140,7 @@ class NavBar extends React.Component {
                     </NavLink>
 
                     <div
-                        class="inline-block"
+                        className="inline-block"
                         onMouseEnter={() => { this.setState({notificationDetailsShowing: true}) }}
                         onMouseLeave={() => { this.setState({notificationDetailsShowing: false}) }}
                     >

@@ -72,14 +72,14 @@ class Sidebar extends React.Component {
     handleChangeSearchField(event, inputValue) {
         this.inputValue = inputValue
     }
-    handleRequestDelete() {
-        const chipValues = this.state.filterTerms
-        const index = chipValues.indexOf(value)
-        if (index > -1) {
-            chipValues.splice(index, 1);
-            this.setState({filterTerms: chipValues});
-        }
-    }
+    // handleRequestDelete() {
+    //     const chipValues = this.state.filterTerms
+    //     const index = chipValues.indexOf(value)
+    //     if (index > -1) {
+    //         chipValues.splice(index, 1);
+    //         this.setState({filterTerms: chipValues});
+    //     }
+    // }
     /**
      * Handle the click on a filter item.
      */
@@ -107,7 +107,7 @@ class Sidebar extends React.Component {
                         <TextField
                             hintText="Search"
                             fullWidth={false}
-                            style={{width:'130px'}}
+                            style={{width: '130px'}}
                             onChange={(event, inputValue) => this.handleChangeSearchField}
                         />
                         <EnterIcon
@@ -157,7 +157,6 @@ class Sidebar extends React.Component {
                     this.state.filterTerms.map((value, i) => (
                         <Chip
                             key={`fi_${i}`}
-                            onRequestDelete={this.handleRequestDelete}
                             onTouchTap={this.handleTouchTap}
                             style={styles.chip}
                         >

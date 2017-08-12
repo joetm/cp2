@@ -5,7 +5,6 @@ import LoginForm from './LoginForm'
 
 
 class LoginPage extends React.Component {
-
   /**
    * Class constructor.
    */

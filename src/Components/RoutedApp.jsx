@@ -2,12 +2,11 @@
 
 import React from 'react'
 import MobileDetect from 'mobile-detect'
-import { Route, Switch, browserHistory } from 'react-router-dom'
-import { Provider, connect } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
+import { Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { setDeviceDetails } from '../reducers'
-import { theme, colors } from '../common/theme'
+import { colors } from '../common/theme'
 // --
 import Scrollbutton from './Shared/Scrollbutton'
 // --
@@ -39,14 +38,14 @@ class RoutedApp extends React.Component {
         if (!this.props.deviceDetails) {
             const device = new MobileDetect(window.navigator.userAgent)
             const obj = {
-                "isMobile": device.phone(),
-                "isTablet": device.tablet(),
-                "useragent": window.navigator.userAgent,
-                "OS": device.os(),
-                "isIPhone": device.is('iPhone'),
-                "isBot": device.is('bot'),
-                "isPlaystation": device.match('playstation'),
-                "isXbox": device.match('xbox'),
+                isMobile: device.phone(),
+                isTablet: device.tablet(),
+                useragent: window.navigator.userAgent,
+                OS: device.os(),
+                isIPhone: device.is('iPhone'),
+                isBot: device.is('bot'),
+                isPlaystation: device.match('playstation'),
+                isXbox: device.match('xbox'),
             }
             this.props.setDeviceDetails(obj)
         }
@@ -72,9 +71,10 @@ class RoutedApp extends React.Component {
 
                         <Route path="/messages/:opponentid" component={MessageHistory} />
 
-                        <Route path='/profile/:userid' render={props => (
-                            <Profile isScrolled={this.props.isScrolled} />
-                        )} />
+                        <Route path="/profile/:userid"
+                            render={({ isScrolled }) => (
+                                <Profile isScrolled={isScrolled} />
+                            )} />
 
                         <Route path="/settings" component={Settings} />
 

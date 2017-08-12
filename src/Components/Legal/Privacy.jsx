@@ -45,7 +45,7 @@ class Privacy extends React.PureComponent {
 
                 <h1>Privacy Policy</h1>
 
-                <div class="legal" dangerouslySetInnerHTML={{__html: this.state.policyTxt}}></div>
+                <div className="legal" dangerouslySetInnerHTML={{__html: this.state.policyTxt}}></div>
 
                 <Spacer />
 

@@ -17,17 +17,10 @@ const styles = {
 }
 
 
-class AjaxLoader extends React.PureComponent {
-    /**
-     * Render the component.
-     */
-    render() {
-        return (
-            <div style={styles.ajaxLoaderStyleContainer}>
-                <div style={styles.ajaxLoaderStyle}>.loading.</div>
-            </div>
-        )
-    }
-}
+const AjaxLoader = () => (
+    <div style={styles.ajaxLoaderStyleContainer}>
+        <div style={styles.ajaxLoaderStyle}>.loading.</div>
+    </div>
+)
 
 export default AjaxLoader

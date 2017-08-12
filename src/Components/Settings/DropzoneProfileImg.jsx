@@ -23,7 +23,7 @@ const styles = {
 }
 
 
-const DropzoneProfileImg = (props) => (
+const DropzoneProfileImg = () => (
     <div
         id="profileImg-settings"
         style={{

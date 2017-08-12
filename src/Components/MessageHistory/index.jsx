@@ -90,8 +90,8 @@ class MessageHistory extends React.PureComponent {
                     with {msgHistory.username}
                 </Subheader>
 
-                <div class="mdc-layout-grid">
-                  <div class="mdc-layout-grid__inner">
+                <div className="mdc-layout-grid">
+                  <div className="mdc-layout-grid__inner">
 
                     <CellPadding
                         full={2}
@@ -99,7 +99,7 @@ class MessageHistory extends React.PureComponent {
                         phone={0}
                     />
 
-                    <div class="mdc-layout-grid__cell
+                    <div className="mdc-layout-grid__cell
                                 mdc-layout-grid__cell--span-8
                                 mdc-layout-grid__cell--span-6-tablet
                                 mdc-layout-grid__cell--span-4-phone">

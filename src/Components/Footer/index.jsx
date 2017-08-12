@@ -29,9 +29,9 @@ const Footer = (props) => (
 
         <Divider />
 
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell
+        <div className="mdc-layout-grid">
+          <div className="mdc-layout-grid__inner">
+              <div className="mdc-layout-grid__cell
                   mdc-layout-grid__cell--span-3
                   mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
@@ -42,7 +42,7 @@ const Footer = (props) => (
                     </li>
                     </ul>
               </div>
-              <div class="mdc-layout-grid__cell
+              <div className="mdc-layout-grid__cell
                   mdc-layout-grid__cell--span-3
                   mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
@@ -53,7 +53,7 @@ const Footer = (props) => (
                     </li>
                     </ul>
               </div>
-              <div class="mdc-layout-grid__cell
+              <div className="mdc-layout-grid__cell
                   mdc-layout-grid__cell--span-3
                   mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
@@ -64,7 +64,7 @@ const Footer = (props) => (
                     </li>
                     </ul>
               </div>
-              <div class="mdc-layout-grid__cell
+              <div className="mdc-layout-grid__cell
                   mdc-layout-grid__cell--span-3
                   mdc-layout-grid__cell--span-2-tablet
                   mdc-layout-grid__cell--span-2-phone"
