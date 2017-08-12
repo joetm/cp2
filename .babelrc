@@ -2,6 +2,7 @@
     "presets": ["es2015", "stage-0", "react", "flow"],
     "plugins": [
         "transform-decorators-legacy",
-        "transform-object-rest-spread"
+        "transform-object-rest-spread",
+        "transform-es2015-parameters"
     ]
 }
