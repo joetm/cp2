@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Link, NavLink, withRouter } from 'react-router-dom'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
+import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { darkBlack } from 'material-ui/styles/colors'
@@ -93,10 +94,12 @@ class NavBar extends React.Component {
         this.state = {
             notificationDetailsShowing: false,
             isForum: false,
+            expandedSearch: false,
         }
         // bindings
         this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
         this.searchAction = this.searchAction.bind(this)
+        this.toggleSearch = this.toggleSearch.bind(this)
         this.isForum = this.isForum.bind(this)
     }
     componentDidMount() {
@@ -105,13 +108,15 @@ class NavBar extends React.Component {
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
     }
+    toggleSearch() {
+        this.setState({expandedSearch: !this.state.expandedSearch})
+    }
     searchAction() {
         // on the forum, open the sidebar
         if (this.isForum()) {
             this.props.toggleSidebar()
         } else {
-            // TODO
-            console.log('EXPAND SEARCH')
+            this.toggleSearch()
         }
     }
     toggleNotificationBadges() {
@@ -246,6 +251,17 @@ class NavBar extends React.Component {
 
                 <ToolbarGroup>
 
+                    {
+                        !this.state.expandedSearch ? null : (
+                            <TextField
+                              hintText="Search"
+                              rows={1}
+                              rowsMax={1}
+                              style={{marginBottom: '10px', maxWidth: '150px'}}
+                              floatingLabelText="Search"
+                            />
+                        )
+                    }
                     <IconButton
                         tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
                         onTouchTap={this.searchAction}
