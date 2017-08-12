@@ -197,6 +197,7 @@ const mockState = {
         username: 'me',
         hash: '239SAHJ#*HKDGB(#JDS)(U$WJ$KJDSJHOIDSHG*#J',
         status: 'online',
+        verifiedUser: false,
         dailyUploadLimitReached: false,
         dailyUploadLimits: {
             images: 1,

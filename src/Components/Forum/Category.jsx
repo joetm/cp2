@@ -7,7 +7,7 @@ import { getPosts } from '../../reducers'
 import Posts from './Posts'
 
 
-class ForumHome extends React.Component {
+class Category extends React.Component {
     componentDidMount() {
         this.props.getPosts()
     }
@@ -18,12 +18,10 @@ class ForumHome extends React.Component {
         const { posts } = this.props
         return (
             <div>
-                <h2>Forum</h2>
+                <h2>Category</h2>
                 <div>
                     {posts && posts.length > 0 &&
-                        <Posts
-                            posts={posts}
-                        />
+                        <Posts posts={posts} />
                     }
                 </div>
             </div>
@@ -38,4 +36,4 @@ const mapStateToProps = (state) => ({
 export default connect(
     mapStateToProps,
     { getPosts }
-)(ForumHome)
+)(Category)

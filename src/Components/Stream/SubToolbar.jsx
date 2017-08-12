@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
@@ -78,4 +79,5 @@ class SubToolbar extends React.Component {
     }
 }
 
-export default SubToolbar
+// withRouter: inject the history as prop of the SubToolbar component
+export default withRouter(SubToolbar)

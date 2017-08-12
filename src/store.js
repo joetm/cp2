@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router-dom'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-import { cpAppReducer, chatReducer, reviewReducer, navBarReducer, streamReducer } from './reducers'
+import { cpAppReducer, chatReducer, reviewReducer, navBarReducer, streamReducer, SET_DEVICE_DETAILS } from './reducers'
 
 // see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
 const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
@@ -14,6 +14,10 @@ const addLoggingToDispatch = (store) => {
         return rawDispatch
     }
     return (action) => {
+        // do not log the device details request
+        // if (action.type === SET_DEVICE_DETAILS) {
+        //     const returnValue = rawDispatch(action)
+        // }
         console.group(action.type)
         console.log('%c previous state', 'color: gray', store.getState())
         console.log('%c action', 'color: blue', action)

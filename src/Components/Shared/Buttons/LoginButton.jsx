@@ -8,7 +8,7 @@ import { Route } from 'react-router-dom'
 
 const styles = {
     button: {
-        margin: 12,
+        margin: '12px 0 12px 0',
     },
 }
 

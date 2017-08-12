@@ -16,7 +16,6 @@ import SinglePost from './SinglePost'
 const Forum = (props) => {
     return (
         <div>
-            <button onClick={props.toggleSidebar}>Toggle Sidebar</button>
             <Switch>
                 <Route path={`/forum/post/:postid`} component={SinglePost} />
                 <Route component={ForumHome} />
@@ -37,6 +36,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(
-    mapStateToProps,
-    { toggleSidebar }
+    mapStateToProps
 )(Forum)

@@ -6,15 +6,13 @@ import Subheader from 'material-ui/Subheader'
 import Post from './Post'
 
 
-const Posts = (props) => {
-    const { posts } = props
+const Posts = ({ posts }) => {
     /**
      * Render the component.
      */
     return (
       <div>
-          <Subheader>Category here</Subheader>
-          {posts.map((post, i) => <Post key={i} post={post} />)}
+          {posts.map((post, i) => <Post key={`post_${i}`} post={post} />)}
       </div>
     )
 }

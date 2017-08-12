@@ -11,18 +11,19 @@ import { darkBlack } from 'material-ui/styles/colors'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
-import ReviewIcon from 'material-ui/svg-icons/action/find-replace'
+import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import ForumIcon from 'material-ui/svg-icons/social/group'
+import SearchIcon from 'material-ui/svg-icons/action/search'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { setActiveBadge } from '../../reducers'
+import { setActiveBadge, toggleSidebar } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
 // --
@@ -74,7 +75,11 @@ const styles = {
     normalIcon: {
         paddingLeft: '20px',
         cursor: 'pointer',
-    }
+    },
+    searchIcon: {
+        marginRight: '20px',
+        cursor: 'pointer',
+    },
 }
 
 
@@ -233,9 +238,16 @@ class NavBar extends React.Component {
                             onTouchTap={this.toggleState}
                         />
                     </NavLink>
+
                 </ToolbarGroup>
 
                 <ToolbarGroup>
+
+                    <SearchIcon
+                        style={styles.searchIcon}
+                        onTouchTap={this.props.toggleSidebar}
+                        tooltip="Toggle Sidebar" />
+
                     <Link
                         to={`/profile/${userRecord.userid}`}
                     >
@@ -286,5 +298,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { setActiveBadge }
+    { setActiveBadge, toggleSidebar }
 )(NavBar)
