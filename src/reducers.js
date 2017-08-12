@@ -106,7 +106,6 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
     switch (action.type) {
         case SEND_MESSAGE:
             // TODO: structure of state.messageHistory
-            // console.log('chatState before', chatState)
             const messageHistoryState = { ...chatState }
             messageHistoryState.messages.push({
                 msg: action.msg.trim(),
@@ -115,7 +114,6 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
                 avatar: '/img/avatar/face.jpg',
                 timestamp: Math.round(Date.now() / 1000),
             })
-            console.log('chatState after', messageHistoryState)
             return messageHistoryState
         default:
             return chatState
@@ -139,31 +137,31 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 
 /**
  * navBarReducer
- * @returns state
+ * @returns navBarState
  **/
-export function navBarReducer(state = initialState.navbar, action) {
+export function navBarReducer(navBarState = initialState.navbar, action) {
     switch (action.type) {
         case SET_ACTIVE_BADGE:
-            return { ...state, activeBadge: +action.id }
+            return { ...navBarState, activeBadge: +action.id }
         default:
-            return state
+            return navBarState
     }
 }
 
 /**
  * streamReducer
- * @returns state
+ * @returns updatesState
  **/
-export function streamReducer(state = initialState.updates, action) {
+export function streamReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
         case LOAD_UPDATES:
             // TODO
 
 
 
-            return state
+            return updatesState
         default:
-            return state
+            return updatesState
     }
 }
 

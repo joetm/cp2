@@ -34,8 +34,6 @@ class ReviewCard extends React.PureComponent {
             id: props.id,
             visible: true,
         }
-        // bindings
-        this.props.navigateTo = this.props.navigateTo.bind(this)
     }
     /**
      * Render the component.

@@ -14,7 +14,14 @@ import Update from './Update'
 
 
 class Updates extends React.PureComponent {
+    componentDidMount() {
+        // TODO
+        // this.props.loadUpdates()
+    }
     categorize(updatesList) {
+        if (!updatesList) {
+            return []
+        }
         // console.log(updatesList)
         const annotatedList = updatesList.map(obj => {
             return classifyByDateAgo(obj)
@@ -35,8 +42,7 @@ class Updates extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const updatesList = this.props.updates
-        const categorizedUpdates = this.categorize(updatesList)
+        const categorizedUpdates = this.categorize(this.props.updates)
         return (
             <div>
                 <h2>Updates</h2>
@@ -76,7 +82,6 @@ class Updates extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    // TODO
     updates: state.updates
 })
 
