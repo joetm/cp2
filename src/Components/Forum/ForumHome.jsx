@@ -14,7 +14,8 @@ class ForumHome extends React.Component {
     // componentDidUpdate() {
     //     this.props.getPosts()
     // }
-    render({ posts }) {
+    render() {
+        const { posts } = this.props
         return (
             <div>
                 <h2>Forum</h2>
