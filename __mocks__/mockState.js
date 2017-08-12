@@ -194,7 +194,7 @@ const mockState = {
     followers: [],
     user: {
         userid: 1,
-        username: 'me',
+        username: 'admin',
         hash: '239SAHJ#*HKDGB(#JDS)(U$WJ$KJDSJHOIDSHG*#J',
         avatar: '/img/avatar/face.jpg',
         profileimg: 'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg',

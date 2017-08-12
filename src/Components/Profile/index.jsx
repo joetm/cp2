@@ -4,7 +4,7 @@ import React from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { getUser } from '../../reducers'
+import { fetchUser } from '../../reducers'
 // import ToolBar from './ToolBar'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
@@ -23,7 +23,6 @@ const styles = {
         zIndex: 29999999
     }
 }
-
 
 
 /*
@@ -49,7 +48,7 @@ class Profile extends React.PureComponent {
         this.toggleProfileDetails = this.toggleProfileDetails.bind(this)
     }
     componentDidMount() {
-        this.props.getUser()
+        this.props.fetchUser(this.props.match.params.userid)
     }
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -104,5 +103,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { getUser }
+    { fetchUser }
 )(Profile))

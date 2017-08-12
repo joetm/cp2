@@ -11,7 +11,7 @@ class ForumHome extends React.Component {
     componentDidMount() {
         this.props.getPosts()
     }
-    // componentDidUpdate() {
+    // componentDidUpdate(prevProps) {
     //     this.props.getPosts()
     // }
     render() {

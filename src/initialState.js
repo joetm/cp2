@@ -1,8 +1,6 @@
 
-import cuid from 'cuid'
-
 /**
- * Redux Initial Store State
+ * Redux Initial Store State for PROD
  **/
 
 /**
@@ -10,39 +8,27 @@ import cuid from 'cuid'
  **/
 
 const initialState = {
-    // -- state --
+    deviceDetails: null,
     sidebarOpen: false,
+    // -- state --
+    navbar: {
+        activeBadge: 0,
+    },
     // -- content --
+    updates: [],
     threads: [],
     posts: [],
-    post: {
-        id: cuid(),
-        msg: '',
-        username: 'Anonymous',
-        userid: 0,
-        timeStamp: Date.now() / 1000, // Unix Timestamp in seconds
-    },
+    post: {},
     albums: [],
     albumimgs: [],
-    albumimg: {
-        src: '',
-        title: '',
+    messageHistory: {
+        username: null,
+        userid: null,
+        messages: []
     },
-    reviewitem: {
-        id: 0,
-        title: '',
-        src: '',
-        userid: 0,
-        username: '',
-    },
+    reviewitem: {},
     followers: [],
-    user: {
-        userid: 0,
-        username: 'Anonymous',
-        status: 'unknown',
-        lastActivity: 0,
-        // email: '',
-    },
+    user: {},
 }
 
 export default initialState

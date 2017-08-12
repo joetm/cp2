@@ -10,8 +10,7 @@ const delay = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
-export const fetchData(key) => {
+export const fetchData = (key) =>
     delay(500)
         .then(() => {
             try {
@@ -20,4 +19,3 @@ export const fetchData(key) => {
                 throw new Error(e)
             }
         })
-}

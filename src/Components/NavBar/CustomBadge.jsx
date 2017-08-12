@@ -38,7 +38,6 @@ class CustomBadge extends React.PureComponent {
           return (
               <NavLink
                   to={this.props.to}
-                  key={`badge_${this.props.id}`}
                   activeStyle={{color: colors.palette.primary1Color}}
               >
                 {Component}

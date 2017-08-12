@@ -5,9 +5,13 @@
 
 // import fetch from 'unfetch'
 
-// import initialState from './initialState'
+// PROD (TODO)
+import initialState from './initialState'
 // DEV:
-import initialState from '../__mocks__/mockState'
+// import initialState from '../__mocks__/mockState'
+
+// DEV Server
+import { fetchData } from '../__mocks__/mockServer'
 
 
 /*
@@ -39,6 +43,12 @@ export const FOLLOW_USER        = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE   = 'NAV::SET_ACTIVE_BADGE'
 export const GET_UPDATES        = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS = 'APP::SET_DEVICE_DETAILS'
+
+export const RECEIVE_USER       = 'USER::RECEIVE_USER'
+export const RECEIVE_COMMENTS   = 'PROFILE::RECEIVE_COMMENTS'
+export const RECEIVE_POSTS      = 'FORUM::RECEIVE_POSTS'
+export const RECEIVE_POST       = 'FORUM::RECEIVE_POST'
+export const RECEIVE_THREAD     = 'FORUM::RECEIVE_THREAD'
 //        const UNKNOWN           = 'APP::UNKNOWN'
 
 
@@ -88,9 +98,41 @@ export const markPostRead     = makeActionCreator(MARK_POST_READ,    'threadid')
 export const markAllRead      = makeActionCreator(MARK_ALL_READ,     'threadid')
 export const getUpdates       = makeActionCreator(GET_UPDATES)
 
-// oter app actions
+// other app actions
 export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,   'id')
 export const setDeviceDetails = makeActionCreator(SET_DEVICE_DETAILS, 'obj')
+
+// ajax receptors
+export const receiveUser      = makeActionCreator(RECEIVE_USER,       'response')
+export const receiveComments  = makeActionCreator(RECEIVE_COMMENTS,   'response')
+export const receivePosts     = makeActionCreator(RECEIVE_POSTS,      'response')
+export const receivePost      = makeActionCreator(RECEIVE_POST,       'response')
+export const receiveThread    = makeActionCreator(RECEIVE_THREAD,     'response')
+
+// ----------------------------------------------------
+// ajax fetch + receive methods
+// ----------------------------------------------------
+
+export const fetchUser = (userid) => {
+    // TODO
+    // console.log('fetchData("user")', fetchData('user'))
+    fetchData('user')
+        .then((response) => {
+            console.log('fetchData response', response)
+            console.log('receiveUser(response)', receiveUser(response))
+            receiveUser(response)
+        })
+}
+
+// export const fetchUserMinimal = (userid) => {
+//     // TODO
+//     fetchData('user')
+//         .then((response) => {
+//             receiveUserMinimal(response)
+//         })
+// }
+
+// ----------------------------------------------------
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -165,8 +207,6 @@ export function streamReducer(updatesState = initialState.updates, action) {
         case GET_UPDATES:
             // TODO
 
-
-
             return updatesState
         default:
             return updatesState
@@ -181,12 +221,15 @@ export function userReducer(userState = initialState.user, action) {
     switch (action.type) {
         case GET_USER:
             return userState
+        case RECEIVE_USER:
+            console.log('userReducer action', action)
+            return {...action.obj}
         case GET_USER_MINIMAL:
-            return {
+            return ({
                 userid: userState.userid,
                 username: userState.username,
                 avatar: userState.avatar,
-            }
+            })
         default:
             return userState
     }

@@ -27,7 +27,8 @@ import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-
 import { setActiveBadge, toggleSidebar } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
-import { getUserMinimal } from '../../reducers'
+// import { getUserMinimal } from '../../reducers'
+import { fetchUser } from '../../reducers'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
@@ -100,10 +101,12 @@ class NavBar extends React.Component {
         this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
         this.searchAction = this.searchAction.bind(this)
         this.toggleSearch = this.toggleSearch.bind(this)
+        this.toggleState = this.toggleState.bind(this)
         this.isForum = this.isForum.bind(this)
     }
     componentDidMount() {
-        this.props.getUserMinimal()
+        // this.props.getUserMinimal()
+        this.props.fetchUser()
     }
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
@@ -198,6 +201,7 @@ class NavBar extends React.Component {
                                     <CustomBadge
                                         to="/stream/1"
                                         id={_NAVITEM_ID.STREAM}
+                                        key={`badge_${_NAVITEM_ID.STREAM}`}
                                         badgeContent={NUMS.STREAM}
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
@@ -323,5 +327,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { setActiveBadge, toggleSidebar, getUserMinimal }
+    { setActiveBadge, toggleSidebar, fetchUser } // getUserMinimal
 )(NavBar))
