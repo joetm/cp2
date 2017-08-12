@@ -100,7 +100,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
 
-                        <Route exact path="/forum" component={Forum} />
+                        <Route path="/forum" component={Forum} />
 
                         <Route exact path="/notifications/:userid" component={Notifications} />
                         <Route exact path="/stream/:userid" component={Updates} />

@@ -11,10 +11,11 @@ class SingleThread extends React.Component {
     componentDidMount() {
     }
     render() {
-        console.log('params', this.props.params)
         return (
             <div>
-                <Posts posts={this.props.posts} />
+                {this.props.posts &&
+                    <Posts posts={this.props.posts} />
+                }
             </div>
         )
     }

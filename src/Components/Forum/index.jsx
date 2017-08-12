@@ -2,9 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 
-import store from '../../store'
 import { toggleSidebar } from '../../reducers'
 // --
 import Spacer from '../Shared/Spacer'
@@ -19,9 +18,9 @@ const Forum = (props) => {
     return (
         <div>
             <Switch>
-                <Route path={`/forum/post/:postid`} component={SinglePost} />
-                <Route path={`/forum/thread/:threadid`} component={SingleThread} />
-                <Route path={`/forum/category/:category`} component={Category} />
+                <Route path={`${props.match.url}/post/:postid`} component={SinglePost} />
+                <Route path={`${props.match.url}/thread/:threadid`} component={SingleThread} />
+                <Route path={`${props.match.url}/category/:category`} component={Category} />
                 <Route component={ForumHome} />
             </Switch>
             <Sidebar
@@ -39,6 +38,6 @@ const mapStateToProps = (state) => ({
     posts: state.app.posts,
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps
-)(Forum)
+)(Forum))
