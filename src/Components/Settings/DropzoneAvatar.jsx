@@ -25,7 +25,7 @@ const styles = {
 }
 
 
-const DropzoneAvatar = (props) => (
+const DropzoneAvatar = () => (
     <div id="avatar-settings"
         style={{
           width: '80%',

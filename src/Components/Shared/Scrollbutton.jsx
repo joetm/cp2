@@ -23,22 +23,23 @@ class Scrollbutton extends React.PureComponent {
             clickable: props.clickable || true,
             Icon: props.icon || <UpIcon />,
         }
-    }
-    // see http://stackoverflow.com/a/24559613/426266
-    scrollToTop(scrollDuration) {
-        const scrollStep = -window.scrollY / (scrollDuration / 15),
-            scrollInterval = setInterval(function(){
-                if ( window.scrollY !== 0 ) {
-                    window.scrollBy( 0, scrollStep );
-                }
-                else {
-                    clearInterval(scrollInterval);
-                }
-            }, 15);
+        // bindings
+        this.onBtnClick = this.onBtnClick.bind(this)
     }
     onBtnClick() {
         if (!this.state.clickable) { return }
         this.scrollToTop(400)
+    }
+    // see http://stackoverflow.com/a/24559613/426266
+    scrollToTop(scrollDuration) {
+        const scrollStep = -window.scrollY / (scrollDuration / 15)
+        const scrollInterval = setInterval(function() {
+                if ( window.scrollY !== 0 ) {
+                    window.scrollBy( 0, scrollStep );
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, 15);
     }
     /**
      * Render the component.
@@ -51,7 +52,7 @@ class Scrollbutton extends React.PureComponent {
             <FloatingActionButton
                 secondary={this.props.secondary || false}
                 style={this.props.style || styles.scrollButtonDefault}
-                onClick={this.onBtnClick.bind(this)}
+                onClick={this.onBtnClick}
             >
                 {this.state.Icon}
             </FloatingActionButton>

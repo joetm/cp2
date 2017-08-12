@@ -32,8 +32,7 @@ class Button extends React.PureComponent {
             iconButtonStyle = {
                 color: grey400,
             }
-        }
-        else if (this.state.active) {
+        } else if (this.state.active) {
             iconButtonStyle = {
                 color: red400,
             }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 // --
 import './default.scss'
@@ -8,7 +8,7 @@ import './default.scss'
 // import deepstream from 'deepstream.io-client-js'
 // import DeepstreamMixin from 'deepstream.io-tools-react'
 
-import App from './Components/App.jsx';
+import App from './Components/App'
 
 
 // https://deepstream.io/tutorials/integrations/frontend-react/

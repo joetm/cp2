@@ -14,6 +14,7 @@ class ButtonFlat extends React.PureComponent {
             active: false,
         }
         this.id = props.id
+        // bindings
         this.toggleButtonState = this.toggleButtonState.bind(this)
     }
     toggleButtonState() {

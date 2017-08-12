@@ -6,17 +6,17 @@ import LikeAction from 'material-ui/svg-icons/action/thumb-up'
 import FavoriteAction from 'material-ui/svg-icons/action/favorite'
 import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
 
-import { LikeButton, FavoriteButton, CommentButton} from './Button'
+import { LikeButton, FavoriteButton, CommentButton } from './Button'
 
-import {navigateTo} from '../../common/helpers'
+import { navigateTo } from '../../common/helpers'
 
 
 const Update = (props) => {
-  const {id, fromUsername, primaryText, secondaryText, datetime,
-    gridColumnsFull, gridColumnsTablet, gridColumnsPhone} = props
+  const { id, fromUsername, primaryText, secondaryText, datetime,
+    gridColumnsFull, gridColumnsTablet, gridColumnsPhone } = props
   return (
     <div
-      class={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
+      className={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
     >
       <Card>
         <CardMedia

@@ -16,7 +16,7 @@ const mockState = {
         activeBadge: 0,
     },
     // -- content --
-    activities: [
+    updates: [
         {
             type: "image",
             primaryText: "Brunch this weekend?",

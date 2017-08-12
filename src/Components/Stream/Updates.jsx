@@ -7,9 +7,8 @@ import Divider from 'material-ui/Divider'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import store from '../../store'
-import { mapStateToProps } from '../../reducers'
-import { humanReadableDate, humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
+import { humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
+import { loadUpdates } from '../../reducers'
 // --
 import Update from './Update'
 
@@ -35,8 +34,8 @@ class Updates extends React.PureComponent {
     /**
      * Render the component.
      */
-    render () {
-        const updatesList = store.getState().app.activities
+    render() {
+        const updatesList = this.props.updates
         const categorizedUpdates = this.categorize(updatesList)
         return (
             <div>
@@ -47,8 +46,8 @@ class Updates extends React.PureComponent {
                             <div key={`grp_${daysAgo}`}>
                                 <Subheader>{translateDayOffset(daysAgo)}</Subheader>
                                 <Divider />
-                                <div class="mdc-layout-grid">
-                                    <div class="mdc-layout-grid__inner">
+                                <div className="mdc-layout-grid">
+                                    <div className="mdc-layout-grid__inner">
                                     {
                                         group.map((item, i) => (
                                           <Update
@@ -76,4 +75,12 @@ class Updates extends React.PureComponent {
     }
 }
 
-export default connect(mapStateToProps)(Updates)
+const mapStateToProps = (state) => ({
+    // TODO
+    updates: state.updates
+})
+
+export default connect(
+    mapStateToProps,
+    { loadUpdates }
+)(Updates)

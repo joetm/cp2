@@ -9,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // context: path.join(__dirname, "src"),
   entry: {
-    main: "./src/main.js",
+    main: "./src/main.jsx",
     vendor: [
         "react",
         "react-dom",

@@ -33,6 +33,7 @@ export const LIKE              = 'SOCIAL::LIKE'
 export const DISLIKE           = 'SOCIAL::DISLIKE'
 export const FOLLOW_USER       = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE  = 'NAV::SET_ACTIVE_BADGE'
+export const LOAD_UPDATES      = 'STREAM::LOAD_UPDATES'
 //        const UNKNOWN           = 'APP::UNKNOWN'
 
 
@@ -78,6 +79,8 @@ export const markThreadRead   = makeActionCreator(MARK_THREAD_READ,  'threadid')
 export const markPostRead     = makeActionCreator(MARK_POST_READ,    'threadid')
 export const markAllRead      = makeActionCreator(MARK_ALL_READ,     'threadid')
 
+export const loadUpdates      = makeActionCreator(LOAD_UPDATES)
+
 // oter app actions
 export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,  'id')
 
@@ -104,7 +107,7 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
         case SEND_MESSAGE:
             // TODO: structure of state.messageHistory
             // console.log('chatState before', chatState)
-            const messageHistoryState = {...chatState}
+            const messageHistoryState = { ...chatState }
             messageHistoryState.messages.push({
                 msg: action.msg.trim(),
                 username: 'me',
@@ -126,9 +129,9 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
 export function reviewReducer(reviewState = initialState.reviewitem, action) {
     switch (action.type) {
         case REVIEW_APPROVE:
-            return {...reviewState, approvals: reviewState.approvals + 1}
+            return { ...reviewState, approvals: reviewState.approvals + 1 }
         case REVIEW_DISAPPROVE:
-            return {...reviewState, disapprovals: reviewState.disapprovals + 1}
+            return { ...reviewState, disapprovals: reviewState.disapprovals + 1 }
         default:
             return reviewState
     }
@@ -141,7 +144,24 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 export function navBarReducer(state = initialState.navbar, action) {
     switch (action.type) {
         case SET_ACTIVE_BADGE:
-            return {...state, activeBadge: +action.id}
+            return { ...state, activeBadge: +action.id }
+        default:
+            return state
+    }
+}
+
+/**
+ * streamReducer
+ * @returns state
+ **/
+export function streamReducer(state = initialState.updates, action) {
+    switch (action.type) {
+        case LOAD_UPDATES:
+            // TODO
+
+
+
+            return state
         default:
             return state
     }
@@ -154,13 +174,13 @@ export function navBarReducer(state = initialState.navbar, action) {
 export function cpAppReducer(appState = initialState, action) {
     switch (action.type) {
         case OPEN_SIDEBAR:
-            return {...appState, sidebarOpen: true}
+            return { ...appState, sidebarOpen: true }
         case CLOSE_SIDEBAR:
-            return {...appState, sidebarOpen: false}
+            return { ...appState, sidebarOpen: false }
         case TOGGLE_SIDEBAR:
-            return {...appState, sidebarOpen: !appState.sidebarOpen}
+            return { ...appState, sidebarOpen: !appState.sidebarOpen }
         case SET_ACTIVE_BADGE:
-            return {...appState, activeBadge: +action.id}
+            return { ...appState, activeBadge: +action.id }
         default:
             return appState
     }

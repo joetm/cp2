@@ -14,12 +14,7 @@ import Privacy from './Privacy'
 import styles from './styles'
 
 
-class Settings extends React.Component {
-    /**
-     * Render the component.
-     */
-    render () {
-          return (
+const Settings = (props) => (
           <div style={{textAlign: 'center'}}>
             <h1>Settings</h1>
             <div style={styles.settingsBlock}>
@@ -47,16 +42,14 @@ class Settings extends React.Component {
               </List>
               <Spacer />
               <Switch>
-                <Route path={`${this.props.match.url}/general`} component={General}/>
-                <Route path={`${this.props.match.url}/image`}   component={ProfileImg}/>
-                <Route path={`${this.props.match.url}/avatar`}  component={AvatarImg}/>
-                <Route path={`${this.props.match.url}/privacy`} component={Privacy}/>
+                  <Route path={`${props.match.url}/general`} component={General} />
+                  <Route path={`${props.match.url}/image`}   component={ProfileImg} />
+                  <Route path={`${props.match.url}/avatar`}  component={AvatarImg} />
+                  <Route path={`${props.match.url}/privacy`} component={Privacy} />
               </Switch>
             </div>
             <Spacer />
           </div>
-          )
-    }
-}
+)
 
 export default Settings

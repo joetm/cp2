@@ -8,7 +8,7 @@ import 'react-dropzone-component/styles/filepicker.css'
 // dropzone component
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 
-import {dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers} from './dropzoneConfig'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
 
 
 const blockMaxWidth = '80%' // 250
@@ -35,6 +35,7 @@ const DropzoneProfileImg = (props) => (
     >
         <img
             src={'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg'}
+            alt=""
             style={{
                 width: '100%',
                 height: 'auto',

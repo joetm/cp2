@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import SignUpForm from './SignupForm.jsx'
+import SignUpForm from './SignupForm'
 
 
 class SignUpPage extends React.Component {
@@ -68,7 +68,6 @@ class SignUpPage extends React.Component {
       />
     )
   }
-
 }
 
 export default SignUpPage

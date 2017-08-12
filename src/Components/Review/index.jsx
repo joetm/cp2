@@ -12,7 +12,7 @@ import './style.scss'
 // --
 import { reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
 import { colors } from '../../common/theme'
-import { humanReadableDate, humanRelativeDate, translateDayOffset } from '../../common/helpers'
+import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
 import Spacer from '../Shared/Spacer'
@@ -140,12 +140,12 @@ class Review extends React.Component {
                     toggleHelp={this.toggleHelp}
                 />
 
-                <div class="mdc-layout-grid">
-                  <div class="mdc-layout-grid__inner">
+                <div className="mdc-layout-grid">
+                  <div className="mdc-layout-grid__inner">
 
                     <CellPadding />
 
-                    <div class="mdc-layout-grid__cell
+                    <div className="mdc-layout-grid__cell
                                 mdc-layout-grid__cell--span-8
                                 mdc-layout-grid__cell--span-6-tablet
                                 mdc-layout-grid__cell--span-4-phone">

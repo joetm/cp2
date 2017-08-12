@@ -19,7 +19,7 @@ class CustomDialog extends React.PureComponent {
         ]
         return (
             <Dialog
-              style={{display: this.props.isOpen ? 'block': 'none'}}
+              style={{display: this.props.isOpen ? 'block' : 'none'}}
               title={this.props.title}
               actions={this.props.actions || defaultActions}
               modal={false}

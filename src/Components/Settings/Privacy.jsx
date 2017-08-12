@@ -9,7 +9,7 @@ import Subheader from 'material-ui/Subheader'
 import styles from './styles'
 
 
-const PrivacySettings = (props) => (
+const PrivacySettings = () => (
     <div style={{textAlign: 'left'}}>
           <Divider />
           <List>

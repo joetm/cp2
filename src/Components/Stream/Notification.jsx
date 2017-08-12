@@ -44,7 +44,7 @@ class Notification extends React.PureComponent {
         return (
             <ListItem
               leftAvatar={this.props.avatar}
-              rightIconButton={this.state.showMenu ? rightIconMenu : (<span></span>)}
+              rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={this.props.primaryText}
               secondaryText={this.props.username}
               onMouseEnter={() => this.setState({showMenu: true})}

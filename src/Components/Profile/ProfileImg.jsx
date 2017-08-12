@@ -19,8 +19,8 @@ const blurFilters = {
   filter: `blur(${blurIntensity}px)`,
 }
 const profileImgContainerStyle = {
-    textAlign:'center',
-    backgroundColor:'#808080',
+    textAlign: 'center',
+    backgroundColor: '#808080',
     position: 'relative',
 }
 
@@ -49,8 +49,8 @@ class ProfileImg extends React.PureComponent {
             position: 'relative',
             width:'100%',
             height: `${this.state.profileImgHeight}px`,
-            textAlign:'center',
-            backgroundColor:'#808080',
+            textAlign: 'center',
+            backgroundColor: '#808080',
             overflow: 'hidden',
             backgroundImage: `url(${this.props.src})`,
             backgroundPosition: 'center center',
@@ -70,7 +70,7 @@ class ProfileImg extends React.PureComponent {
         }
         return (
             <div>
-                <div onClick={this.props.toggleProfileDetails}>
+                <div onClick={this.props.toggleProfileDetails} role="button">
                     <div style={profileImgContainerStyle}>
                         <ProfileDetails
                             username={username}

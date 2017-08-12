@@ -24,7 +24,7 @@ class SubToolbar extends React.Component {
     state = {
         value: _ID.ALL,
     }
-    handleChange = (event, index, value) => this.setState({value})
+    handleChange = (event, index, value) => this.setState({ value })
     /**
      * Render the component.
      */
@@ -37,7 +37,7 @@ class SubToolbar extends React.Component {
                         value={this.state.value}
                         onChange={this.handleChange}
                         iconButton={expandButton}
-                        iconStyle={{marginTop:'-12px'}}
+                        iconStyle={{marginTop: '-12px'}}
                     >
                         <MenuItem
                             value={_ID.ALL}

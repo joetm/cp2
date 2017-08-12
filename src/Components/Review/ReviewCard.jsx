@@ -34,6 +34,8 @@ class ReviewCard extends React.PureComponent {
             id: props.id,
             visible: true,
         }
+        // bindings
+        this.props.navigateTo = this.props.navigateTo.bind(this)
     }
     /**
      * Render the component.
@@ -57,7 +59,7 @@ class ReviewCard extends React.PureComponent {
                   title={primaryText}
                   subtitle={fromUsername}
                   avatar="/img/avatar/face.jpg"
-                  onClick={navigateTo.bind(this)}
+                  onClick={this.props.navigateTo}
               />
               <CardActions>
 

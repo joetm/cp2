@@ -20,7 +20,7 @@ class SettingsMenuEntry extends React.PureComponent {
           primaryText={this.props.primaryText}
           secondaryText={this.props.secondaryText}
           onTouchTap={() => {
-            this.setState({selected:true});
+            this.setState({selected: true});
             this.props.history.push(this.props.match.url + this.props.url)
           }}
         />
