@@ -27,8 +27,13 @@ const styles = {
     subheader: {
         textAlign: 'center',
     },
-    messageField: {
-        margin: '1em 0',
+    chatArea: {
+        clear: 'both',
+    },
+    messageFieldContainer: {
+        margin: '2em 0',
+        display: 'block',
+        clear: 'both',
     },
 }
 
@@ -42,6 +47,7 @@ class MessageHistory extends React.PureComponent {
         }
         // bindings
         this._handleKeyPress = this._handleKeyPress.bind(this)
+        this.submitMsg = this.submitMsg.bind(this)
     }
     componentDidMount() {
         this.setState({loading: false})
@@ -51,16 +57,15 @@ class MessageHistory extends React.PureComponent {
      * @param e - Event
      */
     _handleKeyPress(e) {
-        if (e.key === 'Enter') {
-            if (!e.shiftKey) {
-                this.submitMsg(e.target.value)
-            }
+        if (e.key === 'Enter' && !e.shiftKey) {
+            this.submitMsg()
         }
     }
     /**
      * Submit the input field.
      */
-    submitMsg(msg) {
+    submitMsg() {
+        let msg = this.refs.inputfield.getValue()
         msg = msg.trim()
         if (msg) {
             this.props.sendMessage(this.props.messageHistory.userid, msg)
@@ -99,6 +104,7 @@ class MessageHistory extends React.PureComponent {
                                 mdc-layout-grid__cell--span-6-tablet
                                 mdc-layout-grid__cell--span-4-phone">
 
+                        <div style={styles.chatArea}>
                         {
                             msgHistory.messages.map((item, i) => (
                                 <div
@@ -109,25 +115,36 @@ class MessageHistory extends React.PureComponent {
                                         style={{...styles.chip, ...{float: MYUSERID === item.userid ? 'right': 'left'}}}
                                     >
                                         <Avatar src={item.avatar} />
-                                        {parser.toReact(item.msg)}
+                                        { parser.toReact(item.msg) }
                                     </Chip>
                                 </div>
                             ))
                         }
+                        </div>
 
-                        <div style={styles.messageField}>
-                            <TextField
-                                id="new-message"
-                                hintText="Enter Message..."
-                                floatingLabelText="New Message"
-                                ref="inputfield"
-                                fullWidth={true}
-                                multiLine={true}
-                                rows={this.state.inputRows}
-                                onKeyPress={this._handleKeyPress}
-                            />
+                        <div style={styles.messageFieldContainer}>
+                            <div className="textFieldWrapper"
+                                style={{
+                                    display: 'inline-block',
+                                    marginRight: '-30px',
+                                    width: '100%',
+                                    border: '1px solid red'
+                                }}
+                            >
+                                <TextField
+                                    id="new-message"
+                                    hintText="Enter Message..."
+                                    floatingLabelText="New Message"
+                                    ref="inputfield"
+                                    fullWidth={true}
+                                    multiLine={true}
+                                    rows={this.state.inputRows}
+                                    onKeyPress={this._handleKeyPress}
+                                />
+                            </div>
                             <SendIcon
-                                onTouchTap={() => {}}
+                                style={{cursor: 'pointer', position: 'relative', top: '30px', right: 0}}
+                                onTouchTap={this.submitMsg}
                             />
                         </div>
 

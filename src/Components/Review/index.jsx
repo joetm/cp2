@@ -95,20 +95,14 @@ class Review extends React.Component {
      * Approve the update.
      */
     approve() {
-        // console.log('approve update', this.props.reviewitem.id)
-        // TODO
         this.props.reviewApprove(this.props.reviewitem.id)
-        console.log('reviewitem after', this.props.reviewitem)
         this.openAlert()
     }
     /*
      * Reject the update.
      */
     reject() {
-        // console.log('reject update', this.props.reviewitem.id)
-        // TODO
         this.props.reviewDisapprove(this.props.reviewitem.id)
-        console.log('reviewitem after', this.props.reviewitem)
         this.openAlert()
     }
     /*
