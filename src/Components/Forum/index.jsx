@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import { toggleSidebar } from '../../reducers'
 // --
@@ -18,9 +18,9 @@ const Forum = (props) => {
     return (
         <div>
             <Switch>
-                <Route path={`${props.match.url}/post/:postid`} component={SinglePost} />
-                <Route path={`${props.match.url}/thread/:threadid`} component={SingleThread} />
-                <Route path={`${props.match.url}/category/:category`} component={Category} />
+                <Route path={`${props.url}/post/:postid`} component={SinglePost} />
+                <Route path={`${props.url}/thread/:threadid`} component={SingleThread} />
+                <Route path={`${props.url}/category/:category`} component={Category} />
                 <Route component={ForumHome} />
             </Switch>
             <Sidebar
@@ -32,12 +32,14 @@ const Forum = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     // add selected fields from the state as props to the component
     sidebarOpen: state.app.sidebarOpen,
     posts: state.app.posts,
+    // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
+    url: ownProps.match.url,
 })
 
-export default withRouter(connect(
+export default connect(
     mapStateToProps
-)(Forum))
+)(Forum)

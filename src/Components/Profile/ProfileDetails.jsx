@@ -47,7 +47,7 @@ const ProfileDetails = props => {
             secondary={true}
             mini={true}
             style={styles.closeButtonStyle}
-            onclick={props.toggleProfileDetails}
+            onTouchTap={props.toggleProfileDetails}
             tooltip="Click anywhere to close"
         >
             <CloseIcon />

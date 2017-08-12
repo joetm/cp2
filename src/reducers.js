@@ -15,6 +15,8 @@ import initialState from '../__mocks__/mockState'
  */
 
 export const COMMENT_PROFILE    = 'PROFILE::COMMENT_PROFILE'
+export const GET_USER           = 'USER::GET_USER'
+export const GET_USER_MINIMAL   = 'USER::GET_USER_MINIMAL'
 export const REPLY_THREAD       = 'FORUM::REPLY_THREAD'
 export const GET_POSTS          = 'FORUM::GET_POSTS'
 export const GET_POST           = 'FORUM::GET_POST'
@@ -35,7 +37,7 @@ export const LIKE               = 'SOCIAL::LIKE'
 export const DISLIKE            = 'SOCIAL::DISLIKE'
 export const FOLLOW_USER        = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE   = 'NAV::SET_ACTIVE_BADGE'
-export const LOAD_UPDATES       = 'STREAM::LOAD_UPDATES'
+export const GET_UPDATES        = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS = 'APP::SET_DEVICE_DETAILS'
 //        const UNKNOWN           = 'APP::UNKNOWN'
 
@@ -60,7 +62,8 @@ function makeActionCreator(type, ...argNames) {
  * Redux action creators
  **/
 
-// user facing actions
+export const getUser          = makeActionCreator(GET_USER,          'userid')
+export const getUserMinimal   = makeActionCreator(GET_USER_MINIMAL,  'userid')
 export const followUser       = makeActionCreator(FOLLOW_USER,       'userid')
 export const replyThread      = makeActionCreator(REPLY_THREAD,      'threadid')
 export const commentProfile   = makeActionCreator(COMMENT_PROFILE,   'userid')
@@ -83,7 +86,7 @@ export const selectThread     = makeActionCreator(SELECT_THREAD,     'threadid')
 export const markThreadRead   = makeActionCreator(MARK_THREAD_READ,  'threadid')
 export const markPostRead     = makeActionCreator(MARK_POST_READ,    'threadid')
 export const markAllRead      = makeActionCreator(MARK_ALL_READ,     'threadid')
-export const loadUpdates      = makeActionCreator(LOAD_UPDATES)
+export const getUpdates       = makeActionCreator(GET_UPDATES)
 
 // oter app actions
 export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,   'id')
@@ -159,7 +162,7 @@ export function navBarReducer(navBarState = initialState.navbar, action) {
  **/
 export function streamReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
-        case LOAD_UPDATES:
+        case GET_UPDATES:
             // TODO
 
 
@@ -167,6 +170,25 @@ export function streamReducer(updatesState = initialState.updates, action) {
             return updatesState
         default:
             return updatesState
+    }
+}
+
+/**
+ * profileReducer
+ * @returns profileState
+ **/
+export function userReducer(userState = initialState.user, action) {
+    switch (action.type) {
+        case GET_USER:
+            return userState
+        case GET_USER_MINIMAL:
+            return {
+                userid: userState.userid,
+                username: userState.username,
+                avatar: userState.avatar,
+            }
+        default:
+            return userState
     }
 }
 

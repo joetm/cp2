@@ -3,7 +3,8 @@ import { browserHistory } from 'react-router-dom'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-import { cpAppReducer, chatReducer, reviewReducer, navBarReducer, streamReducer, SET_DEVICE_DETAILS } from './reducers'
+import * as Reducers from './reducers'
+import { SET_DEVICE_DETAILS } from './reducers'
 
 // see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
 const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
@@ -30,11 +31,12 @@ const addLoggingToDispatch = (store) => {
 
 const store = createStore(
     combineReducers({
-        app: cpAppReducer, // TODO - spread this among reducers
-        messageHistory: chatReducer,
-        reviewitem: reviewReducer,
-        updates: streamReducer,
-        navbar: navBarReducer,
+        app: Reducers.cpAppReducer, // TODO - spread this among reducers
+        messageHistory: Reducers.chatReducer,
+        reviewitem: Reducers.reviewReducer,
+        updates: Reducers.streamReducer,
+        user: Reducers.userReducer,
+        navbar: Reducers.navBarReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),
     applyMiddleware(middleware) // apply middleware for navigating

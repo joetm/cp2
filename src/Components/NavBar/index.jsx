@@ -26,9 +26,7 @@ import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-
 import { setActiveBadge, toggleSidebar } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
-// --
-// DEV
-import userRecord from '../Profile/userRecord'
+import { getUserMinimal } from '../../reducers'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
@@ -101,6 +99,9 @@ class NavBar extends React.Component {
         this.searchAction = this.searchAction.bind(this)
         this.isForum = this.isForum.bind(this)
     }
+    componentDidMount() {
+        this.props.getUserMinimal()
+    }
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
     }
@@ -116,7 +117,7 @@ class NavBar extends React.Component {
     toggleNotificationBadges() {
         this.setState({notificationDetailsShowing: !this.state.notificationDetailsShowing})
     }
-    toggleState = (num) => {
+    toggleState(num) {
         let n = num
         if (n.id) { n = n.id }
         else if (! +n) { n = 0 }
@@ -254,12 +255,12 @@ class NavBar extends React.Component {
                     </IconButton>
 
                     <Link
-                        to={`/profile/${userRecord.userid}`}
+                        to={`/profile/${this.props.userid}`}
                     >
                         <Avatar
                             id={_NAVITEM_ID.PROFILE}
                             visible={true}
-                            src={'/img/avatar/face.jpg'}
+                            src={this.props.avatar}
                             mini={true}
                             tooltip="Your Profile"
                             onTouchTap={this.toggleState}
@@ -299,9 +300,12 @@ class NavBar extends React.Component {
 const mapStateToProps = (state) => ({
     activeBadge: state.navbar.activeBadge,
     sidebarOpen: state.app.sidebarOpen,
+    userid: state.user.userid,
+    username: state.user.username,
+    avatar: state.user.avatar,
 })
 
 export default withRouter(connect(
     mapStateToProps,
-    { setActiveBadge, toggleSidebar }
+    { setActiveBadge, toggleSidebar, getUserMinimal }
 )(NavBar))

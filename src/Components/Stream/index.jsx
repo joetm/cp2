@@ -23,6 +23,7 @@ class Feed extends React.PureComponent {
      * Render the component.
      */
     render () {
+        console.log(this.props.match.url)
         return (
             <div>
                 <SubToolbar routes={this.ROUTES} />

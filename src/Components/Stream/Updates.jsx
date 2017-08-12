@@ -8,7 +8,7 @@ import Divider from 'material-ui/Divider'
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import { humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
-import { loadUpdates } from '../../reducers'
+import { getUpdates } from '../../reducers'
 // --
 import Update from './Update'
 
@@ -16,7 +16,7 @@ import Update from './Update'
 class Updates extends React.PureComponent {
     componentDidMount() {
         // TODO
-        // this.props.loadUpdates()
+        // this.props.getUpdates()
     }
     categorize(updatesList) {
         if (!updatesList) {
@@ -87,5 +87,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { loadUpdates }
+    { getUpdates }
 )(Updates)
