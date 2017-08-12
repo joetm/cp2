@@ -16,6 +16,7 @@ import initialState from '../__mocks__/mockState'
 
 export const COMMENT_PROFILE   = 'PROFILE::COMMENT_PROFILE'
 export const REPLY_THREAD      = 'FORUM::REPLY_THREAD'
+export const GET_POSTS         = 'FORUM::GET_POSTS'
 export const LOAD_POST         = 'FORUM::LOAD_POST'
 export const EDIT_POST         = 'FORUM::EDIT_POST'
 export const REMOVE_POST       = 'FORUM::REMOVE_POST'
@@ -71,6 +72,7 @@ export const reviewDisapprove = makeActionCreator(REVIEW_DISAPPROVE, 'itemid')
 export const sendMessage      = makeActionCreator(SEND_MESSAGE,      'toUserid', 'msg')
 
 // forum actions
+export const getPosts         = makeActionCreator(GET_POSTS)
 export const loadPost         = makeActionCreator(LOAD_POST,         'postid', 'response')
 export const editPost         = makeActionCreator(EDIT_POST,         'postid', 'response')
 export const removePost       = makeActionCreator(REMOVE_POST,       'postid', 'bool')
@@ -162,6 +164,19 @@ export function streamReducer(updatesState = initialState.updates, action) {
             return updatesState
         default:
             return updatesState
+    }
+}
+
+/**
+ * forumReducer
+ * @returns forumState
+ **/
+export function forumReducer(forumState = initialState.posts, action) {
+    switch (action.type) {
+        case GET_POSTS:
+            return forumState
+        default:
+            return forumState
     }
 }
 

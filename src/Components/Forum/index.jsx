@@ -2,34 +2,33 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
 
 import store from '../../store'
 import { toggleSidebar } from '../../reducers'
 // --
-import Posts from './Posts'
 import Spacer from '../Shared/Spacer'
 import Sidebar from './Sidebar'
+import ForumHome from './ForumHome'
+import SinglePost from './SinglePost'
 
 
-const ForumHome = (props) => (
-    <div>
-        <h2>Forum</h2>
-        <button onClick={props.toggleSidebar}>Toggle Sidebar</button>
+const Forum = (props) => {
+    return (
         <div>
-            {props.posts.length > 0 &&
-              <div>
-                <Posts posts={props.posts} />
-              </div>
-            }
+            <button onClick={props.toggleSidebar}>Toggle Sidebar</button>
+            <Switch>
+                <Route path={`/forum/post/:postid`} component={SinglePost} />
+                <Route component={ForumHome} />
+            </Switch>
+            <Sidebar
+                toggleSidebar={props.toggleSidebar}
+                sidebarOpen={props.sidebarOpen}
+            />
+            <Spacer />
         </div>
-        <Sidebar
-            toggleSidebar={props.toggleSidebar}
-            sidebarOpen={props.sidebarOpen}
-        />
-        <Spacer />
-    </div>
-)
-
+    )
+}
 
 const mapStateToProps = (state) => ({
     // add selected fields from the state as props to the component
@@ -40,4 +39,4 @@ const mapStateToProps = (state) => ({
 export default connect(
     mapStateToProps,
     { toggleSidebar }
-)(ForumHome)
+)(Forum)
