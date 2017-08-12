@@ -10,6 +10,7 @@ import cuid from 'cuid'
  **/
 
 const mockState = {
+    deviceDetails: null,
     sidebarOpen: false,
     // -- state --
     navbar: {

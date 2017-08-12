@@ -14,27 +14,28 @@ import initialState from '../__mocks__/mockState'
  * Redux action types
  */
 
-export const COMMENT_PROFILE   = 'PROFILE::COMMENT_PROFILE'
-export const REPLY_THREAD      = 'FORUM::REPLY_THREAD'
-export const GET_POSTS         = 'FORUM::GET_POSTS'
-export const LOAD_POST         = 'FORUM::LOAD_POST'
-export const EDIT_POST         = 'FORUM::EDIT_POST'
-export const REMOVE_POST       = 'FORUM::REMOVE_POST'
-export const TOGGLE_SIDEBAR    = 'FORUM::TOGGLE_SIDEBAR'
-export const OPEN_SIDEBAR      = 'FORUM::OPEN_SIDEBAR'
-export const CLOSE_SIDEBAR     = 'FORUM::CLOSE_SIDEBAR'
-export const MARK_THREAD_READ  = 'FORUM::MARK_THREAD_READ'
-export const MARK_POST_READ    = 'FORUM::MARK_POST_READ'
-export const MARK_ALL_READ     = 'FORUM::MARK_ALL_READ'
-export const SELECT_THREAD     = 'FORUM::SELECT_THREAD'
-export const SEND_MESSAGE      = 'CHAT::SEND_MESSAGE'
-export const REVIEW_APPROVE    = 'REVIEW::APPROVE'
-export const REVIEW_DISAPPROVE = 'REVIEW::DISAPPROVE'
-export const LIKE              = 'SOCIAL::LIKE'
-export const DISLIKE           = 'SOCIAL::DISLIKE'
-export const FOLLOW_USER       = 'SOCIAL::FOLLOW_USER'
-export const SET_ACTIVE_BADGE  = 'NAV::SET_ACTIVE_BADGE'
-export const LOAD_UPDATES      = 'STREAM::LOAD_UPDATES'
+export const COMMENT_PROFILE    = 'PROFILE::COMMENT_PROFILE'
+export const REPLY_THREAD       = 'FORUM::REPLY_THREAD'
+export const GET_POSTS          = 'FORUM::GET_POSTS'
+export const LOAD_POST          = 'FORUM::LOAD_POST'
+export const EDIT_POST          = 'FORUM::EDIT_POST'
+export const REMOVE_POST        = 'FORUM::REMOVE_POST'
+export const TOGGLE_SIDEBAR     = 'FORUM::TOGGLE_SIDEBAR'
+export const OPEN_SIDEBAR       = 'FORUM::OPEN_SIDEBAR'
+export const CLOSE_SIDEBAR      = 'FORUM::CLOSE_SIDEBAR'
+export const MARK_THREAD_READ   = 'FORUM::MARK_THREAD_READ'
+export const MARK_POST_READ     = 'FORUM::MARK_POST_READ'
+export const MARK_ALL_READ      = 'FORUM::MARK_ALL_READ'
+export const SELECT_THREAD      = 'FORUM::SELECT_THREAD'
+export const SEND_MESSAGE       = 'CHAT::SEND_MESSAGE'
+export const REVIEW_APPROVE     = 'REVIEW::APPROVE'
+export const REVIEW_DISAPPROVE  = 'REVIEW::DISAPPROVE'
+export const LIKE               = 'SOCIAL::LIKE'
+export const DISLIKE            = 'SOCIAL::DISLIKE'
+export const FOLLOW_USER        = 'SOCIAL::FOLLOW_USER'
+export const SET_ACTIVE_BADGE   = 'NAV::SET_ACTIVE_BADGE'
+export const LOAD_UPDATES       = 'STREAM::LOAD_UPDATES'
+export const SET_DEVICE_DETAILS = 'APP::SET_DEVICE_DETAILS'
 //        const UNKNOWN           = 'APP::UNKNOWN'
 
 
@@ -80,11 +81,11 @@ export const selectThread     = makeActionCreator(SELECT_THREAD,     'threadid')
 export const markThreadRead   = makeActionCreator(MARK_THREAD_READ,  'threadid')
 export const markPostRead     = makeActionCreator(MARK_POST_READ,    'threadid')
 export const markAllRead      = makeActionCreator(MARK_ALL_READ,     'threadid')
-
 export const loadUpdates      = makeActionCreator(LOAD_UPDATES)
 
 // oter app actions
-export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,  'id')
+export const setActiveBadge   = makeActionCreator(SET_ACTIVE_BADGE,   'id')
+export const setDeviceDetails = makeActionCreator(SET_DEVICE_DETAILS, 'obj')
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -194,6 +195,8 @@ export function cpAppReducer(appState = initialState, action) {
             return { ...appState, sidebarOpen: !appState.sidebarOpen }
         case SET_ACTIVE_BADGE:
             return { ...appState, activeBadge: +action.id }
+        case SET_DEVICE_DETAILS:
+            return { ...appState, deviceDetails: action.obj }
         default:
             return appState
     }

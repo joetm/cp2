@@ -142,6 +142,7 @@ class NavBar extends React.Component {
                         onMouseEnter={() => { this.setState({notificationDetailsShowing: true}) }}
                         onMouseLeave={() => { this.setState({notificationDetailsShowing: false}) }}
                     >
+
                         <CustomBadge
                             id={_NAVITEM_ID.ALLNOTIFICATIONS}
                             badgeContent={NUMS.ALLNOTIFICATIONS}
@@ -165,23 +166,6 @@ class NavBar extends React.Component {
                             !this.state.notificationDetailsShowing ? null :
                             [
                                 <NavLink
-                                    to="/forum"
-                                    key={`badge_${_NAVITEM_ID.FORUM}`}
-                                    activeStyle={{color: colors.palette.primary1Color}}
-                                >
-                                    <CustomBadge
-                                        id={_NAVITEM_ID.FORUM}
-                                        badgeContent={NUMS.FORUM}
-                                        secondary={true}
-                                        badgeStyle={styles.badgeStyle}
-                                        style={styles.badgeRootStyle}
-                                        tooltip="New Forum Activity"
-                                        icon={<ForumIcon />}
-                                        toggleState={this.toggleState}
-                                        active={this.props.activeBadge === _NAVITEM_ID.FORUM}
-                                    />
-                                </NavLink>,
-                                <NavLink
                                     to="/stream/1"
                                     key={`badge_${_NAVITEM_ID.STREAM}`}
                                     activeStyle={{color: colors.palette.primary1Color}}
@@ -196,6 +180,23 @@ class NavBar extends React.Component {
                                         icon={<UpdatesIcon />}
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.STREAM}
+                                    />
+                                </NavLink>,
+                                <NavLink
+                                    to="/forum"
+                                    key={`badge_${_NAVITEM_ID.FORUM}`}
+                                    activeStyle={{color: colors.palette.primary1Color}}
+                                >
+                                    <CustomBadge
+                                        id={_NAVITEM_ID.FORUM}
+                                        badgeContent={NUMS.FORUM}
+                                        secondary={true}
+                                        badgeStyle={styles.badgeStyle}
+                                        style={styles.badgeRootStyle}
+                                        tooltip="New Forum Activity"
+                                        icon={<ForumIcon />}
+                                        toggleState={this.toggleState}
+                                        active={this.props.activeBadge === _NAVITEM_ID.FORUM}
                                     />
                                 </NavLink>,
                                 <NavLink
