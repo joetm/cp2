@@ -90,19 +90,18 @@ class Thread extends React.Component {
                     ))
                 }
 
-                    <div style={styles.messageField}>
-                        <TextField
-                            id="new-message"
-                            hintText="Enter Message..."
-                            floatingLabelText="New Message"
-                            ref="inputfield"
-                            fullWidth={true}
-                            multiLine={true}
-                            rows={1}
-                            onKeyPress={this._handleKeyPress.bind(this)}
-                        />
-                        <SendIcon />
-                    </div>
+                <div style={styles.messageField}>
+                    <TextField
+                        id="new-message"
+                        hintText="Enter Message..."
+                        floatingLabelText="New Message"
+                        ref="inputfield"
+                        fullWidth={true}
+                        multiLine={true}
+                        rows={1}
+                    />
+                    <SendIcon />
+                </div>
 
                 <Divider />
                 <Spacer />

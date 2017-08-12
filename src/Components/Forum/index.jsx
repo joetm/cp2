@@ -10,7 +10,9 @@ import { toggleSidebar } from '../../reducers'
 import Spacer from '../Shared/Spacer'
 import Sidebar from './Sidebar'
 import ForumHome from './ForumHome'
+import Category from './Category'
 import SinglePost from './SinglePost'
+import SingleThread from './SingleThread'
 
 
 const Forum = (props) => {
@@ -18,6 +20,8 @@ const Forum = (props) => {
         <div>
             <Switch>
                 <Route path={`/forum/post/:postid`} component={SinglePost} />
+                <Route path={`/forum/thread/:threadid`} component={SingleThread} />
+                <Route path={`/forum/category/:category`} component={Category} />
                 <Route component={ForumHome} />
             </Switch>
             <Sidebar

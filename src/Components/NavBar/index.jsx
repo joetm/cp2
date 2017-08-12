@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, withRouter } from 'react-router-dom'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
 import Divider from 'material-ui/Divider'
@@ -93,9 +93,24 @@ class NavBar extends React.Component {
         super(props)
         this.state = {
             notificationDetailsShowing: false,
+            isForum: false,
         }
         // bindings
         this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
+        this.searchAction = this.searchAction.bind(this)
+        this.isForum = this.isForum.bind(this)
+    }
+    isForum() {
+        return this.props.location.pathname.startsWith('/forum')
+    }
+    searchAction() {
+        // on the forum, open the sidebar
+        if (this.isForum()) {
+            this.props.toggleSidebar()
+        } else {
+            // TODO
+            console.log('EXPAND SEARCH')
+        }
     }
     toggleNotificationBadges() {
         this.setState({notificationDetailsShowing: !this.state.notificationDetailsShowing})
@@ -243,10 +258,13 @@ class NavBar extends React.Component {
 
                 <ToolbarGroup>
 
-                    <SearchIcon
+                    <IconButton
+                        tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                        onTouchTap={this.searchAction}
                         style={styles.searchIcon}
-                        onTouchTap={this.props.toggleSidebar}
-                        tooltip="Toggle Sidebar" />
+                    >
+                        <SearchIcon />
+                    </IconButton>
 
                     <Link
                         to={`/profile/${userRecord.userid}`}
@@ -296,7 +314,7 @@ const mapStateToProps = (state) => ({
     sidebarOpen: state.app.sidebarOpen,
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     { setActiveBadge, toggleSidebar }
-)(NavBar)
+)(NavBar))

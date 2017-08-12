@@ -23,6 +23,9 @@ class Category extends React.Component {
                     {posts && posts.length > 0 &&
                         <Posts posts={posts} />
                     }
+                    {!posts &&
+                        <div>This category is empty.</div>
+                    }
                 </div>
             </div>
         )

@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
-import {ListItem} from 'material-ui/List'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import { ListItem } from 'material-ui/List'
+import { withRouter } from 'react-router-dom'
 
 
 const Post = props => {
@@ -19,9 +19,9 @@ const Post = props => {
         secondaryText={post.username}
         secondaryTextLines={2}
         autoGenerateNestedIndicator={true}
-        onTouchTap={() => history.push(`/thread/${post.id}`)}
+        onTouchTap={() => history.push(`${props.match.url}/thread/${post.id}`)}
       />
   )
 }
 
-export default Post
+export default withRouter(Post)

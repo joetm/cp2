@@ -34,7 +34,6 @@ import Scrollbutton from './Shared/Scrollbutton'
 import NavBar from './NavBar'
 import Home from './Home'
 import Forum from './Forum'
-import Thread from './Forum/Thread'
 import Notifications from './Stream/Notifications'
 import MessageHistory from './MessageHistory'
 import Updates from './Stream'
@@ -101,32 +100,30 @@ class App extends React.Component {
                     <Switch>
                         <Route exact path="/" component={Home} />
 
-                        <Route path="/forum" component={Forum} />
+                        <Route exact path="/forum" component={Forum} />
 
-                        <Route path="/notifications/:userid" component={Notifications} />
-                        <Route path="/stream/:userid" component={Updates} />
+                        <Route exact path="/notifications/:userid" component={Notifications} />
+                        <Route exact path="/stream/:userid" component={Updates} />
 
-                        <Route path="/review" component={Review} />
+                        <Route exact path="/review" component={Review} />
 
-                        <Route path="/messages/:opponentid" component={MessageHistory} />
+                        <Route exact path="/messages/:opponentid" component={MessageHistory} />
 
-                        <Route path="/profile/:userid"
+                        <Route exact path="/profile/:userid"
                             render={() => (
                                 <Profile isScrolled={this.state.isScrolled} />
                             )} />
 
-                        <Route path="/settings" component={Settings} />
+                        <Route exact path="/settings" component={Settings} />
 
-                        <Route path="/thread/:threadid" component={Thread} />
+                        <Route exact path="/login" component={LoginPage} />
+                        <Route exact path="/signup" component={SignupPage} />
 
-                        <Route path="/login" component={LoginPage} />
-                        <Route path="/signup" component={SignupPage} />
+                        <Route exact path="/community-guidelines" component={Guidelines} />
+                        <Route exact path="/privacy-policy" component={Privacy} />
+                        <Route exact path="/dmca-policy" component={DMCA} />
 
-                        <Route path="/community-guidelines" component={Guidelines} />
-                        <Route path="/privacy-policy" component={Privacy} />
-                        <Route path="/dmca-policy" component={DMCA} />
-
-                        <Route path="/contact" component={Contact} />
+                        <Route exact path="/contact" component={Contact} />
 
                         <Route component={Error} code="404" />
 

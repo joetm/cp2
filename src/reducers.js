@@ -17,7 +17,8 @@ import initialState from '../__mocks__/mockState'
 export const COMMENT_PROFILE    = 'PROFILE::COMMENT_PROFILE'
 export const REPLY_THREAD       = 'FORUM::REPLY_THREAD'
 export const GET_POSTS          = 'FORUM::GET_POSTS'
-export const LOAD_POST          = 'FORUM::LOAD_POST'
+export const GET_POST           = 'FORUM::GET_POST'
+export const GET_THREAD         = 'FORUM::GET_THREAD'
 export const EDIT_POST          = 'FORUM::EDIT_POST'
 export const REMOVE_POST        = 'FORUM::REMOVE_POST'
 export const TOGGLE_SIDEBAR     = 'FORUM::TOGGLE_SIDEBAR'
@@ -74,7 +75,8 @@ export const sendMessage      = makeActionCreator(SEND_MESSAGE,      'toUserid',
 
 // forum actions
 export const getPosts         = makeActionCreator(GET_POSTS)
-export const loadPost         = makeActionCreator(LOAD_POST,         'postid', 'response')
+export const getPost          = makeActionCreator(GET_POST,          'postid', 'response')
+export const getThread        = makeActionCreator(GET_THREAD,        'threadid', 'response')
 export const editPost         = makeActionCreator(EDIT_POST,         'postid', 'response')
 export const removePost       = makeActionCreator(REMOVE_POST,       'postid', 'bool')
 export const selectThread     = makeActionCreator(SELECT_THREAD,     'threadid')
