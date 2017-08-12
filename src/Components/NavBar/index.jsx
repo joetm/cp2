@@ -27,6 +27,7 @@ import { setActiveBadge, toggleSidebar } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
 // --
+// DEV
 import userRecord from '../Profile/userRecord'
 // --
 import Avatar from '../Shared/Avatar'
@@ -166,6 +167,7 @@ class NavBar extends React.Component {
                     >
 
                         <CustomBadge
+                            to={null}
                             id={_NAVITEM_ID.ALLNOTIFICATIONS}
                             badgeContent={NUMS.ALLNOTIFICATIONS}
                             secondary={true}
@@ -185,14 +187,10 @@ class NavBar extends React.Component {
                             style={{display:'inline-block'}}
                         >
                             {
-                            !this.state.notificationDetailsShowing ? null :
-                            [
-                                <NavLink
-                                    to="/stream/1"
-                                    key={`badge_${_NAVITEM_ID.STREAM}`}
-                                    activeStyle={{color: colors.palette.primary1Color}}
-                                >
+                                !this.state.notificationDetailsShowing ? null :
+                                [
                                     <CustomBadge
+                                        to="/stream/1"
                                         id={_NAVITEM_ID.STREAM}
                                         badgeContent={NUMS.STREAM}
                                         secondary={true}
@@ -202,14 +200,9 @@ class NavBar extends React.Component {
                                         icon={<UpdatesIcon />}
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.STREAM}
-                                    />
-                                </NavLink>,
-                                <NavLink
-                                    to="/forum"
-                                    key={`badge_${_NAVITEM_ID.FORUM}`}
-                                    activeStyle={{color: colors.palette.primary1Color}}
-                                >
+                                    />,
                                     <CustomBadge
+                                        to="/forum"
                                         id={_NAVITEM_ID.FORUM}
                                         badgeContent={NUMS.FORUM}
                                         secondary={true}
@@ -219,14 +212,9 @@ class NavBar extends React.Component {
                                         icon={<ForumIcon />}
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.FORUM}
-                                    />
-                                </NavLink>,
-                                <NavLink
-                                    to="/notifications/1"
-                                    key={`badge_${_NAVITEM_ID.MESSAGES}`}
-                                    activeStyle={{color: colors.palette.primary1Color}}
-                                >
+                                    />,
                                     <CustomBadge
+                                        to="/notifications/1"
                                         id={_NAVITEM_ID.MESSAGES}
                                         badgeContent={NUMS.MESSAGES}
                                         secondary={true}
@@ -237,8 +225,7 @@ class NavBar extends React.Component {
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.MESSAGES}
                                     />
-                                </NavLink>
-                            ]
+                                ]
                             }
                         </ReactCSSTransitionGroup>
                     </div>

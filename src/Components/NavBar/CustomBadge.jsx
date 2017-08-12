@@ -3,7 +3,10 @@
 import React from 'react'
 import Badge from 'material-ui/Badge'
 import IconButton from 'material-ui/IconButton'
+import { NavLink } from 'react-router-dom'
+
 import { colors } from '../../common/theme'
+
 
 const styles = {
     badgeRootStyle: {
@@ -18,11 +21,32 @@ const styles = {
 
 
 class CustomBadge extends React.PureComponent {
-  state = {
-    deactivated: false,
+  constructor(props) {
+    super(props)
+    this.state = {
+      deactivated: false,
+    }
+    // bindings
+    this.toggleActive = this.toggleActive.bind(this)
+    this.wrapNavLink = this.wrapNavLink.bind(this)
   }
   toggleActive() {
     this.props.toggleState(this.props.id)
+  }
+  wrapNavLink(Component) {
+      if (this.props.to) {
+          return (
+              <NavLink
+                  to={this.props.to}
+                  key={`badge_${this.props.id}`}
+                  activeStyle={{color: colors.palette.primary1Color}}
+              >
+                {Component}
+              </NavLink>
+          )
+      } else {
+          return Component
+      }
   }
   /**
    * Render the component.
@@ -37,22 +61,22 @@ class CustomBadge extends React.PureComponent {
     } else {
       IconColor = {color: colors.darkBlack}
     }
-    return (
-      <Badge
-        badgeContent={this.props.badgeContent}
-        secondary={true}
-        badgeStyle={styles.badgeStyle}
-        style={styles.badgeRootStyle}
-      >
-        <IconButton
-          tooltip={this.props.tooltip}
-          iconStyle={IconColor}
-          onClick={this.toggleActive.bind(this)}
-          id={this.props.id}
+    return this.wrapNavLink(
+        <Badge
+          badgeContent={this.props.badgeContent}
+          secondary={true}
+          badgeStyle={styles.badgeStyle}
+          style={styles.badgeRootStyle}
         >
-          {this.props.icon}
-        </IconButton>
-      </Badge>
+          <IconButton
+            tooltip={this.props.tooltip}
+            iconStyle={IconColor}
+            onClick={this.toggleActive.bind(this)}
+            id={this.props.id}
+          >
+            {this.props.icon}
+          </IconButton>
+        </Badge>
     )
   }
 }
