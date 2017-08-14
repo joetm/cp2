@@ -59,4 +59,6 @@ if (process.env.NODE_ENV !== 'production') {
     store.dispatch = addLoggingToDispatch(store)
 }
 
+store.dispatch = addPromiseSupportToDispatch(store)
+
 export default store
