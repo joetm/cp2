@@ -192,7 +192,25 @@ const mockState = {
         timestamp: 1501229377,
     },
     followers: [],
+    dailyUploadLimits: {
+        normal: {
+            images: 1,
+            videos: 1,
+        }
+    },
     user: {
+        userid: 2,
+        username: 'Gonzales',
+        hash: 'fdiu39*U#UHDS*(#$HJKDJKHI#UHJKJKD',
+        avatar: '/img/avatar/face-13.jpg',
+        profileimg: 'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg',
+        status: 'offline',
+        verifiedUser: true,
+        dailyUploadLimitReached: false,
+        lastActivity: 1502379924,
+        // email: 'admin@thisdomain.com',
+    },
+    currentUser: {
         userid: 1,
         username: 'admin',
         hash: '239SAHJ#*HKDGB(#JDS)(U$WJ$KJDSJHOIDSHG*#J',
@@ -201,10 +219,6 @@ const mockState = {
         status: 'online',
         verifiedUser: false,
         dailyUploadLimitReached: false,
-        dailyUploadLimits: {
-            images: 1,
-            videos: 1,
-        },
         lastActivity: 1502379924,
         // email: 'admin@thisdomain.com',
     },

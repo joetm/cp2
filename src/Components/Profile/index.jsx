@@ -1,4 +1,4 @@
-this.props. /**  @flow */
+/**  @flow */
 
 import React from 'react'
 import { Route, withRouter } from 'react-router-dom'
@@ -48,7 +48,6 @@ class Profile extends React.PureComponent {
         this.toggleProfileDetails = this.toggleProfileDetails.bind(this)
     }
     componentDidMount() {
-        // TODO: duplicate fetchUser in NavBar and profile.
         this.props.fetchUser(this.props.match.params.userid)
     }
     toggleProfileDetails() {

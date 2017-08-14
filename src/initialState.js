@@ -29,6 +29,7 @@ const initialState = {
     reviewitem: {},
     followers: [],
     user: {},
+    currentUser: {},
 }
 
 export default initialState

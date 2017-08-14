@@ -24,7 +24,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { fetchUser } from '../../reducers'
+import { fetchCurrentUser } from '../../reducers'
 import { setActiveBadge, toggleSidebar } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
@@ -93,7 +93,6 @@ class NavBar extends React.Component {
         super(props)
         this.state = {
             notificationDetailsShowing: false,
-            isForum: false,
             expandedSearch: false,
         }
         // bindings
@@ -104,8 +103,7 @@ class NavBar extends React.Component {
         this.isForum = this.isForum.bind(this)
     }
     componentDidMount() {
-        // this.props.getUserMinimal()
-        this.props.fetchUser()
+        this.props.fetchCurrentUser()
     }
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
@@ -117,6 +115,7 @@ class NavBar extends React.Component {
         // on the forum, open the sidebar
         if (this.isForum()) {
             this.props.toggleSidebar()
+        // on all other pages: expand the search
         } else {
             this.toggleSearch()
         }
@@ -328,5 +327,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { setActiveBadge, toggleSidebar, fetchUser }
+    { fetchCurrentUser, setActiveBadge, toggleSidebar }
 )(NavBar))

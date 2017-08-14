@@ -15,6 +15,7 @@ const addLoggingToDispatch = (store) => {
         return rawDispatch
     }
     return (action) => {
+        // console.log('action', action)
         // do not log the device details request
         // if (action.type === SET_DEVICE_DETAILS) {
         //     return rawDispatch(action)
