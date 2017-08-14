@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 
 import './style.scss'
 // --
+import { fetchReviewItem } from '../../reducers'
 import { reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
@@ -51,6 +52,9 @@ class Review extends React.Component {
         this.closeAlert = this.closeAlert.bind(this)
         this.openAlert = this.openAlert.bind(this)
         this.closeAlert = this.closeAlert.bind(this)
+    }
+    componentDidMount() {
+        fetchReviewItem()
     }
     /*
      * Abort a running ajax request.
@@ -116,7 +120,7 @@ class Review extends React.Component {
     /**
      * Render the component.
      */
-    render () {
+    render() {
         const { reviewitem } = this.props
         return (
             <div>
@@ -157,8 +161,6 @@ class Review extends React.Component {
                                 gridColumnsPhone={1}
                                 approve={this.approve}
                                 reject={this.reject}
-                                likes={reviewitem.likes}
-                                dislikes={reviewitem.dislikes}
                                 handleImageClick={this.handleImageClick}
                             />
                         </ReactCSSTransitionGroup>

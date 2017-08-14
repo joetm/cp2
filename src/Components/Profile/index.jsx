@@ -48,7 +48,8 @@ class Profile extends React.PureComponent {
         this.toggleProfileDetails = this.toggleProfileDetails.bind(this)
     }
     componentDidMount() {
-        this.props.fetchUser(this.props.match.params.userid)
+        // TODO: duplicate fetchUser in NavBar and profile.
+        fetchUser(this.props.match.params.userid)
     }
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -58,7 +59,6 @@ class Profile extends React.PureComponent {
      */
     render() {
           const {username, avatar, profileimg} = this.props.user
-          console.log('profileimg', profileimg)
           return (
             <div>
 
@@ -102,6 +102,5 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 export default withRouter(connect(
-    mapStateToProps,
-    { fetchUser }
+    mapStateToProps
 )(Profile))

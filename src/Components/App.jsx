@@ -70,18 +70,18 @@ class App extends React.Component {
             }
         }
         // store mobile device info
-        // const device = new MobileDetect(window.navigator.userAgent)
-        // const obj = {
-        //     isMobile: device.phone(),
-        //     isTablet: device.tablet(),
-        //     useragent: window.navigator.userAgent,
-        //     OS: device.os(),
-        //     isIPhone: device.is('iPhone'),
-        //     isBot: device.is('bot'),
-        //     isPlaystation: device.match('playstation'),
-        //     isXbox: device.match('xbox'),
-        // }
-        // this.props.setDeviceDetails(obj)
+        const device = new MobileDetect(window.navigator.userAgent)
+        const obj = {
+            isMobile: device.phone(),
+            isTablet: device.tablet(),
+            useragent: window.navigator.userAgent,
+            OS: device.os(),
+            isIPhone: device.is('iPhone'),
+            isBot: device.is('bot'),
+            isPlaystation: device.match('playstation'),
+            isXbox: device.match('xbox'),
+        }
+        store.dispatch(setDeviceDetails(obj))
     }
     componentWillUnmount() {
         window.onscroll = null

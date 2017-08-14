@@ -15,21 +15,9 @@ const addLoggingToDispatch = (store) => {
         return rawDispatch
     }
     return (action) => {
-        // TODO : something dispatches an `undefined` action
-
-
-
-
-        if (action === undefined) {
-            return
-        }
-
-
-
-
         // do not log the device details request
         // if (action.type === SET_DEVICE_DETAILS) {
-        //     const returnValue = rawDispatch(action)
+        //     return rawDispatch(action)
         // }
         console.group(action.type)
         console.log('%c previous state', 'color: gray', store.getState())

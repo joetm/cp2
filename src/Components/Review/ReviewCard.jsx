@@ -26,21 +26,20 @@ const styles = {
 
 
 class ReviewCard extends React.PureComponent {
-    constructor(props) {
-        super(props)
-        this.state = {
-            id: props.id,
-            visible: true,
-        }
-    }
     /**
      * Render the component.
      */
     render() {
-        const {id, fromUsername, primaryText, secondaryText, datetime, src, likes, dislikes} = this.props
-        if (!this.state.visible) {
-          return null
-        }
+        const {
+            id,
+            fromUsername,
+            primaryText,
+            secondaryText,
+            datetime,
+            src,
+            likes,
+            dislikes
+        } = this.props
         return (
             <Card
                 key={`upd_${id}`}

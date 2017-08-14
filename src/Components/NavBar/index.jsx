@@ -24,11 +24,10 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
+import { fetchUser } from '../../reducers'
 import { setActiveBadge, toggleSidebar } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
-// import { getUserMinimal } from '../../reducers'
-import { fetchUser } from '../../reducers'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
@@ -106,7 +105,7 @@ class NavBar extends React.Component {
     }
     componentDidMount() {
         // this.props.getUserMinimal()
-        this.props.fetchUser()
+        fetchUser()
     }
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
@@ -214,6 +213,7 @@ class NavBar extends React.Component {
                                     <CustomBadge
                                         to="/forum"
                                         id={_NAVITEM_ID.FORUM}
+                                        key={`badge_${_NAVITEM_ID.FORUM}`}
                                         badgeContent={NUMS.FORUM}
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
@@ -226,6 +226,7 @@ class NavBar extends React.Component {
                                     <CustomBadge
                                         to="/notifications/1"
                                         id={_NAVITEM_ID.MESSAGES}
+                                        key={`badge_${_NAVITEM_ID.MESSAGES}`}
                                         badgeContent={NUMS.MESSAGES}
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
@@ -327,5 +328,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { setActiveBadge, toggleSidebar, fetchUser } // getUserMinimal
+    { setActiveBadge, toggleSidebar }
 )(NavBar))
