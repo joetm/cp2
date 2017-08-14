@@ -1,16 +1,10 @@
 
 /**
- * Redux actions
+ * Redux actions and reducers
  **/
 
-// import fetch from 'unfetch'
-
-// PROD (TODO)
 import initialState from './initialState'
-// DEV:
-// import initialState from '../__mocks__/mockState'
 import * as api from './api'
-import store from './store'
 
 
 /*
@@ -57,20 +51,12 @@ export const SET_DEVICE_DETAILS = 'APP::SET_DEVICE_DETAILS'
  * See: http://redux.js.org/docs/recipes/ReducingBoilerplate.html
  * @returns action
  **/
-function makeActionCreator(type, ...argNames) {
-  return function (...args) {
-    const action = { type }
-    argNames.forEach((arg, index) => {
-      action[argNames[index]] = args[index]
-    })
-    return action
-  }
-}
+function makeActionCreator(type, ...argNames) {return function(...args) {const action = { type };argNames.forEach((arg, index) => {action[argNames[index]] = args[index]}) return action}}
 
 
-/**
- * Redux action creators
- **/
+// ----------------------------------------------------
+// Redux action creators
+// ----------------------------------------------------
 
 // export const getUser           = makeActionCreator(GET_USER,          'userid')
 // export const getUserMinimal    = makeActionCreator(GET_USER_MINIMAL,  'userid')
@@ -110,25 +96,38 @@ export const setDeviceDetails  = makeActionCreator(SET_DEVICE_DETAILS, 'obj')
        const receiveThread     = makeActionCreator(RECEIVE_THREAD,     'response')
        const receiveReviewItem = makeActionCreator(RECEIVE_REVIEWITEM, 'response')
 
+
+// ----------------------------------------------------
+// Asynchronous action creators
 // ----------------------------------------------------
 
-// Asynchronous action creators
-
+/**
+ * fetchUser Asynchronous Action Creator
+ * @returns receiveUser() - Action
+ */
 export const fetchUser = () => {
     api.fetchUser().then(response =>
-        store.dispatch(receiveUser(response))
+        receiveUser(response)
     )
 }
 
+/**
+ * fetchReviewItem Asynchronous Action Creator
+ * @returns receiveReviewItem() - Action
+ */
 export const fetchReviewItem = () => {
     api.fetchReviewItem().then(response =>
-        store.dispatch(receiveReviewItem(response))
+        receiveReviewItem(response)
     )
 }
 
+/**
+ * fetchPosts Asynchronous Action Creator
+ * @returns receivePosts() - Action
+ */
 export const fetchPosts = () => {
     api.fetchPosts().then(response =>
-        store.dispatch(receivePosts(response))
+        receivePosts(response)
     )
 }
 

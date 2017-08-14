@@ -54,7 +54,7 @@ class Review extends React.Component {
         this.closeAlert = this.closeAlert.bind(this)
     }
     componentDidMount() {
-        fetchReviewItem()
+        this.props.fetchReviewItem()
     }
     /*
      * Abort a running ajax request.
@@ -187,5 +187,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { reviewApprove, reviewDisapprove }
+    { fetchReviewItem, reviewApprove, reviewDisapprove }
 )(Review)

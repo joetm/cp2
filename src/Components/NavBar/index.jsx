@@ -105,7 +105,7 @@ class NavBar extends React.Component {
     }
     componentDidMount() {
         // this.props.getUserMinimal()
-        fetchUser()
+        this.props.fetchUser()
     }
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
@@ -328,5 +328,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { setActiveBadge, toggleSidebar }
+    { setActiveBadge, toggleSidebar, fetchUser }
 )(NavBar))

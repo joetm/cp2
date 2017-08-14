@@ -1,4 +1,4 @@
- /**  @flow */
+this.props. /**  @flow */
 
 import React from 'react'
 import { Route, withRouter } from 'react-router-dom'
@@ -49,7 +49,7 @@ class Profile extends React.PureComponent {
     }
     componentDidMount() {
         // TODO: duplicate fetchUser in NavBar and profile.
-        fetchUser(this.props.match.params.userid)
+        this.props.fetchUser(this.props.match.params.userid)
     }
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -102,5 +102,6 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 export default withRouter(connect(
-    mapStateToProps
+    mapStateToProps,
+    { fetchUser }
 )(Profile))
