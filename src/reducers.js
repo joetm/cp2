@@ -9,7 +9,8 @@
 import initialState from './initialState'
 // DEV:
 // import initialState from '../__mocks__/mockState'
-import * as api from '../__mocks__/api'
+import * as api from './api'
+import store from './store'
 
 
 /*
@@ -113,21 +114,21 @@ export const setDeviceDetails  = makeActionCreator(SET_DEVICE_DETAILS, 'obj')
 
 // Asynchronous action creators
 
-const fetchUser = () => {
+export const fetchUser = () => {
     api.fetchUser().then(response =>
-        receiveUser(response)
+        store.dispatch(receiveUser(response))
     )
 }
 
-const fetchReviewItem = () => {
+export const fetchReviewItem = () => {
     api.fetchReviewItem().then(response =>
-        receiveReviewItem(response)
+        store.dispatch(receiveReviewItem(response))
     )
 }
 
-const fetchPosts = () => {
+export const fetchPosts = () => {
     api.fetchPosts().then(response =>
-        receivePosts(response)
+        store.dispatch(receivePosts(response))
     )
 }
 
