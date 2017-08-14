@@ -9,21 +9,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // context: path.join(__dirname, "src"),
   entry: {
-    main: "./src/main.jsx",
     vendor: [
         "react",
         "react-dom",
-        //   "react-tap-event-plugin",
-        //   "material-ui/styles/MuiThemeProvider"
-        "deepstream.io-client-js/dist/deepstream"
-    ]
-    // devhotserver: "webpack/hot/dev-server",
-    // devserver: "webpack-dev-server/client?http://localhost:8081"
+        "react-router-dom",
+        "redux",
+        "react-redux",
+        "react-router-redux",
+        "material-ui/styles/MuiThemeProvider",
+        "mobile-detect",
+        "react-tap-event-plugin",
+        "object-fit-images",
+        // "deepstream.io-client-js/dist/deepstream"
+    ],
+    main: "./src/main.jsx"
   },
   output: {
     path: path.resolve('./dist'),
     publicPath: '/',
     filename: "js/[name].js"
+    // chunkFilename: "js/[id].js"
   },
   devtool: debug ? "inline-sourcemap" : false,
   module: {
@@ -86,13 +91,6 @@ module.exports = {
   // DEVELOPMENT
   // -----------
   [
-    new ExtractTextPlugin({
-      // allChunks: true
-      filename: './css/style.css',
-    }),
-    new CopyWebpackPlugin([
-      {from: './src/docs', to: './docs'}
-    ]),
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         //'process.env': {
@@ -100,6 +98,18 @@ module.exports = {
         //  'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         //}
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "js/vendor.js",
+      minChunks: Infinity
+    }),
+    new ExtractTextPlugin({
+      // allChunks: true
+      filename: './css/style.css',
+    }),
+    new CopyWebpackPlugin([
+      {from: './src/docs', to: './docs'}
+    ]),
     new HtmlWebpackPlugin({
         title: "CP v2",
         filename: 'index.html',
@@ -116,6 +126,11 @@ module.exports = {
   [
     new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "js/vendor.js",
+      minChunks: Infinity
     }),
     new FaviconsWebpackPlugin({
         logo: './logo.png',
