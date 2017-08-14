@@ -29,6 +29,19 @@ const addLoggingToDispatch = (store) => {
     }
 }
 
+// See https://egghead.io/lessons/javascript-redux-wrapping-dispatch-to-recognize-promises
+const addPromiseSupportToDispatch = (store) => {
+    const rawDispatch = store.dispatch
+    return (action) => {
+        // is action a promise?
+        if (typeof action.then === 'function') {
+            return action.then(rawDispatch)
+        }
+        // no promise -> regular action
+        return rawDispatch(action)
+    }
+}
+
 const store = createStore(
     combineReducers({
         app: Reducers.cpAppReducer, // TODO - spread this among reducers
