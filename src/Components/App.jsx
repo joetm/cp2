@@ -102,14 +102,15 @@ class App extends React.Component {
 
                         <Route path="/forum" component={Forum} />
 
-                        <Route exact path="/notifications/:userid" component={Notifications} />
-                        <Route exact path="/stream/:userid" component={Updates} />
+                        <Route path="/notifications/:userid" component={Notifications} />
 
-                        <Route exact path="/review" component={Review} />
+                        <Route path="/stream/:userid" component={Updates} />
 
-                        <Route exact path="/messages/:opponentid" component={MessageHistory} />
+                        <Route path="/review" component={Review} />
 
-                        <Route exact path="/profile/:userid"
+                        <Route path="/messages/:opponentid" component={MessageHistory} />
+
+                        <Route path="/profile/:userid"
                             render={() => (
                                 <Profile isScrolled={this.state.isScrolled} />
                             )} />
