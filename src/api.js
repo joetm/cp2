@@ -24,3 +24,11 @@ export const fetchPosts = () =>
 export const fetchMessageHistory = () =>
     fetchDataFromAPI('messageHistory')
         .then((response) => response)
+
+export const fetchUpdates = () =>
+    fetchDataFromAPI('updates')
+        .then((response) => response)
+
+export const fetchNotifications = () =>
+    fetchDataFromAPI('notifications')
+        .then((response) => response)

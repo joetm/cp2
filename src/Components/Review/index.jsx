@@ -10,12 +10,12 @@ import { connect } from 'react-redux'
 
 import './style.scss'
 // --
-import { fetchReviewItem } from '../../reducers'
-import { reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
+import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
+import LoadingMsg from '../Shared/LoadingMsg'
 import Spacer from '../Shared/Spacer'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
@@ -54,6 +54,7 @@ class Review extends React.Component {
         this.closeAlert = this.closeAlert.bind(this)
     }
     componentDidMount() {
+        this.props.setFetchingStatus(true)
         this.props.fetchReviewItem()
     }
     /*
@@ -63,6 +64,7 @@ class Review extends React.Component {
         if (this.request && typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
+            this.props.setFetchingStatus(false)
         }
     }
     /*
@@ -122,6 +124,10 @@ class Review extends React.Component {
      */
     render() {
         const { reviewitem } = this.props
+        // TODO
+        // if (this.props.isFetching) {
+        //     return <LoadingMsg msg="Loading Review" />
+        // }
         return (
             <div>
                 <h2>
@@ -182,10 +188,11 @@ class Review extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    reviewitem: state.reviewitem
+    reviewitem: state.reviewitem,
+    isFetching: state.appState.isFetching,
 })
 
 export default connect(
     mapStateToProps,
-    { fetchReviewItem, reviewApprove, reviewDisapprove }
+    { fetchReviewItem, reviewApprove, reviewDisapprove, setFetchingStatus }
 )(Review)

@@ -13,6 +13,7 @@ const mockState = {
     appState: {
         deviceDetails: null,
         sidebarOpen: false,
+        isFetching: false,
     },
     deviceDetails: null,
     sidebarOpen: false,
@@ -21,8 +22,39 @@ const mockState = {
         activeBadge: 0,
     },
     // -- content --
+    likes: [],
+    notifications: [
+        {
+            id: cuid(),
+            type: "message",
+            userid: 3,
+            username: "Gamel, John J.",
+            avatar: "/img/avatar/face.jpg",
+            title: "Brunch this weekend?",
+            content: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
+            timestamp: 1502788349,
+        },
+        {
+            id: cuid(),
+            type: "quota",
+            title: "System Message",
+            content: "Quota exceeded",
+            timestamp: 1502788549,
+        },
+        {
+            id: cuid(),
+            type: "message",
+            userid: 3,
+            username: "Gamel, John J.",
+            avatar: "/img/avatar/face.jpg",
+            title: "Hello???",
+            content: "...",
+            timestamp: 1502789349,
+        },
+    ],
     updates: [
         {
+            id: cuid(),
             type: "image",
             primaryText: "Brunch this weekend?",
             secondaryText: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
@@ -31,6 +63,7 @@ const mockState = {
             timestamp: 1501229377,
         },
         {
+            id: cuid(),
             type: "post",
             primaryText: "Oui oui",
             secondaryText: "Do you have Paris recommendations? Have you ever been?",
@@ -38,6 +71,7 @@ const mockState = {
             timestamp: 1501229177,
         },
         {
+            id: cuid(),
             type: "image",
             primaryText: "Birdthday gift",
             secondaryText: "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
@@ -46,6 +80,7 @@ const mockState = {
             timestamp: 1501229077,
         },
         {
+            id: cuid(),
             type: "image",
             primaryText: "Recipe to try",
             secondaryText: "We should eat this: grated squash. Corn and tomatillo tacos.",
@@ -54,6 +89,7 @@ const mockState = {
             timestamp: 1501220077,
         },
         {
+            id: cuid(),
             type: "like",
             primaryText: "Brunch this weekend?",
             secondaryText: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
@@ -61,6 +97,7 @@ const mockState = {
             timestamp: 1501200077,
         },
         {
+            id: cuid(),
             type: "post",
             primaryText: "Oui oui",
             secondaryText: "Do you have Paris recommendations? Have you ever been?",
@@ -68,6 +105,7 @@ const mockState = {
             timestamp: 1501000077,
         },
         {
+            id: cuid(),
             type: "post",
             primaryText: "Birdthday gift",
             secondaryText: "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
@@ -75,6 +113,7 @@ const mockState = {
             timestamp: 1501000057,
         },
         {
+            id: cuid(),
             type: "video",
             primaryText: "Recipe to try",
             secondaryText: "We should eat this: grated squash. Corn and tomatillo tacos.",
@@ -86,43 +125,49 @@ const mockState = {
     threads: [],
     posts: [
         {
-            id: 1,
+            id: cuid(),
             title: "Cars & Dinos",
             content: "Dinosaurs are like cars.",
             username: "Joe",
+            userid: 9,
             tags: ["cars", "thread-123"],
             timestamp: 1501135362,
         },
         {
-            id: 2,
+            id: cuid(),
             title: "Dinos & Cars",
             content: "Cars are like dinosaurs.",
             username: "Moe",
+            userid: 10,
             tags: ["dinosaurs", "thread-123"],
             timestamp: 1501185342,
         },
         {
-            id: 3,
+            id: cuid(),
             title: "Testing the Forums",
             content: "Forums are like dinosaurs.",
             username: "Toe",
+            userid: 11,
             tags: ["forums", "dinosaurs", "thread-124"],
             timestamp: 1501188342,
         },
         {
-            id: 4,
+            id: cuid(),
             title: "Testing the Dinos",
             content: "Dinos are like forums.",
             username: "Hogo",
+            userid: 12,
             tags: ["forums", "dinosaurs", "thread-124"],
             timestamp: 1501198342,
         },
     ],
     post: {
         id: cuid(),
-        msg: '',
+        title: "Testing the Dinos",
+        content: "Dinos are like forums.",
         username: 'Anonymous',
         userid: 0,
+        tags: ["forums", "dinosaurs", "thread-124"],
         timeStamp: Math.round(Date.now() / 1000), // Unix Timestamp in seconds
     },
     albums: [],
@@ -132,6 +177,7 @@ const mockState = {
         userid: 2,
         messages: [
             {
+                id: cuid(),
                 username: "Gonzales",
                 userid: 2,
                 avatar: '/img/avatar/face-13.jpg',
@@ -139,6 +185,7 @@ const mockState = {
                 timestamp: 1501229377,
             },
             {
+                id: cuid(),
                 username: "me",
                 userid: 1,
                 avatar: '/img/avatar/face.jpg',
@@ -146,6 +193,7 @@ const mockState = {
                 timestamp: 1501229387,
             },
             {
+                id: cuid(),
                 username: "Gonzales",
                 userid: 2,
                 avatar: '/img/avatar/face-13.jpg',
@@ -153,6 +201,7 @@ const mockState = {
                 timestamp: 1501239377,
             },
             {
+                id: cuid(),
                 username: "me",
                 userid: 1,
                 avatar: '/img/avatar/face.jpg',
@@ -160,6 +209,7 @@ const mockState = {
                 timestamp: 1501249377,
             },
             {
+                id: cuid(),
                 username: "Gonzales",
                 userid: 2,
                 avatar: '/img/avatar/face-13.jpg',
@@ -167,6 +217,7 @@ const mockState = {
                 timestamp: 1501259377,
             },
             {
+                id: cuid(),
                 username: "me",
                 userid: 1,
                 avatar: '/img/avatar/face.jpg',
@@ -174,6 +225,7 @@ const mockState = {
                 timestamp: 1501269377,
             },
             {
+                id: cuid(),
                 username: "me",
                 userid: 1,
                 avatar: '/img/avatar/face.jpg',
@@ -183,7 +235,7 @@ const mockState = {
         ]
     },
     reviewitem: {
-        id: 123,
+        id: cuid(),
         primaryText: "Brunch this weekend?",
         secondaryText: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
         fromUsername: "Brandan Lim",

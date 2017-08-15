@@ -11,6 +11,7 @@ const initialState = {
     appState: {
         deviceDetails: null,
         sidebarOpen: false,
+        isFetching: false,
     },
     navbar: {
         activeBadge: 0,
@@ -20,6 +21,8 @@ const initialState = {
     threads: [],
     posts: [],
     post: {},
+    likes: [],
+    notifications: [],
     albums: [],
     albumimgs: [],
     messageHistory: {

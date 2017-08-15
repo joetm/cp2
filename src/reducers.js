@@ -38,6 +38,7 @@ export const FOLLOW_USER              = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
 export const GET_UPDATES              = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
+export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
 
        const RECEIVE_USER             = 'USER::RECEIVE_USER'
        const RECEIVE_COMMENTS         = 'PROFILE::RECEIVE_COMMENTS'
@@ -46,6 +47,8 @@ export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
        const RECEIVE_THREAD           = 'FORUM::RECEIVE_THREAD'
        const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
        const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
+       const RECEIVE_UPDATES          = 'STREAM::RECEIVE_UPDATES'
+       const RECEIVE_NOTIFICATIONS    = 'STREAM::RECEIVE_NOTIFICATIONS'
 //     const UNKNOWN                  = 'APP::UNKNOWN'
 
 
@@ -97,18 +100,21 @@ export const markAllRead           = makeActionCreator(MARK_ALL_READ,     'threa
 export const getUpdates            = makeActionCreator(GET_UPDATES)
 
 // other app actions
-export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,   'id')
-export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS, 'obj')
+export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,       'id')
+export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,     'obj')
+export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS,    'bool')
 
 // ajax receptors
-const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
-const receiveUser           = makeActionCreator(RECEIVE_USER,           'response', 'userid')
-const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,       'response')
-const receivePosts          = makeActionCreator(RECEIVE_POSTS,          'response')
-const receivePost           = makeActionCreator(RECEIVE_POST,           'response')
-const receiveThread         = makeActionCreator(RECEIVE_THREAD,         'response')
-const receiveReviewItem     = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
-const receiveMessageHistory = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
+const receiveCurrentUser           = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
+const receiveUser                  = makeActionCreator(RECEIVE_USER,           'response', 'userid')
+const receiveComments              = makeActionCreator(RECEIVE_COMMENTS,       'response')
+const receivePosts                 = makeActionCreator(RECEIVE_POSTS,          'response')
+const receivePost                  = makeActionCreator(RECEIVE_POST,           'response')
+const receiveUpdates               = makeActionCreator(RECEIVE_UPDATES,        'response')
+const receiveThread                = makeActionCreator(RECEIVE_THREAD,         'response')
+const receiveReviewItem            = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
+const receiveMessageHistory        = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
+const receiveNotifications         = makeActionCreator(RECEIVE_NOTIFICATIONS,  'response')
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -151,6 +157,20 @@ export const fetchPosts = () =>
  */
 export const fetchMessageHistory = () =>
     api.fetchMessageHistory().then(receiveMessageHistory)
+
+/**
+ * fetchUpdates Asynchronous Action Creator
+ * @returns fetchUpdates() - Action
+ */
+export const fetchUpdates = () =>
+    api.fetchUpdates().then(receiveUpdates)
+
+/**
+ * fetchNotifications Asynchronous Action Creator
+ * @returns fetchNotifications() - Action
+ */
+export const fetchNotifications = () =>
+    api.fetchNotifications().then(receiveNotifications)
 
 // ----------------------------------------------------
 
@@ -225,12 +245,23 @@ export function navBarReducer(navBarState = initialState.navbar, action) {
  **/
 export function streamReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
-        case GET_UPDATES:
-            // TODO
-
-            return updatesState
+        case RECEIVE_UPDATES:
+            return [...action.response]
         default:
             return updatesState
+    }
+}
+
+/**
+ * notificationReducer
+ * @returns updatesState
+ **/
+export function notificationReducer(notificationsState = initialState.notifications, action) {
+    switch (action.type) {
+        case RECEIVE_NOTIFICATIONS:
+            return [...action.response]
+        default:
+            return notificationsState
     }
 }
 
@@ -298,6 +329,11 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return { ...appState, sidebarOpen: !appState.sidebarOpen }
         case SET_DEVICE_DETAILS:
             return { ...appState, deviceDetails: action.obj }
+        // TODO
+        // ajax loading msg
+        // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators
+        // case SET_FETCHING_STATUS:
+        //     return { ...appState, isFetching: action.bool}
         default:
             return appState
     }
