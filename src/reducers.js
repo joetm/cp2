@@ -190,6 +190,13 @@ export const fetchLikes = () =>
 export const fetchAlbum = (albumid) =>
     api.fetchAlbum(albumid).then(receiveAlbum)
 
+/**
+ * fetchAlbum Asynchronous Action Creator
+ * @returns fetchAlbum() - Action
+ */
+export const fetchThread = (threadid) =>
+    api.fetchThread(threadid).then(receiveThread)
+
 // ----------------------------------------------------
 
 
@@ -353,7 +360,9 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
 export function forumReducer(forumState = initialState.posts, action) {
     switch (action.type) {
         case RECEIVE_POSTS:
-            return action.response
+            return [ ...action.response ]
+        case RECEIVE_THREAD:
+            return { ...action.response }
         default:
             return forumState
     }

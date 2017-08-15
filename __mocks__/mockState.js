@@ -166,6 +166,54 @@ const mockState = {
             timestamp: 1500000057,
         },
     ],
+    thread: {
+        "cj6dn68b7000i335mgh0lj8rb": {
+            threadid: 123,
+            title: "My awesome thread",
+            username: "admin",
+            userid: 1,
+            // TODO: add posts as post ids?
+            posts: [
+                {
+                    id: cuid(),
+                    title: "THREAD VIEW: Cars & Dinos",
+                    content: "Dinosaurs are like cars.",
+                    username: "Joe",
+                    userid: 9,
+                    tags: ["cars", "thread-123"],
+                    timestamp: 1501135362,
+                },
+                {
+                    id: cuid(),
+                    title: "THREAD VIEW: Dinos & Cars",
+                    content: "Cars are like dinosaurs.",
+                    username: "Moe",
+                    userid: 10,
+                    tags: ["dinosaurs", "thread-123"],
+                    timestamp: 1501185342,
+                },
+                {
+                    id: cuid(),
+                    title: "THREAD VIEW: Testing the Forums",
+                    content: "Forums are like dinosaurs.",
+                    username: "Toe",
+                    userid: 11,
+                    tags: ["forums", "dinosaurs", "thread-124"],
+                    timestamp: 1501188342,
+                },
+                {
+                    id: cuid(),
+                    title: "THREAD VIEW: Testing the Dinos",
+                    content: "Dinos are like forums.",
+                    username: "Hogo",
+                    userid: 12,
+                    tags: ["forums", "dinosaurs", "thread-124"],
+                    timestamp: 1501198342,
+                },
+            ],
+            timestamp: 1500000097,
+        }
+    },
     threads: [],
     posts: [
         {

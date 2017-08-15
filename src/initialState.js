@@ -18,6 +18,7 @@ const initialState = {
     },
     // -- content --
     updates: [],
+    thread: {},
     threads: [],
     posts: [],
     post: {},

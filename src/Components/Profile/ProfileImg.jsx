@@ -10,20 +10,21 @@ import ProfileDetails from './ProfileDetails'
 const _OFFSET = 56
 const blurIntensity = 25
 
-
 const blurFilters = {
-  '-webkit-filter': `blur(${blurIntensity}px)`,
-  '-moz-filter': `blur(${blurIntensity}px)`,
-  '-o-filter': `blur(${blurIntensity}px)`,
-  '-ms-filter': `blur(${blurIntensity}px)`,
+  WebkitFilter: `blur(${blurIntensity}px)`,
+  MozFilter: `blur(${blurIntensity}px)`,
+  OFilter: `blur(${blurIntensity}px)`,
+  msFilter: `blur(${blurIntensity}px)`,
   filter: `blur(${blurIntensity}px)`,
 }
-const profileImgContainerStyle = {
-    textAlign: 'center',
-    backgroundColor: '#808080',
-    position: 'relative',
-}
 
+const styles = {
+    profileImgContainer: {
+        textAlign: 'center',
+        backgroundColor: '#808080',
+        position: 'relative',
+    },
+}
 
 class ProfileImg extends React.PureComponent {
     state = {
@@ -71,7 +72,7 @@ class ProfileImg extends React.PureComponent {
         return (
             <div>
                 <div onClick={this.props.toggleProfileDetails} role="button">
-                    <div style={profileImgContainerStyle}>
+                    <div style={styles.profileImgContainer}>
                         <ProfileDetails
                             username={username}
                             avatar={avatar}

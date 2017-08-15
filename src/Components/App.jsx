@@ -47,6 +47,7 @@ import SignupPage from './Signup'
 import Privacy from './Legal/Privacy'
 import DMCA from './Legal/DMCA'
 import Contact from './Contact'
+import Upload from './Upload'
 
 
 // <ConnectedRouter history={browserHistory}>
@@ -89,6 +90,7 @@ class App extends React.Component {
     /**
      * Render the component.
      */
+//                        <Route exact path="/upload" component={Upload} />
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>

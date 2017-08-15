@@ -37,7 +37,12 @@ export const fetchLikes = () =>
     fetchDataFromAPI('likes')
         .then((response) => response)
 
-// TODO: user albumid
-export const fetchAlbum = () =>
-    fetchDataFromAPI('album')
+// TODO: use albumid
+export const fetchAlbum = (albumid) =>
+    fetchDataFromAPI('album', albumid)
+        .then((response) => response)
+
+// TODO: use threadid
+export const fetchThread = (threadid) =>
+    fetchDataFromAPI('thread', threadid)
         .then((response) => response)

@@ -29,6 +29,7 @@ const store = createStore(
         users: Reducers.userReducer,
         currentUser: Reducers.currentUserReducer,
         navbar: Reducers.navBarReducer,
+        thread: Reducers.forumReducer,
         posts: Reducers.forumReducer,
         notifications: Reducers.notificationReducer,
         likes: Reducers.likesReducer,

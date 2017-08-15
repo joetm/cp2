@@ -20,7 +20,7 @@ export const fetchDataFromAPI = (key, selection) => {
                 // console.log('fetchDataFromAPI::mockState[key]', mockState[key])
                 // console.log('fetchDataFromAPI::mockState', mockState)
                 if (selection !== undefined) {
-                    return mockState[key][""+selection]
+                    return mockState[key]["" + selection]
                 }
                 return mockState[key]
             } catch (e) {

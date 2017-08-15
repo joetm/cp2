@@ -33,3 +33,8 @@ strong {
 .nopadding {
     padding: 0;
 }
+
+/* Dropzone overrides */
+.dropzone .dz-preview.dz-image-preview {
+    background: inherit;
+}
