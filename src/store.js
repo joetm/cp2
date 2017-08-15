@@ -6,24 +6,28 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import * as Reducers from './reducers'
 import { SET_DEVICE_DETAILS } from './reducers'
 
-// see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
-const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
+// see https://egghead.io/lessons/javascript-redux-the-middleware-chain
+const middlewares = []
 
-const addLoggingToDispatch = (store) => {
-    const rawDispatch = store.dispatch
+// see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
+// const middleware = routerMiddleware(browserHistory) // Build the middleware for intercepting and dispatching navigation actions
+middlewares.push(routerMiddleware(browserHistory))
+
+// addLoggingToDispatch middleware
+const logger = (store) => (next) => {
     if (!console.group) {
-        return rawDispatch
+        return next
     }
     return (action) => {
         // console.log('action', action)
         // do not log the device details request
         // if (action.type === SET_DEVICE_DETAILS) {
-        //     return rawDispatch(action)
+        //     return next(action)
         // }
         console.group(action.type)
         console.log('%c previous state', 'color: gray', store.getState())
         console.log('%c action', 'color: blue', action)
-        const returnValue = rawDispatch(action)
+        const returnValue = next(action)
         console.log('%c next state', 'color: green', store.getState())
         console.groupEnd(action.type)
         return returnValue
@@ -31,17 +35,19 @@ const addLoggingToDispatch = (store) => {
 }
 
 // See https://egghead.io/lessons/javascript-redux-wrapping-dispatch-to-recognize-promises
-const addPromiseSupportToDispatch = (store) => {
-    const rawDispatch = store.dispatch
+// addPromiseSupportToDispatch middleware
+const promise = (store) => (next) => (action) => {
+    const next = store.dispatch
     return (action) => {
         // is action a promise?
         if (typeof action.then === 'function') {
-            return action.then(rawDispatch)
+            return action.then(next)
         }
         // no promise -> regular action
-        return rawDispatch(action)
+        return next(action)
     }
 }
+
 
 const store = createStore(
     combineReducers({
@@ -53,13 +59,15 @@ const store = createStore(
         navbar: Reducers.navBarReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),
-    applyMiddleware(middleware) // apply middleware for navigating
+    applyMiddleware(...middlewares) // apply middleware for navigating
 )
 
+wrapDispatchWithMiddleware(store, logger)
 if (process.env.NODE_ENV !== 'production') {
-    store.dispatch = addLoggingToDispatch(store)
+    middlewares.push(logger)
 }
+wrapDispatchWithMiddleware(store, promise)
+middlewares.push(promise)
 
-store.dispatch = addPromiseSupportToDispatch(store)
 
 export default store
