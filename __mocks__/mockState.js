@@ -10,6 +10,10 @@ import cuid from 'cuid'
  **/
 
 const mockState = {
+    appState: {
+        deviceDetails: null,
+        sidebarOpen: false,
+    },
     deviceDetails: null,
     sidebarOpen: false,
     // -- state --
@@ -198,17 +202,31 @@ const mockState = {
             videos: 1,
         }
     },
-    user: {
-        userid: 2,
-        username: 'Gonzales',
-        hash: 'fdiu39*U#UHDS*(#$HJKDJKHI#UHJKJKD',
-        avatar: '/img/avatar/face-13.jpg',
-        profileimg: 'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg',
-        status: 'offline',
-        verifiedUser: true,
-        dailyUploadLimitReached: false,
-        lastActivity: 1502379924,
-        // email: 'admin@thisdomain.com',
+    users: {
+        "1": {
+            userid: 1,
+            username: 'admin',
+            hash: '239SAHJ#*HKDGB(#JDS)(U$WJ$KJDSJHOIDSHG*#J',
+            avatar: '/img/avatar/face.jpg',
+            profileimg: 'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg',
+            status: 'online',
+            verifiedUser: false,
+            dailyUploadLimitReached: false,
+            lastActivity: 1502379924,
+            // email: 'admin@thisdomain.com',
+        },
+        "2": {
+            userid: 2,
+            username: 'Gonzales',
+            hash: 'fdiu39*U#UHDS*(#$HJKDJKHI#UHJKJKD',
+            avatar: '/img/avatar/face-13.jpg',
+            profileimg: 'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg',
+            status: 'offline',
+            verifiedUser: true,
+            dailyUploadLimitReached: false,
+            lastActivity: 1502379924,
+            // email: 'admin@thisdomain.com',
+        },
     },
     currentUser: {
         userid: 1,

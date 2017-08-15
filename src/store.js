@@ -15,16 +15,20 @@ middlewares.push(routerMiddleware(browserHistory)) // Build the middleware for i
 
 middlewares.push(promise)
 
-middlewares.push(createLogger())
+if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(createLogger())
+}
 
 const store = createStore(
     combineReducers({
-        app: Reducers.cpAppReducer, // TODO - spread this among reducers
+        appState: Reducers.cpAppReducer,
         messageHistory: Reducers.chatReducer,
         reviewitem: Reducers.reviewReducer,
         updates: Reducers.streamReducer,
-        user: Reducers.userReducer,
+        users: Reducers.userReducer,
+        currentUser: Reducers.currentUserReducer,
         navbar: Reducers.navBarReducer,
+        posts: Reducers.forumReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),
     applyMiddleware(...middlewares) // apply middleware for navigating

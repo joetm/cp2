@@ -8,9 +8,10 @@
  **/
 
 const initialState = {
-    deviceDetails: null,
-    sidebarOpen: false,
-    // -- state --
+    appState: {
+        deviceDetails: null,
+        sidebarOpen: false,
+    },
     navbar: {
         activeBadge: 0,
     },
@@ -28,8 +29,19 @@ const initialState = {
     },
     reviewitem: {},
     followers: [],
-    user: {},
-    currentUser: {},
+    users: {},
+    currentUser: {
+        userid: null,
+        username: 'anonymous',
+        hash: '',
+        avatar: '',
+        profileimg: '',
+        status: 'unknown',
+        verifiedUser: false,
+        dailyUploadLimitReached: true,
+        lastActivity: Date.now() / 1000,
+        // email: 'admin@thisdomain.com',
+    },
 }
 
 export default initialState

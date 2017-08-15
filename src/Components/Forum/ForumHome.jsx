@@ -3,16 +3,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getPosts } from '../../reducers'
+import { fetchPosts } from '../../reducers'
 import Posts from './Posts'
 
 
 class ForumHome extends React.Component {
     componentDidMount() {
-        this.props.getPosts()
+        this.props.fetchPosts()
     }
     // componentDidUpdate(prevProps) {
-    //     this.props.getPosts()
+    //     this.props.fetchPosts()
     // }
     render() {
         const { posts } = this.props
@@ -32,10 +32,10 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.app.posts,
+    posts: state.posts,
 })
 
 export default connect(
     mapStateToProps,
-    { getPosts }
+    { fetchPosts }
 )(ForumHome)

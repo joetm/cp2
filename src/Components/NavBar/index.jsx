@@ -319,10 +319,10 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => ({
     activeBadge: state.navbar.activeBadge,
-    sidebarOpen: state.app.sidebarOpen,
-    userid: state.user.userid,
-    username: state.user.username,
-    avatar: state.user.avatar,
+    sidebarOpen: state.appState.sidebarOpen,
+    userid: state.currentUser.userid,
+    username: state.currentUser.username,
+    avatar: state.currentUser.avatar,
 })
 
 export default withRouter(connect(

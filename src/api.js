@@ -10,17 +10,13 @@ export const fetchCurrentUser = () =>
         .then((response) => response)
 
 export const fetchUser = (userid) =>
-    // TODO : use userid
-    fetchDataFromAPI('user')
+    fetchDataFromAPI('users', userid)
         .then((response) => response)
-
 
 export const fetchReviewItem = () =>
     fetchDataFromAPI('reviewitem')
         .then((response) => response)
 
-
 export const fetchPosts = () =>
     fetchDataFromAPI('posts')
         .then((response) => response)
-
