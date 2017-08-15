@@ -20,3 +20,7 @@ export const fetchReviewItem = () =>
 export const fetchPosts = () =>
     fetchDataFromAPI('posts')
         .then((response) => response)
+
+export const fetchMessageHistory = () =>
+    fetchDataFromAPI('messageHistory')
+        .then((response) => response)

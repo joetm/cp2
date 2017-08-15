@@ -11,7 +11,7 @@ import parser from 'bbcode-to-react'
 
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
-import { sendMessage } from '../../reducers'
+import { sendMessage, fetchMessageHistory } from '../../reducers'
 
 
 // DEV
@@ -50,6 +50,7 @@ class MessageHistory extends React.PureComponent {
         this.submitMsg = this.submitMsg.bind(this)
     }
     componentDidMount() {
+        this.props.fetchMessageHistory()
         this.setState({loading: false})
     }
     /**
@@ -65,8 +66,7 @@ class MessageHistory extends React.PureComponent {
      * Submit the input field.
      */
     submitMsg() {
-        let msg = this.refs.inputfield.getValue()
-        msg = msg.trim()
+        let msg = this.refs.inputfield.getValue().trim()
         if (msg) {
             this.props.sendMessage(this.props.messageHistory.userid, msg)
             // clear the input field
@@ -81,13 +81,13 @@ class MessageHistory extends React.PureComponent {
      * Render the component.
      */
     render () {
-        const msgHistory = this.props.messageHistory
+        const { messageHistory } = this.props
         return (
             <div>
                 <h2>Private Message History</h2>
 
                 <Subheader style={styles.subheader}>
-                    with {msgHistory.username}
+                    with {messageHistory.username}
                 </Subheader>
 
                 <div className="mdc-layout-grid">
@@ -106,7 +106,7 @@ class MessageHistory extends React.PureComponent {
 
                         <div style={styles.chatArea}>
                         {
-                            msgHistory.messages.map((item, i) => (
+                            messageHistory.messages.map((item, i) => (
                                 <div
                                     key={`msg_${i}`}
                                     style={{clear:'both'}}
@@ -165,5 +165,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { sendMessage }
+    { sendMessage, fetchMessageHistory }
 )(MessageHistory)

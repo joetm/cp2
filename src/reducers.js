@@ -29,6 +29,7 @@ export const MARK_POST_READ           = 'FORUM::MARK_POST_READ'
 export const MARK_ALL_READ            = 'FORUM::MARK_ALL_READ'
 export const SELECT_THREAD            = 'FORUM::SELECT_THREAD'
 export const SEND_MESSAGE             = 'CHAT::SEND_MESSAGE'
+export const RECEIVE_MESSAGEHISTORY   = 'CHAT::RECEIVE_MESSAGEHISTORY'
 export const REVIEW_APPROVE           = 'REVIEW::APPROVE'
 export const REVIEW_DISAPPROVE        = 'REVIEW::DISAPPROVE'
 export const LIKE                     = 'SOCIAL::LIKE'
@@ -100,13 +101,14 @@ export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,   'id')
 export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS, 'obj')
 
 // ajax receptors
-       const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER, 'response')
-       const receiveUser           = makeActionCreator(RECEIVE_USER,         'response')
-       const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,     'response')
-       const receivePosts          = makeActionCreator(RECEIVE_POSTS,        'response')
-       const receivePost           = makeActionCreator(RECEIVE_POST,         'response')
-       const receiveThread         = makeActionCreator(RECEIVE_THREAD,       'response')
-       const receiveReviewItem     = makeActionCreator(RECEIVE_REVIEWITEM,   'response')
+const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
+const receiveUser           = makeActionCreator(RECEIVE_USER,           'response')
+const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,       'response')
+const receivePosts          = makeActionCreator(RECEIVE_POSTS,          'response')
+const receivePost           = makeActionCreator(RECEIVE_POST,           'response')
+const receiveThread         = makeActionCreator(RECEIVE_THREAD,         'response')
+const receiveReviewItem     = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
+const receiveMessageHistory = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -143,6 +145,13 @@ export const fetchReviewItem = () =>
 export const fetchPosts = () =>
     api.fetchPosts().then(receivePosts)
 
+/**
+ * fetchPosts Asynchronous Action Creator
+ * @returns receivePosts() - Action
+ */
+export const fetchMessageHistory = () =>
+    api.fetchMessageHistory().then(receiveMessageHistory)
+
 // ----------------------------------------------------
 
 
@@ -164,7 +173,6 @@ export const fetchPosts = () =>
 export function chatReducer(chatState = initialState.messageHistory, action) {
     switch (action.type) {
         case SEND_MESSAGE:
-            // TODO: structure of state.messageHistory
             const messageHistoryState = { ...chatState }
             messageHistoryState.messages.push({
                 msg: action.msg.trim(),
@@ -174,6 +182,8 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
                 timestamp: Math.round(Date.now() / 1000),
             })
             return messageHistoryState
+        case RECEIVE_MESSAGEHISTORY:
+            return { ...action.response }
         default:
             return chatState
     }
