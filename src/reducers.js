@@ -42,16 +42,18 @@ export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
 //     const UNKNOWN                  = 'APP::UNKNOWN'
 
        const RECEIVE_USER             = 'USER::RECEIVE_USER'
+       const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
        const RECEIVE_COMMENTS         = 'PROFILE::RECEIVE_COMMENTS'
        const RECEIVE_POSTS            = 'FORUM::RECEIVE_POSTS'
        const RECEIVE_POST             = 'FORUM::RECEIVE_POST'
        const RECEIVE_THREAD           = 'FORUM::RECEIVE_THREAD'
-       const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
-       const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
+       const RECEIVE_ALBUM            = 'ALBUM::RECEIVE_ALBUM'
        const RECEIVE_UPDATES          = 'STREAM::RECEIVE_UPDATES'
        const RECEIVE_NOTIFICATIONS    = 'STREAM::RECEIVE_NOTIFICATIONS'
        const RECEIVE_LIKES            = 'STREAM::RECEIVE_LIKES'
-       const RECEIVE_ALBUM            = 'ALBUM::RECEIVE_ALBUM'
+       const RECEIVE_LIKE             = 'STREAM::RECEIVE_LIKE'
+       const RECEIVE_DISLIKE          = 'STREAM::RECEIVE_DISLIKE'
+       const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
 
 
 /**
@@ -119,6 +121,8 @@ const receiveMessageHistory        = makeActionCreator(RECEIVE_MESSAGEHISTORY, '
 const receiveNotifications         = makeActionCreator(RECEIVE_NOTIFICATIONS,  'response')
 const receiveLikes                 = makeActionCreator(RECEIVE_LIKES,          'response')
 const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,          'response')
+const receiveLike                  = makeActionCreator(RECEIVE_LIKE,           'response')
+const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -196,6 +200,20 @@ export const fetchAlbum = (albumid) =>
  */
 export const fetchThread = (threadid) =>
     api.fetchThread(threadid).then(receiveThread)
+
+/**
+ * recordLike Asynchronous Action Creator
+ * @returns recordLike() - Action
+ */
+export const recordLike = () =>
+    api.recordLike().then(receiveLike)
+
+/**
+ * recordDislike Asynchronous Action Creator
+ * @returns recordDislike() - Action
+ */
+export const recordDislike = () =>
+    api.recordDislike().then(receiveDislike)
 
 // ----------------------------------------------------
 

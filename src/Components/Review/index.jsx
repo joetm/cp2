@@ -49,12 +49,14 @@ class Review extends React.Component {
         this.toggleHelp = this.toggleHelp.bind(this)
         this.reject = this.reject.bind(this)
         this.approve = this.approve.bind(this)
-        this.closeAlert = this.closeAlert.bind(this)
+        this.like = this.like.bind(this)
+        this.dislike = this.dislike.bind(this)
         this.openAlert = this.openAlert.bind(this)
         this.closeAlert = this.closeAlert.bind(this)
+        this.handleImageClick = this.handleImageClick.bind(this)
     }
     componentDidMount() {
-        this.props.setFetchingStatus(true)
+        // TODO: this.props.setFetchingStatus(true)
         this.props.fetchReviewItem()
     }
     /*
@@ -64,7 +66,7 @@ class Review extends React.Component {
         if (this.request && typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
-            this.props.setFetchingStatus(false)
+            // TODO: this.props.setFetchingStatus(false)
         }
     }
     /*
@@ -112,11 +114,25 @@ class Review extends React.Component {
         this.openAlert()
     }
     /*
+     * Like the update.
+     */
+    like() {
+        this.props.like(this.props.reviewitem.id)
+        this.openAlert()
+    }
+    /*
+     * Dislike the update.
+     */
+    dislike() {
+        this.props.dislike(this.props.reviewitem.id)
+        this.openAlert()
+    }
+    /*
      * Handle the event when the image is clicked.
      */
     handleImageClick() {
         // TODO
-        console.log('open popover', this)
+        // console.log('open popover', this.props.reviewitem.src)
         // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
     }
     /**
@@ -167,6 +183,8 @@ class Review extends React.Component {
                                 gridColumnsPhone={1}
                                 approve={this.approve}
                                 reject={this.reject}
+                                like={this.like}
+                                dislike={this.dislike}
                                 handleImageClick={this.handleImageClick}
                             />
                         </ReactCSSTransitionGroup>
@@ -178,6 +196,7 @@ class Review extends React.Component {
                 <Alert
                     open={this.state.alertIsOpen}
                     close={this.closeAlert}
+                    msg={this.state.alertMsg}
                 />
 
                 <Spacer />
@@ -194,5 +213,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchReviewItem, reviewApprove, reviewDisapprove, setFetchingStatus }
+    { fetchReviewItem, reviewApprove, reviewDisapprove, reviewLike, reviewDislike, setFetchingStatus }
 )(Review)

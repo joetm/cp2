@@ -46,3 +46,11 @@ export const fetchAlbum = (albumid) =>
 export const fetchThread = (threadid) =>
     fetchDataFromAPI('thread', threadid)
         .then((response) => response)
+
+export const recordLike = (payload) =>
+    sendDataToAPI(payload)
+        .then((response) => response)
+
+export const recordDislike = (payload) =>
+    sendDataToAPI(payload)
+        .then((response) => response)

@@ -69,9 +69,11 @@ class ReviewCard extends React.PureComponent {
 
                 <LikeButton
                     number={likes}
+                    onTouchTap={this.props.like}
                 />
                 <DisapproveButton
                     number={dislikes}
+                    onTouchTap={this.props.dislike}
                 />
 
               </CardActions>

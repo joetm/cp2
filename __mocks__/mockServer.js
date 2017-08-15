@@ -11,18 +11,25 @@ const delay = (ms) => {
 }
 
 export const fetchDataFromAPI = (key, selection) => {
-    // TODO: selection -> return only the queried fields
     return delay(500)
         .then(() => {
             try {
-                // console.log('fetchDataFromAPI::selection', selection)
-                // console.log('fetchDataFromAPI::key', key)
-                // console.log('fetchDataFromAPI::mockState[key]', mockState[key])
-                // console.log('fetchDataFromAPI::mockState', mockState)
+                // selection -> return only the queried fields
                 if (selection !== undefined) {
                     return mockState[key]["" + selection]
                 }
                 return mockState[key]
+            } catch (e) {
+                throw new Error(e)
+            }
+        })
+}
+
+const sendDataToAPI = (payload) => {
+    return delay(500)
+        .then(() => {
+            try {
+                return 200
             } catch (e) {
                 throw new Error(e)
             }

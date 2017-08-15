@@ -16,11 +16,7 @@ import objectFitImages from 'object-fit-images'
 // import reactMixin from 'react-mixin'
 // --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-// import fetch from 'unfetch'
-// import { browserHistory } from 'react-router-dom'
 import { Provider } from 'react-redux'
-// import createHistory from 'history/createBrowserHistory'
-// import { ConnectedRouter } from 'react-router-redux'
 
 injectTapEventPlugin()
 objectFitImages()
@@ -64,11 +60,7 @@ class App extends React.Component {
     componentDidMount() {
         // show scroll button (overlay)
         window.onscroll = () => {
-            if (this.getScrollPosition() > 0) {
-              this.setState({isScrolled: true})
-            } else {
-              this.setState({isScrolled: false})
-            }
+            this.setState({isScrolled: this.getScrollPosition() > 0})
         }
         // store mobile device info
         const device = new MobileDetect(window.navigator.userAgent)
@@ -90,14 +82,13 @@ class App extends React.Component {
     /**
      * Render the component.
      */
-//                        <Route exact path="/upload" component={Upload} />
     render() {
         return (
             <MuiThemeProvider muiTheme={theme}>
             <Provider store={store}>
               <div style={{backgroundColor: colors.bg}}>
 
-                    <NavBar scrollPosition={this.state.scrollPosition} />
+                    <NavBar isScrolled={this.state.isScrolled} />
 
                     <Switch>
                         <Route exact path="/" component={Home} />
@@ -127,6 +118,8 @@ class App extends React.Component {
                         <Route exact path="/dmca-policy" component={DMCA} />
 
                         <Route exact path="/contact" component={Contact} />
+
+                        <Route exact path="/upload" component={Upload} />
 
                         <Route component={Error} code="404" />
 
