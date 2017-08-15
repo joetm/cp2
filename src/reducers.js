@@ -102,7 +102,7 @@ export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS, 'obj'
 
 // ajax receptors
 const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
-const receiveUser           = makeActionCreator(RECEIVE_USER,           'response')
+const receiveUser           = makeActionCreator(RECEIVE_USER,           'response', 'userid')
 const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,       'response')
 const receivePosts          = makeActionCreator(RECEIVE_POSTS,          'response')
 const receivePost           = makeActionCreator(RECEIVE_POST,           'response')
@@ -241,7 +241,10 @@ export function streamReducer(updatesState = initialState.updates, action) {
 export function userReducer(usersState = initialState.users, action) {
     switch (action.type) {
         case RECEIVE_USER:
-            return { ...usersState, [action.userid]: {...action.response} }
+            return {
+                ...usersState,
+                [action.response.userid]: {...action.response}
+            }
         default:
             return usersState
     }

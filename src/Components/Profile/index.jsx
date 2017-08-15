@@ -57,14 +57,24 @@ class Profile extends React.PureComponent {
      * Render the component.
      */
     render() {
-          const {username, avatar, profileimg} = this.props.user
-          return (
+        const userid = this.props.match.params.userid
+        let user = this.props.users[userid]
+
+        if (user === undefined) {
+            user = {
+                username: '',
+                avatar: '',
+                profileimg: '',
+            }
+        }
+
+        return (
             <div>
 
                 <ProfileImg
-                    username={username}
-                    avatar={avatar}
-                    src={profileimg}
+                    username={user.username}
+                    avatar={user.avatar}
+                    src={user.profileimg}
                     blurredImg={this.state.blurredImg}
                     pageIsScrolled={this.props.isScrolled}
                     toggleProfileDetails={this.toggleProfileDetails}
@@ -75,11 +85,11 @@ class Profile extends React.PureComponent {
                 <div style={styles.avatarBox}>
                     <Avatar
                         visible={!this.state.blurredImg}
-                        src={avatar}
+                        src={user.avatar}
                         onTouchTap={this.toggleProfileDetails}
                     />
                     <ProfileUsername
-                        name={username}
+                        name={user.username}
                     />
                 </div>
 
@@ -88,14 +98,14 @@ class Profile extends React.PureComponent {
                 <Spacer />
 
             </div>
-          )
+        )
     }
 
 }
 
 const mapStateToProps = (state, ownProps) => ({
     // add selected fields from the state as props to the component
-    user: state.user,
+    users: state.users,
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,
 })
