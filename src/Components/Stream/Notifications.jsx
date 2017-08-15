@@ -3,10 +3,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Avatar from 'material-ui/Avatar'
-import {List} from 'material-ui/List'
+import { List } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
+import Divider from 'material-ui/Divider'
 
 import { fetchNotifications } from '../../reducers'
+import { categorizeList, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import Notification from './Notification'
 import Spacer from '../Shared/Spacer'
 
@@ -20,27 +22,36 @@ class Notifications extends React.PureComponent {
      */
     render() {
         const { notifications } = this.props
+        const categorizedNotifications = categorizeList(notifications)
         return (
           <div>
             <h2>Notifications</h2>
-            <List>
-              <Subheader>Today</Subheader>
-              {
-                this.props.notifications.map((n) => (
-                  <Notification
-                    key={n.id}
-                    avatar={<Avatar src={n.avatar} />}
-                    username={n.username}
-                    userid={n.userid}
-                    primaryText={n.title}
-                    secondaryText={n.content}
-                    secondaryTextLines={2}
-                    showMenu={true}
-                  />
-                ))
-              }
-            </List>
-            <Spacer />
+                {
+                    categorizedNotifications.map((group, daysAgo) => {
+                        return (
+                            <div key={`grp_${daysAgo}`}>
+                                <Subheader>{translateDayOffset(daysAgo)}</Subheader>
+                                <Divider />
+                                    <List>
+                                    {
+                                        group.map((item, i) => (
+                                            <Notification
+                                              key={item.id}
+                                              avatar={<Avatar src={item.avatar} />}
+                                              username={item.username}
+                                              userid={item.userid}
+                                              primaryText={item.title}
+                                              secondaryText={item.content}
+                                              secondaryTextLines={2}
+                                              showMenu={true}
+                                            />
+                                        ))
+                                    }
+                                    </List>
+                            </div>
+                        )
+                    })
+                }
           </div>
         )
     }

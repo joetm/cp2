@@ -8,7 +8,7 @@ import Divider from 'material-ui/Divider'
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import { fetchUpdates } from '../../reducers'
-import { humanRelativeDate, classifyByDateAgo, translateDayOffset } from '../../common/helpers'
+import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import Update from './Update'
 
 
@@ -16,31 +16,11 @@ class Updates extends React.PureComponent {
     componentDidMount() {
         this.props.fetchUpdates()
     }
-    categorize(updatesList) {
-        if (!updatesList) {
-            return []
-        }
-        // console.log(updatesList)
-        const annotatedList = updatesList.map(obj => {
-            return classifyByDateAgo(obj)
-        })
-        // console.log(annotatedList)
-        const categorizedList = []
-        annotatedList.forEach(obj => {
-            if (categorizedList[obj.daysAgo]) {
-                categorizedList[obj.daysAgo].push(obj)
-            } else {
-                categorizedList[obj.daysAgo] = [obj]
-            }
-        })
-        // console.log(categorizedList)
-        return categorizedList
-    }
     /**
      * Render the component.
      */
     render() {
-        const categorizedUpdates = this.categorize(this.props.updates)
+        const categorizedUpdates = categorizeList(this.props.updates)
         return (
             <div>
                 <h2>Updates</h2>

@@ -1,5 +1,31 @@
 
 /**
+ * Categorize a list of updates into 'today', yesterday', etc.
+ * @param {number} updatesList - List of updates
+ * @returns {Object} categorizedList - Categorized list of updates
+ */
+export function categorizeList(updatesList) {
+    if (!updatesList) {
+        return []
+    }
+    // console.log(updatesList)
+    const annotatedList = updatesList.map(obj => {
+        return classifyByDateAgo(obj)
+    })
+    // console.log(annotatedList)
+    const categorizedList = []
+    annotatedList.forEach(obj => {
+        if (categorizedList[obj.daysAgo]) {
+            categorizedList[obj.daysAgo].push(obj)
+        } else {
+            categorizedList[obj.daysAgo] = [obj]
+        }
+    })
+    // console.log(categorizedList)
+    return categorizedList
+}
+
+/**
  * Return a unix timestamp as a human-readable date
  * @param {number} datestamp - Unix timestamp
  * @returns {Object} formattedTime - Human-readable time
