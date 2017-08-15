@@ -3,6 +3,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { ListItem } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
@@ -29,9 +30,9 @@ const rightIconMenu = (
 )
 
 
-class Notification extends React.PureComponent {
+class Like extends React.PureComponent {
     state = {
-      showMenu: true
+      showMenu: false // no menu for now
     }
     /**
      * Render the component.
@@ -39,19 +40,22 @@ class Notification extends React.PureComponent {
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
         const history = this.props.history
+        const { avatar, title, content, src, username, userid, type } = this.props
         return (
             <ListItem
-              leftAvatar={this.props.avatar}
+              leftAvatar={<Avatar src={this.props.avatar} />}
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
-              primaryText={this.props.primaryText}
-              secondaryText={this.props.username}
+              primaryText={`${username} liked your ${type}`}
+              secondaryText={title}
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              onTouchTap={() => history.push(`/messages/${this.props.userid}`)}
+              // TODO - no menu for now
+              // TODO: redirect to the item on click
+              // onTouchTap={() => history.push(`/likes/${this.props.userid}`)}
             />
         )
     }
 }
 
-export default withRouter(Notification)
+export default withRouter(Like)

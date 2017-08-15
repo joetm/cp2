@@ -38,6 +38,7 @@ class Updates extends React.PureComponent {
                                             id={i}
                                             key={`upd_${i}`}
                                             src={item.src}
+                                            avatar={item.avatar}
                                             primaryText={item.primaryText}
                                             secondaryText={item.secondaryText}
                                             fromUsername={item.fromUsername}

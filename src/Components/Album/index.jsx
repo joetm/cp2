@@ -1,12 +1,15 @@
 /** @flow */
 
 import React, { PureComponent } from "react"
-import Masonry from '../External/react-simple-masonry/src/'
-import LazyLoad from 'react-lazy-load'
+import { connect } from 'react-redux'
+// import Masonry from '../External/react-simple-masonry/src/'
+// import LazyLoad from 'react-lazy-load'
 
-import AlbumImg from './AlbumImg'
+// import AlbumImg from './AlbumImg'
 import AjaxLoader from '../Shared/AjaxLoader'
 import Spacer from '../Shared/Spacer'
+import Update from '../Stream/Update'
+import { fetchAlbum } from '../../reducers'
 
 
 const _LAZYLOAD_OFFSET = 250
@@ -25,25 +28,40 @@ function randomImgHeight() {
  * Album class
  * @class
  */
+/*
+            <Masonry
+                      width={500}
+                      columns={4}
+                      gutterX={20}
+                      gutterY={20}
+                      maxHeight={550}
+                      collapsing={true}
+                      customize={this.customizeRectangles}
+                      centering={true}
+            >
+            </Masonry>
+*/
 class Album extends PureComponent {
-
     state = {
         userid: this.props.match.params.userid
     }
-
     componentWillMount () {
-        this.setState({
-          width: document.body.clientWidth
-        })
-        this.onresizeListener = this.onResize.bind(this)
-        window.addEventListener('resize', this.onresizeListener)
+      console.log(this.props)
+        // this.setState({
+        //   width: document.body.clientWidth
+        // })
+        // this.onresizeListener = this.onResize.bind(this)
+        // window.addEventListener('resize', this.onresizeListener)
+
+        this.props.fetchAlbum() // TODO: user albumid
+
     }
 
-    onResize () {
-        this.setState({
-            width: document.body.clientWidth
-        })
-    }
+    // onResize () {
+        // this.setState({
+        //     width: document.body.clientWidth
+        // })
+    // }
 
     customizeRectangles (rectangle, i, allRectangles, options) {
         const dimension = options.dimensions[i]
@@ -59,44 +77,30 @@ class Album extends PureComponent {
 //                <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
 //                </LazyLoad>
     render() {
+      console.log(this.props.album)
       return (
         <div>
+
           <div>
-
-            <Masonry
-                      width={500}
-                      columns={4}
-                      gutterX={20}
-                      gutterY={20}
-                      maxHeight={550}
-                      collapsing={true}
-                      customize={this.customizeRectangles}
-                      centering={true}
-            >
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-                <AlbumImg src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" />
-            </Masonry>
-
+            {
+              this.props.album.map((img) =>
+                (
+                    <div key={img.id}>
+                    <Update
+                        id={img.id}
+                        fromUsername={img.username}
+                        primaryText={img.title}
+                        avatar={img.avatar}
+                        datetime={img.timestamp}
+                        gridColumnsFull={4}
+                        gridColumnsTablet={4}
+                        gridColumnsPhone={4}
+                    />
+                    <Spacer />
+                    </div>
+                )
+              )
+            }
           </div>
 
           <Spacer />
@@ -104,9 +108,17 @@ class Album extends PureComponent {
           <div>
               <AjaxLoader />
           </div>
+
         </div>
       )
     }
 }
 
-export default Album
+const mapStateToProps = (state) => ({
+    album: state.album
+})
+
+export default connect(
+    mapStateToProps,
+    { fetchAlbum }
+)(Album)

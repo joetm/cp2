@@ -23,8 +23,8 @@ const initialState = {
     post: {},
     likes: [],
     notifications: [],
+    album: [],
     albums: [],
-    albumimgs: [],
     messageHistory: {
         username: null,
         userid: null,

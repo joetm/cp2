@@ -39,6 +39,7 @@ export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
 export const GET_UPDATES              = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
 export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
+//     const UNKNOWN                  = 'APP::UNKNOWN'
 
        const RECEIVE_USER             = 'USER::RECEIVE_USER'
        const RECEIVE_COMMENTS         = 'PROFILE::RECEIVE_COMMENTS'
@@ -49,7 +50,8 @@ export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
        const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
        const RECEIVE_UPDATES          = 'STREAM::RECEIVE_UPDATES'
        const RECEIVE_NOTIFICATIONS    = 'STREAM::RECEIVE_NOTIFICATIONS'
-//     const UNKNOWN                  = 'APP::UNKNOWN'
+       const RECEIVE_LIKES            = 'STREAM::RECEIVE_LIKES'
+       const RECEIVE_ALBUM            = 'ALBUM::RECEIVE_ALBUM'
 
 
 /**
@@ -115,6 +117,8 @@ const receiveThread                = makeActionCreator(RECEIVE_THREAD,         '
 const receiveReviewItem            = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
 const receiveMessageHistory        = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
 const receiveNotifications         = makeActionCreator(RECEIVE_NOTIFICATIONS,  'response')
+const receiveLikes                 = makeActionCreator(RECEIVE_LIKES,          'response')
+const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,          'response')
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -171,6 +175,20 @@ export const fetchUpdates = () =>
  */
 export const fetchNotifications = () =>
     api.fetchNotifications().then(receiveNotifications)
+
+/**
+ * fetchLikes Asynchronous Action Creator
+ * @returns fetchLikes() - Action
+ */
+export const fetchLikes = () =>
+    api.fetchLikes().then(receiveLikes)
+
+/**
+ * fetchAlbum Asynchronous Action Creator
+ * @returns fetchAlbum() - Action
+ */
+export const fetchAlbum = (albumid) =>
+    api.fetchAlbum(albumid).then(receiveAlbum)
 
 // ----------------------------------------------------
 
@@ -253,8 +271,21 @@ export function streamReducer(updatesState = initialState.updates, action) {
 }
 
 /**
+ * albumReducer
+ * @returns albumState
+ **/
+export function albumReducer(albumState = initialState.album, action) {
+    switch (action.type) {
+        case RECEIVE_ALBUM:
+            return [...action.response]
+        default:
+            return albumState
+    }
+}
+
+/**
  * notificationReducer
- * @returns updatesState
+ * @returns notificationsState
  **/
 export function notificationReducer(notificationsState = initialState.notifications, action) {
     switch (action.type) {
@@ -262,6 +293,19 @@ export function notificationReducer(notificationsState = initialState.notificati
             return [...action.response]
         default:
             return notificationsState
+    }
+}
+
+/**
+ * likesReducer
+ * @returns likesState
+ **/
+export function likesReducer(likesState = initialState.likes, action) {
+    switch (action.type) {
+        case RECEIVE_LIKES:
+            return [...action.response]
+        default:
+            return likesState
     }
 }
 

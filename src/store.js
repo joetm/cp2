@@ -25,11 +25,13 @@ const store = createStore(
         messageHistory: Reducers.chatReducer,
         reviewitem: Reducers.reviewReducer,
         updates: Reducers.streamReducer,
+        album: Reducers.albumReducer,
         users: Reducers.userReducer,
         currentUser: Reducers.currentUserReducer,
         navbar: Reducers.navBarReducer,
         posts: Reducers.forumReducer,
         notifications: Reducers.notificationReducer,
+        likes: Reducers.likesReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),
     applyMiddleware(...middlewares) // apply middleware for navigating

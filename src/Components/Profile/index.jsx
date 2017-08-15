@@ -5,7 +5,6 @@ import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { fetchUser } from '../../reducers'
-// import ToolBar from './ToolBar'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
 import Album from '../Album/'

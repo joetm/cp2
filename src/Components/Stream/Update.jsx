@@ -1,10 +1,11 @@
 /** @flow */
 
 import React from 'react'
-import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card'
 import LikeAction from 'material-ui/svg-icons/action/thumb-up'
 import FavoriteAction from 'material-ui/svg-icons/action/favorite'
 import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
+import Avatar from 'material-ui/Avatar'
 
 import { LikeButton, FavoriteButton, CommentButton } from './Button'
 
@@ -12,7 +13,7 @@ import { navigateTo } from '../../common/helpers'
 
 
 const Update = (props) => {
-  const { id, fromUsername, primaryText, secondaryText, datetime,
+  const { id, fromUsername, src, avatar, primaryText, secondaryText, datetime,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone } = props
   return (
     <div
@@ -22,12 +23,12 @@ const Update = (props) => {
         <CardMedia
           onClick={navigateTo.bind(this)}
         >
-          <img src="https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg" alt="" />
+          <img src={src} alt="" />
         </CardMedia>
         <CardHeader
           title={fromUsername}
           subtitle={'Master Jedi'}
-          avatar="/img/avatar/face.jpg"
+          avatar={<Avatar src={avatar} />}
           onClick={navigateTo.bind(this)}
         />
         <CardTitle

@@ -22,7 +22,43 @@ const mockState = {
         activeBadge: 0,
     },
     // -- content --
-    likes: [],
+    likes: [
+        {
+            id: cuid(),
+            itemid: 123,
+            type: "post",
+            title: "Post title here, if available",
+            content: "Post content here",
+            src: null,
+            userid: 2,
+            username: "Gonzales",
+            avatar: '/img/avatar/face-13.jpg',
+            timestamp: 1501229377,
+        },
+        {
+            id: cuid(),
+            itemid: 124,
+            type: "thread",
+            title: "Thread 222 title here, if available",
+            content: "Post 222 content here",
+            src: null,
+            userid: 9,
+            username: "Joe",
+            avatar: '/img/avatar/face-4.jpg',
+            timestamp: 1501229577,
+        },
+        {
+            id: cuid(),
+            itemid: 125,
+            type: "image",
+            title: "AlbumImage title here, if available",
+            src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
+            userid: 9,
+            username: "Joe",
+            avatar: '/img/avatar/face-4.jpg',
+            timestamp: 1501229577,
+        }
+    ],
     notifications: [
         {
             id: cuid(),
@@ -60,6 +96,7 @@ const mockState = {
             secondaryText: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
             src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
             fromUsername: "Brandan Lim",
+            avatar: "/img/avatar/face-1.jpg",
             timestamp: 1501229377,
         },
         {
@@ -68,6 +105,7 @@ const mockState = {
             primaryText: "Oui oui",
             secondaryText: "Do you have Paris recommendations? Have you ever been?",
             fromUsername: "Grace Ng",
+            avatar: "/img/avatar/face-2.jpg",
             timestamp: 1501229177,
         },
         {
@@ -77,6 +115,7 @@ const mockState = {
             secondaryText: "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
             src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
             fromUsername: "Kerem Suer",
+            avatar: "/img/avatar/face-3.jpg",
             timestamp: 1501229077,
         },
         {
@@ -86,6 +125,7 @@ const mockState = {
             secondaryText: "We should eat this: grated squash. Corn and tomatillo tacos.",
             src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
             fromUsername: "Raquel Parrado",
+            avatar: "/img/avatar/face-4.jpg",
             timestamp: 1501220077,
         },
         {
@@ -94,6 +134,7 @@ const mockState = {
             primaryText: "Brunch this weekend?",
             secondaryText: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
             fromUsername: "Brandan Lim",
+            avatar: "/img/avatar/face-5.jpg",
             timestamp: 1501200077,
         },
         {
@@ -102,6 +143,7 @@ const mockState = {
             primaryText: "Oui oui",
             secondaryText: "Do you have Paris recommendations? Have you ever been?",
             fromUsername: "Grace Ng",
+            avatar: "/img/avatar/face-6.jpg",
             timestamp: 1501000077,
         },
         {
@@ -110,6 +152,7 @@ const mockState = {
             primaryText: "Birdthday gift",
             secondaryText: "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
             fromUsername: "Kerem Suer",
+            avatar: "/img/avatar/face-7.jpg",
             timestamp: 1501000057,
         },
         {
@@ -119,6 +162,7 @@ const mockState = {
             secondaryText: "We should eat this: grated squash. Corn and tomatillo tacos.",
             thumb: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
             fromUsername: "Raquel Parrado",
+            avatar: "/img/avatar/face-8.jpg",
             timestamp: 1500000057,
         },
     ],
@@ -171,7 +215,33 @@ const mockState = {
         timeStamp: Math.round(Date.now() / 1000), // Unix Timestamp in seconds
     },
     albums: [],
-    albumimgs: [],
+    album: [
+        {
+            title: "1 Mock 1 image 1 title",
+            src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
+            timestamp: 1501239377,
+        },
+        {
+            title: "Mock 222 image title",
+            src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
+            timestamp: 1501239377,
+        },
+        {
+            title: "Mock 333 image title",
+            src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
+            timestamp: 1501239377,
+        },
+        {
+            title: "444 Mock image title",
+            src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
+            timestamp: 1501239377,
+        },
+        {
+            title: "Mock image title 555",
+            src: "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
+            timestamp: 1501239377,
+        }
+    ],
     messageHistory: {
         username: "Gonzales",
         userid: 2,

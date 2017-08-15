@@ -32,3 +32,12 @@ export const fetchUpdates = () =>
 export const fetchNotifications = () =>
     fetchDataFromAPI('notifications')
         .then((response) => response)
+
+export const fetchLikes = () =>
+    fetchDataFromAPI('likes')
+        .then((response) => response)
+
+// TODO: user albumid
+export const fetchAlbum = () =>
+    fetchDataFromAPI('album')
+        .then((response) => response)
