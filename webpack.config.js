@@ -22,8 +22,7 @@ module.exports = {
         "object-fit-images",
         // "deepstream.io-client-js/dist/deepstream"
     ],
-    main: "./src/main.jsx",
-    admin: "./src/admin.jsx"
+    main: "./src/main.jsx"
   },
   output: {
     path: path.resolve('./dist'),

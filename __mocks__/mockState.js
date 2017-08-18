@@ -10,17 +10,14 @@ import cuid from 'cuid'
  **/
 
 const mockState = {
+    // -- state --
     appState: {
         deviceDetails: null,
         sidebarOpen: false,
         isFetching: false,
-    },
-    deviceDetails: null,
-    sidebarOpen: false,
-    // -- state --
-    navbar: {
         activeBadge: 0,
     },
+    deviceDetails: null,
     // -- content --
     likes: [
         {

@@ -270,19 +270,6 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 }
 
 /**
- * navBarReducer
- * @returns navBarState
- **/
-export function navBarReducer(navBarState = initialState.navbar, action) {
-    switch (action.type) {
-        case SET_ACTIVE_BADGE:
-            return { ...navBarState, activeBadge: +action.id }
-        default:
-            return navBarState
-    }
-}
-
-/**
  * streamReducer
  * @returns updatesState
  **/
@@ -400,6 +387,8 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return { ...appState, sidebarOpen: !appState.sidebarOpen }
         case SET_DEVICE_DETAILS:
             return { ...appState, deviceDetails: action.obj }
+        case SET_ACTIVE_BADGE:
+            return { ...appState, activeBadge: +action.id }
         // TODO
         // ajax loading msg
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators

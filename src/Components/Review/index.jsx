@@ -213,5 +213,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchReviewItem, reviewApprove, reviewDisapprove, reviewLike, reviewDislike, setFetchingStatus }
+    { fetchReviewItem, reviewApprove, reviewDisapprove, like, dislike, setFetchingStatus }
 )(Review)

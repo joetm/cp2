@@ -318,7 +318,7 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    activeBadge: state.navbar.activeBadge,
+    activeBadge: state.appState.activeBadge,
     sidebarOpen: state.appState.sidebarOpen,
     userid: state.currentUser.userid,
     username: state.currentUser.username,
