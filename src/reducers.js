@@ -15,6 +15,7 @@ export const COMMENT_PROFILE          = 'PROFILE::COMMENT_PROFILE'
 export const GET_USER                 = 'USER::GET_USER'
 export const GET_CURRENT_USER         = 'USER::GET_CURRENT_USER'
 export const GET_CURRENT_USER_MINIMAL = 'USER::GET_CURRENT_USER_MINIMAL'
+export const GET_CURRENT_USER_ID      = 'USER::GET_CURRENT_USER_ID'
 export const REPLY_THREAD             = 'FORUM::REPLY_THREAD'
 export const GET_POSTS                = 'FORUM::GET_POSTS'
 export const GET_POST                 = 'FORUM::GET_POST'
@@ -82,6 +83,7 @@ function makeActionCreator(type, ...argNames) {
 export const getUser               = makeActionCreator(GET_USER,          'userid')
 export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
 export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
+export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)
 export const followUser            = makeActionCreator(FOLLOW_USER,       'userid')
 export const replyThread           = makeActionCreator(REPLY_THREAD,      'threadid')
 export const commentProfile        = makeActionCreator(COMMENT_PROFILE,   'userid')
@@ -348,9 +350,15 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return currentUserState
         case GET_CURRENT_USER_MINIMAL:
             return {
-                userid: state.currentUser.userid,
-                username: state.currentUser.username,
-                avatar: state.currentUser.avatar,
+                userid: currentUserState.userid,
+                username: currentUserState.username,
+                avatar: currentUserState.avatar,
+            }
+        case GET_CURRENT_USER_ID:
+            if (currentUserState.userid) {
+                return currentUserState.userid
+            } else {
+                return null
             }
         case RECEIVE_CURRENT_USER:
             return { ...action.response }

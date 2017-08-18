@@ -13,9 +13,9 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
-import SettingsIcon from 'material-ui/svg-icons/action/settings'
-import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+// import SettingsIcon from 'material-ui/svg-icons/action/settings'
+// import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
+// import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
@@ -94,8 +94,8 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            notificationDetailsShowing: false,
-            expandedSearch: false,
+            badgesExpanded: false,
+            searchExpanded: false,
         }
         // bindings
         this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
@@ -111,7 +111,7 @@ class NavBar extends React.Component {
         return this.props.location.pathname.startsWith('/forum')
     }
     toggleSearch() {
-        this.setState({expandedSearch: !this.state.expandedSearch})
+        this.setState({searchExpanded: !this.state.searchExpanded})
     }
     searchAction() {
         // on the forum, open the sidebar
@@ -123,7 +123,7 @@ class NavBar extends React.Component {
         }
     }
     toggleNotificationBadges() {
-        this.setState({notificationDetailsShowing: !this.state.notificationDetailsShowing})
+        this.setState({badgesExpanded: !this.state.badgesExpanded})
     }
     toggleState(num) {
         let n = num
@@ -144,7 +144,7 @@ class NavBar extends React.Component {
         if (!NUMS.ALLNOTIFICATIONS) {
             AllNotificationsIcons = NotificationsNoneIcon
         } else {
-            if (!this.state.notificationDetailsShowing) {
+            if (!this.state.badgesExpanded) {
                 AllNotificationsIcons = NotificationsIcon
             } else {
                 AllNotificationsIcons = NotificationsActiveIcon
@@ -156,10 +156,12 @@ class NavBar extends React.Component {
             >
 
                 <ToolbarGroup firstChild={true}>
+{/*
                     <NavLink
                         to="/"
                         activeStyle={{color: colors.palette.primary1Color}}
                     >
+*/}
                         <IconButton
                             id={_NAVITEM_ID.HOME}
                             tooltip="Home"
@@ -169,12 +171,13 @@ class NavBar extends React.Component {
                         >
                             <HomeIcon />
                         </IconButton>
+{/*
                     </NavLink>
-
+*/}
                     <div
                         className="inline-block"
-                        onMouseEnter={() => { this.setState({notificationDetailsShowing: true}) }}
-                        onMouseLeave={() => { this.setState({notificationDetailsShowing: false}) }}
+                        onMouseEnter={() => { this.setState({badgesExpanded: true}) }}
+                        onMouseLeave={() => { this.setState({badgesExpanded: false}) }}
                     >
 
                         <CustomBadge
@@ -198,7 +201,7 @@ class NavBar extends React.Component {
                             style={{display:'inline-block'}}
                         >
                             {
-                                !this.state.notificationDetailsShowing ? null :
+                                !this.state.badgesExpanded ? null :
                                 [
                                     <CustomBadge
                                         to="/stream/1"
@@ -273,7 +276,7 @@ class NavBar extends React.Component {
                 <ToolbarGroup>
 
                     {
-                        !this.state.expandedSearch ? null : (
+                        !this.state.searchExpanded ? null : (
                             <TextField
                               hintText="Search"
                               rows={1}

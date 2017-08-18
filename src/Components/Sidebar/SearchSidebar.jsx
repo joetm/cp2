@@ -92,7 +92,7 @@ class Sidebar extends React.Component {
     render() {
         return (
             <Drawer
-                open={this.props.sidebarOpen}
+                open={this.props.open}
                 openSecondary={true}
                 disableSwipeToOpen={false}
                 docked={true}

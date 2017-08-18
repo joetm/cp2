@@ -21,9 +21,7 @@ class ForumHome extends React.Component {
                 <h2>Forum</h2>
                 <div>
                     {posts && posts.length > 0 &&
-                        <Posts
-                            posts={posts}
-                        />
+                        <Posts {...{posts}} />
                     }
                 </div>
             </div>
@@ -32,7 +30,7 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.posts,
+    posts: state.streamitems,
 })
 
 export default connect(
