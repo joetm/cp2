@@ -10,6 +10,7 @@
 const initialState = {
     appState: {
         deviceDetails: null,
+        sidebarSearchOpen: false,
         sidebarOpen: false,
         isFetching: false,
         activeBadge: 0,

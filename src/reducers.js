@@ -21,6 +21,9 @@ export const GET_POST                 = 'FORUM::GET_POST'
 export const GET_THREAD               = 'FORUM::GET_THREAD'
 export const EDIT_POST                = 'FORUM::EDIT_POST'
 export const REMOVE_POST              = 'FORUM::REMOVE_POST'
+export const TOGGLE_SEARCH_SIDEBAR    = 'FORUM::TOGGLE_SEARCH_SIDEBAR'
+export const OPEN_SEARCH_SIDEBAR      = 'FORUM::OPEN_SEARCH_SIDEBAR'
+export const CLOSE_SEARCH_SIDEBAR     = 'FORUM::CLOSE_SEARCH_SIDEBAR'
 export const TOGGLE_SIDEBAR           = 'FORUM::TOGGLE_SIDEBAR'
 export const OPEN_SIDEBAR             = 'FORUM::OPEN_SIDEBAR'
 export const CLOSE_SIDEBAR            = 'FORUM::CLOSE_SIDEBAR'
@@ -82,6 +85,9 @@ export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
 export const followUser            = makeActionCreator(FOLLOW_USER,       'userid')
 export const replyThread           = makeActionCreator(REPLY_THREAD,      'threadid')
 export const commentProfile        = makeActionCreator(COMMENT_PROFILE,   'userid')
+export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
+export const closeSearchSidebar    = makeActionCreator(CLOSE_SEARCH_SIDEBAR)
+export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
 export const toggleSidebar         = makeActionCreator(TOGGLE_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
@@ -359,6 +365,12 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
  **/
 export function cpAppReducer(appState = initialState.appState, action) {
     switch (action.type) {
+        case OPEN_SEARCH_SIDEBAR:
+            return { ...appState, sidebarSearchOpen: true}
+        case CLOSE_SEARCH_SIDEBAR:
+            return { ...appState, sidebarSearchOpen: false}
+        case TOGGLE_SEARCH_SIDEBAR:
+            return { ...appState, sidebarSearchOpen: !appState.sidebarSearchOpen }
         case OPEN_SIDEBAR:
             return { ...appState, sidebarOpen: true}
         case CLOSE_SIDEBAR:

@@ -17,6 +17,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings'
 import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
+import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import ForumIcon from 'material-ui/svg-icons/social/group'
 import SearchIcon from 'material-ui/svg-icons/action/search'
@@ -24,8 +25,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { fetchCurrentUser } from '../../reducers'
-import { setActiveBadge, toggleSidebar } from '../../reducers'
+import { setActiveBadge, toggleSearchSidebar, toggleSidebar, fetchCurrentUser } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
 // --
@@ -40,9 +40,10 @@ import SignupButton from '../Shared/Buttons/SignupButton'
 const NUMS = {
     FORUM: 123,
     STREAM: 45,
-    MESSAGES: 10
+    MESSAGES: 10,
+    LIKES: 334,
 }
-NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.MESSAGES
+NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.MESSAGES + NUMS.LIKES
 
 
 const _NAVITEM_ID = {
@@ -50,8 +51,9 @@ const _NAVITEM_ID = {
     ALLNOTIFICATIONS: 10,
       FORUM: 12,
       STREAM: 13,
-      MESSAGES: 14,
-    REVIEW: 55,
+      MESSAGES: 20,
+      LIKES: 30,
+    REVIEW: 77,
     PROFILE: 98,
     SETTINGS: 99,
 }
@@ -114,7 +116,7 @@ class NavBar extends React.Component {
     searchAction() {
         // on the forum, open the sidebar
         if (this.isForum()) {
-            this.props.toggleSidebar()
+            this.props.toggleSearchSidebar()
         // on all other pages: expand the search
         } else {
             this.toggleSearch()
@@ -128,6 +130,8 @@ class NavBar extends React.Component {
         if (n.id) { n = n.id }
         else if (! +n) { n = 0 }
         this.props.setActiveBadge(n)
+
+        this.props.toggleSidebar()
     }
     /**
      * Render the component.
@@ -180,7 +184,7 @@ class NavBar extends React.Component {
                             secondary={true}
                             badgeStyle={styles.badgeStyle}
                             style={styles.badgeRootStyle}
-                            tooltip="New Activity"
+                            tooltip="Notifications"
                             icon={<AllNotificationsIcons />}
                             toggleState={this.toggleNotificationBadges}
                         />
@@ -204,7 +208,7 @@ class NavBar extends React.Component {
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
                                         style={styles.badgeRootStyle}
-                                        tooltip="New Activity"
+                                        tooltip="New Updates"
                                         icon={<UpdatesIcon />}
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.STREAM}
@@ -217,7 +221,7 @@ class NavBar extends React.Component {
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
                                         style={styles.badgeRootStyle}
-                                        tooltip="New Forum Activity"
+                                        tooltip="New Forum Posts"
                                         icon={<ForumIcon />}
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.FORUM}
@@ -230,10 +234,23 @@ class NavBar extends React.Component {
                                         secondary={true}
                                         badgeStyle={styles.badgeStyle}
                                         style={styles.badgeRootStyle}
-                                        tooltip="Messages"
+                                        tooltip="New Messages"
                                         icon={<EmailIcon />}
                                         toggleState={this.toggleState}
                                         active={this.props.activeBadge === _NAVITEM_ID.MESSAGES}
+                                    />,
+                                    <CustomBadge
+                                        to="/likes/1"
+                                        id={_NAVITEM_ID.LIKES}
+                                        key={`badge_${_NAVITEM_ID.LIKES}`}
+                                        badgeContent={NUMS.LIKES}
+                                        secondary={true}
+                                        badgeStyle={styles.badgeStyle}
+                                        style={styles.badgeRootStyle}
+                                        tooltip="New Likes"
+                                        icon={<LikeIcon />}
+                                        toggleState={this.toggleState}
+                                        active={this.props.activeBadge === _NAVITEM_ID.LIKES}
                                     />
                                 ]
                             }
@@ -287,6 +304,8 @@ class NavBar extends React.Component {
                             active={this.props.activeBadge === _NAVITEM_ID.PROFILE}
                         />
                     </Link>
+
+{/*
                     <IconMenu
                         id={_NAVITEM_ID.SETTINGS}
                         style={{cursor:'pointer'}}
@@ -306,6 +325,7 @@ class NavBar extends React.Component {
                             icon={<LogOutIcon />}
                         />
                     </IconMenu>
+*/}
 
                     <SignupButton />
                     <LoginButton />
@@ -319,7 +339,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => ({
     activeBadge: state.appState.activeBadge,
-    sidebarOpen: state.appState.sidebarOpen,
+    sidebarSearchOpen: state.appState.sidebarSearchOpen,
     userid: state.currentUser.userid,
     username: state.currentUser.username,
     avatar: state.currentUser.avatar,
@@ -327,5 +347,10 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { fetchCurrentUser, setActiveBadge, toggleSidebar }
+    {
+        fetchCurrentUser,
+        setActiveBadge,
+        toggleSidebar,
+        toggleSearchSidebar
+    }
 )(NavBar))

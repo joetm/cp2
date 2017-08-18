@@ -43,6 +43,7 @@ import Privacy from './Legal/Privacy'
 import DMCA from './Legal/DMCA'
 import Contact from './Contact'
 import Upload from './Upload'
+import Sidebar from './Sidebar'
 
 
 // <ConnectedRouter history={browserHistory}>
@@ -128,6 +129,8 @@ class App extends React.Component {
                         visible={this.state.isScrolled}
                         secondary={true}
                     />
+
+                    <Sidebar />
 
               </div>
             </Provider>

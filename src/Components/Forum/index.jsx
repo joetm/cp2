@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom'
 import { toggleSidebar, fetchPosts } from '../../reducers'
 // --
 import Spacer from '../Shared/Spacer'
-import Sidebar from './Sidebar'
+import SearchSidebar from './SearchSidebar'
 import ForumHome from './ForumHome'
 import Category from './Category'
 import SinglePost from './SinglePost'
@@ -25,7 +25,7 @@ class Forum extends React.Component {
                     <Route path={`${url}/category/:category`} component={Category} />
                     <Route component={ForumHome} />
                 </Switch>
-                <Sidebar
+                <SearchSidebar
                     toggleSidebar={this.props.toggleSidebar}
                     sidebarOpen={this.props.sidebarOpen}
                 />
@@ -38,7 +38,7 @@ class Forum extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     // add selected fields from the state as props to the component
     sidebarOpen: state.appState.sidebarOpen,
-    posts: state.posts,
+    posts: state.streamitems,
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,
 })
