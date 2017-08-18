@@ -167,11 +167,11 @@ export const fetchMessageHistory = () =>
     api.fetchMessageHistory().then(receiveMessageHistory)
 
 /**
- * fetchUpdates Asynchronous Action Creator
- * @returns fetchUpdates() - Action
+ * fetchAll Asynchronous Action Creator
+ * @returns fetchAll() - Action
  */
-export const fetchUpdates = () =>
-    api.fetchUpdates().then(receiveUpdates)
+export const fetchAll = () =>
+    api.fetchAll().then(receiveUpdates)
 
 /**
  * fetchNotifications Asynchronous Action Creator
@@ -271,53 +271,48 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 
 /**
  * streamReducer
- * @returns updatesState
+ * @returns streamState
  **/
-export function streamReducer(updatesState = initialState.updates, action) {
+export function streamReducer(streamState = initialState.streamitems, action) {
     switch (action.type) {
         case RECEIVE_UPDATES:
             return [...action.response]
-        default:
-            return updatesState
-    }
-}
-
-/**
- * albumReducer
- * @returns albumState
- **/
-export function albumReducer(albumState = initialState.album, action) {
-    switch (action.type) {
         case RECEIVE_ALBUM:
             return [...action.response]
-        default:
-            return albumState
-    }
-}
-
-/**
- * notificationReducer
- * @returns notificationsState
- **/
-export function notificationReducer(notificationsState = initialState.notifications, action) {
-    switch (action.type) {
         case RECEIVE_NOTIFICATIONS:
             return [...action.response]
+        case RECEIVE_LIKES:
+            return [...action.response]
+        case RECEIVE_POSTS:
+            return [ ...action.response ]
         default:
-            return notificationsState
+            return streamState
     }
 }
 
 /**
- * likesReducer
- * @returns likesState
+ * threadReducer
+ * @returns threadState
  **/
-export function likesReducer(likesState = initialState.likes, action) {
+export function threadReducer(threadState = initialState.thread, action) {
     switch (action.type) {
-        case RECEIVE_LIKES:
-            return [...action.response]
+        case RECEIVE_THREAD:
+            return { ...action.response }
         default:
-            return likesState
+            return threadState
+    }
+}
+
+/**
+ * postReducer
+ * @returns postState
+ **/
+export function postReducer(postState = initialState.post, action) {
+    switch (action.type) {
+        case RECEIVE_POST:
+            return { ...action.response }
+        default:
+            return postState
     }
 }
 
@@ -355,21 +350,6 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return { ...action.response }
         default:
             return currentUserState
-    }
-}
-
-/**
- * forumReducer
- * @returns forumState
- **/
-export function forumReducer(forumState = initialState.posts, action) {
-    switch (action.type) {
-        case RECEIVE_POSTS:
-            return [ ...action.response ]
-        case RECEIVE_THREAD:
-            return { ...action.response }
-        default:
-            return forumState
     }
 }
 

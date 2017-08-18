@@ -13,7 +13,7 @@ import { navigateTo } from '../../common/helpers'
 
 
 const Update = (props) => {
-  const { id, fromUsername, src, avatar, primaryText, secondaryText, datetime,
+  const { id, username, src, avatar, title,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone } = props
   return (
     <div
@@ -26,21 +26,21 @@ const Update = (props) => {
           <img src={src} alt="" />
         </CardMedia>
         <CardHeader
-          title={fromUsername}
+          title={username}
           subtitle={'Master Jedi'}
           avatar={<Avatar src={avatar} />}
           onClick={navigateTo.bind(this)}
         />
         <CardTitle
-          title={primaryText}
+          title={title}
           onClick={navigateTo.bind(this)}
           actAsExpander={false}
           expandable={false}
         />
         <CardActions actAsExpander={false} expandable={false}>
-          <LikeButton     id={id} tooltip="Like"     icon={<LikeAction     />} />
-          <FavoriteButton id={id} tooltip="Favorite" icon={<FavoriteAction />} />
-          <CommentButton  id={id} tooltip="Comment"  icon={<CommentAction  />} />
+          <LikeButton     tooltip="Like"     icon={<LikeAction     />} />
+          <FavoriteButton tooltip="Favorite" icon={<FavoriteAction />} />
+          <CommentButton  tooltip="Comment"  icon={<CommentAction  />} />
         </CardActions>
       </Card>
     </div>

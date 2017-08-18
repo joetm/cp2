@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import Avatar from 'material-ui/Avatar'
 import { List } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
@@ -37,11 +36,7 @@ class Notifications extends React.PureComponent {
                                         group.map((item, i) => (
                                             <Notification
                                               key={item.id}
-                                              avatar={<Avatar src={item.avatar} />}
-                                              username={item.username}
-                                              userid={item.userid}
-                                              primaryText={item.title}
-                                              secondaryText={item.content}
+                                              { ...item }
                                               secondaryTextLines={2}
                                               showMenu={true}
                                             />
@@ -58,7 +53,7 @@ class Notifications extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    notifications: state.notifications
+    notifications: state.streamitems
 })
 
 export default connect(

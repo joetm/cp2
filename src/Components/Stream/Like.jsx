@@ -37,22 +37,22 @@ class Like extends React.PureComponent {
     /**
      * Render the component.
      */
+    // onMouseEnter={() => this.setState({showMenu: true})}
+    // onMouseLeave={() => this.setState({showMenu: false})}
+    // TODO: redirect to the item on click
+    // onTouchTap={() => history.push(`/likes/${this.props.userid}`)}
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
         const history = this.props.history
-        const { avatar, title, content, src, username, userid, type } = this.props
+        const { avatar, title, content, src, username, userid } = this.props
+        let type = "TODO"
         return (
             <ListItem
-              leftAvatar={<Avatar src={this.props.avatar} />}
+              leftAvatar={<Avatar src={avatar} />}
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={`${username} liked your ${type}`}
               secondaryText={title}
-              // onMouseEnter={() => this.setState({showMenu: true})}
-              // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              // TODO - no menu for now
-              // TODO: redirect to the item on click
-              // onTouchTap={() => history.push(`/likes/${this.props.userid}`)}
             />
         )
     }

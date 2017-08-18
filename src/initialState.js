@@ -12,20 +12,13 @@ const initialState = {
         deviceDetails: null,
         sidebarOpen: false,
         isFetching: false,
-    },
-    navbar: {
         activeBadge: 0,
     },
     // -- content --
-    updates: [],
+    streamitems: [],
+    // -- single item caching --
     thread: {},
-    threads: [],
-    posts: [],
     post: {},
-    likes: [],
-    notifications: [],
-    album: [],
-    albums: [],
     messageHistory: {
         username: null,
         userid: null,

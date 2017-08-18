@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { ListItem } from 'material-ui/List'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
+import Avatar from 'material-ui/Avatar'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
@@ -41,9 +42,9 @@ class Notification extends React.PureComponent {
         const history = this.props.history
         return (
             <ListItem
-              leftAvatar={this.props.avatar}
+              leftAvatar={<Avatar src={this.props.avatar} />}
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
-              primaryText={this.props.primaryText}
+              primaryText={this.props.title}
               secondaryText={this.props.username}
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}

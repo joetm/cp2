@@ -51,7 +51,7 @@ class Likes extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    likes: state.likes
+    likes: state.streamitems
 })
 
 export default connect(

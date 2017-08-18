@@ -24,14 +24,11 @@ const store = createStore(
         appState: Reducers.cpAppReducer,
         messageHistory: Reducers.chatReducer,
         reviewitem: Reducers.reviewReducer,
-        updates: Reducers.streamReducer,
-        album: Reducers.albumReducer,
+        streamitems: Reducers.streamReducer,
         users: Reducers.userReducer,
         currentUser: Reducers.currentUserReducer,
-        thread: Reducers.forumReducer,
-        posts: Reducers.forumReducer,
-        notifications: Reducers.notificationReducer,
-        likes: Reducers.likesReducer,
+        thread: Reducers.threadReducer,
+        post: Reducers.postReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),
     applyMiddleware(...middlewares) // apply middleware for navigating

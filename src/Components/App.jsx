@@ -31,7 +31,7 @@ import Home from './Home'
 import Forum from './Forum'
 import Notifications from './Stream/Notifications'
 import MessageHistory from './MessageHistory'
-import Updates from './Stream'
+import Stream from './Stream'
 import Profile from './Profile'
 import Review from './Review'
 import Settings from './Settings'
@@ -96,7 +96,7 @@ class App extends React.Component {
 
                         <Route path="/notifications/:userid" component={Notifications} />
 
-                        <Route path="/stream/:userid" component={Updates} />
+                        <Route path="/stream/:userid" component={Stream} />
 
                         <Route path="/review" component={Review} />
 

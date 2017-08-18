@@ -25,6 +25,43 @@ export const fetchDataFromAPI = (key, selection) => {
         })
 }
 
+export const fetchStreamItemsFromAPI = (filter) => {
+    return delay(500)
+        .then(() => {
+            try {
+
+                // filter for two types, e.g. ["images","videos"]
+                if (Array.isArray(filter)) {
+
+                    let results = []
+                    filter.forEach(filteritem => {
+                        results.concat(
+                            mockState.streamitems.filter(item =>
+                                item.type === filter
+                            )
+                        )
+                    })
+                    return results
+
+                // no filter defined -> return all items
+                } else if (filter === null) {
+
+                    return mockState.streamitems
+
+                // filter by provided type
+                } else {
+
+                    return mockState.streamitems.filter(item =>
+                        item.type === filter
+                    )
+
+                }
+            } catch (e) {
+                throw new Error(e)
+            }
+        })
+}
+
 const sendDataToAPI = (payload) => {
     return delay(500)
         .then(() => {

@@ -1,5 +1,5 @@
 
-import { fetchDataFromAPI } from '../__mocks__/mockServer'
+import { fetchDataFromAPI, fetchStreamItemsFromAPI } from '../__mocks__/mockServer'
 
 // -------------------------------------------------------------------------
 // DEV: ajax fetch data by key from the MockState + dispatch receive methods
@@ -17,35 +17,32 @@ export const fetchReviewItem = () =>
     fetchDataFromAPI('reviewitem')
         .then((response) => response)
 
-export const fetchPosts = () =>
-    fetchDataFromAPI('posts')
-        .then((response) => response)
-
 export const fetchMessageHistory = () =>
     fetchDataFromAPI('messageHistory')
         .then((response) => response)
 
-export const fetchUpdates = () =>
-    fetchDataFromAPI('updates')
+export const fetchPosts = () =>
+    fetchStreamItemsFromAPI('post')
+        .then((response) => response)
+
+export const fetchAll = () =>
+    fetchStreamItemsFromAPI(null)
         .then((response) => response)
 
 export const fetchNotifications = () =>
-    fetchDataFromAPI('notifications')
+    fetchStreamItemsFromAPI('message')
         .then((response) => response)
 
 export const fetchLikes = () =>
-    fetchDataFromAPI('likes')
-        .then((response) => response)
-
-// TODO: use albumid
-export const fetchAlbum = (albumid) =>
-    fetchDataFromAPI('album', albumid)
+    fetchStreamItemsFromAPI('like')
         .then((response) => response)
 
 // TODO: use threadid
 export const fetchThread = (threadid) =>
-    fetchDataFromAPI('thread', threadid)
+    fetchStreamItemsFromAPI('thread', threadid)
         .then((response) => response)
+
+
 
 export const recordLike = (payload) =>
     sendDataToAPI(payload)

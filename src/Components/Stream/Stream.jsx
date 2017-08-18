@@ -7,14 +7,14 @@ import Divider from 'material-ui/Divider'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { fetchUpdates } from '../../reducers'
+import { fetchAll } from '../../reducers'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import Update from './Update'
 
 
 class Updates extends React.PureComponent {
     componentDidMount() {
-        this.props.fetchUpdates()
+        this.props.fetchAll()
     }
     /**
      * Render the component.
@@ -35,14 +35,8 @@ class Updates extends React.PureComponent {
                                     {
                                         group.map((item, i) => (
                                           <Update
-                                            id={i}
                                             key={`upd_${i}`}
-                                            src={item.src}
-                                            avatar={item.avatar}
-                                            primaryText={item.primaryText}
-                                            secondaryText={item.secondaryText}
-                                            fromUsername={item.fromUsername}
-                                            datetime={humanRelativeDate(item.timestamp)}
+                                            { ...item }
                                             gridColumnsFull={4}
                                             gridColumnsTablet={3}
                                             gridColumnsPhone={1}
@@ -61,10 +55,10 @@ class Updates extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    updates: state.updates
+    updates: state.streamitems
 })
 
 export default connect(
     mapStateToProps,
-    { fetchUpdates }
+    { fetchAll }
 )(Updates)
