@@ -25,7 +25,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { setActiveBadge, toggleSearchSidebar, toggleSidebar, fetchCurrentUser } from '../../reducers'
+import { setActiveBadge, toggleSearchSidebar, closeSidebar, fetchCurrentUser } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
 // --
@@ -100,7 +100,7 @@ class NavBar extends React.Component {
         // bindings
         this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
         this.searchAction = this.searchAction.bind(this)
-        this.toggleSearch = this.toggleSearch.bind(this)
+        this.toggleSearchField = this.toggleSearchField.bind(this)
         this.toggleState = this.toggleState.bind(this)
         this.isForum = this.isForum.bind(this)
     }
@@ -110,7 +110,7 @@ class NavBar extends React.Component {
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
     }
-    toggleSearch() {
+    toggleSearchField() {
         this.setState({searchExpanded: !this.state.searchExpanded})
     }
     searchAction() {
@@ -119,7 +119,7 @@ class NavBar extends React.Component {
             this.props.toggleSearchSidebar()
         // on all other pages: expand the search
         } else {
-            this.toggleSearch()
+            this.toggleSearchField()
         }
     }
     toggleNotificationBadges() {
@@ -131,7 +131,7 @@ class NavBar extends React.Component {
         else if (! +n) { n = 0 }
         this.props.setActiveBadge(n)
 
-        this.props.toggleSidebar()
+        this.props.closeSidebar()
     }
     /**
      * Render the component.
@@ -353,7 +353,7 @@ export default withRouter(connect(
     {
         fetchCurrentUser,
         setActiveBadge,
-        toggleSidebar,
+        closeSidebar,
         toggleSearchSidebar
     }
 )(NavBar))

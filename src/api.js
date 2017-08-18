@@ -25,6 +25,10 @@ export const fetchPosts = () =>
     fetchStreamItemsFromAPI('post')
         .then((response) => response)
 
+export const fetchAlbum = (userid) =>
+    fetchStreamItemsFromAPI('image')
+        .then((response) => response)
+
 export const fetchAll = () =>
     fetchStreamItemsFromAPI(null)
         .then((response) => response)

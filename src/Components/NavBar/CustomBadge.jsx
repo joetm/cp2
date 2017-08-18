@@ -70,7 +70,7 @@ class CustomBadge extends React.PureComponent {
           <IconButton
             tooltip={this.props.tooltip}
             iconStyle={IconColor}
-            onClick={this.toggleActive.bind(this)}
+            onTouchTap={this.toggleActive.bind(this)}
             id={this.props.id}
           >
             {this.props.icon}

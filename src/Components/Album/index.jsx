@@ -53,7 +53,7 @@ class Album extends PureComponent {
         // this.onresizeListener = this.onResize.bind(this)
         // window.addEventListener('resize', this.onresizeListener)
 
-        this.props.fetchAlbum() // TODO: user albumid
+        this.props.fetchAlbum() // TODO: use/filter-for userid
 
     }
 
@@ -86,17 +86,13 @@ class Album extends PureComponent {
               this.props.album.map((img) =>
                 (
                     <div key={img.id}>
-                    <Update
-                        id={img.id}
-                        fromUsername={img.username}
-                        primaryText={img.title}
-                        avatar={img.avatar}
-                        datetime={img.timestamp}
-                        gridColumnsFull={4}
-                        gridColumnsTablet={4}
-                        gridColumnsPhone={4}
-                    />
-                    <Spacer />
+                      <Update
+                          {...img}
+                          gridColumnsFull={4}
+                          gridColumnsTablet={4}
+                          gridColumnsPhone={4}
+                      />
+                      <Spacer />
                     </div>
                 )
               )
@@ -115,7 +111,7 @@ class Album extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    album: state.album
+    album: state.streamitems
 })
 
 export default connect(

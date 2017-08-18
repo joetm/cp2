@@ -199,8 +199,8 @@ export const fetchLikes = () =>
  * fetchAlbum Asynchronous Action Creator
  * @returns fetchAlbum() - Action
  */
-export const fetchAlbum = (albumid) =>
-    api.fetchAlbum(albumid).then(receiveAlbum)
+export const fetchAlbum = (userid) =>
+    api.fetchAlbum(userid).then(receiveAlbum)
 
 /**
  * fetchAlbum Asynchronous Action Creator
