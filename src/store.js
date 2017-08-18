@@ -22,11 +22,22 @@ if (process.env.NODE_ENV !== 'production') {
 const store = createStore(
     combineReducers({
         appState: Reducers.cpAppReducer,
-        messageHistory: Reducers.chatReducer,
-        reviewitem: Reducers.reviewReducer,
+        // multiple items
         streamitems: Reducers.streamReducer,
+        album: Reducers.streamReducer,
+        notifications: Reducers.streamReducer,
+        images: Reducers.streamReducer,
+        videos: Reducers.streamReducer,
+        likes: Reducers.streamReducer,
+        threads: Reducers.streamReducer,
+        posts: Reducers.streamReducer,
+        followers: Reducers.userReducer,
         users: Reducers.userReducer,
+        // single items
+        reviewitem: Reducers.reviewReducer,
+        user: Reducers.userReducer,
         currentUser: Reducers.currentUserReducer,
+        messageHistory: Reducers.chatReducer,
         thread: Reducers.threadReducer,
         post: Reducers.postReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key

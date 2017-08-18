@@ -17,6 +17,16 @@ const initialState = {
     },
     // -- content --
     streamitems: [],
+    posts: [],
+    threads: [],
+    images: [],
+    videos: [],
+    notifications: [],
+    likes: [],
+    album: [],
+    // --
+    followers: [],
+    users: {},
     // -- single item caching --
     thread: {},
     post: {},
@@ -26,8 +36,7 @@ const initialState = {
         messages: []
     },
     reviewitem: {},
-    followers: [],
-    users: {},
+    // --
     currentUser: {
         userid: null,
         username: 'anonymous',

@@ -77,7 +77,6 @@ class Album extends PureComponent {
 //                <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
 //                </LazyLoad>
     render() {
-      console.log(this.props.album)
       return (
         <div>
 
@@ -111,7 +110,7 @@ class Album extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    album: state.streamitems
+    album: state.album
 })
 
 export default connect(

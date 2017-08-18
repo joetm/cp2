@@ -281,7 +281,7 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
  * streamReducer
  * @returns streamState
  **/
-export function streamReducer(streamState = initialState.streamitems, action) {
+export function streamReducer(streamState = initialState.all, action) {
     switch (action.type) {
         case RECEIVE_UPDATES:
             return [...action.response]
