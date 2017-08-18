@@ -22,13 +22,14 @@ module.exports = {
         "object-fit-images",
         // "deepstream.io-client-js/dist/deepstream"
     ],
-    main: "./src/main.jsx"
+    main: "./src/main.jsx",
+    admin: "./src/admin.jsx"
   },
   output: {
     path: path.resolve('./dist'),
     publicPath: '/',
     filename: "js/[name].js"
-    // chunkFilename: "js/[id].js"
+    // chunkFilename: "js/[id].chunk.js"
   },
   devtool: debug ? "inline-sourcemap" : false,
   module: {
@@ -85,6 +86,12 @@ module.exports = {
     hot: true,
     inline: true,
     historyApiFallback: true,
+    // historyApiFallback: {
+    //   disableDotRule: true,
+    //   rewrites: [
+    //     { from: /^\/admin.html/, to: '/dist/admin.html' },
+    //   ]
+    // }
   },
   plugins: debug ?
   // -----------
@@ -118,6 +125,15 @@ module.exports = {
         cache: true,
         showErrors: true
     })
+    // new HtmlWebpackPlugin({
+    //     title: "Admin",
+    //     filename: 'admin.html',
+    //     template: '!!handlebars-loader!src/index.hbs',
+    //     inject: true,
+    //     hash: true,
+    //     cache: true,
+    //     showErrors: true
+    // })
   ]
   :
   // -----------
@@ -178,5 +194,14 @@ module.exports = {
         cache: true,
         showErrors: false
     })
+    // new HtmlWebpackPlugin({
+    //     title: "Admin",
+    //     filename: 'admin.html',
+    //     template: '!!handlebars-loader!src/index.hbs',
+    //     inject: true,
+    //     hash: true,
+    //     cache: true,
+    //     showErrors: true
+    // })
   ]
 };
