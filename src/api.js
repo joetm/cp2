@@ -33,6 +33,17 @@ export const fetchAll = () =>
     fetchStreamItemsFromAPI(null)
         .then((response) => response)
 
+export const fetchPictures = () =>
+    fetchStreamItemsFromAPI('image')
+        .then((response) => response)
+
+// alias
+export const fetchImages = fetchPictures
+
+export const fetchVideos = () =>
+    fetchStreamItemsFromAPI('video')
+        .then((response) => response)
+
 export const fetchNotifications = () =>
     fetchStreamItemsFromAPI('message')
         .then((response) => response)
@@ -41,7 +52,6 @@ export const fetchLikes = () =>
     fetchStreamItemsFromAPI('like')
         .then((response) => response)
 
-// TODO: use threadid
 export const fetchThread = (threadid) =>
     fetchStreamItemsFromAPI('thread', threadid)
         .then((response) => response)

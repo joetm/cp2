@@ -16,13 +16,13 @@ const initialState = {
         activeBadge: 0,
     },
     // -- content --
-    streamitems: [],
-    posts: [],
-    threads: [],
+    all: [],
     images: [],
     videos: [],
     notifications: [],
     likes: [],
+    posts: [],
+    threads: [],
     album: [],
     // --
     followers: [],

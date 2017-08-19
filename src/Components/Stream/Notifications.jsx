@@ -53,7 +53,7 @@ class Notifications extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    notifications: state.streamitems
+    notifications: state.notifications
 })
 
 export default connect(

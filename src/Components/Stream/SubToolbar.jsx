@@ -12,9 +12,9 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 const _ID = {
     ALL: 1,
-    PICTURES: 2,
-    VIDEOS: 3,
-    LIKES: 10,
+    PICTURES: 5,
+    VIDEOS: 8,
+    LIKES: 33,
     NOTIFICATIONS: 99,
 }
 
@@ -43,27 +43,27 @@ class SubToolbar extends React.Component {
                         <MenuItem
                             value={_ID.ALL}
                             primaryText="All"
-                            onTouchTap={() => { history.push(`${this.props.match.url}`) }}
+                            onTouchTap={() => { history.push(this.props.routes.all) }}
                         />
                         <MenuItem
                             value={_ID.PICTURES}
                             primaryText="Pictures"
-                            onTouchTap={() => { history.push(`${this.props.match.url}/pictures`) }}
+                            onTouchTap={() => { history.push(this.props.routes.pictures) }}
                         />
                         <MenuItem
                             value={_ID.VIDEOS}
                             primaryText="Videos"
-                            onTouchTap={() => { history.push(`${this.props.match.url}/videos`) }}
+                            onTouchTap={() => { history.push(this.props.routes.videos) }}
                         />
                         <MenuItem
                             value={_ID.LIKES}
                             primaryText="Likes"
-                            onTouchTap={() => { history.push(`${this.props.match.url}/likes`) }}
+                            onTouchTap={() => { history.push(this.props.routes.likes) }}
                         />
                         <MenuItem
                             value={_ID.NOTIFICATIONS}
                             primaryText="Notifications"
-                            onTouchTap={() => { history.push(`${this.props.match.url}/notifications`) }}
+                            onTouchTap={() => { history.push(this.props.routes.notifications) }}
                         />
                     </DropDownMenu>
                 </ToolbarGroup>

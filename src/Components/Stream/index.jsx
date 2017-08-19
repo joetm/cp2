@@ -8,6 +8,8 @@ import { Route, Switch } from 'react-router-dom'
 // other 'filters'
 import Stream from './Stream'
 import Likes from './Likes'
+import Videos from './Videos'
+import Pictures from './Pictures'
 import Notifications from './Notifications'
 import SubToolbar from './SubToolbar'
 
@@ -28,13 +30,13 @@ class Feed extends React.PureComponent {
         return (
             <div>
                 <SubToolbar routes={this.ROUTES} />
-                <Switch>
-                    <Route path={this.ROUTES.pictures} component={Stream} />
-                    <Route path={this.ROUTES.videos} component={Stream} />
-                    <Route path={this.ROUTES.notifications} component={Notifications} />
-                    <Route path={this.ROUTES.likes} component={Likes} />
-                    <Route component={Stream} />
-                </Switch>
+                    <Switch>
+                        <Route path={this.ROUTES.pictures} component={Pictures} />
+                        <Route path={this.ROUTES.videos} component={Videos} />
+                        <Route path={this.ROUTES.notifications} component={Notifications} />
+                        <Route path={this.ROUTES.likes} component={Likes} />
+                        <Route component={Stream} />
+                    </Switch>
             </div>
         )
     }

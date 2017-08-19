@@ -4,6 +4,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import promise from 'redux-promise'
 import { createLogger } from 'redux-logger'
+// import reduceReducers from 'reduce-reducers'
 
 import * as Reducers from './reducers'
 import { SET_DEVICE_DETAILS } from './reducers'
@@ -23,14 +24,14 @@ const store = createStore(
     combineReducers({
         appState: Reducers.cpAppReducer,
         // multiple items
-        streamitems: Reducers.streamReducer,
-        album: Reducers.streamReducer,
-        notifications: Reducers.streamReducer,
-        images: Reducers.streamReducer,
-        videos: Reducers.streamReducer,
-        likes: Reducers.streamReducer,
-        threads: Reducers.streamReducer,
-        posts: Reducers.streamReducer,
+        all: Reducers.allReducer,
+        images: Reducers.imagesReducer,
+        videos: Reducers.videosReducer,
+        likes: Reducers.likesReducer,
+        notifications: Reducers.notificationsReducer,
+        album: Reducers.albumReducer,
+        // threads: Reducers.threadsReducer,
+        posts: Reducers.postsReducer,
         followers: Reducers.userReducer,
         users: Reducers.userReducer,
         // single items

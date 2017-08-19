@@ -3,31 +3,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchAll } from '../../reducers'
+import { fetchPictures } from '../../reducers'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import StreamTpl from './StreamTpl'
 
 
-class Updates extends React.PureComponent {
+class Pictures extends React.PureComponent {
     /**
      * Render the component.
      */
     render() {
         return (
             <StreamTpl
-                action={this.props.fetchAll}
-                headline="Updates"
-                content={this.props.updates}
+                action={this.props.fetchPictures}
+                headline="Pictures"
+                content={this.props.images}
             />
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    updates: state.all
+    images: state.images
 })
 
 export default connect(
     mapStateToProps,
-    { fetchAll }
-)(Updates)
+    { fetchPictures }
+)(Pictures)

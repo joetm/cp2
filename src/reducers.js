@@ -52,6 +52,8 @@ export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
        const RECEIVE_POST             = 'FORUM::RECEIVE_POST'
        const RECEIVE_THREAD           = 'FORUM::RECEIVE_THREAD'
        const RECEIVE_ALBUM            = 'ALBUM::RECEIVE_ALBUM'
+       const RECEIVE_IMAGES           = 'STREAM::RECEIVE_IMAGES'
+       const RECEIVE_VIDEOS           = 'STREAM::RECEIVE_VIDEOS'
        const RECEIVE_UPDATES          = 'STREAM::RECEIVE_UPDATES'
        const RECEIVE_NOTIFICATIONS    = 'STREAM::RECEIVE_NOTIFICATIONS'
        const RECEIVE_LIKES            = 'STREAM::RECEIVE_LIKES'
@@ -123,6 +125,8 @@ const receiveComments              = makeActionCreator(RECEIVE_COMMENTS,       '
 const receivePosts                 = makeActionCreator(RECEIVE_POSTS,          'response')
 const receivePost                  = makeActionCreator(RECEIVE_POST,           'response')
 const receiveUpdates               = makeActionCreator(RECEIVE_UPDATES,        'response')
+const receiveImages                = makeActionCreator(RECEIVE_IMAGES,         'response')
+const receiveVideos                = makeActionCreator(RECEIVE_VIDEOS,         'response')
 const receiveThread                = makeActionCreator(RECEIVE_THREAD,         'response')
 const receiveReviewItem            = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
 const receiveMessageHistory        = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
@@ -180,6 +184,20 @@ export const fetchMessageHistory = () =>
  */
 export const fetchAll = () =>
     api.fetchAll().then(receiveUpdates)
+
+/**
+ * fetchPictures Asynchronous Action Creator
+ * @returns fetchPictures() - Action
+ */
+export const fetchPictures = () =>
+    api.fetchPictures().then(receiveImages)
+
+/**
+ * fetchVideos Asynchronous Action Creator
+ * @returns fetchVideos() - Action
+ */
+export const fetchVideos = () =>
+    api.fetchVideos().then(receiveVideos)
 
 /**
  * fetchNotifications Asynchronous Action Creator
@@ -281,20 +299,77 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
  * streamReducer
  * @returns streamState
  **/
-export function streamReducer(streamState = initialState.all, action) {
+export function allReducer(streamState = initialState.all, action) {
     switch (action.type) {
         case RECEIVE_UPDATES:
-            return [...action.response]
-        case RECEIVE_ALBUM:
-            return [...action.response]
-        case RECEIVE_NOTIFICATIONS:
-            return [...action.response]
-        case RECEIVE_LIKES:
-            return [...action.response]
-        case RECEIVE_POSTS:
             return [ ...action.response ]
         default:
             return streamState
+    }
+}
+
+/**
+ * notificationsReducer
+ * @returns notificationState
+ **/
+export function notificationsReducer(notificationState = initialState.notifications, action) {
+    switch (action.type) {
+        case RECEIVE_NOTIFICATIONS:
+            return [ ...action.response ]
+        default:
+            return notificationState
+    }
+}
+
+/**
+ * imagesReducer
+ * @returns imagesState
+ **/
+export function imagesReducer(imagesState = initialState.images, action) {
+    switch (action.type) {
+        case RECEIVE_IMAGES:
+            return [ ...action.response ]
+        default:
+            return imagesState
+    }
+}
+
+/**
+ * videosReducer
+ * @returns videosState
+ **/
+export function videosReducer(videosState = initialState.videos, action) {
+    switch (action.type) {
+        case RECEIVE_VIDEOS:
+            return [ ...action.response ]
+        default:
+            return videosState
+    }
+}
+
+/**
+ * albumReducer
+ * @returns albumState
+ **/
+export function albumReducer(albumState = initialState.album, action) {
+    switch (action.type) {
+        case RECEIVE_ALBUM:
+            return [ ...action.response ]
+        default:
+            return albumState
+    }
+}
+
+/**
+ * likesReducer
+ * @returns likesState
+ **/
+export function likesReducer(likesState = initialState.notifications, action) {
+    switch (action.type) {
+        case RECEIVE_LIKES:
+            return [ ...action.response ]
+        default:
+            return likesState
     }
 }
 
@@ -321,6 +396,19 @@ export function postReducer(postState = initialState.post, action) {
             return { ...action.response }
         default:
             return postState
+    }
+}
+
+/**
+ * postsReducer
+ * @returns postsState
+ **/
+export function postsReducer(postsState = initialState.posts, action) {
+    switch (action.type) {
+        case RECEIVE_POSTS:
+            return [ ...action.response ]
+        default:
+            return postsState
     }
 }
 

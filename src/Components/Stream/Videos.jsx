@@ -3,31 +3,32 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchAll } from '../../reducers'
+import { fetchVideos } from '../../reducers'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import StreamTpl from './StreamTpl'
 
 
-class Updates extends React.PureComponent {
+class Videos extends React.PureComponent {
     /**
      * Render the component.
      */
     render() {
+        const categorizedUpdates = categorizeList(this.props.videos)
         return (
             <StreamTpl
-                action={this.props.fetchAll}
-                headline="Updates"
-                content={this.props.updates}
+                action={this.props.fetchVideos}
+                headline="Videos"
+                content={this.props.videos}
             />
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    updates: state.all
+    videos: state.videos
 })
 
 export default connect(
     mapStateToProps,
-    { fetchAll }
-)(Updates)
+    { fetchVideos }
+)(Videos)
