@@ -16,6 +16,7 @@ class ButtonFlat extends React.PureComponent {
         this.id = props.id
         // bindings
         this.toggleButtonState = this.toggleButtonState.bind(this)
+        this.launchAction = this.launchAction.bind(this)
     }
     toggleButtonState() {
         this.setState({active: !this.state.active})
@@ -33,7 +34,7 @@ class ButtonFlat extends React.PureComponent {
                   primary={this.props.primary}
                   secondary={this.props.secondary}
                   icon={this.Icon}
-                  onTouchTap={() => this.launchAction}
+                  onTouchTap={this.launchAction}
                 />
             </div>
         )

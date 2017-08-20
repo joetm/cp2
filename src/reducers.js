@@ -38,6 +38,8 @@ export const REVIEW_APPROVE           = 'REVIEW::APPROVE'
 export const REVIEW_DISAPPROVE        = 'REVIEW::DISAPPROVE'
 export const LIKE                     = 'SOCIAL::LIKE'
 export const DISLIKE                  = 'SOCIAL::DISLIKE'
+// export const UNDO_LIKE                = 'SOCIAL::UNDO_LIKE'
+// export const UNDO_DISLIKE             = 'SOCIAL::UNDO_DISLIKE'
 export const FOLLOW_USER              = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
 export const GET_UPDATES              = 'STREAM::GET_UPDATES'
@@ -105,8 +107,10 @@ export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
 export const toggleSidebar         = makeActionCreator(TOGGLE_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
-export const like                  = makeActionCreator(LIKE,              'itemid')
-export const dislike               = makeActionCreator(DISLIKE,           'itemid')
+export const like                  = makeActionCreator(LIKE,              'itemid', 'increment')
+export const dislike               = makeActionCreator(DISLIKE,           'itemid', 'increment')
+// export const undoLike              = makeActionCreator(UNDO_LIKE,         'itemid')
+// export const undoDislike           = makeActionCreator(UNDO_DISLIKE,      'itemid')
 export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,    'itemid')
 export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE, 'itemid')
 export const sendMessage           = makeActionCreator(SEND_MESSAGE,      'toUserid', 'msg')
@@ -294,7 +298,12 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
  * @returns reviewState
  **/
 export function reviewReducer(reviewState = initialState.reviewitem, action) {
+    const increment = action.increment === undefined ? 1 : action.increment
     switch (action.type) {
+        case LIKE:
+            return { ...reviewState, likes: reviewState.likes + increment }
+        case DISLIKE:
+            return { ...reviewState, dislikes: reviewState.dislikes + increment }
         case REVIEW_APPROVE:
             return { ...reviewState, approvals: reviewState.approvals + 1 }
         case REVIEW_DISAPPROVE:

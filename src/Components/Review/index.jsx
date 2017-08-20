@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 import './style.scss'
 // --
-import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, like, dislike } from '../../reducers'
+import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, approve, reject, like, dislike } from '../../reducers'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
 // --
@@ -43,6 +43,9 @@ class Review extends React.Component {
             helpIsOpen: false,
             alertIsOpen: false,
             helpText: '',
+            isFetching: true,
+            clickedLike: false,
+            clickedDislike: false,
             // popOverImageIsOpen: false,
         }
         // bindings
@@ -66,6 +69,7 @@ class Review extends React.Component {
         if (this.request && typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
+            this.setState({isFetching: false})
             // TODO: this.props.setFetchingStatus(false)
         }
     }
@@ -105,6 +109,7 @@ class Review extends React.Component {
     approve() {
         this.props.reviewApprove(this.props.reviewitem.id)
         this.openAlert()
+        this.setState({isFetching: true})
     }
     /*
      * Reject the update.
@@ -112,19 +117,44 @@ class Review extends React.Component {
     reject() {
         this.props.reviewDisapprove(this.props.reviewitem.id)
         this.openAlert()
+        this.setState({isFetching: true})
     }
     /*
      * Like the update.
      */
     like() {
+        console.log('clicked like button')
+        if (this.state.clickedLike) {
+            return
+        }
         this.props.like(this.props.reviewitem.id)
+        if (this.state.clickedDislike) {
+            // decrease to undo a previous dislike
+            this.props.dislike(this.props.reviewitem.id, -1)
+        }
+        this.setState({
+            clickedLike: true,
+            clickedDislike: false,
+        })
         this.openAlert()
     }
     /*
      * Dislike the update.
      */
     dislike() {
+        console.log('clicked dislike button')
+        if (this.state.clickedDislike) {
+            return
+        }
         this.props.dislike(this.props.reviewitem.id)
+        if (this.state.clickedLike) {
+            // decrease to undo a previous like
+            this.props.like(this.props.reviewitem.id, -1)
+        }
+        this.setState({
+            clickedDislike: true,
+            clickedLike: false,
+        })
         this.openAlert()
     }
     /*
@@ -213,5 +243,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchReviewItem, reviewApprove, reviewDisapprove, like, dislike, setFetchingStatus }
+    { fetchReviewItem, reviewApprove, reviewDisapprove, approve, reject, like, dislike, setFetchingStatus }
 )(Review)

@@ -21,7 +21,7 @@ export class LikeButtonMini extends ButtonMini {
     Icon = <LikeIcon />
     launchAction() {
         console.log('like clicked', this)
-        this.toggleButtonState()
+        // this.toggleButtonState()
         this.props.action()
     }
 }
@@ -29,7 +29,7 @@ export class DisapproveButtonMini extends ButtonMini {
     Icon = <DisapproveIcon />
     launchAction() {
         console.log('disapprove clicked', this)
-        this.toggleButtonState()
+        // this.toggleButtonState()
         this.props.action()
     }
 }
@@ -37,7 +37,7 @@ export class FavoriteButtonMini extends ButtonMini {
     Icon = <FavoriteIcon />
     launchAction() {
         console.log('favorite clicked', this)
-        this.toggleButtonState()
+        // this.toggleButtonState()
         this.props.action()
     }
 }
@@ -45,7 +45,7 @@ export class CommentButtonMini extends ButtonMini {
     Icon = <CommentIcon />
     launchAction() {
         console.log('comment clicked', this)
-        this.toggleButtonState()
+        // this.toggleButtonState()
         this.props.action()
     }
 }
@@ -60,7 +60,7 @@ export class LikeButton extends ButtonFlat {
     Icon = <LikeIcon />
     launchAction() {
         console.log('like clicked', this)
-        this.toggleButtonState()
+        // this.toggleButtonState()
         this.props.action()
     }
 }
@@ -69,8 +69,7 @@ export class DisapproveButton extends ButtonFlat {
     tooltip = "Disapprove"
     Icon = <DisapproveIcon />
     launchAction() {
-        console.log('disapprove clicked', this)
-        this.toggleButtonState()
+        // this.toggleButtonState()
         this.props.action()
     }
 }

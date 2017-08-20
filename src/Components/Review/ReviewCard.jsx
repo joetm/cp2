@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card';
-import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons/'
+import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
 
 
 const _IMAGE_HEIGHT = 475
@@ -38,7 +38,12 @@ class ReviewCard extends React.PureComponent {
             datetime,
             src,
             likes,
-            dislikes
+            dislikes,
+            // functions
+            like,
+            dislike,
+            approve,
+            reject
         } = this.props
         return (
             <Card
@@ -60,20 +65,20 @@ class ReviewCard extends React.PureComponent {
 
                 <ApproveButton
                     primary={true}
-                    action={this.props.approve}
+                    action={approve}
                 />
                 <RejectButton
                     secondary={true}
-                    action={this.props.reject}
+                    action={reject}
                 />
 
                 <LikeButton
                     number={likes}
-                    onTouchTap={this.props.like}
+                    action={like}
                 />
                 <DisapproveButton
                     number={dislikes}
-                    onTouchTap={this.props.dislike}
+                    action={dislike}
                 />
 
               </CardActions>
