@@ -30,11 +30,7 @@ const initialState = {
     // -- single item caching --
     thread: {},
     post: {},
-    messageHistory: {
-        username: null,
-        userid: null,
-        messages: []
-    },
+    messageHistory: {},
     reviewitem: {},
     // --
     currentUser: {

@@ -17,9 +17,19 @@ export const fetchReviewItem = () =>
     fetchDataFromAPI('reviewitem')
         .then((response) => response)
 
-export const fetchMessageHistory = () =>
-    fetchDataFromAPI('messageHistory')
-        .then((response) => response)
+export const fetchMessageHistory = (userid) =>
+    fetchDataFromAPI('messageHistory', userid)
+        .then((response) => {
+            if (response === undefined) {
+                // this is the first time the message history was accessed for this user
+                // TODO: save state
+                return {
+                    username: "TODO",
+                    messages: [],
+                }
+            }
+            return response
+        })
 
 export const fetchPosts = () =>
     fetchStreamItemsFromAPI('post')

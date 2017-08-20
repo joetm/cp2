@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { fetchPictures } from '../../reducers'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import StreamTpl from './StreamTpl'
+import { Selectors } from '../../store'
 
 
 class Pictures extends React.PureComponent {
@@ -24,7 +25,7 @@ class Pictures extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    images: state.images
+    images: state.images,
 })
 
 export default connect(

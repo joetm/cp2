@@ -9,6 +9,7 @@ import { createLogger } from 'redux-logger'
 import * as Reducers from './reducers'
 import { SET_DEVICE_DETAILS } from './reducers'
 
+
 // see https://egghead.io/lessons/javascript-redux-the-middleware-chain
 const middlewares = []
 

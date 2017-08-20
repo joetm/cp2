@@ -25,7 +25,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { setActiveBadge, toggleSearchSidebar, closeSidebar, fetchCurrentUser } from '../../reducers'
+import { setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../reducers'
 import { colors } from '../../common/theme'
 import './style.css'
 // --
@@ -131,7 +131,7 @@ class NavBar extends React.Component {
         else if (! +n) { n = 0 }
         this.props.setActiveBadge(n)
 
-        this.props.closeSidebar()
+        // this.props.closeSidebar()
     }
     /**
      * Render the component.
@@ -166,7 +166,7 @@ class NavBar extends React.Component {
                             id={_NAVITEM_ID.HOME}
                             tooltip="Home"
                             style={styles.firstItem}
-                            onTouchTap={this.toggleState}
+                            onTouchTap={this.toggleState && this.openSidebar}
                             iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                         >
                             <HomeIcon />
@@ -354,6 +354,7 @@ export default withRouter(connect(
         fetchCurrentUser,
         setActiveBadge,
         closeSidebar,
+        openSidebar,
         toggleSearchSidebar
     }
 )(NavBar))

@@ -77,6 +77,16 @@ function makeActionCreator(type, ...argNames) {
   }
 }
 
+// see http://redux.js.org/docs/recipes/ReducingBoilerplate.html
+function createReducer(initialState, handlers) {
+  return function reducer(state = initialState, action) {
+    if (handlers.hasOwnProperty(action.type)) {
+      return handlers[action.type](state, action)
+    } else {
+      return state
+    }
+  }
+}
 
 // ----------------------------------------------------
 // Redux action creators
@@ -138,7 +148,6 @@ const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        '
 
 // const unknownAction = { type: UNKNOWN }
 
-
 // ----------------------------------------------------
 // Asynchronous action creators
 // ----------------------------------------------------
@@ -149,6 +158,8 @@ const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        '
  */
 export const fetchCurrentUser = () =>
     api.fetchCurrentUser().then(receiveCurrentUser)
+
+
 
 /**
  * fetchUser Asynchronous Action Creator
@@ -175,8 +186,8 @@ export const fetchPosts = () =>
  * fetchPosts Asynchronous Action Creator
  * @returns receivePosts() - Action
  */
-export const fetchMessageHistory = () =>
-    api.fetchMessageHistory().then(receiveMessageHistory)
+export const fetchMessageHistory = (userid) =>
+    api.fetchMessageHistory(userid).then(receiveMessageHistory)
 
 /**
  * fetchAll Asynchronous Action Creator
@@ -443,7 +454,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 avatar: currentUserState.avatar,
             }
         case GET_CURRENT_USER_ID:
-            if (currentUserState.userid) {
+            if (currentUserState.userid !== undefined) {
                 return currentUserState.userid
             } else {
                 return null
