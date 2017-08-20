@@ -144,7 +144,6 @@ class Review extends React.Component {
      * Like the update.
      */
     like() {
-        console.log('clicked like button')
         if (this.state.clickedLike) {
             // undo a previous dislike
             this.props.like(this.props.reviewitem.id, -1)
@@ -166,7 +165,6 @@ class Review extends React.Component {
      * Dislike the update.
      */
     dislike() {
-        console.log('clicked dislike button')
         if (this.state.clickedDislike) {
             // undo a previous dislike
             this.props.dislike(this.props.reviewitem.id, -1)

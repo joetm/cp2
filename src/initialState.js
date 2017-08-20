@@ -31,7 +31,19 @@ const initialState = {
     thread: {},
     post: {},
     messageHistory: {},
-    reviewitem: {},
+    reviewitem: {
+        id: null,
+        primaryText: null,
+        secondaryText: null,
+        fromUsername: null,
+        fromUserid: null,
+        approvals: null,
+        disapprovals: null,
+        likes: null,
+        dislikes: null,
+        src: null,
+        timestamp: null,
+    },
     // --
     currentUser: {
         userid: null,

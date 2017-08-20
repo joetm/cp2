@@ -75,11 +75,11 @@ class ReviewCard extends React.PureComponent {
                 />
 
                 <LikeButton
-                    number={likes}
+                    number={likes ? likes : ''}
                     action={like}
                 />
                 <DisapproveButton
-                    number={dislikes}
+                    number={dislikes ? dislikes : ''}
                     action={dislike}
                 />
 
