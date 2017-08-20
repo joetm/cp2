@@ -131,7 +131,7 @@ class NavBar extends React.Component {
         else if (! +n) { n = 0 }
         this.props.setActiveBadge(n)
 
-        // this.props.closeSidebar()
+        this.props.closeSidebar()
     }
     /**
      * Render the component.
@@ -166,7 +166,7 @@ class NavBar extends React.Component {
                             id={_NAVITEM_ID.HOME}
                             tooltip="Home"
                             style={styles.firstItem}
-                            onTouchTap={this.toggleState && this.openSidebar}
+                            onTouchTap={this.props.openSidebar}
                             iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                         >
                             <HomeIcon />

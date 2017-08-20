@@ -26,7 +26,6 @@ class ButtonMini extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const {tooltip} = this.props
         let iconButtonStyle
         if (this.state.deactivated) {
             iconButtonStyle = {
@@ -44,7 +43,7 @@ class ButtonMini extends React.PureComponent {
         return (
             <div style={styles.buttonStyle}>
                 <IconButton
-                    tooltip={tooltip}
+                    { ...this.props }
                     iconStyle={iconButtonStyle}
                     hoveredStyle={styles.iconButtonStyleHovered}
                     onTouchTap={this.launchAction}

@@ -66,10 +66,12 @@ class ReviewCard extends React.PureComponent {
                 <ApproveButton
                     primary={true}
                     action={approve}
+                    disabled={this.props.buttonsDisabled}
                 />
                 <RejectButton
                     secondary={true}
                     action={reject}
+                    disabled={this.props.buttonsDisabled}
                 />
 
                 <LikeButton

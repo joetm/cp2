@@ -50,6 +50,7 @@ class Review extends React.Component {
             isFetching: true,
             clickedLike: false,
             clickedDislike: false,
+            buttonsDisabled: true,
             // popOverImageIsOpen: false,
         }
         // bindings
@@ -61,10 +62,17 @@ class Review extends React.Component {
         this.openAlert = this.openAlert.bind(this)
         this.closeAlert = this.closeAlert.bind(this)
         this.handleImageClick = this.handleImageClick.bind(this)
+        this.fetchReviewItem = this.fetchReviewItem.bind(this)
+    }
+    fetchReviewItem() {
+        this.props.fetchReviewItem()
+        this.setState({
+            buttonsDisabled: false,
+            isFetching: false,
+        })
     }
     componentDidMount() {
-        // TODO: this.props.setFetchingStatus(true)
-        this.props.fetchReviewItem()
+        this.fetchReviewItem()
     }
     /*
      * Abort a running ajax request.
@@ -74,7 +82,6 @@ class Review extends React.Component {
             this.request.abort()
             this.request = null
             this.setState({isFetching: false})
-            // TODO: this.props.setFetchingStatus(false)
         }
     }
     /*
@@ -113,7 +120,12 @@ class Review extends React.Component {
     approve() {
         this.props.reviewApprove(this.props.reviewitem.id)
         this.openAlert()
-        this.setState({isFetching: true})
+        this.setState({
+            isFetching: true,
+            buttonsDisabled: true,
+        })
+        // DEV: just fetch the same item again
+        this.fetchReviewItem()
     }
     /*
      * Reject the update.
@@ -121,7 +133,12 @@ class Review extends React.Component {
     reject() {
         this.props.reviewDisapprove(this.props.reviewitem.id)
         this.openAlert()
-        this.setState({isFetching: true})
+        this.setState({
+            isFetching: true,
+            buttonsDisabled: true,
+        })
+        // DEV: just fetch the same item again
+        this.fetchReviewItem()
     }
     /*
      * Like the update.
@@ -215,18 +232,22 @@ class Review extends React.Component {
                           transitionEnterTimeout={500}
                           transitionLeaveTimeout={300}
                         >
-                            <ReviewCard
-                                {...reviewitem}
-                                datetime={humanRelativeDate(reviewitem.timestamp)}
-                                gridColumnsFull={4}
-                                gridColumnsTablet={3}
-                                gridColumnsPhone={1}
-                                approve={this.approve}
-                                reject={this.reject}
-                                like={this.like}
-                                dislike={this.dislike}
-                                handleImageClick={this.handleImageClick}
-                            />
+                            {
+                                this.state.isFetching ? null :
+                                <ReviewCard
+                                    {...reviewitem}
+                                    datetime={humanRelativeDate(reviewitem.timestamp)}
+                                    gridColumnsFull={4}
+                                    gridColumnsTablet={3}
+                                    gridColumnsPhone={1}
+                                    approve={this.approve}
+                                    reject={this.reject}
+                                    like={this.like}
+                                    dislike={this.dislike}
+                                    buttonsDisabled={this.state.buttonsDisabled}
+                                    handleImageClick={this.handleImageClick}
+                                />
+                            }
                         </ReactCSSTransitionGroup>
 
                     </div>
