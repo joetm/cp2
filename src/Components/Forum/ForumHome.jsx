@@ -30,7 +30,7 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.streamitems,
+    posts: state.posts,
 })
 
 export default connect(
