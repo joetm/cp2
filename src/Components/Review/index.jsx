@@ -33,6 +33,10 @@ const styles = {
     },
 }
 
+const initialLikeState = {
+    clickedDislike: false,
+    clickedLike: false,
+}
 
 class Review extends React.Component {
     request = null
@@ -125,6 +129,9 @@ class Review extends React.Component {
     like() {
         console.log('clicked like button')
         if (this.state.clickedLike) {
+            // undo a previous dislike
+            this.props.like(this.props.reviewitem.id, -1)
+            this.setState({ ...initialLikeState })
             return
         }
         this.props.like(this.props.reviewitem.id)
@@ -144,6 +151,9 @@ class Review extends React.Component {
     dislike() {
         console.log('clicked dislike button')
         if (this.state.clickedDislike) {
+            // undo a previous dislike
+            this.props.dislike(this.props.reviewitem.id, -1)
+            this.setState({ ...initialLikeState })
             return
         }
         this.props.dislike(this.props.reviewitem.id)
