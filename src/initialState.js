@@ -14,6 +14,14 @@ const initialState = {
         sidebarOpen: false,
         isFetching: false,
         activeBadge: 0,
+        // --
+        unread: {
+            posts: 0,
+            images: 0,
+            videos: 0,
+            messages: 0,
+            likes: 0,
+        },
     },
     // -- content --
     all: [],

@@ -24,7 +24,7 @@ const NumChip = (props) => <Chip style={styles.Chip}>{props.num}</Chip>
 
 class NotificationsMenu extends React.Component {
   render() {
-    const { userid, closeNotificationsMenu, history } = this.props
+    const { unread, userid, closeNotificationsMenu, history } = this.props
     return (
       <div>
         <Popover
@@ -39,23 +39,31 @@ class NotificationsMenu extends React.Component {
           <Menu onEscKeyDown={closeNotificationsMenu}>
             <MenuItem
               primaryText="Forum"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.FORUM}</Chip>}
+              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.posts}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
                 history.push('/forum')
               }}
             />
             <MenuItem
-              primaryText="Stream"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.STREAM}</Chip>}
+              primaryText="Images"
+              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`/stream/${userid}`)
+                history.push(`/images/${userid}`)
+              }}
+            />
+            <MenuItem
+              primaryText="Videos"
+              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
+              onTouchTap={() => {
+                closeNotificationsMenu()
+                history.push(`/videos/${userid}`)
               }}
             />
             <MenuItem
               primaryText="Messages"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.MESSAGES}</Chip>}
+              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
                 history.push(`/stream/${userid}/notifications`)
@@ -63,7 +71,7 @@ class NotificationsMenu extends React.Component {
             />
             <MenuItem
               primaryText="Likes"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.LIKES}</Chip>}
+              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
                 history.push(`/stream/${userid}/likes`)

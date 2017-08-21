@@ -17,6 +17,15 @@ const mockState = {
         sidebarOpen: false,
         isFetching: false,
         activeBadge: 0,
+        // --
+        unread: {
+            posts: 134,
+            images: 22,
+            videos: 3,
+            messages: 12,
+            likes: 89,
+        },
+        // --
         // dailyUploadLimits: {
         //     normal: {
         //         images: 1,

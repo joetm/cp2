@@ -62,6 +62,7 @@ export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
        const RECEIVE_LIKE             = 'STREAM::RECEIVE_LIKE'
        const RECEIVE_DISLIKE          = 'STREAM::RECEIVE_DISLIKE'
        const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
+       const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
 
 
 /**
@@ -149,6 +150,7 @@ const receiveLikes                 = makeActionCreator(RECEIVE_LIKES,          '
 const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,          'response')
 const receiveLike                  = makeActionCreator(RECEIVE_LIKE,           'response')
 const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
+const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -163,8 +165,6 @@ const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        '
 export const fetchCurrentUser = () =>
     api.fetchCurrentUser().then(receiveCurrentUser)
 
-
-
 /**
  * fetchUser Asynchronous Action Creator
  * @returns receiveUser() - Action
@@ -178,6 +178,13 @@ export const fetchUser = (userid) =>
  */
 export const fetchReviewItem = () =>
     api.fetchReviewItem().then(receiveReviewItem)
+
+/**
+ * fetchReviewItem Asynchronous Action Creator
+ * @returns receiveReviewItem() - Action
+ */
+export const fetchUnreadCount = () =>
+    api.fetchUnreadCount().then(receiveUnreadCount)
 
 /**
  * fetchPosts Asynchronous Action Creator
@@ -497,6 +504,8 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return { ...appState, deviceDetails: action.obj }
         case SET_ACTIVE_BADGE:
             return { ...appState, activeBadge: +action.id }
+        case RECEIVE_UNREAD_COUNT:
+            return { ...appState, unread: action.response }
         // TODO
         // ajax loading msg
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators

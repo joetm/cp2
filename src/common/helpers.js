@@ -143,3 +143,14 @@ export function navigateTo(arg) {
     // TODO
     console.log(arg)
 }
+
+// see https://stackoverflow.com/a/16449334/426266
+export const sum = (obj) => {
+  let sum = 0
+  for(let el in obj) {
+    if(obj.hasOwnProperty(el)) {
+      sum += parseInt(obj[el])
+    }
+  }
+  return sum
+}

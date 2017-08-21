@@ -21,8 +21,9 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../reducers'
+import { fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../reducers'
 import { colors } from '../../common/theme'
+import { sum } from '../../common/helpers'
 import './style.css'
 // --
 import Avatar from '../Shared/Avatar'
@@ -43,6 +44,10 @@ const NUMS = {
     LIKES: 334,
 }
 NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.MESSAGES + NUMS.LIKES
+
+const numAllNotifications = () => {
+    return 0
+}
 
 
 const _NAVITEM_ID = {
@@ -91,7 +96,6 @@ const styles = {
 //     <div style={styles.separator}></div>
 // )
 
-
 class NavBar extends React.Component {
     anchorEl = null
     constructor(props) {
@@ -111,6 +115,7 @@ class NavBar extends React.Component {
     }
     componentDidMount() {
         this.props.fetchCurrentUser()
+        this.props.fetchUnreadCount()
         this.anchorEl = findDOMNode(this.refs.notifications)
     }
     isForum() {
@@ -146,6 +151,7 @@ class NavBar extends React.Component {
      * Render the component.
      */
     render() {
+        const { unread } = this.props
         // TODO
         // const navbarIsAffixed = this.props.scrollPosition > 250
         //
@@ -218,7 +224,7 @@ class NavBar extends React.Component {
 
                     <CustomBadge
                         to={null}
-                        badgeContent={NUMS.ALLNOTIFICATIONS}
+                        badgeContent={sum(unread)}
                         secondary={true}
                         tooltip="Notifications"
                         icon={<AllNotificationsIcons />}
@@ -228,7 +234,7 @@ class NavBar extends React.Component {
                     <NotificationsMenu
                         open={this.state.notificationsMenuOpen}
                         anchorEl={this.anchorEl}
-                        nums={NUMS}
+                        unread={unread}
                         userid={this.props.userid}
                         closeNotificationsMenu={this.closeNotificationsMenu}
                     />
@@ -261,12 +267,15 @@ const mapStateToProps = (state) => ({
     userid: state.currentUser.userid,
     username: state.currentUser.username,
     avatar: state.currentUser.avatar,
+    // --
+    unread: state.appState.unread,
 })
 
 export default withRouter(connect(
     mapStateToProps,
     {
         fetchCurrentUser,
+        fetchUnreadCount,
         setActiveBadge,
         closeSidebar,
         openSidebar,

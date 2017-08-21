@@ -17,6 +17,10 @@ export const fetchReviewItem = () =>
     fetchDataFromAPI('reviewitem')
         .then((response) => response)
 
+export const fetchUnreadCount = () =>
+    fetchDataFromAPI('appState', 'unread')
+        .then((response) => response)
+
 export const fetchMessageHistory = (userid) =>
     fetchDataFromAPI('messageHistory', userid)
         .then((response) => {
