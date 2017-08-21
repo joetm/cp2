@@ -18,6 +18,8 @@ const mockState = {
         isFetching: false,
         activeBadge: 0,
         // --
+        isAuthenticated: localStorage.getItem('id_token') ? true : false,
+        // --
         unread: {
             posts: 134,
             images: 22,

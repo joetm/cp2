@@ -141,7 +141,7 @@ export function getRandomInt(min, max) {
  */
 export function navigateTo(arg) {
     // TODO
-    console.log(arg)
+    console.log('arg', arg)
 }
 
 // see https://stackoverflow.com/a/16449334/426266

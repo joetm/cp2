@@ -15,6 +15,8 @@ const initialState = {
         isFetching: false,
         activeBadge: 0,
         // --
+        isAuthenticated: false,
+        // --
         unread: {
             posts: 0,
             images: 0,

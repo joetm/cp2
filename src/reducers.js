@@ -45,6 +45,12 @@ export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
 export const GET_UPDATES              = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
 export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
+// export const LOGIN_REQUEST            = 'APP::LOGIN_REQUEST'
+// export const LOGIN_SUCCESS            = 'APP::LOGIN_SUCCESS'
+// export const LOGIN_FAILURE            = 'APP::LOGIN_FAILURE'
+// export const LOGOUT_REQUEST           = 'APP::LOGOUT_REQUEST'
+// export const LOGOUT_SUCCESS           = 'APP::LOGOUT_SUCCESS'
+// export const LOGOUT_FAILURE           = 'APP::LOGOUT_FAILURE'
 //     const UNKNOWN                  = 'APP::UNKNOWN'
 
        const RECEIVE_USER             = 'USER::RECEIVE_USER'
@@ -132,6 +138,91 @@ export const getUpdates            = makeActionCreator(GET_UPDATES)
 export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,       'id')
 export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,     'obj')
 export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS,    'bool')
+
+
+// function requestLogin(creds) {
+//   return {
+//     type: LOGIN_REQUEST,
+//     isFetching: true,
+//     isAuthenticated: false,
+//     creds
+//   }
+// }
+// function receiveLogin(user) {
+//   return {
+//     type: LOGIN_SUCCESS,
+//     isFetching: false,
+//     isAuthenticated: true,
+//     id_token: user.id_token
+//   }
+// }
+// function loginError(message) {
+//   return {
+//     type: LOGIN_FAILURE,
+//     isFetching: false,
+//     isAuthenticated: false,
+//     message
+//   }
+// }
+
+// function requestLogout() {
+//   return {
+//     type: LOGOUT_REQUEST,
+//     isFetching: true,
+//     isAuthenticated: true
+//   }
+// }
+// function receiveLogout() {
+//   return {
+//     type: LOGOUT_SUCCESS,
+//     isFetching: false,
+//     isAuthenticated: false
+//   }
+// }
+
+// Calls the API to get a token and
+// dispatches actions along the way
+// export function loginUser(creds) {
+
+//   let config = {
+//     method: 'POST',
+//     headers: { 'Content-Type':'application/x-www-form-urlencoded' },
+//     body: `username=${creds.username}&password=${creds.password}`
+//   }
+
+//   return dispatch => {
+//     // We dispatch requestLogin to kickoff the call to the API
+//     dispatch(requestLogin(creds))
+
+//     return fetch('http://localhost:3001/sessions/create', config)
+//       .then(response =>
+//         response.json().then(user => ({ user, response }))
+//             ).then(({ user, response }) =>  {
+//         if (!response.ok) {
+//           // If there was a problem, we want to
+//           // dispatch the error condition
+//           dispatch(loginError(user.message))
+//           return Promise.reject(user)
+//         } else {
+//           // If login was successful, set the token in local storage
+//           localStorage.setItem('id_token', user.id_token)
+//           localStorage.setItem('id_token', user.access_token)
+//           // Dispatch the success action
+//           dispatch(receiveLogin(user))
+//         }
+//       }).catch(err => console.log("Error: ", err))
+//   }
+// }
+
+// export function logoutUser() {
+//   return dispatch => {
+//     dispatch(requestLogout())
+//     localStorage.removeItem('id_token')
+//     localStorage.removeItem('access_token')
+//     dispatch(receiveLogout())
+//   }
+// }
+
 
 // ajax receptors
 const receiveCurrentUser           = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
@@ -506,11 +597,20 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return { ...appState, activeBadge: +action.id }
         case RECEIVE_UNREAD_COUNT:
             return { ...appState, unread: action.response }
-        // TODO
-        // ajax loading msg
+
+        // TODO - ajax loading msg
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators
         // case SET_FETCHING_STATUS:
         //     return { ...appState, isFetching: action.bool}
+
+        // case LOGIN_REQUEST:
+        //   return { ...appState, isFetching: true, isAuthenticated: false, user: action.creds }
+        // case LOGIN_SUCCESS:
+        //   return { ...appState, isFetching: false, isAuthenticated: true, errorMessage: '' }
+        // case LOGIN_FAILURE:
+        //   return { ...appState, isFetching: false, isAuthenticated: false, errorMessage: action.message }
+        // case LOGOUT_SUCCESS:
+        //   return { ...appState, isFetching: true, isAuthenticated: false }
         default:
             return appState
     }

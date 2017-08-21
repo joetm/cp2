@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card'
 import LikeAction from 'material-ui/svg-icons/action/thumb-up'
 import FavoriteAction from 'material-ui/svg-icons/action/favorite'
@@ -13,27 +14,35 @@ import { navigateTo } from '../../common/helpers'
 
 
 const Update = (props) => {
-  const { id, username, src, avatar, title,
-    gridColumnsFull, gridColumnsTablet, gridColumnsPhone } = props
+  const {
+    type, id, username, src, avatar, title,
+    gridColumnsFull, gridColumnsTablet, gridColumnsPhone,
+    history
+} = props
+  let url = '/'
+  switch(type) {
+    case 'image':
+      url = `/images/${id}`
+    case 'video':
+      url = `/videos/${id}`
+  }
   return (
     <div
       className={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
     >
-      <Card>
-        <CardMedia
-          onClick={navigateTo.bind(this)}
-        >
+      <Card
+        onTouchTap={() => history.push(url)}
+      >
+        <CardMedia>
           <img src={src} alt="" />
         </CardMedia>
         <CardHeader
           title={username}
           subtitle={'Master Jedi'}
           avatar={<Avatar src={avatar} />}
-          onClick={navigateTo.bind(this)}
         />
         <CardTitle
           title={title}
-          onClick={navigateTo.bind(this)}
           actAsExpander={false}
           expandable={false}
         />
@@ -47,4 +56,4 @@ const Update = (props) => {
   )
 }
 
-export default Update
+export default withRouter(Update)

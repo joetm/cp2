@@ -21,7 +21,7 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../reducers'
+import { loginUser, logoutUser, fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../reducers'
 import { colors } from '../../common/theme'
 import { sum } from '../../common/helpers'
 import './style.css'
@@ -141,6 +141,7 @@ class NavBar extends React.Component {
      */
     render() {
         const { unread } = this.props
+        const { dispatch, isAuthenticated, errorMessage } = this.props
         // TODO
         // const navbarIsAffixed = this.props.scrollPosition > 250
         //
@@ -241,8 +242,15 @@ class NavBar extends React.Component {
                         />
                     </Link>
 
-                    <SignupButton />
-                    <LoginButton />
+                    {!isAuthenticated &&
+                            <SignupButton />
+                    }
+                    {!isAuthenticated &&
+                            <LoginButton
+                                errorMessage={errorMessage}
+                                onLoginClick={(creds) => loginUser(creds)}
+                            />
+                    }
 
                 </ToolbarGroup>
 
@@ -264,6 +272,8 @@ const mapStateToProps = (state) => ({
 export default withRouter(connect(
     mapStateToProps,
     {
+        loginUser,
+        logoutUser,
         fetchCurrentUser,
         fetchUnreadCount,
         setActiveBadge,

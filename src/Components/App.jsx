@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+// --
 import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
 import { CookiesProvider } from 'react-cookie'
@@ -22,6 +23,7 @@ injectTapEventPlugin()
 objectFitImages()
 
 import store from '../store'
+// import DevTools from '../DevTools'
 import { setDeviceDetails } from '../reducers'
 import { theme, colors } from '../common/theme'
 // --
@@ -33,6 +35,8 @@ import Forum from './Forum'
 import Notifications from './Stream/Notifications'
 import MessageHistory from './MessageHistory'
 import Stream from './Stream'
+import Video from './Video'
+import Image from './Image'
 import Profile from './Profile'
 import Review from './Review'
 import Settings from './Settings'
@@ -45,7 +49,6 @@ import DMCA from './Legal/DMCA'
 import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
-
 
 // <ConnectedRouter history={browserHistory}>
 // </ConnectedRouter>
@@ -87,7 +90,7 @@ class App extends React.Component {
         return (
             <MuiThemeProvider muiTheme={theme}>
             <Provider store={store}>
-            <CookiesProvider>
+            {/*<CookiesProvider>*/}
 
               <div style={{backgroundColor: colors.bg}}>
 
@@ -101,6 +104,9 @@ class App extends React.Component {
                         <Route path="/notifications/:userid" component={Notifications} />
 
                         <Route path="/stream/:userid" component={Stream} />
+
+                        <Route path="/videos/:videoid" component={Video} />
+                        <Route path="/images/:imageid" component={Image} />
 
                         <Route path="/review" component={Review} />
 
@@ -135,9 +141,11 @@ class App extends React.Component {
 
                     <Sidebar />
 
+                    {/* <DevTools /> */}
+
               </div>
 
-            </CookiesProvider>
+            {/* </CookiesProvider> */}
             </Provider>
             </MuiThemeProvider>
         )

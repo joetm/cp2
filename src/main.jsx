@@ -8,6 +8,9 @@ import './default.scss'
 // import deepstream from 'deepstream.io-client-js'
 // import DeepstreamMixin from 'deepstream.io-tools-react'
 
+// promise polyfill
+require('es6-promise').polyfill()
+
 import App from './Components/App'
 
 
