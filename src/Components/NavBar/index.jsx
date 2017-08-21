@@ -12,10 +12,10 @@ import { darkBlack } from 'material-ui/styles/colors'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
-import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
+import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 // import SettingsIcon from 'material-ui/svg-icons/action/settings'
 // import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
-// import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
@@ -47,13 +47,14 @@ NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.MESSAGES + NUMS.LIKES
 
 
 const _NAVITEM_ID = {
-    HOME: 1,
-    ALLNOTIFICATIONS: 10,
-      FORUM: 12,
-      STREAM: 13,
-      MESSAGES: 20,
-      LIKES: 30,
-    REVIEW: 77,
+    MENU: 1,
+    HOME: 2,
+    REVIEW: 55,
+    ALLNOTIFICATIONS: 90,
+      FORUM: 91,
+      STREAM: 92,
+      MESSAGES: 93,
+      LIKES: 94,
     PROFILE: 98,
     SETTINGS: 99,
 }
@@ -68,7 +69,7 @@ const styles = {
         color: darkBlack,
     },
     firstItem: {
-        paddingLeft: '20px',
+        marginLeft: '10px',
     },
     separator: {
         margin: 0,
@@ -156,24 +157,53 @@ class NavBar extends React.Component {
             >
 
                 <ToolbarGroup firstChild={true}>
-{/*
+
+                    <IconButton
+                        id={_NAVITEM_ID.MENU}
+                        tooltip="Menu"
+                        style={styles.firstItem}
+                        onTouchTap={this.props.openSidebar}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+
                     <NavLink
                         to="/"
                         activeStyle={{color: colors.palette.primary1Color}}
                     >
-*/}
                         <IconButton
                             id={_NAVITEM_ID.HOME}
                             tooltip="Home"
-                            style={styles.firstItem}
-                            onTouchTap={this.props.openSidebar}
                             iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                         >
                             <HomeIcon />
                         </IconButton>
-{/*
                     </NavLink>
-*/}
+
+                </ToolbarGroup>
+
+                <ToolbarGroup>
+
+                    {
+                        !this.state.searchExpanded ? null : (
+                            <TextField
+                              hintText="Search"
+                              rows={1}
+                              rowsMax={1}
+                              style={{marginBottom: '10px', maxWidth: '150px'}}
+                              floatingLabelText="Search"
+                            />
+                        )
+                    }
+                    <IconButton
+                        tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                        onTouchTap={this.searchAction}
+                        style={styles.searchIcon}
+                    >
+                        <SearchIcon />
+                    </IconButton>
+
+
                     <div
                         className="inline-block"
                         onMouseEnter={() => { this.setState({badgesExpanded: true}) }}
@@ -260,39 +290,6 @@ class NavBar extends React.Component {
                         </ReactCSSTransitionGroup>
                     </div>
 
-                    <NavLink
-                        to="/review"
-                        activeStyle={{color: colors.palette.primary1Color}}
-                    >
-                        <ReviewIcon
-                            id={_NAVITEM_ID.REVIEW}
-                            style={styles.normalIcon}
-                            onTouchTap={this.toggleState}
-                        />
-                    </NavLink>
-
-                </ToolbarGroup>
-
-                <ToolbarGroup>
-
-                    {
-                        !this.state.searchExpanded ? null : (
-                            <TextField
-                              hintText="Search"
-                              rows={1}
-                              rowsMax={1}
-                              style={{marginBottom: '10px', maxWidth: '150px'}}
-                              floatingLabelText="Search"
-                            />
-                        )
-                    }
-                    <IconButton
-                        tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                        onTouchTap={this.searchAction}
-                        style={styles.searchIcon}
-                    >
-                        <SearchIcon />
-                    </IconButton>
 
                     <Link
                         to={`/profile/${this.props.userid}`}
