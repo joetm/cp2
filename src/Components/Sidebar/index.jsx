@@ -15,7 +15,9 @@ import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 // import ProfileIcon from 'material-ui/svg-icons/action/account-circle'
 import ProfileIcon from 'material-ui/svg-icons/social/person-outline'
-import LogoutIcon from 'material-ui/svg-icons/maps/directions-run'
+import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
+// import LogoutIcon from 'material-ui/svg-icons/maps/directions-run'
+import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
 import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../reducers'
 import routes from '../../routes'
@@ -107,6 +109,13 @@ class Sidebar extends React.Component {
                 route={`${routes.PROFILE}/${this.props.userid}`}
                 icon={<ProfileIcon />}
                 text="Your Profile"
+                onTouchTap={this.props.closeSidebar}
+            />
+
+            <MenuEntry
+                route="/settings"
+                icon={<SettingsIcon />}
+                text="Settings"
                 onTouchTap={this.props.closeSidebar}
             />
 

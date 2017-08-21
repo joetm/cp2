@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { findDOMNode } from 'react-dom'
 import { connect } from 'react-redux'
 import { Link, NavLink, withRouter } from 'react-router-dom'
 import IconMenu from 'material-ui/IconMenu'
@@ -10,11 +11,10 @@ import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { darkBlack } from 'material-ui/styles/colors'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import Popover from 'material-ui/Popover'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
-// import SettingsIcon from 'material-ui/svg-icons/action/settings'
-// import LogOutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
@@ -34,12 +34,15 @@ import CustomBadge from './CustomBadge'
 import RouterMenuItem from './RouterMenuItem'
 import LoginButton from '../Shared/Buttons/LoginButton'
 import SignupButton from '../Shared/Buttons/SignupButton'
+import NotificationsMenu from './NotificationsMenu'
 
 
 // DEV
 const NUMS = {
     FORUM: 123,
     STREAM: 45,
+    IMAGES: 12,
+    VIDEOS: 2,
     MESSAGES: 10,
     LIKES: 334,
 }
@@ -83,6 +86,9 @@ const styles = {
         marginRight: '20px',
         cursor: 'pointer',
     },
+    badgeRootStyle: {
+        cursor: 'pointer',
+    },
 }
 
 
@@ -92,21 +98,25 @@ const styles = {
 
 
 class NavBar extends React.Component {
+    anchorEl = null
     constructor(props) {
         super(props)
         this.state = {
-            badgesExpanded: false,
+            notificationsMenuOpen: false,
             searchExpanded: false,
+
         }
         // bindings
-        this.toggleNotificationBadges = this.toggleNotificationBadges.bind(this)
         this.searchAction = this.searchAction.bind(this)
         this.toggleSearchField = this.toggleSearchField.bind(this)
         this.toggleState = this.toggleState.bind(this)
         this.isForum = this.isForum.bind(this)
+        this.toggleNotificationsMenu = this.toggleNotificationsMenu.bind(this)
+        this.closeNotificationsMenu = this.closeNotificationsMenu.bind(this)
     }
     componentDidMount() {
         this.props.fetchCurrentUser()
+        this.anchorEl = findDOMNode(this.refs.notifications)
     }
     isForum() {
         return this.props.location.pathname.startsWith('/forum')
@@ -123,8 +133,11 @@ class NavBar extends React.Component {
             this.toggleSearchField()
         }
     }
-    toggleNotificationBadges() {
-        this.setState({badgesExpanded: !this.state.badgesExpanded})
+    toggleNotificationsMenu() {
+        this.setState({notificationsMenuOpen: !this.state.notificationsMenuOpen})
+    }
+    closeNotificationsMenu() {
+        this.setState({notificationsMenuOpen: false})
     }
     toggleState(num) {
         let n = num
@@ -145,11 +158,7 @@ class NavBar extends React.Component {
         if (!NUMS.ALLNOTIFICATIONS) {
             AllNotificationsIcons = NotificationsNoneIcon
         } else {
-            if (!this.state.badgesExpanded) {
-                AllNotificationsIcons = NotificationsIcon
-            } else {
-                AllNotificationsIcons = NotificationsActiveIcon
-            }
+            AllNotificationsIcons = NotificationsActiveIcon
         }
         return (
             <Toolbar
@@ -204,91 +213,21 @@ class NavBar extends React.Component {
                     </IconButton>
 
 
-                    <div
-                        className="inline-block"
-                        onMouseEnter={() => { this.setState({badgesExpanded: true}) }}
-                        onMouseLeave={() => { this.setState({badgesExpanded: false}) }}
-                    >
-
-                        <CustomBadge
-                            to={null}
-                            id={_NAVITEM_ID.ALLNOTIFICATIONS}
-                            badgeContent={NUMS.ALLNOTIFICATIONS}
-                            secondary={true}
-                            badgeStyle={styles.badgeStyle}
-                            style={styles.badgeRootStyle}
-                            tooltip="Notifications"
-                            icon={<AllNotificationsIcons />}
-                            toggleState={this.toggleNotificationBadges}
-                        />
-
-                        <ReactCSSTransitionGroup
-                            transitionName="badgeTransition"
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={300}
-                            transitionAppear={true}
-                            transitionAppearTimeout={500}
-                            style={{display:'inline-block'}}
-                        >
-                            {
-                                !this.state.badgesExpanded ? null :
-                                [
-                                    <CustomBadge
-                                        to="/stream/1"
-                                        id={_NAVITEM_ID.STREAM}
-                                        key={`badge_${_NAVITEM_ID.STREAM}`}
-                                        badgeContent={NUMS.STREAM}
-                                        secondary={true}
-                                        badgeStyle={styles.badgeStyle}
-                                        style={styles.badgeRootStyle}
-                                        tooltip="New Updates"
-                                        icon={<UpdatesIcon />}
-                                        toggleState={this.toggleState}
-                                        active={this.props.activeBadge === _NAVITEM_ID.STREAM}
-                                    />,
-                                    <CustomBadge
-                                        to="/forum"
-                                        id={_NAVITEM_ID.FORUM}
-                                        key={`badge_${_NAVITEM_ID.FORUM}`}
-                                        badgeContent={NUMS.FORUM}
-                                        secondary={true}
-                                        badgeStyle={styles.badgeStyle}
-                                        style={styles.badgeRootStyle}
-                                        tooltip="New Forum Posts"
-                                        icon={<ForumIcon />}
-                                        toggleState={this.toggleState}
-                                        active={this.props.activeBadge === _NAVITEM_ID.FORUM}
-                                    />,
-                                    <CustomBadge
-                                        to="/notifications/1"
-                                        id={_NAVITEM_ID.MESSAGES}
-                                        key={`badge_${_NAVITEM_ID.MESSAGES}`}
-                                        badgeContent={NUMS.MESSAGES}
-                                        secondary={true}
-                                        badgeStyle={styles.badgeStyle}
-                                        style={styles.badgeRootStyle}
-                                        tooltip="New Messages"
-                                        icon={<EmailIcon />}
-                                        toggleState={this.toggleState}
-                                        active={this.props.activeBadge === _NAVITEM_ID.MESSAGES}
-                                    />,
-                                    <CustomBadge
-                                        to="/likes/1"
-                                        id={_NAVITEM_ID.LIKES}
-                                        key={`badge_${_NAVITEM_ID.LIKES}`}
-                                        badgeContent={NUMS.LIKES}
-                                        secondary={true}
-                                        badgeStyle={styles.badgeStyle}
-                                        style={styles.badgeRootStyle}
-                                        tooltip="New Likes"
-                                        icon={<LikeIcon />}
-                                        toggleState={this.toggleState}
-                                        active={this.props.activeBadge === _NAVITEM_ID.LIKES}
-                                    />
-                                ]
-                            }
-                        </ReactCSSTransitionGroup>
-                    </div>
+                    <CustomBadge
+                        to={null}
+                        badgeContent={NUMS.ALLNOTIFICATIONS}
+                        secondary={true}
+                        tooltip="Notifications"
+                        icon={<AllNotificationsIcons />}
+                        ref="notifications"
+                        onTouchTap={this.toggleNotificationsMenu}
+                    />
+                    <NotificationsMenu
+                        open={this.state.notificationsMenuOpen}
+                        anchorEl={this.anchorEl}
+                        nums={NUMS}
+                        closeNotificationsMenu={this.closeNotificationsMenu}
+                    />
 
 
                     <Link
@@ -304,28 +243,6 @@ class NavBar extends React.Component {
                             active={this.props.activeBadge === _NAVITEM_ID.PROFILE}
                         />
                     </Link>
-
-{/*
-                    <IconMenu
-                        id={_NAVITEM_ID.SETTINGS}
-                        style={{cursor:'pointer'}}
-                        iconButtonElement={
-                            <IconButton><MoreVertIcon /></IconButton>
-                        }
-                    >
-                        <RouterMenuItem
-                            url={'/settings'}
-                            primaryText="Settings"
-                            icon={<SettingsIcon />}
-                        />
-                        <Divider />
-                        <RouterMenuItem
-                            url={'/logout'}
-                            primaryText="Log Out"
-                            icon={<LogOutIcon />}
-                        />
-                    </IconMenu>
-*/}
 
                     <SignupButton />
                     <LoginButton />

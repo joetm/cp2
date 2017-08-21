@@ -10,8 +10,9 @@ import { colors } from '../../common/theme'
 
 const styles = {
     badgeRootStyle: {
-        margin: 0,
+        margin: '0 20px 0 0',
         padding: '0px 10px',
+        cursor: 'pointer',
     },
     badgeStyle: {
         top: -6,
@@ -27,11 +28,7 @@ class CustomBadge extends React.PureComponent {
       deactivated: false,
     }
     // bindings
-    this.toggleActive = this.toggleActive.bind(this)
     this.wrapNavLink = this.wrapNavLink.bind(this)
-  }
-  toggleActive() {
-    this.props.toggleState(this.props.id)
   }
   wrapNavLink(Component) {
       if (this.props.to) {
@@ -66,11 +63,11 @@ class CustomBadge extends React.PureComponent {
           secondary={true}
           badgeStyle={styles.badgeStyle}
           style={styles.badgeRootStyle}
+          onTouchTap={this.props.onTouchTap}
         >
           <IconButton
             tooltip={this.props.tooltip}
             iconStyle={IconColor}
-            onTouchTap={this.toggleActive.bind(this)}
             id={this.props.id}
           >
             {this.props.icon}
