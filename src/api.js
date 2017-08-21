@@ -1,5 +1,5 @@
 
-import { fetchDataFromAPI, fetchStreamItemsFromAPI } from '../__mocks__/mockServer'
+import { fetchUnreadCountFromAPI, fetchDataFromAPI, fetchStreamItemsFromAPI } from '../__mocks__/mockServer'
 
 // -------------------------------------------------------------------------
 // DEV: ajax fetch data by key from the MockState + dispatch receive methods
@@ -18,7 +18,7 @@ export const fetchReviewItem = () =>
         .then((response) => response)
 
 export const fetchUnreadCount = () =>
-    fetchDataFromAPI('appState', 'unread')
+    fetchUnreadCountFromAPI()
         .then((response) => response)
 
 export const fetchMessageHistory = (userid) =>

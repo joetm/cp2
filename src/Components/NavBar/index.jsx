@@ -34,17 +34,6 @@ import SignupButton from '../Shared/Buttons/SignupButton'
 import NotificationsMenu from './NotificationsMenu'
 
 
-// DEV
-const NUMS = {
-    FORUM: 123,
-    STREAM: 45,
-    IMAGES: 12,
-    VIDEOS: 2,
-    MESSAGES: 10,
-    LIKES: 334,
-}
-NUMS.ALLNOTIFICATIONS = NUMS.FORUM + NUMS.STREAM + NUMS.MESSAGES + NUMS.LIKES
-
 const numAllNotifications = () => {
     return 0
 }
@@ -156,11 +145,12 @@ class NavBar extends React.Component {
         // const navbarIsAffixed = this.props.scrollPosition > 250
         //
         let AllNotificationsIcons
-        if (!NUMS.ALLNOTIFICATIONS) {
-            AllNotificationsIcons = NotificationsNoneIcon
-        } else {
+        // TODO
+        // if (!this.props.unread) {
+        //     AllNotificationsIcons = NotificationsNoneIcon
+        // } else {
             AllNotificationsIcons = NotificationsActiveIcon
-        }
+        // }
         return (
             <Toolbar
                 style={styles.navbar}

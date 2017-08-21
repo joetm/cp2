@@ -62,6 +62,44 @@ export const fetchStreamItemsFromAPI = (filter) => {
         })
 }
 
+export const fetchUnreadCountFromAPI = () => {
+    return delay(500)
+        .then(() => {
+            try {
+                // return mockState.appState.unread
+                const unread = {
+                    posts: 0,
+                    images: 0,
+                    videos: 0,
+                    messages: 0,
+                    likes: 0,
+                }
+                mockState.streamitems.forEach((item) => {
+                    switch(item.type) {
+                        case 'post':
+                            unread.posts = unread.posts + 1
+                            break
+                        case 'image':
+                            unread.images = unread.images + 1
+                            break
+                        case 'video':
+                            unread.videos = unread.videos + 1
+                            break
+                        case 'message':
+                            unread.messages = unread.messages + 1
+                            break
+                        case 'like':
+                            unread.likes = unread.likes + 1
+                            break
+                    }
+                })
+                return unread
+            } catch (e) {
+                throw new Error(e)
+            }
+        })
+}
+
 const sendDataToAPI = (payload) => {
     return delay(500)
         .then(() => {

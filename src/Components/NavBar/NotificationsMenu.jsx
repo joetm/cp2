@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom'
 import { colors } from '../../common/theme'
 
 
+const STREAM_BASE_URL = '/stream'
+
 const styles = {
   Chip: {
     cursor: 'pointer',
@@ -50,7 +52,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`/images/${userid}`)
+                history.push(`${STREAM_BASE_URL}/${userid}/images`)
               }}
             />
             <MenuItem
@@ -58,7 +60,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`/videos/${userid}`)
+                history.push(`${STREAM_BASE_URL}/${userid}/videos`)
               }}
             />
             <MenuItem
@@ -66,7 +68,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`/stream/${userid}/notifications`)
+                history.push(`${STREAM_BASE_URL}/${userid}/notifications`)
               }}
             />
             <MenuItem
@@ -74,7 +76,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`/stream/${userid}/likes`)
+                history.push(`${STREAM_BASE_URL}/${userid}/likes`)
               }}
             />
           </Menu>
