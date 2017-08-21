@@ -15,13 +15,14 @@ class SettingsMenuEntry extends React.PureComponent {
    * Render the component.
    */
   render() { // {primaryText,secondaryText, match, history}
+    const { history } = this.props
     return (
         <ListItem
           primaryText={this.props.primaryText}
           secondaryText={this.props.secondaryText}
           onTouchTap={() => {
             this.setState({selected: true});
-            this.props.history.push(this.props.match.url + this.props.url)
+            history.push(this.props.match.url + this.props.url)
           }}
         />
     )

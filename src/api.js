@@ -63,7 +63,7 @@ export const fetchLikes = () =>
         .then((response) => response)
 
 export const fetchThread = (threadid) =>
-    fetchStreamItemsFromAPI('thread', threadid)
+    fetchDataFromAPI('thread', threadid)
         .then((response) => response)
 
 

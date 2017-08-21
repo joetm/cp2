@@ -79,7 +79,6 @@ const styles = {
         cursor: 'pointer',
     },
     searchIcon: {
-        marginRight: '20px',
         cursor: 'pointer',
     },
     badgeRootStyle: {
@@ -210,7 +209,11 @@ class NavBar extends React.Component {
 
 
                     <Link to="/upload">
-                        <UploadIcon />
+                        <IconButton
+                            tooltip="Upload"
+                        >
+                            <UploadIcon />
+                        </IconButton>
                     </Link>
 
                     <CustomBadge

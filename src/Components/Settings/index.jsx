@@ -14,7 +14,8 @@ import Privacy from './Privacy'
 import styles from './styles'
 
 
-const Settings = (props) => (
+const Settings = (props) => {
+  return (
           <div style={{textAlign: 'center'}}>
             <h1>Settings</h1>
             <div style={styles.settingsBlock}>
@@ -50,6 +51,7 @@ const Settings = (props) => (
             </div>
             <Spacer />
           </div>
-)
+  )
+}
 
 export default Settings

@@ -108,7 +108,7 @@ class App extends React.Component {
                                 <Profile isScrolled={this.state.isScrolled} />
                             )} />
 
-                        <Route exact path="/settings" component={Settings} />
+                        <Route path="/settings" component={Settings} />
 
                         <Route exact path="/login" component={LoginPage} />
                         <Route exact path="/signup" component={SignupPage} />

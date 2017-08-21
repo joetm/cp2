@@ -24,7 +24,7 @@ const NumChip = (props) => <Chip style={styles.Chip}>{props.num}</Chip>
 
 class NotificationsMenu extends React.Component {
   render() {
-    const { userid, closeNotificationsMenu } = this.props
+    const { userid, closeNotificationsMenu, history } = this.props
     return (
       <div>
         <Popover
@@ -42,7 +42,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.FORUM}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                // this.props.history.push('/forum')
+                history.push('/forum')
               }}
             />
             <MenuItem
@@ -50,7 +50,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.STREAM}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                this.props.history.push(`/stream/${userid}`)
+                history.push(`/stream/${userid}`)
               }}
             />
             <MenuItem
@@ -58,7 +58,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.MESSAGES}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                this.props.history.push(`/stream/${userid}/notifications`)
+                history.push(`/stream/${userid}/notifications`)
               }}
             />
             <MenuItem
@@ -66,7 +66,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{this.props.nums.LIKES}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                this.props.history.push(`/stream/${userid}/likes`)
+                history.push(`/stream/${userid}/likes`)
               }}
             />
           </Menu>
