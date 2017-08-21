@@ -112,6 +112,7 @@
     "redux-thunk": "^2.2.0",
     "roboto-fontface": "^0.8.0",
     "simple-masonry-layout": "^1.4.0",
+    "simple-react-dropzone": "^0.1.7",
     "unfetch": "^3.0.0",
     "validator": "^8.0.0"
   },

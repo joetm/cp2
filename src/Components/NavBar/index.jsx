@@ -15,12 +15,8 @@ import Popover from 'material-ui/Popover'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
-import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
-import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
-import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
-import ForumIcon from 'material-ui/svg-icons/social/group'
 import SearchIcon from 'material-ui/svg-icons/action/search'
+import UploadIcon from 'material-ui/svg-icons/file/file-upload'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
@@ -213,6 +209,10 @@ class NavBar extends React.Component {
                     </IconButton>
 
 
+                    <Link to="/upload">
+                        <UploadIcon />
+                    </Link>
+
                     <CustomBadge
                         to={null}
                         badgeContent={NUMS.ALLNOTIFICATIONS}
@@ -226,13 +226,11 @@ class NavBar extends React.Component {
                         open={this.state.notificationsMenuOpen}
                         anchorEl={this.anchorEl}
                         nums={NUMS}
+                        userid={this.props.userid}
                         closeNotificationsMenu={this.closeNotificationsMenu}
                     />
 
-
-                    <Link
-                        to={`/profile/${this.props.userid}`}
-                    >
+                    <Link to={`/profile/${this.props.userid}`}>
                         <Avatar
                             id={_NAVITEM_ID.PROFILE}
                             visible={true}

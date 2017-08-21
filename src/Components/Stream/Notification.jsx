@@ -12,13 +12,15 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 import { grey400 } from 'material-ui/styles/colors'
 
+import { colors } from '../../common/theme'
+
 
 const rightIconMenu = (
     <IconMenu iconButtonElement={(
       <IconButton
-        touch={true}
         tooltip="more"
         tooltipPosition="bottom-left"
+        onTouchTap={(e) => {e.stopPropagation()}}
       >
         <MoreVertIcon color={grey400} />
       </IconButton>
@@ -45,7 +47,11 @@ class Notification extends React.PureComponent {
               leftAvatar={<Avatar src={this.props.avatar} />}
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={this.props.title}
-              secondaryText={this.props.username}
+              secondaryText={<p>
+                {`${this.props.username}`}
+                {' '}-{' '}
+                {`${this.props.content}`}
+              </p>}
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}

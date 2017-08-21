@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import { toggleSidebar } from '../../reducers'
+import { closeSearchSidebar } from '../../reducers'
 // --
 import Spacer from '../Shared/Spacer'
 import SearchSidebar from '../Sidebar/SearchSidebar'
@@ -26,7 +26,7 @@ class Forum extends React.Component {
                     <Route component={ForumHome} />
                 </Switch>
                 <SearchSidebar
-                    toggleSidebar={this.props.toggleSidebar}
+                    closeSidebar={this.props.closeSearchSidebar}
                     open={this.props.sidebarSearchOpen}
                 />
                 <Spacer />
@@ -45,5 +45,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
     mapStateToProps,
-    { toggleSidebar }
+    { closeSearchSidebar }
 )(Forum)

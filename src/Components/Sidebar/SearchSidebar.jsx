@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import Chip from 'material-ui/Chip'
 // --
-import SearchIcon from 'material-ui/svg-icons/action/search'
+// import SearchIcon from 'material-ui/svg-icons/action/search'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import EnterIcon from 'material-ui/svg-icons/action/get-app'
 
@@ -103,11 +103,10 @@ class Sidebar extends React.Component {
                     style={styles.navbar}
                 >
                     <ToolbarGroup firstChild={true}>
-                        <SearchIcon style={styles.icon} />
                         <TextField
                             hintText="Search"
                             fullWidth={false}
-                            style={{width: '130px'}}
+                            style={{marginLeft: '20px', width: '150px'}}
                             onChange={(event, inputValue) => this.handleChangeSearchField}
                         />
                         <EnterIcon
@@ -118,7 +117,7 @@ class Sidebar extends React.Component {
                     <ToolbarGroup>
                         <CloseIcon
                             style={styles.icon}
-                            onTouchTap={this.props.toggleSidebar}
+                            onTouchTap={this.props.closeSidebar}
                         />
                     </ToolbarGroup>
                 </Toolbar>
