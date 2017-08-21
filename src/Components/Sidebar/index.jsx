@@ -88,6 +88,13 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
+                route={routes.FORUM}
+                icon={<ForumIcon />}
+                text="Forum"
+                onTouchTap={this.props.closeSidebar}
+            />
+
+            <MenuEntry
                 route={`${routes.NOTIFICATIONS}/${this.props.userid}`}
                 icon={<EmailIcon />}
                 text="Messages"
