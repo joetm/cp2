@@ -36,6 +36,7 @@ const styles = {
     verticalAlign: 'middle',
     margin: 0,
     padding: 0,
+    paddingTop: '10px',
   },
 }
 
@@ -60,45 +61,54 @@ const MenuEntry = (props) => (
 
 class Sidebar extends React.Component {
     render() {
+        const { closeSidebar, userid } = this.props
         return (
           <Drawer
             docked={true}
             width={200}
             open={this.props.sidebarOpen}
             tabIndex="0"
-            onBlur={this.props.closeSidebar}
+            onBlur={closeSidebar}
             // onRequestChange={(open) => this.setState({open})}
           >
+
             <div style={styles.logoContainer}>
-                <h1 style={styles.logo}>CP v2</h1>
+                <NavLink to="/">
+                    <h1
+                        style={styles.logo}
+                        onTouchTap={closeSidebar}
+                    >CP v2</h1>
+                </NavLink>
             </div>
 
+            {/*
             <MenuEntry
                 route={routes.HOME}
                 icon={<HomeIcon />}
                 text="Home"
                 onTouchTap={this.props.closeSidebar}
             />
+            */}
 
             <MenuEntry
-                route={`${routes.STREAM}/${this.props.userid}`}
+                route={`${routes.STREAM}/${userid}`}
                 icon={<UpdatesIcon />}
                 text="New Updates"
-                onTouchTap={this.props.closeSidebar}
+                onTouchTap={closeSidebar}
             />
 
             <MenuEntry
                 route={routes.FORUM}
                 icon={<ForumIcon />}
                 text="Forum"
-                onTouchTap={this.props.closeSidebar}
+                onTouchTap={closeSidebar}
             />
 
             <MenuEntry
-                route={`${routes.NOTIFICATIONS}/${this.props.userid}`}
+                route={`${routes.NOTIFICATIONS}/${userid}`}
                 icon={<EmailIcon />}
                 text="Messages"
-                onTouchTap={this.props.closeSidebar}
+                onTouchTap={closeSidebar}
             />
 
             <Divider />
@@ -107,13 +117,13 @@ class Sidebar extends React.Component {
                 route="/review"
                 icon={<ReviewIcon />}
                 text="Review"
-                onTouchTap={this.props.closeSidebar}
+                onTouchTap={closeSidebar}
             />
 
             <Divider />
 
             <MenuEntry
-                route={`${routes.PROFILE}/${this.props.userid}`}
+                route={`${routes.PROFILE}/${userid}`}
                 icon={<ProfileIcon />}
                 text="Your Profile"
                 onTouchTap={this.props.closeSidebar}
