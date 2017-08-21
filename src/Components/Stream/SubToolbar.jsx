@@ -12,10 +12,11 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 const _ID = {
     ALL: 1,
-    PICTURES: 5,
+    STREAM: 3,
+    IMAGES: 5,
     VIDEOS: 8,
-    LIKES: 33,
-    NOTIFICATIONS: 99,
+    NOTIFICATIONS: 44,
+    LIKES: 88,
 }
 
 const expandButton = <IconButton><NavigationExpandMoreIcon /></IconButton>
@@ -46,7 +47,7 @@ class SubToolbar extends React.Component {
                             onTouchTap={() => { history.push(this.props.routes.all) }}
                         />
                         <MenuItem
-                            value={_ID.PICTURES}
+                            value={_ID.IMAGES}
                             primaryText="Pictures"
                             onTouchTap={() => { history.push(this.props.routes.pictures) }}
                         />
@@ -56,14 +57,14 @@ class SubToolbar extends React.Component {
                             onTouchTap={() => { history.push(this.props.routes.videos) }}
                         />
                         <MenuItem
-                            value={_ID.LIKES}
-                            primaryText="Likes"
-                            onTouchTap={() => { history.push(this.props.routes.likes) }}
-                        />
-                        <MenuItem
                             value={_ID.NOTIFICATIONS}
                             primaryText="Notifications"
                             onTouchTap={() => { history.push(this.props.routes.notifications) }}
+                        />
+                        <MenuItem
+                            value={_ID.LIKES}
+                            primaryText="Likes"
+                            onTouchTap={() => { history.push(this.props.routes.likes) }}
                         />
                     </DropDownMenu>
                 </ToolbarGroup>
@@ -71,6 +72,8 @@ class SubToolbar extends React.Component {
                     <IconMenu iconButtonElement={expandButton}>
                         <MenuItem primaryText="Mark All Pictures Read" />
                         <MenuItem primaryText="Mark All Videos Read" />
+                        <MenuItem primaryText="Mark All Notifications Read" />
+                        <MenuItem primaryText="Mark All Likes Read" />
                         <MenuItem primaryText="Mark All Read" />
                     </IconMenu>
                 </ToolbarGroup>
