@@ -43,6 +43,23 @@ export const fetchPosts = () =>
     fetchStreamItemsFromAPI('post')
         .then((response) => response)
 
+export const fetchThreads = () =>
+    fetchStreamItemsFromAPI('post')
+        .then((response) => {
+            // TODO : only return the first post in a thread
+            const ret = []
+            const threadids = []
+            response.forEach(item => {
+                if (item.threadid) {
+                    if (threadids.indexOf(item.threadid) === -1) {
+                        threadids.push(item.threadid)
+                        ret.push(item)
+                    }
+                }
+            })
+            return ret
+        })
+
 export const fetchAlbum = (userid) =>
     fetchStreamItemsFromAPI('image')
         .then((response) => response)

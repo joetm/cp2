@@ -3,6 +3,10 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
+import StopIcon from 'material-ui/svg-icons/av/stop'
+import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
+import PauseIcon from 'material-ui/svg-icons/av/pause'
+import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
 
 import ReactPlayer from 'react-player'
 import Duration from './Duration'
@@ -119,9 +123,14 @@ class VideoPlayer extends Component {
 
           <div>
               <h3>Controls</h3>
-                <button onClick={this.stop}>Stop</button>
+                <StopIcon onClick={this.stop} />
+                <PlayIcon onClick={this.playPause} />
+                <PauseIcon onClick={this.playPause} />
+
                 <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>
-                <button onClick={this.onClickFullscreen}>Fullscreen</button>
+
+                <FullScreenIcon onClick={this.onClickFullscreen} />
+
                 <button onClick={this.setPlaybackRate} value={1}>1</button>
                 <button onClick={this.setPlaybackRate} value={1.5}>1.5</button>
                 <button onClick={this.setPlaybackRate} value={2}>2</button>

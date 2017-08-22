@@ -47,6 +47,7 @@ const mockState = {
             username: "Gonzales",
             avatar: '/img/avatar/face-13.jpg',
             tags: [],
+            threadid: null,
             timestamp: 1501229377,
         },
         {
@@ -59,6 +60,7 @@ const mockState = {
             username: "Joe",
             avatar: '/img/avatar/face-4.jpg',
             tags: [],
+            threadid: null,
             timestamp: 1501229577,
         },
         {
@@ -71,6 +73,7 @@ const mockState = {
             username: "Joe",
             avatar: '/img/avatar/face-4.jpg',
             tags: [],
+            threadid: null,
             timestamp: 1501229577,
         },
         {
@@ -83,6 +86,7 @@ const mockState = {
             username: "Gonzo",
             avatar: "/img/avatar/face-4.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1502788349,
         },
         {
@@ -95,6 +99,7 @@ const mockState = {
             username: "Mark",
             avatar: "/img/avatar/face-5.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1502789349,
         },
         {
@@ -107,6 +112,7 @@ const mockState = {
             username: "Brato",
             avatar: "/img/avatar/face-6.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1502789349,
         },
         {
@@ -119,6 +125,7 @@ const mockState = {
             username: "Gamel, John J.",
             avatar: "/img/avatar/face.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1502788349,
         },
         {
@@ -131,6 +138,7 @@ const mockState = {
             username: "System Bot",
             avatar: '',
             tags: [],
+            threadid: null,
             timestamp: 1502788549,
         },
         {
@@ -143,6 +151,7 @@ const mockState = {
             username: "Gamel, John J.",
             avatar: "/img/avatar/face-2.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1502789349,
         },
         {
@@ -155,6 +164,7 @@ const mockState = {
             username: "Brandan Lim",
             avatar: "/img/avatar/face-1.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1501229377,
         },
         {
@@ -166,7 +176,8 @@ const mockState = {
             userid: 8,
             username: "Grace Ng",
             avatar: "/img/avatar/face-7.jpg",
-            tags: [],
+            tags: ["thread-1"],
+            threadid: 1,
             timestamp: 1501229177,
         },
         {
@@ -179,6 +190,7 @@ const mockState = {
             username: "Kerem Suer",
             avatar: "/img/avatar/face-3.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1501229077,
         },
         {
@@ -191,6 +203,7 @@ const mockState = {
             username: "Raquel Parrado",
             avatar: "/img/avatar/face-4.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1501220077,
         },
         {
@@ -203,6 +216,7 @@ const mockState = {
             username: "Brandan Lim",
             avatar: "/img/avatar/face-5.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1501200077,
         },
         {
@@ -214,7 +228,8 @@ const mockState = {
             userid: 2,
             username: "Grace Ng",
             avatar: "/img/avatar/face-6.jpg",
-            tags: [],
+            tags: ["thread-2"],
+            threadid: 2,
             timestamp: 1501000077,
         },
         {
@@ -226,7 +241,8 @@ const mockState = {
             userid: 8,
             username: "Kerem Suer",
             avatar: "/img/avatar/face-7.jpg",
-            tags: [],
+            tags: ["thread-2"],
+            threadid: 2,
             timestamp: 1501000057,
         },
         {
@@ -239,6 +255,7 @@ const mockState = {
             username: "Raquel Parrado",
             avatar: "/img/avatar/face-8.jpg",
             tags: [],
+            threadid: null,
             timestamp: 1500000057,
         },
         {
@@ -251,6 +268,7 @@ const mockState = {
             username: "Joe",
             avatar: "/img/avatar/face-9.jpg",
             tags: ["cars", "thread-123"],
+            threadid: 123,
             timestamp: 1501135362,
         },
         {
@@ -263,6 +281,7 @@ const mockState = {
             username: "Moe",
             avatar: "/img/avatar/face-10.jpg",
             tags: ["dinosaurs", "thread-123"],
+            threadid: 123,
             timestamp: 1501185342,
         },
         {
@@ -275,6 +294,7 @@ const mockState = {
             username: "Toe",
             avatar: "/img/avatar/face-11.jpg",
             tags: ["forums", "dinosaurs", "thread-124"],
+            threadid: 124,
             timestamp: 1501188342,
         },
         {
@@ -287,6 +307,7 @@ const mockState = {
             username: "Hogo",
             avatar: "/img/avatar/face-12.jpg",
             tags: ["forums", "dinosaurs", "thread-124"],
+            threadid: 124,
             timestamp: 1501198342,
         },
         {
@@ -299,6 +320,7 @@ const mockState = {
             username: "GG",
             avatar: "/img/avatar/face-13.jpg",
             tags: ["hello"],
+            threadid: null,
             timestamp: 1501239377,
         },
     ],

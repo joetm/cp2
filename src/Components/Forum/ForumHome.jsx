@@ -3,25 +3,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPosts } from '../../reducers'
+import { fetchThreads } from '../../reducers'
 import Posts from './Posts'
 
 
 class ForumHome extends React.Component {
     componentDidMount() {
-        this.props.fetchPosts()
+        this.props.fetchThreads()
     }
     // componentDidUpdate(prevProps) {
-    //     this.props.fetchPosts()
+    //     this.props.fetchThreads()
     // }
     render() {
-        const { posts } = this.props
+        const { threads } = this.props
+        console.log('threads', threads)
         return (
             <div>
                 <h2>Forum</h2>
                 <div>
-                    {posts && posts.length > 0 &&
-                        <Posts {...{posts}} />
+                    {threads && threads.length > 0 &&
+                        <Posts posts={threads} />
                     }
                 </div>
             </div>
@@ -30,10 +31,10 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.posts,
+    threads: state.threads,
 })
 
 export default connect(
     mapStateToProps,
-    { fetchPosts }
+    { fetchThreads }
 )(ForumHome)

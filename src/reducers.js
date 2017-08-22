@@ -56,6 +56,7 @@ export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
        const RECEIVE_USER             = 'USER::RECEIVE_USER'
        const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
        const RECEIVE_COMMENTS         = 'PROFILE::RECEIVE_COMMENTS'
+       const RECEIVE_THREADS          = 'FORUM::RECEIVE_THREADS'
        const RECEIVE_POSTS            = 'FORUM::RECEIVE_POSTS'
        const RECEIVE_POST             = 'FORUM::RECEIVE_POST'
        const RECEIVE_THREAD           = 'FORUM::RECEIVE_THREAD'
@@ -229,6 +230,7 @@ const receiveCurrentUser           = makeActionCreator(RECEIVE_CURRENT_USER,   '
 const receiveUser                  = makeActionCreator(RECEIVE_USER,           'response', 'userid')
 const receiveComments              = makeActionCreator(RECEIVE_COMMENTS,       'response')
 const receivePosts                 = makeActionCreator(RECEIVE_POSTS,          'response')
+const receiveThreads               = makeActionCreator(RECEIVE_THREADS,        'response')
 const receivePost                  = makeActionCreator(RECEIVE_POST,           'response')
 const receiveUpdates               = makeActionCreator(RECEIVE_UPDATES,        'response')
 const receiveImages                = makeActionCreator(RECEIVE_IMAGES,         'response')
@@ -283,6 +285,13 @@ export const fetchUnreadCount = () =>
  */
 export const fetchPosts = () =>
     api.fetchPosts().then(receivePosts)
+
+/**
+ * fetchThreads Asynchronous Action Creator
+ * @returns receiveThreads() - Action
+ */
+export const fetchThreads = () =>
+    api.fetchThreads().then(receiveThreads)
 
 /**
  * fetchPosts Asynchronous Action Creator
@@ -527,6 +536,19 @@ export function postsReducer(postsState = initialState.posts, action) {
             return [ ...action.response ]
         default:
             return postsState
+    }
+}
+
+/**
+ * threadsReducer
+ * @returns threadsState
+ **/
+export function threadsReducer(threadsState = initialState.threads, action) {
+    switch (action.type) {
+        case RECEIVE_THREADS:
+            return [ ...action.response ]
+        default:
+            return threadsState
     }
 }
 

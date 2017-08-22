@@ -111,6 +111,13 @@ class Sidebar extends React.Component {
                 onTouchTap={closeSidebar}
             />
 
+            <MenuEntry
+                route={`${routes.LIKES}/${userid}`}
+                icon={<LikeIcon />}
+                text="Likes"
+                onTouchTap={closeSidebar}
+            />
+
             <Divider />
 
             <MenuEntry
