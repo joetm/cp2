@@ -3,6 +3,8 @@
  * Redux actions and reducers
  **/
 
+import cuid from 'cuid'
+
 import initialState from './initialState'
 import * as api from './api'
 
@@ -121,7 +123,7 @@ export const dislike               = makeActionCreator(DISLIKE,           'itemi
 // export const undoDislike           = makeActionCreator(UNDO_DISLIKE,      'itemid')
 export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,    'itemid')
 export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE, 'itemid')
-export const sendMessage           = makeActionCreator(SEND_MESSAGE,      'toUserid', 'msg')
+export const sendMessage           = makeActionCreator(SEND_MESSAGE,      'toUserid', 'msg', 'currentUser')
 
 // forum actions
 export const getPosts              = makeActionCreator(GET_POSTS)
@@ -386,10 +388,16 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
         case SEND_MESSAGE:
             const messageHistoryState = { ...chatState }
             messageHistoryState.messages.push({
-                msg: action.msg.trim(),
-                username: 'me',
-                userid: 1,
-                avatar: '/img/avatar/face.jpg',
+                type: "message",
+                id: cuid(),
+                title: null,
+                content: action.msg.trim(),
+                src: null,
+                userid: action.currentUser.userid,
+                username: action.currentUser.username,
+                avatar: action.currentUser.avatar,
+                tags: [],
+                threadid: null,
                 timestamp: Math.round(Date.now() / 1000),
             })
             return messageHistoryState

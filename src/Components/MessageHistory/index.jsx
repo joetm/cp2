@@ -75,7 +75,7 @@ class MessageHistory extends React.PureComponent {
   submitMsg() {
     let msg = this.refs.inputfield.getValue().trim()
     if (msg) {
-      this.props.sendMessage(this.props.messageHistory.userid, msg)
+      this.props.sendMessage(this.props.messageHistory.userid, msg, this.props.currentUser)
       // clear the input field
       this.refs.inputfield.getInputNode().value = ''
       // reset number of rows in the input field
@@ -91,6 +91,9 @@ class MessageHistory extends React.PureComponent {
     const { messageHistory } = this.props
     const messages = messageHistory.messages !== undefined ? messageHistory.messages : []
     const errorMsg = !messages.length ? <div style={styles.errorMsg}>No messages.</div> : null
+
+    console.log('messages', messages)
+
     return (
       <div>
       <h2>Private Message History</h2>
@@ -127,7 +130,8 @@ class MessageHistory extends React.PureComponent {
               style={{...styles.chip, ...{float: this.props.currentUserid === item.userid ? 'right': 'left'}}}
               >
                 <Avatar src={item.avatar} />
-                { parser.toReact(item.content) }
+                {/* parser.toReact(item.content) */}
+                { item.content }
               </Chip>
             </div>
             ))
@@ -173,7 +177,8 @@ class MessageHistory extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   messageHistory: state.messageHistory,
-  currentUserid: state.currentUser.userid
+  currentUserid: state.currentUser.userid,
+  currentUser: state.currentUser,
 })
 
 export default connect(

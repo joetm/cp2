@@ -77,18 +77,9 @@ class Sidebar extends React.Component {
                     <h1
                         style={styles.logo}
                         onTouchTap={closeSidebar}
-                    >CP v2</h1>
+                    >SocNet v2</h1>
                 </NavLink>
             </div>
-
-            {/*
-            <MenuEntry
-                route={routes.HOME}
-                icon={<HomeIcon />}
-                text="Home"
-                onTouchTap={this.props.closeSidebar}
-            />
-            */}
 
             <MenuEntry
                 route={`${routes.STREAM}/${userid}`}
