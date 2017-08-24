@@ -13,8 +13,6 @@ import ReactPlayer from 'react-player'
 import Duration from './Duration'
 import { colors } from '../../common/theme'
 
-import './style'
-
 
 const styles = {
   controls: {
@@ -30,7 +28,7 @@ const styles = {
     margin: '0 0 0 10px',
   },
   progressIndicator: {
-    height:'10px',
+    height: '10px',
     width: '100%',
     margin: '0 auto',
     padding: 0,
@@ -38,12 +36,6 @@ const styles = {
 }
 const iconColor = colors.black
 
-
-const MULTIPLE_SOURCES = [
-  { src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4', type: 'video/mp4' },
-  { src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv', type: 'video/ogv' },
-  { src: 'http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm', type: 'video/webm' }
-]
 
 class VideoPlayer extends Component {
   state = {
@@ -76,7 +68,7 @@ class VideoPlayer extends Component {
     console.log('Setting playback speed to ', parseFloat(e.target.value))
     this.setState({ playbackRate: parseFloat(e.target.value) })
   }
-  onSeekMouseDown = e => {
+  onSeekMouseDown = () => {
     this.setState({ seeking: true })
   }
   onSeekChange = (e, newValue) => {
@@ -92,7 +84,7 @@ class VideoPlayer extends Component {
   onError = (e) => {
     console.log('onError', e)
   }
-  onSeekMouseUp = e => {
+  onSeekMouseUp = () => {
     this.setState({ seeking: false })
     // TODO
     // this.player.seekTo(parseFloat(e.target.value))
@@ -128,14 +120,14 @@ class VideoPlayer extends Component {
     } = this.state
 
     return (
-      <div className='app'>
-        <section className='section'>
-          <div className='player-wrapper'>
+      <div className="app">
+        <section className="section">
+          <div className="player-wrapper">
             <ReactPlayer
               ref={player => { this.player = player }}
-              className='react-player'
-              width='100%'
-              height='100%'
+              className="react-player"
+              width="100%"
+              height="100%"
               url={'https://www.youtube.com/watch?v=oUFJJNQGwhk'}
               playing={playing}
               playbackRate={playbackRate}
@@ -152,7 +144,7 @@ class VideoPlayer extends Component {
               onEnded={() => this.setState({ playing: false })}
               onError={this.onError}
               onProgress={this.onProgress}
-              onDuration={duration => this.setState({ duration })}
+              onDuration={(theduration) => this.setState({ duration: theduration })}
             />
             {/*
               onMouseEnter={() => this.setState({controlsShowing: true})}
@@ -222,11 +214,11 @@ class VideoPlayer extends Component {
 
           <div>
               <h3>Volume</h3>
-                <input type='range' min={0} max={1} step='any' value={volume} onChange={this.setVolume} />
+                <input type="range" min={0} max={1} step="any" value={volume} onChange={this.setVolume} />
           </div>
 
         </section>
-        <section className='section'>
+        <section className="section">
 
           <h2>State</h2>
 

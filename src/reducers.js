@@ -90,15 +90,15 @@ function makeActionCreator(type, ...argNames) {
 }
 
 // see http://redux.js.org/docs/recipes/ReducingBoilerplate.html
-function createReducer(initialState, handlers) {
-  return function reducer(state = initialState, action) {
-    if (handlers.hasOwnProperty(action.type)) {
-      return handlers[action.type](state, action)
-    } else {
-      return state
-    }
-  }
-}
+// function createReducer(initialState, handlers) {
+//   return function reducer(state = initialState, action) {
+//     if (handlers.hasOwnProperty(action.type)) {
+//       return handlers[action.type](state, action)
+//     } else {
+//       return state
+//     }
+//   }
+// }
 
 // ----------------------------------------------------
 // Redux action creators

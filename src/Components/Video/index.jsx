@@ -1,26 +1,12 @@
 /** @flow */
 
 import React from 'react'
-import ReactPlayer from 'react-player'
 
-import { colors } from '../../common/theme'
 import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
 
 
-const styles = {
-}
-
 class Video extends React.Component {
-    constructor(props) {
-        super(props)
-        // state
-        this.state = {
-        }
-        // bindings
-    }
-    componentDidMount() {
-    }
     /**
      * Render the component.
      */
