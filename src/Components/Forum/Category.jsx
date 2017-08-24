@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getPosts } from '../../reducers'
+import { getPosts } from '../../actions'
 import Posts from './Posts'
 
 

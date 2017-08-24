@@ -3,7 +3,7 @@
 import React from 'react'
 
 import Spacer from '../Shared/Spacer'
-import Footer from '../Footer/'
+import Footer from '../Footer'
 import './style.scss'
 
 

@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
-import {ListItem} from 'material-ui/List'
-import {grey400, darkBlack} from 'material-ui/styles/colors'
+import { ListItem } from 'material-ui/List'
+import { grey400, darkBlack } from 'material-ui/styles/colors'
 
 
 /**

@@ -9,7 +9,6 @@ import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outli
 import Avatar from 'material-ui/Avatar'
 
 import { LikeButton, FavoriteButton, CommentButton } from './Button'
-
 import { navigateTo } from '../../common/helpers'
 
 

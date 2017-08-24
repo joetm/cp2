@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import AjaxLoader from '../Shared/AjaxLoader'
 import Spacer from '../Shared/Spacer'
 import Update from '../Stream/Update'
-import { fetchAlbum } from '../../reducers'
+import { fetchAlbum } from '../../actions'
 
 
 const _LAZYLOAD_OFFSET = 250

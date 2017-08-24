@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import {red400, grey400, darkBlack} from 'material-ui/styles/colors'
+import { red400, grey400, darkBlack } from 'material-ui/styles/colors'
 import IconButton from 'material-ui/IconButton'
 
 import styles from './styles'

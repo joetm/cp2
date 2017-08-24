@@ -6,7 +6,7 @@ import { List } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 
-import { fetchLikes } from '../../reducers'
+import { fetchLikes } from '../../actions'
 import { categorizeList, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import Like from './Like'
 import Spacer from '../Shared/Spacer'

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
 
-import { fetchThread } from '../../reducers'
+import { fetchThread } from '../../actions'
 import Posts from './Posts'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import BackIcon from 'material-ui/svg-icons/content/undo';

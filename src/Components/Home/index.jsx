@@ -3,17 +3,18 @@
 import React from 'react'
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
-import {List} from 'material-ui/List'
+import { List } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar';
 import { darkBlack } from 'material-ui/styles/colors'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import Footer from '../Footer/'
+import Footer from '../Footer'
 // --
 import Notification from '../Stream/Notification'
 import Update from '../Stream/Update'
 import Like from '../Stream/Like'
+import Chat from '../Chat'
 
 
 const boxStyle = {
@@ -25,7 +26,11 @@ const Home = () => (
   <div>
     <div className="mdc-layout-grid">
       <div className="mdc-layout-grid__inner">
-        <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--order-2">
+        <div className="mdc-layout-grid__cell
+                        mdc-layout-grid__cell--span-6
+                        mdc-layout-grid__cell--span-8-tablet
+                        mdc-layout-grid__cell--span-4-phone
+                        mdc-layout-grid__cell--order-2">
             <Paper style={boxStyle} zDepth={1}>
                 <List>
                     <Update
@@ -144,9 +149,13 @@ const Home = () => (
                 </List>
             </Paper>
         </div>
-        <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4  mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--order-1">
+        <div className="mdc-layout-grid__cell
+                        mdc-layout-grid__cell--span-6
+                        mdc-layout-grid__cell--span-8-tablet
+                        mdc-layout-grid__cell--span-4-phone
+                        mdc-layout-grid__cell--order-1">
             <Paper style={boxStyle} zDepth={1}>
-                activity stream
+                <Chat />
             </Paper>
         </div>
       </div>

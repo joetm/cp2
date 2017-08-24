@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
@@ -15,7 +16,9 @@ class Video extends React.Component {
             <div>
                 <h2>Video TITLE</h2>
 
-                <VideoPlayer />
+                <VideoPlayer
+                    src={"https://www.youtube.com/watch?v=oUFJJNQGwhk"}
+                />
 
                 <Spacer />
 
@@ -24,14 +27,12 @@ class Video extends React.Component {
     }
 }
 
-// const mapStateToProps = (state) => ({
-//     image: state.image,
-//     isFetching: state.appState.isFetching,
-// })
+const mapStateToProps = (state) => ({
+    video: state.video,
+    isFetching: state.appState.isFetching,
+})
 
-// export default connect(
-//     mapStateToProps,
-//     { fetchReviewItem, reviewApprove, reviewDisapprove, approve, reject, like, dislike, setFetchingStatus }
-// )(Review)
-
-export default Video
+export default connect(
+    mapStateToProps,
+    // { fetchVideo }
+)(Video)

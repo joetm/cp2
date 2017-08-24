@@ -4,7 +4,7 @@ import React from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { fetchUser } from '../../reducers'
+import { fetchUser } from '../../actions'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
 import Album from '../Album/'

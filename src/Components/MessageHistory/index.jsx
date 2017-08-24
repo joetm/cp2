@@ -11,7 +11,7 @@ import parser from 'bbcode-to-react'
 
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
-import { fetchMessageHistory, sendMessage } from '../../reducers'
+import { fetchMessageHistory, sendMessage } from '../../actions'
 
 
 // DEV

@@ -1,7 +1,7 @@
 /** @flow */
 
 import React from 'react'
-import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
 
 
@@ -32,9 +32,9 @@ class ReviewCard extends React.PureComponent {
     render() {
         const {
             id,
-            fromUsername,
-            primaryText,
-            secondaryText,
+            username,
+            title,
+            content,
             datetime,
             src,
             likes,
@@ -56,8 +56,8 @@ class ReviewCard extends React.PureComponent {
                   <img src={src} alt="" style={styles.cardImage} />
               </CardMedia>
               <CardHeader
-                  title={primaryText}
-                  subtitle={fromUsername}
+                  title={title}
+                  subtitle={username}
                   avatar="/img/avatar/face.jpg"
                   onClick={this.props.navigateTo}
               />

@@ -18,6 +18,7 @@ export const colors = {
     primary3Color: red50
   },
   grey: grey400,
+  gray: grey400,
   black: darkBlack,
   lightBlack,
   white,

@@ -1,3 +1,5 @@
+/** @flow */
+
 import React from 'react'
 
 function Duration ({ className, seconds }) {

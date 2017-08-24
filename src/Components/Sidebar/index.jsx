@@ -19,7 +19,7 @@ import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 // import LogoutIcon from 'material-ui/svg-icons/maps/directions-run'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
-import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../reducers'
+import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../actions'
 import routes from '../../routes'
 
 
@@ -64,7 +64,7 @@ class Sidebar extends React.Component {
         const { closeSidebar, userid } = this.props
         return (
           <Drawer
-            docked={true}
+            docked={false}
             width={200}
             open={this.props.sidebarOpen}
             tabIndex="0"

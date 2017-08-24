@@ -6,7 +6,7 @@ import { List } from 'material-ui/List'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 
-import { fetchNotifications } from '../../reducers'
+import { fetchNotifications } from '../../actions'
 import { categorizeList, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import Notification from './Notification'
 import Spacer from '../Shared/Spacer'

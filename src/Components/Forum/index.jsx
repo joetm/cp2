@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 
-import { closeSearchSidebar } from '../../reducers'
+import { closeSearchSidebar } from '../../actions'
 // --
 import Spacer from '../Shared/Spacer'
 import SearchSidebar from '../SearchSidebar'

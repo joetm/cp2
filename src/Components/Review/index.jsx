@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 
 import './style.scss'
 // --
-import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, approve, reject, like, dislike } from '../../reducers'
+import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, approve, reject, like, dislike } from '../../actions'
 import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
 // --

@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPictures } from '../../reducers'
+import { fetchPictures } from '../../actions'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import StreamTpl from './StreamTpl'
 import { Selectors } from '../../store'

@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchThreads } from '../../reducers'
+import { fetchThreads } from '../../actions'
 import Posts from './Posts'
 
 

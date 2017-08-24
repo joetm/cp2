@@ -4,7 +4,7 @@ import React from 'react'
 import fetch from 'unfetch'
 
 import Spacer from '../Shared/Spacer'
-import Footer from '../Footer/'
+import Footer from '../Footer'
 import './style.scss'
 
 

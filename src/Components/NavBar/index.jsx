@@ -10,8 +10,8 @@ import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { darkBlack } from 'material-ui/styles/colors'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Popover from 'material-ui/Popover'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
@@ -20,11 +20,12 @@ import UploadIcon from 'material-ui/svg-icons/file/file-upload'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
+import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
-import { loginUser, logoutUser, fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../reducers'
+import { loginUser, logoutUser, fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../actions'
 import { colors } from '../../common/theme'
 import { sum } from '../../common/helpers'
-import './style.css'
+import './style.scss'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
@@ -38,6 +39,7 @@ const numAllNotifications = () => {
     return 0
 }
 
+const _DURATION = '600' // ms
 
 const _NAVITEM_ID = {
     MENU: 1,
@@ -87,33 +89,22 @@ const styles = {
 
 class NavBar extends React.Component {
     anchorEl = null
-    constructor(props) {
-        super(props)
-        this.state = {
-            notificationsMenuOpen: false,
-            searchExpanded: false,
-
-        }
-        // bindings
-        this.searchAction = this.searchAction.bind(this)
-        this.toggleSearchField = this.toggleSearchField.bind(this)
-        this.toggleState = this.toggleState.bind(this)
-        this.isForum = this.isForum.bind(this)
-        this.toggleNotificationsMenu = this.toggleNotificationsMenu.bind(this)
-        this.closeNotificationsMenu = this.closeNotificationsMenu.bind(this)
+    state = {
+        notificationsMenuOpen: false,
+        searchExpanded: false,
     }
     componentDidMount() {
         this.props.fetchCurrentUser()
         this.props.fetchUnreadCount()
         this.anchorEl = findDOMNode(this.refs.notifications)
     }
-    isForum() {
+    isForum = () => {
         return this.props.location.pathname.startsWith('/forum')
     }
-    toggleSearchField() {
+    toggleSearchField = () => {
         this.setState({searchExpanded: !this.state.searchExpanded})
     }
-    searchAction() {
+    searchAction = () => {
         // on the forum, open the sidebar
         if (this.isForum()) {
             this.props.toggleSearchSidebar()
@@ -122,13 +113,13 @@ class NavBar extends React.Component {
             this.toggleSearchField()
         }
     }
-    toggleNotificationsMenu() {
+    toggleNotificationsMenu = () => {
         this.setState({notificationsMenuOpen: !this.state.notificationsMenuOpen})
     }
-    closeNotificationsMenu() {
+    closeNotificationsMenu = () => {
         this.setState({notificationsMenuOpen: false})
     }
-    toggleState(num) {
+    toggleState = (num) => {
         let n = num
         if (n.id) { n = n.id }
         else if (! +n) { n = 0 }
@@ -157,104 +148,142 @@ class NavBar extends React.Component {
                 style={styles.navbar}
             >
 
-                <ToolbarGroup firstChild={true}>
-
-                    <IconButton
-                        id={_NAVITEM_ID.MENU}
-                        tooltip="Menu"
-                        style={styles.firstItem}
-                        onTouchTap={this.props.openSidebar}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-
-                    <NavLink
-                        to="/"
-                        activeStyle={{color: colors.palette.primary1Color}}
-                    >
-                        <IconButton
-                            id={_NAVITEM_ID.HOME}
-                            tooltip="Home"
-                            iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
+                <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={_DURATION}
+                    transitionEnterTimeout={_DURATION}
+                    transitionLeaveTimeout={_DURATION}
+                >
+                {
+                    !this.state.searchExpanded ?
+                        <ToolbarGroup
+                            firstChild={true}
                         >
-                            <HomeIcon />
-                        </IconButton>
-                    </NavLink>
+                            <IconButton
+                                id={_NAVITEM_ID.MENU}
+                                tooltip="Menu"
+                                style={styles.firstItem}
+                                onTouchTap={this.props.openSidebar}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <NavLink
+                                to="/"
+                                activeStyle={{color: colors.palette.primary1Color}}
+                            >
+                                <IconButton
+                                    id={_NAVITEM_ID.HOME}
+                                    tooltip="Home"
+                                    iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
+                                >
+                                    <HomeIcon />
+                                </IconButton>
+                            </NavLink>
+                        </ToolbarGroup>
+                : null
+                }
+                </ReactCSSTransitionGroup>
 
-                </ToolbarGroup>
+                <ReactCSSTransitionGroup
+                    transitionName="example"
+                    transitionAppear={true}
+                    transitionAppearTimeout={_DURATION}
+                    transitionEnterTimeout={_DURATION}
+                    transitionLeaveTimeout={_DURATION}
+                >
+                {
+                    !this.state.searchExpanded ?
+                        <ToolbarGroup>
+                            <IconButton
+                                tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                                onTouchTap={this.searchAction}
+                                style={styles.searchIcon}
+                            >
+                                <SearchIcon />
+                            </IconButton>
+                            <Link to="/upload">
+                                <IconButton
+                                    tooltip="Upload"
+                                >
+                                    <UploadIcon />
+                                </IconButton>
+                            </Link>
+                            <CustomBadge
+                                to={null}
+                                badgeContent={sum(unread)}
+                                secondary={true}
+                                tooltip="Notifications"
+                                icon={<AllNotificationsIcons />}
+                                ref="notifications"
+                                onTouchTap={this.toggleNotificationsMenu}
+                            />
+                            <NotificationsMenu
+                                open={this.state.notificationsMenuOpen}
+                                anchorEl={this.anchorEl}
+                                unread={unread}
+                                userid={this.props.userid}
+                                closeNotificationsMenu={this.closeNotificationsMenu}
+                            />
+                            <Link to={`/profile/${this.props.userid}`}>
+                                <Avatar
+                                    id={_NAVITEM_ID.PROFILE}
+                                    visible={true}
+                                    src={this.props.avatar}
+                                    mini={true}
+                                    tooltip="Your Profile"
+                                    onTouchTap={this.toggleState}
+                                    active={this.props.activeBadge === _NAVITEM_ID.PROFILE}
+                                />
+                            </Link>
+                            {!isAuthenticated &&
+                                    <SignupButton />
+                            }
+                            {!isAuthenticated &&
+                                    <LoginButton
+                                        errorMessage={errorMessage}
+                                        onLoginClick={(creds) => loginUser(creds)}
+                                    />
+                            }
+                        </ToolbarGroup>
+                    : null
+                    }
+                </ReactCSSTransitionGroup>
 
-                <ToolbarGroup>
 
                     {
-                        !this.state.searchExpanded ? null : (
+                    !this.state.searchExpanded ? null :
+                        <ToolbarGroup
+                            firstChild={true}
+                            lastChild={true}
+                        >
+                            <IconButton
+                                tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                                onTouchTap={this.searchAction}
+                                style={styles.searchIcon}
+                            >
+                                <SearchIcon />
+                            </IconButton>
                             <TextField
                               hintText="Search"
                               rows={1}
                               rowsMax={1}
-                              style={{marginBottom: '10px', maxWidth: '150px'}}
+                              fullWidth={true}
+                              style={{marginBottom: '10px'}}
                               floatingLabelText="Search"
                             />
-                        )
+                            <IconButton
+                                tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                                onTouchTap={this.toggleSearchField}
+                                style={styles.searchIcon}
+                            >
+                                <CloseIcon />
+                            </IconButton>
+                        </ToolbarGroup>
                     }
-                    <IconButton
-                        tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                        onTouchTap={this.searchAction}
-                        style={styles.searchIcon}
-                    >
-                        <SearchIcon />
-                    </IconButton>
-
-
-                    <Link to="/upload">
-                        <IconButton
-                            tooltip="Upload"
-                        >
-                            <UploadIcon />
-                        </IconButton>
-                    </Link>
-
-                    <CustomBadge
-                        to={null}
-                        badgeContent={sum(unread)}
-                        secondary={true}
-                        tooltip="Notifications"
-                        icon={<AllNotificationsIcons />}
-                        ref="notifications"
-                        onTouchTap={this.toggleNotificationsMenu}
-                    />
-                    <NotificationsMenu
-                        open={this.state.notificationsMenuOpen}
-                        anchorEl={this.anchorEl}
-                        unread={unread}
-                        userid={this.props.userid}
-                        closeNotificationsMenu={this.closeNotificationsMenu}
-                    />
-
-                    <Link to={`/profile/${this.props.userid}`}>
-                        <Avatar
-                            id={_NAVITEM_ID.PROFILE}
-                            visible={true}
-                            src={this.props.avatar}
-                            mini={true}
-                            tooltip="Your Profile"
-                            onTouchTap={this.toggleState}
-                            active={this.props.activeBadge === _NAVITEM_ID.PROFILE}
-                        />
-                    </Link>
-
-                    {!isAuthenticated &&
-                            <SignupButton />
-                    }
-                    {!isAuthenticated &&
-                            <LoginButton
-                                errorMessage={errorMessage}
-                                onLoginClick={(creds) => loginUser(creds)}
-                            />
-                    }
-
-                </ToolbarGroup>
 
             </Toolbar>
+
         )
     }
 }
