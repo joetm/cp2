@@ -16,7 +16,7 @@ import SingleThread from './SingleThread'
 
 class Forum extends React.Component {
     render() {
-        const { url } = this.props
+        const { url, sidebarSearchOpen, closeSearchSidebar } = this.props
         return (
             <div>
                 <Switch>
@@ -26,8 +26,8 @@ class Forum extends React.Component {
                     <Route component={ForumHome} />
                 </Switch>
                 <SearchSidebar
-                    closeSidebar={this.props.closeSearchSidebar}
-                    open={this.props.sidebarSearchOpen}
+                    closeSidebar={closeSearchSidebar}
+                    open={sidebarSearchOpen}
                 />
                 <Spacer />
             </div>
@@ -38,7 +38,6 @@ class Forum extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     // add selected fields from the state as props to the component
     sidebarSearchOpen: state.appState.sidebarSearchOpen,
-    // posts: state.posts,
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,
 })

@@ -61,11 +61,13 @@ class App extends React.Component {
     getScrollPosition() {
         return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
     }
-    componentDidMount() {
+    componentWillMount() {
         // show scroll button (overlay)
         window.onscroll = () => {
             this.setState({isScrolled: this.getScrollPosition() > 0})
         }
+    }
+    componentDidMount() {
         // store mobile device info
         const device = new MobileDetect(window.navigator.userAgent)
         const obj = {

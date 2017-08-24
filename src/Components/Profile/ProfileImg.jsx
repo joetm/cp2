@@ -30,12 +30,12 @@ class ProfileImg extends React.PureComponent {
     state = {
         profileImgHeight: window.innerHeight - _OFFSET,
     }
-    componentDidMount() {
+    componentWillMount = () => {
         // resize profile image
-        window.onresize = function () {
+        window.onresize = () => {
             const height = window.innerHeight - _OFFSET
             this.setState({profileImgHeight: height})
-        }.bind(this)
+        }
     }
     componentWillUnmount() {
         window.onresize = null

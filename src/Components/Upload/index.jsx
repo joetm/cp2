@@ -44,7 +44,8 @@ class Upload extends React.Component {
         // bindings
         this.onDrop = this.onDrop.bind(this)
     }
-    componentDidMount() {
+    // do not set state in componentDidMount
+    componentWillMount() {
         this.setState({dropzoneHeight: window.innerHeight - 145})
     }
     onDrop(acceptedFiles, rejectedFiles) {

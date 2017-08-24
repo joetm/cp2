@@ -21,7 +21,7 @@ const styles = {
 
 class SingleThread extends React.Component {
     componentDidMount() {
-        this.props.fetchThread("cj6dn68b7000i335mgh0lj8rb") // TODO: use threadid
+        this.props.fetchThread("cj6dn68b7000i335mgh0lj8rb")
     }
     render() {
         const { posts, timestamp, username, userid, title } = this.props.thread

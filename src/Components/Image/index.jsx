@@ -9,16 +9,7 @@ import Spacer from '../Shared/Spacer'
 const styles = {
 }
 
-class Image extends React.Component {
-    constructor(props) {
-        super(props)
-        // state
-        this.state = {
-        }
-        // bindings
-    }
-    componentDidMount() {
-    }
+class Image extends React.PureComponent {
     /**
      * Render the component.
      */

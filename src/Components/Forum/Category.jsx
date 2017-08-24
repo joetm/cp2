@@ -14,8 +14,7 @@ class Category extends React.Component {
     // componentDidUpdate(prevProps) {
     //     this.props.getPosts()
     // }
-    render() {
-        const { posts } = this.props
+    render({ posts }) {
         return (
             <div>
                 <h2>Category</h2>

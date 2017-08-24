@@ -103,7 +103,7 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
-                route={`${routes.LIKES}/${userid}`}
+                route={`${routes.STREAM}/${userid}/${routes.LIKES}`}
                 icon={<LikeIcon />}
                 text="Likes"
                 onTouchTap={closeSidebar}

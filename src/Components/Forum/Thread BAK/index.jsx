@@ -68,9 +68,10 @@ class Thread extends React.Component {
             },
         ],
     }
-    componentDidMount() {
-        this.setState({loading: false})
-    }
+    // TODO: do not set state in componentDidMount
+    // componentDidMount() {
+    //     this.setState({loading: false})
+    // }
     /**
      * Render the component.
      */

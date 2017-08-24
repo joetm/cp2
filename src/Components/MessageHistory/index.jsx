@@ -55,10 +55,12 @@ class MessageHistory extends React.PureComponent {
     this._handleKeyPress = this._handleKeyPress.bind(this)
     this.submitMsg = this.submitMsg.bind(this)
   }
-  componentDidMount() {
+  componentWillMount() {
     const userid = this.props.match.params.opponentid
-    this.props.fetchMessageHistory(userid)
     this.setState({userid, loading: false})
+  }
+  componentDidMount() {
+    this.props.fetchMessageHistory(userid)
   }
   /**
    * Handle key press event on message field.
