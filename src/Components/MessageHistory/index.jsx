@@ -130,8 +130,8 @@ class MessageHistory extends React.PureComponent {
               style={{...styles.chip, ...{float: this.props.currentUserid === item.userid ? 'right': 'left'}}}
               >
                 <Avatar src={item.avatar} />
-                {/* parser.toReact(item.content) */}
-                { item.content }
+                { parser.toReact(item.content) }
+                {/* item.content */}
               </Chip>
             </div>
             ))
