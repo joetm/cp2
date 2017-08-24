@@ -7,11 +7,36 @@ import StopIcon from 'material-ui/svg-icons/av/stop'
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
 import PauseIcon from 'material-ui/svg-icons/av/pause'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
+import Slider from 'material-ui/Slider'
 
 import ReactPlayer from 'react-player'
 import Duration from './Duration'
+import { colors } from '../../common/theme'
 
 import './style'
+
+
+const styles = {
+  controls: {
+    display: 'block',
+    // position: 'relative',
+    // top: '-100px',
+    // left: 0,
+    // opacity: 0.8,
+  },
+  controlButton: {
+    width: '30px',
+    height: '30px',
+    margin: '0 0 0 10px',
+  },
+  progressIndicator: {
+    height:'10px',
+    width: '100%',
+    margin: '0 auto',
+    padding: 0,
+  },
+}
+const iconColor = colors.black
 
 
 const MULTIPLE_SOURCES = [
@@ -23,12 +48,13 @@ const MULTIPLE_SOURCES = [
 class VideoPlayer extends Component {
   state = {
     url: null,
-    playing: true,
+    playing: false,
     volume: 0.8,
     played: 0,
     loaded: 0,
     duration: 0,
-    playbackRate: 1.0
+    playbackRate: 1.0,
+    controlsShowing: true,
   }
   load = url => {
     this.setState({
@@ -47,21 +73,32 @@ class VideoPlayer extends Component {
     this.setState({ volume: parseFloat(e.target.value) })
   }
   setPlaybackRate = e => {
-    console.log(parseFloat(e.target.value))
+    console.log('Setting playback speed to ', parseFloat(e.target.value))
     this.setState({ playbackRate: parseFloat(e.target.value) })
   }
   onSeekMouseDown = e => {
     this.setState({ seeking: true })
   }
-  onSeekChange = e => {
-    this.setState({ played: parseFloat(e.target.value) })
+  onSeekChange = (e, newValue) => {
+    console.log(newValue)
+    this.setState({ played: parseFloat(newValue) })
+  }
+  onReady = () => {
+    console.log('onReady')
+  }
+  onStart = () => {
+    console.log('onStart')
+  }
+  onError = (e) => {
+    console.log('onError', e)
   }
   onSeekMouseUp = e => {
     this.setState({ seeking: false })
-    this.player.seekTo(parseFloat(e.target.value))
+    // TODO
+    // this.player.seekTo(parseFloat(e.target.value))
   }
   onProgress = state => {
-    // We only want to update time slider if we are not currently seeking
+    // only update the time slider if we are not currently seeking
     if (!this.state.seeking) {
       this.setState(state)
     }
@@ -107,46 +144,81 @@ class VideoPlayer extends Component {
               vimeoConfig={vimeoConfig}
               youtubeConfig={youtubeConfig}
               fileConfig={fileConfig}
-              onReady={() => console.log('onReady')}
-              onStart={() => console.log('onStart')}
+              onReady={this.onReady}
+              onStart={this.onStart}
               onPlay={() => this.setState({ playing: true })}
               onPause={() => this.setState({ playing: false })}
               onBuffer={() => console.log('onBuffer')}
               onEnded={() => this.setState({ playing: false })}
-              onError={e => console.log('onError', e)}
+              onError={this.onError}
               onProgress={this.onProgress}
               onDuration={duration => this.setState({ duration })}
             />
-            <progress max={1} value={played} style={{height:'10px', width: '100%'}} />
-            <progress max={1} value={loaded} style={{height:'10px', width: '100%'}} />
+            {/*
+              onMouseEnter={() => this.setState({controlsShowing: true})}
+              onMouseLeave={() => this.setState({controlsShowing: false})}
+            */}
+
           </div>
 
-          <div>
-              <h3>Controls</h3>
-                <StopIcon onClick={this.stop} />
-                <PlayIcon onClick={this.playPause} />
-                <PauseIcon onClick={this.playPause} />
+            <Slider
+              min={0}
+              max={1}
+              step={0.01}
+              value={played}
+              onMouseDown={this.onSeekMouseDown}
+              onChange={this.onSeekChange}
+              onMouseUp={this.onSeekMouseUp}
+              style={{width: '100%'}}
+            />
 
-                <button onClick={this.playPause}>{playing ? 'Pause' : 'Play'}</button>
+            <progress max={1} value={played} style={styles.progressIndicator} />
+            <progress max={1} value={loaded} style={styles.progressIndicator} />
 
-                <FullScreenIcon onClick={this.onClickFullscreen} />
+          {
+            this.state.controlsShowing ?
+              <div style={styles.controls}>
+                  <h3>Controls</h3>
+                    {
+                      playing ?
+                      <PauseIcon
+                        color={iconColor}
+                        hoverColor={colors.palette.primary3Color}
+                        onTouchTap={this.playPause}
+                        style={styles.controlButton}
+                        tooltip="Pause"
+                      />
+                      :
+                      <PlayIcon
+                        color={iconColor}
+                        hoverColor={colors.palette.primary3Color}
+                        onTouchTap={this.playPause}
+                        style={styles.controlButton}
+                        tooltip="Play"
+                      />
+                    }
 
-                <button onClick={this.setPlaybackRate} value={1}>1</button>
-                <button onClick={this.setPlaybackRate} value={1.5}>1.5</button>
-                <button onClick={this.setPlaybackRate} value={2}>2</button>
-          </div>
+                    <StopIcon
+                      color={iconColor}
+                      hoverColor={colors.palette.primary3Color}
+                      onTouchTap={this.stop}
+                      style={styles.controlButton}
+                      tooltip="Stop"
+                    />
 
-          <div>
-              <h3>Seek</h3>
-                <input
-                  type='range' min={0} max={1} step='any'
-                  value={played}
-                  onMouseDown={this.onSeekMouseDown}
-                  onChange={this.onSeekChange}
-                  onMouseUp={this.onSeekMouseUp}
-                  style={{width: '100%'}}
-                />
-          </div>
+                    <FullScreenIcon
+                      color={iconColor}
+                      hoverColor={colors.palette.primary3Color}
+                      style={styles.controlButton}
+                      onTouchTap={this.onClickFullscreen}
+                    />
+
+                    <button onTouchTap={this.setPlaybackRate} value={1}>1</button>
+                    <button onTouchTap={this.setPlaybackRate} value={1.5}>1.5</button>
+                    <button onTouchTap={this.setPlaybackRate} value={2}>2</button>
+              </div>
+              : null
+          }
 
           <div>
               <h3>Volume</h3>
