@@ -21,8 +21,10 @@ class ForumHome extends React.Component {
             <div>
                 <h2>Forum</h2>
                 <div>
-                    {threads && threads.length > 0 &&
+                    {threads && threads.length > 0 ?
                         <Posts posts={threads} />
+                        :
+                        <div>No posts found.</div>
                     }
                 </div>
             </div>

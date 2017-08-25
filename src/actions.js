@@ -5,6 +5,10 @@
 
 import initialState from './initialState'
 import * as api from './api'
+// import { pushState } from 'redux-router'
+import jwtDecode from 'jwt-decode'
+
+import { checkHttpStatus, parseJSON } from './common/helpers'
 
 
 /*
@@ -64,6 +68,14 @@ export const RECEIVE_LIKE             = 'STREAM::RECEIVE_LIKE'
 export const RECEIVE_DISLIKE          = 'STREAM::RECEIVE_DISLIKE'
 export const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
 export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
+
+// JWT
+export const LOGIN_USER_REQUEST       = 'AUTH::LOGIN_USER_REQUEST'
+export const LOGIN_USER_FAILURE       = 'AUTH::LOGIN_USER_FAILURE'
+export const LOGIN_USER_SUCCESS       = 'AUTH::LOGIN_USER_SUCCESS'
+export const LOGOUT_USER              = 'AUTH::LOGOUT_USER'
+export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
+export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
 
 
 /**
@@ -144,6 +156,129 @@ export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,  
 export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
 
 // const unknownAction = { type: UNKNOWN }
+
+
+// ----------------------------------------------------
+// JWT
+// ----------------------------------------------------
+
+export function loginUserSuccess(token) {
+  localStorage.setItem('token', token);
+  return {
+    type: LOGIN_USER_SUCCESS,
+    payload: {
+      token: token
+    }
+  }
+}
+
+export function loginUserFailure(error) {
+  localStorage.removeItem('token');
+  return {
+    type: LOGIN_USER_FAILURE,
+    payload: {
+      status: error.response.status,
+      statusText: error.response.statusText
+    }
+  }
+}
+
+export function loginUserRequest() {
+  return {
+    type: LOGIN_USER_REQUEST
+  }
+}
+
+export function logout() {
+    localStorage.removeItem('token');
+    return {
+        type: LOGOUT_USER
+    }
+}
+
+export function logoutAndRedirect() {
+    return (dispatch, state) => {
+        dispatch(logout());
+        // TODO
+        // dispatch(pushState(null, '/login'));
+    }
+}
+
+export function loginUser(email, password, redirect="/") {
+    return function(dispatch) {
+        dispatch(loginUserRequest());
+        return fetch('http://localhost:3000/auth/getToken/', {
+            method: 'post',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({email: email, password: password})
+            })
+            .then(checkHttpStatus)
+            .then(parseJSON)
+            .then(response => {
+                try {
+                    let decoded = jwtDecode(response.token);
+                    dispatch(loginUserSuccess(response.token));
+                    // TODO
+                    // dispatch(pushState(null, redirect));
+                } catch (e) {
+                    dispatch(loginUserFailure({
+                        response: {
+                            status: 403,
+                            statusText: 'Invalid token'
+                        }
+                    }));
+                }
+            })
+            .catch(error => {
+                dispatch(loginUserFailure(error));
+            })
+    }
+}
+
+export function receiveProtectedData(data) {
+    return {
+        type: RECEIVE_PROTECTED_DATA,
+        payload: {
+            data: data
+        }
+    }
+}
+
+export function fetchProtectedDataRequest() {
+  return {
+    type: FETCH_PROTECTED_DATA_REQUEST
+  }
+}
+
+export function fetchProtectedData(token) {
+
+    return (dispatch, state) => {
+        dispatch(fetchProtectedDataRequest());
+        return fetch('http://localhost:3000/getData/', {
+                credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(checkHttpStatus)
+            .then(parseJSON)
+            .then(response => {
+                dispatch(receiveProtectedData(response.data));
+            })
+            .catch(error => {
+                if(error.response.status === 401) {
+                  dispatch(loginUserFailure(error));
+                  // TODO
+                  // dispatch(pushState(null, '/login'));
+                }
+            })
+       }
+}
+
 
 // ----------------------------------------------------
 // Asynchronous action creators

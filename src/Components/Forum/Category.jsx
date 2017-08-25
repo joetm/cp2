@@ -14,15 +14,15 @@ class Category extends React.Component {
     // componentDidUpdate(prevProps) {
     //     this.props.getPosts()
     // }
-    render({ posts }) {
+    render() {
+        const { posts } = this.props
         return (
             <div>
                 <h2>Category</h2>
                 <div>
-                    {posts && posts.length > 0 &&
+                    {posts && posts.length > 0 ?
                         <Posts posts={posts} />
-                    }
-                    {!posts &&
+                        :
                         <div>This category is empty.</div>
                     }
                 </div>
