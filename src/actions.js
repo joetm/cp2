@@ -155,9 +155,6 @@ export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,     
 export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
 export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
 
-export const receiceToken                 = makeActionCreator(RECEIVE_TOKEN,          'token')
-export const removeToken                  = makeActionCreator(REMOVE_TOKEN)
-
 // const unknownAction = { type: UNKNOWN }
 
 
@@ -231,7 +228,6 @@ export const login = (email, password, redirect="/") =>
                 dispatch(loginFailure(error))
             })
     }
-}
 
 
 /**

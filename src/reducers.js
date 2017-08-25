@@ -255,11 +255,9 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
 
         // AUTH
         case ACTIONS.LOGIN_REQUEST:
-            return { ...currentUserState, {
-                'isAuthenticating': true,
-            }}
+            return { ...currentUserState, 'isAuthenticating': true }
         case ACTIONS.LOGIN_SUCCESS:
-            return { ...currentUserState, {
+            return { ...currentUserState, ...{
                 'isAuthenticating': false,
                 'isAuthenticated': true,
                 'token': action.token,
@@ -269,7 +267,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 'statusText': 'You have been successfully logged in.',
             }}
         case ACTIONS.LOGIN_FAILURE:
-            return { ...currentUserState, {
+            return { ...currentUserState, ...{
                 'isAuthenticating': false,
                 'isAuthenticated': false,
                 'token': null,
@@ -278,7 +276,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 'statusText': `Authentication Error: ${action.status} ${action.statusText}`
             }}
         case ACTIONS.LOGOUT:
-            return { ...currentUserState, {
+            return { ...currentUserState, ...{
                 'isAuthenticated': false,
                 'token': null,
                 'userid': null,

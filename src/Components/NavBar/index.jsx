@@ -25,7 +25,7 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import { loginUser, logoutUser, fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../actions'
 import { colors } from '../../common/theme'
 import { sum } from '../../common/helpers'
-import './style.scss'
+import './style'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
