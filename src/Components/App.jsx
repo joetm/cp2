@@ -24,7 +24,7 @@ objectFitImages()
 
 import store from '../store'
 // import DevTools from '../DevTools'
-import { setDeviceDetails } from '../reducers'
+import { setDeviceDetails } from '../actions'
 import { theme, colors } from '../common/theme'
 // --
 import Scrollbutton from './Shared/Scrollbutton'

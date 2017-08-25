@@ -15,7 +15,7 @@ import { colors } from '../../common/theme'
 import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
-import LoadingMsg from '../Shared/LoadingMsg'
+import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
@@ -197,7 +197,7 @@ class Review extends React.Component {
         const { reviewitem } = this.props
         // TODO
         // if (this.props.isFetching) {
-        //     return <LoadingMsg msg="Loading Review" />
+        //     return <Loader msg="Loading Review" />
         // }
         return (
             <div>

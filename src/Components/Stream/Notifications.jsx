@@ -10,6 +10,7 @@ import { fetchNotifications } from '../../actions'
 import { categorizeList, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import Notification from './Notification'
 import Spacer from '../Shared/Spacer'
+import Loader from '../Shared/Loader'
 
 
 class Notifications extends React.PureComponent {

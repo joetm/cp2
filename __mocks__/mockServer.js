@@ -100,7 +100,8 @@ export const fetchUnreadCountFromAPI = () => {
         })
 }
 
-const sendDataToAPI = (payload) => {
+// TODO
+export const sendDataToAPI = (payload) => {
     return delay(500)
         .then(() => {
             try {
@@ -108,5 +109,16 @@ const sendDataToAPI = (payload) => {
             } catch (e) {
                 throw new Error(e)
             }
+        })
+}
+
+// TODO
+export const markReadRequest = (what, id) => {
+    return delay(500)
+        .then(() => {
+            // TODO
+            const unread = { images: 0, messages: 0, posts: 0, videos: 0, likes: 0 }
+            unread[what] = 999
+            return unread
         })
 }

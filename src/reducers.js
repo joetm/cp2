@@ -253,8 +253,8 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
 
-        // AUTH
-        case ACTIONS.LOGIN_REQUEST:
+        // AUTH -------------------------------------
+        case ACTIONS.SET_IS_AUTHENTICATING:
             return { ...currentUserState, 'isAuthenticating': true }
         case ACTIONS.LOGIN_SUCCESS:
             return { ...currentUserState, ...{
@@ -313,6 +313,20 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return { ...appState, activeBadge: +action.id }
         case ACTIONS.RECEIVE_UNREAD_COUNT:
             return { ...appState, unread: action.response }
+
+        case ACTIONS.MARK_IMAGES_READ:
+            return { ...appState, unread: { ...appState.unread, images: 0 } }
+        case ACTIONS.MARK_VIDEOS_READ:
+            return { ...appState, unread: { ...appState.unread, videos: 0 } }
+        case ACTIONS.MARK_POSTS_READ:
+            return { ...appState, unread: { ...appState.unread, posts: 0 } }
+        case ACTIONS.MARK_MESSAGES_READ:
+            return { ...appState, unread: { ...appState.unread, messages: 0 } }
+        case ACTIONS.MARK_LIKES_READ:
+            return { ...appState, unread: { ...appState.unread, likes: 0 } }
+        case ACTIONS.MARK_ALL_READ:
+            return { ...appState, unread: { images: 0, posts: 0, videos: 0, messages: 0, likes: 0 } }
+
         // TODO - ajax loading msg
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators
         // case ACTIONS.SET_FETCHING_STATUS:

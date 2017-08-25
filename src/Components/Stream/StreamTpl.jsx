@@ -27,7 +27,7 @@ class StreamTpl extends React.PureComponent {
                     categorizedItems.map((group, daysAgo) => {
                         return (
                             <div key={`grp_${daysAgo}`}>
-                                <Subheader>{translateDayOffset(daysAgo)}</Subheader>
+                                <Subheader>{ translateDayOffset(daysAgo) }</Subheader>
                                 <Divider />
                                 <div className="mdc-layout-grid">
                                     <div className="mdc-layout-grid__inner">

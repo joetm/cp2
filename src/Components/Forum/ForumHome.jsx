@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchThreads } from '../../actions'
 import Posts from './Posts'
+import Loader from '../Shared/Loader'
 
 
 class ForumHome extends React.Component {
@@ -21,10 +22,10 @@ class ForumHome extends React.Component {
             <div>
                 <h2>Forum</h2>
                 <div>
-                    {threads && threads.length > 0 ?
-                        <Posts posts={threads} />
-                        :
-                        <div>No posts found.</div>
+                    <Posts posts={threads} />
+                    {
+                        threads && threads.length > 0 &&
+                        <Loader />
                     }
                 </div>
             </div>

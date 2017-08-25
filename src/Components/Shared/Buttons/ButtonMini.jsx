@@ -16,10 +16,9 @@ class ButtonMini extends React.PureComponent {
         }
         this.id = props.id
         // bindings
-        this.toggleButtonState = this.toggleButtonState.bind(this)
         this.launchAction = this.launchAction.bind(this)
     }
-    toggleButtonState() {
+    toggleButtonState = () => {
         this.setState({active: !this.state.active})
     }
     /**
@@ -43,7 +42,6 @@ class ButtonMini extends React.PureComponent {
         return (
             <div style={styles.buttonStyle}>
                 <IconButton
-                    { ...this.props }
                     iconStyle={iconButtonStyle}
                     hoveredStyle={styles.iconButtonStyleHovered}
                     onTouchTap={this.launchAction}

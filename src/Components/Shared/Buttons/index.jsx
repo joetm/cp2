@@ -7,6 +7,7 @@ import DisapproveIcon from 'material-ui/svg-icons/action/thumb-down'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import CommentIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
+import IconButton from 'material-ui/IconButton'
 
 import ButtonMini from './ButtonMini'
 import ButtonFlat from './ButtonFlat'
@@ -73,6 +74,24 @@ export class DisapproveButton extends ButtonFlat {
         this.props.action()
     }
 }
+export class FavoriteButton extends ButtonFlat {
+    msg = ""
+    tooltip = "Favorite"
+    Icon = <FavoriteIcon />
+    launchAction() {
+        // this.toggleButtonState()
+        this.props.action()
+    }
+}
+export class CommentButton extends ButtonFlat {
+    msg = ""
+    tooltip = "Comment"
+    Icon = <CommentIcon />
+    launchAction() {
+        this.props.action()
+    }
+}
+
 
 // --
 // Raised Buttons
@@ -88,3 +107,4 @@ export class RejectButton extends ButtonRaised {
     tooltip = "Reject"
     Icon = <LoginIcon />
 }
+

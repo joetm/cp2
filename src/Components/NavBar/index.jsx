@@ -22,7 +22,7 @@ import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-no
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
-import { loginUser, logoutUser, fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../actions'
+import { fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../actions'
 import { colors } from '../../common/theme'
 import { sum } from '../../common/helpers'
 import './style'
@@ -39,7 +39,7 @@ const numAllNotifications = () => {
     return 0
 }
 
-const _DURATION = '600' // ms
+const _DURATION = 600 // ms
 
 const _NAVITEM_ID = {
     MENU: 1,
@@ -93,10 +93,13 @@ class NavBar extends React.Component {
         notificationsMenuOpen: false,
         searchExpanded: false,
     }
+    attachMenuToDomNode = () => {
+        this.anchorEl = findDOMNode(this.refs.notifications)
+    }
     componentDidMount() {
         this.props.fetchCurrentUser()
         this.props.fetchUnreadCount()
-        this.anchorEl = findDOMNode(this.refs.notifications)
+        this.attachMenuToDomNode()
     }
     isForum = () => {
         return this.props.location.pathname.startsWith('/forum')
@@ -108,9 +111,10 @@ class NavBar extends React.Component {
         // on the forum, open the sidebar
         if (this.isForum()) {
             this.props.toggleSearchSidebar()
-        // on all other pages: expand the search
+        // on all other pages: switch the navbar menu with the search input
         } else {
             this.toggleSearchField()
+            this.attachMenuToDomNode()
         }
     }
     toggleNotificationsMenu = () => {
@@ -119,12 +123,7 @@ class NavBar extends React.Component {
     closeNotificationsMenu = () => {
         this.setState({notificationsMenuOpen: false})
     }
-    toggleState = (num) => {
-        let n = num
-        if (n.id) { n = n.id }
-        else if (! +n) { n = 0 }
-        this.props.setActiveBadge(n)
-
+    toggleState = () => {
         this.props.closeSidebar()
     }
     /**
@@ -175,7 +174,6 @@ class NavBar extends React.Component {
                                 <IconButton
                                     id={_NAVITEM_ID.HOME}
                                     tooltip="Home"
-                                    iconStyle={{color: this.props.activeBadge === _NAVITEM_ID.HOME ? colors.palette.primary1Color : darkBlack}}
                                 >
                                     <HomeIcon />
                                 </IconButton>
@@ -233,7 +231,6 @@ class NavBar extends React.Component {
                                     mini={true}
                                     tooltip="Your Profile"
                                     onTouchTap={this.toggleState}
-                                    active={this.props.activeBadge === _NAVITEM_ID.PROFILE}
                                 />
                             </Link>
                             {!isAuthenticated &&
@@ -242,7 +239,7 @@ class NavBar extends React.Component {
                             {!isAuthenticated &&
                                     <LoginButton
                                         errorMessage={errorMessage}
-                                        onLoginClick={(creds) => loginUser(creds)}
+                                        onTouchTap={() => history.push('/login')}
                                     />
                             }
                         </ToolbarGroup>
@@ -289,7 +286,6 @@ class NavBar extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    activeBadge: state.appState.activeBadge,
     sidebarSearchOpen: state.appState.sidebarSearchOpen,
     userid: state.currentUser.userid,
     username: state.currentUser.username,
@@ -301,8 +297,6 @@ const mapStateToProps = (state) => ({
 export default withRouter(connect(
     mapStateToProps,
     {
-        loginUser,
-        logoutUser,
         fetchCurrentUser,
         fetchUnreadCount,
         setActiveBadge,

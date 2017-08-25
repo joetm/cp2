@@ -3,14 +3,15 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
+import IconButton from 'material-ui/IconButton'
+import Slider from 'material-ui/Slider'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
+// --
 import StopIcon from 'material-ui/svg-icons/av/stop'
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
 import PauseIcon from 'material-ui/svg-icons/av/pause'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
-import Slider from 'material-ui/Slider'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import IconButton from 'material-ui/IconButton'
 
 import ReactPlayer from 'react-player'
 import Duration from './Duration'
@@ -245,7 +246,6 @@ class VideoPlayer extends Component {
                               hoverColor={colors.palette.primary1Color}
                               onTouchTap={this.playPause}
                               style={styles.controlButton}
-                              tooltip="Pause"
                             />
                         </IconButton>
                         :
@@ -255,7 +255,6 @@ class VideoPlayer extends Component {
                               hoverColor={colors.palette.primary1Color}
                               onTouchTap={this.playPause}
                               style={styles.controlButton}
-                              tooltip="Play"
                             />
                         </IconButton>
                       }
@@ -266,7 +265,6 @@ class VideoPlayer extends Component {
                             hoverColor={colors.palette.primary1Color}
                             onTouchTap={this.stop}
                             style={styles.controlButton}
-                            tooltip="Stop"
                           />
                       </IconButton>
 

@@ -33,9 +33,6 @@ export const CLOSE_SEARCH_SIDEBAR     = 'FORUM::CLOSE_SEARCH_SIDEBAR'
 export const TOGGLE_SIDEBAR           = 'FORUM::TOGGLE_SIDEBAR'
 export const OPEN_SIDEBAR             = 'FORUM::OPEN_SIDEBAR'
 export const CLOSE_SIDEBAR            = 'FORUM::CLOSE_SIDEBAR'
-export const MARK_THREAD_READ         = 'FORUM::MARK_THREAD_READ'
-export const MARK_POST_READ           = 'FORUM::MARK_POST_READ'
-export const MARK_ALL_READ            = 'FORUM::MARK_ALL_READ'
 export const SELECT_THREAD            = 'FORUM::SELECT_THREAD'
 export const SEND_MESSAGE             = 'CHAT::SEND_MESSAGE'
 export const RECEIVE_MESSAGEHISTORY   = 'CHAT::RECEIVE_MESSAGEHISTORY'
@@ -51,6 +48,15 @@ export const GET_UPDATES              = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
 export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
 // export const UNKNOWN                  = 'APP::UNKNOWN'
+
+export const MARK_IMAGES_READ         = 'STREAM::MARK_IMAGES_READ'
+export const MARK_VIDEOS_READ         = 'STREAM::MARK_VIDEOS_READ'
+export const MARK_POSTS_READ          = 'STREAM::MARK_POSTS_READ'
+export const MARK_MESSAGES_READ       = 'STREAM::MARK_MESSAGES_READ'
+export const MARK_LIKES_READ          = 'STREAM::MARK_LIKES_READ'
+export const MARK_THREAD_READ         = 'STREAM::MARK_THREAD_READ'
+export const MARK_POST_READ           = 'STREAM::MARK_POST_READ'
+export const MARK_ALL_READ            = 'STREAM::MARK_ALL_READ'
 
 export const RECEIVE_USER             = 'USER::RECEIVE_USER'
 export const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
@@ -70,11 +76,12 @@ export const RECEIVE_DISLIKE          = 'STREAM::RECEIVE_DISLIKE'
 export const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
 export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
 
-// JWT
+// AUTH
 export const LOGIN_REQUEST            = 'AUTH::LOGIN_REQUEST'
 export const LOGIN_FAILURE            = 'AUTH::LOGIN_FAILURE'
 export const LOGIN_SUCCESS            = 'AUTH::LOGIN_SUCCESS'
 export const LOGOUT                   = 'AUTH::LOGOUT'
+
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
 
@@ -125,9 +132,6 @@ export const getThread             = makeActionCreator(GET_THREAD,        'threa
 export const editPost              = makeActionCreator(EDIT_POST,         'postid', 'response')
 export const removePost            = makeActionCreator(REMOVE_POST,       'postid', 'bool')
 export const selectThread          = makeActionCreator(SELECT_THREAD,     'threadid')
-export const markThreadRead        = makeActionCreator(MARK_THREAD_READ,  'threadid')
-export const markPostRead          = makeActionCreator(MARK_POST_READ,    'threadid')
-export const markAllRead           = makeActionCreator(MARK_ALL_READ,     'threadid')
 export const getUpdates            = makeActionCreator(GET_UPDATES)
 
 // other app actions
@@ -154,6 +158,9 @@ export const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,    
 export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,           'response')
 export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
 export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
+
+// AUTH
+export const setIsAuthenticating          = makeActionCreator(LOGIN_REQUEST)
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -194,40 +201,41 @@ export const logout = () => {
 // Asynchronous action creators
 // ----------------------------------------------------
 
-export const login = (email, password, redirect="/") =>
-    function(dispatch) {
-        dispatch({type: LOGIN_REQUEST})
+export function login(email, password, redirect="/") {
+    return function(dispatch) {
+        console.log('xxxxxx')
+        dispatch(setIsAuthenticating())
         return fetch('http://localhost:3000/auth/getToken/', {
                 method: 'post',
                 credentials: 'include',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({email: email, password: password})
             })
             .then(checkHttpStatus)
             .then(parseJSON)
             .then(response => {
                 try {
                     let decoded = jwtDecode(response.token)
-                    console.log('decoded', decoded)
-                    dispatch(loginSuccess(response.token))
-                    // TODO
-                    // dispatch(pushState(null, redirect));
-
-
-
+                    dispatch(loginUserSuccess(response.token))
+                    // TODO - redirect
+                    // dispatch(pushState(null, redirect))
                 } catch (e) {
-                    const status = 403
-                    const statusText = 'Invalid token'
-                    dispatch(loginFailure(status, statusText))
+                    dispatch(loginFailure({
+                        response: {
+                            status: 403,
+                            statusText: 'Invalid token'
+                        }
+                    }));
                 }
             })
             .catch(error => {
                 dispatch(loginFailure(error))
             })
     }
+}
 
 
 /**
@@ -342,3 +350,10 @@ export const recordLike = () =>
 export const recordDislike = () =>
     api.recordDislike().then(receiveDislike)
 
+// TODO
+export const markRead = (what, id) =>
+    api.markRead(what).then(receiveUnreadCount)
+
+// TODO
+export const markAllRead = () =>
+    api.markAllRead().then(receiveUnreadCount)

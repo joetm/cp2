@@ -1,40 +1,54 @@
 /** @flow */
 
-import React, { PropTypes } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { login, logout } from '../../actions'
 import LoginForm from './LoginForm'
+import { validEmail } from '../../common/helpers'
 
 
 class LoginPage extends React.Component {
-  /**
-   * Class constructor.
-   */
-  constructor(props) {
-    super(props)
-
-    // set the initial component state
-    this.state = {
+  state = {
       errors: {},
       user: {
-        email: '',
-        password: ''
+        email: null,
+        password: null,
       }
-    }
-    // bindings
-    this.processForm = this.processForm.bind(this)
-    this.changeUser = this.changeUser.bind(this)
   }
-
   /**
    * Process the form.
    *
    * @param {object} event - the JavaScript event object
    */
-  processForm(event) {
+  processForm = (event) => {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
 
-    console.log('email:', this.state.user.email)
-    console.log('password:', this.state.user.password)
+    const { email, password } = this.state.user
+
+    console.log('email', email)
+    console.log('password', password)
+
+    if (!email || !validEmail(email) || !password) {
+      const errors = {
+        summary: null,
+        email: !email ? "Missing email" : null,
+        password: !password ? "Missing password" : null,
+      }
+      if (!validEmail(email)) {
+        errors.email = "Invalid email"
+      }
+      this.setState({ errors })
+      console.log(errors)
+      return
+    }
+
+    console.log('logging in...')
+
+    this.props.login(email, password)
+
   }
 
   /**
@@ -42,7 +56,7 @@ class LoginPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  changeUser(event) {
+  changeUser = (event) => {
     const field = event.target.name
     const user = this.state.user
     user[field] = event.target.value
@@ -68,4 +82,19 @@ class LoginPage extends React.Component {
 
 }
 
-export default LoginPage
+
+// const mapStateToProps = (state) => ({
+//     // --
+// })
+
+function mapDispatchToProps(dispatch) {
+  return {
+    login: bindActionCreators(login, dispatch),
+    // logout: bindActionCreators(logout, dispatch),
+  }
+}
+
+export default connect(
+    null,
+    mapDispatchToProps,
+)(LoginPage)

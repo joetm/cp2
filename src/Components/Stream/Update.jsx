@@ -3,21 +3,20 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card'
-import LikeAction from 'material-ui/svg-icons/action/thumb-up'
-import FavoriteAction from 'material-ui/svg-icons/action/favorite'
-import CommentAction from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import Avatar from 'material-ui/Avatar'
 
 import { LikeButton, FavoriteButton, CommentButton } from './Button'
 import { navigateTo } from '../../common/helpers'
 
 
+
 const Update = (props) => {
   const {
     type, id, username, src, avatar, title,
+    likes, dislikes, replies,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone,
     history
-} = props
+  } = props
   let url = '/'
   switch(type) {
     case 'image':
@@ -45,11 +44,13 @@ const Update = (props) => {
           actAsExpander={false}
           expandable={false}
         />
-        <CardActions actAsExpander={false} expandable={false}>
-          <LikeButton     tooltip="Like"     icon={<LikeAction     />} />
-          <FavoriteButton tooltip="Favorite" icon={<FavoriteAction />} />
-          <CommentButton  tooltip="Comment"  icon={<CommentAction  />} />
-        </CardActions>
+        {/*
+          <CardActions actAsExpander={false} expandable={false}>
+            <LikeButton     msg={111} />
+            <FavoriteButton msg={222} />
+            <CommentButton  msg={333} />
+          </CardActions>
+        */}
       </Card>
     </div>
   )

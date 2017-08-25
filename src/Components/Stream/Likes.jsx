@@ -10,6 +10,7 @@ import { fetchLikes } from '../../actions'
 import { categorizeList, humanRelativeDate, translateDayOffset } from '../../common/helpers'
 import Like from './Like'
 import Spacer from '../Shared/Spacer'
+import Loader from '../Shared/Loader'
 
 
 class Likes extends React.PureComponent {

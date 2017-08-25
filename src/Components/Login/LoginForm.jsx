@@ -1,58 +1,66 @@
 /** @flow */
 
 import React from 'react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { Card, CardText } from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
-import '../Shared/style-loginforms.css'
+import './loginform'
 
 
-const LoginForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user
-}) => (
-    <Card className="container">
-        <form action="/" onSubmit={onSubmit}>
-            <h2 className="card-heading">Login</h2>
+class LoginForm extends React.Component {
+  /**
+   * Render the component.
+   */
+  render() {
+    const { onSubmit, onChange, errors, user } = this.props
+    return (
+      <Card className="container">
+          <form method="post" action="/" onSubmit={onSubmit}>
+              <h2 className="card-heading">Login</h2>
 
-            {errors.summary && <p className="error-message">{errors.summary}</p>}
+              {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-            <div className="field-line">
-                <TextField
-                  floatingLabelText="Email"
-                  name="email"
-                  errorText={errors.email}
-                  onChange={onChange}
-                  value={user.email}
-                />
-            </div>
-
-            <div className="field-line">
-                <TextField
-                    floatingLabelText="Password"
-                    type="password"
-                    name="password"
+              <div className="field-line">
+                  <TextField
+                    floatingLabelText="Email"
+                    name="email"
+                    errorText={errors.email}
                     onChange={onChange}
-                    errorText={errors.password}
-                    value={user.password}
-                />
-            </div>
+                    value={user.email}
+                  />
+              </div>
 
-            <div className="button-line">
-                <RaisedButton type="submit" label="Log in" primary />
-            </div>
+              <div className="field-line">
+                  <TextField
+                      floatingLabelText="Password"
+                      type="password"
+                      name="password"
+                      onChange={onChange}
+                      errorText={errors.password}
+                      value={user.password}
+                  />
+              </div>
 
-            <CardText>
-                Don't have an account?
-                <Link to={'/signup'}>Create one</Link>.
-            </CardText>
+              <div className="button-line">
+                  <RaisedButton
+                    type="submit"
+                    label="Log in"
+                    primary
+                  />
+              </div>
 
-        </form>
-    </Card>
-)
+              <CardText>
+                  Don't have an account?
+                  {' '}
+                  <Link to={'/signup'}>Create one</Link>.
+              </CardText>
+
+          </form>
+      </Card>
+    )
+  }
+}
 
 export default LoginForm

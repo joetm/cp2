@@ -15,7 +15,7 @@ DEV
 >
 > yarn run dev
 >
-> node auth.js
+> node server.js
 
 To monitor deepstream:
 

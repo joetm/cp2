@@ -13,7 +13,6 @@ const initialState = {
         sidebarSearchOpen: false,
         sidebarOpen: false,
         isFetching: false,
-        activeBadge: 0,
         // --
         isAuthenticated: false,
         // --
@@ -62,7 +61,7 @@ const initialState = {
         avatar: '',
         profileimg: '',
         status: 'unknown',
-        verifiedUser: false,
+        verified: false,
         dailyUploadLimitReached: true,
         lastActivity: Date.now() / 1000,
         email: null,

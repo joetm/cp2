@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import { fetchPictures } from '../../actions'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import StreamTpl from './StreamTpl'
-import { Selectors } from '../../store'
+import Loader from '../Shared/Loader'
+import Pagination from '../Shared/Pagination'
 
 
 class Pictures extends React.PureComponent {
@@ -14,12 +15,20 @@ class Pictures extends React.PureComponent {
      * Render the component.
      */
     render() {
+        const { images } = this.props
         return (
-            <StreamTpl
-                action={this.props.fetchPictures}
-                headline="Pictures"
-                content={this.props.images}
-            />
+            <div>
+                <StreamTpl
+                    action={this.props.fetchPictures}
+                    headline="Pictures"
+                    content={images}
+                />
+                {
+                    !images.length &&
+                    <Loader />
+                }
+                {/*<Pagination />*/}
+            </div>
         )
     }
 }

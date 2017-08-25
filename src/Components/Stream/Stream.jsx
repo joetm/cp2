@@ -6,19 +6,29 @@ import { connect } from 'react-redux'
 import { fetchAll } from '../../actions'
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
 import StreamTpl from './StreamTpl'
+import Loader from '../Shared/Loader'
 
 
 class Updates extends React.PureComponent {
+    state = {
+        loaded: false,
+    }
     /**
      * Render the component.
      */
     render() {
+        const { updates } = this.props
         return (
-            <StreamTpl
-                action={this.props.fetchAll}
-                headline="Updates"
-                content={this.props.updates}
-            />
+            <div>
+                <StreamTpl
+                    action={this.props.fetchAll}
+                    headline="Updates"
+                    content={updates}
+                />
+                {
+                    !updates.length && <Loader />
+                }
+            </div>
         )
     }
 }

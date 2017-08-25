@@ -2,7 +2,9 @@
 import {
     fetchUnreadCountFromAPI,
     fetchDataFromAPI,
-    fetchStreamItemsFromAPI
+    fetchStreamItemsFromAPI,
+    sendDataToAPI,
+    markReadRequest,
 } from '../../__mocks__/mockServer'
 
 // -------------------------------------------------------------------------
@@ -100,3 +102,16 @@ export const recordLike = (payload) =>
 export const recordDislike = (payload) =>
     sendDataToAPI(payload)
         .then((response) => response)
+
+
+// TODO
+export const markRead = (what, id) => {
+    console.log('markRead', what, id)
+    return markReadRequest(what, id)
+        .then((response) => response)
+}
+
+// TODO
+// export const markAllRead = () =>
+//     sendDataToAPI()
+//         .then((response) => ({images: 0, messages: 0, posts: 0, videos: 0, likes: 0}))
