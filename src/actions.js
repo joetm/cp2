@@ -7,6 +7,7 @@ import initialState from './initialState'
 import * as api from './api'
 // import { pushState } from 'redux-router'
 import jwtDecode from 'jwt-decode'
+import fetch from 'unfetch'
 
 import { checkHttpStatus, parseJSON } from './common/helpers'
 
@@ -70,13 +71,12 @@ export const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
 export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
 
 // JWT
-export const LOGIN_USER_REQUEST       = 'AUTH::LOGIN_USER_REQUEST'
-export const LOGIN_USER_FAILURE       = 'AUTH::LOGIN_USER_FAILURE'
-export const LOGIN_USER_SUCCESS       = 'AUTH::LOGIN_USER_SUCCESS'
-export const LOGOUT_USER              = 'AUTH::LOGOUT_USER'
-export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
-export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
-
+export const LOGIN_REQUEST            = 'AUTH::LOGIN_REQUEST'
+export const LOGIN_FAILURE            = 'AUTH::LOGIN_FAILURE'
+export const LOGIN_SUCCESS            = 'AUTH::LOGIN_SUCCESS'
+export const LOGOUT                   = 'AUTH::LOGOUT'
+// export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
+// export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
 
 /**
  * Function to reduce redux boilerplate code
@@ -155,6 +155,9 @@ export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,     
 export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
 export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
 
+export const receiceToken                 = makeActionCreator(RECEIVE_TOKEN,          'token')
+export const removeToken                  = makeActionCreator(REMOVE_TOKEN)
+
 // const unknownAction = { type: UNKNOWN }
 
 
@@ -162,127 +165,74 @@ export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COU
 // JWT
 // ----------------------------------------------------
 
-export function loginUserSuccess(token) {
-  localStorage.setItem('token', token);
-  return {
-    type: LOGIN_USER_SUCCESS,
-    payload: {
-      token: token
-    }
-  }
-}
-
-export function loginUserFailure(error) {
-  localStorage.removeItem('token');
-  return {
-    type: LOGIN_USER_FAILURE,
-    payload: {
-      status: error.response.status,
-      statusText: error.response.statusText
-    }
-  }
-}
-
-export function loginUserRequest() {
-  return {
-    type: LOGIN_USER_REQUEST
-  }
-}
-
-export function logout() {
-    localStorage.removeItem('token');
+export const loginSuccess = (token) => {
+    localStorage.setItem('token', token)
     return {
-        type: LOGOUT_USER
+        type: LOGIN_SUCCESS,
+        token,
     }
 }
-
-export function logoutAndRedirect() {
-    return (dispatch, state) => {
-        dispatch(logout());
-        // TODO
-        // dispatch(pushState(null, '/login'));
+export const loginFailure = (status, statusText) => {
+    localStorage.removeItem('token')
+    return {
+        type: LOGIN_FAILURE,
+        status,
+        statusText,
     }
 }
+export const logout = () => {
+    localStorage.removeItem('token')
+    return {
+        type: LOGOUT,
+    }
+}
+// export const login = () => {
+//     localStorage.removeItem('token')
+//     return {
+//         type: LOGIN_REQUEST,
+//     }
+// }
 
-export function loginUser(email, password, redirect="/") {
-    return function(dispatch) {
-        dispatch(loginUserRequest());
+// ----------------------------------------------------
+// Asynchronous action creators
+// ----------------------------------------------------
+
+export const login = (email, password, redirect="/") =>
+    function(dispatch) {
+        dispatch({type: LOGIN_REQUEST})
         return fetch('http://localhost:3000/auth/getToken/', {
-            method: 'post',
-            credentials: 'include',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-                body: JSON.stringify({email: email, password: password})
+                method: 'post',
+                credentials: 'include',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password })
             })
             .then(checkHttpStatus)
             .then(parseJSON)
             .then(response => {
                 try {
-                    let decoded = jwtDecode(response.token);
-                    dispatch(loginUserSuccess(response.token));
+                    let decoded = jwtDecode(response.token)
+                    console.log('decoded', decoded)
+                    dispatch(loginSuccess(response.token))
                     // TODO
                     // dispatch(pushState(null, redirect));
+
+
+
                 } catch (e) {
-                    dispatch(loginUserFailure({
-                        response: {
-                            status: 403,
-                            statusText: 'Invalid token'
-                        }
-                    }));
+                    const status = 403
+                    const statusText = 'Invalid token'
+                    dispatch(loginFailure(status, statusText))
                 }
             })
             .catch(error => {
-                dispatch(loginUserFailure(error));
+                dispatch(loginFailure(error))
             })
     }
 }
 
-export function receiveProtectedData(data) {
-    return {
-        type: RECEIVE_PROTECTED_DATA,
-        payload: {
-            data: data
-        }
-    }
-}
-
-export function fetchProtectedDataRequest() {
-  return {
-    type: FETCH_PROTECTED_DATA_REQUEST
-  }
-}
-
-export function fetchProtectedData(token) {
-
-    return (dispatch, state) => {
-        dispatch(fetchProtectedDataRequest());
-        return fetch('http://localhost:3000/getData/', {
-                credentials: 'include',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(checkHttpStatus)
-            .then(parseJSON)
-            .then(response => {
-                dispatch(receiveProtectedData(response.data));
-            })
-            .catch(error => {
-                if(error.response.status === 401) {
-                  dispatch(loginUserFailure(error));
-                  // TODO
-                  // dispatch(pushState(null, '/login'));
-                }
-            })
-       }
-}
-
-
-// ----------------------------------------------------
-// Asynchronous action creators
-// ----------------------------------------------------
 
 /**
  * fetchCurrentUser Asynchronous Action Creator

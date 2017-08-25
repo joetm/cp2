@@ -7,6 +7,7 @@ import cuid from 'cuid'
 
 import initialState from './initialState'
 import * as ACTIONS from './actions'
+import jwtDecode from 'jwt-decode'
 
 
 // see http://redux.js.org/docs/recipes/ReducingBoilerplate.html
@@ -251,6 +252,40 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             }
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
+
+        // AUTH
+        case ACTIONS.LOGIN_REQUEST:
+            return { ...currentUserState, {
+                'isAuthenticating': true,
+            }}
+        case ACTIONS.LOGIN_SUCCESS:
+            return { ...currentUserState, {
+                'isAuthenticating': false,
+                'isAuthenticated': true,
+                'token': action.token,
+                'userid': jwtDecode(action.token).userid,
+                'username': jwtDecode(action.token).username,
+                // 'act': jwtDecode(action.token).act,
+                'statusText': 'You have been successfully logged in.',
+            }}
+        case ACTIONS.LOGIN_FAILURE:
+            return { ...currentUserState, {
+                'isAuthenticating': false,
+                'isAuthenticated': false,
+                'token': null,
+                'userid': null,
+                'username': null,
+                'statusText': `Authentication Error: ${action.status} ${action.statusText}`
+            }}
+        case ACTIONS.LOGOUT:
+            return { ...currentUserState, {
+                'isAuthenticated': false,
+                'token': null,
+                'userid': null,
+                'username': null,
+                'statusText': 'You have been successfully logged out.',
+            }}
+
         default:
             return currentUserState
     }

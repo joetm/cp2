@@ -65,7 +65,12 @@ const initialState = {
         verifiedUser: false,
         dailyUploadLimitReached: true,
         lastActivity: Date.now() / 1000,
-        // email: 'admin@thisdomain.com',
+        email: null,
+        // auth
+        isAuthenticating: false,
+        isAuthenticated: false,
+        token: null,
+        statusText: '',
     },
 }
 
