@@ -2,6 +2,7 @@
 
 import React from 'react'
 import RCPagination from 'rc-pagination'
+import 'rc-pagination/assets/index.css'
 
 const LOCALE_OBJ = {
     items_per_page: 'items/page',
@@ -19,16 +20,37 @@ const LOCALE_OBJ = {
 const DEFAULT_PROPS = {
     defaultCurrent: 1,
     current: 1,
-    total: 15,
+    total: 55,
+    defaultPageSize: 10,
+    pageSize: 10,
+    showSizeChanger: false,
+    showQuickJumper: false,
+    showLessItems: false,
+    showTitle: true,
     locale : LOCALE_OBJ,
 }
 
+const styles = {
+    wrapper: {
+        textAlign: 'center',
+        margin: '24px auto',
+    },
+    pagination: {
+        margin: '0 auto',
+        display: 'inline-block',
+    },
+}
+
+
 const Pagination = (props) => {
-    const PROPS = { ...DEFAULT_PROPS, ...this.props }
+    const AUGMENTED_PROPS = { ...DEFAULT_PROPS, ...props }
     return (
-        <RCPagination
-            { ...PROPS }
-        />
+        <div style={styles.wrapper}>
+            <RCPagination
+                style={styles.pagination}
+                { ...AUGMENTED_PROPS }
+            />
+        </div>
     )
 }
 

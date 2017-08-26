@@ -10,6 +10,7 @@ import Divider from 'material-ui/Divider'
 import { fetchUsers } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import Loader from '../Shared/Loader'
+import Pagination from '../Shared/Pagination'
 import User from './User'
 
 
@@ -54,6 +55,10 @@ class Users extends React.PureComponent {
                   ))
                 }
               </List>
+              {
+                usersList.length > 0 &&
+                <Pagination />
+              }
               <Spacer />
             </div>
           )
