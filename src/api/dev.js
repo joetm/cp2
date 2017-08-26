@@ -123,3 +123,10 @@ export const markRead = (what, id) => {
 // export const markAllRead = () =>
 //     sendDataToAPI()
 //         .then((response) => ({images: 0, messages: 0, posts: 0, videos: 0, likes: 0}))
+
+export const fetchCountries = () =>
+    fetch('/data/countries.json')
+        .then(response => response.json())
+        .then(countries => countries)
+
+

@@ -16,13 +16,7 @@ const initialState = {
         // --
         isAuthenticated: false,
         // --
-        unread: {
-            posts: 0,
-            images: 0,
-            videos: 0,
-            messages: 0,
-            likes: 0,
-        },
+        countries: [],
     },
     // -- content --
     all: [],

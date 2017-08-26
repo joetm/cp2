@@ -25,6 +25,7 @@ const mockState = {
         //         videos: 1,
         //     }
         // },
+        countries: [],
     },
     // -- content --
     streamitems: [
