@@ -8,8 +8,12 @@ import '../External/dropzone/dist/dropzone.css'
 import 'react-dropzone-component/styles/filepicker.css'
 // dropzone component
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
+import RaisedButton from 'material-ui/RaisedButton'
+import Snackbar from 'material-ui/Snackbar'
 
+import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
+import { removeProfileImg } from '../../actions'
 
 
 const blockMaxWidth = '80%' // 250
@@ -24,32 +28,64 @@ const styles = {
 }
 
 
-const ProfileImg = (props) => (
-    <div
-        id="profileImg-settings"
-        style={{
-          width: blockMaxWidth,
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: blockMaxWidth,
-        }}
-    >
-        <img
-            src={props.profileimg}
-            alt=""
-            style={{
-                width: '100%',
-                height: 'auto',
-            }}
-        />
-        <DropzoneComponent
-          style={styles.dropzone}
-          config={dropzoneConfig}
-          eventHandlers={dropzoneEventHandlers}
-          djsConfig={dropzoneJsConfig}
-        />
-    </div>
-)
+class ProfileImg extends React.PureComponent {
+  state = {
+    msgOpen: false,
+  }
+  handleRequestClose = () => {
+    this.setState({ msgOpen: false })
+  }
+  deleteProfileImg = () => {
+    this.props.removeProfileImg()
+    this.setState({ msgOpen: true })
+  }
+  render() {
+    const { profileimg } = this.props
+    return (
+      <div
+          id="profileImg-settings"
+          style={{
+            width: blockMaxWidth,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: blockMaxWidth,
+          }}
+      >
+
+          <img
+              src={profileimg}
+              alt=""
+              style={{
+                  width: '100%',
+                  height: 'auto',
+              }}
+          />
+
+          <DropzoneComponent
+            style={styles.dropzone}
+            config={dropzoneConfig}
+            eventHandlers={dropzoneEventHandlers}
+            djsConfig={dropzoneJsConfig}
+          />
+
+          <Spacer />
+
+          <RaisedButton
+            label="Delete Profile Image"
+            onTouchTap={this.deleteProfileImg}
+          />
+
+          <Snackbar
+            open={this.state.msgOpen}
+            message="Profile image removed"
+            autoHideDuration={2000}
+            onRequestClose={this.handleRequestClose}
+          />
+
+      </div>
+    )
+  }
+}
 
 
 const mapStateToProps = (state) => ({
@@ -57,5 +93,6 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    { removeProfileImg }
 )(ProfileImg)

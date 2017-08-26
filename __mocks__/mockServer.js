@@ -113,10 +113,11 @@ export const sendDataToAPI = (payload) => {
 }
 
 // TODO
-export const removeField = () => {
+export const remove = (field) => {
     return delay(500)
         .then(() => {
             try {
+                // console.log(`TODO: delete ${field}`)
                 return 200
             } catch (e) {
                 throw new Error(e)

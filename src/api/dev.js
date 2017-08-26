@@ -5,7 +5,7 @@ import {
     fetchStreamItemsFromAPI,
     sendDataToAPI,
     markReadRequest,
-    removeField,
+    remove,
 } from '../../__mocks__/mockServer'
 
 // -------------------------------------------------------------------------
@@ -160,7 +160,7 @@ export const updateCity = (city) =>
         .then((response) => response)
 
 // TODO
-export const removeProfileImg = () =>
-    removeField('profileimg')
+export const removeField = () =>
+    remove('profileimg')
         .then((response) => response)
 
