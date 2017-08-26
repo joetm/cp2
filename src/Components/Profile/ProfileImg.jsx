@@ -24,6 +24,13 @@ const styles = {
         backgroundColor: '#808080',
         position: 'relative',
     },
+    scrollButton: {
+        position: 'fixed',
+        left: '50%',
+        bottom: '50px',
+        opacity: 0.5,
+        zIndex: 999999999,
+    },
 }
 
 class ProfileImg extends React.PureComponent {
@@ -39,6 +46,24 @@ class ProfileImg extends React.PureComponent {
     }
     componentWillUnmount() {
         window.onresize = null
+    }
+    scrollDown = (e) => {
+        e.stopPropagation()
+
+        console.log('scroll down')
+
+        const scrollDuration = 200
+        const scrollPosition = window.scrollY + 240
+        const scrollStep = scrollPosition / (scrollDuration / 15)
+
+        const scrollInterval = setInterval(() => {
+                if ( window.scrollY < scrollPosition ) {
+                    window.scrollBy(0, scrollStep)
+                } else {
+                    clearInterval(scrollInterval)
+                }
+            }, 15);
+
     }
     /**
      * Render the component.
@@ -61,14 +86,6 @@ class ProfileImg extends React.PureComponent {
             profileImgStyle = { ...profileImgStyle, ...blurFilters }
         }
         // --
-        const scrollButton = {
-            position: 'fixed',
-            left: '50%',
-            bottom: '50px',
-            opacity: 0.5,
-            zIndex: 999999999,
-            display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block',
-        }
         return (
             <div>
                 <div onClick={this.props.toggleProfileDetails} role="button">
@@ -84,10 +101,11 @@ class ProfileImg extends React.PureComponent {
                 </div>
 
                 <Scrollbutton
-                    style={scrollButton}
+                    style={{ ...styles.scrollButton, display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block' }}
                     visible={!this.props.blurredImg}
                     secondary={true}
-                    clickable={false}
+                    clickable={true}
+                    onTouchTap={this.scrollDown}
                     icon={<DownIcon />}
                 />
 

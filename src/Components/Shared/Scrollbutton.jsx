@@ -17,17 +17,8 @@ const styles = {
 
 
 class Scrollbutton extends React.PureComponent {
-    constructor(props) {
-        super(props)
-        this.state = {
-            clickable: props.clickable || true,
-            Icon: props.icon || <UpIcon />,
-        }
-        // bindings
-        this.onBtnClick = this.onBtnClick.bind(this)
-    }
-    onBtnClick() {
-        if (!this.state.clickable) { return }
+    defaultAction = () => {
+        if (!this.props.clickable) { return }
         this.scrollToTop(400)
     }
     // see http://stackoverflow.com/a/24559613/426266
@@ -52,9 +43,9 @@ class Scrollbutton extends React.PureComponent {
             <FloatingActionButton
                 secondary={this.props.secondary || false}
                 style={this.props.style || styles.scrollButtonDefault}
-                onClick={this.onBtnClick}
+                onTouchTap={this.props.onTouchTap || this.defaultAction}
             >
-                {this.state.Icon}
+                {this.props.icon || <UpIcon />}
             </FloatingActionButton>
         )
     }
