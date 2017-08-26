@@ -4,7 +4,7 @@
  **/
 
 import initialState from './initialState'
-import * as api from './api'
+import api from './api'
 // import { pushState } from 'redux-router'
 import jwtDecode from 'jwt-decode'
 import fetch from 'unfetch'

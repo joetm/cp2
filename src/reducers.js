@@ -254,7 +254,14 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return { ...action.response }
 
         case ACTIONS.RECEIVE_UNREAD_COUNT:
-            return { ...currentUserState, ...action.response }
+            console.log('RECEIVE_UNREAD_COUNT', action.response)
+            return { ...currentUserState,
+                unreadPosts: action.response.posts,
+                unreadImages: action.response.images,
+                unreadVideos: action.response.videos,
+                unreadMessages: action.response.messages,
+                unreadLikes: action.response.likes,
+            }
 
         // AUTH -------------------------------------
         case ACTIONS.SET_IS_AUTHENTICATING:
