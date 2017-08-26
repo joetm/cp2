@@ -34,6 +34,7 @@ import Home from './Home'
 import Forum from './Forum'
 import Notifications from './Stream/Notifications'
 import MessageHistory from './MessageHistory'
+import Followers from './Followers'
 import Stream from './Stream'
 import Video from './Video'
 import Image from './Image'
@@ -118,6 +119,8 @@ class App extends React.Component {
                             render={() => (
                                 <Profile isScrolled={this.state.isScrolled} />
                             )} />
+
+                        <Route path="/followers/:userid" component={Followers} />
 
                         <Route path="/settings" component={Settings} />
 

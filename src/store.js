@@ -36,7 +36,7 @@ const store = createStore(
         album: Reducers.albumReducer,
         threads: Reducers.threadsReducer,
         posts: Reducers.postsReducer,
-        followers: Reducers.userReducer,
+        followers: Reducers.followersReducer,
         users: Reducers.userReducer,
         // single items
         reviewitem: Reducers.reviewReducer,

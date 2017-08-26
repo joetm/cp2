@@ -19,6 +19,10 @@ export const fetchUser = (userid) =>
     fetchDataFromAPI('users', userid)
         .then((response) => response)
 
+export const fetchFollowers = () =>
+    fetchDataFromAPI('followers')
+        .then((response) => response)
+
 export const fetchReviewItem = () =>
     fetchDataFromAPI('reviewitem')
         .then((response) => response)

@@ -223,10 +223,23 @@ export function userReducer(usersState = initialState.users, action) {
         case ACTIONS.RECEIVE_USER:
             return {
                 ...usersState,
-                [action.response.userid]: {...action.response}
+                [action.response.userid]: { ...action.response }
             }
         default:
             return usersState
+    }
+}
+
+/**
+ * followersReducer
+ * @returns state
+ **/
+export function followersReducer(followersState = initialState.followers, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_FOLLOWERS:
+            return [ ...action.response ]
+        default:
+            return followersState
     }
 }
 
@@ -254,7 +267,6 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return { ...action.response }
 
         case ACTIONS.RECEIVE_UNREAD_COUNT:
-            console.log('RECEIVE_UNREAD_COUNT', action.response)
             return { ...currentUserState,
                 unreadPosts: action.response.posts,
                 unreadImages: action.response.images,

@@ -1,19 +1,17 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { List } from 'material-ui/List'
+import Divider from 'material-ui/Divider'
 // import Subheader from 'material-ui/Subheader'
-// import Divider from 'material-ui/Divider'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
-import Follower from './Follower'
-
-
-function randomNum() {
-    const min = 1
-    const max = 13
-    return Math.floor(Math.random() * (max - min + 1)) + min
-}
+import { fetchFollowers, fetchUser } from '../../actions'
+import Spacer from '../Shared/Spacer'
+import Loader from '../Shared/Loader'
+import User from './User'
 
 
 /**
@@ -21,50 +19,44 @@ function randomNum() {
  * @class
  */
 class Followers extends React.PureComponent {
+    componentDidMount() {
+      const { userid } = this.props
+      this.props.fetchFollowers()
+      this.props.fetchUser(userid)
+    }
     /**
      * Render the component.
      */
     render () {
+          const { followers, user } = this.props
           return (
+            <div>
+              <h2>Users following {user !== undefined ? user.username : null}</h2>
+              <Divider />
               <List>
-                <Follower
-                  username="Brendan Lim"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
-                <Follower
-                  username="Eric Hoffman"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
-                <Follower
-                  username="Grace Ng"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
-                <Follower
-                  username="Kerem Suer"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
-                <Follower
-                  username="Raquel Parrado"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
-                <Follower
-                  username="Chelsea Otakan"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
-                <Follower
-                  username="James Anderson"
-                  userid={randomNum()}
-                  avatar={`/img/avatar/face-${randomNum()}.jpg`}
-                />
+                {
+                  followers.map((follower) => (
+                    <User
+                      username={follower.username}
+                      userid={follower.userid}
+                      avatar={follower.avatar}
+                    />
+                  ))
+                }
               </List>
+              <Spacer />
+            </div>
           )
     }
 }
 
-export default Followers
+const mapStateToProps = (state, ownProps) => ({
+    followers: state.followers,
+    userid: ownProps.match.params.userid,
+    user: state.users[ownProps.match.params.userid],
+})
+
+export default withRouter(connect(
+    mapStateToProps,
+    { fetchFollowers, fetchUser }
+)(Followers))
