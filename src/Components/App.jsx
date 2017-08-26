@@ -23,6 +23,7 @@ injectTapEventPlugin()
 objectFitImages()
 
 import store from '../store'
+import routes from '../routes'
 // import DevTools from '../DevTools'
 import { setDeviceDetails } from '../actions'
 import { theme, colors } from '../common/theme'
@@ -35,6 +36,7 @@ import Forum from './Forum'
 import Notifications from './Stream/Notifications'
 import MessageHistory from './MessageHistory'
 import Followers from './Followers'
+import Users from './Users'
 import Stream from './Stream'
 import Video from './Video'
 import Image from './Image'
@@ -100,40 +102,42 @@ class App extends React.Component {
                     <NavBar isScrolled={this.state.isScrolled} />
 
                     <Switch>
-                        <Route exact path="/" component={Home} />
+                        <Route exact path={routes.HOME} component={Home} />
 
-                        <Route path="/forum" component={Forum} />
+                        <Route path={routes.FORUM} component={Forum} />
 
-                        <Route path="/notifications/:userid" component={Notifications} />
+                        <Route path={`${routes.NOTIFICATIONS}/:userid`} component={Notifications} />
 
-                        <Route path="/stream/:userid" component={Stream} />
+                        <Route path={`${routes.STREAM}/:userid`} component={Stream} />
 
-                        <Route path="/videos/:videoid" component={Video} />
-                        <Route path="/images/:imageid" component={Image} />
+                        <Route path={`${routes.VIDEOS}/:videoid`} component={Video} />
+                        <Route path={`${routes.IMAGES}/:imageid`} component={Image} />
 
-                        <Route path="/review" component={Review} />
+                        <Route path={routes.REVIEW} component={Review} />
 
-                        <Route path="/messages/:opponentid" component={MessageHistory} />
+                        <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
 
-                        <Route path="/profile/:userid"
+                        <Route path={`${routes.PROFILE}/:userid`}
                             render={() => (
                                 <Profile isScrolled={this.state.isScrolled} />
                             )} />
 
-                        <Route path="/followers/:userid" component={Followers} />
+                        <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
 
-                        <Route path="/settings" component={Settings} />
+                        <Route exact path={routes.MEMBERS} component={Users} />
 
-                        <Route exact path="/login" component={LoginPage} />
-                        <Route exact path="/signup" component={SignupPage} />
+                        <Route path={routes.SETTINGS} component={Settings} />
 
-                        <Route exact path="/community-guidelines" component={Guidelines} />
-                        <Route exact path="/privacy-policy" component={Privacy} />
-                        <Route exact path="/dmca-policy" component={DMCA} />
+                        <Route exact path={routes.LOGIN} component={LoginPage} />
+                        <Route exact path={routes.SIGNUP} component={SignupPage} />
 
-                        <Route exact path="/contact" component={Contact} />
+                        <Route exact path={routes.LEGAL.COMMUNITY} component={Guidelines} />
+                        <Route exact path={routes.LEGAL.PRIVACY} component={Privacy} />
+                        <Route exact path={routes.LEGAL.DMCA} component={DMCA} />
 
-                        <Route exact path="/upload" component={Upload} />
+                        <Route exact path={routes.CONTACT} component={Contact} />
+
+                        <Route exact path={routes.UPLOAD} component={Upload} />
 
                         <Route component={Error} code="404" />
 

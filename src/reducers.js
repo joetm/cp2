@@ -225,6 +225,14 @@ export function userReducer(usersState = initialState.users, action) {
                 ...usersState,
                 [action.response.userid]: { ...action.response }
             }
+        case ACTIONS.RECEIVE_USERS:
+            const ret = { ...usersState }
+            for (let userid in action.response) {
+                if (action.response.hasOwnProperty(userid)) {
+                    ret[userid] = { ...action.response[userid] }
+                }
+            }
+            return ret
         default:
             return usersState
     }

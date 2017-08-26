@@ -59,6 +59,7 @@ export const MARK_POST_READ           = 'STREAM::MARK_POST_READ'
 export const MARK_ALL_READ            = 'STREAM::MARK_ALL_READ'
 
 export const RECEIVE_USER             = 'USER::RECEIVE_USER'
+export const RECEIVE_USERS            = 'USER::RECEIVE_USERS'
 export const RECEIVE_FOLLOWERS        = 'SOCIAL::RECEIVE_FOLLOWERS'
 export const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
 export const RECEIVE_COMMENTS         = 'PROFILE::RECEIVE_COMMENTS'
@@ -143,6 +144,7 @@ export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS,    '
 // ajax receptors
 export const receiveCurrentUser           = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
 export const receiveUser                  = makeActionCreator(RECEIVE_USER,           'response', 'userid')
+export const receiveUsers                 = makeActionCreator(RECEIVE_USERS,          'response')
 export const receiveFollowers             = makeActionCreator(RECEIVE_FOLLOWERS,      'response')
 export const receiveComments              = makeActionCreator(RECEIVE_COMMENTS,       'response')
 export const receivePosts                 = makeActionCreator(RECEIVE_POSTS,          'response')
@@ -252,6 +254,13 @@ export const fetchCurrentUser = () =>
  */
 export const fetchUser = (userid) =>
     api.fetchUser(userid).then(receiveUser)
+
+/**
+ * fetchUsers Asynchronous Action Creator
+ * @returns receiveUsers() - Action
+ */
+export const fetchUsers = () =>
+    api.fetchUsers().then(receiveUsers)
 
 /**
  * fetchFollowers Asynchronous Action Creator
