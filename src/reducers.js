@@ -253,6 +253,9 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
 
+        case ACTIONS.RECEIVE_UNREAD_COUNT:
+            return { ...currentUserState, ...action.response }
+
         // AUTH -------------------------------------
         case ACTIONS.SET_IS_AUTHENTICATING:
             return { ...currentUserState, 'isAuthenticating': true }
@@ -311,8 +314,6 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return { ...appState, deviceDetails: action.obj }
         case ACTIONS.SET_ACTIVE_BADGE:
             return { ...appState, activeBadge: +action.id }
-        case ACTIONS.RECEIVE_UNREAD_COUNT:
-            return { ...appState, unread: action.response }
 
         case ACTIONS.MARK_IMAGES_READ:
             return { ...appState, unread: { ...appState.unread, images: 0 } }

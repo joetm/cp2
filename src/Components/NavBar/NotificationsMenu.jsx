@@ -26,7 +26,9 @@ const NumChip = (props) => <Chip style={styles.Chip}>{props.num}</Chip>
 
 class NotificationsMenu extends React.Component {
   render() {
+
     const { unread, userid, closeNotificationsMenu, history } = this.props
+
     return (
       <div>
         <Popover

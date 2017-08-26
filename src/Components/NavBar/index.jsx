@@ -9,7 +9,6 @@ import IconButton from 'material-ui/IconButton'
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
-import { darkBlack } from 'material-ui/styles/colors'
 import Popover from 'material-ui/Popover'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
@@ -61,7 +60,6 @@ const styles = {
         // width: '100%',
         zIndex: 9999999,
         backgroundColor: '#fff',
-        color: darkBlack,
     },
     firstItem: {
         marginLeft: '10px',
@@ -130,8 +128,7 @@ class NavBar extends React.Component {
      * Render the component.
      */
     render() {
-        const { unread } = this.props
-        const { dispatch, isAuthenticated, errorMessage } = this.props
+        const { unread, dispatch, isAuthenticated, errorMessage }= this.props
         // TODO
         // const navbarIsAffixed = this.props.scrollPosition > 250
         //
@@ -216,6 +213,7 @@ class NavBar extends React.Component {
                                 ref="notifications"
                                 onTouchTap={this.toggleNotificationsMenu}
                             />
+
                             <NotificationsMenu
                                 open={this.state.notificationsMenuOpen}
                                 anchorEl={this.anchorEl}
@@ -223,6 +221,7 @@ class NavBar extends React.Component {
                                 userid={this.props.userid}
                                 closeNotificationsMenu={this.closeNotificationsMenu}
                             />
+
                             <Link to={`/profile/${this.props.userid}`}>
                                 <Avatar
                                     id={_NAVITEM_ID.PROFILE}
@@ -247,37 +246,36 @@ class NavBar extends React.Component {
                     }
                 </ReactCSSTransitionGroup>
 
-
-                    {
-                    !this.state.searchExpanded ? null :
-                        <ToolbarGroup
-                            firstChild={true}
-                            lastChild={true}
+                {
+                !this.state.searchExpanded ? null :
+                    <ToolbarGroup
+                        firstChild={true}
+                        lastChild={true}
+                    >
+                        <IconButton
+                            tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                            onTouchTap={this.searchAction}
+                            style={styles.searchIcon}
                         >
-                            <IconButton
-                                tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                                onTouchTap={this.searchAction}
-                                style={styles.searchIcon}
-                            >
-                                <SearchIcon />
-                            </IconButton>
-                            <TextField
-                              hintText="Search"
-                              rows={1}
-                              rowsMax={1}
-                              fullWidth={true}
-                              style={{marginBottom: '10px'}}
-                              floatingLabelText="Search"
-                            />
-                            <IconButton
-                                tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                                onTouchTap={this.toggleSearchField}
-                                style={styles.searchIcon}
-                            >
-                                <CloseIcon />
-                            </IconButton>
-                        </ToolbarGroup>
-                    }
+                            <SearchIcon />
+                        </IconButton>
+                        <TextField
+                          hintText="Search"
+                          rows={1}
+                          rowsMax={1}
+                          fullWidth={true}
+                          style={{marginBottom: '10px'}}
+                          floatingLabelText="Search"
+                        />
+                        <IconButton
+                            tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                            onTouchTap={this.toggleSearchField}
+                            style={styles.searchIcon}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    </ToolbarGroup>
+                }
 
             </Toolbar>
 
@@ -291,7 +289,13 @@ const mapStateToProps = (state) => ({
     username: state.currentUser.username,
     avatar: state.currentUser.avatar,
     // --
-    unread: state.appState.unread,
+    unread: {
+        posts: state.currentUser.unreadPosts,
+        images: state.currentUser.unreadImages,
+        videos: state.currentUser.unreadVideos,
+        messages: state.currentUser.unreadMessages,
+        likes: state.currentUser.unreadLikes,
+    }
 })
 
 export default withRouter(connect(
