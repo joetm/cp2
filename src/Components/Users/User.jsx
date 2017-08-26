@@ -1,39 +1,43 @@
 /** @flow */
 
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import Avatar from 'material-ui/Avatar'
 import { ListItem } from 'material-ui/List'
-import { grey400, darkBlack } from 'material-ui/styles/colors'
+import VerifiedIcon from 'material-ui/svg-icons/action/verified-user'
+
+import routes from '../../routes'
 
 
 /**
- * Follower class
+ * User class
  * @class
  */
-class Follower extends React.PureComponent {
-    constructor(props) {
-        super(props)
-        console.log('props', props)
-        this.state = {
-            ...props
-        }
-        this.handleClick = this.handleClick.bind(this)
-    }
-    handleClick() {
-        console.log(`clicked follower: ${this.state.userid}`)
+class User extends React.PureComponent {
+    handleClick = () => {
+        this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)
     }
     /**
      * Render the component.
      */
     render() {
+        const { username, avatar, status, verified, city, state, country } = this.props
+        const verifiedStatus = verified ? '- verified' : ''
+        const location = city || state || country ? `- ${city}, ${state}, ${country}` : ''
+        const secondaryText = `
+          ${status}
+          ${verifiedStatus}
+          ${location}
+        `
         return (
             <ListItem
-              primaryText={this.props.username}
-              leftAvatar={<Avatar src={this.props.avatar} />}
+              primaryText={username}
+              secondaryText={secondaryText}
+              leftAvatar={<Avatar src={avatar} />}
               onClick={this.handleClick}
             />
         )
     }
 }
 
-export default Follower
+export default withRouter(User)
