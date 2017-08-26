@@ -1,7 +1,6 @@
 /** @flow */
 
 import React from 'react'
-// Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import Divider from 'material-ui/Divider'
 import { Link } from 'react-router-dom'

@@ -746,7 +746,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         {
             userid: 4,
@@ -784,7 +783,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         {
             userid: 5,
@@ -822,7 +820,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         {
             userid: 6,
@@ -860,7 +857,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
     ],
     users: {
@@ -900,7 +896,6 @@ const mockState = {
             unreadLikes: 244,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         "2": {
             userid: 2,
@@ -938,7 +933,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         "3": {
             userid: 3,
@@ -976,7 +970,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         "4": {
             userid: 4,
@@ -1014,7 +1007,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         "5": {
             userid: 5,
@@ -1052,7 +1044,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         "6": {
             userid: 6,
@@ -1090,7 +1081,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         },
         "7": {
             userid: 7,
@@ -1128,7 +1118,6 @@ const mockState = {
             unreadLikes: 0,
             profileViews: 0,
             followerCount: 0,
-            greeted: false,
         }
     },
     currentUser: {
@@ -1166,7 +1155,6 @@ const mockState = {
         unreadLikes: 0,
         profileViews: 0,
         followerCount: 0,
-        greeted: true,
     },
 }
 
