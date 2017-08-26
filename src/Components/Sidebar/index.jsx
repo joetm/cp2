@@ -97,7 +97,7 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
-                route={`${routes.NOTIFICATIONS}/${userid}`}
+                route={routes.NOTIFICATIONS}
                 icon={<EmailIcon />}
                 text="Messages"
                 onTouchTap={closeSidebar}

@@ -51,6 +51,7 @@ const mockState = {
             tags: [],
             timestamp: 1501229377,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "like",
@@ -71,6 +72,7 @@ const mockState = {
             tags: [],
             timestamp: 1501229577,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "like",
@@ -91,6 +93,7 @@ const mockState = {
             tags: [],
             timestamp: 1501229577,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "message",
@@ -111,6 +114,7 @@ const mockState = {
             tags: [],
             timestamp: 1502788349,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "message",
@@ -131,6 +135,7 @@ const mockState = {
             tags: [],
             timestamp: 1502789349,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "message",
@@ -151,6 +156,7 @@ const mockState = {
             tags: [],
             timestamp: 1502789349,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "message",
@@ -171,6 +177,7 @@ const mockState = {
             tags: [],
             timestamp: 1502788349,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "message",
@@ -191,6 +198,7 @@ const mockState = {
             tags: [],
             timestamp: 1502788549,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "message",
@@ -211,6 +219,7 @@ const mockState = {
             tags: [],
             timestamp: 1502789349,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "image",
@@ -231,6 +240,7 @@ const mockState = {
             tags: [],
             timestamp: 1501229377,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -251,6 +261,7 @@ const mockState = {
             tags: ["thread-1"],
             timestamp: 1501229177,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "image",
@@ -271,6 +282,7 @@ const mockState = {
             tags: [],
             timestamp: 1501229077,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "image",
@@ -291,6 +303,7 @@ const mockState = {
             tags: [],
             timestamp: 1501220077,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "like",
@@ -311,6 +324,7 @@ const mockState = {
             tags: [],
             timestamp: 1501200077,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -331,6 +345,7 @@ const mockState = {
             tags: ["thread-2"],
             timestamp: 1501000077,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -351,6 +366,7 @@ const mockState = {
             tags: ["thread-2"],
             timestamp: 1501000057,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "video",
@@ -371,6 +387,7 @@ const mockState = {
             tags: [],
             timestamp: 1500000057,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -391,6 +408,7 @@ const mockState = {
             tags: ["cars", "thread-123"],
             timestamp: 1501135362,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -411,6 +429,7 @@ const mockState = {
             tags: ["dinosaurs", "thread-123"],
             timestamp: 1501185342,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -431,6 +450,7 @@ const mockState = {
             tags: ["forums", "dinosaurs", "thread-124"],
             timestamp: 1501188342,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "post",
@@ -451,6 +471,7 @@ const mockState = {
             replies: 0,
             timestamp: 1501198342,
             lastEdit: 0,
+            rating: null,
         },
         {
             type: "image",
@@ -471,6 +492,7 @@ const mockState = {
             tags: ["hello"],
             timestamp: 1501239377,
             lastEdit: 0,
+            rating: null,
         },
     ],
     // -- single item caching --
@@ -502,6 +524,7 @@ const mockState = {
                     tags: ["cars", "thread-123"],
                     timestamp: 1501135362,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "post",
@@ -522,6 +545,7 @@ const mockState = {
                     tags: ["dinosaurs", "thread-123"],
                     timestamp: 1501185342,
                     lastEdit: 0,
+                    rating: null,
                 },
             ]
         }
@@ -544,6 +568,7 @@ const mockState = {
         tags: ["forums", "dinosaurs", "thread-124"],
         timeStamp: Math.round(Date.now() / 1000), // Unix Timestamp in seconds
         lastEdit: 0,
+        rating: null,
     },
     messageHistory: {
         "3": {
@@ -569,6 +594,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501229377,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "message",
@@ -589,6 +615,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501229387,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "message",
@@ -609,6 +636,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501239377,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "message",
@@ -629,6 +657,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501249377,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "message",
@@ -649,6 +678,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501259377,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "message",
@@ -669,6 +699,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501269377,
                     lastEdit: 0,
+                    rating: null,
                 },
                 {
                     type: "message",
@@ -689,6 +720,7 @@ const mockState = {
                     tags: [],
                     timestamp: 1501279377,
                     lastEdit: 0,
+                    rating: null,
                 },
             ]
         },
@@ -712,6 +744,7 @@ const mockState = {
         tags: ["thread-5"],
         timestamp: 1501229377,
         lastEdit: 0,
+        rating: null,
     },
     followers: [
         {
@@ -743,7 +776,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: -2,
-            IP: '56.21.56.21',
+            // IP: '56.21.56.21',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -781,7 +814,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: -1,
-            IP: '111.111.111.111',
+            // IP: '111.111.111.111',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -819,7 +852,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: 0,
-            IP: '98.98.98.98',
+            // IP: '98.98.98.98',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -857,7 +890,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: 0,
-            IP: '66.66.66.66',
+            // IP: '66.66.66.66',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -897,7 +930,7 @@ const mockState = {
             lastActivity: 1502379924,
             joinDate: 1002579924,
             timezoneOffset: 0,
-            IP: '123.98.122.121',
+            // IP: '123.98.122.121',
             unreadPosts: 123,
             unreadImages: 2,
             unreadVideos: 8,
@@ -935,7 +968,7 @@ const mockState = {
             lastActivity: 1502379924,
             joinDate: 1302579924,
             timezoneOffset: -8,
-            IP: '21.21.21.21',
+            // IP: '21.21.21.21',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -973,7 +1006,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: -2,
-            IP: '56.21.56.21',
+            // IP: '56.21.56.21',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -1011,7 +1044,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: -1,
-            IP: '111.111.111.111',
+            // IP: '111.111.111.111',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -1049,7 +1082,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: 0,
-            IP: '98.98.98.98',
+            // IP: '98.98.98.98',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -1087,7 +1120,7 @@ const mockState = {
             lastActivity: 1502579924,
             joinDate: 1202579924,
             timezoneOffset: 0,
-            IP: '66.66.66.66',
+            // IP: '66.66.66.66',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,
@@ -1125,7 +1158,7 @@ const mockState = {
             lastActivity: 1502379924,
             joinDate: 1201579924,
             timezoneOffset: -8,
-            IP: '44.23.44.23',
+            // IP: '44.23.44.23',
             unreadPosts: 0,
             unreadImages: 0,
             unreadVideos: 0,

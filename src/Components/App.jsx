@@ -92,71 +92,71 @@ class App extends React.Component {
      * Render the component.
      */
     render() {
-        return (
-            <MuiThemeProvider muiTheme={theme}>
-            <Provider store={store}>
-            {/*<CookiesProvider>*/}
+      return (
+          <MuiThemeProvider muiTheme={theme}>
+          <Provider store={store}>
+          {/*<CookiesProvider>*/}
 
-              <div style={{backgroundColor: colors.bg}}>
+            <div style={{backgroundColor: colors.bg}}>
 
-                    <NavBar isScrolled={this.state.isScrolled} />
+              <NavBar isScrolled={this.state.isScrolled} />
 
-                    <Switch>
-                        <Route exact path={routes.HOME} component={Home} />
+              <Switch>
+                <Route exact path={routes.HOME} component={Home} />
 
-                        <Route path={routes.FORUM} component={Forum} />
+                <Route path={routes.FORUM} component={Forum} />
 
-                        <Route path={`${routes.NOTIFICATIONS}/:userid`} component={Notifications} />
+                <Route exact path={routes.NOTIFICATIONS} component={Notifications} />
 
-                        <Route path={`${routes.STREAM}/:userid`} component={Stream} />
+                <Route path={`${routes.STREAM}/:userid`} component={Stream} />
 
-                        <Route path={`${routes.VIDEOS}/:videoid`} component={Video} />
-                        <Route path={`${routes.IMAGES}/:imageid`} component={Image} />
+                <Route path={`${routes.VIDEOS}/:videoid`} component={Video} />
+                <Route path={`${routes.IMAGES}/:imageid`} component={Image} />
 
-                        <Route path={routes.REVIEW} component={Review} />
+                <Route exact path={routes.REVIEW} component={Review} />
 
-                        <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
+                <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
 
-                        <Route path={`${routes.PROFILE}/:userid`}
-                            render={() => (
-                                <Profile isScrolled={this.state.isScrolled} />
-                            )} />
+                <Route path={`${routes.PROFILE}/:userid`}
+                    render={() => (
+                        <Profile isScrolled={this.state.isScrolled} />
+                    )} />
 
-                        <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
+                <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
 
-                        <Route exact path={routes.MEMBERS} component={Users} />
+                <Route exact path={routes.MEMBERS} component={Users} />
 
-                        <Route path={routes.SETTINGS} component={Settings} />
+                <Route exact path={routes.SETTINGS} component={Settings} />
 
-                        <Route exact path={routes.LOGIN} component={LoginPage} />
-                        <Route exact path={routes.SIGNUP} component={SignupPage} />
+                <Route exact path={routes.LOGIN} component={LoginPage} />
+                <Route exact path={routes.SIGNUP} component={SignupPage} />
 
-                        <Route exact path={routes.LEGAL.COMMUNITY} component={Guidelines} />
-                        <Route exact path={routes.LEGAL.PRIVACY} component={Privacy} />
-                        <Route exact path={routes.LEGAL.DMCA} component={DMCA} />
+                <Route exact path={routes.LEGAL.COMMUNITY} component={Guidelines} />
+                <Route exact path={routes.LEGAL.PRIVACY} component={Privacy} />
+                <Route exact path={routes.LEGAL.DMCA} component={DMCA} />
 
-                        <Route exact path={routes.CONTACT} component={Contact} />
+                <Route exact path={routes.CONTACT} component={Contact} />
 
-                        <Route exact path={routes.UPLOAD} component={Upload} />
+                <Route exact path={routes.UPLOAD} component={Upload} />
 
-                        <Route component={Error} code="404" />
+                <Route component={Error} code="404" />
 
-                    </Switch>
+              </Switch>
 
-                    <Scrollbutton
-                        visible={this.state.isScrolled}
-                        secondary={true}
-                    />
+              <Scrollbutton
+                  visible={this.state.isScrolled}
+                  secondary={true}
+              />
 
-                    <Sidebar />
+              <Sidebar />
 
-                    {/* <DevTools /> */}
+              {/* <DevTools /> */}
 
-              </div>
+            </div>
 
-            {/* </CookiesProvider> */}
-            </Provider>
-            </MuiThemeProvider>
+          {/* </CookiesProvider> */}
+          </Provider>
+          </MuiThemeProvider>
         )
     }
 }

@@ -6,6 +6,7 @@ import Chip from 'material-ui/Chip'
 import { withRouter } from 'react-router-dom'
 
 import { colors } from '../../common/theme'
+import routes from '../../routes'
 
 
 const STREAM_BASE_URL = '/stream'
@@ -54,7 +55,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userid}/images`)
+                history.push(`${STREAM_BASE_URL}/${userid}${routes.IMAGES}`)
               }}
             />
             <MenuItem
@@ -62,7 +63,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userid}/videos`)
+                history.push(`${STREAM_BASE_URL}/${userid}${routes.VIDEOS}`)
               }}
             />
             <MenuItem
@@ -70,7 +71,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userid}/notifications`)
+                history.push(routes.NOTIFICATIONS)
               }}
             />
             <MenuItem
@@ -78,7 +79,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userid}/likes`)
+                history.push(`${STREAM_BASE_URL}/${userid}${routes.LIKES}`)
               }}
             />
           </Menu>
