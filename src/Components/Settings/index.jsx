@@ -6,8 +6,8 @@ import { Route, Switch } from 'react-router-dom'
 
 import Spacer from '../Shared/Spacer'
 import SettingsMenuEntry from './SettingsMenuEntry'
-import AvatarImg from './DropzoneAvatar'
-import ProfileImg from './DropzoneProfileImg'
+import AvatarImg from './AvatarImg'
+import ProfileImg from './ProfileImg'
 // --
 import General from './General'
 import Privacy from './Privacy'
@@ -41,15 +41,20 @@ const Settings = (props) => {
                     url="/privacy"
                   />
               </List>
+
               <Spacer />
+
               <Switch>
                   <Route path={`${props.match.url}/general`} component={General} />
                   <Route path={`${props.match.url}/image`}   component={ProfileImg} />
                   <Route path={`${props.match.url}/avatar`}  component={AvatarImg} />
                   <Route path={`${props.match.url}/privacy`} component={Privacy} />
               </Switch>
+
             </div>
+
             <Spacer />
+
           </div>
   )
 }

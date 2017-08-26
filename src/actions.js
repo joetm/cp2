@@ -16,76 +16,82 @@ import { checkHttpStatus, parseJSON } from './common/helpers'
  * Redux action types
  */
 
-export const COMMENT_PROFILE          = 'PROFILE::COMMENT_PROFILE'
-export const GET_USER                 = 'USER::GET_USER'
-export const GET_CURRENT_USER         = 'USER::GET_CURRENT_USER'
-export const GET_CURRENT_USER_MINIMAL = 'USER::GET_CURRENT_USER_MINIMAL'
-export const GET_CURRENT_USER_ID      = 'USER::GET_CURRENT_USER_ID'
-export const REPLY_THREAD             = 'FORUM::REPLY_THREAD'
-export const GET_POSTS                = 'FORUM::GET_POSTS'
-export const GET_POST                 = 'FORUM::GET_POST'
-export const GET_THREAD               = 'FORUM::GET_THREAD'
-export const EDIT_POST                = 'FORUM::EDIT_POST'
-export const REMOVE_POST              = 'FORUM::REMOVE_POST'
-export const TOGGLE_SEARCH_SIDEBAR    = 'FORUM::TOGGLE_SEARCH_SIDEBAR'
-export const OPEN_SEARCH_SIDEBAR      = 'FORUM::OPEN_SEARCH_SIDEBAR'
-export const CLOSE_SEARCH_SIDEBAR     = 'FORUM::CLOSE_SEARCH_SIDEBAR'
-export const TOGGLE_SIDEBAR           = 'FORUM::TOGGLE_SIDEBAR'
-export const OPEN_SIDEBAR             = 'FORUM::OPEN_SIDEBAR'
-export const CLOSE_SIDEBAR            = 'FORUM::CLOSE_SIDEBAR'
-export const SELECT_THREAD            = 'FORUM::SELECT_THREAD'
-export const SEND_MESSAGE             = 'CHAT::SEND_MESSAGE'
-export const RECEIVE_MESSAGEHISTORY   = 'CHAT::RECEIVE_MESSAGEHISTORY'
-export const REVIEW_APPROVE           = 'REVIEW::APPROVE'
-export const REVIEW_DISAPPROVE        = 'REVIEW::DISAPPROVE'
-export const LIKE                     = 'SOCIAL::LIKE'
-export const DISLIKE                  = 'SOCIAL::DISLIKE'
+export const COMMENT_PROFILE           = 'PROFILE::COMMENT_PROFILE'
+export const GET_USER                  = 'USER::GET_USER'
+export const GET_CURRENT_USER          = 'USER::GET_CURRENT_USER'
+export const GET_CURRENT_USER_MINIMAL  = 'USER::GET_CURRENT_USER_MINIMAL'
+export const GET_CURRENT_USER_ID       = 'USER::GET_CURRENT_USER_ID'
+export const REPLY_THREAD              = 'FORUM::REPLY_THREAD'
+export const GET_POSTS                 = 'FORUM::GET_POSTS'
+export const GET_POST                  = 'FORUM::GET_POST'
+export const GET_THREAD                = 'FORUM::GET_THREAD'
+export const EDIT_POST                 = 'FORUM::EDIT_POST'
+export const REMOVE_POST               = 'FORUM::REMOVE_POST'
+export const TOGGLE_SEARCH_SIDEBAR     = 'FORUM::TOGGLE_SEARCH_SIDEBAR'
+export const OPEN_SEARCH_SIDEBAR       = 'FORUM::OPEN_SEARCH_SIDEBAR'
+export const CLOSE_SEARCH_SIDEBAR      = 'FORUM::CLOSE_SEARCH_SIDEBAR'
+export const TOGGLE_SIDEBAR            = 'FORUM::TOGGLE_SIDEBAR'
+export const OPEN_SIDEBAR              = 'FORUM::OPEN_SIDEBAR'
+export const CLOSE_SIDEBAR             = 'FORUM::CLOSE_SIDEBAR'
+export const SELECT_THREAD             = 'FORUM::SELECT_THREAD'
+export const SEND_MESSAGE              = 'CHAT::SEND_MESSAGE'
+export const RECEIVE_MESSAGEHISTORY    = 'CHAT::RECEIVE_MESSAGEHISTORY'
+export const REVIEW_APPROVE            = 'REVIEW::APPROVE'
+export const REVIEW_DISAPPROVE         = 'REVIEW::DISAPPROVE'
+export const LIKE                      = 'SOCIAL::LIKE'
+export const DISLIKE                   = 'SOCIAL::DISLIKE'
 // export const UNDO_LIKE                = 'SOCIAL::UNDO_LIKE'
 // export const UNDO_DISLIKE             = 'SOCIAL::UNDO_DISLIKE'
-export const FOLLOW_USER              = 'SOCIAL::FOLLOW_USER'
-export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
-export const GET_UPDATES              = 'STREAM::GET_UPDATES'
-export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
-export const SET_FETCHING_STATUS      = 'APP::SET_FETCHING_STATUS'
+export const FOLLOW_USER               = 'SOCIAL::FOLLOW_USER'
+export const SET_ACTIVE_BADGE          = 'NAV::SET_ACTIVE_BADGE'
+export const GET_UPDATES               = 'STREAM::GET_UPDATES'
+export const SET_DEVICE_DETAILS        = 'APP::SET_DEVICE_DETAILS'
+export const SET_FETCHING_STATUS       = 'APP::SET_FETCHING_STATUS'
 // export const UNKNOWN                  = 'APP::UNKNOWN'
 
-export const MARK_IMAGES_READ         = 'STREAM::MARK_IMAGES_READ'
-export const MARK_VIDEOS_READ         = 'STREAM::MARK_VIDEOS_READ'
-export const MARK_POSTS_READ          = 'STREAM::MARK_POSTS_READ'
-export const MARK_MESSAGES_READ       = 'STREAM::MARK_MESSAGES_READ'
-export const MARK_LIKES_READ          = 'STREAM::MARK_LIKES_READ'
-export const MARK_THREAD_READ         = 'STREAM::MARK_THREAD_READ'
-export const MARK_POST_READ           = 'STREAM::MARK_POST_READ'
-export const MARK_ALL_READ            = 'STREAM::MARK_ALL_READ'
+export const MARK_IMAGES_READ          = 'STREAM::MARK_IMAGES_READ'
+export const MARK_VIDEOS_READ          = 'STREAM::MARK_VIDEOS_READ'
+export const MARK_POSTS_READ           = 'STREAM::MARK_POSTS_READ'
+export const MARK_MESSAGES_READ        = 'STREAM::MARK_MESSAGES_READ'
+export const MARK_LIKES_READ           = 'STREAM::MARK_LIKES_READ'
+export const MARK_THREAD_READ          = 'STREAM::MARK_THREAD_READ'
+export const MARK_POST_READ            = 'STREAM::MARK_POST_READ'
+export const MARK_ALL_READ             = 'STREAM::MARK_ALL_READ'
 
-export const RECEIVE_USER             = 'USER::RECEIVE_USER'
-export const RECEIVE_USERS            = 'USER::RECEIVE_USERS'
-export const RECEIVE_FOLLOWERS        = 'SOCIAL::RECEIVE_FOLLOWERS'
-export const RECEIVE_CURRENT_USER     = 'USER:RECEIVE_CURRENT_USER'
-export const RECEIVE_COMMENTS         = 'PROFILE::RECEIVE_COMMENTS'
-export const RECEIVE_THREADS          = 'FORUM::RECEIVE_THREADS'
-export const RECEIVE_POSTS            = 'FORUM::RECEIVE_POSTS'
-export const RECEIVE_POST             = 'FORUM::RECEIVE_POST'
-export const RECEIVE_THREAD           = 'FORUM::RECEIVE_THREAD'
-export const RECEIVE_ALBUM            = 'ALBUM::RECEIVE_ALBUM'
-export const RECEIVE_IMAGES           = 'STREAM::RECEIVE_IMAGES'
-export const RECEIVE_VIDEOS           = 'STREAM::RECEIVE_VIDEOS'
-export const RECEIVE_UPDATES          = 'STREAM::RECEIVE_UPDATES'
-export const RECEIVE_NOTIFICATIONS    = 'STREAM::RECEIVE_NOTIFICATIONS'
-export const RECEIVE_LIKES            = 'STREAM::RECEIVE_LIKES'
-export const RECEIVE_LIKE             = 'STREAM::RECEIVE_LIKE'
-export const RECEIVE_DISLIKE          = 'STREAM::RECEIVE_DISLIKE'
-export const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
-export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
-export const RECEIVE_COUNTRIES        = 'APP::RECEIVE_COUNTRIES'
-export const RECEIVE_STATES           = 'APP::RECEIVE_STATES'
-export const RECEIVE_CITIES           = 'APP::RECEIVE_CITIES'
+export const RECEIVE_USER              = 'USER::RECEIVE_USER'
+export const RECEIVE_USERS             = 'USER::RECEIVE_USERS'
+export const RECEIVE_FOLLOWERS         = 'SOCIAL::RECEIVE_FOLLOWERS'
+export const RECEIVE_CURRENT_USER      = 'USER:RECEIVE_CURRENT_USER'
+export const RECEIVE_COMMENTS          = 'PROFILE::RECEIVE_COMMENTS'
+export const RECEIVE_THREADS           = 'FORUM::RECEIVE_THREADS'
+export const RECEIVE_POSTS             = 'FORUM::RECEIVE_POSTS'
+export const RECEIVE_POST              = 'FORUM::RECEIVE_POST'
+export const RECEIVE_THREAD            = 'FORUM::RECEIVE_THREAD'
+export const RECEIVE_ALBUM             = 'ALBUM::RECEIVE_ALBUM'
+export const RECEIVE_IMAGES            = 'STREAM::RECEIVE_IMAGES'
+export const RECEIVE_VIDEOS            = 'STREAM::RECEIVE_VIDEOS'
+export const RECEIVE_UPDATES           = 'STREAM::RECEIVE_UPDATES'
+export const RECEIVE_NOTIFICATIONS     = 'STREAM::RECEIVE_NOTIFICATIONS'
+export const RECEIVE_LIKES             = 'STREAM::RECEIVE_LIKES'
+export const RECEIVE_LIKE              = 'STREAM::RECEIVE_LIKE'
+export const RECEIVE_DISLIKE           = 'STREAM::RECEIVE_DISLIKE'
+export const RECEIVE_REVIEWITEM        = 'REVIEW::RECEIVE_REVIEWITEM'
+export const RECEIVE_UNREAD_COUNT      = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
+export const RECEIVE_COUNTRIES         = 'APP::RECEIVE_COUNTRIES'
+export const RECEIVE_STATES            = 'APP::RECEIVE_STATES'
+export const RECEIVE_CITIES            = 'APP::RECEIVE_CITIES'
+export const RECEIVE_COUNTRY           = 'APP::RECEIVE_COUNTRY'
+export const RECEIVE_STATE             = 'APP::RECEIVE_STATE'
+export const RECEIVE_CITY              = 'APP::RECEIVE_CITY'
+
+export const DELETE_AVATAR            = 'APP:RECEIVE_AVATAR'
+export const DELETE_PROFILEIMG        = 'APP:RECEIVE_PROFILEIMG'
 
 // AUTH
-export const LOGIN_REQUEST            = 'AUTH::LOGIN_REQUEST'
-export const LOGIN_FAILURE            = 'AUTH::LOGIN_FAILURE'
-export const LOGIN_SUCCESS            = 'AUTH::LOGIN_SUCCESS'
-export const LOGOUT                   = 'AUTH::LOGOUT'
+export const LOGIN_REQUEST             = 'AUTH::LOGIN_REQUEST'
+export const LOGIN_FAILURE             = 'AUTH::LOGIN_FAILURE'
+export const LOGIN_SUCCESS             = 'AUTH::LOGIN_SUCCESS'
+export const LOGOUT                    = 'AUTH::LOGOUT'
 
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
@@ -165,9 +171,16 @@ export const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,    
 export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,           'response')
 export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
 export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
+
 export const receiveCountries             = makeActionCreator(RECEIVE_COUNTRIES,      'response')
 export const receiveStates                = makeActionCreator(RECEIVE_STATES,         'response')
 export const receiveCities                = makeActionCreator(RECEIVE_CITIES,         'response')
+export const receiveCountry               = makeActionCreator(RECEIVE_COUNTRY,        'response')
+export const receiveState                 = makeActionCreator(RECEIVE_STATE,          'response')
+export const receiveCity                  = makeActionCreator(RECEIVE_CITY,           'response')
+
+export const deleteAvatar                 = makeActionCreator(DELETE_AVATAR)
+export const deleteProfileImg             = makeActionCreator(DELETE_PROFILEIMG)
 
 // AUTH
 export const setIsAuthenticating          = makeActionCreator(LOGIN_REQUEST)
@@ -389,3 +402,19 @@ export const fetchStates = () =>
 
 export const fetchCities = () =>
     api.fetchCities().then(receiveCities)
+
+export const updateCountry = () =>
+    api.updateCountry().then(receiveCountry)
+
+export const updateState = () =>
+    api.updateState().then(receiveState)
+
+export const updateCity = () =>
+    api.updateCity().then(receiveCity)
+
+
+export const removeAvatar = () =>
+    api.removeField('avatar').then(deleteAvatar)
+
+export const removeProfileImg = () =>
+    api.removeField('profileimg').then(deleteProfileImg)

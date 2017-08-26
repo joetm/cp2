@@ -113,6 +113,18 @@ export const sendDataToAPI = (payload) => {
 }
 
 // TODO
+export const removeField = () => {
+    return delay(500)
+        .then(() => {
+            try {
+                return 200
+            } catch (e) {
+                throw new Error(e)
+            }
+        })
+}
+
+// TODO
 export const markReadRequest = (what, id) => {
     return delay(500)
         .then(() => {

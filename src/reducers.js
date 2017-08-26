@@ -327,6 +327,11 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 'statusText': 'You have been successfully logged out.',
             }}
 
+        case ACTIONS.DELETE_AVATAR:
+            return { ...currentUserState, avatar: null }
+        case ACTIONS.DELETE_PROFILEIMG:
+            return { ...currentUserState, profileimg: null }
+
         default:
             return currentUserState
     }

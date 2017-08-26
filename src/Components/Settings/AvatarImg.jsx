@@ -1,6 +1,7 @@
  /** @flow */
 
- import React from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 // dropzone css
 import '../External/dropzone/dist/dropzone.css'
 // react dropzone css
@@ -9,7 +10,6 @@ import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
-
 import Avatar from '../Shared/Avatar'
 
 
@@ -25,7 +25,7 @@ const styles = {
 }
 
 
-const DropzoneAvatar = () => (
+const AvatarSetting = (props) => (
     <div id="avatar-settings"
         style={{
           width: '80%',
@@ -35,7 +35,7 @@ const DropzoneAvatar = () => (
         }}
     >
         <Avatar
-            src={'/img/avatar/face.jpg'}
+            src={props.avatar}
         />
         <DropzoneComponent
           style={styles.dropzone}
@@ -46,4 +46,11 @@ const DropzoneAvatar = () => (
     </div>
 )
 
-export default DropzoneAvatar
+
+const mapStateToProps = (state) => ({
+    avatar: state.currentUser.avatar,
+})
+
+export default connect(
+    mapStateToProps
+)(AvatarSetting)

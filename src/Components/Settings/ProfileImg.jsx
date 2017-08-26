@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 // dropzone css
 import '../External/dropzone/dist/dropzone.css'
 // react dropzone css
@@ -23,7 +24,7 @@ const styles = {
 }
 
 
-const DropzoneProfileImg = () => (
+const ProfileImg = (props) => (
     <div
         id="profileImg-settings"
         style={{
@@ -34,7 +35,7 @@ const DropzoneProfileImg = () => (
         }}
     >
         <img
-            src={'https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg'}
+            src={props.profileimg}
             alt=""
             style={{
                 width: '100%',
@@ -50,4 +51,11 @@ const DropzoneProfileImg = () => (
     </div>
 )
 
-export default DropzoneProfileImg
+
+const mapStateToProps = (state) => ({
+    profileimg: state.currentUser.profileimg,
+})
+
+export default connect(
+    mapStateToProps
+)(ProfileImg)

@@ -11,15 +11,28 @@ import styles from './styles'
 
 const PrivacySettings = () => (
     <div style={{textAlign: 'left'}}>
+
+          <Subheader inset={false}>Privacy Settings</Subheader>
           <Divider />
+
           <List>
-            <Subheader>Privacy Settings</Subheader>
             <Toggle
               label="Show your location"
               defaultToggled={true}
               style={styles.toggle}
             />
-        </List>
+            <Toggle
+              label="Show your birthday"
+              defaultToggled={false}
+              style={styles.toggle}
+            />
+            <Toggle
+              label="Show online status"
+              defaultToggled={true}
+              style={styles.toggle}
+            />
+          </List>
+
     </div>
 )
 

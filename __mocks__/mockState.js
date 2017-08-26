@@ -17,6 +17,7 @@ const mockState = {
         sidebarOpen: false,
         isFetching: false,
         // --
+        isAuthenticating: false,
         isAuthenticated: localStorage.getItem('id_token') ? true : false,
         // --
         // dailyUploadLimits: {
@@ -1151,9 +1152,9 @@ const mockState = {
         numVideos: 0,
         numLikes: 0,
         numFollowers: 0,
-        country: null,
-        state: null,
-        city: null,
+        country: 'Germany',
+        state: 'Berlin',
+        city: 'Berlin',
         groups: [],
         homepage: '',
         facebook: null,

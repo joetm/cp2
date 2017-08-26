@@ -5,6 +5,7 @@ import {
     fetchStreamItemsFromAPI,
     sendDataToAPI,
     markReadRequest,
+    removeField,
 } from '../../__mocks__/mockServer'
 
 // -------------------------------------------------------------------------
@@ -141,4 +142,25 @@ export const fetchCities = () =>
     fetch('/data/cities.json')
         .then(response => response.json())
         .then(cities => cities)
+
+
+// TODO
+export const updateCountry = (country) =>
+    sendDataToAPI(country)
+        .then((response) => response)
+
+// TODO
+export const updateState = (state) =>
+    sendDataToAPI(state)
+        .then((response) => response)
+
+// TODO
+export const updateCity = (city) =>
+    sendDataToAPI(city)
+        .then((response) => response)
+
+// TODO
+export const removeProfileImg = () =>
+    removeField('profileimg')
+        .then((response) => response)
 
