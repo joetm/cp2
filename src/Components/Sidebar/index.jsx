@@ -90,7 +90,7 @@ class Sidebar extends React.Component {
 
             <MenuEntry
                 route={routes.FORUM}
-                icon={<ForumIcon />}
+                icon={<NotificationsIcon />}
                 text="Forum"
                 onTouchTap={closeSidebar}
             />
@@ -99,6 +99,13 @@ class Sidebar extends React.Component {
                 route={`${routes.NOTIFICATIONS}/${userid}`}
                 icon={<EmailIcon />}
                 text="Messages"
+                onTouchTap={closeSidebar}
+            />
+
+            <MenuEntry
+                route={routes.USERS}
+                icon={<ForumIcon />}
+                text="Users"
                 onTouchTap={closeSidebar}
             />
 
@@ -112,7 +119,7 @@ class Sidebar extends React.Component {
             <Divider />
 
             <MenuEntry
-                route="/review"
+                route={routes.REVIEW}
                 icon={<ReviewIcon />}
                 text="Review"
                 onTouchTap={closeSidebar}
@@ -128,7 +135,7 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
-                route="/settings"
+                route={routes.SETTINGS}
                 icon={<SettingsIcon />}
                 text="Settings"
                 onTouchTap={this.props.closeSidebar}

@@ -4,6 +4,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { List } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import DropDownMenu from 'material-ui/DropDownMenu'
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
+import ExpandFiltersIcon from 'material-ui/svg-icons/navigation/expand-more'
+import ImplodeFiltersIcon from 'material-ui/svg-icons/navigation/expand-less'
 
 import { fetchUsers } from '../../actions'
 import Spacer from '../Shared/Spacer'
@@ -18,6 +25,9 @@ import Filters from './Filters'
  * @class
  */
 class Users extends React.PureComponent {
+    state = {
+      filtersOpen: false,
+    }
     componentDidMount() {
       this.props.fetchUsers()
     }
@@ -25,6 +35,9 @@ class Users extends React.PureComponent {
       // TODO
       console.log('filters', filters)
       this.props.fetchUsers(filters)
+    }
+    toggleFilters = () => {
+      this.setState({ filtersOpen: !this.state.filtersOpen })
     }
     /**
      * Render the component.
@@ -39,12 +52,34 @@ class Users extends React.PureComponent {
           }
           return (
             <div>
+
+              <Toolbar>
+                  <ToolbarGroup firstChild={true}>
+                  </ToolbarGroup>
+                  <ToolbarGroup>
+                      {
+                        this.state.filtersOpen ?
+                          <IconButton onTouchTap={this.toggleFilters}>
+                            <ImplodeFiltersIcon />
+                          </IconButton>
+                        :
+                          <IconButton onTouchTap={this.toggleFilters}>
+                            <ExpandFiltersIcon />
+                          </IconButton>
+                      }
+                  </ToolbarGroup>
+              </Toolbar>
+
+
               <h2>Users</h2>
               <Divider />
 
-              <Filters
-                refreshUsers={this.refreshUsers}
-              />
+              {
+                this.state.filtersOpen &&
+                <Filters
+                  refreshUsers={this.refreshUsers}
+                />
+              }
 
               <Divider />
               <List>
