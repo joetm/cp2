@@ -10,7 +10,6 @@ import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
-import { grey400 } from 'material-ui/styles/colors'
 
 import { colors } from '../../common/theme'
 
@@ -22,7 +21,7 @@ const rightIconMenu = (
         tooltipPosition="bottom-left"
         onTouchTap={(e) => {e.stopPropagation()}}
       >
-        <MoreVertIcon color={grey400} />
+        <MoreVertIcon color={colors.grey} />
       </IconButton>
     )}>
         <MenuItem>Reply</MenuItem>

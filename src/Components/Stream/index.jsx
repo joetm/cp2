@@ -10,18 +10,17 @@ import Stream from './Stream'
 import Likes from './Likes'
 import Videos from './Videos'
 import Pictures from './Pictures'
-import Notifications from './Notifications'
 import SubToolbar from './SubToolbar'
+import routes from '../../routes'
 
 
 class Feed extends React.PureComponent {
     ROUTES = {
         all: this.props.match.url,
-        updates: `${this.props.match.url}/updates`,
-        pictures: `${this.props.match.url}/pictures`,
-        videos: `${this.props.match.url}/videos`,
-        notifications: `${this.props.match.url}/notifications`,
-        likes: `${this.props.match.url}/likes`,
+        updates: `${this.props.match.url}${routes.UPDATES}`,
+        pictures: `${this.props.match.url}${routes.IMAGES}`,
+        videos: `${this.props.match.url}${routes.VIDEOS}`,
+        likes: `${this.props.match.url}${routes.LIKES}`,
     }
     /**
      * Render the component.
@@ -33,7 +32,6 @@ class Feed extends React.PureComponent {
                     <Switch>
                         <Route path={this.ROUTES.pictures} component={Pictures} />
                         <Route path={this.ROUTES.videos} component={Videos} />
-                        <Route path={this.ROUTES.notifications} component={Notifications} />
                         <Route path={this.ROUTES.likes} component={Likes} />
                         <Route component={Stream} />
                     </Switch>

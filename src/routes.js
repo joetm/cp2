@@ -10,6 +10,7 @@ const routes = {
     USERS: "/members",
     MEMBERS: "/members",
     STREAM: "/stream",
+    UPDATES: "/updates",
     IMAGES: "/images",
     VIDEOS: "/videos",
     SETTINGS: "/settings",

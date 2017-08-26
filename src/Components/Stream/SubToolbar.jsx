@@ -12,11 +12,9 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 const _ID = {
     ALL: 1,
-    STREAM: 3,
     IMAGES: 5,
     VIDEOS: 8,
-    NOTIFICATIONS: 44,
-    LIKES: 88,
+    LIKES: 9,
 }
 
 const expandButton = <IconButton><NavigationExpandMoreIcon /></IconButton>
@@ -55,11 +53,6 @@ class SubToolbar extends React.Component {
                             value={_ID.VIDEOS}
                             primaryText="Videos"
                             onTouchTap={() => { history.push(this.props.routes.videos) }}
-                        />
-                        <MenuItem
-                            value={_ID.NOTIFICATIONS}
-                            primaryText="Notifications"
-                            onTouchTap={() => { history.push(this.props.routes.notifications) }}
                         />
                         <MenuItem
                             value={_ID.LIKES}
