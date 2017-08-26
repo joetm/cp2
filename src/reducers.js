@@ -357,6 +357,10 @@ export function cpAppReducer(appState = initialState.appState, action) {
 
         case ACTIONS.RECEIVE_COUNTRIES:
             return { ...appState, countries: [ ...action.response ] }
+        case ACTIONS.RECEIVE_STATES:
+            return { ...appState, states: [ ...action.response ] }
+        case ACTIONS.RECEIVE_CITIES:
+            return { ...appState, cities: [ ...action.response ] }
 
         // TODO - ajax loading msg
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators

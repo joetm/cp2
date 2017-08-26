@@ -78,6 +78,8 @@ export const RECEIVE_DISLIKE          = 'STREAM::RECEIVE_DISLIKE'
 export const RECEIVE_REVIEWITEM       = 'REVIEW::RECEIVE_REVIEWITEM'
 export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
 export const RECEIVE_COUNTRIES        = 'APP::RECEIVE_COUNTRIES'
+export const RECEIVE_STATES           = 'APP::RECEIVE_STATES'
+export const RECEIVE_CITIES           = 'APP::RECEIVE_CITIES'
 
 // AUTH
 export const LOGIN_REQUEST            = 'AUTH::LOGIN_REQUEST'
@@ -164,6 +166,8 @@ export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,     
 export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
 export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
 export const receiveCountries             = makeActionCreator(RECEIVE_COUNTRIES,      'response')
+export const receiveStates                = makeActionCreator(RECEIVE_STATES,         'response')
+export const receiveCities                = makeActionCreator(RECEIVE_CITIES,         'response')
 
 // AUTH
 export const setIsAuthenticating          = makeActionCreator(LOGIN_REQUEST)
@@ -377,7 +381,11 @@ export const markRead = (what, id) =>
 export const markAllRead = () =>
     api.markAllRead().then(receiveUnreadCount)
 
-// TODO
 export const fetchCountries = () =>
     api.fetchCountries().then(receiveCountries)
 
+export const fetchStates = () =>
+    api.fetchStates().then(receiveStates)
+
+export const fetchCities = () =>
+    api.fetchCities().then(receiveCities)

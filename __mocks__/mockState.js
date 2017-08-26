@@ -26,6 +26,8 @@ const mockState = {
         //     }
         // },
         countries: [],
+        states: [],
+        cities: [],
     },
     // -- content --
     streamitems: [

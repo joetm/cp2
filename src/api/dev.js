@@ -124,9 +124,21 @@ export const markRead = (what, id) => {
 //     sendDataToAPI()
 //         .then((response) => ({images: 0, messages: 0, posts: 0, videos: 0, likes: 0}))
 
+
 export const fetchCountries = () =>
     fetch('/data/countries.json')
         .then(response => response.json())
         .then(countries => countries)
 
+// TODO
+export const fetchStates = () =>
+    fetch('/data/states.json')
+        .then(response => response.json())
+        .then(states => states)
+
+// TODO
+export const fetchCities = () =>
+    fetch('/data/cities.json')
+        .then(response => response.json())
+        .then(cities => cities)
 

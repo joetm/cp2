@@ -8,7 +8,7 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 import TextField from 'material-ui/TextField'
 
-import { fetchCountries } from '../../actions'
+import { fetchCountries, fetchStates, fetchCities } from '../../actions'
 
 
 const _CELLSPANS = {
@@ -24,21 +24,45 @@ const _CELLSPANS = {
  */
 class Filters extends React.PureComponent {
     state = {
+      verified: false,
       statii: [],
-      country: "Germany",
+      country: null,
       state: null,
       city: null,
     }
-    filterVerified() {
-      // TODO
+    handleVerifiedChange = (event, verified) => {
+      this.setState({ verified })
+      this.props.refreshUsers({
+        verified
+      })
     }
-    handleStatusChange = (event, index, statii) => {
-      console.log('statii', statii)
-      this.setState({ statii })
+    handleStatusChange = (event, index, status) => {
+      console.log('status', status)
+      this.setState({ status })
+      this.props.refreshUsers({
+        status
+      })
     }
     handleCountryChange = (event, index, country) => {
       this.setState({ country })
-      this.props.refreshUsers()
+      this.props.refreshUsers({
+        country
+      })
+      // TODO
+      this.props.fetchStates()
+      this.props.fetchCities()
+    }
+    handleStateChange = (event, index, state) => {
+      this.setState({ state })
+      this.props.refreshUsers({
+        state
+      })
+    }
+    handleCityChange = (event, index, city) => {
+      this.setState({ city })
+      this.props.refreshUsers({
+        city
+      })
     }
     componentDidMount() {
       this.props.fetchCountries()
@@ -63,23 +87,23 @@ class Filters extends React.PureComponent {
                         >
                           <MenuItem
                             key="online"
-                            value={1}
+                            value="online"
                             insetChildren={true}
-                            checked={this.state.statii.indexOf(1) > -1}
+                            checked={this.state.statii.indexOf("online") > -1}
                             primaryText="Online"
                           />
                           <MenuItem
                             key="offline"
-                            value={2}
+                            value="offline"
                             insetChildren={true}
-                            checked={this.state.statii.indexOf(2) > -1}
+                            checked={this.state.statii.indexOf("offline") > -1}
                             primaryText="Offline"
                           />
                           <MenuItem
                             key="unknown"
-                            value={3}
+                            value={"unknown"}
                             insetChildren={true}
-                            checked={this.state.statii.indexOf(3) > -1}
+                            checked={this.state.statii.indexOf("unknown") > -1}
                             primaryText="Unknown"
                           />
                         </SelectField>
@@ -113,7 +137,9 @@ class Filters extends React.PureComponent {
                     >
                       <Checkbox
                         label="Only Verified Users"
-                        onCheck={this.filterVerified}
+                        value={true}
+                        checked={this.state.verified}
+                        onCheck={this.handleVerifiedChange}
                       />
                     </div>
 
@@ -144,11 +170,17 @@ class Filters extends React.PureComponent {
                     >
                         <SelectField
                           floatingLabelText="State"
-                          disabled={true}
+                          disabled={!this.state.country}
+                          onChange={this.handleStatusChange}
                         >
-                          <MenuItem value={1} primaryText="United States" />
-                          <MenuItem value={2} primaryText="United Kingdom" />
-                          <MenuItem value={3} primaryText="Germany" />
+                          {
+                            this.props.states.map(state => (
+                              <MenuItem
+                                value={state}
+                                primaryText={state}
+                              />
+                            ))
+                          }
                         </SelectField>
                     </div>
                     <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
@@ -158,11 +190,17 @@ class Filters extends React.PureComponent {
                     >
                         <SelectField
                           floatingLabelText="City"
-                          disabled={true}
+                          disabled={!this.state.country}
+                          onChange={this.handleCityChange}
                         >
-                          <MenuItem value={1} primaryText="United States" />
-                          <MenuItem value={2} primaryText="United Kingdom" />
-                          <MenuItem value={3} primaryText="Germany" />
+                          {
+                            this.props.cities.map(city => (
+                              <MenuItem
+                                value={city}
+                                primaryText={city}
+                              />
+                            ))
+                          }
                         </SelectField>
                     </div>
                     <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
@@ -182,9 +220,11 @@ class Filters extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     countries: state.appState.countries,
+    states: state.appState.states,
+    cities: state.appState.cities,
 })
 
 export default connect(
     mapStateToProps,
-    { fetchCountries }
+    { fetchCountries, fetchStates, fetchCities }
 )(Filters)

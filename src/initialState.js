@@ -17,6 +17,8 @@ const initialState = {
         isAuthenticated: false,
         // --
         countries: [],
+        states: [],
+        cities: [],
     },
     // -- content --
     all: [],
