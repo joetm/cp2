@@ -71,9 +71,7 @@ class Profile extends React.PureComponent {
             <div>
 
                 <ProfileImg
-                    username={user.username}
-                    avatar={user.avatar}
-                    src={user.profileimg}
+                    { ...user }
                     blurredImg={this.state.blurredImg}
                     pageIsScrolled={this.props.isScrolled}
                     toggleProfileDetails={this.toggleProfileDetails}
@@ -93,7 +91,9 @@ class Profile extends React.PureComponent {
                 </div>
 
                 <Spacer />
+
                 <Route component={Album} />
+
                 <Spacer />
 
             </div>

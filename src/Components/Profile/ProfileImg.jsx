@@ -31,7 +31,17 @@ const styles = {
         opacity: 0.5,
         zIndex: 999999999,
     },
+    profileImgStyle: {
+        position: 'relative',
+        width:'100%',
+        textAlign: 'center',
+        backgroundColor: '#808080',
+        overflow: 'hidden',
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',
+    },
 }
+
 
 class ProfileImg extends React.PureComponent {
     state = {
@@ -47,10 +57,11 @@ class ProfileImg extends React.PureComponent {
     componentWillUnmount() {
         window.onresize = null
     }
+    /**
+     * ScrollButton event handler.
+     */
     scrollDown = (e) => {
         e.stopPropagation()
-
-        console.log('scroll down')
 
         const scrollDuration = 200
         const scrollPosition = window.scrollY + 240
@@ -62,28 +73,26 @@ class ProfileImg extends React.PureComponent {
                 } else {
                     clearInterval(scrollInterval)
                 }
-            }, 15);
-
+            }, 15)
     }
     /**
      * Render the component.
      */
     render() {
-        const {username, avatar} = this.props
+        const { username, avatar } = this.props
+        const { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
+        const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
+        console.log(details)
         // --
-        let profileImgStyle = {
-            position: 'relative',
-            width:'100%',
+        let profileImgDynamicStyle = {
             height: `${this.state.profileImgHeight}px`,
-            textAlign: 'center',
-            backgroundColor: '#808080',
-            overflow: 'hidden',
-            backgroundImage: `url(${this.props.src})`,
-            backgroundPosition: 'center center',
-            backgroundSize: 'cover',
+            backgroundImage: `url(${this.props.profileimg})`,
         }
         if (this.props.blurredImg) {
-            profileImgStyle = { ...profileImgStyle, ...blurFilters }
+            profileImgDynamicStyle = {
+                ...profileImgDynamicStyle,
+                ...blurFilters,
+            }
         }
         // --
         return (
@@ -91,12 +100,12 @@ class ProfileImg extends React.PureComponent {
                 <div onClick={this.props.toggleProfileDetails} role="button">
                     <div style={styles.profileImgContainer}>
                         <ProfileDetails
-                            username={username}
-                            avatar={avatar}
-                            visible={this.props.blurredImg}
-                            toggleProfileDetails={this.props.toggleProfileDetails}
+                            { ...this.props }
                         />
-                        <div style={profileImgStyle}></div>
+                        <div style={{
+                            ...styles.profileImgStyle,
+                            ...profileImgDynamicStyle,
+                        }}></div>
                     </div>
                 </div>
 

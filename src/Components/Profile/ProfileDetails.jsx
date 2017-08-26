@@ -37,22 +37,19 @@ const styles = {
 
 
 const ProfileDetails = props => {
-    if (!props.visible) {
+    if (!props.blurredImg) {
         return null
     }
     return (
       <div>
-
         <FloatingActionButton
             secondary={true}
             mini={true}
             style={styles.closeButtonStyle}
             onTouchTap={props.toggleProfileDetails}
-            tooltip="Click anywhere to close"
         >
             <CloseIcon />
         </FloatingActionButton>
-
 
         <div className="mdc-layout-grid">
           <div className="mdc-layout-grid__inner">
@@ -62,17 +59,18 @@ const ProfileDetails = props => {
                         <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
                         </div>
                         <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-phone">
-                            <div style={styles.statBox}>45 Pics</div>
-                            <div style={styles.statBox}>4599 Followers</div>
-                            <div style={styles.statBox}>45 Posts</div>
-                            <div style={styles.statBox}>99 Likes</div>
+                            <div style={styles.statBox}>{props.numImages} Pics</div>
+                            <div style={styles.statBox}>{props.numVideos} Videos</div>
+                            <div style={styles.statBox}>{props.numFollowers} Followers</div>
+                            <div style={styles.statBox}>{props.numPosts} Posts</div>
+                            <div style={styles.statBox}>{props.numThreads} Threads</div>
+                            <div style={styles.statBox}>{props.numLikes} Likes</div>
                         </div>
                       </div>
                     </div>
             </div>
           </div>
         </div>
-
 
         <div className="mdc-layout-grid">
           <div className="mdc-layout-grid__inner">
