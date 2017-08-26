@@ -17,11 +17,17 @@ const styles = {
 
 
 class Scrollbutton extends React.PureComponent {
+    /**
+     * The default action for the button -> scroll to the top.
+     */
     defaultAction = () => {
-        if (!this.props.clickable) { return }
+        if (this.props.clickable === false) { return }
         this.scrollToTop(400)
     }
-    // see http://stackoverflow.com/a/24559613/426266
+    /**
+     * Function to scroll to top of page.
+     * See http://stackoverflow.com/a/24559613/426266
+     */
     scrollToTop(scrollDuration) {
         const scrollStep = -window.scrollY / (scrollDuration / 15)
         const scrollInterval = setInterval(function() {

@@ -2,6 +2,7 @@
 const routes = {
     HOME: "/",
     FORUM: "/forum",
+    ALBUM: "/album",
     STREAM: "/stream",
     NOTIFICATIONS: "/notifications",
     LIKES: "/likes",

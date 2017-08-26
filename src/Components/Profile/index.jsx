@@ -1,13 +1,17 @@
 /**  @flow */
 
 import React from 'react'
-import { Route, withRouter } from 'react-router-dom'
+import { Route, withRouter, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { fetchUser } from '../../actions'
+import routes from '../../routes'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
-import Album from '../Album/'
+import Album from '../Album'
+import Followers from '../Followers'
+import Stream from '../Stream/Stream'
+import Likes from '../Stream/Likes'
 import Spacer from '../Shared/Spacer'
 // import ProfileStats from './ProfileStats'
 import ProfileDivider from './ProfileDivider'
@@ -20,16 +24,8 @@ const styles = {
         marginTop: '-150px',
         marginLeft: '50px',
         zIndex: 29999999
-    }
+    },
 }
-
-
-/*
-                <Route path={`${this.props.url}/:userid/updates`} component={Album}/>
-                <Route path={`${this.props.url}/:userid/album`} component={Album}/>
-                <Route path={`${this.props.url}/:userid/followers`} component={Followers}/>
-                <Route path={`${this.props.url}/:userid/likes`} component={Likes}/>
-*/
 
 
 /**
@@ -92,7 +88,13 @@ class Profile extends React.PureComponent {
 
                 <Spacer />
 
-                <Route component={Album} />
+                <Switch>
+                    <Route path={`${this.props.url}/:userid${routes.UPDATES}`} component={Stream}/>
+                    <Route path={`${this.props.url}/:userid${routes.ALBUM}`} component={Album}/>
+                    <Route path={`${this.props.url}/:userid${routes.FOLLOWERS}`} component={Followers}/>
+                    <Route path={`${this.props.url}/:userid${routes.LIKES}`} component={Likes}/>
+                    <Route component={Album} />
+                </Switch>
 
                 <Spacer />
 

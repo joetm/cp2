@@ -7,7 +7,8 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
-import ForumIcon from 'material-ui/svg-icons/social/group'
+import UsersIcon from 'material-ui/svg-icons/social/group'
+import ForumIcon from 'material-ui/svg-icons/communication/forum'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
@@ -90,7 +91,7 @@ class Sidebar extends React.Component {
 
             <MenuEntry
                 route={routes.FORUM}
-                icon={<NotificationsIcon />}
+                icon={<ForumIcon />}
                 text="Forum"
                 onTouchTap={closeSidebar}
             />
@@ -104,13 +105,13 @@ class Sidebar extends React.Component {
 
             <MenuEntry
                 route={routes.USERS}
-                icon={<ForumIcon />}
+                icon={<UsersIcon />}
                 text="Users"
                 onTouchTap={closeSidebar}
             />
 
             <MenuEntry
-                route={`${routes.STREAM}/${userid}/${routes.LIKES}`}
+                route={`${routes.STREAM}/${userid}${routes.LIKES}`}
                 icon={<LikeIcon />}
                 text="Likes"
                 onTouchTap={closeSidebar}
