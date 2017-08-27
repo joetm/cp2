@@ -24,7 +24,7 @@ class ForumHome extends React.Component {
                 <div>
                     <Posts posts={threads} />
                     {
-                        threads && threads.length > 0 &&
+                        !threads.length > 0 &&
                         <Loader />
                     }
                 </div>
