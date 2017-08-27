@@ -90,6 +90,10 @@ export const fetchVideos = () =>
     fetchStreamItemsFromAPI('video')
         .then((response) => response)
 
+export const fetchVideo = () =>
+    fetchDataFromAPI('video')
+        .then((response) => response)
+
 export const fetchNotifications = () =>
     fetchStreamItemsFromAPI('message')
         .then((response) => response)

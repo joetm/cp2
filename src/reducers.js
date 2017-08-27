@@ -137,6 +137,19 @@ export function videosReducer(videosState = initialState.videos, action) {
 }
 
 /**
+ * videoReducer
+ * @returns videoState
+ **/
+export function videoReducer(videoState = initialState.video, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_VIDEO:
+            return { ...action.response }
+        default:
+            return videoState
+    }
+}
+
+/**
  * albumReducer
  * @returns albumState
  **/

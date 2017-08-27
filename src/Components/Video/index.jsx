@@ -2,22 +2,30 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
+import { fetchVideo } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
 
 
 class Video extends React.Component {
+    componentDidMount() {
+        const videoid = this.props.match.params.videoid
+        this.props.fetchVideo(videoid)
+    }
     /**
      * Render the component.
      */
     render() {
+        const { title, src, thumb } = this.props.video
         return (
             <div>
-                <h2>Video TITLE</h2>
+                <h2>{title}</h2>
 
                 <VideoPlayer
-                    src={"https://www.youtube.com/watch?v=oUFJJNQGwhk"}
+                    src={src}
+                    thumb={thumb}
                 />
 
                 <Spacer />
@@ -32,7 +40,7 @@ const mapStateToProps = (state) => ({
     isFetching: state.appState.isFetching,
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
-    // { fetchVideo }
-)(Video)
+    { fetchVideo }
+)(Video))

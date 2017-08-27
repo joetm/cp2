@@ -9,6 +9,7 @@ import '../External/dropzone/dist/dropzone.css'
 import { SimpleReactDropzone } from 'simple-react-dropzone'
 
 import { colors } from '../../common/theme'
+import Spacer from '../Shared/Spacer'
 
 
 const styles = {
@@ -16,9 +17,13 @@ const styles = {
     cursor: 'pointer',
     margin: '0 auto',
     height: '450px',
-    width: '95%',
     border: '2px solid #888',
     borderRadius: '5px',
+  },
+  dropzoneWrapper: {
+    maxWidth: '80%',
+    textAlign: 'center',
+    margin: '0 auto',
   },
 }
 const actionStyles = {
@@ -46,6 +51,7 @@ class Upload extends React.Component {
     }
     // do not set state in componentDidMount
     componentWillMount() {
+        console.log('set height', window.innerHeight - 145)
         this.setState({dropzoneHeight: window.innerHeight - 145})
     }
     onDrop(acceptedFiles, rejectedFiles) {
@@ -55,10 +61,11 @@ class Upload extends React.Component {
         return (
             <div>
                 <h2>Upload</h2>
-                <div>
+
+                <div style={styles.dropzoneWrapper}>
                     <SimpleReactDropzone
                         name="files"
-                        maxFiles={10}
+                        maxFiles={30}
                         uploadUrl={'http://your-upload-url'}
                         imediateRemove={false}
                         maxFilesize={10} // MB
@@ -69,6 +76,9 @@ class Upload extends React.Component {
                     />
                       {/* ... actionStyles */}
                 </div>
+
+                <Spacer />
+
             </div>
         )
     }

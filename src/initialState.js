@@ -37,6 +37,7 @@ const initialState = {
     // -- single item caching --
     thread: {},
     post: {},
+    video: {},
     messageHistory: {},
     reviewitem: {
         id: null,

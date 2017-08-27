@@ -70,6 +70,7 @@ export const RECEIVE_THREAD            = 'FORUM::RECEIVE_THREAD'
 export const RECEIVE_ALBUM             = 'ALBUM::RECEIVE_ALBUM'
 export const RECEIVE_IMAGES            = 'STREAM::RECEIVE_IMAGES'
 export const RECEIVE_VIDEOS            = 'STREAM::RECEIVE_VIDEOS'
+export const RECEIVE_VIDEO             = 'STREAM::RECEIVE_VIDEO'
 export const RECEIVE_UPDATES           = 'STREAM::RECEIVE_UPDATES'
 export const RECEIVE_NOTIFICATIONS     = 'STREAM::RECEIVE_NOTIFICATIONS'
 export const RECEIVE_FAVORITES         = 'STREAM::RECEIVE_FAVORITES'
@@ -168,6 +169,7 @@ export const receivePost           = makeActionCreator(RECEIVE_POST,            
 export const receiveUpdates        = makeActionCreator(RECEIVE_UPDATES,           'response')
 export const receiveImages         = makeActionCreator(RECEIVE_IMAGES,            'response')
 export const receiveVideos         = makeActionCreator(RECEIVE_VIDEOS,            'response')
+export const receiveVideo          = makeActionCreator(RECEIVE_VIDEO ,            'response')
 export const receiveThread         = makeActionCreator(RECEIVE_THREAD,            'response')
 export const receiveReviewItem     = makeActionCreator(RECEIVE_REVIEWITEM,        'response')
 export const receiveMessageHistory = makeActionCreator(RECEIVE_MESSAGEHISTORY,    'response')
@@ -354,6 +356,13 @@ export const fetchPictures = () =>
  */
 export const fetchVideos = () =>
     api.fetchVideos().then(receiveVideos)
+
+/**
+ * fetchVideo Asynchronous Action Creator
+ * @returns fetchVideo() - Action
+ */
+export const fetchVideo = () =>
+    api.fetchVideo().then(receiveVideo)
 
 /**
  * fetchNotifications Asynchronous Action Creator

@@ -193,6 +193,8 @@ class VideoPlayer extends Component {
   }
   render () {
 
+    const { src, thumb } = this.props
+
     const {
       url, playing, volume,
       played, loaded, duration,
@@ -208,13 +210,19 @@ class VideoPlayer extends Component {
     return (
       <div style={styles.pageWrapper}>
 
-          <div ref="playerWrapper" style={{ ...styles.playerWrapper, height: playerHeight, width: playerWidth }}>
+          <div ref="playerWrapper"
+            style={{ ...styles.playerWrapper,
+              height: playerHeight,
+              width: playerWidth,
+              backgroundImage: `url(${thumb})`,
+            }}
+          >
             <ReactPlayer
               ref={player => { this.player = player }}
               width="100%"
               height="100%"
               style={styles.reactPlayer}
-              url={this.props.src}
+              url={src}
               playing={playing}
               playbackRate={playbackRate}
               volume={volume}
@@ -238,6 +246,7 @@ class VideoPlayer extends Component {
             {
               this.state.controlsShowing ?
                 <div style={styles.controls}>
+
                       {
                         playing ?
                         <IconButton tooltip="Pause">
@@ -308,6 +317,7 @@ class VideoPlayer extends Component {
                         onChange={this.setVolume}
                         style={styles.volumeSlider}
                       />
+
                 </div>
                 : null
             }

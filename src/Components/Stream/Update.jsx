@@ -11,28 +11,35 @@ import { navigateTo } from '../../common/helpers'
 
 
 const Update = (props) => {
+
   const {
-    type, id, username, src, avatar, title,
+    type, id, username, src, avatar, title, thumb,
     likes, dislikes, replies,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone,
     history
   } = props
+
   let url = '/'
+  let img
   switch(type) {
     case 'image':
       url = `/images/${id}`
+      img = src
     case 'video':
       url = `/videos/${id}`
+      img = thumb
   }
+
   return (
     <div
       className={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
     >
       <Card
         onTouchTap={() => history.push(url)}
+        style={{cursor: 'pointer'}}
       >
         <CardMedia>
-          <img src={src} alt="" />
+          <img src={img} alt="" />
         </CardMedia>
         <CardHeader
           title={username}
