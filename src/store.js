@@ -4,6 +4,7 @@ import { routerReducer, routerMiddleware } from 'react-router-redux'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import promise from 'redux-promise'
 import { createLogger } from 'redux-logger'
+import thunkMiddleware from 'redux-thunk'
 // import reduceReducers from 'reduce-reducers'
 
 import * as Reducers from './reducers'
@@ -15,6 +16,7 @@ import { SET_DEVICE_DETAILS } from './reducers'
 const middlewares = []
 middlewares.push(routerMiddleware(browserHistory)) // Build the middleware for intercepting and dispatching navigation actions - see https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux
 middlewares.push(promise)
+middlewares.push(thunkMiddleware)
 if (process.env.NODE_ENV !== 'production') {
     middlewares.push(createLogger())
 }

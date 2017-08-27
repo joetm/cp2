@@ -85,8 +85,13 @@ export const RECEIVE_COUNTRY           = 'APP::RECEIVE_COUNTRY'
 export const RECEIVE_STATE             = 'APP::RECEIVE_STATE'
 export const RECEIVE_CITY              = 'APP::RECEIVE_CITY'
 
-export const DELETE_AVATAR            = 'APP:RECEIVE_AVATAR'
-export const DELETE_PROFILEIMG        = 'APP:RECEIVE_PROFILEIMG'
+// export const DELETE_AVATAR             = 'APP:RECEIVE_AVATAR'
+export const DELETE_AVATAR_STARTED     = 'APP::DELETE_AVATAR_STARTED'
+export const DELETE_AVATAR_SUCCESS     = 'APP::DELETE_AVATAR_SUCCESS'
+export const DELETE_AVATAR_FAILURE     = 'APP::DELETE_AVATAR_FAILURE'
+export const DELETE_PROFILEIMG_STARTED = 'APP:RECEIVE_PROFILEIMG_STARTED'
+export const DELETE_PROFILEIMG_SUCCESS = 'APP:RECEIVE_PROFILEIMG_SUCCESS'
+export const DELETE_PROFILEIMG_FAILURE = 'APP:RECEIVE_PROFILEIMG_FAILURE'
 
 // AUTH
 export const LOGIN_REQUEST             = 'AUTH::LOGIN_REQUEST'
@@ -116,76 +121,80 @@ function makeActionCreator(type, ...argNames) {
 // Redux action creators
 // ----------------------------------------------------
 
-export const getUser               = makeActionCreator(GET_USER,          'userid')
+export const getUser               = makeActionCreator(GET_USER,            'userid')
 export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
 export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
 export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)
-export const followUser            = makeActionCreator(FOLLOW_USER,       'userid')
-export const replyThread           = makeActionCreator(REPLY_THREAD,      'threadid')
-export const commentProfile        = makeActionCreator(COMMENT_PROFILE,   'userid')
+export const followUser            = makeActionCreator(FOLLOW_USER,         'userid')
+export const replyThread           = makeActionCreator(REPLY_THREAD,        'threadid')
+export const commentProfile        = makeActionCreator(COMMENT_PROFILE,     'userid')
 export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
 export const closeSearchSidebar    = makeActionCreator(CLOSE_SEARCH_SIDEBAR)
 export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
 export const toggleSidebar         = makeActionCreator(TOGGLE_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
-export const like                  = makeActionCreator(LIKE,              'itemid', 'increment')
-export const dislike               = makeActionCreator(DISLIKE,           'itemid', 'increment')
-// export const undoLike              = makeActionCreator(UNDO_LIKE,         'itemid')
-// export const undoDislike           = makeActionCreator(UNDO_DISLIKE,      'itemid')
-export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,    'itemid')
-export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE, 'itemid')
-export const sendMessage           = makeActionCreator(SEND_MESSAGE,      'toUserid', 'msg', 'currentUser')
+export const like                  = makeActionCreator(LIKE,                'itemid', 'increment')
+export const dislike               = makeActionCreator(DISLIKE,             'itemid', 'increment')
+// export const undoLike              = makeActionCreator(UNDO_LIKE,        'itemid')
+// export const undoDislike           = makeActionCreator(UNDO_DISLIKE,     'itemid')
+export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,      'itemid')
+export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE,   'itemid')
+export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'toUserid', 'msg', 'currentUser')
 
 // forum actions
 export const getPosts              = makeActionCreator(GET_POSTS)
-export const getPost               = makeActionCreator(GET_POST,          'postid', 'response')
-export const getThread             = makeActionCreator(GET_THREAD,        'threadid', 'response')
-export const editPost              = makeActionCreator(EDIT_POST,         'postid', 'response')
-export const removePost            = makeActionCreator(REMOVE_POST,       'postid', 'bool')
-export const selectThread          = makeActionCreator(SELECT_THREAD,     'threadid')
+export const getPost               = makeActionCreator(GET_POST,            'postid', 'response')
+export const getThread             = makeActionCreator(GET_THREAD,          'threadid', 'response')
+export const editPost              = makeActionCreator(EDIT_POST,           'postid', 'response')
+export const removePost            = makeActionCreator(REMOVE_POST,         'postid', 'bool')
+export const selectThread          = makeActionCreator(SELECT_THREAD,       'threadid')
 export const getUpdates            = makeActionCreator(GET_UPDATES)
 
 // other app actions
-export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,       'id')
-export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,     'obj')
-export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS,    'bool')
+export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,    'id')
+export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'obj')
+export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'bool')
 
 // ajax receptors
-export const receiveCurrentUser           = makeActionCreator(RECEIVE_CURRENT_USER,   'response')
-export const receiveUser                  = makeActionCreator(RECEIVE_USER,           'response', 'userid')
-export const receiveUsers                 = makeActionCreator(RECEIVE_USERS,          'response')
-export const receiveFollowers             = makeActionCreator(RECEIVE_FOLLOWERS,      'response')
-export const receiveComments              = makeActionCreator(RECEIVE_COMMENTS,       'response')
-export const receivePosts                 = makeActionCreator(RECEIVE_POSTS,          'response')
-export const receiveThreads               = makeActionCreator(RECEIVE_THREADS,        'response')
-export const receivePost                  = makeActionCreator(RECEIVE_POST,           'response')
-export const receiveUpdates               = makeActionCreator(RECEIVE_UPDATES,        'response')
-export const receiveImages                = makeActionCreator(RECEIVE_IMAGES,         'response')
-export const receiveVideos                = makeActionCreator(RECEIVE_VIDEOS,         'response')
-export const receiveThread                = makeActionCreator(RECEIVE_THREAD,         'response')
-export const receiveReviewItem            = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
-export const receiveMessageHistory        = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
-export const receiveNotifications         = makeActionCreator(RECEIVE_NOTIFICATIONS,  'response')
-export const receiveFavorites             = makeActionCreator(RECEIVE_FAVORITES,      'response')
-export const receiveLikes                 = makeActionCreator(RECEIVE_LIKES,          'response')
-export const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,          'response')
-export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,           'response')
-export const receiveDislike               = makeActionCreator(RECEIVE_DISLIKE,        'response')
-export const receiveUnreadCount           = makeActionCreator(RECEIVE_UNREAD_COUNT,   'response')
+export const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER,      'response')
+export const receiveUser           = makeActionCreator(RECEIVE_USER,              'response', 'userid')
+export const receiveUsers          = makeActionCreator(RECEIVE_USERS,             'response')
+export const receiveFollowers      = makeActionCreator(RECEIVE_FOLLOWERS,         'response')
+export const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,          'response')
+export const receivePosts          = makeActionCreator(RECEIVE_POSTS,             'response')
+export const receiveThreads        = makeActionCreator(RECEIVE_THREADS,           'response')
+export const receivePost           = makeActionCreator(RECEIVE_POST,              'response')
+export const receiveUpdates        = makeActionCreator(RECEIVE_UPDATES,           'response')
+export const receiveImages         = makeActionCreator(RECEIVE_IMAGES,            'response')
+export const receiveVideos         = makeActionCreator(RECEIVE_VIDEOS,            'response')
+export const receiveThread         = makeActionCreator(RECEIVE_THREAD,            'response')
+export const receiveReviewItem     = makeActionCreator(RECEIVE_REVIEWITEM,        'response')
+export const receiveMessageHistory = makeActionCreator(RECEIVE_MESSAGEHISTORY,    'response')
+export const receiveNotifications  = makeActionCreator(RECEIVE_NOTIFICATIONS,     'response')
+export const receiveFavorites      = makeActionCreator(RECEIVE_FAVORITES,         'response')
+export const receiveLikes          = makeActionCreator(RECEIVE_LIKES,             'response')
+export const receiveAlbum          = makeActionCreator(RECEIVE_ALBUM,             'response')
+export const receiveLike           = makeActionCreator(RECEIVE_LIKE,              'response')
+export const receiveDislike        = makeActionCreator(RECEIVE_DISLIKE,           'response')
+export const receiveUnreadCount    = makeActionCreator(RECEIVE_UNREAD_COUNT,      'response')
 
-export const receiveCountries             = makeActionCreator(RECEIVE_COUNTRIES,      'response')
-export const receiveStates                = makeActionCreator(RECEIVE_STATES,         'response')
-export const receiveCities                = makeActionCreator(RECEIVE_CITIES,         'response')
-export const receiveCountry               = makeActionCreator(RECEIVE_COUNTRY,        'response')
-export const receiveState                 = makeActionCreator(RECEIVE_STATE,          'response')
-export const receiveCity                  = makeActionCreator(RECEIVE_CITY,           'response')
+export const receiveCountries      = makeActionCreator(RECEIVE_COUNTRIES,         'response')
+export const receiveStates         = makeActionCreator(RECEIVE_STATES,            'response')
+export const receiveCities         = makeActionCreator(RECEIVE_CITIES,            'response')
+export const receiveCountry        = makeActionCreator(RECEIVE_COUNTRY,           'response')
+export const receiveState          = makeActionCreator(RECEIVE_STATE,             'response')
+export const receiveCity           = makeActionCreator(RECEIVE_CITY,              'response')
 
-export const deleteAvatar                 = makeActionCreator(DELETE_AVATAR)
-export const deleteProfileImg             = makeActionCreator(DELETE_PROFILEIMG)
+export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
+export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS)
+export const deleteAvatarFailure     = makeActionCreator(DELETE_AVATAR_FAILURE,     'error')
+export const deleteProfileImgStarted = makeActionCreator(DELETE_PROFILEIMG_STARTED)
+export const deleteProfileImgSuccess = makeActionCreator(DELETE_PROFILEIMG_SUCCESS)
+export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILURE, 'error')
 
 // AUTH
-export const setIsAuthenticating          = makeActionCreator(LOGIN_REQUEST)
+export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
 
 // const unknownAction = { type: UNKNOWN }
 
@@ -422,8 +431,24 @@ export const updateCity = () =>
     api.updateCity().then(receiveCity)
 
 
-export const removeAvatar = () =>
-    api.removeField('avatar').then(deleteAvatar)
+// export const removeAvatar = () =>
+//     api.removeField('avatar').then(deleteAvatar)
+export const removeAvatar = () => (dispatch) => {
+    dispatch(deleteAvatarStarted())
+    return api.removeField('avatar')
+                .then(dispatch(deleteAvatarSuccess()))
+                .catch(error => {
+                  dispatch(deleteAvatarFailure(), error)
+                })
+}
 
-export const removeProfileImg = () =>
-    api.removeField('profileimg').then(deleteProfileImg)
+// export const removeProfileImg = () =>
+//     api.removeField('profileimg').then(deleteProfileImg)
+export const removeProfileImg = () => (dispatch) => {
+    dispatch(deleteProfileImgStarted())
+    return api.removeField('profileimg')
+                .then(dispatch(deleteProfileImgSuccess()))
+                .catch(error => {
+                  dispatch(deleteProfileImgFailure(), error)
+                })
+}

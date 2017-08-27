@@ -37,7 +37,7 @@ class StreamTpl extends React.PureComponent {
                                             key={`upd_${i}`}
                                             { ...item }
                                             gridColumnsFull={4}
-                                            gridColumnsTablet={3}
+                                            gridColumnsTablet={2}
                                             gridColumnsPhone={1}
                                           />
                                         ))
