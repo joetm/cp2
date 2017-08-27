@@ -10,6 +10,7 @@ import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import UsersIcon from 'material-ui/svg-icons/social/group'
 import ForumIcon from 'material-ui/svg-icons/communication/forum'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
+import HeartIcon from 'material-ui/svg-icons/action/favorite'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
@@ -107,6 +108,13 @@ class Sidebar extends React.Component {
                 route={routes.USERS}
                 icon={<UsersIcon />}
                 text="Users"
+                onTouchTap={closeSidebar}
+            />
+
+            <MenuEntry
+                route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
+                icon={<HeartIcon />}
+                text="Favorites"
                 onTouchTap={closeSidebar}
             />
 

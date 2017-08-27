@@ -72,6 +72,7 @@ export const RECEIVE_IMAGES            = 'STREAM::RECEIVE_IMAGES'
 export const RECEIVE_VIDEOS            = 'STREAM::RECEIVE_VIDEOS'
 export const RECEIVE_UPDATES           = 'STREAM::RECEIVE_UPDATES'
 export const RECEIVE_NOTIFICATIONS     = 'STREAM::RECEIVE_NOTIFICATIONS'
+export const RECEIVE_FAVORITES         = 'STREAM::RECEIVE_FAVORITES'
 export const RECEIVE_LIKES             = 'STREAM::RECEIVE_LIKES'
 export const RECEIVE_LIKE              = 'STREAM::RECEIVE_LIKE'
 export const RECEIVE_DISLIKE           = 'STREAM::RECEIVE_DISLIKE'
@@ -166,6 +167,7 @@ export const receiveThread                = makeActionCreator(RECEIVE_THREAD,   
 export const receiveReviewItem            = makeActionCreator(RECEIVE_REVIEWITEM,     'response')
 export const receiveMessageHistory        = makeActionCreator(RECEIVE_MESSAGEHISTORY, 'response')
 export const receiveNotifications         = makeActionCreator(RECEIVE_NOTIFICATIONS,  'response')
+export const receiveFavorites             = makeActionCreator(RECEIVE_FAVORITES,      'response')
 export const receiveLikes                 = makeActionCreator(RECEIVE_LIKES,          'response')
 export const receiveAlbum                 = makeActionCreator(RECEIVE_ALBUM,          'response')
 export const receiveLike                  = makeActionCreator(RECEIVE_LIKE,           'response')
@@ -350,6 +352,13 @@ export const fetchVideos = () =>
  */
 export const fetchNotifications = () =>
     api.fetchNotifications().then(receiveNotifications)
+
+/**
+ * fetchFavorites Asynchronous Action Creator
+ * @returns fetchFavorites() - Action
+ */
+export const fetchFavorites = () =>
+    api.fetchFavorites().then(receiveFavorites)
 
 /**
  * fetchLikes Asynchronous Action Creator

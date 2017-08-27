@@ -150,6 +150,19 @@ export function albumReducer(albumState = initialState.album, action) {
 }
 
 /**
+ * favoritesReducer
+ * @returns favoritesState
+ **/
+export function favoritesReducer(favoritesState = initialState.favorites, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_FAVORITES:
+            return [ ...action.response ]
+        default:
+            return favoritesState
+    }
+}
+
+/**
  * likesReducer
  * @returns likesState
  **/

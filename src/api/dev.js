@@ -94,6 +94,10 @@ export const fetchNotifications = () =>
     fetchStreamItemsFromAPI('message')
         .then((response) => response)
 
+export const fetchFavorites = () =>
+    fetchStreamItemsFromAPI(null)
+        .then((response) => response)
+
 export const fetchLikes = () =>
     fetchStreamItemsFromAPI('like')
         .then((response) => response)

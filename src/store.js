@@ -31,6 +31,7 @@ const store = createStore(
         all: Reducers.allReducer,
         images: Reducers.imagesReducer,
         videos: Reducers.videosReducer,
+        favorites: Reducers.favoritesReducer,
         likes: Reducers.likesReducer,
         notifications: Reducers.notificationsReducer,
         album: Reducers.albumReducer,

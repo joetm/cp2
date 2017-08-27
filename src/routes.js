@@ -6,6 +6,7 @@ const routes = {
     STREAM: "/stream",
     NOTIFICATIONS: "/notifications",
     LIKES: "/likes",
+    FAVORITES: "/favorites",
     PROFILE: "/profile",
     FOLLOWERS: "/followers",
     USERS: "/members",

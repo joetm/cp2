@@ -13,7 +13,8 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 const _ID = {
     ALL: 1,
     IMAGES: 5,
-    VIDEOS: 8,
+    VIDEOS: 6,
+    FAVORITES: 8,
     LIKES: 9,
 }
 
@@ -53,6 +54,11 @@ class SubToolbar extends React.Component {
                             value={_ID.VIDEOS}
                             primaryText="Videos"
                             onTouchTap={() => { history.push(this.props.routes.videos) }}
+                        />
+                        <MenuItem
+                            value={_ID.FAVORITES}
+                            primaryText="Favorites"
+                            onTouchTap={() => { history.push(this.props.routes.favorites) }}
                         />
                         <MenuItem
                             value={_ID.LIKES}
