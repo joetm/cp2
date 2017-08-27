@@ -102,6 +102,7 @@ class App extends React.Component {
               <NavBar isScrolled={this.state.isScrolled} />
 
               <Switch>
+
                 <Route exact path={routes.HOME} component={Home} />
 
                 <Route path={routes.FORUM} component={Forum} />
@@ -123,10 +124,9 @@ class App extends React.Component {
                     )} />
 
                 <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
+                <Route path={routes.MEMBERS} component={Users} />
 
-                <Route exact path={routes.MEMBERS} component={Users} />
-
-                <Route exact path={routes.SETTINGS} component={Settings} />
+                <Route path={routes.SETTINGS} component={Settings} />
 
                 <Route exact path={routes.LOGIN} component={LoginPage} />
                 <Route exact path={routes.SIGNUP} component={SignupPage} />

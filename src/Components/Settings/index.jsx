@@ -16,46 +16,46 @@ import styles from './styles'
 
 const Settings = (props) => {
   return (
-          <div style={{textAlign: 'center'}}>
-            <h1>Settings</h1>
-            <div style={styles.settingsBlock}>
-              <List>
-                  <SettingsMenuEntry
-                    primaryText="General"
-                    secondaryText="General settings"
-                    url="/general"
-                  />
-                  <SettingsMenuEntry
-                    primaryText="Profile photo"
-                    secondaryText="Change your profile photo"
-                    url="/image"
-                  />
-                  <SettingsMenuEntry
-                    primaryText="Avatar"
-                    secondaryText="Change your avatar photo"
-                    url="/avatar"
-                  />
-                  <SettingsMenuEntry
-                    primaryText="Privacy"
-                    secondaryText="Change your privacy settings"
-                    url="/privacy"
-                  />
-              </List>
+    <div style={{textAlign: 'center'}}>
+      <h1>Settings</h1>
+      <div style={styles.settingsBlock}>
+        <List>
+            <SettingsMenuEntry
+              primaryText="General"
+              secondaryText="General settings"
+              url="/general"
+            />
+            <SettingsMenuEntry
+              primaryText="Profile photo"
+              secondaryText="Change your profile photo"
+              url="/image"
+            />
+            <SettingsMenuEntry
+              primaryText="Avatar"
+              secondaryText="Change your avatar photo"
+              url="/avatar"
+            />
+            <SettingsMenuEntry
+              primaryText="Privacy"
+              secondaryText="Change your privacy settings"
+              url="/privacy"
+            />
+        </List>
 
-              <Spacer />
+        <Spacer />
 
-              <Switch>
-                  <Route path={`${props.match.url}/general`} component={General} />
-                  <Route path={`${props.match.url}/image`}   component={ProfileImg} />
-                  <Route path={`${props.match.url}/avatar`}  component={AvatarImg} />
-                  <Route path={`${props.match.url}/privacy`} component={Privacy} />
-              </Switch>
+        <Switch>
+          <Route path={`${props.match.url}/general`} component={General} />
+          <Route path={`${props.match.url}/image`}   component={ProfileImg} />
+          <Route path={`${props.match.url}/avatar`}  component={AvatarImg} />
+          <Route path={`${props.match.url}/privacy`} component={Privacy} />
+        </Switch>
 
-            </div>
+      </div>
 
-            <Spacer />
+      <Spacer />
 
-          </div>
+    </div>
   )
 }
 
