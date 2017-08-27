@@ -142,6 +142,8 @@ export function videosReducer(videosState = initialState.videos, action) {
  **/
 export function videoReducer(videoState = initialState.video, action) {
     switch (action.type) {
+        case ACTIONS.FETCH_VIDEO_STARTED:
+            return { }
         case ACTIONS.RECEIVE_VIDEO:
             return { ...action.response }
         default:

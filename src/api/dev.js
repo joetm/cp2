@@ -90,7 +90,7 @@ export const fetchVideos = () =>
     fetchStreamItemsFromAPI('video')
         .then((response) => response)
 
-export const fetchVideo = () =>
+export const fetchVideo = (videoid) =>
     fetchDataFromAPI('video')
         .then((response) => response)
 

@@ -100,6 +100,10 @@ export const LOGIN_FAILURE             = 'AUTH::LOGIN_FAILURE'
 export const LOGIN_SUCCESS             = 'AUTH::LOGIN_SUCCESS'
 export const LOGOUT                    = 'AUTH::LOGOUT'
 
+export const FETCH_VIDEO_STARTED       = 'VIDEO::FETCH_VIDEO_STARTED'
+export const FETCH_VIDEO_SUCCESS       = 'VIDEO::FETCH_VIDEO_SUCCESS'
+export const FETCH_VIDEO_FAILURE       = 'VIDEO::FETCH_VIDEO_FAILURE'
+
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
 
@@ -194,6 +198,9 @@ export const deleteAvatarFailure     = makeActionCreator(DELETE_AVATAR_FAILURE, 
 export const deleteProfileImgStarted = makeActionCreator(DELETE_PROFILEIMG_STARTED)
 export const deleteProfileImgSuccess = makeActionCreator(DELETE_PROFILEIMG_SUCCESS)
 export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILURE, 'error')
+
+export const fetchVideoStarted       = makeActionCreator(FETCH_VIDEO_STARTED)
+export const fetchVideoFailure       = makeActionCreator(FETCH_VIDEO_FAILURE)
 
 // AUTH
 export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
@@ -361,8 +368,16 @@ export const fetchVideos = () =>
  * fetchVideo Asynchronous Action Creator
  * @returns fetchVideo() - Action
  */
-export const fetchVideo = () =>
-    api.fetchVideo().then(receiveVideo)
+// export const fetchVideo = (videoid) =>
+//     api.fetchVideo(videoid).then(receiveVideo)
+export const fetchVideo = (videoid) => (dispatch) => {
+    dispatch(fetchVideoStarted())
+    return api.fetchVideo(videoid)
+                .then((response) => dispatch(receiveVideo(response)))
+                .catch(error => {
+                  dispatch(fetchVideoFailure(error))
+                })
+}
 
 /**
  * fetchNotifications Asynchronous Action Creator
