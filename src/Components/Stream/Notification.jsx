@@ -12,21 +12,20 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
 import { colors } from '../../common/theme'
+import routes from '../../routes'
 
 
-const rightIconMenu = (
+const rightIconMenu = (props) => (
     <IconMenu iconButtonElement={(
-      <IconButton
-        tooltip="more"
-        tooltipPosition="bottom-left"
-        onTouchTap={(e) => {e.stopPropagation()}}
-      >
-        <MoreVertIcon color={colors.grey} />
-      </IconButton>
+        <IconButton
+          tooltip="more"
+          tooltipPosition="bottom-left"
+          onTouchTap={(e) => {e.stopPropagation()}}
+        >
+          <MoreVertIcon color={colors.grey} />
+        </IconButton>
     )}>
-        <MenuItem>Reply</MenuItem>
-        <MenuItem>Forward</MenuItem>
-        <MenuItem>Delete</MenuItem>
+          { props.menuItems }
     </IconMenu>
 )
 
@@ -40,21 +39,42 @@ class Notification extends React.PureComponent {
      */
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
-        const history = this.props.history
+        const { username, avatar, title, content, userid, type } = this.props
+
+        let text
+        let menuItems
+        switch (type) {
+          case 'like':
+            text = <p>
+                  {username} liked your TODO
+                </p>
+            menuItems = [
+              <MenuItem>Delete</MenuItem>,
+            ]
+            break
+          default:
+            text = <p>
+                    {username}
+                    {' '}-{' '}
+                    {content}
+                  </p>
+            menuItems = [
+              <MenuItem>Reply</MenuItem>,
+              <MenuItem>Forward</MenuItem>,
+              <MenuItem>Delete</MenuItem>,
+            ]
+        }
+
         return (
             <ListItem
-              leftAvatar={<Avatar src={this.props.avatar} />}
-              rightIconButton={this.state.showMenu ? rightIconMenu : null}
-              primaryText={this.props.title}
-              secondaryText={<p>
-                {`${this.props.username}`}
-                {' '}-{' '}
-                {`${this.props.content}`}
-              </p>}
+              leftAvatar={<Avatar src={avatar} />}
+              rightIconButton={ this.state.showMenu ? <rightIconMenu { ...menuItems } /> : null }
+              primaryText={title}
+              secondaryText={text}
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              onTouchTap={() => history.push(`/messages/${this.props.userid}`)}
+              onTouchTap={() => this.props.history.push(`${routes.MESSAGES}/${userid}`)}
             />
         )
     }
