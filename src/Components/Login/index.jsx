@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import { login, logout } from '../../actions'
 import LoginForm from './LoginForm'
 import { validEmail } from '../../common/helpers'
+import Spacer from '../Shared/Spacer'
 
 
 class LoginPage extends React.Component {
@@ -71,12 +72,16 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
+      <div>
+        <Spacer />
         <LoginForm
             onSubmit={this.processForm}
             onChange={this.changeUser}
             errors={this.state.errors}
             user={this.state.user}
         />
+        <Spacer />
+      </div>
     )
   }
 

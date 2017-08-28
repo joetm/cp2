@@ -1489,8 +1489,7 @@ div.filepicker {
   float: right;
 }
 
-.top-bar a,
-.nav a {
+.top-bar a, .nav a {
   margin: 0 8px;
 }
 
@@ -1501,7 +1500,7 @@ div.filepicker {
 .container {
   margin: 0 auto;
   text-align: center;
-  width: 700px;
+  max-width: 700px;
 }
 
 .card-heading {
@@ -1539,8 +1538,7 @@ div.filepicker {
   float: right;
 }
 
-.top-bar a,
-.nav a {
+.top-bar a, .nav a {
   margin: 0 8px;
 }
 
@@ -1551,7 +1549,7 @@ div.filepicker {
 .container {
   margin: 0 auto;
   text-align: center;
-  width: 700px;
+  max-width: 700px;
 }
 
 .card-heading {

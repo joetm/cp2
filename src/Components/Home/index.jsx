@@ -13,7 +13,6 @@ import Footer from '../Footer'
 // --
 import Notification from '../Stream/Notification'
 import Update from '../Stream/Update'
-import Like from '../Stream/Like'
 import Chat from '../Chat'
 
 
@@ -113,7 +112,7 @@ const Home = () => (
             <br />
             <Paper style={boxStyle} zDepth={1}>
                 <List>
-                    <Like
+                    <Notification
                       avatar="/img/avatar/face-5.jpg"
                       title="Raquel Parrado"
                       content={
@@ -124,7 +123,7 @@ const Home = () => (
                       }
                       secondaryTextLines={2}
                     />
-                    <Like
+                    <Notification
                       avatar="/img/avatar/face-7.jpg"
                       title="Raquel Parrado"
                       content={
@@ -135,7 +134,7 @@ const Home = () => (
                       }
                       secondaryTextLines={2}
                     />
-                    <Like
+                    <Notification
                       avatar="/img/avatar/face-8.jpg"
                       title="Raquel Parrado"
                       content={
