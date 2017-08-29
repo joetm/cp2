@@ -21,12 +21,32 @@ class Notification extends React.PureComponent {
     state = {
       showMenu: true,
     }
+    replyNotification = () => {
+        // TODO
+        // this.props.replyNotification()
+        console.log('TODO: reply to notification')
+    }
+    forwardNotification = () => {
+        // TODO
+        // this.props.forwardNotification(this.props.id)
+        console.log('TODO: forward notification')
+    }
+    deleteNotification = () => {
+        // TODO
+        // this.props.deleteNotification(this.props.id)
+        console.log('TODO: delete notification')
+    }
+    deleteLike = () => {
+        // TODO
+        // this.props.undoLike(this.props.id)
+        console.log('TODO: delete like')
+    }
     /**
      * Render the component.
      */
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
-        const { username, avatar, title, content, userid, type } = this.props
+        const { id, username, avatar, title, content, userid, type } = this.props
 
         let text
         let rightIconMenu
@@ -45,7 +65,7 @@ class Notification extends React.PureComponent {
                   <MoreVertIcon color={colors.grey} />
                 </IconButton>
             )}>
-                <MenuItem onTouchTap={this.props.undoLike}>Undo</MenuItem>
+                <MenuItem onTouchTap={this.deleteLike}>Undo</MenuItem>
             </IconMenu>
             break
           default:
@@ -63,9 +83,9 @@ class Notification extends React.PureComponent {
                   <MoreVertIcon color={colors.grey} />
                 </IconButton>
             )}>
-                <MenuItem onTouchTap={this.props.replyNotification}>Reply</MenuItem>
-                <MenuItem onTouchTap={this.props.forwardNotification}>Forward</MenuItem>
-                <MenuItem onTouchTap={this.props.deleteNotification}>Delete</MenuItem>
+                <MenuItem onTouchTap={this.replyNotification}>Reply</MenuItem>
+                <MenuItem onTouchTap={this.forwardNotification}>Forward</MenuItem>
+                <MenuItem onTouchTap={this.deleteNotification}>Delete</MenuItem>
             </IconMenu>
         }
 
@@ -91,4 +111,4 @@ class Notification extends React.PureComponent {
 export default withRouter(connect(
     null,
     { undoLike, replyNotification, forwardNotification, deleteNotification }
-)(Updates))
+)(Notification))

@@ -145,8 +145,8 @@ export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
 export const like                  = makeActionCreator(LIKE,                'itemid', 'increment')
 export const dislike               = makeActionCreator(DISLIKE,             'itemid', 'increment')
-// export const undoLike              = makeActionCreator(UNDO_LIKE,        'itemid')
-// export const undoDislike           = makeActionCreator(UNDO_DISLIKE,     'itemid')
+export const undoLike              = makeActionCreator(UNDO_LIKE,           'itemid')
+export const undoDislike           = makeActionCreator(UNDO_DISLIKE,        'itemid')
 export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,      'itemid')
 export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE,   'itemid')
 export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'toUserid', 'msg', 'currentUser')
@@ -209,11 +209,8 @@ export const fetchVideoFailure       = makeActionCreator(FETCH_VIDEO_FAILURE)
 // AUTH
 export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
 
-export const undoLike                = makeActionCreator(UNDO_LIKE,                 'id')
-export const undoDislike             = makeActionCreator(UNDO_DISLIKE,              'id')
-export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'content')
-export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'id')
-export const deleteNotification      = makeActionCreator(DELETE_NOTIFICATION,       'id')
+export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'payload')
+export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'itemid')
 
 
 // const unknownAction = { type: UNKNOWN }
