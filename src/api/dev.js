@@ -83,8 +83,13 @@ export const fetchPictures = () =>
     fetchStreamItemsFromAPI('image')
         .then((response) => response)
 
+export const fetchPicture = (imageid) =>
+    fetchStreamItemsFromAPI('image')
+        .then((response) => response[0]) // mock: just take the first image from the stream items
+
 // alias
 export const fetchImages = fetchPictures
+export const fetchImage  = fetchPicture
 
 export const fetchVideos = () =>
     fetchStreamItemsFromAPI('video')

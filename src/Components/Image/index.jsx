@@ -1,24 +1,34 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 
+import { fetchPicture } from '../../actions'
 import { colors } from '../../common/theme'
 import Spacer from '../Shared/Spacer'
+// import Loader from '../Shared/Loader'
+import Update from '../Stream/Update'
 
-
-const styles = {
-}
 
 class Image extends React.PureComponent {
+    componentDidMount() {
+        this.props.fetchPicture()
+    }
     /**
      * Render the component.
      */
     render() {
+        const { title } = this.props.image
         return (
             <div>
-                <h2>IMAGE TITLE</h2>
+                <h2>{title}</h2>
 
-                <img src="http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg" alt="" />
+                <Update
+                    { ...this.props.image }
+                    gridColumnsFull={1}
+                    gridColumnsTablet={1}
+                    gridColumnsPhone={1}
+                />
 
                 <Spacer />
 
@@ -27,14 +37,11 @@ class Image extends React.PureComponent {
     }
 }
 
-// const mapStateToProps = (state) => ({
-//     image: state.image,
-//     isFetching: state.appState.isFetching,
-// })
+const mapStateToProps = (state) => ({
+    image: state.image
+})
 
-// export default connect(
-//     mapStateToProps,
-//     { fetchReviewItem, reviewApprove, reviewDisapprove, approve, reject, like, dislike, setFetchingStatus }
-// )(Review)
-
-export default Image
+export default connect(
+    mapStateToProps,
+    { fetchPicture }
+)(Image)

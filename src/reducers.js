@@ -124,6 +124,19 @@ export function imagesReducer(imagesState = initialState.images, action) {
 }
 
 /**
+ * imageReducer
+ * @returns imageState
+ **/
+export function imageReducer(imageState = initialState.image, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_IMAGE:
+            return { ...action.response }
+        default:
+            return imageState
+    }
+}
+
+/**
  * videosReducer
  * @returns videosState
  **/

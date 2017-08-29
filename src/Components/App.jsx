@@ -42,6 +42,7 @@ import Video from './Video'
 import Image from './Image'
 import Profile from './Profile'
 import Review from './Review'
+import Editor from './Editor'
 import Settings from './Settings'
 import Error from './Error'
 import Guidelines from './Legal/Guidelines'
@@ -111,8 +112,8 @@ class App extends React.Component {
 
                 <Route path={`${routes.STREAM}/:userid`} component={Stream} />
 
-                <Route path={`${routes.VIDEOS}/:videoid`} component={Video} />
-                <Route path={`${routes.IMAGES}/:imageid`} component={Image} />
+                <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
+                <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
 
                 <Route exact path={routes.REVIEW} component={Review} />
 
@@ -130,6 +131,13 @@ class App extends React.Component {
 
                 <Route exact path={routes.LOGIN} component={LoginPage} />
                 <Route exact path={routes.SIGNUP} component={SignupPage} />
+
+                {/*
+                <Route path={`${routes.POSTS}/:itemid${routes.EDIT}`} component={Editor} />
+                <Route path={`${routes.VIDEOS}/:itemid${routes.EDIT}`} component={Editor} />
+                <Route path={`${routes.IMAGES}/:itemid${routes.EDIT}`} component={Editor} />
+                <Route path={`${routes.MESSAGES}/:itemid${routes.EDIT}`} component={Editor} />
+                */}
 
                 <Route exact path={routes.LEGAL.COMMUNITY} component={Guidelines} />
                 <Route exact path={routes.LEGAL.PRIVACY} component={Privacy} />

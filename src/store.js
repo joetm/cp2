@@ -49,6 +49,7 @@ const store = createStore(
         thread: Reducers.threadReducer,
         post: Reducers.postReducer,
         video: Reducers.videoReducer,
+        image: Reducers.imageReducer,
         // --
         // auth: Reducers.authReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key

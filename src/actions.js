@@ -69,6 +69,7 @@ export const RECEIVE_POST              = 'FORUM::RECEIVE_POST'
 export const RECEIVE_THREAD            = 'FORUM::RECEIVE_THREAD'
 export const RECEIVE_ALBUM             = 'ALBUM::RECEIVE_ALBUM'
 export const RECEIVE_IMAGES            = 'STREAM::RECEIVE_IMAGES'
+export const RECEIVE_IMAGE             = 'STREAM::RECEIVE_IMAGE'
 export const RECEIVE_VIDEOS            = 'STREAM::RECEIVE_VIDEOS'
 export const RECEIVE_VIDEO             = 'STREAM::RECEIVE_VIDEO'
 export const RECEIVE_UPDATES           = 'STREAM::RECEIVE_UPDATES'
@@ -176,6 +177,9 @@ export const receiveThreads        = makeActionCreator(RECEIVE_THREADS,         
 export const receivePost           = makeActionCreator(RECEIVE_POST,              'response')
 export const receiveUpdates        = makeActionCreator(RECEIVE_UPDATES,           'response')
 export const receiveImages         = makeActionCreator(RECEIVE_IMAGES,            'response')
+export const receiveImage          = makeActionCreator(RECEIVE_IMAGE,             'response')
+export const receivePictures       = receiveImages
+export const receivePicture        = receiveImage
 export const receiveVideos         = makeActionCreator(RECEIVE_VIDEOS,            'response')
 export const receiveVideo          = makeActionCreator(RECEIVE_VIDEO ,            'response')
 export const receiveThread         = makeActionCreator(RECEIVE_THREAD,            'response')
@@ -364,6 +368,21 @@ export const fetchAll = () =>
  */
 export const fetchPictures = () =>
     api.fetchPictures().then(receiveImages)
+
+/**
+ * fetchVideo Asynchronous Action Creator
+ * @returns fetchVideo() - Action
+ */
+// export const fetchPicture = (imageid) =>
+//     api.fetchPicture(imageid).then(receivePicture)
+export const fetchPicture = (imageid) => (dispatch) => {
+    // dispatch(fetchVideoStarted())
+    return api.fetchPicture(imageid)
+                .then((response) => dispatch(receivePicture(response)))
+                // .catch(error => {
+                //   dispatch(fetchPictureFailure(error))
+                // })
+}
 
 /**
  * fetchVideos Asynchronous Action Creator

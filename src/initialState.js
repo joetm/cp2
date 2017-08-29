@@ -38,6 +38,7 @@ const initialState = {
     thread: {},
     post: {},
     video: {},
+    image: {},
     messageHistory: {},
     reviewitem: {
         id: null,
