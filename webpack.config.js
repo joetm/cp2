@@ -117,7 +117,7 @@ module.exports = {
       {from: './src/docs', to: './docs'}
     ]),
     new HtmlWebpackPlugin({
-        title: "CP v2",
+        title: "SocNet v2",
         filename: 'index.html',
         template: '!!handlebars-loader!src/index.hbs',
         hash: true,

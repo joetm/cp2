@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { ListItem } from 'material-ui/List'
 import IconMenu from 'material-ui/IconMenu'
@@ -11,28 +12,14 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
+import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
 import { colors } from '../../common/theme'
 import routes from '../../routes'
 
 
-const rightIconMenu = (props) => (
-    <IconMenu iconButtonElement={(
-        <IconButton
-          tooltip="more"
-          tooltipPosition="bottom-left"
-          onTouchTap={(e) => {e.stopPropagation()}}
-        >
-          <MoreVertIcon color={colors.grey} />
-        </IconButton>
-    )}>
-          { props.menuItems }
-    </IconMenu>
-)
-
-
 class Notification extends React.PureComponent {
     state = {
-      showMenu: true
+      showMenu: true,
     }
     /**
      * Render the component.
@@ -42,15 +29,24 @@ class Notification extends React.PureComponent {
         const { username, avatar, title, content, userid, type } = this.props
 
         let text
-        let menuItems
+        let rightIconMenu
+
         switch (type) {
           case 'like':
             text = <p>
                   {username} liked your TODO
                 </p>
-            menuItems = [
-              <MenuItem>Delete</MenuItem>,
-            ]
+            rightIconMenu = <IconMenu iconButtonElement={(
+                <IconButton
+                  tooltip="more"
+                  tooltipPosition="bottom-left"
+                  onTouchTap={(e) => { e.stopPropagation() }}
+                >
+                  <MoreVertIcon color={colors.grey} />
+                </IconButton>
+            )}>
+                <MenuItem onTouchTap={this.props.undoLike}>Undo</MenuItem>
+            </IconMenu>
             break
           default:
             text = <p>
@@ -58,17 +54,25 @@ class Notification extends React.PureComponent {
                     {' '}-{' '}
                     {content}
                   </p>
-            menuItems = [
-              <MenuItem>Reply</MenuItem>,
-              <MenuItem>Forward</MenuItem>,
-              <MenuItem>Delete</MenuItem>,
-            ]
+            rightIconMenu = <IconMenu iconButtonElement={(
+                <IconButton
+                  tooltip="more"
+                  tooltipPosition="bottom-left"
+                  onTouchTap={(e) => { e.stopPropagation() }}
+                >
+                  <MoreVertIcon color={colors.grey} />
+                </IconButton>
+            )}>
+                <MenuItem onTouchTap={this.props.replyNotification}>Reply</MenuItem>
+                <MenuItem onTouchTap={this.props.forwardNotification}>Forward</MenuItem>
+                <MenuItem onTouchTap={this.props.deleteNotification}>Delete</MenuItem>
+            </IconMenu>
         }
 
         return (
             <ListItem
               leftAvatar={<Avatar src={avatar} />}
-              rightIconButton={ this.state.showMenu ? <rightIconMenu { ...menuItems } /> : null }
+              rightIconButton={ this.state.showMenu ? rightIconMenu : null }
               primaryText={title}
               secondaryText={text}
               // onMouseEnter={() => this.setState({showMenu: true})}
@@ -80,4 +84,11 @@ class Notification extends React.PureComponent {
     }
 }
 
-export default withRouter(Notification)
+// const mapStateToProps = (state) => ({
+//     updates: state.all
+// })
+
+export default withRouter(connect(
+    null,
+    { undoLike, replyNotification, forwardNotification, deleteNotification }
+)(Updates))

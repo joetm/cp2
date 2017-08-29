@@ -40,8 +40,8 @@ export const REVIEW_APPROVE            = 'REVIEW::APPROVE'
 export const REVIEW_DISAPPROVE         = 'REVIEW::DISAPPROVE'
 export const LIKE                      = 'SOCIAL::LIKE'
 export const DISLIKE                   = 'SOCIAL::DISLIKE'
-// export const UNDO_LIKE                = 'SOCIAL::UNDO_LIKE'
-// export const UNDO_DISLIKE             = 'SOCIAL::UNDO_DISLIKE'
+export const UNDO_LIKE                 = 'SOCIAL::UNDO_LIKE'
+export const UNDO_DISLIKE              = 'SOCIAL::UNDO_DISLIKE'
 export const FOLLOW_USER               = 'SOCIAL::FOLLOW_USER'
 export const SET_ACTIVE_BADGE          = 'NAV::SET_ACTIVE_BADGE'
 export const GET_UPDATES               = 'STREAM::GET_UPDATES'
@@ -93,6 +93,10 @@ export const DELETE_AVATAR_FAILURE     = 'APP::DELETE_AVATAR_FAILURE'
 export const DELETE_PROFILEIMG_STARTED = 'APP:RECEIVE_PROFILEIMG_STARTED'
 export const DELETE_PROFILEIMG_SUCCESS = 'APP:RECEIVE_PROFILEIMG_SUCCESS'
 export const DELETE_PROFILEIMG_FAILURE = 'APP:RECEIVE_PROFILEIMG_FAILURE'
+
+export const REPLY_NOTIFICATION        = 'SOCIAL::REPLY_NOTIFICATION'
+export const FORWARD_NOTIFICATION      = 'SOCIAL::FORWARD_NOTIFICATION'
+export const DELETE_NOTIFICATION       = 'SOCIAL::DELETE_NOTIFICATION'
 
 // AUTH
 export const LOGIN_REQUEST             = 'AUTH::LOGIN_REQUEST'
@@ -204,6 +208,13 @@ export const fetchVideoFailure       = makeActionCreator(FETCH_VIDEO_FAILURE)
 
 // AUTH
 export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
+
+export const undoLike                = makeActionCreator(UNDO_LIKE,                 'id')
+export const undoDislike             = makeActionCreator(UNDO_DISLIKE,              'id')
+export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'content')
+export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'id')
+export const deleteNotification      = makeActionCreator(DELETE_NOTIFICATION,       'id')
+
 
 // const unknownAction = { type: UNKNOWN }
 
