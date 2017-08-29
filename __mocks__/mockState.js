@@ -229,7 +229,7 @@ const mockState = {
             content: "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
             src: "https://apod.nasa.gov/apod/image/1708/m16-m17-toa3-mosaic-crfl-final17-cc900c.jpg",
             thumb: "https://apod.nasa.gov/apod/image/1708/m16-m17-toa3-mosaic-crfl-final17-cc900c.jpg",
-            userid: 6,
+            userid: 1,
             username: "Brandan Lim",
             avatar: "/img/avatar/face-1.jpg",
             approvals: 0,
@@ -771,6 +771,7 @@ const mockState = {
         {
             userid: 3,
             username: 'Reagan Ronald',
+            usertitle: 'self-chosen user title',
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -812,6 +813,7 @@ const mockState = {
         {
             userid: 4,
             username: 'Mixxer',
+            usertitle: 'Mr Mister',
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -853,6 +855,7 @@ const mockState = {
         {
             userid: 5,
             username: 'Whiskey Mixxer',
+            usertitle: 'OK',
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -894,6 +897,7 @@ const mockState = {
         {
             userid: 6,
             username: 'Mario',
+            usertitle: null,
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -937,6 +941,7 @@ const mockState = {
         "1": {
             userid: 1,
             username: 'admin',
+            usertitle: 'Admin of the forums',
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -978,6 +983,7 @@ const mockState = {
         "2": {
             userid: 2,
             username: 'Gonzales',
+            usertitle: null,
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -1019,6 +1025,7 @@ const mockState = {
         "3": {
             userid: 3,
             username: 'Reagan Ronald',
+            usertitle: 'Usertitle here',
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -1060,7 +1067,8 @@ const mockState = {
         "4": {
             userid: 4,
             username: 'Mixxer',
-            // email: 'admin@thisdomain.com',
+            usertitle: 'noobie',
+             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
             avatar: '/img/avatar/face-3.jpg',
@@ -1101,6 +1109,7 @@ const mockState = {
         "5": {
             userid: 5,
             username: 'Whiskey Mixxer',
+            usertitle: null,
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -1142,6 +1151,7 @@ const mockState = {
         "6": {
             userid: 6,
             username: 'Mario',
+            usertitle: null,
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -1183,6 +1193,7 @@ const mockState = {
         "7": {
             userid: 7,
             username: 'Luigi',
+            usertitle: 'Mario\'s brother',
             // email: 'admin@thisdomain.com',
             // token: 'hashhere',
             // password: '',
@@ -1225,6 +1236,7 @@ const mockState = {
     currentUser: {
         userid: 1,
         username: 'admin',
+        usertitle: 'Admin of the forums',
         // email: 'admin@thisdomain.com',
         token: 'TODO',
         avatar: '/img/avatar/face.jpg',

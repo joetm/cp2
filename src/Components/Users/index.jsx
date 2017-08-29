@@ -87,15 +87,7 @@ class Users extends React.PureComponent {
                   usersList.map((user) => (
                     <User
                       key={`usr_${user.userid}`}
-                      username={user.username}
-                      userid={user.userid}
-                      avatar={user.avatar}
-                      status={user.status}
-                      verified={user.verified}
-                      country={user.country}
-                      country={user.country}
-                      state={user.state}
-                      city={user.city}
+                      { ...user }
                     />
                   ))
                 }

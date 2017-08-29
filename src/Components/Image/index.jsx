@@ -2,6 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
+import EditIcon from 'material-ui/svg-icons/image/edit'
+import IconButton from 'material-ui/IconButton'
 
 import { fetchPicture } from '../../actions'
 import { colors } from '../../common/theme'
@@ -11,6 +13,9 @@ import Update from '../Stream/Update'
 
 
 class Image extends React.PureComponent {
+    editTitle = () => {
+        console.log('edit', this)
+    }
     componentDidMount() {
         this.props.fetchPicture()
     }
@@ -18,13 +23,26 @@ class Image extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const { title } = this.props.image
+        const { title, userid } = this.props.image
         return (
             <div>
-                <h2>{title}</h2>
+
+                <h2>
+                    {title}
+                    {
+                        userid === this.props.currentUserId &&
+                        <IconButton
+                            tooltip="Edit"
+                            onTouchTap={this.editTitle}
+                        >
+                            <EditIcon />
+                        </IconButton>
+                    }
+                </h2>
 
                 <Update
                     { ...this.props.image }
+                    showTitle={false}
                     gridColumnsFull={1}
                     gridColumnsTablet={1}
                     gridColumnsPhone={1}
@@ -38,7 +56,8 @@ class Image extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    image: state.image
+    image: state.image,
+    currentUserId: state.currentUser.userid,
 })
 
 export default connect(

@@ -21,11 +21,12 @@ class User extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const { username, avatar, status, verified, city, state, country } = this.props
+        const { username, usertitle, avatar, status, verified, city, state, country } = this.props
         const verifiedStatus = verified ? '- verified' : ''
         const location = city || state || country ? `- ${city}, ${state}, ${country}` : ''
         const secondaryText = `
           ${status}
+          ${usertitle ? ' - ' + usertitle : ''}
           ${verifiedStatus}
           ${location}
         `

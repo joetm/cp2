@@ -19,6 +19,8 @@ const Update = (props) => {
     history
   } = props
 
+  const showTitle = props.showTitle === false ? false : true
+
   let url = '/'
   let img
   switch(type) {
@@ -43,14 +45,17 @@ const Update = (props) => {
         </CardMedia>
         <CardHeader
           title={username}
-          subtitle={'Master Jedi'}
           avatar={<Avatar src={avatar} />}
         />
-        <CardTitle
-          title={title}
-          actAsExpander={false}
-          expandable={false}
-        />
+        {/* subtitle={usertitle} */}
+        {
+          showTitle === true &&
+            <CardTitle
+              title={title}
+              actAsExpander={false}
+              expandable={false}
+            />
+        }
         {/*
           <CardActions actAsExpander={false} expandable={false}>
             <LikeButton     msg={111} />
