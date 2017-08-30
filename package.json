@@ -16,7 +16,7 @@
     "eslint": "./node_modules/.bin/eslint --config ./.eslintrc.json --ext jsx,js ./src",
     "flow": "./node_modules/.bin/flow",
     "test": "./node_modules/.bin/jest",
-    "mock-state": "./node_modules/.bin/json-server --port 2222 --delay 100 --routes ./__mocks__/mockRoutes.json --watch ./__mocks__/mockState.json",
+    "mock-state": "./node_modules/.bin/json-server --config ./json-server.json ./__mocks__/mockState.json",
     "build": "yarn run loadProdEnv && NODE_ENV=production ./node_modules/.bin/webpack -p",
     "watch": "./node_modules/.bin/webpack --watch",
     "dev": "./node_modules/.bin/concurrently --kill-others \"yarn run mock-state\" \"yarn run watch\" \"yarn run dev-server\"",

@@ -1,0 +1,6 @@
+{
+    "port": 2222,
+    "delay": 100,
+    "routes": "./__mocks__/mockRoutes.json",
+    "watch": true
+}
