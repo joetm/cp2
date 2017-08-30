@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
 import Avatar from 'material-ui/Avatar'
-import Chip from 'material-ui/Chip';
+import Chip from 'material-ui/Chip'
 import SendIcon from 'material-ui/svg-icons/content/send'
 import TextField from 'material-ui/TextField'
 import parser from 'bbcode-to-react'
