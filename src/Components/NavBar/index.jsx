@@ -218,11 +218,11 @@ class NavBar extends React.Component {
                                 open={this.state.notificationsMenuOpen}
                                 anchorEl={this.anchorEl}
                                 unread={unread}
-                                userId={this.props.userId}
+                                userid={this.props.userid}
                                 closeNotificationsMenu={this.closeNotificationsMenu}
                             />
 
-                            <Link to={`/profile/${this.props.userId}`}>
+                            <Link to={`/profile/${this.props.userid}`}>
                                 <Avatar
                                     id={_NAVITEM_ID.PROFILE}
                                     visible={true}
@@ -285,7 +285,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = (state) => ({
     sidebarSearchOpen: state.appState.sidebarSearchOpen,
-    userId: state.currentUser.id,
+    userid: state.currentUser.id,
     username: state.currentUser.username,
     avatar: state.currentUser.avatar,
     // --

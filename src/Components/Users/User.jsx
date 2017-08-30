@@ -54,7 +54,7 @@ const SubText = (props) => {
  */
 class User extends React.PureComponent {
     handleClick = () => {
-        this.props.history.push(`${routes.PROFILE}/${this.props.userId}`)
+        this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)
     }
     /**
      * Render the component.

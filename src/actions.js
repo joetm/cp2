@@ -134,13 +134,13 @@ function makeActionCreator(type, ...argNames) {
 // Redux action creators
 // ----------------------------------------------------
 
-export const getUser               = makeActionCreator(GET_USER,            'userId')
+export const getUser               = makeActionCreator(GET_USER,            'userid')
 export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
 export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
 export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)
-export const followUser            = makeActionCreator(FOLLOW_USER,         'userId')
+export const followUser            = makeActionCreator(FOLLOW_USER,         'userid')
 export const replyThread           = makeActionCreator(REPLY_THREAD,        'threadid')
-export const commentProfile        = makeActionCreator(COMMENT_PROFILE,     'userId')
+export const commentProfile        = makeActionCreator(COMMENT_PROFILE,     'userid')
 export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
 export const closeSearchSidebar    = makeActionCreator(CLOSE_SEARCH_SIDEBAR)
 export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
@@ -171,7 +171,7 @@ export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'boo
 
 // ajax receptors
 export const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER,      'response')
-export const receiveUser           = makeActionCreator(RECEIVE_USER,              'response', 'userId')
+export const receiveUser           = makeActionCreator(RECEIVE_USER,              'response', 'userid')
 export const receiveUsers          = makeActionCreator(RECEIVE_USERS,             'response')
 export const receiveFollowers      = makeActionCreator(RECEIVE_FOLLOWERS,         'response')
 export const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,          'response')
@@ -309,8 +309,8 @@ export const fetchCurrentUser = () =>
  * fetchUser Asynchronous Action Creator
  * @returns receiveUser() - Action
  */
-export const fetchUser = (userId) =>
-    api.fetchUser(userId).then(receiveUser)
+export const fetchUser = (userid) =>
+    api.fetchUser(userid).then(receiveUser)
 
 /**
  * fetchUsers Asynchronous Action Creator
@@ -358,8 +358,8 @@ export const fetchThreads = () =>
  * fetchPosts Asynchronous Action Creator
  * @returns receivePosts() - Action
  */
-export const fetchMessageHistory = (userId) =>
-    api.fetchMessageHistory(userId).then(receiveMessageHistory)
+export const fetchMessageHistory = (userid) =>
+    api.fetchMessageHistory(userid).then(receiveMessageHistory)
 
 /**
  * fetchAll Asynchronous Action Creator
@@ -437,8 +437,8 @@ export const fetchLikes = () =>
  * fetchAlbum Asynchronous Action Creator
  * @returns fetchAlbum() - Action
  */
-export const fetchAlbum = (userId) =>
-    api.fetchAlbum(userId).then(receiveAlbum)
+export const fetchAlbum = (userid) =>
+    api.fetchAlbum(userid).then(receiveAlbum)
 
 /**
  * fetchAlbum Asynchronous Action Creator

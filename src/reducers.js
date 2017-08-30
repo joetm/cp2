@@ -60,7 +60,7 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
                 title: null,
                 content: action.msg.trim(),
                 src: null,
-                userId: action.currentUser.id,
+                userid: action.currentUser.id,
                 username: action.currentUser.username,
                 avatar: action.currentUser.avatar,
                 tags: [],
@@ -277,13 +277,13 @@ export function userReducer(usersState = initialState.users, action) {
         case ACTIONS.RECEIVE_USER:
             return {
                 ...usersState,
-                [action.response.userId]: { ...action.response }
+                [action.response.userid]: { ...action.response }
             }
         case ACTIONS.RECEIVE_USERS:
             const ret = { ...usersState }
-            for (let userId in action.response) {
-                if (action.response.hasOwnProperty(userId)) {
-                    ret[userId] = { ...action.response[userId] }
+            for (let userid in action.response) {
+                if (action.response.hasOwnProperty(userid)) {
+                    ret[userid] = { ...action.response[userid] }
                 }
             }
             return ret
@@ -315,12 +315,12 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return currentUserState
         case ACTIONS.GET_CURRENT_USER_MINIMAL:
             return {
-                userId: currentUserState.id,
+                userid: currentUserState.id,
                 username: currentUserState.username,
                 avatar: currentUserState.avatar,
             }
         case ACTIONS.GET_CURRENT_USER_ID:
-            if (currentUserState.userId !== undefined) {
+            if (currentUserState.userid !== undefined) {
                 return currentUserState.id
             } else {
                 return null
@@ -358,7 +358,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 isAuthenticating: false,
                 isAuthenticated: true,
                 token: action.token,
-                userId: jwtDecode(action.token).userId,
+                userid: jwtDecode(action.token).userid,
                 username: jwtDecode(action.token).username,
                 // 'act': jwtDecode(action.token).act,
                 statusText: 'You have been successfully logged in.',
@@ -368,7 +368,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 isAuthenticating: false,
                 isAuthenticated: false,
                 token: null,
-                userId: null,
+                userid: null,
                 username: null,
                 statusText: `Authentication Error: ${action.status} ${action.statusText}`
             }}
@@ -376,7 +376,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return { ...currentUserState, ...{
                 isAuthenticated: false,
                 token: null,
-                userId: null,
+                userid: null,
                 username: null,
                 statusText: 'You have been successfully logged out.',
             }}

@@ -53,7 +53,7 @@ class ChatInput extends React.Component {
     if (msg) {
       const payload = {
         msg,
-        userId: this.props.currentUserid,
+        userid: this.props.currentUserid,
         username: this.props.currentUsername,
       }
       console.log(`send: ${msg}`)

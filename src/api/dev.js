@@ -9,8 +9,8 @@ export const fetchCurrentUser = () =>
     jsonAPI.fetchFromAPI('currentUser')
         .then(response => response)
 
-export const fetchUser = (userId) =>
-    jsonAPI.fetchFromAPI('users', userId)
+export const fetchUser = (userid) =>
+    jsonAPI.fetchFromAPI('users', userid)
         .then(response => response)
 
 export const fetchUsers = () =>
@@ -29,8 +29,8 @@ export const fetchUnreadCount = () =>
     jsonAPI.fetchUnreadCountFromAPI()
         .then(response => response)
 
-export const fetchMessageHistory = (userId) =>
-    jsonAPI.fetchFromAPI('messageHistory', userId)
+export const fetchMessageHistory = (userid) =>
+    jsonAPI.fetchFromAPI('messageHistory', userid)
         .then(response => {
             if (response === undefined) {
                 // this is the first time the message history was accessed for this user
@@ -64,7 +64,7 @@ export const fetchThreads = () =>
             return ret
         })
 
-export const fetchAlbum = (userId) =>
+export const fetchAlbum = (userid) =>
     jsonAPI.fetchFromAPI('images')
         .then(response => response)
 

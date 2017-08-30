@@ -28,7 +28,7 @@ const NumChip = (props) => <Chip style={styles.Chip}>{props.num}</Chip>
 class NotificationsMenu extends React.Component {
   render() {
 
-    const { unread, userId, closeNotificationsMenu, history } = this.props
+    const { unread, userid, closeNotificationsMenu, history } = this.props
 
     return (
       <div>
@@ -55,7 +55,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userId}${routes.IMAGES}`)
+                history.push(`${STREAM_BASE_URL}/${userid}${routes.IMAGES}`)
               }}
             />
             <MenuItem
@@ -63,7 +63,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userId}${routes.VIDEOS}`)
+                history.push(`${STREAM_BASE_URL}/${userid}${routes.VIDEOS}`)
               }}
             />
             <MenuItem
@@ -79,7 +79,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${STREAM_BASE_URL}/${userId}${routes.LIKES}`)
+                history.push(`${STREAM_BASE_URL}/${userid}${routes.LIKES}`)
               }}
             />
           </Menu>

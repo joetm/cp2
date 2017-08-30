@@ -110,7 +110,7 @@ class App extends React.Component {
 
                 <Route exact path={routes.NOTIFICATIONS} component={Notifications} />
 
-                <Route path={`${routes.STREAM}/:userId`} component={Stream} />
+                <Route path={`${routes.STREAM}/:userid`} component={Stream} />
 
                 <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
                 <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
@@ -119,12 +119,12 @@ class App extends React.Component {
 
                 <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
 
-                <Route path={`${routes.PROFILE}/:userId`}
+                <Route path={`${routes.PROFILE}/:userid`}
                     render={() => (
                         <Profile isScrolled={this.state.isScrolled} />
                     )} />
 
-                <Route path={`${routes.FOLLOWERS}/:userId`} component={Followers} />
+                <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
                 <Route path={routes.MEMBERS} component={Users} />
 
                 <Route path={routes.SETTINGS} component={Settings} />

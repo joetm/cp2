@@ -42,7 +42,7 @@ function randomImgHeight() {
 */
 class Album extends PureComponent {
     state = {
-        userId: this.props.userId
+        userid: this.props.userid
     }
     componentDidMount () {
         // this.setState({
@@ -50,7 +50,7 @@ class Album extends PureComponent {
         // })
         // this.onresizeListener = this.onResize.bind(this)
         // window.addEventListener('resize', this.onresizeListener)
-        this.props.fetchAlbum() // TODO: use/filter-for userId
+        this.props.fetchAlbum() // TODO: use/filter-for userid
     }
     // onResize () {
         // this.setState({
@@ -104,7 +104,7 @@ class Album extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => ({
     album: state.album,
-    userId: ownProps.match.params.userId,
+    userid: ownProps.match.params.userid,
 })
 
 export default connect(

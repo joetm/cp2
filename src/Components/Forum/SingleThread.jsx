@@ -24,7 +24,7 @@ class SingleThread extends React.Component {
         this.props.fetchThread("cj6dn68b7000i335mgh0lj8rb")
     }
     render() {
-        const { posts, timestamp, username, userId, title } = this.props.thread
+        const { posts, timestamp, username, userid, title } = this.props.thread
         return (
             <div>
                 <FloatingActionButton

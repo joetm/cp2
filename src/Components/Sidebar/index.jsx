@@ -63,7 +63,7 @@ const MenuEntry = (props) => (
 
 class Sidebar extends React.Component {
     render() {
-        const { closeSidebar, userId } = this.props
+        const { closeSidebar, userid } = this.props
         return (
           <Drawer
             docked={false}
@@ -84,7 +84,7 @@ class Sidebar extends React.Component {
             </div>
 
             <MenuEntry
-                route={`${routes.STREAM}/${userId}`}
+                route={`${routes.STREAM}/${userid}`}
                 icon={<UpdatesIcon />}
                 text="New Updates"
                 onTouchTap={closeSidebar}
@@ -112,14 +112,14 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
-                route={`${routes.STREAM}/${userId}${routes.FAVORITES}`}
+                route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
                 icon={<HeartIcon />}
                 text="Favorites"
                 onTouchTap={closeSidebar}
             />
 
             <MenuEntry
-                route={`${routes.STREAM}/${userId}${routes.LIKES}`}
+                route={`${routes.STREAM}/${userid}${routes.LIKES}`}
                 icon={<LikeIcon />}
                 text="Likes"
                 onTouchTap={closeSidebar}
@@ -137,7 +137,7 @@ class Sidebar extends React.Component {
             <Divider />
 
             <MenuEntry
-                route={`${routes.PROFILE}/${userId}`}
+                route={`${routes.PROFILE}/${userid}`}
                 icon={<ProfileIcon />}
                 text="Your Profile"
                 onTouchTap={this.props.closeSidebar}
@@ -164,7 +164,7 @@ class Sidebar extends React.Component {
 
 const mapStateToProps = (state) => ({
     sidebarOpen: state.appState.sidebarOpen,
-    userId: state.currentUser.id,
+    userid: state.currentUser.id,
 })
 
 export default connect(

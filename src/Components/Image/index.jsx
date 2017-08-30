@@ -23,14 +23,14 @@ class Image extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const { title, userId } = this.props.image
+        const { title, userid } = this.props.image
         return (
             <div>
 
                 <h2>
                     {title}
                     {
-                        userId === this.props.currentUserId &&
+                        userid === this.props.currentUserId &&
                         <IconButton
                             tooltip="Edit"
                             onTouchTap={this.editTitle}

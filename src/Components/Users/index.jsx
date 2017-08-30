@@ -45,9 +45,9 @@ class Users extends React.PureComponent {
     render () {
           const { users } = this.props
           let usersList = []
-          for (let userId in users) {
-            if (users.hasOwnProperty(userId)) {
-              usersList.push(users[userId])
+          for (let userid in users) {
+            if (users.hasOwnProperty(userid)) {
+              usersList.push(users[userid])
             }
           }
           return (
