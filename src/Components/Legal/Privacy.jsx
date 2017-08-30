@@ -1,57 +1,20 @@
 /** @flow */
 
 import React from 'react'
-import fetch from 'unfetch'
 
-import Spacer from '../Shared/Spacer'
-import Footer from '../Footer'
-import './style.scss'
-
-
-const policyDoc = '/docs/policy-privacy.txt'
+import LegalTpl from './LegalTpl'
 
 
 class Privacy extends React.PureComponent {
-    request = null
-    state = {
-        policyTxt: '',
-        loading: true,
-    }
-    componentDidMount() {
-        this.request = fetch(policyDoc)
-            .then((response) => {
-                return response.text()
-            }).then((txt) => {
-            this.setState({
-                policyTxt: txt,
-                loading: false,
-            })
-        })
-    }
-    componentWillUnmount() {
-        if (this.request) {
-            if (this.state.loading) {
-                this.request.abort()
-            }
-            this.request = null
-        }
-    }
     /**
      * Render the component.
      */
     render() {
         return (
-            <div style={{textAlign: 'center'}}>
-
-                <h1>Privacy Policy</h1>
-
-                <div className="legal" dangerouslySetInnerHTML={{__html: this.state.policyTxt}}></div>
-
-                <Spacer />
-
-                <Footer />
-
-            </div>
+            <LegalTpl
+                headline="Privacy Policy"
+                url="/docs/policy-privacy.txt"
+            />
         )
     }
 }
