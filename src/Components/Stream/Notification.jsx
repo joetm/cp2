@@ -46,7 +46,7 @@ class Notification extends React.PureComponent {
      */
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
-        const { id, username, avatar, title, content, userid, type } = this.props
+        const { id, username, avatar, title, content, userId, type } = this.props
 
         let text
         let rightIconMenu
@@ -98,7 +98,7 @@ class Notification extends React.PureComponent {
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              onTouchTap={() => this.props.history.push(`${routes.MESSAGES}/${userid}`)}
+              onTouchTap={() => this.props.history.push(`${routes.MESSAGES}/${userId}`)}
             />
         )
     }

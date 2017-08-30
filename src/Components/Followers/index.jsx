@@ -20,9 +20,9 @@ import User from './User'
  */
 class Followers extends React.PureComponent {
     componentDidMount() {
-      const { userid } = this.props
+      const { userId } = this.props
       this.props.fetchFollowers()
-      this.props.fetchUser(userid)
+      this.props.fetchUser(userId)
     }
     /**
      * Render the component.
@@ -38,7 +38,7 @@ class Followers extends React.PureComponent {
                   followers.map((follower) => (
                     <User
                       username={follower.username}
-                      userid={follower.userid}
+                      userId={follower.userId}
                       avatar={follower.avatar}
                     />
                   ))
@@ -52,8 +52,8 @@ class Followers extends React.PureComponent {
 
 const mapStateToProps = (state, ownProps) => ({
     followers: state.followers,
-    userid: ownProps.match.params.userid,
-    user: state.users[ownProps.match.params.userid],
+    userId: ownProps.match.params.userId,
+    user: state.users[ownProps.match.params.userId],
 })
 
 export default withRouter(connect(

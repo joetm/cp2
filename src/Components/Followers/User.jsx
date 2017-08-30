@@ -20,7 +20,7 @@ class Follower extends React.PureComponent {
         this.handleClick = this.handleClick.bind(this)
     }
     handleClick() {
-        console.log(`clicked follower: ${this.state.userid}`)
+        console.log(`clicked follower: ${this.state.id}`)
     }
     /**
      * Render the component.

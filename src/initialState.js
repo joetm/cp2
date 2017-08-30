@@ -56,7 +56,7 @@ const initialState = {
     },
     // --
     currentUser: {
-        userid: null,
+        id: null,
         username: 'anonymous',
         // email: null,
         token: null,

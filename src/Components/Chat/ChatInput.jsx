@@ -53,7 +53,7 @@ class ChatInput extends React.Component {
     if (msg) {
       const payload = {
         msg,
-        userid: this.props.currentUserid,
+        userId: this.props.currentUserid,
         username: this.props.currentUsername,
       }
       console.log(`send: ${msg}`)
@@ -87,7 +87,7 @@ class ChatInput extends React.Component {
 const mapStateToProps = (state) => ({
   // TODO -> use deepstream
   // chat: state.chat,
-  currentUserid: state.currentUser.userid,
+  currentUserid: state.currentUser.id,
   currentUsername: state.currentUser.username,
 })
 

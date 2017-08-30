@@ -24,7 +24,7 @@ class Favorites extends React.PureComponent {
     render() {
         const { favorites } = this.props
         // TODO
-        // const headline = this.props.currentUserid === this.props.match.params.userid ? "Your Favorites" : "Favorites"
+        // const headline = this.props.currentUserid === this.props.match.params.userId ? "Your Favorites" : "Favorites"
         const headline = "Favorites"
         const categorizedFavorites = categorizeList(favorites)
         return (
@@ -57,7 +57,7 @@ class Favorites extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     favorites: state.favorites,
-    currentUserid: state.currentUser.userid,
+    currentUserid: state.currentUser.id,
 })
 
 export default withRouter(connect(

@@ -43,7 +43,7 @@ class Profile extends React.PureComponent {
         this.toggleProfileDetails = this.toggleProfileDetails.bind(this)
     }
     componentDidMount() {
-        this.props.fetchUser(this.props.match.params.userid)
+        this.props.fetchUser(this.props.match.params.userId)
     }
     toggleProfileDetails() {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -52,8 +52,8 @@ class Profile extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const userid = this.props.match.params.userid
-        let user = this.props.users[userid]
+        const userId = this.props.match.params.userId
+        let user = this.props.users[userId]
 
         if (user === undefined) {
             user = {
@@ -89,10 +89,10 @@ class Profile extends React.PureComponent {
                 <Spacer />
 
                 <Switch>
-                    <Route path={`${this.props.url}/:userid${routes.UPDATES}`} component={Stream}/>
-                    <Route path={`${this.props.url}/:userid${routes.ALBUM}`} component={Album}/>
-                    <Route path={`${this.props.url}/:userid${routes.FOLLOWERS}`} component={Followers}/>
-                    <Route path={`${this.props.url}/:userid${routes.LIKES}`} component={Likes}/>
+                    <Route path={`${this.props.url}/:userId${routes.UPDATES}`} component={Stream}/>
+                    <Route path={`${this.props.url}/:userId${routes.ALBUM}`} component={Album}/>
+                    <Route path={`${this.props.url}/:userId${routes.FOLLOWERS}`} component={Followers}/>
+                    <Route path={`${this.props.url}/:userId${routes.LIKES}`} component={Likes}/>
                     <Route component={Album} />
                 </Switch>
 

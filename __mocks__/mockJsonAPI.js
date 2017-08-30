@@ -17,78 +17,13 @@ const delay = (ms) => {
 }
 
 
-
-export const fetchFromAPI = (key) => {
-    const url = `${API}/${key}`
+export const fetchFromAPI = (key, selection) => {
+    const url = selection !== undefined ? `${API}/${key}/${selection}` : `${API}/${key}`
     return fetch(url)
         .then(r => r.json())
         .then(data => data)
         // .catch(error => throw new Error(error))
 }
-
-
-export const fetchDataFromAPI = (key, selection) => {
-    const url = `${API}/streamitems?type_like=${key}`
-    if (selection !== undefined) {
-        return fetch(url)
-            .then(r => r.json())
-            .then(data => {
-                let results = []
-                filter.forEach(filteritem => {
-                    results.concat(
-                        data.filter(item => item.type === filter)
-                    )
-                })
-                return results
-            })
-            // .catch(error => throw new Error(error))
-    } else {
-        return fetch(url)
-            .then(r => r.json())
-            .then(data => data)
-            // .catch(error => throw new Error(error))
-    }
-}
-
-export const fetchStreamItemsFromAPI = (filter) => {
-
-    // filter for two types, e.g. ["images","videos"]
-    if (Array.isArray(filter)) {
-
-        const url = `${API}/streamitems`
-        return fetch(url)
-          .then(r => r.json())
-          .then(data => {
-                let results = []
-                filter.forEach(filteritem => {
-                    results.concat(
-                        data.filter(item => item.type === filter)
-                    )
-                })
-                return results
-          })
-
-    // no filter defined -> return all items
-    } else if (filter === null) {
-
-        const url = `${API}/streamitems`
-        return fetch(url)
-          .then(r => r.json())
-          .then(data => data)
-          // .catch(error => throw new Error(error))
-
-    // filter by provided type
-    } else {
-
-        const url = `${API}/streamitems?type_like=${filter}`
-        return fetch(url)
-          .then(r => r.json())
-          .then(data => data)
-          // .catch(error => throw new Error(error))
-
-    }
-}
-
 
 export const fetchUnreadCountFromAPI = () => {
     return delay(500)

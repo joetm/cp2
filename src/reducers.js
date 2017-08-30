@@ -60,7 +60,7 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
                 title: null,
                 content: action.msg.trim(),
                 src: null,
-                userid: action.currentUser.userid,
+                userId: action.currentUser.id,
                 username: action.currentUser.username,
                 avatar: action.currentUser.avatar,
                 tags: [],
@@ -277,13 +277,13 @@ export function userReducer(usersState = initialState.users, action) {
         case ACTIONS.RECEIVE_USER:
             return {
                 ...usersState,
-                [action.response.userid]: { ...action.response }
+                [action.response.userId]: { ...action.response }
             }
         case ACTIONS.RECEIVE_USERS:
             const ret = { ...usersState }
-            for (let userid in action.response) {
-                if (action.response.hasOwnProperty(userid)) {
-                    ret[userid] = { ...action.response[userid] }
+            for (let userId in action.response) {
+                if (action.response.hasOwnProperty(userId)) {
+                    ret[userId] = { ...action.response[userId] }
                 }
             }
             return ret
@@ -315,13 +315,13 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return currentUserState
         case ACTIONS.GET_CURRENT_USER_MINIMAL:
             return {
-                userid: currentUserState.userid,
+                userId: currentUserState.id,
                 username: currentUserState.username,
                 avatar: currentUserState.avatar,
             }
         case ACTIONS.GET_CURRENT_USER_ID:
-            if (currentUserState.userid !== undefined) {
-                return currentUserState.userid
+            if (currentUserState.userId !== undefined) {
+                return currentUserState.id
             } else {
                 return null
             }
@@ -355,30 +355,30 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return { ...currentUserState, 'isAuthenticating': true }
         case ACTIONS.LOGIN_SUCCESS:
             return { ...currentUserState, ...{
-                'isAuthenticating': false,
-                'isAuthenticated': true,
-                'token': action.token,
-                'userid': jwtDecode(action.token).userid,
-                'username': jwtDecode(action.token).username,
+                isAuthenticating: false,
+                isAuthenticated: true,
+                token: action.token,
+                userId: jwtDecode(action.token).userId,
+                username: jwtDecode(action.token).username,
                 // 'act': jwtDecode(action.token).act,
-                'statusText': 'You have been successfully logged in.',
+                statusText: 'You have been successfully logged in.',
             }}
         case ACTIONS.LOGIN_FAILURE:
             return { ...currentUserState, ...{
-                'isAuthenticating': false,
-                'isAuthenticated': false,
-                'token': null,
-                'userid': null,
-                'username': null,
-                'statusText': `Authentication Error: ${action.status} ${action.statusText}`
+                isAuthenticating: false,
+                isAuthenticated: false,
+                token: null,
+                userId: null,
+                username: null,
+                statusText: `Authentication Error: ${action.status} ${action.statusText}`
             }}
         case ACTIONS.LOGOUT:
             return { ...currentUserState, ...{
-                'isAuthenticated': false,
-                'token': null,
-                'userid': null,
-                'username': null,
-                'statusText': 'You have been successfully logged out.',
+                isAuthenticated: false,
+                token: null,
+                userId: null,
+                username: null,
+                statusText: 'You have been successfully logged out.',
             }}
 
         case ACTIONS.DELETE_AVATAR_SUCCESS:

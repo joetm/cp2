@@ -23,14 +23,14 @@ class Image extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const { title, userid } = this.props.image
+        const { title, userId } = this.props.image
         return (
             <div>
 
                 <h2>
                     {title}
                     {
-                        userid === this.props.currentUserId &&
+                        userId === this.props.currentUserId &&
                         <IconButton
                             tooltip="Edit"
                             onTouchTap={this.editTitle}
@@ -57,7 +57,7 @@ class Image extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     image: state.image,
-    currentUserId: state.currentUser.userid,
+    currentUserId: state.currentUser.id,
 })
 
 export default connect(

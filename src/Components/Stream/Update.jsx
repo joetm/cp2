@@ -53,7 +53,10 @@ class AtomicImage extends React.PureComponent {
 const Update = (props) => {
 
   const {
-    type, id, username, src, avatar, title, thumb,
+    type, id,
+    user,
+    title,
+    src, thumb,
     likes, dislikes, replies,
     gridColumnsFull, gridColumnsTablet, gridColumnsPhone,
     history
@@ -71,6 +74,8 @@ const Update = (props) => {
       url = `/videos/${id}`
       imgSrc = thumb
   }
+
+  console.log('user', user)
 
   return (
     <div
@@ -90,8 +95,8 @@ const Update = (props) => {
           />
         </CardMedia>
         <CardHeader
-          title={username}
-          avatar={<Avatar src={avatar} />}
+          title={user.username}
+          avatar={<Avatar src={user.avatar} />}
         />
         {/* subtitle={usertitle} */}
         {

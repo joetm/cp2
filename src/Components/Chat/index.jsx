@@ -76,8 +76,6 @@ class Chat extends React.Component {
 const mapStateToProps = (state) => ({
   // TODO -> use deepstream
   chat: state.chat,
-  currentUserid: state.currentUser.userid,
-  currentUsername: state.currentUser.username,
 })
 
 export default withRouter(connect(

@@ -49,16 +49,16 @@ class MessageHistory extends React.PureComponent {
     this.state = {
       loading: true,
       inputRows: 1,
-      userid: null,
+      userId: null,
     }
     // bindings
     this._handleKeyPress = this._handleKeyPress.bind(this)
     this.submitMsg = this.submitMsg.bind(this)
   }
   componentDidMount() {
-    this.props.fetchMessageHistory(userid)
-    const userid = this.props.match.params.opponentid
-    this.setState({userid, loading: false})
+    this.props.fetchMessageHistory(userId)
+    const userId = this.props.match.params.opponentid
+    this.setState({userId, loading: false})
   }
   /**
    * Handle key press event on message field.
@@ -75,7 +75,7 @@ class MessageHistory extends React.PureComponent {
   submitMsg() {
     let msg = this.refs.inputfield.getValue().trim()
     if (msg) {
-      this.props.sendMessage(this.props.messageHistory.userid, msg, this.props.currentUser)
+      this.props.sendMessage(this.props.messageHistory.userId, msg, this.props.currentUser)
       // clear the input field
       this.refs.inputfield.getInputNode().value = ''
       // reset number of rows in the input field
@@ -127,7 +127,7 @@ class MessageHistory extends React.PureComponent {
             style={{clear:'both'}}
             >
               <Chip
-              style={{...styles.chip, ...{float: this.props.currentUserid === item.userid ? 'right': 'left'}}}
+              style={{...styles.chip, ...{float: this.props.currentUserid === item.userId ? 'right': 'left'}}}
               >
                 <Avatar src={item.avatar} />
                 { parser.toReact(item.content) }
@@ -177,7 +177,7 @@ class MessageHistory extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   messageHistory: state.messageHistory,
-  currentUserid: state.currentUser.userid,
+  currentUserid: state.currentUser.id,
   currentUser: state.currentUser,
 })
 

@@ -70,28 +70,28 @@ const ProfileStats = () => (
         <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
             <Tab
                 icon={<ChatPin />}
-                label={<Link to={`/profile/${fakeUserRecord.userid}/updates`} style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.id}/updates`} style={styles.linkStyle}>
                         <StatText title="Posts" value="45" />
                         </Link>
                 }
             />
             <Tab
                 icon={<PhotoPin />}
-                label={<Link to={`/profile/${fakeUserRecord.userid}/album`} style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.id}/album`} style={styles.linkStyle}>
                         <StatText title="Pics" value="234" />
                         </Link>
                 }
             />
             <Tab
                 icon={<ContactsPin />}
-                label={<Link to={`/profile/${fakeUserRecord.userid}/followers`} style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.id}/followers`} style={styles.linkStyle}>
                         <StatText title="Followers" value="99" />
                         </Link>
                 }
             />
             <Tab
                 icon={<LikesPin />}
-                label={<Link to={`/profile/${fakeUserRecord.userid}/likes`} style={styles.linkStyle}>
+                label={<Link to={`/profile/${fakeUserRecord.id}/likes`} style={styles.linkStyle}>
                         <StatText title="Likes" value="23" />
                         </Link>
                 }

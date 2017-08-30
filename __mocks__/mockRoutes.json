@@ -1,11 +1,15 @@
 {
-  "/api/*": "/$1",
-  "/:resource/:id/show": "/:resource/:id",
-  "/likes": "/streamitems?type_like=like",
-  "/messages": "/streamitems?type_like=message",
-  "/images": "/streamitems?type_like=image",
-  "/pictures": "/streamitems?type_like=image",
-  "/posts": "/streamitems?type_like=post",
-  "/videos": "/streamitems?type_like=video",
-  "/favorites": "/streamitems"
+  "/likes": "/streamitems?type_like=like&_expand=user",
+    "/likes/:id": "/streamitems/:id?type_like=like&_expand=user",
+  "/messages": "/streamitems?type_like=message&_expand=user",
+    "/messages/:id": "/streamitems/:id?type_like=message&_expand=user",
+  "/images": "/streamitems?type_like=image&_expand=user",
+    "/images/:id": "/streamitems/:id?type_like=image&_expand=user",
+  "/pictures": "/streamitems?type_like=image&_expand=user",
+    "/pictures/:id": "/streamitems/:id?type_like=image&_expand=user",
+  "/posts": "/streamitems?type_like=post&_expand=user",
+    "/posts/:id": "/streamitems/:id?type_like=post&_expand=user",
+  "/videos": "/streamitems?type_like=video&_expand=user",
+    "/videos/:id": "/streamitems/:id?type_like=video&_expand=user",
+  "/favorites": "/streamitems&_expand=user"
 }
