@@ -722,6 +722,50 @@
             ]
         }
     },
+    "chat": [
+        {
+            "type": "message",
+            "id": "cj6z3ua2s0000nldr6ebklayi",
+            "threadid": null,
+            "title": null,
+            "content": "Wassup, homies?",
+            "src": null,
+            "thumb": null,
+            "userid": 2,
+            "username": "Gonzales",
+            "avatar": "/img/avatar/face-13.jpg",
+            "approvals": 22,
+            "disapprovals": 1,
+            "likes": 8,
+            "dislikes": 1,
+            "replies": 0,
+            "tags": [],
+            "timestamp": 1501229377,
+            "lastEdit": 0,
+            "rating": null
+        },
+        {
+            "type": "message",
+            "id": "cj6z3uwv80000nzdrwtyxl06t",
+            "threadid": null,
+            "title": null,
+            "content": "Just chillin'",
+            "src": null,
+            "thumb": null,
+            "userid": 2,
+            "username": "Holmes",
+            "avatar": "/img/avatar/face-7.jpg",
+            "approvals": 1,
+            "disapprovals": 1,
+            "likes": 8,
+            "dislikes": 1,
+            "replies": 0,
+            "tags": [],
+            "timestamp": 1501229377,
+            "lastEdit": 0,
+            "rating": null
+        }
+    ],
     "reviewitem": {
         "type": "post",
         "id": "cj6z2nmd100008gdrwj7sd64j",

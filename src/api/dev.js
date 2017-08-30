@@ -1,43 +1,36 @@
 
-import {
-    fetchUnreadCountFromAPI,
-    fetchDataFromAPI,
-    fetchStreamItemsFromAPI,
-    sendDataToAPI,
-    markReadRequest,
-    remove,
-} from '../../__mocks__/mockServer'
+import * as jsonAPI from '../../__mocks__/mockJsonAPI'
 
-// -------------------------------------------------------------------------
-// DEV: ajax fetch data by key from the MockState + dispatch receive methods
-// -------------------------------------------------------------------------
+// -------------------------------------------------------------------
+// DEV: ajax fetch data from mock json API + dispatch receive methods
+// -------------------------------------------------------------------
 
 export const fetchCurrentUser = () =>
-    fetchDataFromAPI('currentUser')
+    jsonAPI.fetchFromAPI('currentUser')
         .then((response) => response)
 
 export const fetchUser = (userid) =>
-    fetchDataFromAPI('users', userid)
+    jsonAPI.fetchFromAPI('users', userid)
         .then((response) => response)
 
 export const fetchUsers = () =>
-    fetchDataFromAPI('users')
+    jsonAPI.fetchFromAPI('users')
         .then((response) => response)
 
 export const fetchFollowers = () =>
-    fetchDataFromAPI('followers')
+    jsonAPI.fetchFromAPI('followers')
         .then((response) => response)
 
 export const fetchReviewItem = () =>
-    fetchDataFromAPI('reviewitem')
+    jsonAPI.fetchFromAPI('reviewitem')
         .then((response) => response)
 
 export const fetchUnreadCount = () =>
-    fetchUnreadCountFromAPI()
+    jsonAPI.fetchUnreadCountFromAPI()
         .then((response) => response)
 
 export const fetchMessageHistory = (userid) =>
-    fetchDataFromAPI('messageHistory', userid)
+    jsonAPI.fetchDataFromAPI('messageHistory', userid)
         .then((response) => {
             if (response === undefined) {
                 // this is the first time the message history was accessed for this user
@@ -51,12 +44,12 @@ export const fetchMessageHistory = (userid) =>
         })
 
 export const fetchPosts = () =>
-    fetchStreamItemsFromAPI('post')
+    jsonAPI.fetchFromAPI('posts')
         .then((response) => response)
 
 export const fetchThreads = () =>
-    fetchStreamItemsFromAPI('post')
-        .then((response) => {
+    jsonAPI.fetchFromAPI('posts')
+        .then(response => {
             // TODO : only return the first post in a thread
             const ret = []
             const threadids = []
@@ -72,19 +65,19 @@ export const fetchThreads = () =>
         })
 
 export const fetchAlbum = (userid) =>
-    fetchStreamItemsFromAPI('image')
+    jsonAPI.fetchFromAPI('images')
         .then((response) => response)
 
 export const fetchAll = () =>
-    fetchStreamItemsFromAPI(null)
+    jsonAPI.fetchFromAPI('streamitems')
         .then((response) => response)
 
 export const fetchPictures = () =>
-    fetchStreamItemsFromAPI('image')
+    jsonAPI.fetchFromAPI('images')
         .then((response) => response)
 
 export const fetchPicture = (imageid) =>
-    fetchStreamItemsFromAPI('image')
+    jsonAPI.fetchStreamItemsFromAPI('image', imageid)
         .then((response) => response[0]) // mock: just take the first image from the stream items
 
 // alias
@@ -92,47 +85,47 @@ export const fetchImages = fetchPictures
 export const fetchImage  = fetchPicture
 
 export const fetchVideos = () =>
-    fetchStreamItemsFromAPI('video')
+    jsonAPI.fetchFromAPI('videos')
         .then((response) => response)
 
 export const fetchVideo = (videoid) =>
-    fetchDataFromAPI('video')
+    jsonAPI.fetchFromAPI('video')
         .then((response) => response)
 
 export const fetchNotifications = () =>
-    fetchStreamItemsFromAPI('message')
+    jsonAPI.fetchFromAPI('messages')
         .then((response) => response)
 
 export const fetchFavorites = () =>
-    fetchStreamItemsFromAPI(null)
+    jsonAPI.fetchFromAPI('favorites')
         .then((response) => response)
 
 export const fetchLikes = () =>
-    fetchStreamItemsFromAPI('like')
+    jsonAPI.fetchFromAPI('likes')
         .then((response) => response)
 
 export const fetchThread = (threadid) =>
-    fetchDataFromAPI('thread', threadid)
+    jsonAPI.fetchDataFromAPI('thread', threadid)
         .then((response) => response)
 
 
 export const sendChatMessage = (payload) =>
-    sendDataToAPI(payload)
+    jsonAPI.sendDataToAPI(payload)
         .then((response) => response)
 
 export const recordLike = (payload) =>
-    sendDataToAPI(payload)
+    jsonAPI.sendDataToAPI(payload)
         .then((response) => response)
 
 export const recordDislike = (payload) =>
-    sendDataToAPI(payload)
+    jsonAPI.sendDataToAPI(payload)
         .then((response) => response)
 
 
 // TODO
 export const markRead = (what, id) => {
     console.log('markRead', what, id)
-    return markReadRequest(what, id)
+    return jsonAPI.markReadRequest(what, id)
         .then((response) => response)
 }
 
@@ -162,21 +155,21 @@ export const fetchCities = () =>
 
 // TODO
 export const updateCountry = (country) =>
-    sendDataToAPI(country)
+    jsonAPI.sendDataToAPI(country)
         .then((response) => response)
 
 // TODO
 export const updateState = (state) =>
-    sendDataToAPI(state)
+    jsonAPI.sendDataToAPI(state)
         .then((response) => response)
 
 // TODO
 export const updateCity = (city) =>
-    sendDataToAPI(city)
+    jsonAPI.sendDataToAPI(city)
         .then((response) => response)
 
 // TODO
 export const removeField = () =>
-    remove('profileimg')
+    jsonAPI.remove('profileimg')
         .then((response) => response)
 

@@ -17,7 +17,6 @@ class ForumHome extends React.Component {
     // }
     render() {
         const { threads } = this.props
-        console.log('threads', threads)
         return (
             <div>
                 <h2>Forum</h2>

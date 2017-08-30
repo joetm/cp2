@@ -1,0 +1,11 @@
+{
+  "/api/*": "/$1",
+  "/:resource/:id/show": "/:resource/:id",
+  "/likes": "/streamitems?type_like=like",
+  "/messages": "/streamitems?type_like=message",
+  "/images": "/streamitems?type_like=image",
+  "/pictures": "/streamitems?type_like=image",
+  "/posts": "/streamitems?type_like=post",
+  "/videos": "/streamitems?type_like=video",
+  "/favorites": "/streamitems"
+}
