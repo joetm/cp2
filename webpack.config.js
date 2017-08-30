@@ -36,11 +36,21 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|vendor|venv|__tests__|BAK)/,
-        loader: 'babel-loader', //-loader (optional)
+        loader: 'babel-loader',
         query: {
           // cacheDirectory: true,
           presets: ['es2015', 'stage-0', 'react'],
-          plugins: ['transform-decorators-legacy', 'react-html-attrs', 'transform-class-properties'],
+          plugins: debug ? [
+            'transform-decorators-legacy',
+            'react-html-attrs',
+            'transform-class-properties'
+          ] : [
+            'transform-react-inline-elements', // prod only (optimization)
+            'transform-react-constant-elements', // prod only (optimization)
+            'transform-decorators-legacy',
+            'react-html-attrs',
+            'transform-class-properties'
+          ]
         }
       },
       // fonts and svg
@@ -140,8 +150,11 @@ module.exports = {
   // -----------
   [
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
     }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "js/vendor.js",
@@ -175,15 +188,28 @@ module.exports = {
     new CopyWebpackPlugin([
       {from: './src/docs', to: './docs'}
     ]),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-        mangle: false,
+        mangle: true,
+        minimize: true,
+        sourceMap: false,
+        output: {
+          comments: false
+        },
         compress: {
-            warnings: false
+          sequences: true,
+          dead_code: true,
+          conditionals: true,
+          booleans: true,
+          unused: true,
+          if_return: true,
+          join_vars: true,
+          drop_console: true,
+          warnings: false
         }
     }),
+    new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
-        title: "CP v2",
+        title: "SocNet v2",
         filename: 'index.html',
         template: '!!handlebars-loader!src/index.hbs',
         minify: {
