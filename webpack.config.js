@@ -207,7 +207,6 @@ module.exports = {
           warnings: false
         }
     }),
-    new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
         title: "SocNet v2",
         filename: 'index.html',
