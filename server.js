@@ -6,12 +6,64 @@ const logger = require('morgan')
 const path = require('path')
 // const crypto = require('crypto')
 const bodyParser = require('body-parser')
+const akismet = require('akismet').client({
+    blog: process.env.AKISMET_SITE,
+    apiKey: process.env.AKISMET_KEY
+})
 
 
 const app = express()
 
 app.use(express.static('./dist/'))
 
+
+/*********************************/
+/*           AKISMET             */
+/*********************************/
+
+app.post('/akismet/check', (req, res) => {
+
+    akismet.verifyKey(function(err, verified) {
+        if (verified) {
+            console.log('Akismet API key successfully verified.');
+
+            const info = {
+                user_ip: req.body.IP,
+                user_agent: req.body.useragent,
+                // referrer: req.body.referrer,
+                // permalink: req.body.url,
+                comment_type: req.body.comment_type,
+                comment_author: req.body.username,
+                comment_author_email: req.body.email,
+                comment_content: req.body.content,
+                blog_lang: 'en'
+            }
+
+            akismet.checkSpam(info, function(err, spam) {
+                if (spam) {
+                    console.log('Spam caught.');
+                    // akismet.submitSpam(info, function(err) {
+                    //     console.log('Spam reported to Akismet.');
+                    // });
+                    res.sendStatus(403);
+                } else {
+                    console.log('Not spam');
+                    res.sendStatus(200);
+                }
+            });
+
+        } else {
+            console.log('Unable to verify Akismet API key');
+            res.sendStatus(200);
+        }
+    });
+
+})
+
+
+/*********************************/
+/*             AUTH              */
+/*********************************/
 
 // TODO
 app.post('/auth/getToken/', (req, res) => {
