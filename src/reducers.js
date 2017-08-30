@@ -37,10 +37,23 @@ import jwtDecode from 'jwt-decode'
  * chatReducer
  * @returns chatState
  **/
-export function chatReducer(chatState = initialState.messageHistory, action) {
+export function chatReducer(chatState = initialState.chat, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_CHAT_MSG:
+            return [ ...chatState ].push(action.payload)
+        default:
+            return chatState
+    }
+}
+
+/**
+ * messageHistoryReducer
+ * @returns msgHistState
+ **/
+export function messageHistoryReducer(msgHistState = initialState.messageHistory, action) {
     switch (action.type) {
         case ACTIONS.SEND_MESSAGE:
-            const messageHistoryState = { ...chatState }
+            const messageHistoryState = { ...msgHistState }
             messageHistoryState.messages.push({
                 type: "message",
                 id: cuid(),
@@ -58,7 +71,7 @@ export function chatReducer(chatState = initialState.messageHistory, action) {
         case ACTIONS.RECEIVE_MESSAGEHISTORY:
             return { ...action.response }
         default:
-            return chatState
+            return msgHistState
     }
 }
 

@@ -21,6 +21,17 @@ const boxStyle = {
 }
 
 
+// const gridWrapper = (props) => (
+//     <div className="mdc-layout-grid__cell
+//                     mdc-layout-grid__cell--span-{props.full}
+//                     mdc-layout-grid__cell--span-{props.tablet}-tablet
+//                     mdc-layout-grid__cell--span-{props.phone}-phone
+//                     mdc-layout-grid__cell--order-{props.order}">
+//         {props.children}
+//     </div>
+// )
+
+
 const Home = () => (
   <div>
     <div className="mdc-layout-grid">
@@ -153,9 +164,15 @@ const Home = () => (
                         mdc-layout-grid__cell--span-8-tablet
                         mdc-layout-grid__cell--span-4-phone
                         mdc-layout-grid__cell--order-1">
+        {/*
+        <gridWrapper full="6" tablet="8" phone="4" order="1">
+        */}
             <Paper style={boxStyle} zDepth={1}>
                 <Chat />
             </Paper>
+        {/*
+        </gridWrapper>
+        */}
         </div>
       </div>
     </div>

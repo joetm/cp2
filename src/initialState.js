@@ -34,6 +34,7 @@ const initialState = {
     // --
     followers: [],
     users: {},
+    chat: [],
     // -- single item caching --
     thread: {},
     post: {},

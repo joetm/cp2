@@ -44,13 +44,14 @@ const store = createStore(
         // single items
         reviewitem: Reducers.reviewReducer,
         user: Reducers.userReducer,
-        currentUser: Reducers.currentUserReducer,
-        messageHistory: Reducers.chatReducer,
         thread: Reducers.threadReducer,
         post: Reducers.postReducer,
         video: Reducers.videoReducer,
         image: Reducers.imageReducer,
         // --
+        currentUser: Reducers.currentUserReducer,
+        messageHistory: Reducers.messageHistoryReducer,
+        chat: Reducers.chatReducer,
         // auth: Reducers.authReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),

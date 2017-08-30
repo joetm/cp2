@@ -1,11 +1,14 @@
  /**  @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Divider from 'material-ui/Divider'
 import { List, ListItem } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar';
-import { withRouter } from 'react-router-dom'
+import Avatar from 'material-ui/Avatar'
+import TextField from 'material-ui/TextField'
 
+import { sendChatMessage } from '../../actions'
 import colors from '../../common/theme'
 
 
@@ -31,9 +34,34 @@ const styles = {
 
 
 class Chat extends React.Component {
-  state = {}
+  constructor(props) {
+    super(props)
+    this.state = {}
+    // bindings
+    this.handleChangeChatMsg = this.handleChangeChatMsg.bind(this)
+    this.submitMsg = this.submitMsg.bind(this)
+  }
   navigateToUser = (e) => {
     this.props.history.push(`/profile/${e.target.id}`)
+  }
+  handleChangeChatMsg(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      this.submitMsg()
+    }
+  }
+  submitMsg() {
+    let msg = this.refs.chatinput.getValue().trim()
+    if (msg) {
+      const payload = {
+        msg,
+        userid: this.props.currentUserid,
+        username: this.props.currentUsername,
+      }
+      console.log(`send: ${msg}`)
+      this.props.sendChatMessage(payload)
+      // clear the input field
+      this.refs.chatinput.getInputNode().value = ''
+    }
   }
   render() {
     return (
@@ -64,9 +92,29 @@ class Chat extends React.Component {
                 disabled={true}
               />
         </List>
+        <Divider />
+
+        <TextField
+            hintText="What's on your mind?"
+            floatingLabelText="Your Message"
+            fullWidth={true}
+            ref="chatinput"
+            onKeyPress={this.handleChangeChatMsg}
+        />
+
       </div>
     )
   }
 }
 
-export default withRouter(Chat)
+const mapStateToProps = (state) => ({
+  // TODO -> use deepstream
+  // chat: state.chat,
+  currentUserid: state.currentUser.userid,
+  currentUsername: state.currentUser.username,
+})
+
+export default withRouter(connect(
+  mapStateToProps,
+  { sendChatMessage }
+)(Chat))

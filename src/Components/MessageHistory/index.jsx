@@ -64,7 +64,7 @@ class MessageHistory extends React.PureComponent {
    * Handle key press event on message field.
    * @param e - Event
    */
-   _handleKeyPress(e) {
+  _handleKeyPress(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
       this.submitMsg()
     }

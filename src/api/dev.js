@@ -116,6 +116,9 @@ export const fetchThread = (threadid) =>
         .then((response) => response)
 
 
+export const sendChatMessage = (payload) =>
+    sendDataToAPI(payload)
+        .then((response) => response)
 
 export const recordLike = (payload) =>
     sendDataToAPI(payload)
