@@ -13,12 +13,12 @@ export const fetchUser = (userid) =>
     jsonAPI.fetchFromAPI('users', userid)
         .then(response => response)
 
-export const fetchUsers = () =>
-    jsonAPI.fetchFromAPI('users')
+export const fetchUsers = (limit) =>
+    jsonAPI.fetchFromAPI('users', null, limit)
         .then(response => response)
 
-export const fetchFollowers = () =>
-    jsonAPI.fetchFromAPI('followers')
+export const fetchFollowers = (limit) =>
+    jsonAPI.fetchFromAPI('followers', null, limit)
         .then(response => response)
 
 export const fetchReviewItem = () =>
@@ -43,12 +43,12 @@ export const fetchMessageHistory = (userid) =>
             return response
         })
 
-export const fetchPosts = () =>
-    jsonAPI.fetchFromAPI('posts')
+export const fetchPosts = (limit) =>
+    jsonAPI.fetchFromAPI('posts', null, limit)
         .then(response => response)
 
-export const fetchThreads = () =>
-    jsonAPI.fetchFromAPI('posts')
+export const fetchThreads = (limit) =>
+    jsonAPI.fetchFromAPI('posts', null, limit)
         .then(response => {
             // TODO : only return the first post in a thread
             const ret = []
@@ -68,12 +68,12 @@ export const fetchAlbum = (userid) =>
     jsonAPI.fetchFromAPI('images')
         .then(response => response)
 
-export const fetchAll = () =>
-    jsonAPI.fetchFromAPI('streamitems')
+export const fetchAll = (limit) =>
+    jsonAPI.fetchFromAPI('streamitems', null, limit)
         .then(response => response)
 
-export const fetchPictures = () =>
-    jsonAPI.fetchFromAPI('images')
+export const fetchPictures = (limit) =>
+    jsonAPI.fetchFromAPI('images', null, limit)
         .then(response => response)
 
 export const fetchPicture = (imageid) =>
@@ -84,24 +84,24 @@ export const fetchPicture = (imageid) =>
 export const fetchImages = fetchPictures
 export const fetchImage  = fetchPicture
 
-export const fetchVideos = () =>
-    jsonAPI.fetchFromAPI('videos')
+export const fetchVideos = (limit) =>
+    jsonAPI.fetchFromAPI('videos', null, limit)
         .then(response => response)
 
 export const fetchVideo = (videoid) =>
     jsonAPI.fetchFromAPI('video')
         .then(response => response)
 
-export const fetchNotifications = () =>
-    jsonAPI.fetchFromAPI('messages')
+export const fetchNotifications = (limit) =>
+    jsonAPI.fetchFromAPI('messages', null, limit)
         .then(response => response)
 
-export const fetchFavorites = () =>
-    jsonAPI.fetchFromAPI('favorites')
+export const fetchFavorites = (limit) =>
+    jsonAPI.fetchFromAPI('favorites', null, limit)
         .then(response => response)
 
-export const fetchLikes = () =>
-    jsonAPI.fetchFromAPI('likes')
+export const fetchLikes = (limit) =>
+    jsonAPI.fetchFromAPI('likes', null, limit)
         .then(response => response)
 
 export const fetchThread = (threadid) =>

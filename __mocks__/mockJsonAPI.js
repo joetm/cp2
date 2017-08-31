@@ -17,13 +17,17 @@ const delay = (ms) => {
 }
 
 
-export const fetchFromAPI = (key, selection) => {
-    const url = selection !== undefined ? `${API}/${key}/${selection}` : `${API}/${key}`
+export const fetchFromAPI = (key, selection = null, limit = null) => {
+    let url = selection ? `${API}/${key}/${selection}` : `${API}/${key}`
+    if (!!limit) {
+        url = `${url}?_limit=${limit}`
+    }
     return fetch(url)
         .then(r => r.json())
         .then(data => data)
         // .catch(error => throw new Error(error))
 }
+
 
 export const fetchUnreadCountFromAPI = () => {
     return delay(500)

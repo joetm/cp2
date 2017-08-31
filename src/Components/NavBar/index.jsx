@@ -128,7 +128,7 @@ class NavBar extends React.Component {
      * Render the component.
      */
     render() {
-        const { unread, dispatch, isAuthenticated, errorMessage }= this.props
+        const { unread, dispatch, isAuthenticated, errorMessage } = this.props
         // TODO
         // const navbarIsAffixed = this.props.scrollPosition > 250
         //

@@ -316,15 +316,15 @@ export const fetchUser = (userid) =>
  * fetchUsers Asynchronous Action Creator
  * @returns receiveUsers() - Action
  */
-export const fetchUsers = () =>
-    api.fetchUsers().then(receiveUsers)
+export const fetchUsers = (limit) =>
+    api.fetchUsers(limit).then(receiveUsers)
 
 /**
  * fetchFollowers Asynchronous Action Creator
  * @returns receiveFollowers() - Action
  */
-export const fetchFollowers = () =>
-    api.fetchFollowers().then(receiveFollowers)
+export const fetchFollowers = (limit) =>
+    api.fetchFollowers(limit).then(receiveFollowers)
 
 /**
  * fetchReviewItem Asynchronous Action Creator
@@ -344,15 +344,15 @@ export const fetchUnreadCount = () =>
  * fetchPosts Asynchronous Action Creator
  * @returns receivePosts() - Action
  */
-export const fetchPosts = () =>
-    api.fetchPosts().then(receivePosts)
+export const fetchPosts = (limit) =>
+    api.fetchPosts(limit).then(receivePosts)
 
 /**
  * fetchThreads Asynchronous Action Creator
  * @returns receiveThreads() - Action
  */
-export const fetchThreads = () =>
-    api.fetchThreads().then(receiveThreads)
+export const fetchThreads = (limit) =>
+    api.fetchThreads(limit).then(receiveThreads)
 
 /**
  * fetchPosts Asynchronous Action Creator
@@ -365,15 +365,15 @@ export const fetchMessageHistory = (userid) =>
  * fetchAll Asynchronous Action Creator
  * @returns fetchAll() - Action
  */
-export const fetchAll = () =>
-    api.fetchAll().then(receiveUpdates)
+export const fetchAll = (limit) =>
+    api.fetchAll(limit).then(receiveUpdates)
 
 /**
  * fetchPictures Asynchronous Action Creator
  * @returns fetchPictures() - Action
  */
-export const fetchPictures = () =>
-    api.fetchPictures().then(receiveImages)
+export const fetchPictures = (limit) =>
+    api.fetchPictures(limit).then(receiveImages)
 
 /**
  * fetchVideo Asynchronous Action Creator
@@ -394,8 +394,8 @@ export const fetchPicture = (imageid) => (dispatch) => {
  * fetchVideos Asynchronous Action Creator
  * @returns fetchVideos() - Action
  */
-export const fetchVideos = () =>
-    api.fetchVideos().then(receiveVideos)
+export const fetchVideos = (limit) =>
+    api.fetchVideos(limit).then(receiveVideos)
 
 /**
  * fetchVideo Asynchronous Action Creator
@@ -416,22 +416,22 @@ export const fetchVideo = (videoid) => (dispatch) => {
  * fetchNotifications Asynchronous Action Creator
  * @returns fetchNotifications() - Action
  */
-export const fetchNotifications = () =>
-    api.fetchNotifications().then(receiveNotifications)
+export const fetchNotifications = (limit) =>
+    api.fetchNotifications(limit).then(receiveNotifications)
 
 /**
  * fetchFavorites Asynchronous Action Creator
  * @returns fetchFavorites() - Action
  */
-export const fetchFavorites = () =>
-    api.fetchFavorites().then(receiveFavorites)
+export const fetchFavorites = (limit) =>
+    api.fetchFavorites(limit).then(receiveFavorites)
 
 /**
  * fetchLikes Asynchronous Action Creator
  * @returns fetchLikes() - Action
  */
-export const fetchLikes = () =>
-    api.fetchLikes().then(receiveLikes)
+export const fetchLikes = (limit) =>
+    api.fetchLikes(limit).then(receiveLikes)
 
 /**
  * fetchAlbum Asynchronous Action Creator

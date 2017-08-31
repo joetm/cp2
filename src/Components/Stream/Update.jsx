@@ -40,7 +40,7 @@ class AtomicImage extends React.PureComponent {
 //        }
         return (
             <img
-              style={ dynamicStyle }
+              style={dynamicStyle}
               onLoad={this.onImgLoad}
               alt=""
               src={src}
@@ -62,6 +62,8 @@ const Update = (props) => {
     history
   } = props
 
+  console.log('user', user)
+
   const showTitle = props.showTitle === false ? false : true
 
   let url = '/'
@@ -74,8 +76,6 @@ const Update = (props) => {
       url = `/videos/${id}`
       imgSrc = thumb
   }
-
-  console.log('user', user)
 
   return (
     <div
