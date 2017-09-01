@@ -7,19 +7,19 @@ import { withRouter } from 'react-router-dom'
 
 
 const Post = props => {
-  const { post, history } = props
+  const { post, history, match } = props
   /**
    * Render the component.
    */
   return (
       <ListItem
         key={`upd_${post.id}`}
-        leftAvatar={<Avatar src="/img/avatar/face.jpg" />}
+        leftAvatar={<Avatar src={post.user.avatar} />}
         primaryText={post.title}
-        secondaryText={post.username}
+        secondaryText={post.user.username}
         secondaryTextLines={2}
         autoGenerateNestedIndicator={true}
-        onTouchTap={() => history.push(`${props.match.url}/thread/${post.id}`)}
+        onTouchTap={() => history.push(`${match.url}/thread/${post.id}`)}
       />
   )
 }

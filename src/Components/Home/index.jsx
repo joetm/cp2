@@ -10,7 +10,7 @@ import { darkBlack } from 'material-ui/styles/colors'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { fetchAll, fetchRecentPosts, fetchRecentLikes } from '../../actions'
+import { fetchAll, fetchPosts, fetchLikes } from '../../actions'
 import Footer from '../Footer'
 import Notification from '../Stream/Notification'
 import Update from '../Stream/Update'
@@ -43,6 +43,7 @@ class Home extends React.Component {
                         {
                           this.props.all.map((item) => (
                             <Update
+                                key={item.id}
                                 { ...item }
                                 content={
                                   <p>
@@ -64,6 +65,7 @@ class Home extends React.Component {
                         {
                           this.props.posts.map((item) => (
                             <Update
+                                key={item.id}
                                 { ...item }
                                 content={
                                   <p>
@@ -85,6 +87,7 @@ class Home extends React.Component {
                         {
                           this.props.likes.map((item) => (
                             <Notification
+                                key={item.id}
                                 { ...item }
                                 content={
                                   <p>
@@ -135,5 +138,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchAll, fetchRecentLikes, fetchRecentPosts }
+    { fetchAll, fetchLikes, fetchPosts }
 )(Home)

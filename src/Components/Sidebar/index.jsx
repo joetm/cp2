@@ -15,6 +15,7 @@ import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
+import WatchLaterIcon from 'material-ui/svg-icons/action/alarm'
 // import ProfileIcon from 'material-ui/svg-icons/action/account-circle'
 import ProfileIcon from 'material-ui/svg-icons/social/person-outline'
 import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
@@ -23,6 +24,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
 import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../actions'
 import routes from '../../routes'
+import MenuEntry from './MenuEntry'
 
 
 const styles = {
@@ -49,16 +51,6 @@ const tabindexCounter = () => {
     tabindex = tabindex + 1
     return tabindex
 }
-
-const MenuEntry = (props) => (
-    <NavLink to={props.route} tabIndex={tabindexCounter}>
-        <MenuItem
-            onTouchTap={props.onTouchTap}
-            primaryText={props.text}
-            leftIcon={props.icon}
-        />
-    </NavLink>
-)
 
 
 class Sidebar extends React.Component {
@@ -88,6 +80,7 @@ class Sidebar extends React.Component {
                 icon={<UpdatesIcon />}
                 text="New Updates"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -95,6 +88,7 @@ class Sidebar extends React.Component {
                 icon={<ForumIcon />}
                 text="Forum"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -102,6 +96,7 @@ class Sidebar extends React.Component {
                 icon={<EmailIcon />}
                 text="Messages"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -109,6 +104,15 @@ class Sidebar extends React.Component {
                 icon={<UsersIcon />}
                 text="Users"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
+            />
+
+            <MenuEntry
+                route={routes.PLAYLIST}
+                icon={<WatchLaterIcon />}
+                text="Watch Later"
+                onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -116,6 +120,7 @@ class Sidebar extends React.Component {
                 icon={<HeartIcon />}
                 text="Favorites"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -123,6 +128,7 @@ class Sidebar extends React.Component {
                 icon={<LikeIcon />}
                 text="Likes"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <Divider />
@@ -132,6 +138,7 @@ class Sidebar extends React.Component {
                 icon={<ReviewIcon />}
                 text="Review"
                 onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <Divider />
@@ -141,6 +148,7 @@ class Sidebar extends React.Component {
                 icon={<ProfileIcon />}
                 text="Your Profile"
                 onTouchTap={this.props.closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -148,6 +156,7 @@ class Sidebar extends React.Component {
                 icon={<SettingsIcon />}
                 text="Settings"
                 onTouchTap={this.props.closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
             <MenuEntry
@@ -155,6 +164,7 @@ class Sidebar extends React.Component {
                 icon={<LogoutIcon />}
                 text="Log Out"
                 onTouchTap={this.props.closeSidebar}
+                tabindexCounter={tabindexCounter}
             />
 
           </Drawer>

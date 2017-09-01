@@ -53,6 +53,7 @@ import DMCA from './Legal/DMCA'
 import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
+import Playlist from './Playlist'
 
 // <ConnectedRouter history={browserHistory}>
 // </ConnectedRouter>
@@ -123,6 +124,8 @@ class App extends React.Component {
                     render={() => (
                         <Profile isScrolled={this.state.isScrolled} />
                     )} />
+
+                <Route path={routes.PLAYLIST} component={Playlist} />
 
                 <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
                 <Route path={routes.MEMBERS} component={Users} />

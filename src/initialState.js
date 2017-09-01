@@ -31,6 +31,7 @@ const initialState = {
     posts: [],
     threads: [],
     album: [],
+    playlist: [],
     // --
     followers: [],
     users: {},

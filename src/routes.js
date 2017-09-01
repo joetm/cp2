@@ -7,6 +7,7 @@ const routes = {
     NOTIFICATIONS: "/notifications",
     LIKES: "/likes",
     FAVORITES: "/favorites",
+    PLAYLIST: "/playlist",
     PROFILE: "/profile",
     FOLLOWERS: "/followers",
     USERS: "/members",

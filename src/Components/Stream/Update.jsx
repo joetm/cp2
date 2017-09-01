@@ -62,8 +62,6 @@ const Update = (props) => {
     history
   } = props
 
-  console.log('user', user)
-
   const showTitle = props.showTitle === false ? false : true
 
   let url = '/'
