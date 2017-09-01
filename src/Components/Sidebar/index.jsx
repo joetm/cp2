@@ -91,18 +91,20 @@ class Sidebar extends React.Component {
                 tabindexCounter={tabindexCounter}
             />
 
-            <MenuEntry
-                route={routes.NOTIFICATIONS}
-                icon={<EmailIcon />}
-                text="Messages"
-                onTouchTap={closeSidebar}
-                tabindexCounter={tabindexCounter}
-            />
-
+            {/*
             <MenuEntry
                 route={routes.USERS}
                 icon={<UsersIcon />}
                 text="Users"
+                onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
+            />
+            */}
+
+            <MenuEntry
+                route={routes.NOTIFICATIONS}
+                icon={<EmailIcon />}
+                text="Messages"
                 onTouchTap={closeSidebar}
                 tabindexCounter={tabindexCounter}
             />

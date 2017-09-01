@@ -28,5 +28,6 @@
     "/favorites/?*": "/streamitems?_expand=user&$1",
   "/playlist": "/streamitems?_expand=user",
     "/playlist?*": "/streamitems?_expand=user&$1",
-    "/playlist/?*": "/streamitems?_expand=user&$1"
+    "/playlist/?*": "/streamitems?_expand=user&$1",
+  "/streamitems": "/streamitems?_expand=user"
 }

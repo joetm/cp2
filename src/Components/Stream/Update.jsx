@@ -77,6 +77,8 @@ const Update = (props) => {
       imgSrc = thumb
   }
 
+  console.log('user', user)
+
   return (
     <div
       className={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
@@ -98,8 +100,8 @@ const Update = (props) => {
           }
         </CardMedia>
         <CardHeader
-          title={user.username}
-          avatar={<Avatar src={user.avatar} />}
+          title={user ? user.username : null}
+          avatar={<Avatar src={user ? user.avatar : null} />}
         />
         {/* subtitle={usertitle} */}
         {
