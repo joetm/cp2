@@ -92,10 +92,10 @@ class Profile extends React.PureComponent {
                 <Spacer />
 
                 <Switch>
-                    <Route path={`${this.props.url}${routes.UPDATES}`} component={Stream}/>
-                    <Route path={`${this.props.url}${routes.ALBUM}`} component={Album}/>
-                    <Route path={`${this.props.url}${routes.FOLLOWERS}`} component={Followers}/>
-                    <Route path={`${this.props.url}${routes.LIKES}`} component={Likes}/>
+                    <Route path={`${this.props.url}${routes.UPDATES}`} component={Stream} />
+                    <Route path={`${this.props.url}${routes.ALBUM}`} component={Album} />
+                    <Route path={`${this.props.url}${routes.FOLLOWERS}`} component={Followers} />
+                    <Route path={`${this.props.url}${routes.LIKES}`} component={Likes} />
                     <Route component={Album} />
                 </Switch>
 

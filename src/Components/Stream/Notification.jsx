@@ -46,47 +46,51 @@ class Notification extends React.PureComponent {
      */
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
-        const { id, username, avatar, title, content, userid, type } = this.props
+
+        const { id, user, userid, type, title, content } = this.props
+        const { username, avatar } = user
 
         let text
         let rightIconMenu
 
         switch (type) {
+
           case 'like':
-            text = <p>
-                  {username} liked your TODO
-                </p>
+
+            text = <p>{username} liked your TODO</p>
+
             rightIconMenu = <IconMenu iconButtonElement={(
-                <IconButton
-                  tooltip="more"
-                  tooltipPosition="bottom-left"
-                  onTouchTap={(e) => { e.stopPropagation() }}
-                >
-                  <MoreVertIcon color={colors.grey} />
-                </IconButton>
-            )}>
-                <MenuItem onTouchTap={this.deleteLike}>Undo</MenuItem>
-            </IconMenu>
+                  <IconButton
+                    tooltip="more"
+                    tooltipPosition="bottom-left"
+                    onTouchTap={(e) => { e.stopPropagation() }}
+                  >
+                    <MoreVertIcon color={colors.grey} />
+                  </IconButton>
+              )}>
+                  <MenuItem onTouchTap={this.deleteLike}>Undo</MenuItem>
+              </IconMenu>
+
             break
+
           default:
-            text = <p>
-                    {username}
-                    {' '}-{' '}
-                    {content}
-                  </p>
+
+            text = <p>{username}{' '}-{' '}{content}</p>
+
             rightIconMenu = <IconMenu iconButtonElement={(
-                <IconButton
-                  tooltip="more"
-                  tooltipPosition="bottom-left"
-                  onTouchTap={(e) => { e.stopPropagation() }}
-                >
-                  <MoreVertIcon color={colors.grey} />
-                </IconButton>
-            )}>
-                <MenuItem onTouchTap={this.replyNotification}>Reply</MenuItem>
-                <MenuItem onTouchTap={this.forwardNotification}>Forward</MenuItem>
-                <MenuItem onTouchTap={this.deleteNotification}>Delete</MenuItem>
-            </IconMenu>
+                  <IconButton
+                    tooltip="more"
+                    tooltipPosition="bottom-left"
+                    onTouchTap={(e) => { e.stopPropagation() }}
+                  >
+                    <MoreVertIcon color={colors.grey} />
+                  </IconButton>
+              )}>
+                  <MenuItem onTouchTap={this.replyNotification}>Reply</MenuItem>
+                  <MenuItem onTouchTap={this.forwardNotification}>Forward</MenuItem>
+                  <MenuItem onTouchTap={this.deleteNotification}>Delete</MenuItem>
+              </IconMenu>
+
         }
 
         return (

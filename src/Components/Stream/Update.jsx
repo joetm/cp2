@@ -13,7 +13,9 @@ import { navigateTo } from '../../common/helpers'
 class AtomicImage extends React.PureComponent {
    constructor(props) {
         super(props)
-        this.state = {dimensions: {}}
+        this.state = {
+          dimensions: {},
+        }
     }
     onImgLoad = ({target: img}) => {
         this.setState({
@@ -87,10 +89,13 @@ const Update = (props) => {
           {/*
           <AtomicImage src={imgSrc} />
           */}
-          <img
-            src={imgSrc}
-            alt=""
-          />
+          {
+            imgSrc &&
+              <img
+                src={imgSrc}
+                alt=""
+              />
+          }
         </CardMedia>
         <CardHeader
           title={user.username}

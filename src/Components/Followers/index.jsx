@@ -8,10 +8,10 @@ import Divider from 'material-ui/Divider'
 // import Subheader from 'material-ui/Subheader'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
-import { fetchFollowers, fetchUser } from '../../actions'
+import { fetchFollowers } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import Loader from '../Shared/Loader'
-import User from './User'
+import Follower from './Follower'
 
 
 /**
@@ -22,31 +22,33 @@ class Followers extends React.PureComponent {
     componentDidMount() {
       const { userid } = this.props
       this.props.fetchFollowers()
-      this.props.fetchUser(userid)
     }
     /**
      * Render the component.
      */
     render () {
-          const { followers, user } = this.props
-          return (
-            <div>
-              <h2>Users following {user !== undefined ? user.username : null}</h2>
+        const { followers, user } = this.props
+        return (
+          <div>
+
+              <h2>Followers</h2>
+
               <Divider />
+
               <List>
                 {
-                  followers.map((follower) => (
-                    <User
-                      username={follower.username}
-                      userid={follower.userid}
-                      avatar={follower.avatar}
-                    />
-                  ))
+                    followers.map(follower => (
+                        <Follower
+                            { ...follower.user }
+                        />
+                    ))
                 }
               </List>
+
               <Spacer />
-            </div>
-          )
+
+          </div>
+        )
     }
 }
 
@@ -58,5 +60,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { fetchFollowers, fetchUser }
+    { fetchFollowers }
 )(Followers))

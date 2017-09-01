@@ -26,26 +26,26 @@ class Likes extends React.PureComponent {
         return (
           <div>
             <h2>Likes</h2>
-                {
-                    categorizedLikes.map((group, daysAgo) => {
-                        return (
-                            <div key={`grp_${daysAgo}`}>
-                                <Subheader>{translateDayOffset(daysAgo)}</Subheader>
-                                <Divider />
-                                    <List>
-                                    {
-                                        group.map((item, i) => (
-                                            <Notification
-                                              key={item.id}
-                                              {...item}
-                                            />
-                                        ))
-                                    }
-                                    </List>
-                            </div>
-                        )
-                    })
-                }
+            {
+                categorizedLikes.map((group, daysAgo) => {
+                    return (
+                        <div key={`grp_${daysAgo}`}>
+                            <Subheader>{translateDayOffset(daysAgo)}</Subheader>
+                            <Divider />
+                                <List>
+                                {
+                                    group.map((item, i) => (
+                                        <Notification
+                                          key={item.id}
+                                          {...item}
+                                        />
+                                    ))
+                                }
+                                </List>
+                        </div>
+                    )
+                })
+            }
           </div>
         )
     }

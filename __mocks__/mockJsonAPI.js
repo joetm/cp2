@@ -19,10 +19,7 @@ const delay = (ms) => {
 
 export const fetchFromAPI = (key, selection = null, limit = null) => {
     let url = selection ? `${API}/${key}/${selection}` : `${API}/${key}`
-    // defaults
-    if (key !== 'users') {
-        url = `${url}?_expand=user`
-    }
+    url = `${url}`
     if (limit) {
         url = `${url}&_start=1&_limit=${limit}`
     }
