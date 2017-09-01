@@ -82,6 +82,7 @@ class Users extends React.PureComponent {
               }
 
               <Divider />
+
               <List>
                 {
                   usersList.map((user) => (
@@ -92,15 +93,19 @@ class Users extends React.PureComponent {
                   ))
                 }
               </List>
+
               {
                 !usersList.length &&
                 <Loader />
               }
+
               {
                 usersList.length > 0 &&
                 <Pagination />
               }
+
               <Spacer />
+
             </div>
           )
     }

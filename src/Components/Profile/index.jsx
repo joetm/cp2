@@ -13,7 +13,7 @@ import Followers from '../Followers'
 import Stream from '../Stream/Stream'
 import Likes from '../Stream/Likes'
 import Spacer from '../Shared/Spacer'
-// import ProfileStats from './ProfileStats'
+import ProfileStats from './ProfileStats'
 import ProfileDivider from './ProfileDivider'
 import ProfileUsername from './ProfileUsername'
 
@@ -74,6 +74,8 @@ class Profile extends React.PureComponent {
                 />
 
                 <ProfileDivider />
+
+                <ProfileStats />
 
                 <div style={styles.avatarBox}>
                     <Avatar

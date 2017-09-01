@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import Avatar from 'material-ui/Avatar'
 import { ListItem } from 'material-ui/List'
+import Avatar from 'material-ui/Avatar'
 
 import routes from '../../routes'
 import OnlineIcon from '../Shared/Icons/OnlineStatus/OnlineIcon'
@@ -39,11 +39,11 @@ const SubText = (props) => {
       break
   }
   return (
-    <span style={ styles.subText }>
+    <span style={styles.subText}>
       <Icon />
-      { props.usertitle }
-      { props.verified ? <VerifiedIcon /> : null }
-      { props.location }
+      {props.usertitle}
+      {props.verified ? <VerifiedIcon /> : null}
+      {props.location}
     </span>
   )
 }
@@ -54,7 +54,7 @@ const SubText = (props) => {
  */
 class User extends React.PureComponent {
     handleClick = () => {
-        this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)
+        this.props.history.push(`${routes.PROFILE}/${this.props.id}`)
     }
     /**
      * Render the component.

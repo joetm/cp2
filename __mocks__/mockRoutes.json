@@ -12,6 +12,7 @@
   "/videos": "/streamitems?type_like=video&_expand=user",
     "/videos/:id": "/streamitems/:id?type_like=video&_expand=user",
   "/favorites": "/streamitems&_expand=user",
+  "/followers": "/followers?_expand=user",
   "/playlist": "/streamitems&_expand=user",
   "/streamitems": "/streamitems?_expand=user"
 }

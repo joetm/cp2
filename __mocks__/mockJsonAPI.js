@@ -22,6 +22,8 @@ export const fetchFromAPI = (key, selection = null, limit = null) => {
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
+    // defaults
+    // url = `${url}&_expand=user`
     return fetch(url)
         .then(r => r.json())
         .then(data => data)

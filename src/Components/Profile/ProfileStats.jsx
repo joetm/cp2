@@ -1,16 +1,13 @@
 /** @flow */
 
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { pinkA200 } from 'material-ui/styles/colors'
 import PhotoPin from 'material-ui/svg-icons/image/photo'
 import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsPin from 'material-ui/svg-icons/communication/contacts'
 import LikesPin from 'material-ui/svg-icons/action/thumb-up'
-import { Link } from 'react-router-dom'
-
-import fakeUserRecord from './userRecord'
 
 
 const styles = {
