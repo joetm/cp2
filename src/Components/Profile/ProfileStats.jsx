@@ -10,6 +10,8 @@ import ContactsPin from 'material-ui/svg-icons/communication/contacts'
 import LikesPin from 'material-ui/svg-icons/action/thumb-up'
 import RaisedButton from 'material-ui/RaisedButton'
 
+import routes from '../../routes'
+
 
 const styles = {
     statBarStyle: {
@@ -82,7 +84,7 @@ class ProfileStats extends React.Component {
                     <Tab
                         icon={<ChatPin />}
                         label={<Link
-                                    to={`/profile/${user.id}/updates`}
+                                    to={`${routes.PROFILE}/${user.id}${routes.UPDATES}`}
                                     style={styles.linkStyle}
                                 >
                                     <StatText title="Posts" value={user.numPosts} />
@@ -92,7 +94,7 @@ class ProfileStats extends React.Component {
                     <Tab
                         icon={<PhotoPin />}
                         label={<Link
-                                    to={`/profile/${user.id}/album`}
+                                    to={`${routes.PROFILE}/${user.id}${routes.ALBUM}`}
                                     style={styles.linkStyle}
                                 >
                                     <StatText title="Pics" value={user.numImages} />
@@ -102,7 +104,7 @@ class ProfileStats extends React.Component {
                     <Tab
                         icon={<ContactsPin />}
                         label={<Link
-                                    to={`/profile/${user.id}/followers`}
+                                    to={`${routes.PROFILE}/${user.id}${routes.FOLLOWERS}`}
                                     style={styles.linkStyle}
                                 >
                                     <StatText title="Followers" value={user.numFollowers} />
@@ -112,7 +114,7 @@ class ProfileStats extends React.Component {
                     <Tab
                         icon={<LikesPin />}
                         label={<Link
-                                    to={`/profile/${user.id}/likes`}
+                                    to={`${routes.PROFILE}/${user.id}${routes.LIKES}`}
                                     style={styles.linkStyle}
                                 >
                                     <StatText title="Likes" value={user.numLikes} />

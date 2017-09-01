@@ -1,16 +1,24 @@
 {
   "/likes": "/streamitems",
-    "/likes/:id": "/streamitems",
+    "/likes?*": "/streamitems?$1",
+    "/likes/:id": "/streamitems/:id",
   "/messages": "/streamitems",
+    "/messages?*": "/streamitems?$1",
     "/messages/:id": "/streamitems/:id",
   "/images": "/streamitems",
+    "/images?*": "/streamitems?$1",
     "/images/:id": "/streamitems/:id",
   "/pictures": "/streamitems",
+    "/pictures?*": "/streamitems?$1",
     "/pictures/:id": "/streamitems/:id",
   "/posts": "/streamitems",
+    "/posts?*": "/streamitems?$1",
     "/posts/:id": "/streamitems/:id",
   "/videos": "/streamitems",
+    "/videos?*": "/streamitems?$1",
     "/videos/:id": "/streamitems/:id",
   "/favorites": "/streamitems",
-  "/playlist": "/streamitems"
+    "/favorites?*": "/streamitems?$1",
+  "/playlist": "/streamitems",
+    "/playlist?*": "/streamitems?$1"
 }
