@@ -277,13 +277,13 @@ export function userReducer(usersState = initialState.users, action) {
         case ACTIONS.RECEIVE_USER:
             return {
                 ...usersState,
-                [action.response.userid]: { ...action.response }
+                [action.response.id]: { ...action.response }
             }
         case ACTIONS.RECEIVE_USERS:
             const ret = { ...usersState }
-            for (let userid in action.response) {
-                if (action.response.hasOwnProperty(userid)) {
-                    ret[userid] = { ...action.response[userid] }
+            for (let id in action.response) {
+                if (action.response.hasOwnProperty(id)) {
+                    ret[id] = { ...action.response[id] }
                 }
             }
             return ret

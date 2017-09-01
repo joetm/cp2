@@ -23,7 +23,8 @@ const styles = {
         position: 'relative',
         marginTop: '-150px',
         marginLeft: '50px',
-        zIndex: 29999999
+        zIndex: 299999,
+        display: 'inline-block',
     },
 }
 
@@ -38,29 +39,29 @@ class Profile extends React.PureComponent {
         this.state = {
             blurredImg: false,
             loading: true,
+            user: {},
         }
-        // bindings
-        this.toggleProfileDetails = this.toggleProfileDetails.bind(this)
     }
     componentDidMount() {
-        this.props.fetchUser(this.props.match.params.userid)
+        this.props.fetchUser(this.props.userid)
     }
-    toggleProfileDetails() {
+    toggleProfileDetails = () => {
         this.setState({blurredImg: !this.state.blurredImg})
     }
     /**
      * Render the component.
      */
     render() {
-        const userid = this.props.match.params.userid
-        let user = this.props.users[userid]
 
-        if (user === undefined) {
-            user = {
-                username: '',
-                avatar: '',
-                profileimg: '',
-            }
+        const { userid } = this.props
+
+        console.log('users (index)', this.props.users)
+
+        let user
+        if (this.props.users[userid] === undefined) {
+            user = {}
+        } else {
+            user = this.props.users[userid]
         }
 
         return (
@@ -73,9 +74,9 @@ class Profile extends React.PureComponent {
                     toggleProfileDetails={this.toggleProfileDetails}
                 />
 
-                <ProfileDivider />
-
-                <ProfileStats />
+                <ProfileStats
+                    user={user}
+                />
 
                 <div style={styles.avatarBox}>
                     <Avatar
@@ -111,6 +112,7 @@ const mapStateToProps = (state, ownProps) => ({
     users: state.users,
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,
+    userid: +ownProps.match.params.userid,
 })
 
 export default withRouter(connect(

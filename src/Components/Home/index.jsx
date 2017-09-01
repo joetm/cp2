@@ -12,9 +12,9 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import { fetchAll, fetchPosts, fetchLikes } from '../../actions'
 import Footer from '../Footer'
-import Notification from '../Stream/Notification'
-import Update from '../Stream/Update'
 import Chat from '../Chat'
+import Notification from '../Stream/Notification'
+// import Update from '../Stream/Update'
 
 
 const boxStyle = {
@@ -42,7 +42,7 @@ class Home extends React.Component {
                     <List>
                         {
                           this.props.all.map((item) => (
-                            <Update
+                            <Notification
                                 key={item.id}
                                 { ...item }
                                 content={
@@ -64,7 +64,7 @@ class Home extends React.Component {
                     <List>
                         {
                           this.props.posts.map((item) => (
-                            <Update
+                            <Notification
                                 key={item.id}
                                 { ...item }
                                 content={

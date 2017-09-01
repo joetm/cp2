@@ -643,8 +643,8 @@
             "userid": 6
         }
     ],
-    "users": {
-        "1": {
+    "users": [
+        {
             "id": 1,
             "username": "admin",
             "usertitle": "Admin of the forums",
@@ -682,7 +682,7 @@
             "profileViews": 0,
             "followerCount": 0
         },
-        "2": {
+        {
             "id": 2,
             "username": "Gonzales",
             "usertitle": null,
@@ -720,7 +720,7 @@
             "profileViews": 0,
             "followerCount": 0
         },
-        "3": {
+        {
             "id": 3,
             "username": "Reagan Ronald",
             "usertitle": "Usertitle here",
@@ -758,7 +758,7 @@
             "profileViews": 0,
             "followerCount": 0
         },
-        "4": {
+        {
             "id": 4,
             "username": "Mixxer",
             "usertitle": "noobie",
@@ -796,7 +796,7 @@
             "profileViews": 0,
             "followerCount": 0
         },
-        "5": {
+        {
             "id": 5,
             "username": "Whiskey Mixxer",
             "usertitle": null,
@@ -834,7 +834,7 @@
             "profileViews": 0,
             "followerCount": 0
         },
-        "6": {
+        {
             "id": 6,
             "username": "Mario",
             "usertitle": null,
@@ -872,7 +872,7 @@
             "profileViews": 0,
             "followerCount": 0
         },
-        "7": {
+        {
             "id": 7,
             "username": "Luigi",
             "usertitle": "Mario's brother",
@@ -910,7 +910,7 @@
             "profileViews": 0,
             "followerCount": 0
         }
-    },
+    ],
     "currentUser": {
         "id": 1,
         "username": "admin",

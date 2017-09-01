@@ -8,6 +8,7 @@ import PhotoPin from 'material-ui/svg-icons/image/photo'
 import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsPin from 'material-ui/svg-icons/communication/contacts'
 import LikesPin from 'material-ui/svg-icons/action/thumb-up'
+import RaisedButton from 'material-ui/RaisedButton'
 
 
 const styles = {
@@ -39,9 +40,8 @@ const styles = {
         width: '200px',
         margin: 'auto auto',
     },
-    followButtonStyle: {
-        backgroundColor: '#fff',
-        color: '#000',
+    followButton: {
+        cursor: 'pointer',
     },
     linkStyle: {
         textDecoration: 'none',
@@ -62,42 +62,77 @@ const StatText = (props) => (
 )
 
 
-const ProfileStats = () => (
-    <div style={styles.statBarStyle}>
-        <Tabs style={styles.tabsStyle} initialSelectedIndex={1} inkBarStyle={styles.inkBarStyle}>
-            <Tab
-                icon={<ChatPin />}
-                label={<Link to={`/profile/${fakeUserRecord.id}/updates`} style={styles.linkStyle}>
-                        <StatText title="Posts" value="45" />
-                        </Link>
-                }
-            />
-            <Tab
-                icon={<PhotoPin />}
-                label={<Link to={`/profile/${fakeUserRecord.id}/album`} style={styles.linkStyle}>
-                        <StatText title="Pics" value="234" />
-                        </Link>
-                }
-            />
-            <Tab
-                icon={<ContactsPin />}
-                label={<Link to={`/profile/${fakeUserRecord.id}/followers`} style={styles.linkStyle}>
-                        <StatText title="Followers" value="99" />
-                        </Link>
-                }
-            />
-            <Tab
-                icon={<LikesPin />}
-                label={<Link to={`/profile/${fakeUserRecord.id}/likes`} style={styles.linkStyle}>
-                        <StatText title="Likes" value="23" />
-                        </Link>
-                }
-            />
-            <Tab
-                label={'Follow'}
-            />
-        </Tabs>
-    </div>
-)
+class ProfileStats extends React.Component {
+    state = {
+        initialSelectedIndex: 1,
+    }
+    followUser = (e) => {
+        e.stopPropagation()
+        console.log('follow the user {TODO}')
+    }
+    render() {
+        const { user } = this.props
+        return (
+            <div style={styles.statBarStyle}>
+                <Tabs
+                    style={styles.tabsStyle}
+                    initialSelectedIndex={this.state.initialSelectedIndex}
+                    inkBarStyle={styles.inkBarStyle}
+                >
+                    <Tab
+                        icon={<ChatPin />}
+                        label={<Link
+                                    to={`/profile/${user.id}/updates`}
+                                    style={styles.linkStyle}
+                                >
+                                    <StatText title="Posts" value={user.numPosts} />
+                                </Link>
+                        }
+                    />
+                    <Tab
+                        icon={<PhotoPin />}
+                        label={<Link
+                                    to={`/profile/${user.id}/album`}
+                                    style={styles.linkStyle}
+                                >
+                                    <StatText title="Pics" value={user.numImages} />
+                                </Link>
+                        }
+                    />
+                    <Tab
+                        icon={<ContactsPin />}
+                        label={<Link
+                                    to={`/profile/${user.id}/followers`}
+                                    style={styles.linkStyle}
+                                >
+                                    <StatText title="Followers" value={user.numFollowers} />
+                                </Link>
+                        }
+                    />
+                    <Tab
+                        icon={<LikesPin />}
+                        label={<Link
+                                    to={`/profile/${user.id}/likes`}
+                                    style={styles.linkStyle}
+                                >
+                                    <StatText title="Likes" value={user.numLikes} />
+                                </Link>
+                        }
+                    />
+                    <Tab
+                        label={
+                            <RaisedButton
+                                label="Secondary"
+                                secondary={true}
+                                style={styles.followButton}
+                                onTouchTap={this.followUser}
+                            />
+                        }
+                    />
+                </Tabs>
+            </div>
+        )
+    }
+}
 
 export default ProfileStats
