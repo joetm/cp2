@@ -6,7 +6,6 @@ import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui
 import Avatar from 'material-ui/Avatar'
 
 import { LikeButton, FavoriteButton, CommentButton } from './Button'
-import { navigateTo } from '../../common/helpers'
 
 
 // https://stackoverflow.com/a/39094233/426266

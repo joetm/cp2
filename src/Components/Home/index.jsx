@@ -10,7 +10,7 @@ import { darkBlack } from 'material-ui/styles/colors'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { fetchAll, fetchPosts, fetchLikes } from '../../actions'
+import { fetchUpdates, fetchFavorites, fetchLikes } from '../../actions'
 import Footer from '../Footer'
 import Chat from '../Chat'
 import Notification from '../Stream/Notification'
@@ -24,8 +24,8 @@ const boxStyle = {
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props.fetchAll(5)
-    this.props.fetchPosts(5)
+    this.props.fetchUpdates(5)
+    this.props.fetchFavorites(5)
     this.props.fetchLikes(5)
   }
   render() {
@@ -41,7 +41,7 @@ class Home extends React.Component {
                 <Paper style={boxStyle} zDepth={1}>
                     <List>
                         {
-                          this.props.all.map((item) => (
+                          this.props.updates.map((item) => (
                             <Notification
                                 key={item.id}
                                 { ...item }
@@ -63,7 +63,7 @@ class Home extends React.Component {
                 <Paper style={boxStyle} zDepth={1}>
                     <List>
                         {
-                          this.props.posts.map((item) => (
+                          this.props.favorites.map((item) => (
                             <Notification
                                 key={item.id}
                                 { ...item }
@@ -129,8 +129,8 @@ class Home extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    all: state.all,
-    posts: state.posts,
+    updates: state.updates,
+    favorites: state.favorites,
     likes: state.likes,
     // TODO
     // isFetching: state.appState.isFetching,
@@ -138,5 +138,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchAll, fetchLikes, fetchPosts }
+    { fetchUpdates, fetchLikes, fetchFavorites }
 )(Home)

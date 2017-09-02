@@ -21,7 +21,7 @@ export const fetchFromAPI = (key, selection = null, limit = null) => {
     let url = selection ? `${API}/${key}/${selection}` : `${API}/${key}`
     url = `${url}`
     if (limit) {
-        url = `${url}&_start=1&_limit=${limit}`
+        url = `${url}?_start=1&_limit=${limit}`
     }
     return fetch(url)
         .then(r => r.json())

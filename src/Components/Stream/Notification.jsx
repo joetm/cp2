@@ -47,6 +47,8 @@ class Notification extends React.PureComponent {
     render () {
         // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
 
+        console.log(this.props)
+
         const { id, user, userid, type, title, content } = this.props
         const { username, avatar } = user
 
@@ -109,7 +111,7 @@ class Notification extends React.PureComponent {
 }
 
 // const mapStateToProps = (state) => ({
-//     updates: state.all
+//     updates: state.updates
 // })
 
 export default withRouter(connect(

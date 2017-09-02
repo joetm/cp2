@@ -76,7 +76,7 @@ class Sidebar extends React.Component {
             </div>
 
             <MenuEntry
-                route={`${routes.STREAM}/${userid}`}
+                route={routes.UPDATES}
                 icon={<UpdatesIcon />}
                 text="New Updates"
                 onTouchTap={closeSidebar}
@@ -110,12 +110,22 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
+                route={routes.STREAM}
+                icon={<UpdatesIcon />}
+                text="Your Stream"
+                onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
+            />
+
+            {/*
+            <MenuEntry
                 route={routes.PLAYLIST}
                 icon={<WatchLaterIcon />}
                 text="Watch Later"
                 onTouchTap={closeSidebar}
                 tabindexCounter={tabindexCounter}
             />
+            */}
 
             <MenuEntry
                 route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}

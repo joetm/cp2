@@ -98,15 +98,15 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 }
 
 /**
- * streamReducer
- * @returns streamState
+ * updatesReducer
+ * @returns updatesState
  **/
-export function allReducer(streamState = initialState.all, action) {
+export function updatesReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_UPDATES:
             return [ ...action.response ]
         default:
-            return streamState
+            return updatesState
     }
 }
 

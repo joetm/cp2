@@ -68,7 +68,7 @@ export const fetchAlbum = (userid) =>
     jsonAPI.fetchFromAPI('images')
         .then(response => response)
 
-export const fetchAll = (limit) =>
+export const fetchUpdates = (limit) =>
     jsonAPI.fetchFromAPI('streamitems', null, limit)
         .then(response => response)
 
@@ -90,6 +90,10 @@ export const fetchVideos = (limit) =>
 
 export const fetchVideo = (videoid) =>
     jsonAPI.fetchFromAPI('video')
+        .then(response => response)
+
+export const fetchStream = (limit) =>
+    jsonAPI.fetchFromAPI('streamitems', null, limit)
         .then(response => response)
 
 export const fetchNotifications = (limit) =>

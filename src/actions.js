@@ -73,6 +73,7 @@ export const RECEIVE_IMAGE             = 'STREAM::RECEIVE_IMAGE'
 export const RECEIVE_VIDEOS            = 'STREAM::RECEIVE_VIDEOS'
 export const RECEIVE_VIDEO             = 'STREAM::RECEIVE_VIDEO'
 export const RECEIVE_UPDATES           = 'STREAM::RECEIVE_UPDATES'
+export const RECEIVE_STREAM            = 'STREAM::RECEIVE_STREAM'
 export const RECEIVE_NOTIFICATIONS     = 'STREAM::RECEIVE_NOTIFICATIONS'
 export const RECEIVE_FAVORITES         = 'STREAM::RECEIVE_FAVORITES'
 export const RECEIVE_LIKES             = 'STREAM::RECEIVE_LIKES'
@@ -188,6 +189,7 @@ export const receiveVideo          = makeActionCreator(RECEIVE_VIDEO ,          
 export const receiveThread         = makeActionCreator(RECEIVE_THREAD,            'response')
 export const receiveReviewItem     = makeActionCreator(RECEIVE_REVIEWITEM,        'response')
 export const receiveMessageHistory = makeActionCreator(RECEIVE_MESSAGEHISTORY,    'response')
+export const receiveStream         = makeActionCreator(RECEIVE_STREAM,            'response')
 export const receiveNotifications  = makeActionCreator(RECEIVE_NOTIFICATIONS,     'response')
 export const receiveFavorites      = makeActionCreator(RECEIVE_FAVORITES,         'response')
 export const receiveLikes          = makeActionCreator(RECEIVE_LIKES,             'response')
@@ -362,11 +364,11 @@ export const fetchMessageHistory = (userid) =>
     api.fetchMessageHistory(userid).then(receiveMessageHistory)
 
 /**
- * fetchAll Asynchronous Action Creator
- * @returns fetchAll() - Action
+ * fetchUpdates Asynchronous Action Creator
+ * @returns fetchUpdates() - Action
  */
-export const fetchAll = (limit) =>
-    api.fetchAll(limit).then(receiveUpdates)
+export const fetchUpdates = (limit) =>
+    api.fetchUpdates(limit).then(receiveUpdates)
 
 /**
  * fetchPictures Asynchronous Action Creator
@@ -411,6 +413,13 @@ export const fetchVideo = (videoid) => (dispatch) => {
                   dispatch(fetchVideoFailure(error))
                 })
 }
+
+/**
+ * fetchStream Asynchronous Action Creator
+ * @returns fetchStream() - Action
+ */
+export const fetchStream = (limit) =>
+    api.fetchStream(limit).then(receiveStream)
 
 /**
  * fetchNotifications Asynchronous Action Creator

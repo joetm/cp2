@@ -21,27 +21,30 @@ const initialState = {
         states: [],
         cities: [],
     },
-    // -- content --
-    all: [],
+    // -- common content
+    updates: [],
     images: [],
     videos: [],
-    notifications: [],
-    favorites: [],
-    likes: [],
     posts: [],
     threads: [],
     album: [],
-    playlist: [],
-    // --
-    followers: [],
     users: {},
-    chat: [],
-    // -- single item caching --
+    // -- personalized content
+    notifications: [],
+    stream: [],
+    favorites: [],
+    likes: [],
+    playlist: [],
+    followers: [],
+    // -- single item caching
     thread: {},
     post: {},
     video: {},
     image: {},
+    // -- chat
+    chat: [],
     messageHistory: {},
+    // -- crowd review
     reviewitem: {
         id: null,
         primaryText: null,
@@ -55,7 +58,7 @@ const initialState = {
         src: null,
         timestamp: null,
     },
-    // --
+    // -- current user
     currentUser: {
         id: null,
         username: 'anonymous',

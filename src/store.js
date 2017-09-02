@@ -30,7 +30,7 @@ const store = createStore(
     combineReducers({
         appState: Reducers.cpAppReducer,
         // multiple items
-        all: Reducers.allReducer,
+        updates: Reducers.updatesReducer,
         images: Reducers.imagesReducer,
         videos: Reducers.videosReducer,
         favorites: Reducers.favoritesReducer,

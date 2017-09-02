@@ -38,6 +38,9 @@ import MessageHistory from './MessageHistory'
 import Followers from './Followers'
 import Users from './Users'
 import Stream from './Stream'
+import Updates from './Stream/Updates'
+import Pictures from './Stream/Pictures'
+import Videos from './Stream/Videos'
 import Video from './Video'
 import Image from './Image'
 import Profile from './Profile'
@@ -109,9 +112,12 @@ class App extends React.Component {
 
                 <Route path={routes.FORUM} component={Forum} />
 
+                <Route exact path={routes.STREAM} component={Stream} />
                 <Route exact path={routes.NOTIFICATIONS} component={Notifications} />
 
-                <Route path={`${routes.STREAM}/:userid`} component={Stream} />
+                <Route exact path={`${routes.UPDATES}`} component={Updates} />
+                <Route exact path={`${routes.IMAGES}`} component={Pictures} />
+                <Route exact path={`${routes.VIDEOS}`} component={Videos} />
 
                 <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
                 <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
@@ -125,7 +131,9 @@ class App extends React.Component {
                         <Profile isScrolled={this.state.isScrolled} />
                     )} />
 
+                {/*
                 <Route path={routes.PLAYLIST} component={Playlist} />
+                */}
 
                 <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
                 <Route path={routes.MEMBERS} component={Users} />
