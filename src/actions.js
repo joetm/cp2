@@ -88,6 +88,7 @@ export const RECEIVE_COUNTRY           = 'APP::RECEIVE_COUNTRY'
 export const RECEIVE_STATE             = 'APP::RECEIVE_STATE'
 export const RECEIVE_CITY              = 'APP::RECEIVE_CITY'
 
+export const RECEIVE_CHAT              = 'CHAT::RECEIVE_CHAT'
 export const RECEIVE_CHAT_MSG          = "CHAT::RECEIVE_CHAT_MSG"
 export const SEND_CHAT_MSG             = "CHAT::SEND_CHAT_MSG"
 
@@ -199,7 +200,8 @@ export const receiveDislike        = makeActionCreator(RECEIVE_DISLIKE,         
 export const receiveUnreadCount    = makeActionCreator(RECEIVE_UNREAD_COUNT,      'response')
 
 export const sendChatMessageStart  = makeActionCreator(SEND_CHAT_MSG,             'payload')
-export const receiveChatMsg        = makeActionCreator(RECEIVE_CHAT_MSG,          'payload')
+export const receiveChat           = makeActionCreator(RECEIVE_CHAT,              'response')
+export const receiveChatMsg        = makeActionCreator(RECEIVE_CHAT_MSG,          'response')
 
 export const receiveCountries      = makeActionCreator(RECEIVE_COUNTRIES,         'response')
 export const receiveStates         = makeActionCreator(RECEIVE_STATES,            'response')
@@ -455,6 +457,9 @@ export const fetchAlbum = (userid) =>
  */
 export const fetchThread = (threadid) =>
     api.fetchThread(threadid).then(receiveThread)
+
+export const fetchChat = () =>
+    api.fetchChat().then(receiveChat)
 
 export const sendChatMessage = (payload) => (dispatch) => {
     dispatch(sendChatMessageStart(payload))

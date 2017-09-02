@@ -13,8 +13,8 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { fetchUpdates, fetchFavorites, fetchLikes } from '../../actions'
 import Footer from '../Footer'
 import Chat from '../Chat'
-import Notification from '../Stream/Notification'
-// import Update from '../Stream/Update'
+import Notification from '../Content/Notification'
+// import Update from '../Content/Update'
 
 
 const boxStyle = {
@@ -111,7 +111,7 @@ class Home extends React.Component {
             <gridWrapper full="6" tablet="8" phone="4" order="1">
             */}
                 <Paper style={boxStyle} zDepth={1}>
-                    <Chat />
+                    <Chat chat={this.props.chat} />
                 </Paper>
             {/*
             </gridWrapper>
@@ -132,6 +132,7 @@ const mapStateToProps = (state) => ({
     updates: state.updates,
     favorites: state.favorites,
     likes: state.likes,
+    chat: state.chat,
     // TODO
     // isFetching: state.appState.isFetching,
 })

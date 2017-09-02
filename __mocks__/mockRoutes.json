@@ -32,6 +32,7 @@
   "/favorites": "/streamitems?_expand=user",
     "/favorites?*": "/streamitems?_expand=user&$1",
     "/favorites/?*": "/streamitems?_expand=user&$1",
+  "/chat": "/chat?_expand=user",
   "/playlist": "/streamitems?_expand=user",
     "/playlist?*": "/streamitems?_expand=user&$1",
     "/playlist/?*": "/streamitems?_expand=user&$1",

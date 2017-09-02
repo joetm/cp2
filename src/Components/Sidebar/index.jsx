@@ -101,18 +101,20 @@ class Sidebar extends React.Component {
             />
             */}
 
-            <MenuEntry
-                route={routes.NOTIFICATIONS}
-                icon={<EmailIcon />}
-                text="Messages"
-                onTouchTap={closeSidebar}
-                tabindexCounter={tabindexCounter}
-            />
+            <Divider />
 
             <MenuEntry
                 route={routes.STREAM}
                 icon={<UpdatesIcon />}
                 text="Your Stream"
+                onTouchTap={closeSidebar}
+                tabindexCounter={tabindexCounter}
+            />
+
+            <MenuEntry
+                route={routes.NOTIFICATIONS}
+                icon={<EmailIcon />}
+                text="Messages"
                 onTouchTap={closeSidebar}
                 tabindexCounter={tabindexCounter}
             />

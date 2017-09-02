@@ -39,8 +39,10 @@ import jwtDecode from 'jwt-decode'
  **/
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
+        case ACTIONS.RECEIVE_CHAT:
+            return [ ...action.response ]
         case ACTIONS.RECEIVE_CHAT_MSG:
-            return [ ...chatState ].push(action.payload)
+            return [ ...chatState ].push(action.response)
         default:
             return chatState
     }

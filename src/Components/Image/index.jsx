@@ -9,7 +9,7 @@ import { fetchPicture } from '../../actions'
 import { colors } from '../../common/theme'
 import Spacer from '../Shared/Spacer'
 // import Loader from '../Shared/Loader'
-import Update from '../Stream/Update'
+import Update from '../Content/Update'
 
 
 class Image extends React.PureComponent {

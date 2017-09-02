@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 import AjaxLoader from '../Shared/AjaxLoader'
 import Spacer from '../Shared/Spacer'
-import Update from '../Stream/Update'
+import Update from '../Content/Update'
 import { fetchAlbum } from '../../actions'
 
 

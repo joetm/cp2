@@ -29,6 +29,10 @@ export const fetchUnreadCount = () =>
     jsonAPI.fetchUnreadCountFromAPI()
         .then(response => response)
 
+export const fetchChat = () =>
+    jsonAPI.fetchFromAPI('chat')
+        .then(response => response)
+
 export const fetchMessageHistory = (userid) =>
     jsonAPI.fetchFromAPI('messageHistory', userid)
         .then(response => {

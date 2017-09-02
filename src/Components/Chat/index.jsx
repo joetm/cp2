@@ -8,8 +8,9 @@ import { List, ListItem } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import TextField from 'material-ui/TextField'
 
-import { sendChatMessage } from '../../actions'
+import { sendChatMessage, fetchChat } from '../../actions'
 import colors from '../../common/theme'
+import routes from '../../routes'
 import ChatInput from './ChatInput'
 
 
@@ -24,6 +25,9 @@ const styles = {
     fontWeight: 400,
     cursor: 'pointer',
   },
+  avatar: {
+    cursor: 'pointer',
+  },
   content: {
     // color: colors.gray,
     color: colors.black,
@@ -34,30 +38,45 @@ const styles = {
 }
 
 
-class Chat extends React.Component {
+class Chat extends React.PureComponent {
+  componentDidMount() {
+    this.props.fetchChat()
+  }
+  navigateToUser = (userid) => () => {
+    const userUrl = `${routes.PROFILE}/${userid}`
+    this.props.history.push(userUrl)
+  }
   render() {
     return (
       <div>
         <List>
-
           {
             this.props.chat.map((chatitem) => (
               <ListItem
                   style={styles.listitem}
                   primaryText={<div style={styles.chatText}>
-                    <span style={styles.username} onTouchTap={this.navigateToUser}>{chatitem.username}</span>
+                    <span
+                      style={styles.username}
+                      onTouchTap={this.navigateToUser(chatitem.user.id)}
+                    >
+                      {chatitem.user.username}
+                    </span>
                     {' '}
                     <span style={styles.content}>{chatitem.content}</span>
                   </div>}
-                  leftAvatar={<Avatar src={chatitem.avatar} />}
+                  leftAvatar={<Avatar
+                    src={chatitem.user.avatar}
+                    style={styles.avatar}
+                    onTouchTap={this.navigateToUser(chatitem.user.id)}
+                  />}
                   autoGenerateNestedIndicator={false}
                   disableKeyboardFocus={true}
                   disabled={true}
               />
             ))
           }
-
         </List>
+
         <Divider />
 
         <ChatInput
@@ -80,5 +99,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
   mapStateToProps,
-  { sendChatMessage }
+  { sendChatMessage, fetchChat }
 )(Chat))

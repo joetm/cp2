@@ -33,18 +33,18 @@ import Scrollbutton from './Shared/Scrollbutton'
 import NavBar from './NavBar'
 import Home from './Home'
 import Forum from './Forum'
-import Notifications from './Stream/Notifications'
+import Notifications from './Content/Notifications'
 import MessageHistory from './MessageHistory'
 import Followers from './Followers'
 import Users from './Users'
-import Stream from './Stream'
-import Updates from './Stream/Updates'
-import Pictures from './Stream/Pictures'
-import Videos from './Stream/Videos'
+import Stream from './Content/Stream'
+import Updates from './Content/Updates'
+import Pictures from './Content/Pictures'
+import Videos from './Content/Videos'
 import Video from './Video'
 import Image from './Image'
-import Likes from './Stream/Likes'
-import Favorites from './Stream/Favorites'
+import Likes from './Content/Likes'
+import Favorites from './Content/Favorites'
 import Profile from './Profile'
 import Review from './Review'
 import Editor from './Editor'
@@ -124,10 +124,10 @@ class App extends React.Component {
                 <Route exact path={`${routes.LIKES}`} component={Likes} />
                 <Route exact path={`${routes.FAVORITES}`} component={Favorites} />
 
+                <Route exact path={routes.REVIEW} component={Review} />
+
                 <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
                 <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
-
-                <Route exact path={routes.REVIEW} component={Review} />
 
                 <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
 
