@@ -21,9 +21,6 @@ class Notification extends React.PureComponent {
     state = {
       showMenu: true,
     }
-    shouldComponentUpdate(nextProps, nextState) {
-      return false
-    }
     replyNotification = () => {
         // TODO
         // this.props.replyNotification()

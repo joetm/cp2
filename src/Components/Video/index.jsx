@@ -45,8 +45,7 @@ const styles = {
 
 class Video extends React.Component {
     componentDidMount() {
-        const videoid = this.props.match.params.videoid
-        this.props.fetchVideo(videoid)
+        this.props.fetchVideo(this.props.videoid)
     }
     /**
      * Render the component.
@@ -117,9 +116,10 @@ class Video extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     video: state.video,
     isFetching: state.appState.isFetching,
+    videoid: ownProps.match.params.videoid,
 })
 
 export default withRouter(connect(

@@ -53,8 +53,20 @@ class AtomicImage extends React.PureComponent {
 
 
 class Update extends React.PureComponent {
-  shouldComponentUpdate(nextProps, nextState) {
-    return false
+  clickable = true
+  navigateToItem = () => {
+    let url = '/'
+    switch(this.props.type) {
+      case 'image':
+        url = `${routes.IMAGES}/${this.props.id}`
+        break
+      case 'video':
+        url = `${routes.VIDEOS}/${this.props.id}`
+        break
+    }
+    if (this.clickable) {
+      this.props.history.push(url)
+    }
   }
   render () {
     const {
@@ -64,27 +76,29 @@ class Update extends React.PureComponent {
       title,
       src, thumb,
       likes, dislikes, replies,
-      gridColumnsFull, gridColumnsTablet, gridColumnsPhone,
-      history
+      gridColumnsFull, gridColumnsTablet, gridColumnsPhone
     } = this.props
 
     const showTitle = this.props.showTitle === false ? false : true
-
-    let url = '/'
-    switch(type) {
-      case 'image':
-        url = `${routes.IMAGES}/${id}`
-      case 'video':
-        url = `${routes.VIDEOS}/${id}`
-    }
+    this.clickable = this.props.clickable === false ? false : true
 
     return (
       <div
         className={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
       >
+        {/*
+        <div>
+          DEBUG:<br />
+          Type: {type}
+          <br />
+          Url: {this.state.url}
+          <br />
+          clickable: {!clickable ? 'false' : 'true'}
+        </div>
+        */}
         <Card
-          onTouchTap={() => history.push(url)}
-          style={{cursor: 'pointer'}}
+          onTouchTap={this.navigateToItem}
+          style={{cursor: this.clickable ? 'pointer' : 'inherit'}}
         >
           <CardMedia>
             {/*

@@ -380,19 +380,11 @@ export const fetchPictures = (limit) =>
     api.fetchPictures(limit).then(receiveImages)
 
 /**
- * fetchVideo Asynchronous Action Creator
- * @returns fetchVideo() - Action
+ * fetchPicture Asynchronous Action Creator
+ * @returns fetchPicture() - Action
  */
-// export const fetchPicture = (imageid) =>
-//     api.fetchPicture(imageid).then(receivePicture)
-export const fetchPicture = (imageid) => (dispatch) => {
-    // dispatch(fetchVideoStarted())
-    return api.fetchPicture(imageid)
-                .then((response) => dispatch(receivePicture(response)))
-                // .catch(error => {
-                //   dispatch(fetchPictureFailure(error))
-                // })
-}
+export const fetchPicture = (pictureid) =>
+    api.fetchPicture(pictureid).then(receiveImage)
 
 /**
  * fetchVideos Asynchronous Action Creator
