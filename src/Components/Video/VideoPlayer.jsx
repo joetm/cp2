@@ -18,15 +18,7 @@ import Duration from './Duration'
 import { colors } from '../../common/theme'
 
 
-const VIDEO_MAXWIDTH = 1024
-
-
 const styles = {
-  pageWrapper: {
-    width: '100%',
-    maxWidth: `${VIDEO_MAXWIDTH}px`,
-    margin: '0 auto',
-  },
   playerWrapper: {
     margin: '0 auto',
     width: '100%',
@@ -208,7 +200,7 @@ class VideoPlayer extends Component {
     } = this.state
 
     return (
-      <div style={styles.pageWrapper}>
+      <div>
 
           <div ref="playerWrapper"
             style={{ ...styles.playerWrapper,
