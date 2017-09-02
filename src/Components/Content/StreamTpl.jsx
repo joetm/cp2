@@ -16,6 +16,7 @@ import Notification from './Notification'
 import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
 import Spacer from '../Shared/Spacer'
+import { TILED } from '../../viewModes'
 
 
 const ListWrap = (props) => (
@@ -34,8 +35,11 @@ const GridWrap = (props) => (
 
 
 class StreamTpl extends React.PureComponent {
-    state = {
-        viewMode: 'full',
+    constructor(props) {
+        super(props)
+        this.state = {
+            viewMode: props.viewMode || TILED,
+        }
     }
     componentDidMount() {
         this.props.action()

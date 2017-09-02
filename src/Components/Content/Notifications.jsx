@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchNotifications } from '../../actions'
 import StreamTpl from './StreamTpl'
+import { LISTED } from '../../viewModes'
 
 
 class Notifications extends React.PureComponent {
@@ -15,6 +16,7 @@ class Notifications extends React.PureComponent {
         return (
             <StreamTpl
                 action={this.props.fetchNotifications}
+                viewMode={LISTED}
                 headline="Notifications"
                 content={this.props.notifications}
             />
