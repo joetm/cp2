@@ -71,14 +71,11 @@ class Update extends React.PureComponent {
     const showTitle = this.props.showTitle === false ? false : true
 
     let url = '/'
-    let imgSrc
     switch(type) {
       case 'image':
         url = `${routes.IMAGES}/${id}`
-        imgSrc = src
       case 'video':
         url = `${routes.VIDEOS}/${id}`
-        imgSrc = thumb
     }
 
     return (
@@ -91,12 +88,11 @@ class Update extends React.PureComponent {
         >
           <CardMedia>
             {/*
-            <AtomicImage src={imgSrc} />
+            <AtomicImage src={thumb} />
             */}
             {
-              imgSrc &&
                 <img
-                  src={imgSrc}
+                  src={thumb}
                   alt=""
                 />
             }

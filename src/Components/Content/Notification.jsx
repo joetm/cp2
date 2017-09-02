@@ -52,7 +52,7 @@ class Notification extends React.PureComponent {
 
         console.log(this.props)
 
-        const { id, user, userid, type, title, content } = this.props
+        const { id, thumb, user, userid, type, title, content } = this.props
         const { username, avatar } = user
 
         let text
@@ -98,17 +98,27 @@ class Notification extends React.PureComponent {
 
         }
 
+        const leftImage = <div style={{display: 'inline-block'}}>
+            <img src={thumb} alt="" style={{width: '160px'}} />
+          </div>
+        const AvatarImage = <div style={{display: 'inline-block'}}>
+            <Avatar src={avatar} />
+          </div>
+
+
         return (
-            <ListItem
-              leftAvatar={<Avatar src={avatar} />}
-              rightIconButton={ this.state.showMenu ? rightIconMenu : null }
-              primaryText={title}
-              secondaryText={text}
-              // onMouseEnter={() => this.setState({showMenu: true})}
-              // onMouseLeave={() => this.setState({showMenu: false})}
-              secondaryTextLines={2}
-              onTouchTap={() => this.props.history.push(`${routes.MESSAGES}/${userid}`)}
-            />
+          <div>
+              <ListItem
+                leftAvatar={AvatarImage}
+                rightIconButton={ this.state.showMenu ? rightIconMenu : null }
+                primaryText={title}
+                secondaryText={text}
+                // onMouseEnter={() => this.setState({showMenu: true})}
+                // onMouseLeave={() => this.setState({showMenu: false})}
+                secondaryTextLines={2}
+                onTouchTap={() => this.props.history.push(`${routes.MESSAGES}/${userid}`)}
+              />
+          </div>
         )
     }
 }
