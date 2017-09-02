@@ -4,15 +4,33 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
+import { List } from 'material-ui/List'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
+// --
 import Update from './Update'
 import Notification from './Notification'
+// --
 import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
 import Spacer from '../Shared/Spacer'
+
+
+const ListWrap = (props) => (
+    <List>
+        {props.children}
+    </List>
+)
+
+const GridWrap = (props) => (
+    <div className="mdc-layout-grid">
+        <div className="mdc-layout-grid__inner">
+            {props.children}
+        </div>
+    </div>
+)
 
 
 class StreamTpl extends React.PureComponent {
@@ -23,7 +41,7 @@ class StreamTpl extends React.PureComponent {
         this.props.action()
     }
     changeViewMode = (viewMode) => () => {
-        console.log('changeViewMode', viewMode)
+        // console.log('changeViewMode', viewMode)
         this.setState({ viewMode })
     }
     /**
@@ -34,6 +52,7 @@ class StreamTpl extends React.PureComponent {
         const categorizedItems = categorizeList(this.props.content)
 
         const Container = this.state.viewMode === 'list' ? Notification : Update
+        const Wrapper = this.state.viewMode === 'list' ? ListWrap : GridWrap
 
         return (
             <div>
@@ -50,21 +69,19 @@ class StreamTpl extends React.PureComponent {
 
                                 <Divider />
 
-                                <div className="mdc-layout-grid">
-                                    <div className="mdc-layout-grid__inner">
+                                <Wrapper>
                                     {
                                         group.map((item, i) => (
-                                          <Container
-                                            key={`upd_${i}`}
-                                            { ...item }
-                                            gridColumnsFull={4}
-                                            gridColumnsTablet={2}
-                                            gridColumnsPhone={1}
-                                          />
+                                            <Container
+                                                key={`upd_${i}`}
+                                                { ...item }
+                                                gridColumnsFull={4}
+                                                gridColumnsTablet={2}
+                                                gridColumnsPhone={1}
+                                            />
                                         ))
                                     }
-                                    </div>
-                                </div>
+                                </Wrapper>
 
                             </div>
                         )
