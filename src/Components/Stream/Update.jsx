@@ -6,6 +6,7 @@ import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui
 import Avatar from 'material-ui/Avatar'
 
 import { LikeButton, FavoriteButton, CommentButton } from './Button'
+import routes from '../../routes'
 
 
 // https://stackoverflow.com/a/39094233/426266
@@ -54,7 +55,8 @@ class AtomicImage extends React.PureComponent {
 const Update = (props) => {
 
   const {
-    type, id,
+    type,
+    id,
     user,
     title,
     src, thumb,
@@ -63,20 +65,20 @@ const Update = (props) => {
     history
   } = props
 
+  console.log('videoid', id)
+
   const showTitle = props.showTitle === false ? false : true
 
   let url = '/'
   let imgSrc
   switch(type) {
     case 'image':
-      url = `/images/${id}`
+      url = `${routes.IMAGES}/${id}`
       imgSrc = src
     case 'video':
-      url = `/videos/${id}`
+      url = `${routes.VIDEOS}/${id}`
       imgSrc = thumb
   }
-
-  console.log('user', user)
 
   return (
     <div

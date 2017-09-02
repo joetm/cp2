@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchVideos, markRead } from '../../actions'
+import { fetchVideos } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
@@ -29,5 +29,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchVideos, markRead }
+    { fetchVideos }
 )(Videos)

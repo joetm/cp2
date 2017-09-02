@@ -43,6 +43,8 @@ import Pictures from './Stream/Pictures'
 import Videos from './Stream/Videos'
 import Video from './Video'
 import Image from './Image'
+import Likes from './Stream/Likes'
+import Favorites from './Stream/Favorites'
 import Profile from './Profile'
 import Review from './Review'
 import Editor from './Editor'
@@ -118,6 +120,9 @@ class App extends React.Component {
                 <Route exact path={`${routes.UPDATES}`} component={Updates} />
                 <Route exact path={`${routes.IMAGES}`} component={Pictures} />
                 <Route exact path={`${routes.VIDEOS}`} component={Videos} />
+
+                <Route exact path={`${routes.LIKES}`} component={Likes} />
+                <Route exact path={`${routes.FAVORITES}`} component={Favorites} />
 
                 <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
                 <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />

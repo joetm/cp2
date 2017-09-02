@@ -77,7 +77,7 @@ export const fetchPictures = (limit) =>
         .then(response => response)
 
 export const fetchPicture = (imageid) =>
-    jsonAPI.fetchFromAPI('image', imageid)
+    jsonAPI.fetchFromAPI('images', imageid)
         .then(response => response)
 
 // alias
@@ -89,7 +89,7 @@ export const fetchVideos = (limit) =>
         .then(response => response)
 
 export const fetchVideo = (videoid) =>
-    jsonAPI.fetchFromAPI('video')
+    jsonAPI.fetchFromAPI('videos', videoid)
         .then(response => response)
 
 export const fetchStream = (limit) =>
@@ -98,6 +98,10 @@ export const fetchStream = (limit) =>
 
 export const fetchNotifications = (limit) =>
     jsonAPI.fetchFromAPI('messages', null, limit)
+        .then(response => response)
+
+export const fetchNotification = (notificationid) =>
+    jsonAPI.fetchFromAPI('messages', notificationid)
         .then(response => response)
 
 export const fetchFavorites = (limit) =>
@@ -109,7 +113,7 @@ export const fetchLikes = (limit) =>
         .then(response => response)
 
 export const fetchThread = (threadid) =>
-    jsonAPI.fetchFromAPI('thread', threadid)
+    jsonAPI.fetchFromAPI('threads', threadid)
         .then(response => response)
 
 
