@@ -6,6 +6,16 @@ import Spacer from '../Shared/Spacer'
 import Footer from '../Footer'
 import './style.scss'
 
+const styles = {
+    wrapper: {
+        textAlign: 'center',
+        // paddingLeft: '20px',
+        // paddingRight: '20px',
+        maxWidth: '1024px',
+        margin: '0 auto',
+    },
+}
+
 
 class LegalTpl extends React.PureComponent {
     request = null
@@ -37,7 +47,7 @@ class LegalTpl extends React.PureComponent {
      */
     render() {
         return (
-            <div style={{textAlign: 'center'}}>
+            <div style={styles.wrapper}>
                 <h1>{this.props.headline}</h1>
                 <div dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
                 <Spacer />
