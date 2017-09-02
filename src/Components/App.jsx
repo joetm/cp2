@@ -148,6 +148,7 @@ class App extends React.Component {
                 <Route exact path={routes.LOGIN} component={LoginPage} />
                 <Route exact path={routes.SIGNUP} component={SignupPage} />
 
+                <Route path={`${routes.EDIT}`} component={Editor} />
                 {/*
                 <Route path={`${routes.POSTS}/:itemid${routes.EDIT}`} component={Editor} />
                 <Route path={`${routes.VIDEOS}/:itemid${routes.EDIT}`} component={Editor} />
