@@ -14,7 +14,7 @@
         {
             "type": "like",
             "id": "cj6z28quf0000vmdri4yk6g1m",
-            "threadid": null,
+            "threadid": 0,
             "title": "Post title here, if available",
             "content": null,
             "src": null,
@@ -33,7 +33,7 @@
         {
             "type": "like",
             "id": "cj6z2fwzg0000xgdr6p1552y5",
-            "threadid": null,
+            "threadid": 0,
             "title": "Thread 222 title here, if available",
             "content": null,
             "src": null,
@@ -52,7 +52,7 @@
         {
             "type": "like",
             "id": "cj6z2g8sj0000xqdro3s72fse",
-            "threadid": null,
+            "threadid": 0,
             "title": "AlbumImage title here, if available",
             "content": null,
             "src": "https://apod.nasa.gov/apod/image/1708/southcarolinaeclipseashleymarando1024.jpg",
@@ -71,7 +71,7 @@
         {
             "type": "message",
             "id": "cj6z2gjas0000xxdr0eetiego",
-            "threadid": null,
+            "threadid": 0,
             "title": "Message 2",
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac lacus sagittis, lobortis leo non, maximus mi. Suspendisse posuere nisl viverra risus pharetra, sit amet vehicula dolor accumsan. Proin posuere efficitur nisl, in pretium est convallis at. Morbi non ultricies orci, quis faucibus purus. Ut suscipit orci nisl, quis aliquet urna porta mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed tortor tellus, convallis sit amet ligula a, hendrerit eleifend turpis. Ut ac purus posuere, finibus tortor tincidunt, hendrerit ipsum. In laoreet elementum interdum. Nullam maximus felis sit amet varius finibus. In in lacus vitae diam convallis venenatis eget vel turpis. Suspendisse mauris diam, laoreet in rutrum a, aliquet et massa. Mauris odio libero, efficitur quis est vitae, aliquet sodales dui. Donec condimentum mauris ut justo rhoncus rutrum. Curabitur vel lacus gravida, gravida orci et, lobortis massa. Suspendisse vel mauris mollis, condimentum metus hendrerit, elementum ex. Etiam odio nulla, porttitor sit amet est in, varius imperdiet diam. Praesent lobortis ante at turpis venenatis, nec pretium dolor fermentum. Nullam in eros nunc. Curabitur placerat, augue et tincidunt fermentum, quam ante venenatis orci, ac tincidunt enim turpis a risus. Suspendisse potenti. Praesent laoreet maximus nulla ac ultricies. Integer erat diam, elementum non tincidunt eget, viverra nec sem. Etiam eget iaculis nulla, sed ultrices nisi. Nullam interdum elit orci, eu feugiat sem ornare non. Quisque diam ante, mattis eu ante at, suscipit ultrices ipsum. Donec pulvinar, mi id dapibus ornare, enim purus fringilla neque, ut cursus elit arcu id ligula. Fusce a est suscipit, consectetur magna vel, elementum lorem. Duis id dui vitae dui accumsan venenatis. Sed at nisi a risus sagittis mollis vitae sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam fermentum purus, sit amet pharetra magna dignissim tempor. Etiam sed purus ac tellus luctus vulputate ut vel dui. Sed tellus tellus, dapibus quis sem euismod, porttitor mollis diam. Fusce at nunc sit amet neque scelerisque aliquet. Suspendisse potenti.",
             "src": null,
@@ -90,7 +90,7 @@
         {
             "type": "message",
             "id": "cj6z2gqod0000y4dra9ijbjhw",
-            "threadid": null,
+            "threadid": 0,
             "title": "Message 3",
             "content": "Sed eget sollicitudin turpis. Aliquam eleifend sagittis velit vel feugiat. Praesent aliquet ipsum in eleifend ornare. Vivamus eu est ut dolor ultrices iaculis. Mauris sit amet finibus erat, sed semper ipsum. Etiam ligula erat, porta a pretium in, maximus sit amet nulla. Curabitur et purus nec nulla porttitor egestas a et purus. Nulla sit amet eros vel nunc viverra viverra. Maecenas in elementum magna. Fusce sem turpis, dapibus sed ultrices sed, pulvinar interdum felis. Aliquam erat volutpat. Sed ac sagittis mauris, vitae pretium sapien. Cras sit amet mauris congue, dictum leo ut, pretium nulla. Duis tristique tristique mauris eu tempor. Nulla ornare vestibulum pharetra. Nulla in posuere augue. Vivamus quis enim ullamcorper, dapibus diam faucibus, mollis risus. Morbi ac erat id tortor maximus bibendum quis sed orci. Nulla facilisi.",
             "src": null,
@@ -109,7 +109,7 @@
         {
             "type": "message",
             "id": "cj6z2gybw0000ybdrmmft5s0z",
-            "threadid": null,
+            "threadid": 0,
             "title": "Message 4",
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "src": null,
@@ -128,7 +128,7 @@
         {
             "type": "message",
             "id": "cj6z2h65i0000ykdrjfil24ni",
-            "threadid": null,
+            "threadid": 0,
             "title": "Brunch this weekend?",
             "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
             "src": null,
@@ -147,7 +147,7 @@
         {
             "type": "message",
             "id": "cj6z2hcc60000yqdrwl3dwmd4",
-            "threadid": null,
+            "threadid": 0,
             "title": "System Message",
             "content": "Quota exceeded",
             "src": null,
@@ -166,7 +166,7 @@
         {
             "type": "message",
             "id": "cj6z2hplz0000yxdrvcbfmoq3",
-            "threadid": null,
+            "threadid": 0,
             "title": "Hello???",
             "content": "...",
             "src": null,
@@ -185,7 +185,7 @@
         {
             "type": "image",
             "id": "cj6z2hwyy0000z6drusqbhxsw",
-            "threadid": null,
+            "threadid": 0,
             "title": "Brunch this weekend?",
             "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
             "src": "https://apod.nasa.gov/apod/image/1708/m16-m17-toa3-mosaic-crfl-final17-cc900c.jpg",
@@ -204,7 +204,7 @@
         {
             "type": "post",
             "id": "cj6z2i43l0000zddrjguadpfb",
-            "threadid": 1,
+            "threadid": 0,
             "title": "Oui oui",
             "content": "Do you have Paris recommendations? Have you ever been?",
             "src": null,
@@ -215,7 +215,7 @@
             "likes": 0,
             "dislikes": 0,
             "replies": 0,
-            "tags": ["thread-1"],
+            "tags": ["mytag"],
             "timestamp": 1501229177,
             "lastEdit": 0,
             "rating": null
@@ -223,7 +223,7 @@
         {
             "type": "image",
             "id": "cj6z2iayw0000zkdrzoyeu8ke",
-            "threadid": null,
+            "threadid": "cj6z2i43l0000zddrjguadpfb",
             "title": "Birdthday gift",
             "content": "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
             "src": "https://apod.nasa.gov/apod/image/1708/solareclipseHDR_largeDemeter1024.jpg",
@@ -242,7 +242,7 @@
         {
             "type": "image",
             "id": "cj6z2iisx00000edremuw4blq",
-            "threadid": null,
+            "threadid": "cj6z2i43l0000zddrjguadpfb",
             "title": "Recipe to try",
             "content": "We should eat this: grated squash. Corn and tomatillo tacos.",
             "src": "https://apod.nasa.gov/apod/image/1705/ic410_WISEantonucci_960.jpg",
@@ -261,7 +261,7 @@
         {
             "type": "like",
             "id": "cj6z2ipmk00000kdrps1reqmk",
-            "threadid": null,
+            "threadid": 0,
             "title": "Brunch this weekend?",
             "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
             "src": null,
@@ -280,7 +280,7 @@
         {
             "type": "post",
             "id": "cj6z2ix1e00000sdrewxuanbr",
-            "threadid": 2,
+            "threadid": 0,
             "title": "Oui oui",
             "content": "Do you have Paris recommendations? Have you ever been?",
             "src": null,
@@ -291,7 +291,7 @@
             "likes": 0,
             "dislikes": 0,
             "replies": 0,
-            "tags": ["thread-2"],
+            "tags": ["test"],
             "timestamp": 1501000077,
             "lastEdit": 0,
             "rating": null
@@ -299,7 +299,7 @@
         {
             "type": "post",
             "id": "cj6z2j5y700000ydr8gc36oln",
-            "threadid": 2,
+            "threadid": "cj6z2ix1e00000sdrewxuanbr",
             "title": "Birdthday gift",
             "content": "Do you have any ideas what we can get Heidi for her birthday? How about a pony?",
             "src": null,
@@ -310,7 +310,7 @@
             "likes": 0,
             "dislikes": 0,
             "replies": 0,
-            "tags": ["thread-2"],
+            "tags": ["ok"],
             "timestamp": 1501000057,
             "lastEdit": 0,
             "rating": null
@@ -318,7 +318,7 @@
         {
             "type": "video",
             "id": "cj6z2jdvj000015drhm8uazj7",
-            "threadid": null,
+            "threadid": 0,
             "title": "Recipe to try",
             "content": "We should eat this: grated squash. Corn and tomatillo tacos.",
             "src": "https://www.youtube.com/watch?v=oUFJJNQGwhk",
@@ -337,7 +337,7 @@
         {
             "type": "post",
             "id": "cj6z2jkgg00001cdrphrvtlxa",
-            "threadid": 123,
+            "threadid": 0,
             "title": "Cars & Dinos",
             "content": "Dinosaurs are like cars.",
             "src": null,
@@ -348,7 +348,7 @@
             "likes": 0,
             "dislikes": 0,
             "replies": 0,
-            "tags": ["cars", "thread-123"],
+            "tags": ["cars"],
             "timestamp": 1501135362,
             "lastEdit": 0,
             "rating": null
@@ -356,7 +356,7 @@
         {
             "type": "post",
             "id": "cj6z2jsfq00001kdruemckuya",
-            "threadid": 123,
+            "threadid": "cj6z2jkgg00001cdrphrvtlxa",
             "title": "Dinos & Cars",
             "content": "Cars are like dinosaurs.",
             "src": null,
@@ -367,7 +367,7 @@
             "likes": 0,
             "dislikes": 0,
             "replies": 0,
-            "tags": ["dinosaurs", "thread-123"],
+            "tags": ["dinosaurs"],
             "timestamp": 1501185342,
             "lastEdit": 0,
             "rating": null
@@ -375,7 +375,7 @@
         {
             "type": "post",
             "id": "cj6z2k0cx00001rdra27veuij",
-            "threadid": 124,
+            "threadid": "cj6z2jkgg00001cdrphrvtlxa",
             "title": "Testing the Forums",
             "content": "Forums are like dinosaurs.",
             "src": null,
@@ -386,7 +386,7 @@
             "likes": 1,
             "dislikes": 2,
             "replies": 0,
-            "tags": ["forums", "dinosaurs", "thread-124"],
+            "tags": ["forums", "dinosaurs"],
             "timestamp": 1501188342,
             "lastEdit": 0,
             "rating": null
@@ -394,13 +394,13 @@
         {
             "type": "post",
             "id": "cj6z2k8mb00001zdrjqdamepf",
-            "threadid": 124,
+            "threadid": "cj6z2jkgg00001cdrphrvtlxa",
             "title": "Testing the Dinos",
             "content": "Dinos are like forums.",
             "src": null,
             "thumb": null,
             "userid": 4,
-            "tags": ["forums", "dinosaurs", "thread-124"],
+            "tags": ["forums", "dinosaurs"],
             "approvals": 0,
             "disapprovals": 0,
             "likes": 0,
@@ -413,7 +413,7 @@
         {
             "type": "image",
             "id": "cj6z2kgd8000025dr7gkbb244",
-            "threadid": null,
+            "threadid": "cj6z2jkgg00001cdrphrvtlxa",
             "title": "1 Mock 1 image 1 title",
             "content": "",
             "src": "https://apod.nasa.gov/apod/image/1708/EclipseWyoming_Cooper_960.jpg",
@@ -424,7 +424,7 @@
             "likes": 0,
             "dislikes": 0,
             "replies": 0,
-            "tags": ["hello"],
+            "tags": ["hello", "test"],
             "timestamp": 1501239377,
             "lastEdit": 0,
             "rating": null
@@ -437,7 +437,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2m5so00006pdr9yddwkhh",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "Wassup, [b]homie[/b]?",
                     "src": null,
@@ -456,7 +456,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2mczh00006zdr5hioslkr",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "wha?",
                     "src": null,
@@ -475,7 +475,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2mjrh000077drkudqylov",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "[quote]wha?[/quote][i]wassss[/i]uuuuup?",
                     "src": null,
@@ -494,7 +494,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2mr9300007fdre5aimclm",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "wassssuuuuup?",
                     "src": null,
@@ -513,7 +513,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2my9s00007ndra271zukj",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "...uuuuu...",
                     "src": null,
@@ -532,7 +532,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2n6h100007udra5ftsoc6",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "...uuuuu...",
                     "src": null,
@@ -551,7 +551,7 @@
                 {
                     "type": "message",
                     "id": "cj6z2nf2s000085dr4g0jp9l8",
-                    "threadid": null,
+                    "threadid": 0,
                     "title": null,
                     "content": "...uuuuup?!",
                     "src": null,
@@ -574,7 +574,7 @@
         {
             "type": "message",
             "id": "cj6z3ua2s0000nldr6ebklayi",
-            "threadid": null,
+            "threadid": 0,
             "title": null,
             "content": "Wassup, homies?",
             "src": null,
@@ -593,7 +593,7 @@
         {
             "type": "message",
             "id": "cj6z3uwv80000nzdrwtyxl06t",
-            "threadid": null,
+            "threadid": 0,
             "title": null,
             "content": "Just chillin'...",
             "src": null,
@@ -612,7 +612,7 @@
         {
             "type": "message",
             "id": "cj739mxcf00004sdrk09azm78",
-            "threadid": null,
+            "threadid": 0,
             "title": null,
             "content": "okay, homie!!!11",
             "src": null,
@@ -643,7 +643,7 @@
         "likes": 44,
         "dislikes": 9,
         "replies": 0,
-        "tags": ["thread-5"],
+        "tags": [],
         "timestamp": 1501229377,
         "lastEdit": 0,
         "rating": null

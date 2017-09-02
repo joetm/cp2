@@ -52,21 +52,8 @@ export const fetchPosts = (limit) =>
         .then(response => response)
 
 export const fetchThreads = (limit) =>
-    jsonAPI.fetchFromAPI('posts', null, limit)
-        .then(response => {
-            // TODO : only return the first post in a thread
-            const ret = []
-            const threadids = []
-            response.forEach(item => {
-                if (item.threadid) {
-                    if (threadids.indexOf(item.threadid) === -1) {
-                        threadids.push(item.threadid)
-                        ret.push(item)
-                    }
-                }
-            })
-            return ret
-        })
+    jsonAPI.fetchFromAPI('threads', null, limit)
+        .then(response => response)
 
 export const fetchAlbum = (userid) =>
     jsonAPI.fetchFromAPI('images')
@@ -123,7 +110,11 @@ export const fetchThread = (threadid) =>
 
 export const sendChatMessage = (payload) =>
     jsonAPI.sendDataToAPI(payload)
-        .then(response => response)
+        .then(response => {
+            if (response === 200) {
+                return payload
+            }
+        })
 
 export const recordLike = (payload) =>
     jsonAPI.sendDataToAPI(payload)

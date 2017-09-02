@@ -42,7 +42,10 @@ export function chatReducer(chatState = initialState.chat, action) {
         case ACTIONS.RECEIVE_CHAT:
             return [ ...action.response ]
         case ACTIONS.RECEIVE_CHAT_MSG:
-            return [ ...chatState ].push(action.response)
+            const newState = [ ...chatState ]
+            newState.push(action.response)
+            console.log('newState', newState)
+            return newState
         default:
             return chatState
     }

@@ -1,7 +1,7 @@
 {
     "port": 2222,
     "delay": 100,
-    "routes": "./__mocks__/mockRoutes.json",
+    "routes": "./__mocks__/routes.json",
     "watch": true,
     "foreignKeySuffix": "id"
 }
