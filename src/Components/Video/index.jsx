@@ -3,18 +3,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import Chip from 'material-ui/Chip'
 import VideoIcon from 'material-ui/svg-icons/av/videocam'
 import ImageIcon from 'material-ui/svg-icons/image/camera-alt'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import StarIcon from 'material-ui/svg-icons/toggle/star'
 import PersonIcon from 'material-ui/svg-icons/social/person'
-import ChipAvatar from 'material-ui/Avatar'
 
 import { fetchVideo } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
 import Avatar from '../Shared/Avatar'
+import Tag from '../Shared/Tag'
 import routes from '../../routes'
 
 
@@ -25,9 +24,6 @@ const styles = {
     width: '100%',
     maxWidth: `${VIDEO_MAXWIDTH}px`,
     margin: '0 auto',
-  },
-  tag: {
-    margin: 4,
   },
   tagWrapper: {
     display: 'flex',
@@ -52,7 +48,6 @@ class Video extends React.Component {
      */
     render() {
         const { title, src, thumb, user, tags } = this.props.video
-        console.log('tags', tags)
         return (
             <div style={styles.pageWrapper}>
 
@@ -68,7 +63,7 @@ class Video extends React.Component {
                     <div style={styles.tagWrapper}>
                         <span style={styles.tagHeader}>Tags:</span>
                         {
-                            tags.map((tag) => <Chip key={`vtag_${tag}`} style={styles.tag}>{tag}</Chip>)
+                            tags.map((tag) => <Tag key={`vtag_${tag}`} text={tag} />)
                         }
                     </div>
                 }
@@ -88,21 +83,11 @@ class Video extends React.Component {
 
 
                         <div style={{...styles.tagWrapper, float: 'right'}}>
-                            <Chip style={styles.tag}>
-                                <ChipAvatar icon={<ImageIcon />} /> {user.numImages}
-                            </Chip>
-                            <Chip style={styles.tag}>
-                                <ChipAvatar icon={<VideoIcon />} /> {user.numVideos}
-                            </Chip>
-                            <Chip style={styles.tag}>
-                                <ChipAvatar icon={<LikeIcon />} /> {user.numLikes}
-                            </Chip>
-                            <Chip style={styles.tag}>
-                                <ChipAvatar icon={<StarIcon />} /> {user.numFavorites}
-                            </Chip>
-                            <Chip style={styles.tag}>
-                                <ChipAvatar icon={<PersonIcon />} /> {user.numFollowers}
-                            </Chip>
+                            <Tag icon={<ImageIcon />} text={user.numImages} />
+                            <Tag icon={<VideoIcon />} text={user.numVideos} />
+                            <Tag icon={<LikeIcon />} text={user.numLikes} />
+                            <Tag icon={<StarIcon />} text={user.numFavorites} />
+                            <Tag icon={<PersonIcon />} text={user.numFollowers} />
                         </div>
 
                     </div>
