@@ -1,14 +1,13 @@
 /** @flow */
 
 import React from 'react'
-import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import { List } from 'material-ui/List'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { humanRelativeDate, translateDayOffset, categorizeList } from '../../common/helpers'
+import { translateDayOffset, categorizeList } from '../../common/helpers'
 // --
 import Update from './Update'
 import Notification from './Notification'

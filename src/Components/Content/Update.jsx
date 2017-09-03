@@ -2,10 +2,9 @@
 
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { Card, CardActions, CardHeader, CardMedia, CardTitle } from 'material-ui/Card'
+import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar'
 
-import { LikeButton, FavoriteButton, CommentButton } from './Button'
 import routes from '../../routes'
 
 
@@ -17,46 +16,46 @@ const styles = {
 
 
 // https://stackoverflow.com/a/39094233/426266
-class AtomicImage extends React.PureComponent {
-  constructor(props) {
-        super(props)
-        this.state = {
-          dimensions: {},
-        }
-  }
-  onImgLoad = ({target: img}) => {
-        this.setState({
-          dimensions: {
-            height: img.offsetHeight,
-            width: img.offsetWidth,
-          }
-        })
-  }
-  render() {
-      const {src} = this.props
-      const { width, height } = this.state.dimensions
-      // the images should always be scaled to the max dimension of the browser window
-      // console.log(window.innerWidth)
-      // console.log(window.innerHeight)
-      const dynamicStyle = {}
-      // case: portrait image
-//        if (width <= height) {
-        dynamicStyle.maxHeight = `${window.innerHeight}px`
-        dynamicStyle.width = 'auto'
-//        } else {
-//          dynamicStyle.maxWidth = `${window.innerWidth}px`
-//          dynamicStyle.height = 'auto'
-//        }
-      return (
-          <img
-            style={dynamicStyle}
-            onLoad={this.onImgLoad}
-            alt=""
-            src={src}
-          />
-      )
-  }
-}
+// class AtomicImage extends React.PureComponent {
+//   constructor(props) {
+//         super(props)
+//         this.state = {
+//           dimensions: {},
+//         }
+//   }
+//   onImgLoad = ({target: img}) => {
+//         this.setState({
+//           dimensions: {
+//             height: img.offsetHeight,
+//             width: img.offsetWidth,
+//           }
+//         })
+//   }
+//   render() {
+//       const {src} = this.props
+//       const { width, height } = this.state.dimensions
+//       // the images should always be scaled to the max dimension of the browser window
+//       // console.log(window.innerWidth)
+//       // console.log(window.innerHeight)
+//       const dynamicStyle = {}
+//       // case: portrait image
+// //        if (width <= height) {
+//         dynamicStyle.maxHeight = `${window.innerHeight}px`
+//         dynamicStyle.width = 'auto'
+// //        } else {
+// //          dynamicStyle.maxWidth = `${window.innerWidth}px`
+// //          dynamicStyle.height = 'auto'
+// //        }
+//       return (
+//           <img
+//             style={dynamicStyle}
+//             onLoad={this.onImgLoad}
+//             alt=""
+//             src={src}
+//           />
+//       )
+//   }
+// }
 
 
 class Update extends React.PureComponent {

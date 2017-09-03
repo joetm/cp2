@@ -7,7 +7,6 @@ import DisapproveIcon from 'material-ui/svg-icons/action/thumb-down'
 import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import CommentIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import LoginIcon  from 'material-ui/svg-icons/action/perm-identity'
-import IconButton from 'material-ui/IconButton'
 
 import ButtonMini from './ButtonMini'
 import ButtonFlat from './ButtonFlat'

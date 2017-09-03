@@ -31,7 +31,7 @@ class ButtonRaised extends React.PureComponent {
         return (
             <RaisedButton
               label={this.msg}
-              { ... this.props }
+              {...this.props}
               style={styles.buttonStyle}
               icon={this.Icon}
               onTouchTap={this.props.action}

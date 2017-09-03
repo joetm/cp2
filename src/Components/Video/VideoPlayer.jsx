@@ -109,7 +109,7 @@ class VideoPlayer extends Component {
     playerHeight: 480,
   }
   resizePlayer = () => {
-    const playerHeight = Math.round(this.refs.playerWrapper.offsetWidth / 16 * 9)
+    const playerHeight = Math.round(this.refs.playerWrapper.offsetWidth / (16 * 9))
     // TODO
     // if the player becomes taller than the window, resize the width
     // if (playerHeight > window.innerHeight) {
@@ -136,7 +136,7 @@ class VideoPlayer extends Component {
   stop = () => {
     this.setState({ url: null, playing: false })
   }
-  setVolume = e => {
+  setVolume = () => {
     this.setState({ volume: parseFloat(this.refs.volumeSlider.state.value) })
   }
   setPlaybackRate = (e, key, value) => {
@@ -151,7 +151,7 @@ class VideoPlayer extends Component {
     console.log(newValue)
     this.setState({ played: parseFloat(newValue) })
   }
-  onSeekMouseUp = (e) => {
+  onSeekMouseUp = () => {
     this.setState({ seeking: false })
     this.player.seekTo(parseFloat(this.refs.seekSlider.state.value))
   }
@@ -184,9 +184,7 @@ class VideoPlayer extends Component {
     this.setState(config)
   }
   render () {
-
     const { src, thumb } = this.props
-
     const {
       url, playing, volume,
       played, loaded, duration,

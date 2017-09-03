@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 import { getPosts } from '../../actions'
 import Posts from './Posts'
-import Loader from '../Shared/Loader'
 
 
 class Category extends React.Component {

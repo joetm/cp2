@@ -10,6 +10,7 @@ const Post = props => {
   const { post, history, match } = props
   /**
    * Render the component.
+   * @returns <ListItem />
    */
   return (
       <ListItem

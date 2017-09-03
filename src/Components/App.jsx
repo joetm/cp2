@@ -59,7 +59,7 @@ import DMCA from './Legal/DMCA'
 import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
-import Playlist from './Playlist'
+// import Playlist from './Playlist'
 
 // <ConnectedRouter history={browserHistory}>
 // </ConnectedRouter>

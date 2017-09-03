@@ -14,7 +14,7 @@ import SinglePost from './SinglePost'
 import SingleThread from './SingleThread'
 
 
-class Forum extends React.Component {
+class Forum extends React.PureComponent {
     render() {
         const { url, sidebarSearchOpen, closeSearchSidebar } = this.props
         return (

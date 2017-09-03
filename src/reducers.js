@@ -40,9 +40,9 @@ import jwtDecode from 'jwt-decode'
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CHAT:
-            return [ ...action.response ]
+            return [...action.response]
         case ACTIONS.RECEIVE_CHAT_MSG:
-            const newState = [ ...chatState ]
+            const newState = [...chatState]
             newState.push(action.response)
             console.log('newState', newState)
             return newState
@@ -58,7 +58,7 @@ export function chatReducer(chatState = initialState.chat, action) {
 export function messageHistoryReducer(msgHistState = initialState.messageHistory, action) {
     switch (action.type) {
         case ACTIONS.SEND_MESSAGE:
-            const messageHistoryState = { ...msgHistState }
+            const messageHistoryState = {...msgHistState}
             messageHistoryState.messages.push({
                 type: "message",
                 id: cuid(),
@@ -74,7 +74,7 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
             })
             return messageHistoryState
         case ACTIONS.RECEIVE_MESSAGEHISTORY:
-            return { ...action.response }
+            return {...action.response}
         default:
             return msgHistState
     }
@@ -88,15 +88,15 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
     const increment = action.increment === undefined ? 1 : action.increment
     switch (action.type) {
         case ACTIONS.LIKE:
-            return { ...reviewState, likes: reviewState.likes + increment }
+            return {...reviewState, likes: reviewState.likes + increment}
         case ACTIONS.DISLIKE:
-            return { ...reviewState, dislikes: reviewState.dislikes + increment }
+            return {...reviewState, dislikes: reviewState.dislikes + increment}
         case ACTIONS.REVIEW_APPROVE:
-            return { ...reviewState, approvals: reviewState.approvals + 1 }
+            return {...reviewState, approvals: reviewState.approvals + 1}
         case ACTIONS.REVIEW_DISAPPROVE:
-            return { ...reviewState, disapprovals: reviewState.disapprovals + 1 }
+            return {...reviewState, disapprovals: reviewState.disapprovals + 1}
         case ACTIONS.RECEIVE_REVIEWITEM:
-            return { ...action.response }
+            return {...action.response}
         default:
             return reviewState
     }
@@ -109,7 +109,7 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 export function updatesReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_UPDATES:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return updatesState
     }
@@ -122,7 +122,7 @@ export function updatesReducer(updatesState = initialState.updates, action) {
 export function notificationsReducer(notificationState = initialState.notifications, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_NOTIFICATIONS:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return notificationState
     }
@@ -135,7 +135,7 @@ export function notificationsReducer(notificationState = initialState.notificati
 export function imagesReducer(imagesState = initialState.images, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGES:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return imagesState
     }
@@ -148,7 +148,7 @@ export function imagesReducer(imagesState = initialState.images, action) {
 export function imageReducer(imageState = initialState.image, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGE:
-            return { ...action.response }
+            return {...action.response}
         default:
             return imageState
     }
@@ -161,7 +161,7 @@ export function imageReducer(imageState = initialState.image, action) {
 export function videosReducer(videosState = initialState.videos, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_VIDEOS:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return videosState
     }
@@ -176,7 +176,7 @@ export function videoReducer(videoState = initialState.video, action) {
         case ACTIONS.FETCH_VIDEO_STARTED:
             return { }
         case ACTIONS.RECEIVE_VIDEO:
-            return { ...action.response }
+            return {...action.response}
         default:
             return videoState
     }
@@ -189,7 +189,7 @@ export function videoReducer(videoState = initialState.video, action) {
 export function albumReducer(albumState = initialState.album, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_ALBUM:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return albumState
     }
@@ -202,7 +202,7 @@ export function albumReducer(albumState = initialState.album, action) {
 export function favoritesReducer(favoritesState = initialState.favorites, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_FAVORITES:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return favoritesState
     }
@@ -215,7 +215,7 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
 export function likesReducer(likesState = initialState.notifications, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_LIKES:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return likesState
     }
@@ -228,7 +228,7 @@ export function likesReducer(likesState = initialState.notifications, action) {
 export function threadReducer(threadState = initialState.thread, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREAD:
-            return { ...action.response }
+            return {...action.response}
         default:
             return threadState
     }
@@ -241,7 +241,7 @@ export function threadReducer(threadState = initialState.thread, action) {
 export function postReducer(postState = initialState.post, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_POST:
-            return { ...action.response }
+            return {...action.response}
         default:
             return postState
     }
@@ -254,7 +254,7 @@ export function postReducer(postState = initialState.post, action) {
 export function postsReducer(postsState = initialState.posts, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_POSTS:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return postsState
     }
@@ -267,7 +267,7 @@ export function postsReducer(postsState = initialState.posts, action) {
 export function threadsReducer(threadsState = initialState.threads, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREADS:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return threadsState
     }
@@ -282,13 +282,13 @@ export function userReducer(usersState = initialState.users, action) {
         case ACTIONS.RECEIVE_USER:
             return {
                 ...usersState,
-                [action.response.id]: { ...action.response }
+                [action.response.id]: {...action.response}
             }
         case ACTIONS.RECEIVE_USERS:
             const ret = { ...usersState }
             for (let id in action.response) {
                 if (action.response.hasOwnProperty(id)) {
-                    ret[id] = { ...action.response[id] }
+                    ret[id] = {...action.response[id]}
                 }
             }
             return ret
@@ -304,7 +304,7 @@ export function userReducer(usersState = initialState.users, action) {
 export function followersReducer(followersState = initialState.followers, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_FOLLOWERS:
-            return [ ...action.response ]
+            return [...action.response]
         default:
             return followersState
     }
@@ -343,23 +343,23 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             }
 
         case ACTIONS.MARK_IMAGES_READ:
-            return { ...currentUserState, unreadImages: 0 }
+            return {...currentUserState, unreadImages: 0}
         case ACTIONS.MARK_VIDEOS_READ:
-            return { ...currentUserState, unreadVideos: 0 }
+            return {...currentUserState, unreadVideos: 0}
         case ACTIONS.MARK_POSTS_READ:
-            return { ...currentUserState, unreadPosts: 0 }
+            return {...currentUserState, unreadPosts: 0}
         case ACTIONS.MARK_MESSAGES_READ:
-            return { ...currentUserState, unreadMessages: 0 }
+            return {...currentUserState, unreadMessages: 0}
         case ACTIONS.MARK_LIKES_READ:
-            return { ...currentUserState, unreadLikes: 0 }
+            return {...currentUserState, unreadLikes: 0}
         case ACTIONS.MARK_ALL_READ:
-            return { ...currentUserState, unreadImages: 0, unreadVideos: 0, unreadPosts: 0, unreadMessages: 0, unreadLikes: 0}
+            return {...currentUserState, unreadImages: 0, unreadVideos: 0, unreadPosts: 0, unreadMessages: 0, unreadLikes: 0}
 
         // AUTH -------------------------------------
         case ACTIONS.SET_IS_AUTHENTICATING:
-            return { ...currentUserState, 'isAuthenticating': true }
+            return {...currentUserState, 'isAuthenticating': true}
         case ACTIONS.LOGIN_SUCCESS:
-            return { ...currentUserState, ...{
+            return {...currentUserState, ...{
                 isAuthenticating: false,
                 isAuthenticated: true,
                 token: action.token,
@@ -369,7 +369,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 statusText: 'You have been successfully logged in.',
             }}
         case ACTIONS.LOGIN_FAILURE:
-            return { ...currentUserState, ...{
+            return {...currentUserState, ...{
                 isAuthenticating: false,
                 isAuthenticated: false,
                 token: null,
@@ -378,7 +378,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 statusText: `Authentication Error: ${action.status} ${action.statusText}`
             }}
         case ACTIONS.LOGOUT:
-            return { ...currentUserState, ...{
+            return {...currentUserState, ...{
                 isAuthenticated: false,
                 token: null,
                 userid: null,
@@ -387,9 +387,9 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             }}
 
         case ACTIONS.DELETE_AVATAR_SUCCESS:
-            return { ...currentUserState, avatar: null }
+            return {...currentUserState, avatar: null}
         case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
-            return { ...currentUserState, profileimg: null }
+            return {...currentUserState, profileimg: null}
 
         default:
             return currentUserState
@@ -403,28 +403,28 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
 export function cpAppReducer(appState = initialState.appState, action) {
     switch (action.type) {
         case ACTIONS.OPEN_SEARCH_SIDEBAR:
-            return { ...appState, sidebarSearchOpen: true}
+            return {...appState, sidebarSearchOpen: true}
         case ACTIONS.CLOSE_SEARCH_SIDEBAR:
-            return { ...appState, sidebarSearchOpen: false}
+            return {...appState, sidebarSearchOpen: false}
         case ACTIONS.TOGGLE_SEARCH_SIDEBAR:
-            return { ...appState, sidebarSearchOpen: !appState.sidebarSearchOpen }
+            return {...appState, sidebarSearchOpen: !appState.sidebarSearchOpen}
         case ACTIONS.OPEN_SIDEBAR:
-            return { ...appState, sidebarOpen: true}
+            return {...appState, sidebarOpen: true}
         case ACTIONS.CLOSE_SIDEBAR:
-            return { ...appState, sidebarOpen: false}
+            return {...appState, sidebarOpen: false}
         case ACTIONS.TOGGLE_SIDEBAR:
-            return { ...appState, sidebarOpen: !appState.sidebarOpen }
+            return {...appState, sidebarOpen: !appState.sidebarOpen}
         case ACTIONS.SET_DEVICE_DETAILS:
-            return { ...appState, deviceDetails: action.obj }
+            return {...appState, deviceDetails: action.obj}
         case ACTIONS.SET_ACTIVE_BADGE:
-            return { ...appState, activeBadge: +action.id }
+            return {...appState, activeBadge: +action.id}
 
         case ACTIONS.RECEIVE_COUNTRIES:
-            return { ...appState, countries: [ ...action.response ] }
+            return {...appState, countries: [...action.response]}
         case ACTIONS.RECEIVE_STATES:
-            return { ...appState, states: [ ...action.response ] }
+            return {...appState, states: [...action.response]}
         case ACTIONS.RECEIVE_CITIES:
-            return { ...appState, cities: [ ...action.response ] }
+            return {...appState, cities: [...action.response]}
 
         // TODO - ajax loading msg
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators

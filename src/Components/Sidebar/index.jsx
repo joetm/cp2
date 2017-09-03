@@ -48,12 +48,12 @@ const styles = {
 let tabindex = 0
 
 const tabindexCounter = () => {
-    tabindex = tabindex + 1
+    tabindex += 1
     return tabindex
 }
 
 
-class Sidebar extends React.Component {
+class Sidebar extends React.PureComponent {
     render() {
         const { closeSidebar, userid } = this.props
         return (

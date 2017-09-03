@@ -27,7 +27,7 @@ const DEFAULT_PROPS = {
     showQuickJumper: false,
     showLessItems: false,
     showTitle: true,
-    locale : LOCALE_OBJ,
+    locale: LOCALE_OBJ,
 }
 
 const styles = {
@@ -48,7 +48,7 @@ const Pagination = (props) => {
         <div style={styles.wrapper}>
             <RCPagination
                 style={styles.pagination}
-                { ...AUGMENTED_PROPS }
+                {...AUGMENTED_PROPS}
             />
         </div>
     )

@@ -38,9 +38,9 @@ class ReviewCard extends React.PureComponent {
     }
     /**
      * Render the component.
+     * @ returns ReviewCard
      */
     render() {
-
         const {
             id,
             userid,
@@ -89,11 +89,11 @@ class ReviewCard extends React.PureComponent {
                 />
 
                 <LikeButton
-                    number={likes ? likes : ''}
+                    number={likes}
                     action={like}
                 />
                 <DisapproveButton
-                    number={dislikes ? dislikes : ''}
+                    number={dislikes}
                     action={dislike}
                 />
 

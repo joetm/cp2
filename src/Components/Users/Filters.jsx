@@ -74,7 +74,9 @@ class Filters extends React.PureComponent {
         return (
               <div className="mdc-layout-grid">
                 <div className="mdc-layout-grid__inner">
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -108,7 +110,9 @@ class Filters extends React.PureComponent {
                           />
                         </SelectField>
                     </div>
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -117,7 +121,9 @@ class Filters extends React.PureComponent {
                           hintText="Username"
                       />
                     </div>
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -130,7 +136,9 @@ class Filters extends React.PureComponent {
                           <MenuItem value={3} primaryText="Over one year ago" />
                         </SelectField>
                     </div>
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -143,7 +151,9 @@ class Filters extends React.PureComponent {
                       />
                     </div>
 
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -163,7 +173,9 @@ class Filters extends React.PureComponent {
                           }
                         </SelectField>
                     </div>
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -183,7 +195,9 @@ class Filters extends React.PureComponent {
                           }
                         </SelectField>
                     </div>
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}
@@ -203,7 +217,9 @@ class Filters extends React.PureComponent {
                           }
                         </SelectField>
                     </div>
-                    <div style={{position: 'relative'}} className={`mdc-layout-grid__cell
+                    <div
+                        style={{position: 'relative'}}
+                        className={`mdc-layout-grid__cell
                         mdc-layout-grid__cell--span-${_CELLSPANS.full}
                         mdc-layout-grid__cell--span-${_CELLSPANS.tablet}-tablet
                         mdc-layout-grid__cell--span-${_CELLSPANS.phone}-phone`}

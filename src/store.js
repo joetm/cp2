@@ -5,11 +5,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import promise from 'redux-promise'
 import { createLogger } from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
-// import reduceReducers from 'reduce-reducers'
 
 import * as Reducers from './reducers'
-import { SET_DEVICE_DETAILS } from './reducers'
-// import DevTools from './DevTools'
 
 
 // see https://egghead.io/lessons/javascript-redux-the-middleware-chain
@@ -23,7 +20,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 const enhancer = compose(
   applyMiddleware(...middlewares), // apply middleware for navigating
-  // DevTools.instrument()
 )
 
 const store = createStore(

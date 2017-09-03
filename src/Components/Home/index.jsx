@@ -44,7 +44,7 @@ class Home extends React.Component {
                           this.props.updates.map((item) => (
                             <Notification
                                 key={item.id}
-                                { ...item }
+                                {...item}
                                 content={
                                   <p>
                                     <span style={{color: darkBlack}}>Recipe to try</span><br />
@@ -66,7 +66,7 @@ class Home extends React.Component {
                           this.props.favorites.map((item) => (
                             <Notification
                                 key={item.id}
-                                { ...item }
+                                {...item}
                                 content={
                                   <p>
                                     <span style={{color: darkBlack}}>Recipe to try</span><br />
@@ -88,7 +88,7 @@ class Home extends React.Component {
                           this.props.likes.map((item) => (
                             <Notification
                                 key={item.id}
-                                { ...item }
+                                {...item}
                                 content={
                                   <p>
                                     <span style={{color: darkBlack}}>Recipe to try</span><br />

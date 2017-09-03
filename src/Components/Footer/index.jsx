@@ -23,7 +23,7 @@ const styles = {
  * Footer class
  * @class
  */
-const Footer = (props) => (
+const Footer = () => (
     <div style={{textAlign: 'center'}}>
 
         <Divider />

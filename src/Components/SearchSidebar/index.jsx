@@ -134,17 +134,18 @@ class Sidebar extends React.Component {
                         selected: _MENUITEM.TODAY
                     })}
                 >
-                    Today's Threads
+                    Today&apos;s Threads
                 </MenuItem>
                 <MenuItem
                     checked={this.state.selected === _MENUITEM.XXX}
                     disabled={this.state.selected === _MENUITEM.XXX}
                     secondaryText="1234"
                     onTouchTap={() => {
-                        this.setState({
-                            // open:false,
-                            selected: _MENUITEM.XXX,
-                        }) }
+                            this.setState({
+                                // open:false,
+                                selected: _MENUITEM.XXX,
+                            })
+                        }
                     }
                 >
                     XXX

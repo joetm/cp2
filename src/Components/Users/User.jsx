@@ -60,8 +60,8 @@ class User extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const { username, usertitle, avatar, status, verified, city, state, country } = this.props
-        const verifiedStatus = verified ? '- verified' : ''
+        const { username, usertitle, avatar, verified, city, state, country } = this.props
+        // const verifiedStatus = verified ? '- verified' : ''
         const location = city || state || country ? `- ${city}, ${state}, ${country}` : ''
         const secondaryText = <SubText {...{username}} {...{usertitle}} {...{verified}} {...{location}} />
         return (

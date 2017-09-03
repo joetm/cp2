@@ -1,7 +1,6 @@
 /** @flow */
 
 import React from 'react'
-import Subheader from 'material-ui/Subheader'
 
 import Post from './Post'
 

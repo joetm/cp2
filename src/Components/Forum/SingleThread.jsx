@@ -3,7 +3,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Subheader from 'material-ui/Subheader'
 
 import { fetchThread } from '../../actions'
 import Spacer from '../Shared/Spacer'
@@ -26,7 +25,7 @@ class SingleThread extends React.Component {
         this.props.fetchThread(threadid)
     }
     render() {
-        const { title, posts, timestamp, user, userid } = this.props.thread
+        const { title, posts, user } = this.props.thread
         return (
             <div>
 

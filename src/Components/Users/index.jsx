@@ -4,9 +4,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { List } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
-import IconMenu from 'material-ui/IconMenu'
-import MenuItem from 'material-ui/MenuItem'
-import DropDownMenu from 'material-ui/DropDownMenu'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import IconButton from 'material-ui/IconButton'
 import ExpandFiltersIcon from 'material-ui/svg-icons/navigation/expand-more'
@@ -44,7 +41,7 @@ class Users extends React.PureComponent {
      */
     render () {
           const { users } = this.props
-          let usersList = []
+          const usersList = []
           for (let userid in users) {
             if (users.hasOwnProperty(userid)) {
               usersList.push(users[userid])
@@ -88,7 +85,7 @@ class Users extends React.PureComponent {
                   usersList.map((user) => (
                     <User
                       key={`usr_${user.id}`}
-                      { ...user }
+                      {...user}
                     />
                   ))
                 }
@@ -111,7 +108,7 @@ class Users extends React.PureComponent {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
     users: state.users,
     countries: state.appState.countries,
 })

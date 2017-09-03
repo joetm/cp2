@@ -10,7 +10,6 @@ import Divider from 'material-ui/Divider'
 
 import { fetchFollowers } from '../../actions'
 import Spacer from '../Shared/Spacer'
-import Loader from '../Shared/Loader'
 import Follower from './Follower'
 
 
@@ -21,13 +20,13 @@ import Follower from './Follower'
 class Followers extends React.PureComponent {
     componentDidMount() {
       const { userid } = this.props
-      this.props.fetchFollowers()
+      this.props.fetchFollowers(userid)
     }
     /**
      * Render the component.
      */
     render () {
-        const { followers, user } = this.props
+        const { followers } = this.props
         return (
           <div>
 

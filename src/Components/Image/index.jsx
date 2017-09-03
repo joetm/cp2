@@ -3,12 +3,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-// --
-import EditIcon from 'material-ui/svg-icons/image/edit'
-import IconButton from 'material-ui/IconButton'
 
 import { fetchPicture } from '../../actions'
-import { colors } from '../../common/theme'
 // --
 import Spacer from '../Shared/Spacer'
 import Update from '../Content/Update'
@@ -22,13 +18,10 @@ class Image extends React.PureComponent {
      * Render the component.
      */
     render() {
-        const { title, user } = this.props.image
-        console.log('this.props.image', this.props.image)
+        const { title } = this.props.image
         return (
             <div>
-
                 <h2>{title}</h2>
-
                 <Update
                     { ...this.props.image }
                     showTitle={false}
@@ -37,9 +30,7 @@ class Image extends React.PureComponent {
                     gridColumnsTablet={1}
                     gridColumnsPhone={1}
                 />
-
                 <Spacer />
-
             </div>
         )
     }

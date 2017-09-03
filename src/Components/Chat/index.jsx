@@ -6,10 +6,9 @@ import { withRouter } from 'react-router-dom'
 import Divider from 'material-ui/Divider'
 import { List, ListItem } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
-import TextField from 'material-ui/TextField'
 
 import { sendChatMessage, fetchChat } from '../../actions'
-import colors from '../../common/theme'
+import { colors } from '../../common/theme'
 import routes from '../../routes'
 import ChatInput from './ChatInput'
 
@@ -53,6 +52,7 @@ class Chat extends React.PureComponent {
           {
             this.props.chat.map((chatitem) => (
               <ListItem
+                  key={chatitem.id}
                   style={styles.listitem}
                   primaryText={<div style={styles.chatText}>
                     <span

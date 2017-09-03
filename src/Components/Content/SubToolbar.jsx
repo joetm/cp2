@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
 import ListModeIcon from 'material-ui/svg-icons/action/view-list'
@@ -34,7 +33,6 @@ class SubToolbar extends React.Component {
      * Render the component.
      */
     render() {
-
         const { history, changeViewMode } = this.props
         const routing = this.props.routes === undefined ? routes : this.props.routes
 

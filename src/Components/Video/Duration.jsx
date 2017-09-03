@@ -2,12 +2,8 @@
 
 import React from 'react'
 
-function Duration ({ className, seconds }) {
-  return (
-    <time dateTime={`P${Math.round(seconds)}S`} className={className}>
-      {format(seconds)}
-    </time>
-  )
+function pad (string) {
+  return (`0${string}`).slice(-2)
 }
 
 function format (seconds) {
@@ -21,8 +17,12 @@ function format (seconds) {
   return `${mm}:${ss}`
 }
 
-function pad (string) {
-  return ('0' + string).slice(-2)
+function Duration ({ className, seconds }) {
+  return (
+    <time dateTime={`P${Math.round(seconds)}S`} className={className}>
+      {format(seconds)}
+    </time>
+  )
 }
 
 export default Duration

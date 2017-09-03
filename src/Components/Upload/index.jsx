@@ -1,8 +1,6 @@
 /** @flow */
 
 import React from 'react'
-import { connect } from 'react-redux'
-import Dropzone from 'react-dropzone'
 // import 'simple-react-dropzone/ui/css/filepicker.css'
 // import 'simple-react-dropzone/ui/css/dropzone.css'
 import '../External/dropzone/dist/dropzone.css'
@@ -26,17 +24,17 @@ const styles = {
     margin: '0 auto',
   },
 }
-const actionStyles = {
-  activeStyle: {
-    backgroundColor: colors.palette.primary2Color,
-  },
-  acceptStyle: {
-    backgroundColor: colors.palette.primary3Color,
-  },
-  rejectStyle: {
-    backgroundColor: colors.palette.primary1Color,
-  },
-}
+// const actionStyles = {
+//   activeStyle: {
+//     backgroundColor: colors.palette.primary2Color,
+//   },
+//   acceptStyle: {
+//     backgroundColor: colors.palette.primary3Color,
+//   },
+//   rejectStyle: {
+//     backgroundColor: colors.palette.primary1Color,
+//   },
+// }
 
 
 class Upload extends React.Component {
