@@ -90,7 +90,7 @@ export const RECEIVE_CITY              = 'APP::RECEIVE_CITY'
 
 export const RECEIVE_CHAT              = 'CHAT::RECEIVE_CHAT'
 export const RECEIVE_CHAT_MSG          = "CHAT::RECEIVE_CHAT_MSG"
-export const SEND_CHAT_MSG             = "CHAT::SEND_CHAT_MSG"
+// export const SEND_CHAT_MSG             = "CHAT::SEND_CHAT_MSG"
 
 // export const DELETE_AVATAR             = 'APP:RECEIVE_AVATAR'
 export const DELETE_AVATAR_STARTED     = 'APP::DELETE_AVATAR_STARTED'
@@ -99,6 +99,9 @@ export const DELETE_AVATAR_FAILURE     = 'APP::DELETE_AVATAR_FAILURE'
 export const DELETE_PROFILEIMG_STARTED = 'APP:RECEIVE_PROFILEIMG_STARTED'
 export const DELETE_PROFILEIMG_SUCCESS = 'APP:RECEIVE_PROFILEIMG_SUCCESS'
 export const DELETE_PROFILEIMG_FAILURE = 'APP:RECEIVE_PROFILEIMG_FAILURE'
+
+// export const SEND_SETTING              = 'APP::SEND_SETTING'
+export const RECEIVE_SETTING           = 'APP::RECEIVE_SETTING'
 
 export const REPLY_NOTIFICATION        = 'SOCIAL::REPLY_NOTIFICATION'
 export const FORWARD_NOTIFICATION      = 'SOCIAL::FORWARD_NOTIFICATION'
@@ -173,7 +176,7 @@ export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'boo
 
 // ajax receptors
 export const receiveCurrentUser    = makeActionCreator(RECEIVE_CURRENT_USER,      'response')
-export const receiveUser           = makeActionCreator(RECEIVE_USER,              'response', 'userid')
+export const receiveUser           = makeActionCreator(RECEIVE_USER,              'response')
 export const receiveUsers          = makeActionCreator(RECEIVE_USERS,             'response')
 export const receiveFollowers      = makeActionCreator(RECEIVE_FOLLOWERS,         'response')
 export const receiveComments       = makeActionCreator(RECEIVE_COMMENTS,          'response')
@@ -199,7 +202,7 @@ export const receiveLike           = makeActionCreator(RECEIVE_LIKE,            
 export const receiveDislike        = makeActionCreator(RECEIVE_DISLIKE,           'response')
 export const receiveUnreadCount    = makeActionCreator(RECEIVE_UNREAD_COUNT,      'response')
 
-export const sendChatMessageStart  = makeActionCreator(SEND_CHAT_MSG,             'payload')
+// export const sendChatMessageStart  = makeActionCreator(SEND_CHAT_MSG,             'payload')
 export const receiveChat           = makeActionCreator(RECEIVE_CHAT,              'response')
 export const receiveChatMsg        = makeActionCreator(RECEIVE_CHAT_MSG,          'response')
 
@@ -220,11 +223,14 @@ export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILU
 export const fetchVideoStarted       = makeActionCreator(FETCH_VIDEO_STARTED)
 export const fetchVideoFailure       = makeActionCreator(FETCH_VIDEO_FAILURE)
 
-// AUTH
-export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
-
 export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'payload')
 export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'itemid')
+
+// export const sendSetting             = makeActionCreator(SEND_SETTING,              'key', 'value')
+export const receiveSetting          = makeActionCreator(RECEIVE_SETTING,           'payload',)
+
+// AUTH
+export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
 
 
 // const unknownAction = { type: UNKNOWN }
@@ -454,7 +460,7 @@ export const fetchChat = () =>
     api.fetchChat().then(receiveChat)
 
 export const sendChatMessage = (payload) => (dispatch) => {
-    dispatch(sendChatMessageStart(payload))
+    // dispatch(sendChatMessageStart(payload))
     return api.sendChatMessage(payload).then(receiveChatMsg)
 }
 
@@ -520,3 +526,6 @@ export const removeProfileImg = () => (dispatch) => {
                   dispatch(deleteProfileImgFailure(), error)
                 })
 }
+
+export const changeSetting = (key, value) =>
+    api.changeSetting(key, value).then(receiveSetting)

@@ -5,32 +5,41 @@ import * as jsonAPI from '../../__mocks__/mockJsonAPI'
 // DEV: ajax fetch data from mock json API + dispatch receive methods
 // -------------------------------------------------------------------
 
-export const fetchCurrentUser = () =>
-    jsonAPI.fetchFromAPI('currentUser')
+const makeAPICallCreator = (field) => (selection = null, limit = null) =>
+    jsonAPI.fetchFromAPI(field, selection, limit)
         .then(response => response)
 
-export const fetchUser = (userid) =>
-    jsonAPI.fetchFromAPI('users', userid)
-        .then(response => response)
+// -------------------------------------------------------------------
 
-export const fetchUsers = (limit) =>
-    jsonAPI.fetchFromAPI('users', null, limit)
-        .then(response => response)
+export const fetchCurrentUser = makeAPICallCreator('currentUser')
+export const fetchUsers = makeAPICallCreator('users')
+export const fetchChat = makeAPICallCreator('chat')
+export const fetchPosts = makeAPICallCreator('posts')
+export const fetchThreads = makeAPICallCreator('threads')
+export const fetchAlbum = makeAPICallCreator('images')
+export const fetchUpdates = makeAPICallCreator('streamitems')
+export const fetchPictures = makeAPICallCreator('images')
+export const fetchFollowers = makeAPICallCreator('followers')
+export const fetchVideos = makeAPICallCreator('videos')
+export const fetchStream = makeAPICallCreator('streamitems')
+export const fetchNotifications = makeAPICallCreator('messages')
+export const fetchLikes = makeAPICallCreator('likes')
+export const fetchFavorites = makeAPICallCreator('favorites')
 
-export const fetchFollowers = (limit) =>
-    jsonAPI.fetchFromAPI('followers', null, limit)
-        .then(response => response)
+// -------------------------------------------------------------------
 
-export const fetchReviewItem = () =>
-    jsonAPI.fetchFromAPI('reviewitems', null, 1)
-        .then(response => response)
+export const fetchUser = makeAPICallCreator('users')
+export const fetchPicture = makeAPICallCreator('images')
+export const fetchVideo = makeAPICallCreator('videos')
+export const fetchNotification = makeAPICallCreator('messages')
+export const fetchThread = makeAPICallCreator('threads')
+export const fetchReviewItem = makeAPICallCreator('reviewitems')
+
+// -------------------------------------------------------------------
+
 
 export const fetchUnreadCount = () =>
     jsonAPI.fetchUnreadCountFromAPI()
-        .then(response => response)
-
-export const fetchChat = () =>
-    jsonAPI.fetchFromAPI('chat')
         .then(response => response)
 
 export const fetchMessageHistory = (userid) =>
@@ -47,66 +56,13 @@ export const fetchMessageHistory = (userid) =>
             return response
         })
 
-export const fetchPosts = (limit) =>
-    jsonAPI.fetchFromAPI('posts', null, limit)
-        .then(response => response)
-
-export const fetchThreads = (limit) =>
-    jsonAPI.fetchFromAPI('threads', null, limit)
-        .then(response => response)
-
-export const fetchAlbum = (userid) =>
-    jsonAPI.fetchFromAPI('images')
-        .then(response => response)
-
-export const fetchUpdates = (limit) =>
-    jsonAPI.fetchFromAPI('streamitems', null, limit)
-        .then(response => response)
-
-export const fetchPictures = (limit) =>
-    jsonAPI.fetchFromAPI('images', null, limit)
-        .then(response => response)
-
-export const fetchPicture = (imageid) =>
-    jsonAPI.fetchFromAPI('images', imageid)
-        .then(response => response)
+// -------------------------------------------------------------------
 
 // alias
 export const fetchImages = fetchPictures
 export const fetchImage  = fetchPicture
 
-export const fetchVideos = (limit) =>
-    jsonAPI.fetchFromAPI('videos', null, limit)
-        .then(response => response)
-
-export const fetchVideo = (videoid) =>
-    jsonAPI.fetchFromAPI('videos', videoid)
-        .then(response => response)
-
-export const fetchStream = (limit) =>
-    jsonAPI.fetchFromAPI('streamitems', null, limit)
-        .then(response => response)
-
-export const fetchNotifications = (limit) =>
-    jsonAPI.fetchFromAPI('messages', null, limit)
-        .then(response => response)
-
-export const fetchNotification = (notificationid) =>
-    jsonAPI.fetchFromAPI('messages', notificationid)
-        .then(response => response)
-
-export const fetchFavorites = (limit) =>
-    jsonAPI.fetchFromAPI('favorites', null, limit)
-        .then(response => response)
-
-export const fetchLikes = (limit) =>
-    jsonAPI.fetchFromAPI('likes', null, limit)
-        .then(response => response)
-
-export const fetchThread = (threadid) =>
-    jsonAPI.fetchFromAPI('threads', threadid)
-        .then(response => response)
-
+// -------------------------------------------------------------------
 
 export const sendChatMessage = (payload) =>
     jsonAPI.sendDataToAPI(payload)
@@ -138,41 +94,24 @@ export const markRead = (what, id) => {
 //         .then((response) => ({images: 0, messages: 0, posts: 0, videos: 0, likes: 0}))
 
 
-export const fetchCountries = () =>
-    fetch('/data/countries.json')
+// -------------------------------------------------------------------
+
+const makeAjaxCallCreator = (url) => () =>
+    fetch(url)
         .then(response => response.json())
-        .then(countries => countries)
+        .then(data => data)
 
-// TODO
-export const fetchStates = () =>
-    fetch('/data/states.json')
-        .then(response => response.json())
-        .then(states => states)
+export const fetchCountries = makeAjaxCallCreator('/data/countries.json')
+export const fetchStates = makeAjaxCallCreator('/data/states.json')
+export const fetchCities = makeAjaxCallCreator('/data/cities.json')
 
-// TODO
-export const fetchCities = () =>
-    fetch('/data/cities.json')
-        .then(response => response.json())
-        .then(cities => cities)
+// -------------------------------------------------------------------
 
-
-// TODO
-export const updateCountry = (country) =>
-    jsonAPI.sendDataToAPI(country)
+export const changeSetting = (key, value) =>
+    jsonAPI.changeSetting(key, value)
         .then(response => response)
 
 // TODO
-export const updateState = (state) =>
-    jsonAPI.sendDataToAPI(state)
+export const removeField = (field) =>
+    jsonAPI.removeField(field)
         .then(response => response)
-
-// TODO
-export const updateCity = (city) =>
-    jsonAPI.sendDataToAPI(city)
-        .then(response => response)
-
-// TODO
-export const removeField = () =>
-    jsonAPI.remove('profileimg')
-        .then(response => response)
-

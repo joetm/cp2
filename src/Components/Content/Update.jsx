@@ -64,10 +64,14 @@ class Update extends React.PureComponent {
     let url = '/'
     switch(this.props.type) {
       case 'image':
+      case 'verification':
         url = `${routes.IMAGES}/${this.props.id}`
         break
       case 'video':
         url = `${routes.VIDEOS}/${this.props.id}`
+        break
+      case 'like':
+        url = `${routes.LIKES}/${this.props.id}`
         break
     }
     if (this.clickable) {

@@ -71,6 +71,8 @@ const initialState = {
         gender: false,
         birthday: null,
         showBirthday: false,
+        showLocation: false,
+        showOnlineStatus: false,
         numPosts: 0,
         numThreads: 0,
         numImages: 0,

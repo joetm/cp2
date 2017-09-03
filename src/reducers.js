@@ -391,6 +391,9 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
             return {...currentUserState, profileimg: null}
 
+        case ACTIONS.RECEIVE_SETTING:
+            return {...currentUserState, ...action.payload}
+
         default:
             return currentUserState
     }

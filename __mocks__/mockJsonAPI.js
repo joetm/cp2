@@ -93,7 +93,21 @@ export const sendDataToAPI = (payload) => {
 }
 
 // TODO
-export const remove = (field) => {
+export const changeSetting = (key, value) => {
+    return delay(500)
+        .then(() => {
+            try {
+                return {
+                    [key]: value
+                }
+            } catch (e) {
+                throw new Error(e)
+            }
+        })
+}
+
+// TODO
+export const removeField = (field) => {
     return delay(500)
         .then(() => {
             try {
