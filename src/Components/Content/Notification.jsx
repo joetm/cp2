@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom'
 import { ListItem } from 'material-ui/List'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
-import Avatar from 'material-ui/Avatar'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
@@ -14,6 +13,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
 import { colors } from '../../common/theme'
+import Avatar from '../Shared/Avatar'
 import routes from '../../routes'
 
 
@@ -97,7 +97,7 @@ class Notification extends React.PureComponent {
 
         const LeftImage = <img src={thumb} alt="" style={{width: '160px'}} />
 
-        const AvatarImage = <Avatar src={avatar} />
+        const AvatarImage = <Avatar username={username} src={avatar} mini={true} />
 
 
         return (

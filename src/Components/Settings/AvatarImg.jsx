@@ -41,7 +41,7 @@ class AvatarSetting extends React.PureComponent {
     this.setState({ msgOpen: true })
   }
   render() {
-    const { avatar } = this.props
+    const { avatar, username } = this.props
     return (
       <div id="avatar-settings"
           style={{
@@ -54,6 +54,7 @@ class AvatarSetting extends React.PureComponent {
 
           <Avatar
               src={avatar}
+              username={username}
           />
 
           <DropzoneComponent
@@ -85,6 +86,7 @@ class AvatarSetting extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     avatar: state.currentUser.avatar,
+    username: state.currentUser.username,
 })
 
 export default connect(

@@ -228,6 +228,7 @@ class NavBar extends React.Component {
                                     visible={true}
                                     src={this.props.avatar}
                                     mini={true}
+                                    username={this.props.username}
                                     tooltip="Your Profile"
                                     onTouchTap={this.toggleState}
                                 />

@@ -3,9 +3,10 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
-import Avatar from 'material-ui/Avatar'
+// import Avatar from 'material-ui/Avatar'
 
 import routes from '../../routes'
+import Avatar from '../Shared/Avatar'
 
 
 const styles = {
@@ -126,7 +127,7 @@ class Update extends React.PureComponent {
           </CardMedia>
           <CardHeader
             title={user ? user.username : null}
-            avatar={<Avatar src={user ? user.avatar : null} />}
+            avatar={<Avatar username={user.username} src={user ? user.avatar : null} mini={true} />}
             onTouchTap={e => { e.stopPropagation(); this.navigateToUser() }}
             style={styles.userInfo}
           />

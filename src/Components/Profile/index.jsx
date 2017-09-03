@@ -82,6 +82,7 @@ class Profile extends React.PureComponent {
                     <Avatar
                         visible={!this.state.blurredImg}
                         src={user.avatar}
+                        username={user.username}
                         onTouchTap={this.toggleProfileDetails}
                     />
                     <ProfileUsername
