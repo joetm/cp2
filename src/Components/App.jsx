@@ -37,7 +37,8 @@ import Notifications from './Content/Notifications'
 import MessageHistory from './MessageHistory'
 import Followers from './Followers'
 import Users from './Users'
-import Stream from './Content/Stream'
+import Stream from './Content'
+import Feed from './Content/Stream'
 import Updates from './Content/Updates'
 import Pictures from './Content/Pictures'
 import Videos from './Content/Videos'
@@ -114,15 +115,16 @@ class App extends React.Component {
 
                 <Route path={routes.FORUM} component={Forum} />
 
-                <Route exact path={routes.STREAM} component={Stream} />
+                <Route exact path={routes.STREAM} component={Feed} />
+                <Route path={routes.STREAM} component={Stream} />
+
+                <Route exact path={routes.UPDATES} component={Updates} />
+                <Route exact path={routes.IMAGES} component={Pictures} />
+                <Route exact path={routes.VIDEOS} component={Videos} />
+
                 <Route exact path={routes.NOTIFICATIONS} component={Notifications} />
-
-                <Route exact path={`${routes.UPDATES}`} component={Updates} />
-                <Route exact path={`${routes.IMAGES}`} component={Pictures} />
-                <Route exact path={`${routes.VIDEOS}`} component={Videos} />
-
-                <Route exact path={`${routes.LIKES}`} component={Likes} />
-                <Route exact path={`${routes.FAVORITES}`} component={Favorites} />
+                <Route exact path={routes.LIKES} component={Likes} />
+                <Route exact path={routes.FAVORITES} component={Favorites} />
 
                 <Route exact path={routes.REVIEW} component={Review} />
 
@@ -141,6 +143,7 @@ class App extends React.Component {
                 */}
 
                 <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
+
                 <Route path={routes.MEMBERS} component={Users} />
 
                 <Route path={routes.SETTINGS} component={Settings} />

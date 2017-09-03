@@ -77,7 +77,7 @@ class NotificationsMenu extends React.Component {
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
               onTouchTap={() => {
                 closeNotificationsMenu()
-                history.push(`${routes.STREAM}${routes.LIKES}`)
+                history.push(`${routes.STREAM}/${this.props.userid}${routes.LIKES}`)
               }}
             />
           </Menu>

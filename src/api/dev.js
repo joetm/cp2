@@ -22,7 +22,7 @@ export const fetchFollowers = (limit) =>
         .then(response => response)
 
 export const fetchReviewItem = () =>
-    jsonAPI.fetchFromAPI('reviewitem')
+    jsonAPI.fetchFromAPI('reviewitems', null, 1)
         .then(response => response)
 
 export const fetchUnreadCount = () =>

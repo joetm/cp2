@@ -53,18 +53,8 @@ class Review extends React.Component {
             buttonsDisabled: true,
             // popOverImageIsOpen: false,
         }
-        // bindings
-        this.toggleHelp = this.toggleHelp.bind(this)
-        this.reject = this.reject.bind(this)
-        this.approve = this.approve.bind(this)
-        this.like = this.like.bind(this)
-        this.dislike = this.dislike.bind(this)
-        this.openAlert = this.openAlert.bind(this)
-        this.closeAlert = this.closeAlert.bind(this)
-        this.handleImageClick = this.handleImageClick.bind(this)
-        this.fetchReviewItem = this.fetchReviewItem.bind(this)
     }
-    fetchReviewItem() {
+    fetchReviewItem = () => {
         this.props.fetchReviewItem()
         this.setState({
             buttonsDisabled: false,
@@ -87,7 +77,7 @@ class Review extends React.Component {
     /*
      * Toggle the help dialog.
      */
-    toggleHelp() {
+    toggleHelp = () => {
         if (this.state.helpText === '') {
             this.request = fetch(_HELPTXT_URL)
                 .then((response) => {
@@ -105,19 +95,19 @@ class Review extends React.Component {
     /*
      * Open the snack bar alert.
      */
-    openAlert() {
+    openAlert = () => {
         this.setState({alertIsOpen: true})
     }
     /*
      * Close the snack bar alert.
      */
-    closeAlert() {
+    closeAlert = () => {
         this.setState({alertIsOpen: false})
     }
     /*
      * Approve the update.
      */
-    approve() {
+    approve = () => {
         this.props.reviewApprove(this.props.reviewitem.id)
         this.openAlert()
         this.setState({
@@ -130,7 +120,7 @@ class Review extends React.Component {
     /*
      * Reject the update.
      */
-    reject() {
+    reject = () => {
         this.props.reviewDisapprove(this.props.reviewitem.id)
         this.openAlert()
         this.setState({
@@ -143,7 +133,7 @@ class Review extends React.Component {
     /*
      * Like the update.
      */
-    like() {
+    like = () => {
         if (this.state.clickedLike) {
             // undo a previous dislike
             this.props.like(this.props.reviewitem.id, -1)
@@ -164,7 +154,7 @@ class Review extends React.Component {
     /*
      * Dislike the update.
      */
-    dislike() {
+    dislike = () => {
         if (this.state.clickedDislike) {
             // undo a previous dislike
             this.props.dislike(this.props.reviewitem.id, -1)
@@ -185,7 +175,7 @@ class Review extends React.Component {
     /*
      * Handle the event when the image is clicked.
      */
-    handleImageClick() {
+    handleImageClick = () => {
         // TODO
         // console.log('open popover', this.props.reviewitem.src)
         // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
@@ -194,13 +184,14 @@ class Review extends React.Component {
      * Render the component.
      */
     render() {
+
         const { reviewitem } = this.props
-        // TODO
-        // if (this.props.isFetching) {
-        //     return <Loader msg="Loading Review" />
-        // }
+
+        console.log('reviewitem', reviewitem)
+
         return (
             <div>
+
                 <h2>
                     Crowd Review <HelpIcon
                                     style={styles.helpIconStyle}

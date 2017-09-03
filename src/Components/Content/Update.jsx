@@ -9,6 +9,13 @@ import { LikeButton, FavoriteButton, CommentButton } from './Button'
 import routes from '../../routes'
 
 
+const styles = {
+  userInfo: {
+    cursor: 'pointer',
+  },
+}
+
+
 // https://stackoverflow.com/a/39094233/426266
 class AtomicImage extends React.PureComponent {
   constructor(props) {
@@ -68,6 +75,9 @@ class Update extends React.PureComponent {
       this.props.history.push(url)
     }
   }
+  navigateToUser = () => {
+    this.props.history.push(`${routes.PROFILE}/${this.props.user.id}`)
+  }
   render () {
     const {
       type,
@@ -114,6 +124,8 @@ class Update extends React.PureComponent {
           <CardHeader
             title={user ? user.username : null}
             avatar={<Avatar src={user ? user.avatar : null} />}
+            onTouchTap={e => { e.stopPropagation(); this.navigateToUser() }}
+            style={styles.userInfo}
           />
           {/* subtitle={usertitle} */}
           {

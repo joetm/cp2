@@ -85,6 +85,7 @@ class SubToolbar extends React.Component {
                     >
                         <GalleryModeIcon />
                     </IconButton>
+                    {/*
                     <IconMenu iconButtonElement={expandButton}>
                         <MenuItem primaryText="Mark All Pictures Read" />
                         <MenuItem primaryText="Mark All Videos Read" />
@@ -92,6 +93,7 @@ class SubToolbar extends React.Component {
                         <MenuItem primaryText="Mark All Likes Read" />
                         <MenuItem primaryText="Mark All Read" />
                     </IconMenu>
+                    */}
                 </ToolbarGroup>
             </Toolbar>
         )

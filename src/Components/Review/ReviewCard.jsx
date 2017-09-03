@@ -1,11 +1,14 @@
 /** @flow */
 
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
 
+import routes from '../../routes'
 
-const _IMAGE_HEIGHT = 475
+
+const _IMAGE_MIN_HEIGHT = 475
 
 
 const styles = {
@@ -15,24 +18,33 @@ const styles = {
     },
     cardImage: {
         minWidth: '100%',
-        minHeight: `${_IMAGE_HEIGHT}px`,
+        minHeight: `${_IMAGE_MIN_HEIGHT}px`,
         // maxWidth: '100%',
         // height: 'auto',
         margin: 'auto auto',
         objectFit: 'cover',
         objectPosition: '50% 50%',
     },
+    userInfo: {
+      cursor: 'pointer',
+    },
 }
 
 
 class ReviewCard extends React.PureComponent {
+    navigateToUser = (e) => {
+      e.stopPropagation()
+      this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)
+    }
     /**
      * Render the component.
      */
     render() {
+
         const {
             id,
-            username,
+            userid,
+            user,
             title,
             content,
             datetime,
@@ -45,6 +57,7 @@ class ReviewCard extends React.PureComponent {
             approve,
             reject
         } = this.props
+
         return (
             <Card
                 key={`upd_${id}`}
@@ -57,9 +70,10 @@ class ReviewCard extends React.PureComponent {
               </CardMedia>
               <CardHeader
                   title={title}
-                  subtitle={username}
-                  avatar="/img/avatar/face.jpg"
-                  onClick={this.props.navigateTo}
+                  subtitle={user.username}
+                  avatar={user.avatar}
+                  onTouchTap={this.navigateToUser}
+                  style={styles.userInfo}
               />
               <CardActions>
 
@@ -89,4 +103,4 @@ class ReviewCard extends React.PureComponent {
     }
 }
 
-export default ReviewCard
+export default withRouter(ReviewCard)

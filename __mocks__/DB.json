@@ -876,25 +876,6 @@
             "rating": null
         }
     ],
-    "reviewitem": {
-        "type": "post",
-        "id": "cj6z2nmd100008gdrwj7sd64j",
-        "threadid": 5,
-        "title": "Brunch this weekend?",
-        "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
-        "src": "http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg",
-        "thumb": "http://apod.nasa.gov/apod/image/1502/HDR_MVMQ20Feb2015ouellet1024.jpg",
-        "userid": 123,
-        "approvals": 0,
-        "disapprovals": 0,
-        "likes": 44,
-        "dislikes": 9,
-        "replies": 0,
-        "tags": [],
-        "timestamp": 1501229377,
-        "lastEdit": 0,
-        "rating": null
-    },
     "followers": [
         {
             "userid": 3

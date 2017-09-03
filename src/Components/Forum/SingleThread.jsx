@@ -6,9 +6,10 @@ import { connect } from 'react-redux'
 import Subheader from 'material-ui/Subheader'
 
 import { fetchThread } from '../../actions'
+import Spacer from '../Shared/Spacer'
 import Posts from './Posts'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import BackIcon from 'material-ui/svg-icons/content/undo';
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import BackIcon from 'material-ui/svg-icons/content/undo'
 
 
 const styles = {
@@ -21,12 +22,14 @@ const styles = {
 
 class SingleThread extends React.Component {
     componentDidMount() {
-        this.props.fetchThread("cj6dn68b7000i335mgh0lj8rb")
+        const threadid = this.props.match.params.threadid
+        this.props.fetchThread(threadid)
     }
     render() {
-        const { posts, timestamp, username, userid, title } = this.props.thread
+        const { title, posts, timestamp, user, userid } = this.props.thread
         return (
             <div>
+
                 <FloatingActionButton
                     mini={true}
                     secondary={true}
@@ -35,12 +38,18 @@ class SingleThread extends React.Component {
                 >
                     <BackIcon />
                 </FloatingActionButton>
+
                 <h2>{title}</h2>
+
                 <div>
-                    {posts &&
+                    {
+                        posts &&
                         <Posts posts={posts} />
                     }
                 </div>
+
+                <Spacer />
+
             </div>
         )
     }
