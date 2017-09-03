@@ -9,12 +9,12 @@ import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import StarIcon from 'material-ui/svg-icons/toggle/star'
 import PersonIcon from 'material-ui/svg-icons/social/person'
 
+import routes from '../../routes'
 import { fetchVideo } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
 import Avatar from '../Shared/Avatar'
-import Tag from '../Shared/Tag'
-import routes from '../../routes'
+import Tags from '../Shared/Tags'
 
 
 const VIDEO_MAXWIDTH = 1024
@@ -24,10 +24,6 @@ const styles = {
     width: '100%',
     maxWidth: `${VIDEO_MAXWIDTH}px`,
     margin: '0 auto',
-  },
-  tagWrapper: {
-    display: 'flex',
-    flexWrap: 'wrap',
   },
   tagHeader: {
     marginTop: '10px',
@@ -60,11 +56,9 @@ class Video extends React.Component {
 
                 {
                     tags &&
-                    <div style={styles.tagWrapper}>
+                    <div>
                         <span style={styles.tagHeader}>Tags:</span>
-                        {
-                            tags.map((tag) => <Tag key={`vtag_${tag}`} text={tag} />)
-                        }
+                        <Tags tags={tags} />
                     </div>
                 }
 
@@ -82,13 +76,16 @@ class Video extends React.Component {
                         </div>
 
 
-                        <div style={{...styles.tagWrapper, float: 'right'}}>
-                            <Tag icon={<ImageIcon />} text={user.numImages} />
-                            <Tag icon={<VideoIcon />} text={user.numVideos} />
-                            <Tag icon={<LikeIcon />} text={user.numLikes} />
-                            <Tag icon={<StarIcon />} text={user.numFavorites} />
-                            <Tag icon={<PersonIcon />} text={user.numFollowers} />
-                        </div>
+                        <Tags
+                            style={{float: 'right'}}
+                            tags={[
+                                {icon: <ImageIcon />, text: user.numImages},
+                                {icon: <VideoIcon />, text: user.numVideos},
+                                {icon: <LikeIcon />, text: user.numLikes},
+                                {icon: <StarIcon />, text: user.numFavorites},
+                                {icon: <PersonIcon />, text: user.numFollowers},
+                            ]}
+                        />
 
                     </div>
                 }
