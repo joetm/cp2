@@ -5,7 +5,7 @@ import * as jsonAPI from '../../__mocks__/mockJsonAPI'
 // DEV: ajax fetch data from mock json API + dispatch receive methods
 // -------------------------------------------------------------------
 
-const makeAPICallCreator = (field) => (selection = null, limit = null) =>
+const makeAPICallCreator = (field, limit = null) => (selection = null) =>
     jsonAPI.fetchFromAPI(field, selection, limit)
         .then(response => response)
 
@@ -28,12 +28,12 @@ export const fetchFavorites = makeAPICallCreator('favorites')
 
 // -------------------------------------------------------------------
 
-export const fetchUser = makeAPICallCreator('users')
-export const fetchPicture = makeAPICallCreator('images')
-export const fetchVideo = makeAPICallCreator('videos')
-export const fetchNotification = makeAPICallCreator('messages')
-export const fetchThread = makeAPICallCreator('threads')
-export const fetchReviewItem = makeAPICallCreator('reviewitems')
+export const fetchUser = makeAPICallCreator('users', 1)
+export const fetchPicture = makeAPICallCreator('images', 1)
+export const fetchVideo = makeAPICallCreator('videos', 1)
+export const fetchNotification = makeAPICallCreator('messages', 1)
+export const fetchThread = makeAPICallCreator('threads', 1)
+export const fetchReviewItem = makeAPICallCreator('reviewitems', 1)
 
 // -------------------------------------------------------------------
 

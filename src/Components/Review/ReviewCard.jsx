@@ -4,6 +4,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
+import TextField from 'material-ui/TextField'
 
 import routes from '../../routes'
 
@@ -68,15 +69,25 @@ class ReviewCard extends React.PureComponent {
               >
                   <img src={src} alt="" style={styles.cardImage} />
               </CardMedia>
+
               <CardHeader
                   title={title}
-                  subtitle={user.username}
-                  avatar={user.avatar}
+                  subtitle={user ? user.username : null}
+                  avatar={user ? user.avatar : null}
                   onTouchTap={this.navigateToUser}
                   style={styles.userInfo}
-              />
-              <CardActions>
+              >
+                <LikeButton
+                    number={likes}
+                    action={like}
+                />
+                <DisapproveButton
+                    number={dislikes}
+                    action={dislike}
+                />
+              </CardHeader>
 
+              <CardActions>
                 <ApproveButton
                     primary={true}
                     action={approve}
@@ -88,16 +99,20 @@ class ReviewCard extends React.PureComponent {
                     disabled={this.props.buttonsDisabled}
                 />
 
-                <LikeButton
-                    number={likes}
-                    action={like}
-                />
-                <DisapproveButton
-                    number={dislikes}
-                    action={dislike}
-                />
+                | Parental Rating |
+
+{/*
+                <div>
+                  <TextField
+                    fullWidth={true}
+                    hintText={"Your reasoning for rating"}
+                    floatingLabelText={"Optional: Reasoning"}
+                  />
+                </div>
+*/}
 
               </CardActions>
+
             </Card>
         )
     }

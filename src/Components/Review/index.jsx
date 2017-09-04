@@ -55,7 +55,7 @@ class Review extends React.Component {
         }
     }
     fetchReviewItem = () => {
-        this.props.fetchReviewItem()
+        this.props.fetchReviewItem(null, 1)
         this.setState({
             buttonsDisabled: false,
             isFetching: false,
@@ -186,8 +186,7 @@ class Review extends React.Component {
     render() {
 
         const { reviewitem } = this.props
-
-        console.log('reviewitem', reviewitem)
+        // console.log('reviewitem', reviewitem)
 
         return (
             <div>
