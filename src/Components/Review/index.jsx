@@ -51,6 +51,7 @@ class Review extends React.Component {
             clickedLike: false,
             clickedDislike: false,
             buttonsDisabled: true,
+            rating: 0,
             // popOverImageIsOpen: false,
         }
     }
@@ -108,7 +109,7 @@ class Review extends React.Component {
      * Approve the update.
      */
     approve = () => {
-        this.props.reviewApprove(this.props.reviewitem.id)
+        this.props.reviewApprove(this.props.reviewitem.id, this.state.rating)
         this.openAlert()
         this.setState({
             isFetching: true,
@@ -121,7 +122,7 @@ class Review extends React.Component {
      * Reject the update.
      */
     reject = () => {
-        this.props.reviewDisapprove(this.props.reviewitem.id)
+        this.props.reviewDisapprove(this.props.reviewitem.id, this.state.rating)
         this.openAlert()
         this.setState({
             isFetching: true,
@@ -228,6 +229,7 @@ class Review extends React.Component {
                                     gridColumnsFull={4}
                                     gridColumnsTablet={3}
                                     gridColumnsPhone={1}
+                                    rating={this.state.rating}
                                     approve={this.approve}
                                     reject={this.reject}
                                     like={this.like}

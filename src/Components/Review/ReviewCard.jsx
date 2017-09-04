@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
 import TextField from 'material-ui/TextField'
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 import routes from '../../routes'
 
@@ -88,20 +90,40 @@ class ReviewCard extends React.PureComponent {
               </CardHeader>
 
               <CardActions>
-                <ApproveButton
-                    primary={true}
-                    action={approve}
-                    disabled={this.props.buttonsDisabled}
-                />
-                <RejectButton
-                    secondary={true}
-                    action={reject}
-                    disabled={this.props.buttonsDisabled}
-                />
 
-                | Parental Rating |
+                <Toolbar style={{backgroundColor: '#ffffff', paddingLeft: 0, paddingRight: 0}}>
+                  <ToolbarGroup>
+                    <ApproveButton
+                        primary={true}
+                        action={approve}
+                        disabled={this.props.buttonsDisabled}
+                    />
+                    <RejectButton
+                        secondary={true}
+                        action={reject}
+                        disabled={this.props.buttonsDisabled}
+                    />
+                  </ToolbarGroup>
+                  <ToolbarGroup>
+                    Rating:
+                    <RadioButtonGroup
+                      name="rating"
+                      defaultSelected={this.props.rating}
+                      style={{margin: '12px', display: 'inline-block'}}
+                    >
+                      <RadioButton
+                        value="G"
+                        label="G"
+                      />
+                      <RadioButton
+                        value="R"
+                        label="R"
+                      />
+                    </RadioButtonGroup>
+                  </ToolbarGroup>
+                </Toolbar>
 
-{/*
+                {/*
                 <div>
                   <TextField
                     fullWidth={true}
@@ -109,7 +131,7 @@ class ReviewCard extends React.PureComponent {
                     floatingLabelText={"Optional: Reasoning"}
                   />
                 </div>
-*/}
+                */}
 
               </CardActions>
 
