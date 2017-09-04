@@ -5,9 +5,10 @@ import * as jsonAPI from '../../__mocks__/mockJsonAPI'
 // DEV: ajax fetch data from mock json API + dispatch receive methods
 // -------------------------------------------------------------------
 
-const makeAPICallCreator = (field, limit = null) => (selection = null) =>
-    jsonAPI.fetchFromAPI(field, selection, limit)
+const makeAPICallCreator = (field, limit = null) => (selection = null) => {
+    return jsonAPI.fetchFromAPI(field, selection, limit)
         .then(response => response)
+}
 
 // -------------------------------------------------------------------
 

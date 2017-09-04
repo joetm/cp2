@@ -23,13 +23,10 @@ export const fetchFromAPI = (key, selection = null, limit = null) => {
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
-    // console.log('url', key, selection, url)
+    // console.log('fetchFromAPI', key, selection, limit, url)
     return fetch(url)
         .then(r => r.json())
         .then(data => {
-            if (limit) {
-                return data[0]
-            }
             return data
         })
         // .catch(error => throw new Error(error))

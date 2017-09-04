@@ -6,6 +6,8 @@ import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
 import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+// Material Component: Layout (Grid)
+import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 import routes from '../../routes'

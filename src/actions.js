@@ -319,8 +319,9 @@ export const fetchCurrentUser = () =>
  * fetchUser Asynchronous Action Creator
  * @returns receiveUser() - Action
  */
-export const fetchUser = (userid) =>
-    api.fetchUser(userid).then(receiveUser)
+export const fetchUser = (userid) => {
+    return api.fetchUser(userid).then(receiveUser)
+}
 
 /**
  * fetchUsers Asynchronous Action Creator

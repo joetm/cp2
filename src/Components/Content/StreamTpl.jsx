@@ -16,21 +16,8 @@ import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
 import Spacer from '../Shared/Spacer'
 import { TILED } from '../../viewModes'
-
-
-const ListWrap = (props) => (
-    <List>
-        {props.children}
-    </List>
-)
-
-const GridWrap = (props) => (
-    <div className="mdc-layout-grid">
-        <div className="mdc-layout-grid__inner">
-            {props.children}
-        </div>
-    </div>
-)
+import GridWrap from '../Shared/GridWrap'
+import ListWrap from '../Shared/ListWrap'
 
 
 class StreamTpl extends React.PureComponent {

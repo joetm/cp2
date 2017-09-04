@@ -73,6 +73,7 @@ class AvatarBubble extends React.PureComponent {
         avatarStyle.borderColor = '#fff'
       }
       // default Avatar for people without avatar image
+      console.log('username', username)
       if (!src) {
         return (
             <Avatar
