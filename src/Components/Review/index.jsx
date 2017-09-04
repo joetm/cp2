@@ -40,6 +40,7 @@ const initialLikeState = {
 
 class Review extends React.Component {
     request = null
+    alertMsgBase = "Thanks. Your vote has been recorded."
     constructor(props) {
         super(props)
         // state
@@ -56,7 +57,7 @@ class Review extends React.Component {
         }
     }
     fetchReviewItem = () => {
-        this.props.fetchReviewItem(null, 1)
+        this.props.fetchReviewItem()
         this.setState({
             buttonsDisabled: false,
             isFetching: false,
@@ -247,7 +248,7 @@ class Review extends React.Component {
                 <Alert
                     open={this.state.alertIsOpen}
                     close={this.closeAlert}
-                    msg={this.state.alertMsg}
+                    msg={`${this.alertMsgBase} You earned 2 points!`}
                 />
 
                 <Spacer />

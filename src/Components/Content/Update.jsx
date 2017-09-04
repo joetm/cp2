@@ -119,15 +119,19 @@ class Update extends React.PureComponent {
             <AtomicImage src={thumb} />
             */}
             {
-                <img
-                  src={thumb}
-                  alt=""
-                />
+              <img
+                src={thumb}
+                alt=""
+              />
             }
           </CardMedia>
           <CardHeader
             title={user ? user.username : null}
-            avatar={<Avatar username={user.username} src={user ? user.avatar : null} mini={true} />}
+            avatar={<Avatar
+              username={user ? user.username : null}
+              src={user ? user.avatar : null}
+              mini={true}
+            />}
             onTouchTap={e => { e.stopPropagation(); this.navigateToUser() }}
             style={styles.userInfo}
           />

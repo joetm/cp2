@@ -4,10 +4,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { pinkA200 } from 'material-ui/styles/colors'
-import PhotoPin from 'material-ui/svg-icons/image/photo'
-import ChatPin from 'material-ui/svg-icons/communication/chat-bubble-outline'
-import ContactsPin from 'material-ui/svg-icons/communication/contacts'
-import LikesPin from 'material-ui/svg-icons/action/thumb-up'
+import PhotoIcon from 'material-ui/svg-icons/image/photo'
+import VideoIcon from 'material-ui/svg-icons/av/videocam'
+import ChatIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
+import ContactsIcon from 'material-ui/svg-icons/communication/contacts'
+import LikesIcon from 'material-ui/svg-icons/action/thumb-up'
+import CrowdIcon from 'material-ui/svg-icons/device/location-searching'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import routes from '../../routes'
@@ -82,54 +84,42 @@ class ProfileStats extends React.Component {
                     inkBarStyle={styles.inkBarStyle}
                 >
                     <Tab
-                        icon={<ChatPin />}
-                        label={<Link
-                                    to={`${routes.PROFILE}/${user.id}${routes.UPDATES}`}
-                                    style={styles.linkStyle}
-                                >
-                                    <StatText title="Posts" value={user.numPosts} />
-                                </Link>
-                        }
+                        icon={<ChatIcon />}
+                        label={`${user.numPosts} Posts`}
                     />
                     <Tab
-                        icon={<PhotoPin />}
-                        label={<Link
-                                    to={`${routes.PROFILE}/${user.id}${routes.ALBUM}`}
-                                    style={styles.linkStyle}
-                                >
-                                    <StatText title="Pics" value={user.numImages} />
-                                </Link>
-                        }
+                        icon={<PhotoIcon />}
+                        label={`${user.numImages} Images`}
                     />
                     <Tab
-                        icon={<ContactsPin />}
-                        label={<Link
-                                    to={`${routes.PROFILE}/${user.id}${routes.FOLLOWERS}`}
-                                    style={styles.linkStyle}
-                                >
-                                    <StatText title="Followers" value={user.numFollowers} />
-                                </Link>
-                        }
+                        icon={<PhotoIcon />}
+                        label={`${user.numVideos} Videos`}
                     />
+                    <Tab
+                        icon={<ContactsIcon />}
+                        label={`${user.numFollowers} Followers`}
+                    />
+                    {/*
+                        Not clear, if this likes received or given
+                        --> do this later
                     <Tab
                         icon={<LikesPin />}
-                        label={<Link
-                                    to={`${routes.PROFILE}/${user.id}${routes.LIKES}`}
-                                    style={styles.linkStyle}
-                                >
-                                    <StatText title="Likes" value={user.numLikes} />
-                                </Link>
-                        }
+                        label={`${user.numLikes} Likes`}
+                    />
+                    */}
+                    <Tab
+                        icon={<CrowdIcon />}
+                        label={"23 Crowd Points"}
                     />
                     <Tab
-                        label={
-                            <RaisedButton
-                                label="Secondary"
-                                secondary={true}
-                                style={styles.followButton}
-                                onTouchTap={this.followUser}
-                            />
-                        }
+                      label={
+                        <RaisedButton
+                          label="Follow"
+                          secondary={true}
+                          style={styles.followButton}
+                          onTouchTap={this.followUser}
+                        />
+                      }
                     />
                 </Tabs>
             </div>

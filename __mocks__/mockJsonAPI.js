@@ -27,6 +27,9 @@ export const fetchFromAPI = (key, selection = null, limit = null) => {
     return fetch(url)
         .then(r => r.json())
         .then(data => {
+            if (limit === 1 && data instanceof Array) {
+                return data[0]
+            }
             return data
         })
         // .catch(error => throw new Error(error))

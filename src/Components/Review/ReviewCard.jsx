@@ -115,11 +115,11 @@ class ReviewCard extends React.PureComponent {
                     >
                       <RadioButton
                         value="G"
-                        label="G"
+                        label="G&nbsp;(Safe)"
                       />
                       <RadioButton
                         value="R"
-                        label="R"
+                        label="R&nbsp;(adult)"
                       />
                     </RadioButtonGroup>
                   </ToolbarGroup>
