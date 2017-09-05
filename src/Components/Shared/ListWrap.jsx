@@ -5,7 +5,7 @@ import { List } from 'material-ui/List'
 
 
 const ListWrap = (props) => (
-    <List>
+    <List style={props.style}>
         {props.children}
     </List>
 )

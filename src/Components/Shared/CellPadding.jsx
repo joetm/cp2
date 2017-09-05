@@ -7,7 +7,8 @@ const CellPadding = ({ full = 2, tablet = 1, phone = 4 }) => {
         <div className={`mdc-layout-grid__cell
                      mdc-layout-grid__cell--span-${full}
                      mdc-layout-grid__cell--span-${tablet}-tablet
-                     mdc-layout-grid__cell--span-${phone}-phone`}>
+                     mdc-layout-grid__cell--span-${phone}-phone`}
+        >
         </div>
     )
 }

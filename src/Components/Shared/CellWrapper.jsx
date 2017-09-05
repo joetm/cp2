@@ -8,7 +8,9 @@ const CellWrapper = (props) => {
         <div className={`mdc-layout-grid__cell
                      mdc-layout-grid__cell--span-${full}
                      mdc-layout-grid__cell--span-${tablet}-tablet
-                     mdc-layout-grid__cell--span-${phone}-phone`}>
+                     mdc-layout-grid__cell--span-${phone}-phone`}
+                     style={props.style}
+        >
                      {props.children}
         </div>
     )

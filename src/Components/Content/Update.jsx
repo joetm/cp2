@@ -9,6 +9,8 @@ import routes from '../../routes'
 import Avatar from '../Shared/Avatar'
 import CellWrapper from '../Shared/CellWrapper'
 
+import '../Shared/masonry.scss'
+
 
 const styles = {
   userInfo: {
@@ -98,11 +100,14 @@ class Update extends React.PureComponent {
     this.clickable = this.props.clickable === false ? false : true
 
     return (
+      <div className="updateBox">
+      {/*
       <CellWrapper
         full={full}
         tablet={tablet}
         phone={phone}
       >
+      */}
         {/*
         <div>
           DEBUG:<br />
@@ -138,7 +143,9 @@ class Update extends React.PureComponent {
             onTouchTap={e => { e.stopPropagation(); this.navigateToUser() }}
             style={styles.userInfo}
           />
+
           {/* subtitle={usertitle} */}
+
           {
             showTitle === true &&
               <CardTitle
@@ -147,6 +154,7 @@ class Update extends React.PureComponent {
                 expandable={false}
               />
           }
+
           {/*
             <CardActions actAsExpander={false} expandable={false}>
               <LikeButton     msg={111} />
@@ -154,8 +162,12 @@ class Update extends React.PureComponent {
               <CommentButton  msg={333} />
             </CardActions>
           */}
+
         </Card>
+      {/*
       </CellWrapper>
+      */}
+      </div>
     )
   }
 }

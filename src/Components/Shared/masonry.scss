@@ -1,0 +1,20 @@
+
+.updateContainer, .updateContainer:before, .updateContainer:after {
+    box-sizing:  border-box !important; *behavior: url(/css/boxsizing.htc);
+}
+.updateContainer {
+    -moz-column-width: 20em;
+    -webkit-column-width: 20em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+}
+
+.updateBox, .updateBox:before, .updateBox:after {
+    box-sizing:  border-box !important; *behavior: url(/css/boxsizing.htc);
+}
+.updateBox {
+    display: inline-block;
+    margin: 1rem 0.5rem 0 0.5rem;
+    width: 100%;
+    background: #efefef;
+}
