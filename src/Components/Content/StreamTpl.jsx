@@ -4,6 +4,7 @@ import React from 'react'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import { List } from 'material-ui/List'
+import Bricks from 'bricks.js'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
@@ -19,8 +20,15 @@ import { TILED } from '../../viewModes'
 import GridWrap from '../Shared/GridWrap'
 import ListWrap from '../Shared/ListWrap'
 
+const sizes = [
+  { columns: 2, gutter: 10 },
+  { mq: '768px', columns: 3, gutter: 25 },
+  { mq: '1024px', columns: 4, gutter: 50 }
+]
+
 
 class StreamTpl extends React.PureComponent {
+    bricksInstance = null
     constructor(props) {
         super(props)
         this.state = {
@@ -29,6 +37,27 @@ class StreamTpl extends React.PureComponent {
     }
     componentDidMount() {
         this.props.action()
+        // --
+        if (this.state.viewMode !== 'list') {
+          this.bricksInstance = Bricks({
+            container: this.refs.wrapper,
+            packed: 'data-packed',
+            sizes
+          })
+          this.bricksInstance
+            .on('pack',   () => console.log('ALL grid items packed.'))
+            .on('update', () => console.log('NEW grid items packed.'))
+            .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
+          document.addEventListener('DOMContentLoaded', event => {
+              this.bricksInstance
+                .resize(true)     // bind resize handler
+                .pack()           // pack initial items
+          })
+          this.bricksInstance.update()
+        }
+    }
+    componentWillUnmount() {
+        this.bricksInstance = null
     }
     changeViewMode = (viewMode) => () => {
         // console.log('changeViewMode', viewMode)
@@ -45,44 +74,46 @@ class StreamTpl extends React.PureComponent {
         const Wrapper = this.state.viewMode === 'list' ? ListWrap : GridWrap
 
         return (
-            <div>
+          <div>
 
-                <SubToolbar changeViewMode={this.changeViewMode} />
+            <SubToolbar changeViewMode={this.changeViewMode} />
 
-                <h2>{this.props.headline}</h2>
-                {
-                    categorizedItems.map((group, daysAgo) => {
-                        return (
-                            <div key={`grp_${daysAgo}`}>
+            <h2>{this.props.headline}</h2>
 
-                                <Subheader>{ translateDayOffset(daysAgo) }</Subheader>
+            {
+              categorizedItems.map((group, daysAgo) => {
+                return (
+                  <div key={`grp_${daysAgo}`}>
 
-                                <Divider />
+                    <Subheader>{ translateDayOffset(daysAgo) }</Subheader>
 
-                                <Wrapper>
-                                    {
-                                        group.map((item, i) => (
-                                            <Container
-                                                key={`upd_${i}`}
-                                                { ...item }
-                                                gridColumnsFull={4}
-                                                gridColumnsTablet={2}
-                                                gridColumnsPhone={1}
-                                            />
-                                        ))
-                                    }
-                                </Wrapper>
+                    <Divider />
 
-                            </div>
-                        )
-                    })
-                }
-                {
-                    !this.props.content.length &&
-                    <Loader />
-                }
-                <Spacer />
-            </div>
+                    <Wrapper ref="wrapper">
+                        {
+                          group.map((item, i) => (
+                            <Container
+                                key={`upd_${i}`}
+                                { ...item }
+                                gridColumnsFull={4}
+                                gridColumnsTablet={2}
+                                gridColumnsPhone={1}
+                            />
+                          ))
+                        }
+                    </Wrapper>
+
+                  </div>
+                )
+              })
+            }
+            {
+                !this.props.content.length &&
+                <Loader />
+            }
+            <Spacer />
+
+          </div>
         )
     }
 }
