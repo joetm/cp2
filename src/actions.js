@@ -479,6 +479,22 @@ export const recordLike = () =>
 export const recordDislike = () =>
     api.recordDislike().then(receiveDislike)
 
+/**
+ * recordApproval Asynchronous Action Creator
+ * @returns recordApproval() - Action
+ */
+export const recordApproval = (id, rating) => {
+    return api.recordCrowdDecision(REVIEW_APPROVE, id, rating).then(reviewApprove)
+}
+
+/**
+ * recordDisapproval Asynchronous Action Creator
+ * @returns recordDisapproval() - Action
+ */
+export const recordDisapproval = (id, rating) => {
+    return api.recordCrowdDecision(REVIEW_DISAPPROVE, id, rating).then(reviewDisapprove)
+}
+
 // TODO
 export const markRead = (what, id) =>
     api.markRead(what).then(receiveUnreadCount)

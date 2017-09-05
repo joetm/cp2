@@ -1,5 +1,6 @@
 
 import * as jsonAPI from '../../__mocks__/mockJsonAPI'
+import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
 
 // -------------------------------------------------------------------
 // DEV: ajax fetch data from mock json API + dispatch receive methods
@@ -73,14 +74,26 @@ export const sendChatMessage = (payload) =>
             }
         })
 
+// TODO
 export const recordLike = (payload) =>
     jsonAPI.sendDataToAPI(payload)
         .then(response => response)
 
+// TODO
 export const recordDislike = (payload) =>
     jsonAPI.sendDataToAPI(payload)
         .then(response => response)
 
+// TODO
+export const recordCrowdDecision = (vote, id, rating = null) => {
+    const payload = {
+        id,
+        rating
+    }
+    // TODO: REVIEW_APPROVE / REVIEW_DISAPPROVE
+    return jsonAPI.sendDataToAPI(payload)
+        .then(response => response)
+}
 
 // TODO
 export const markRead = (what, id) => {

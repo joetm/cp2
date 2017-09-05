@@ -40,7 +40,6 @@ const initialLikeState = {
 
 class Review extends React.Component {
     request = null
-    alertMsgBase = "Thanks. Your vote has been recorded."
     constructor(props) {
         super(props)
         // state
@@ -52,7 +51,7 @@ class Review extends React.Component {
             clickedLike: false,
             clickedDislike: false,
             buttonsDisabled: true,
-            rating: 0,
+            rating: null,
             // popOverImageIsOpen: false,
         }
     }
@@ -61,6 +60,7 @@ class Review extends React.Component {
         this.setState({
             buttonsDisabled: false,
             isFetching: false,
+            rating: null,
         })
     }
     componentDidMount() {
@@ -73,7 +73,10 @@ class Review extends React.Component {
         if (this.request && typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
-            this.setState({isFetching: false})
+            this.setState({
+                isFetching: false,
+                rating: null,
+            })
         }
     }
     /*
@@ -115,9 +118,10 @@ class Review extends React.Component {
         this.setState({
             isFetching: true,
             buttonsDisabled: true,
+            rating: null,
         })
         // DEV: just fetch the same item again
-        this.fetchReviewItem()
+        // this.fetchReviewItem()
     }
     /*
      * Reject the update.
@@ -128,9 +132,10 @@ class Review extends React.Component {
         this.setState({
             isFetching: true,
             buttonsDisabled: true,
+            rating: null,
         })
         // DEV: just fetch the same item again
-        this.fetchReviewItem()
+        // this.fetchReviewItem()
     }
     /*
      * Like the update.
@@ -151,7 +156,6 @@ class Review extends React.Component {
             clickedLike: true,
             clickedDislike: false,
         })
-        this.openAlert()
     }
     /*
      * Dislike the update.
@@ -172,7 +176,6 @@ class Review extends React.Component {
             clickedDislike: true,
             clickedLike: false,
         })
-        this.openAlert()
     }
     /*
      * Handle the event when the image is clicked.
@@ -181,6 +184,19 @@ class Review extends React.Component {
         // TODO
         // console.log('open popover', this.props.reviewitem.src)
         // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
+    }
+    /*
+     * Handle the event when the rating is changed.
+     */
+    handleChangeRating = (e, value) => {
+        this.setState({
+            rating: value,
+        })
+    }
+    getPointsMsg = () => {
+        const numPoints = this.state.rating !== null ? 2 : 1
+        const points = numPoints > 1 ? "points" : "point"
+        return `Thanks. Your vote has been recorded. You earned ${numPoints} ${points}!`
     }
     /**
      * Render the component.
@@ -237,6 +253,7 @@ class Review extends React.Component {
                                     dislike={this.dislike}
                                     buttonsDisabled={this.state.buttonsDisabled}
                                     handleImageClick={this.handleImageClick}
+                                    handleChangeRating={this.handleChangeRating}
                                 />
                             }
                         </ReactCSSTransitionGroup>
@@ -248,7 +265,7 @@ class Review extends React.Component {
                 <Alert
                     open={this.state.alertIsOpen}
                     close={this.closeAlert}
-                    msg={`${this.alertMsgBase} You earned 2 points!`}
+                    msg={this.getPointsMsg()}
                 />
 
                 <Spacer />

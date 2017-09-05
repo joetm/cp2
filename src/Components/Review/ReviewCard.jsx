@@ -112,6 +112,7 @@ class ReviewCard extends React.PureComponent {
                       name="rating"
                       defaultSelected={this.props.rating}
                       style={{margin: '12px', display: 'inline-block'}}
+                      onChange={this.props.handleChangeRating}
                     >
                       <RadioButton
                         value="G"
