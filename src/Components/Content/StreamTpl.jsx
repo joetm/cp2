@@ -4,7 +4,8 @@ import React from 'react'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 import { List } from 'material-ui/List'
-import Bricks from 'bricks.js'
+// import Bricks from 'bricks.js'
+// import { findDOMNode } from 'react-dom'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
@@ -37,24 +38,25 @@ class StreamTpl extends React.PureComponent {
     }
     componentDidMount() {
         this.props.action()
-        // --
-        if (this.state.viewMode !== 'list') {
-          this.bricksInstance = Bricks({
-            container: this.refs.wrapper,
-            packed: 'data-packed',
-            sizes
-          })
-          this.bricksInstance
-            .on('pack',   () => console.log('ALL grid items packed.'))
-            .on('update', () => console.log('NEW grid items packed.'))
-            .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
-          document.addEventListener('DOMContentLoaded', event => {
-              this.bricksInstance
-                .resize(true)     // bind resize handler
-                .pack()           // pack initial items
-          })
-          this.bricksInstance.update()
-        }
+
+        // if (this.state.viewMode !== 'list') {
+        //   this.bricksInstance = Bricks({
+        //     container: '.container', // findDOMNode('.wrapper'), // this.refs.wrapper, // '.wrapper',
+        //     packed: 'data-packed',
+        //     sizes
+        //   })
+        //   this.bricksInstance
+        //     .on('pack',   () => console.log('ALL grid items packed.'))
+        //     .on('update', () => console.log('NEW grid items packed.'))
+        //     .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
+        //   document.addEventListener('DOMContentLoaded', event => {
+        //       this.bricksInstance
+        //         .resize(true)     // bind resize handler
+        //         .pack()           // pack initial items
+        //   })
+        //   this.bricksInstance.update()
+        // }
+
     }
     componentWillUnmount() {
         this.bricksInstance = null
@@ -89,15 +91,17 @@ class StreamTpl extends React.PureComponent {
 
                     <Divider />
 
-                    <Wrapper ref="wrapper">
+                    <Wrapper
+                        className="container"
+                    >
                         {
                           group.map((item, i) => (
                             <Container
                                 key={`upd_${i}`}
                                 { ...item }
-                                gridColumnsFull={4}
-                                gridColumnsTablet={2}
-                                gridColumnsPhone={1}
+                                full={3}
+                                tablet={4}
+                                phone={2}
                             />
                           ))
                         }

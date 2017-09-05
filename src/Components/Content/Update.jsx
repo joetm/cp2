@@ -7,6 +7,7 @@ import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
 
 import routes from '../../routes'
 import Avatar from '../Shared/Avatar'
+import CellWrapper from '../Shared/CellWrapper'
 
 
 const styles = {
@@ -90,15 +91,17 @@ class Update extends React.PureComponent {
       title,
       src, thumb,
       likes, dislikes, replies,
-      gridColumnsFull, gridColumnsTablet, gridColumnsPhone
+      full, tablet, phone
     } = this.props
 
     const showTitle = this.props.showTitle === false ? false : true
     this.clickable = this.props.clickable === false ? false : true
 
     return (
-      <div
-        className={`mdc-layout-grid__cell mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsFull)} mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsTablet)}-tablet mdc-layout-grid__cell--span-${Math.floor(12 / gridColumnsPhone)}-phone`}
+      <CellWrapper
+        full={full}
+        tablet={tablet}
+        phone={phone}
       >
         {/*
         <div>
@@ -152,7 +155,7 @@ class Update extends React.PureComponent {
             </CardActions>
           */}
         </Card>
-      </div>
+      </CellWrapper>
     )
   }
 }
