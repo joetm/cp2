@@ -2,9 +2,10 @@
 
 import React from 'react'
 // --
+import { connect } from 'react-redux'
 import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
-import { CookiesProvider } from 'react-cookie'
+// import { CookiesProvider } from 'react-cookie'
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -17,17 +18,13 @@ import objectFitImages from 'object-fit-images'
 // import reactMixin from 'react-mixin'
 // --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import { Provider } from 'react-redux'
 
 injectTapEventPlugin()
 objectFitImages()
 
-import store from '../store'
 import routes from '../routes'
-// import DevTools from '../DevTools'
 import { setDeviceDetails } from '../actions'
 import { theme, colors } from '../common/theme'
-// --
 import Scrollbutton from './Shared/Scrollbutton'
 // --
 import NavBar from './NavBar'
@@ -64,6 +61,7 @@ import ModArea from './ModArea'
 // </ConnectedRouter>
 
 
+@connect(state => state)
 class App extends React.Component {
     state = {
         isScrolled: false,
@@ -78,7 +76,7 @@ class App extends React.Component {
         }
     }
     componentDidMount() {
-        // store mobile device info
+        // store the mobile device info
         const device = new MobileDetect(window.navigator.userAgent)
         const obj = {
             isMobile: device.phone(),
@@ -90,7 +88,7 @@ class App extends React.Component {
             isPlaystation: device.match('playstation'),
             isXbox: device.match('xbox'),
         }
-        store.dispatch(setDeviceDetails(obj))
+        this.props.dispatch(setDeviceDetails(obj))
     }
     componentWillUnmount() {
         window.onscroll = null
@@ -101,8 +99,6 @@ class App extends React.Component {
     render() {
       return (
           <MuiThemeProvider muiTheme={theme}>
-          <Provider store={store}>
-          {/*<CookiesProvider>*/}
 
             <div style={{backgroundColor: colors.bg}}>
 
@@ -177,12 +173,8 @@ class App extends React.Component {
 
               <Sidebar />
 
-              {/* <DevTools /> */}
-
             </div>
 
-          {/* </CookiesProvider> */}
-          </Provider>
           </MuiThemeProvider>
         )
     }
