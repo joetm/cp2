@@ -19,7 +19,6 @@ const delay = (ms) => {
 
 export const fetchFromAPI = (key, selection = null, limit = null) => {
     let url = selection ? `${API}/${key}/${selection}` : `${API}/${key}`
-    url = `${url}`
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
@@ -35,6 +34,23 @@ export const fetchFromAPI = (key, selection = null, limit = null) => {
         // .catch(error => throw new Error(error))
 }
 
+// TODO
+export const fetchFromProtectedAPI = (key, selection, limit = null) => {
+    let url = `${API}/${key}/${selection}`
+    if (limit) {
+        url = `${url}?_start=1&_limit=${limit}`
+    }
+    // console.log('fetchFromAPI', key, selection, limit, url)
+    return fetch(url)
+        .then(r => r.json())
+        .then(data => {
+            if (limit === 1 && data instanceof Array) {
+                return data[0]
+            }
+            return data
+        })
+        // .catch(error => throw new Error(error))
+}
 
 export const fetchUnreadCountFromAPI = () => {
     return delay(500)

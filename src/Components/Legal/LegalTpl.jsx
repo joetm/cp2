@@ -36,7 +36,7 @@ class LegalTpl extends React.PureComponent {
         })
     }
     componentWillUnmount() {
-        if (this.request) {
+        if (this.request && typeof this.request.abort === 'function') {
             if (this.state.loading) {
                 this.request.abort()
             }

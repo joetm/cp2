@@ -117,6 +117,9 @@ export const FETCH_VIDEO_STARTED       = 'VIDEO::FETCH_VIDEO_STARTED'
 export const FETCH_VIDEO_SUCCESS       = 'VIDEO::FETCH_VIDEO_SUCCESS'
 export const FETCH_VIDEO_FAILURE       = 'VIDEO::FETCH_VIDEO_FAILURE'
 
+// MOD
+export const RECEIVE_CONTACT_REQUESTS  = 'MOD::RECEIVE_CONTACT_REQUESTS'
+
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
 
@@ -212,6 +215,10 @@ export const receiveCities         = makeActionCreator(RECEIVE_CITIES,          
 export const receiveCountry        = makeActionCreator(RECEIVE_COUNTRY,           'response')
 export const receiveState          = makeActionCreator(RECEIVE_STATE,             'response')
 export const receiveCity           = makeActionCreator(RECEIVE_CITY,              'response')
+
+// MOD
+export const receiveContactRequests  = makeActionCreator(RECEIVE_CONTACT_REQUESTS)
+
 
 export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
 export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS)
@@ -459,6 +466,16 @@ export const fetchThread = (threadid) =>
 
 export const fetchChat = () =>
     api.fetchChat().then(receiveChat)
+
+
+/**
+ * fetchContactRequests Asynchronous Action Creator
+ * @returns fetchContactRequests() - Action
+ */
+export const fetchContactRequests = (limit) =>
+    api.fetchContactRequests(limit).then(receiveContactRequests)
+
+
 
 export const sendChatMessage = (payload) => (dispatch) => {
     // dispatch(sendChatMessageStart(payload))

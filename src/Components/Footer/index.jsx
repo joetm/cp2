@@ -17,7 +17,7 @@ const styles = {
         listStyleType: 'none',
     },
     listItem: {
-        margin: '1em auto',
+        // margin: '1em auto',
     }
 }
 

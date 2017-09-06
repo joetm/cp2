@@ -99,6 +99,9 @@ const initialState = {
         profileViews: 0,
         followerCount: 0,
     },
+    mod: {
+        contactRequests: [],
+    },
 }
 
 export default initialState

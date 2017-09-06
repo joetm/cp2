@@ -39,6 +39,12 @@ export const fetchReviewItem = makeAPICallCreator('reviewitems', 1)
 
 // -------------------------------------------------------------------
 
+// TODO
+export const fetchContactRequests = (limit = null) =>
+    jsonAPI.fetchFromProtectedAPI('mod', 'contactRequests', limit)
+        .then(response => response)
+
+// -------------------------------------------------------------------
 
 export const fetchUnreadCount = () =>
     jsonAPI.fetchUnreadCountFromAPI()

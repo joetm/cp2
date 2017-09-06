@@ -310,6 +310,18 @@ export function followersReducer(followersState = initialState.followers, action
     }
 }
 
+export function modReducer(modState = initialState.mod, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_CONTACT_REQUESTS:
+            return {
+                ...modState,
+                contactRequests: [...action.response]
+            }
+        default:
+            return modState
+    }
+}
+
 /**
  * currentUserReducer
  * @returns state

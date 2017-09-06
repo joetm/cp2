@@ -47,6 +47,8 @@ const store = createStore(
         currentUser: Reducers.currentUserReducer,
         messageHistory: Reducers.messageHistoryReducer,
         chat: Reducers.chatReducer,
+        // mod
+        mod: Reducers.modReducer,
         // auth: Reducers.authReducer,
         router: routerReducer // add the routerReducer to the store on the `router` key
     }),

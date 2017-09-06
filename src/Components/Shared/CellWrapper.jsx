@@ -11,7 +11,7 @@ const CellWrapper = (props) => {
                      mdc-layout-grid__cell--span-${phone}-phone`}
                      style={props.style}
         >
-                     {props.children}
+         {props.children}
         </div>
     )
 }
