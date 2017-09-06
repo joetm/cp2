@@ -26,10 +26,12 @@ const routes = {
     LOGIN: "/login",
     LOGOUT: "/logout",
     LEGAL: {
+        INDEX: "/policy",
         COMMUNITY: "/community-guidelines",
-        PRIVACY: "/privacy-policy",
-        DMCA: "/dmca-policy",
+        PRIVACY: "/privacy",
+        DMCA: "/dmca",
     },
+    MODAREA: "/modarea",
 }
 
 export default routes

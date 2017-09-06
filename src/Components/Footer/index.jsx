@@ -5,6 +5,7 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import Divider from 'material-ui/Divider'
 import { Link } from 'react-router-dom'
 
+import routes from '../../routes'
 import { colors } from '../../common/theme'
 import Spacer from '../Shared/Spacer'
 import GridWrap from '../Shared/GridWrap'
@@ -20,16 +21,14 @@ const styles = {
     }
 }
 
-const UList = (props) => {
-  const { url, text } = props
-  return (
-    <ul style={styles.unorderedList}>
+
+const UList = (props) => (
+  <ul style={styles.unorderedList}>
     <li style={styles.listItem}>
-        <Link to={url} style={{color: colors.grey}}>{text}</Link>
+      <Link to={props.url} style={{color: colors.grey}}>{props.text}</Link>
     </li>
-    </ul>
-  )
-}
+  </ul>
+)
 
 
 /**
@@ -44,16 +43,16 @@ const Footer = () => (
       <GridWrap>
 
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url="/community-guidelines" text="Community Guidelines" />
+          <UList url={`${routes.LEGAL.INDEX}${routes.LEGAL.COMMUNITY}`} text="Community Guidelines" />
         </CellWrapper>
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url="/privacy-policy" text="Privacy Policy" />
+          <UList url={`${routes.LEGAL.INDEX}${routes.LEGAL.PRIVACY}`} text="Privacy Policy" />
         </CellWrapper>
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url="/dmca-policy" text="DMCA Policy" />
+          <UList url={`${routes.LEGAL.INDEX}${routes.LEGAL.DMCA}`} text="DMCA Policy" />
         </CellWrapper>
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url="/contact" text="Contact" />
+          <UList url={routes.CONTACT} text="Contact" />
         </CellWrapper>
 
       </GridWrap>

@@ -51,14 +51,13 @@ import Review from './Review'
 import Editor from './Editor'
 import Settings from './Settings'
 import Error from './Error'
-import Guidelines from './Legal/Guidelines'
 import LoginPage from './Login'
 import SignupPage from './Signup'
-import Privacy from './Legal/Privacy'
-import DMCA from './Legal/DMCA'
+import Legal from './Legal'
 import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
+import ModArea from './ModArea'
 // import Playlist from './Playlist'
 
 // <ConnectedRouter history={browserHistory}>
@@ -159,11 +158,11 @@ class App extends React.Component {
                 <Route path={`${routes.MESSAGES}/:itemid${routes.EDIT}`} component={Editor} />
                 */}
 
-                <Route exact path={routes.LEGAL.COMMUNITY} component={Guidelines} />
-                <Route exact path={routes.LEGAL.PRIVACY} component={Privacy} />
-                <Route exact path={routes.LEGAL.DMCA} component={DMCA} />
+                <Route path={routes.LEGAL.INDEX} component={Legal} />
 
                 <Route exact path={routes.CONTACT} component={Contact} />
+
+                <Route path={routes.MODAREA} component={ModArea} />
 
                 <Route exact path={routes.UPLOAD} component={Upload} />
 

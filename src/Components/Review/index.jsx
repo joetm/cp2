@@ -1,12 +1,12 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 import fetch from 'unfetch'
 import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import { connect } from 'react-redux'
 
 import './style.scss'
 // --

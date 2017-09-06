@@ -4,6 +4,7 @@ import React from 'react'
 import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
+import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import ReCaptcha from 'react-google-recaptcha'
 
@@ -16,18 +17,13 @@ import Footer from '../Footer/'
  * @class
  */
 class Contact extends React.PureComponent {
-    constructor(props) {
-        super(props)
-        this.state = {
-            selectedField: 1,
-        }
-        // bindings
-        this.recaptchaSuccess = this.recaptchaSuccess.bind(this)
+    state = {
+        selectedField: "suggestion",
     }
-    handleChange(event, index, value) {
+    handleChangeTypeOfContact = (event, index, value) => {
         this.setState({selectedField: value})
     }
-    recaptchaSuccess() {
+    recaptchaSuccess = () => {
         console.log('recaptcha success')
     }
     /**
@@ -37,53 +33,51 @@ class Contact extends React.PureComponent {
         return (
             <div style={{textAlign: 'center'}}>
 
-                <h1>Contact</h1>
+                <Paper style={{padding: '2em', margin: '2em auto', maxWidth: '450px'}}>
 
-                <div>
-                <TextField
-                  hintText=""
-                  floatingLabelText="Your Username"
-                />
-                </div>
+                  <h1>Contact</h1>
 
-                <div>
-                <TextField
-                  hintText=""
-                  floatingLabelText="Your Email"
-                />
-                </div>
+                  <div>
+                    <SelectField
+                      floatingLabelText="Type of Contact"
+                      value={this.state.selectedField}
+                      onChange={this.handleChangeTypeOfContact}
+                    >
+                      <MenuItem value="suggestion" primaryText="Suggestion" />
+                      <MenuItem value="complaint" primaryText="Complaint" />
+                      <MenuItem value="dmca" primaryText="DMCA request" />
+                    </SelectField>
+                  </div>
 
-                <div>
-                <SelectField
-                  floatingLabelText="Type of Contact"
-                  value={this.state.selectedField}
-                  onChange={this.handleChange}
-                >
-                  <MenuItem value={1} primaryText="Suggestion" />
-                  <MenuItem value={2} primaryText="Complaint" />
-                  <MenuItem value={3} primaryText="DMCA request" />
-                </SelectField>
-                </div>
-
-                <div>
-                <TextField
-                  hintText=""
-                  multiLine={true}
-                  floatingLabelText="Message Text"
-                />
-                </div>
-
-                <div style={{margin:'1em auto',display:'inline-block'}}>
-                    <ReCaptcha
-                        ref="recaptcha"
-                        sitekey="<client site key>"
-                        onChange={this.recaptchaSuccess}
+                  <div>
+                    <TextField
+                      hintText="Subject"
+                      multiLine={false}
+                      floatingLabelText="Subject"
                     />
-                </div>
+                  </div>
 
-                <div style={{marginTop:'1em'}}>
-                <RaisedButton label="Submit" secondary={true} />
-                </div>
+                  <div>
+                    <TextField
+                      hintText=""
+                      multiLine={true}
+                      floatingLabelText="Message Text"
+                    />
+                  </div>
+
+                  <div style={{margin:'1em auto',display:'inline-block'}}>
+                      <ReCaptcha
+                          ref="recaptcha"
+                          sitekey="<client site key>"
+                          onChange={this.recaptchaSuccess}
+                      />
+                  </div>
+
+                  <div style={{margin: '1em'}}>
+                    <RaisedButton label="Submit" secondary={true} />
+                  </div>
+
+                </Paper>
 
                 <Spacer />
 

@@ -3,9 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Toggle from 'material-ui/Toggle'
-import Divider from 'material-ui/Divider'
 import { List } from 'material-ui/List'
-import Subheader from 'material-ui/Subheader'
 import TextField from 'material-ui/TextField'
 import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
@@ -13,30 +11,62 @@ import MenuItem from 'material-ui/MenuItem'
 
 import styles from './styles'
 import { fetchCountries, fetchStates, fetchCities } from '../../actions'
+import SettingsSeparator from './SettingsSeparator'
+import Alert from '../Shared/Alert'
 
 
 class GeneralSettings extends React.Component {
+    state = {
+      alertIsOpen: false,
+    }
     componentDidMount() {
       this.props.fetchCountries()
     }
+    /*
+     * Open the snack bar alert.
+     */
+    openAlert = () => {
+        this.setState({alertIsOpen: true})
+    }
+    /*
+     * Close the snack bar alert.
+     */
+    closeAlert = () => {
+        this.setState({alertIsOpen: false})
+    }
+    /*
+     * Handle the change of the country selector.
+     */
     handleChangeCountry = (country) => {
       // TODO
       // this.setState({ country })
     }
+    /*
+     * Handle the change of the state selector.
+     */
     handleChangeState = (event, key, state) => {
       // TODO
       // this.setState({ state })
     }
+    /*
+     * Handle the change of the city selector.
+     */
     handleChangeCity = (event, key, city) => {
       // TODO
       // this.setState({ city })
+    }
+    /*
+     * Handle the change of the user title field.
+     */
+    handleChangeUsertitle = (e) => {
+        console.log('change user title', e.target.value)
+        this.openAlert()
     }
     render() {
       return (
         <div style={{textAlign: 'left'}}>
 
-            <Subheader inset={false}>General</Subheader>
-            <Divider />
+            <SettingsSeparator text="General" />
 
             <List>
               <Toggle
@@ -59,8 +89,7 @@ class GeneralSettings extends React.Component {
               />
             </List>
 
-            <Subheader inset={false}>Location</Subheader>
-            <Divider />
+            <SettingsSeparator text="Location" />
 
             <div>
                 <AutoComplete
@@ -106,6 +135,22 @@ class GeneralSettings extends React.Component {
                 </SelectField>
             </div>
 
+            <SettingsSeparator text="Other" />
+
+            <div>
+              <TextField
+                floatingLabelText="Custom User Title"
+                fullWidth={true}
+                onBlur={this.handleChangeUsertitle}
+              />
+            </div>
+
+            <Alert
+                open={this.state.alertIsOpen}
+                close={this.closeAlert}
+                msg="Saved."
+            />
+
         </div>
       )
     }
@@ -113,6 +158,7 @@ class GeneralSettings extends React.Component {
 
 
 const mapStateToProps = (state) => ({
+    usertitle: state.currentUser.usertitle,
     country: state.currentUser.country,
     state: state.currentUser.state,
     city: state.currentUser.city,

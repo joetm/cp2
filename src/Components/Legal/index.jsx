@@ -1,54 +1,29 @@
 /** @flow */
 
 import React from 'react'
+import { Route, Switch } from 'react-router-dom'
 
-import Spacer from '../Shared/Spacer'
-import Footer from '../Footer'
-import './style.scss'
+import routes from '../../routes'
+// import Spacer from '../Shared/Spacer'
+// import Footer from '../Footer'
+import Guidelines from './Guidelines'
+import Privacy from './Privacy'
+import DMCA from './DMCA'
 
 
 class LegalPage extends React.Component {
-    request = null
-    state = {
-        loading: true,
-        txt: ''
-    }
-    componentDidMount() {
-        this.request = fetch(this.props.url)
-            .then((response) => {
-                return response.text()
-            }).then((txt) => {
-            this.setState({
-                txt,
-                loading: false,
-            })
-        })
-    }
-    componentWillUnmount() {
-        if (this.request) {
-            if (this.state.loading) {
-                this.request.abort()
-            }
-            this.request = null
-        }
-    }
     /**
      * Render the component.
      */
     render() {
-        return (
-            <div style={{textAlign: 'center'}}>
-
-                <h1>this.props.title</h1>
-
-                <div dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
-
-                <Spacer />
-
-                <Footer />
-
-            </div>
-        )
+      return (
+          <Switch>
+                <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.COMMUNITY}`} component={Guidelines} />
+                <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.PRIVACY}`} component={Privacy} />
+                <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.DMCA}`} component={DMCA} />
+                <Route component={Guidelines} />
+          </Switch>
+      )
     }
 }
 
