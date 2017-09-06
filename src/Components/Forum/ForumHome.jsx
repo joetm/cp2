@@ -33,7 +33,7 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    threads: state.threads,
+    threads: state.threads.items,
 })
 
 export default connect(

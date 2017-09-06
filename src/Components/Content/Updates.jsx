@@ -23,7 +23,7 @@ class Updates extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    updates: state.updates
+    updates: state.updates.items
 })
 
 export default connect(

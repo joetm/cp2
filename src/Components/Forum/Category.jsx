@@ -32,7 +32,7 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    posts: state.posts,
+    posts: state.posts.items,
 })
 
 export default connect(

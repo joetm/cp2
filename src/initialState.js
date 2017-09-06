@@ -9,7 +9,7 @@
 
 const initialState = {
     appState: {
-        deviceDetails: null,
+        deviceDetails: {},
         sidebarSearchOpen: false,
         sidebarOpen: false,
         isFetching: false,
@@ -22,28 +22,72 @@ const initialState = {
         cities: [],
     },
     // -- common content
-    updates: [],
-    images: [],
-    videos: [],
-    posts: [],
-    threads: [],
-    album: [],
-    users: {},
+    updates: {
+        isFetching: true,
+        items: [],
+    },
+    images: {
+        isFetching: true,
+        items: [],
+    },
+    videos: {
+        isFetching: true,
+        items: [],
+    },
+    posts: {
+        isFetching: true,
+        items: [],
+    },
+    threads: {
+        isFetching: true,
+        items: [],
+    },
+    album: {
+        isFetching: true,
+        items: [],
+    },
+    users: {
+        isFetching: true,
+    },
     // -- personalized content
-    notifications: [],
-    stream: [],
-    favorites: [],
-    likes: [],
-    playlist: [],
-    followers: [],
+    notifications: {
+        isFetching: true,
+        items: [],
+    },
+    stream: {
+        isFetching: true,
+        items: [],
+    },
+    favorites: {
+        isFetching: true,
+        items: [],
+    },
+    likes: {
+        isFetching: true,
+        items: [],
+    },
+    playlist: {
+        isFetching: true,
+        items: [],
+    },
+    followers: {
+        isFetching: true,
+        items: [],
+    },
+    // -- chat
+    chat: {
+        isFetching: true,
+        items: [],
+    },
     // -- single item caching
     thread: {},
     post: {},
     video: {},
     image: {},
-    // -- chat
-    chat: [],
-    messageHistory: {},
+    messageHistory: {
+        isFetching: true,
+        items: [],
+    },
     // -- crowd review
     reviewitem: {
         id: null,

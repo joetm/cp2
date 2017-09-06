@@ -17,12 +17,12 @@ const delay = (ms) => {
 }
 
 
-export const fetchFromAPI = (key, selection = null, limit = null) => {
-    let url = selection ? `${API}/${key}/${selection}` : `${API}/${key}`
+export const fetchFromAPI = (field, selection = null, limit = null) => {
+    let url = selection ? `${API}/${field}/${selection}` : `${API}/${field}`
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
-    // console.log('fetchFromAPI', key, selection, limit, url)
+    // console.log('fetchFromAPI', field, selection, limit, url)
     return fetch(url)
         .then(r => r.json())
         .then(data => {

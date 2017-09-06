@@ -25,7 +25,7 @@ class Likes extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    likes: state.likes
+    likes: state.likes.items,
 })
 
 export default connect(

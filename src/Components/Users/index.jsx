@@ -109,7 +109,7 @@ class Users extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    users: state.users,
+    users: state.users.items,
     countries: state.appState.countries,
 })
 

@@ -129,10 +129,10 @@ class Home extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    updates: state.updates,
-    favorites: state.favorites,
-    likes: state.likes,
-    chat: state.chat,
+    updates: state.updates.items,
+    favorites: state.favorites.items,
+    likes: state.likes.items,
+    chat: state.chat.items,
     // TODO
     // isFetching: state.appState.isFetching,
 })

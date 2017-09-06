@@ -52,7 +52,7 @@ class Followers extends React.PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    followers: state.followers,
+    followers: state.followers.items,
     userid: ownProps.match.params.userid,
     user: state.users[ownProps.match.params.userid],
 })

@@ -23,7 +23,7 @@ class Favorites extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    favorites: state.favorites,
+    favorites: state.favorites.items,
 })
 
 export default connect(

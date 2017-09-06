@@ -94,7 +94,7 @@ class Chat extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   // TODO -> use deepstream
-  chat: state.chat,
+  chat: state.chat.items,
 })
 
 export default withRouter(connect(

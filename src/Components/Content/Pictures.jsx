@@ -23,7 +23,7 @@ class Pictures extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    images: state.images,
+    images: state.images.items,
 })
 
 export default connect(

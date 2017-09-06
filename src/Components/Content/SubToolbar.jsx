@@ -17,6 +17,7 @@ const _ID = {
     UPDATES: 1,
     IMAGES: 5,
     VIDEOS: 6,
+    VERIFICATION: 8,
     FAVORITES: 8,
     LIKES: 9,
 }
@@ -59,6 +60,13 @@ class SubToolbar extends React.Component {
                             value={_ID.VIDEOS}
                             primaryText="Videos"
                             onTouchTap={() => { history.push(routing.VIDEOS) }}
+                        />
+
+                        {/* TODO: this is only a filter for images */}
+                        <MenuItem
+                            value={_ID.VERIFICATION}
+                            primaryText="Verifications"
+                            onTouchTap={() => { history.push(routing.VERIFICATIONS) }}
                         />
                         <MenuItem
                             value={_ID.FAVORITES}

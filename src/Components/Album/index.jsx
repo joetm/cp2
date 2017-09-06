@@ -103,7 +103,7 @@ class Album extends PureComponent {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    album: state.album,
+    album: state.album.items,
     userid: ownProps.match.params.userid,
 })
 

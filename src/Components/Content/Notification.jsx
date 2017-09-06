@@ -45,12 +45,8 @@ class Notification extends React.PureComponent {
      * Render the component.
      */
     render () {
-        // const ListItemMenu = this.props.showMenu ? rightIconMenu : (<span></span>)
-
-        console.log(this.props)
-
-        const { id, thumb, user, userid, type, title, content } = this.props
-        const { username, avatar } = user
+        //
+        const { id, thumb, user = {}, userid, type, title, content } = this.props
 
         let text
         let rightIconMenu
@@ -59,7 +55,7 @@ class Notification extends React.PureComponent {
 
           case 'like':
 
-            text = <p>{username} liked your TODO</p>
+            text = <p>{user.username} liked your TODO</p>
 
             rightIconMenu = <IconMenu iconButtonElement={(
                   <IconButton
@@ -77,7 +73,7 @@ class Notification extends React.PureComponent {
 
           default:
 
-            text = <p>{username}{' '}-{' '}{content}</p>
+            text = <p>{user.username}{' '}-{' '}{content}</p>
 
             rightIconMenu = <IconMenu iconButtonElement={(
                   <IconButton
@@ -96,9 +92,7 @@ class Notification extends React.PureComponent {
         }
 
         const LeftImage = <img src={thumb} alt="" style={{width: '160px'}} />
-
-        const AvatarImage = <Avatar username={username} src={avatar} mini={true} />
-
+        const AvatarImage = <Avatar username={user.username} src={user.avatar} mini={true} />
 
         return (
             <ListItem

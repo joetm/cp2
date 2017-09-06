@@ -40,11 +40,10 @@ import jwtDecode from 'jwt-decode'
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CHAT:
-            return [...action.response]
+            return {...chatState, items: [...action.response]}
         case ACTIONS.RECEIVE_CHAT_MSG:
-            const newState = [...chatState]
-            newState.push(action.response)
-            console.log('newState', newState)
+            const newState = {...chatState}
+            newState.items.push(action.response)
             return newState
         default:
             return chatState
@@ -109,7 +108,7 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 export function updatesReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_UPDATES:
-            return [...action.response]
+            return {...updatesState, items: [...action.response]}
         default:
             return updatesState
     }
@@ -122,7 +121,7 @@ export function updatesReducer(updatesState = initialState.updates, action) {
 export function notificationsReducer(notificationState = initialState.notifications, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_NOTIFICATIONS:
-            return [...action.response]
+            return {...notificationState, items: [...action.response]}
         default:
             return notificationState
     }
@@ -135,7 +134,7 @@ export function notificationsReducer(notificationState = initialState.notificati
 export function imagesReducer(imagesState = initialState.images, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGES:
-            return [...action.response]
+            return {...imagesState, items: [...action.response]}
         default:
             return imagesState
     }
@@ -161,7 +160,7 @@ export function imageReducer(imageState = initialState.image, action) {
 export function videosReducer(videosState = initialState.videos, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_VIDEOS:
-            return [...action.response]
+            return {...videosState, items: [...action.response]}
         default:
             return videosState
     }
@@ -174,7 +173,7 @@ export function videosReducer(videosState = initialState.videos, action) {
 export function videoReducer(videoState = initialState.video, action) {
     switch (action.type) {
         case ACTIONS.FETCH_VIDEO_STARTED:
-            return { }
+            return { } // TODO
         case ACTIONS.RECEIVE_VIDEO:
             return {...action.response}
         default:
@@ -189,7 +188,7 @@ export function videoReducer(videoState = initialState.video, action) {
 export function albumReducer(albumState = initialState.album, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_ALBUM:
-            return [...action.response]
+            return {...albumState, items: [...action.response]}
         default:
             return albumState
     }
@@ -202,7 +201,7 @@ export function albumReducer(albumState = initialState.album, action) {
 export function favoritesReducer(favoritesState = initialState.favorites, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_FAVORITES:
-            return [...action.response]
+            return {...favoritesState, items: [...action.response]}
         default:
             return favoritesState
     }
@@ -215,7 +214,7 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
 export function likesReducer(likesState = initialState.notifications, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_LIKES:
-            return [...action.response]
+            return {...likesState, items: [...action.response]}
         default:
             return likesState
     }
@@ -254,7 +253,7 @@ export function postReducer(postState = initialState.post, action) {
 export function postsReducer(postsState = initialState.posts, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_POSTS:
-            return [...action.response]
+            return {...postsState, items: [...action.response]}
         default:
             return postsState
     }
@@ -267,7 +266,7 @@ export function postsReducer(postsState = initialState.posts, action) {
 export function threadsReducer(threadsState = initialState.threads, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREADS:
-            return [...action.response]
+            return {...threadsState, items: [...action.response]}
         default:
             return threadsState
     }
@@ -304,7 +303,7 @@ export function userReducer(usersState = initialState.users, action) {
 export function followersReducer(followersState = initialState.followers, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_FOLLOWERS:
-            return [...action.response]
+            return {...followersState, items: [...action.response]}
         default:
             return followersState
     }
@@ -313,10 +312,7 @@ export function followersReducer(followersState = initialState.followers, action
 export function modReducer(modState = initialState.mod, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CONTACT_REQUESTS:
-            return {
-                ...modState,
-                contactRequests: [...action.response]
-            }
+            return {...modState, contactRequests: [...action.response]}
         default:
             return modState
     }
@@ -445,6 +441,7 @@ export function cpAppReducer(appState = initialState.appState, action) {
         // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators
         // case ACTIONS.SET_FETCHING_STATUS:
         //     return { ...appState, isFetching: action.bool}
+
         default:
             return appState
     }

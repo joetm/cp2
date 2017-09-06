@@ -23,7 +23,7 @@ class Videos extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    videos: state.videos
+    videos: state.videos.items,
 })
 
 export default connect(

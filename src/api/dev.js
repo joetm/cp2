@@ -6,36 +6,40 @@ import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
 // DEV: ajax fetch data from mock json API + dispatch receive methods
 // -------------------------------------------------------------------
 
-const makeAPICallCreator = (field, limit = null) => (selection = null) => {
-    return jsonAPI.fetchFromAPI(field, selection, limit)
+const createFetchField = (field) => (limit = null) => {
+    return jsonAPI.fetchFromAPI(field, null, limit)
+        .then(response => response)
+}
+const createFetchAndSelectField = (field) => (selection = null) => {
+    return jsonAPI.fetchFromAPI(field, selection, 1)
         .then(response => response)
 }
 
 // -------------------------------------------------------------------
 
-export const fetchCurrentUser = makeAPICallCreator('currentUser')
-export const fetchUsers = makeAPICallCreator('users')
-export const fetchChat = makeAPICallCreator('chat')
-export const fetchPosts = makeAPICallCreator('posts')
-export const fetchThreads = makeAPICallCreator('threads')
-export const fetchAlbum = makeAPICallCreator('images')
-export const fetchUpdates = makeAPICallCreator('streamitems')
-export const fetchPictures = makeAPICallCreator('images')
-export const fetchFollowers = makeAPICallCreator('followers')
-export const fetchVideos = makeAPICallCreator('videos')
-export const fetchStream = makeAPICallCreator('streamitems')
-export const fetchNotifications = makeAPICallCreator('messages')
-export const fetchLikes = makeAPICallCreator('likes')
-export const fetchFavorites = makeAPICallCreator('favorites')
+export const fetchCurrentUser = createFetchField('currentUser')
+export const fetchUsers = createFetchField('users')
+export const fetchChat = createFetchField('chat')
+export const fetchPosts = createFetchField('posts')
+export const fetchThreads = createFetchField('threads')
+export const fetchAlbum = createFetchField('images')
+export const fetchUpdates = createFetchField('streamitems')
+export const fetchPictures = createFetchField('images')
+export const fetchFollowers = createFetchField('followers')
+export const fetchVideos = createFetchField('videos')
+export const fetchStream = createFetchField('streamitems')
+export const fetchNotifications = createFetchField('messages')
+export const fetchLikes = createFetchField('likes')
+export const fetchFavorites = createFetchField('favorites')
 
 // -------------------------------------------------------------------
 
-export const fetchUser = makeAPICallCreator('users')
-export const fetchPicture = makeAPICallCreator('images')
-export const fetchVideo = makeAPICallCreator('videos')
-export const fetchNotification = makeAPICallCreator('messages')
-export const fetchThread = makeAPICallCreator('threads')
-export const fetchReviewItem = makeAPICallCreator('reviewitems', 1)
+export const fetchUser = createFetchAndSelectField('users')
+export const fetchPicture = createFetchAndSelectField('images')
+export const fetchVideo = createFetchAndSelectField('videos')
+export const fetchNotification = createFetchAndSelectField('messages')
+export const fetchThread = createFetchAndSelectField('threads')
+export const fetchReviewItem = createFetchAndSelectField('reviewitems')
 
 // -------------------------------------------------------------------
 

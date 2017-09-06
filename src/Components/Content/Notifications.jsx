@@ -25,7 +25,7 @@ class Notifications extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    notifications: state.notifications
+    notifications: state.notifications.items,
 })
 
 export default connect(
