@@ -18,8 +18,9 @@ import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
 import Spacer from '../Shared/Spacer'
 import { TILED } from '../../viewModes'
-import GridWrap from '../Shared/GridWrap'
+import UpdateWrap from '../Shared/UpdateWrap'
 import ListWrap from '../Shared/ListWrap'
+
 
 const sizes = [
   { columns: 2, gutter: 10 },
@@ -73,7 +74,7 @@ class StreamTpl extends React.Component {
         const categorizedItems = categorizeList(this.props.content)
 
         const Container = this.state.viewMode === 'list' ? Notification : Update
-        const Wrapper = this.state.viewMode === 'list' ? ListWrap : GridWrap
+        const Wrapper = this.state.viewMode === 'list' ? ListWrap : UpdateWrap
 
         return (
           <div>

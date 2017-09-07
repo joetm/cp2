@@ -13,13 +13,25 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { fetchUpdates, fetchFavorites, fetchLikes } from '../../actions'
 import Footer from '../Footer'
 import Chat from '../Chat'
+import CellWrapper from '../Shared/CellWrapper'
+import GridWrap from '../Shared/GridWrap'
 import Notification from '../Content/Notification'
 // import Update from '../Content/Update'
+import Box from './Box'
+import { boxStyle } from './Box'
 
 
-const boxStyle = {
-    display: 'block',
+const styles = {
+    separator: {
+        marginTop: '1em',
+        marginBottom: '1em',
+    },
 }
+
+
+const Separator = () => (
+    <Divider style={styles.separator} />
+)
 
 
 class Home extends React.Component {
@@ -31,76 +43,29 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <div className="mdc-layout-grid">
-          <div className="mdc-layout-grid__inner">
-            <div className="mdc-layout-grid__cell
-                            mdc-layout-grid__cell--span-6
-                            mdc-layout-grid__cell--span-8-tablet
-                            mdc-layout-grid__cell--span-4-phone
-                            mdc-layout-grid__cell--order-2">
-                <Paper style={boxStyle} zDepth={1}>
-                    <List>
-                        {
-                          this.props.updates.map((item) => (
-                            <Notification
-                                key={item.id}
-                                {...item}
-                                secondaryTextLines={2}
-                            />
-                          ))
-                        }
-                    </List>
-                </Paper>
-                <br />
-                <Divider />
-                <br />
-                <Paper style={boxStyle} zDepth={1}>
-                    <List>
-                        {
-                          this.props.favorites.map((item) => (
-                            <Notification
-                                key={item.id}
-                                {...item}
-                                secondaryTextLines={2}
-                            />
-                          ))
-                        }
-                    </List>
-                </Paper>
-                <br />
-                <Divider />
-                <br />
-                <Paper style={boxStyle} zDepth={1}>
-                    <List>
-                        {
-                          this.props.likes.map((item) => (
-                            <Notification
-                                key={item.id}
-                                {...item}
-                                secondaryTextLines={2}
-                            />
-                          ))
-                        }
-                    </List>
-                </Paper>
-            </div>
-            <div className="mdc-layout-grid__cell
-                            mdc-layout-grid__cell--span-6
-                            mdc-layout-grid__cell--span-8-tablet
-                            mdc-layout-grid__cell--span-4-phone
-                            mdc-layout-grid__cell--order-1">
-            {/*
-            <gridWrapper full="6" tablet="8" phone="4" order="1">
-            */}
+
+        <GridWrap>
+
+            <CellWrapper full={6} tablet={8} phone={4}>
+                <Box
+                    updates={this.props.updates}
+                />
+                <Separator />
+                <Box
+                    updates={this.props.favorites}
+                />
+                <Separator />
+                <Box
+                    updates={this.props.likes}
+                />
+            </CellWrapper>
+            <CellWrapper full={6} tablet={8} phone={4}>
                 <Paper style={boxStyle} zDepth={1}>
                     <Chat chat={this.props.chat} />
                 </Paper>
-            {/*
-            </gridWrapper>
-            */}
-            </div>
-          </div>
-        </div>
+            </CellWrapper>
+
+        </GridWrap>
 
         <Footer />
 
