@@ -118,7 +118,7 @@ class App extends React.Component {
 
                 <Route path={`${routes.PROFILE}/:userid`}
                     render={() => (
-                        <Profile isScrolled={this.state.isScrolled} />
+                        <Profile />
                     )} />
 
                 {/*

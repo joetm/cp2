@@ -3,7 +3,7 @@
 import React from 'react'
 import DownIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 
-import Scrollbutton from '../Shared/Scrollbutton'
+// import Scrollbutton from '../Shared/Scrollbutton'
 import ProfileDetails from './ProfileDetails'
 
 
@@ -24,13 +24,13 @@ const styles = {
         backgroundColor: '#808080',
         position: 'relative',
     },
-    scrollButton: {
-        position: 'fixed',
-        left: '50%',
-        bottom: '50px',
-        opacity: 0.5,
-        zIndex: 999999999,
-    },
+    // scrollButton: {
+    //     position: 'fixed',
+    //     left: '50%',
+    //     bottom: '50px',
+    //     opacity: 0.5,
+    //     zIndex: 999999999,
+    // },
     profileImgStyle: {
         position: 'relative',
         width:'100%',
@@ -109,6 +109,7 @@ class ProfileImg extends React.Component {
                     </div>
                 </div>
 
+                {/*
                 <Scrollbutton
                     style={{ ...styles.scrollButton, display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block' }}
                     visible={!this.props.blurredImg}
@@ -117,6 +118,7 @@ class ProfileImg extends React.Component {
                     onTouchTap={this.scrollDown}
                     icon={<DownIcon />}
                 />
+                */}
 
             </div>
         )
