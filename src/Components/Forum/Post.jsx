@@ -17,7 +17,7 @@ const Post = props => {
   return (
       <ListItem
         key={`upd_${post.id}`}
-        leftAvatar={<Avatar username={post.user.username} src={post.user.avatar} mini={true} />}
+        leftAvatar={<Avatar username={post.user.username} src={post.user.avatar} macro={true} />}
         primaryText={post.title}
         secondaryText={post.user.username}
         secondaryTextLines={2}

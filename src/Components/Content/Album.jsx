@@ -5,10 +5,10 @@ import { connect } from 'react-redux'
 // import Masonry from '../External/react-simple-masonry/src/'
 // import LazyLoad from 'react-lazy-load'
 
+import { fetchAlbum } from '../../actions'
+import Update from './Update'
 import AjaxLoader from '../Shared/AjaxLoader'
 import Spacer from '../Shared/Spacer'
-import Update from '../Content/Update'
-import { fetchAlbum } from '../../actions'
 
 
 const _LAZYLOAD_OFFSET = 250

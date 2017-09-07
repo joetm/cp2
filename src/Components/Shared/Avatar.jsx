@@ -6,6 +6,7 @@ import Avatar from 'material-ui/Avatar'
 
 const _SIZE_MICRO = 16
 const _SIZE_MINI  = 30
+const _SIZE_MACRO = 40
 const _SIZE_MAXI  = 200
 
 
@@ -31,6 +32,16 @@ const styles = {
     fontSize: `${_SIZE_MINI * 0.5}px`,
     zIndex: 9999,
   },
+  avatarStyleMacro: {
+    height: `${_SIZE_MACRO}px`,
+    width: `${_SIZE_MACRO}px`,
+    position: 'absolute',
+    top: '16px',
+    left: '16px',
+    border: '2px solid #fff',
+    fontSize: `${_SIZE_MACRO * 0.5}px`,
+    zIndex: 9999,
+  },
   avatarStyleMaxi: {
     height: `${_SIZE_MAXI}px`,
     width: `${_SIZE_MAXI}px`,
@@ -50,13 +61,16 @@ class AvatarBubble extends React.PureComponent {
      * Render the component.
      */
     render() {
-      const {micro, mini, username, active, src, visible} = this.props
+      const {micro, mini, macro, username, active, src, visible, style} = this.props
+      console.log()
       // avatar size
       let avatarStyle = {}
       if (micro === true) {
           avatarStyle = styles.avatarStyleMicro
       } else if (mini === true) {
           avatarStyle = styles.avatarStyleMini
+      } else if (macro === true) {
+          avatarStyle = styles.avatarStyleMacro
       } else {
           avatarStyle = styles.avatarStyleMaxi
       }
@@ -76,7 +90,7 @@ class AvatarBubble extends React.PureComponent {
       if (!src) {
         return (
             <Avatar
-                style={avatarStyle}
+                style={{...avatarStyle, style}}
                 onTouchTap={this.props.onTouchTap}
             >
               {username ? username.substr(0, 1) : 'X'}

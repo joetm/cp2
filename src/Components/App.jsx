@@ -6,21 +6,12 @@ import { connect } from 'react-redux'
 import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
 // import { CookiesProvider } from 'react-cookie'
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-import injectTapEventPlugin from 'react-tap-event-plugin'
-// --
-// object-fit-images css polyfill for IE
-import objectFitImages from 'object-fit-images'
 // --
 // deepstream mixins
 // import DeepstreamMixin from 'deepstream.io-tools-react'
 // import reactMixin from 'react-mixin'
 // --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-
-injectTapEventPlugin()
-objectFitImages()
 
 import routes from '../routes'
 import { setDeviceDetails } from '../actions'

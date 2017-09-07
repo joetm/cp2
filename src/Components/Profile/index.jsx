@@ -8,7 +8,7 @@ import { fetchUser } from '../../actions'
 import routes from '../../routes'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
-import Album from '../Album'
+import Album from '../Content/Album'
 import Followers from '../Followers'
 import Stream from '../Content/Stream'
 import Likes from '../Content/Likes'
@@ -38,7 +38,6 @@ class Profile extends React.PureComponent {
         super(props)
         this.state = {
             blurredImg: false,
-            loading: true,
             user: {},
         }
     }
@@ -54,8 +53,6 @@ class Profile extends React.PureComponent {
     render() {
 
         const { userid } = this.props
-
-        console.log('users (index)', this.props.users)
 
         let user
         if (this.props.users[userid] === undefined) {
