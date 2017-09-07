@@ -51,7 +51,11 @@ class ReviewCard extends React.Component {
       this.props.handleChangeRating()
     }
     nextStep = () => {
-      this.setState({stepIndex: this.state.stepIndex + 1})
+      const { stepIndex } = this.state
+      this.setState({
+        stepIndex: stepIndex + 1,
+        finished: stepIndex >= 1,
+      })
     }
     // prevStep = () => {
     //   const { stepIndex } = this.state
@@ -121,11 +125,12 @@ class ReviewCard extends React.Component {
                 </Stepper>
 
                 <Toolbar style={{backgroundColor: '#ffffff', paddingLeft: 0, paddingRight: 0}}>
+
                   <ToolbarGroup>
                     <RadioButtonGroup
                       name="rating"
                       defaultSelected={this.props.rating}
-                      style={{margin: '12px', display: 'inline-block'}}
+                      style={{margin: '12px'}}
                       onChange={this.handleChangeRating}
                     >
                       <RadioButton
@@ -138,18 +143,20 @@ class ReviewCard extends React.Component {
                       />
                     </RadioButtonGroup>
                   </ToolbarGroup>
+
                   <ToolbarGroup>
                     <ApproveButton
                         primary={true}
-                        action={approve}
+                        action={() => {this.nextStep(); approve()}}
                         disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
                     />
                     <RejectButton
                         secondary={true}
-                        action={reject}
+                        action={() => {this.nextStep(); reject()}}
                         disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
                     />
                   </ToolbarGroup>
+
                 </Toolbar>
 
                 {/*

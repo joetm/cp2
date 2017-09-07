@@ -121,7 +121,7 @@ class Review extends React.Component {
             rating: null,
         })
         // DEV: just fetch the same item again
-        // this.fetchReviewItem()
+        this.fetchReviewItem()
     }
     /*
      * Reject the update.
@@ -135,7 +135,7 @@ class Review extends React.Component {
             rating: null,
         })
         // DEV: just fetch the same item again
-        // this.fetchReviewItem()
+        this.fetchReviewItem()
     }
     /*
      * Like the update.
