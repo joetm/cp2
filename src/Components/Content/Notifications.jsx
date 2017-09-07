@@ -8,7 +8,7 @@ import StreamTpl from './StreamTpl'
 import { LISTED } from '../../viewModes'
 
 
-class Notifications extends React.PureComponent {
+class Notifications extends React.Component {
     /**
      * Render the component.
      */

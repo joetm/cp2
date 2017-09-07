@@ -5,7 +5,7 @@ import React from 'react'
 import Spacer from '../Shared/Spacer'
 
 
-class Editor extends React.PureComponent {
+class Editor extends React.Component {
     /**
      * Render the component.
      */

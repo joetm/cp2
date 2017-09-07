@@ -52,7 +52,7 @@ const SubText = (props) => {
  * User class
  * @class
  */
-class User extends React.PureComponent {
+class User extends React.Component {
     handleClick = () => {
         this.props.history.push(`${routes.PROFILE}/${this.props.id}`)
     }

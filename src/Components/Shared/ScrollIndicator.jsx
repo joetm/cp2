@@ -4,7 +4,7 @@ import React from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 
 
-class ScrollIndicator extends React.PureComponent {
+class ScrollIndicator extends React.Component {
     getDocumentHeight() {
         const body = document.body
         const html = document.documentElement

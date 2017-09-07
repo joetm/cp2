@@ -21,7 +21,7 @@ import Filters from './Filters'
  * Users class
  * @class
  */
-class Users extends React.PureComponent {
+class Users extends React.Component {
     state = {
       filtersOpen: false,
     }

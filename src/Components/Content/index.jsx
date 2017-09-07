@@ -14,7 +14,7 @@ import Favorites from './Favorites'
 import Spacer from '../Shared/Spacer'
 
 
-class Feed extends React.PureComponent {
+class Feed extends React.Component {
     /**
      * Render the component.
      */

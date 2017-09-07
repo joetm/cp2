@@ -7,20 +7,13 @@ import { fetchPictures } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
-class Pictures extends React.PureComponent {
-    /**
-     * Render the component.
-     */
-    render() {
-        return (
-            <StreamTpl
-                action={this.props.fetchPictures}
-                headline="Pictures"
-                content={this.props.images}
-            />
-        )
-    }
-}
+const Pictures = (props) => (
+    <StreamTpl
+        action={props.fetchPictures}
+        headline="Pictures"
+        content={props.images}
+    />
+)
 
 const mapStateToProps = (state) => ({
     isFetching: state.images.isFetching,

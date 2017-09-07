@@ -53,7 +53,7 @@ const tabindexCounter = () => {
 }
 
 
-class Sidebar extends React.PureComponent {
+class Sidebar extends React.Component {
     render() {
         const { closeSidebar, userid } = this.props
         return (

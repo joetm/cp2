@@ -56,7 +56,7 @@ const styles = {
  * Avatar class
  * @class
  */
-class AvatarBubble extends React.PureComponent {
+class AvatarBubble extends React.Component {
     /**
      * Render the component.
      */

@@ -1,6 +1,6 @@
 /** @flow */
 
-import React, { PureComponent } from "react"
+import React from "react"
 import { connect } from 'react-redux'
 // import Masonry from '../External/react-simple-masonry/src/'
 // import LazyLoad from 'react-lazy-load'
@@ -40,7 +40,7 @@ function randomImgHeight() {
             >
             </Masonry>
 */
-class Album extends PureComponent {
+class Album extends React.Component {
     state = {
         userid: this.props.userid
     }

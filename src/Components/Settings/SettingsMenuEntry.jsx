@@ -7,7 +7,7 @@ import { ListItem } from 'material-ui/List'
 import { withRouter } from 'react-router-dom'
 
 
-class SettingsMenuEntry extends React.PureComponent {
+class SettingsMenuEntry extends React.Component {
   state = {
     selected: false
   }

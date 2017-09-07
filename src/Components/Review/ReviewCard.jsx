@@ -36,7 +36,7 @@ const styles = {
 }
 
 
-class ReviewCard extends React.PureComponent {
+class ReviewCard extends React.Component {
     navigateToUser = (e) => {
       e.stopPropagation()
       this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)

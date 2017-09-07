@@ -16,7 +16,7 @@ const styles = {
 }
 
 
-class Scrollbutton extends React.PureComponent {
+class Scrollbutton extends React.Component {
     state = {
         isScrolled: false,
     }

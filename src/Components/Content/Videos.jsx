@@ -7,20 +7,13 @@ import { fetchVideos } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
-class Videos extends React.PureComponent {
-    /**
-     * Render the component.
-     */
-    render() {
-        return (
-            <StreamTpl
-                action={this.props.fetchVideos}
-                headline="Videos"
-                content={this.props.videos}
-            />
-        )
-    }
-}
+const Videos = (props) => (
+    <StreamTpl
+        action={props.fetchVideos}
+        headline="Videos"
+        content={props.videos}
+    />
+)
 
 const mapStateToProps = (state) => ({
     isFetching: state.videos.isFetching,

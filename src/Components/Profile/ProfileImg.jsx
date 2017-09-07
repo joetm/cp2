@@ -43,7 +43,7 @@ const styles = {
 }
 
 
-class ProfileImg extends React.PureComponent {
+class ProfileImg extends React.Component {
     state = {
         profileImgHeight: window.innerHeight - _OFFSET,
     }

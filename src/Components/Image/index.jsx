@@ -10,7 +10,7 @@ import Spacer from '../Shared/Spacer'
 import Update from '../Content/Update'
 
 
-class Image extends React.PureComponent {
+class Image extends React.Component {
     componentDidMount() {
         this.props.fetchPicture(this.props.imageid)
     }

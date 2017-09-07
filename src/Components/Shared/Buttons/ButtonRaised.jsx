@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import styles from './styles'
 
 
-class ButtonRaised extends React.PureComponent {
+class ButtonRaised extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

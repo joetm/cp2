@@ -3,6 +3,7 @@
 import React from 'react'
 // --
 import { connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
 // import { CookiesProvider } from 'react-cookie'
@@ -13,6 +14,16 @@ import { Route, Switch } from 'react-router-dom'
 // --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+import injectTapEventPlugin from 'react-tap-event-plugin'
+// --
+// object-fit-images css polyfill for IE
+import objectFitImages from 'object-fit-images'
+injectTapEventPlugin()
+objectFitImages()
+
+import store from '../store'
 import routes from '../routes'
 import { setDeviceDetails } from '../actions'
 import { theme, colors } from '../common/theme'
@@ -52,7 +63,7 @@ import ModArea from './ModArea'
 // </ConnectedRouter>
 
 
-@connect(state => state)
+// @connect(state => state)
 class App extends React.Component {
     componentDidMount() {
         // store the mobile device info
@@ -75,6 +86,7 @@ class App extends React.Component {
     render() {
       return (
           <MuiThemeProvider muiTheme={theme}>
+          <Provider store={store}>
 
             <div style={{backgroundColor: colors.bg}}>
 
@@ -150,6 +162,7 @@ class App extends React.Component {
 
             </div>
 
+          </Provider>
           </MuiThemeProvider>
         )
     }

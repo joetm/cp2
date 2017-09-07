@@ -37,7 +37,7 @@ const styles = {
 }
 
 
-class Chat extends React.PureComponent {
+class Chat extends React.Component {
   componentDidMount() {
     this.props.fetchChat()
   }

@@ -17,7 +17,7 @@ import Follower from './Follower'
  * Followers class
  * @class
  */
-class Followers extends React.PureComponent {
+class Followers extends React.Component {
     componentDidMount() {
       const { userid } = this.props
       this.props.fetchFollowers(userid)

@@ -6,7 +6,7 @@ import FlatButton from 'material-ui/FlatButton'
 import styles from './styles'
 
 
-class ButtonFlat extends React.PureComponent {
+class ButtonFlat extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

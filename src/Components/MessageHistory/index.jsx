@@ -43,7 +43,7 @@ const styles = {
 }
 
 
-class MessageHistory extends React.PureComponent {
+class MessageHistory extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

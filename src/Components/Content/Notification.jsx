@@ -18,7 +18,7 @@ import Avatar from '../Shared/Avatar'
 import routes from '../../routes'
 
 
-class Notification extends React.PureComponent {
+class Notification extends React.Component {
     state = {
       showMenu: true,
     }

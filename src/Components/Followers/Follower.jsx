@@ -12,7 +12,7 @@ import routes from '../../routes'
  * Follower class
  * @class
  */
-class Follower extends React.PureComponent {
+class Follower extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

@@ -33,7 +33,7 @@ const styles = {
  * Profile class
  * @class
  */
-class Profile extends React.PureComponent {
+class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

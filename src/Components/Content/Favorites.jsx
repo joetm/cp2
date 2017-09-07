@@ -7,7 +7,7 @@ import { fetchFavorites } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
-class Favorites extends React.PureComponent {
+class Favorites extends React.Component {
     /**
      * Render the component.
      */

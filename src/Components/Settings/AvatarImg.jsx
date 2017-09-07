@@ -29,7 +29,7 @@ const styles = {
 }
 
 
-class AvatarSetting extends React.PureComponent {
+class AvatarSetting extends React.Component {
   state = {
     msgOpen: false,
   }

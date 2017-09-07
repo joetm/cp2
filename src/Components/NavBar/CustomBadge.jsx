@@ -21,7 +21,7 @@ const styles = {
 }
 
 
-class CustomBadge extends React.PureComponent {
+class CustomBadge extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

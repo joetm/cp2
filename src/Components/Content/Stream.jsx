@@ -7,21 +7,14 @@ import { fetchUpdates } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
-class Stream extends React.PureComponent {
-    /**
-     * Render the component.
-     */
-    render() {
-        const { updates } = this.props
-        return (
-            <StreamTpl
-                action={this.props.fetchUpdates}
-                headline="Updates"
-                content={updates}
-            />
-        )
-    }
-}
+const Stream = () => (
+    <StreamTpl
+        action={props.fetchUpdates}
+        headline="Updates"
+        content={updates}
+    />
+)
+
 
 const mapStateToProps = (state) => ({
     isFetching: state.updates.isFetching,

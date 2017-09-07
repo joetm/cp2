@@ -6,7 +6,7 @@ import Snackbar from 'material-ui/Snackbar'
 const _DEFAULT_DURATION = 2000
 
 
-class SnackbarAlert extends React.PureComponent {
+class SnackbarAlert extends React.Component {
     /**
      * Render the component.
      */

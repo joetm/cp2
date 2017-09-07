@@ -22,7 +22,7 @@ const _CELLSPANS = {
  * Filters class
  * @class
  */
-class Filters extends React.PureComponent {
+class Filters extends React.Component {
     state = {
       verified: false,
       statii: [],

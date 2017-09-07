@@ -16,7 +16,7 @@ import Footer from '../Footer/'
  * Contact class
  * @class
  */
-class Contact extends React.PureComponent {
+class Contact extends React.Component {
     state = {
         selectedField: "suggestion",
     }

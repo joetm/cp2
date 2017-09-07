@@ -20,7 +20,7 @@ const styles = {
 
 
 // https://stackoverflow.com/a/39094233/426266
-// class AtomicImage extends React.PureComponent {
+// class AtomicImage extends React.Component {
 //   constructor(props) {
 //         super(props)
 //         this.state = {
@@ -62,7 +62,7 @@ const styles = {
 // }
 
 
-class Update extends React.PureComponent {
+class Update extends React.Component {
   clickable = true
   navigateToItem = () => {
     let url = '/'

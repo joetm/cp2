@@ -13,7 +13,7 @@ const styles = {
 }
 
 
-class LoginButton extends React.PureComponent {
+class LoginButton extends React.Component {
   state = {
     visible: true,
   }

@@ -28,7 +28,7 @@ const sizes = [
 ]
 
 
-class StreamTpl extends React.PureComponent {
+class StreamTpl extends React.Component {
     bricksInstance = null
     constructor(props) {
         super(props)

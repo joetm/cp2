@@ -7,7 +7,7 @@ import IconButton from 'material-ui/IconButton'
 import styles from './styles'
 
 
-class ButtonMini extends React.PureComponent {
+class ButtonMini extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

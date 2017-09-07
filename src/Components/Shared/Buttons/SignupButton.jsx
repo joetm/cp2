@@ -13,7 +13,7 @@ const styles = {
 }
 
 
-class SignupButton extends React.PureComponent {
+class SignupButton extends React.Component {
     state = {
       visible: true,
     }

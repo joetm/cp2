@@ -18,7 +18,7 @@ const styles = {
 }
 
 
-class LegalTpl extends React.PureComponent {
+class LegalTpl extends React.Component {
     request = null
     state = {
         loading: true,

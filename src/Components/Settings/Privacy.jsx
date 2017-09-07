@@ -16,7 +16,7 @@ import styles from './styles'
   }
 */
 
-class PrivacySettings extends React.PureComponent {
+class PrivacySettings extends React.Component {
   toggleLocationVisibility = (event, isInputChecked) => {
     // console.log('change location visibility', isInputChecked)
     this.props.changeSetting('showLocation', isInputChecked)

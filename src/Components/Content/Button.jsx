@@ -13,7 +13,7 @@ const iconButtonStyleHovered = {
 }
 
 
-class Button extends React.PureComponent {
+class Button extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
