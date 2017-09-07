@@ -23,6 +23,7 @@ class Pictures extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.images.isFetching,
     images: state.images.items,
 })
 

@@ -53,6 +53,7 @@ class Followers extends React.PureComponent {
 
 const mapStateToProps = (state, ownProps) => ({
     followers: state.followers.items,
+    isFetching: state.followers.isFetching,
     userid: ownProps.match.params.userid,
     user: state.users[ownProps.match.params.userid],
 })

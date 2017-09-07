@@ -104,6 +104,7 @@ class Album extends PureComponent {
 
 const mapStateToProps = (state, ownProps) => ({
     album: state.album.items,
+    isFetching: state.album.isFetching,
     userid: ownProps.match.params.userid,
 })
 

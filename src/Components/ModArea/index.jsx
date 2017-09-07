@@ -57,6 +57,7 @@ class ModArea extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.mod.isFetching,
     contactRequests: state.mod.contactRequests,
 })
 

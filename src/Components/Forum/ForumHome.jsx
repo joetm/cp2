@@ -33,6 +33,7 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.threads.isFetching,
     threads: state.threads.items,
 })
 

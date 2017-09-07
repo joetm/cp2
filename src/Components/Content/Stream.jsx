@@ -24,6 +24,7 @@ class Stream extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.updates.isFetching,
     updates: state.updates.items
 })
 

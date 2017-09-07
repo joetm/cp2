@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { List } from 'material-ui/List'
 
 import Post from './Post'
 
@@ -10,9 +11,9 @@ const Posts = ({ posts }) => {
      * Render the component.
      */
     return (
-      <div>
-          {posts.map((post, i) => <Post key={`post_${i}`} post={post} />)}
-      </div>
+      <List>
+          {posts.map((post) => <Post key={`post_${post.id}`} post={post} />)}
+      </List>
     )
 }
 

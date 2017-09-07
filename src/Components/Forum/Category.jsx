@@ -32,6 +32,7 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.posts.isFetching,
     posts: state.posts.items,
 })
 

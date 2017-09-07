@@ -23,6 +23,7 @@ class Videos extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.videos.isFetching,
     videos: state.videos.items,
 })
 

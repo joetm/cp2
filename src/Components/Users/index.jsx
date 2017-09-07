@@ -109,6 +109,7 @@ class Users extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.users.isFetching,
     users: state.users.items,
     countries: state.appState.countries,
 })

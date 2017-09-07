@@ -23,6 +23,7 @@ class Favorites extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.favorites.isFetching,
     favorites: state.favorites.items,
 })
 

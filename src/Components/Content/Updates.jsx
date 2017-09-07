@@ -23,7 +23,8 @@ class Updates extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-    updates: state.updates.items
+    isFetching: state.updates.isFetching,
+    updates: state.updates.items,
 })
 
 export default connect(

@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import Avatar from 'material-ui/Avatar'
 import TextField from 'material-ui/TextField'
 import SendIcon from 'material-ui/svg-icons/content/send'
 

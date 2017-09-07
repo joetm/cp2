@@ -25,6 +25,7 @@ class Likes extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.likes.isFetching,
     likes: state.likes.items,
 })
 

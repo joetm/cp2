@@ -22,16 +22,9 @@ import jwtDecode from 'jwt-decode'
 // }
 
 
-/**
- * Merges the application state into the properties of the connected components under the key `store`
- **/
-// export const mapStateToProps = (state) => ({
-//     store: state.app
-// })
-
-/**
- * Redux reducers
- **/
+/******************
+ * Redux reducers *
+ ******************/
 
 /**
  * chatReducer
@@ -201,7 +194,7 @@ export function albumReducer(albumState = initialState.album, action) {
 export function favoritesReducer(favoritesState = initialState.favorites, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_FAVORITES:
-            return {...favoritesState, items: [...action.response]}
+            return {...favoritesState, isFetching: false, items: [...action.response]}
         default:
             return favoritesState
     }
@@ -214,7 +207,7 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
 export function likesReducer(likesState = initialState.notifications, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_LIKES:
-            return {...likesState, items: [...action.response]}
+            return {...likesState, isFetching: false, items: [...action.response]}
         default:
             return likesState
     }
@@ -253,7 +246,7 @@ export function postReducer(postState = initialState.post, action) {
 export function postsReducer(postsState = initialState.posts, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_POSTS:
-            return {...postsState, items: [...action.response]}
+            return {...postsState, isFetching: false, items: [...action.response]}
         default:
             return postsState
     }
@@ -266,7 +259,7 @@ export function postsReducer(postsState = initialState.posts, action) {
 export function threadsReducer(threadsState = initialState.threads, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREADS:
-            return {...threadsState, items: [...action.response]}
+            return {...threadsState, isFetching: false, items: [...action.response]}
         default:
             return threadsState
     }
@@ -281,10 +274,11 @@ export function userReducer(usersState = initialState.users, action) {
         case ACTIONS.RECEIVE_USER:
             return {
                 ...usersState,
+                isFetching: false,
                 [action.response.id]: {...action.response}
             }
         case ACTIONS.RECEIVE_USERS:
-            const ret = { ...usersState }
+            const ret = {...usersState, isFetching: false}
             for (let id in action.response) {
                 if (action.response.hasOwnProperty(id)) {
                     ret[id] = {...action.response[id]}
@@ -303,7 +297,7 @@ export function userReducer(usersState = initialState.users, action) {
 export function followersReducer(followersState = initialState.followers, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_FOLLOWERS:
-            return {...followersState, items: [...action.response]}
+            return {...followersState, isFetching: false, items: [...action.response]}
         default:
             return followersState
     }
@@ -312,7 +306,7 @@ export function followersReducer(followersState = initialState.followers, action
 export function modReducer(modState = initialState.mod, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CONTACT_REQUESTS:
-            return {...modState, contactRequests: [...action.response]}
+            return {...modState, isFetching: false, contactRequests: [...action.response]}
         default:
             return modState
     }
@@ -365,7 +359,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
 
         // AUTH -------------------------------------
         case ACTIONS.SET_IS_AUTHENTICATING:
-            return {...currentUserState, 'isAuthenticating': true}
+            return {...currentUserState, isAuthenticating: true}
         case ACTIONS.LOGIN_SUCCESS:
             return {...currentUserState, ...{
                 isAuthenticating: false,
@@ -436,11 +430,6 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return {...appState, states: [...action.response]}
         case ACTIONS.RECEIVE_CITIES:
             return {...appState, cities: [...action.response]}
-
-        // TODO - ajax loading msg
-        // https://egghead.io/lessons/javascript-redux-displaying-loading-indicators
-        // case ACTIONS.SET_FETCHING_STATUS:
-        //     return { ...appState, isFetching: action.bool}
 
         default:
             return appState

@@ -25,6 +25,7 @@ class Notifications extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
+    isFetching: state.notifications.isFetching,
     notifications: state.notifications.items,
 })
 

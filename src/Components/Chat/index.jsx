@@ -94,6 +94,7 @@ class Chat extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
   // TODO -> use deepstream
+  isFetching: state.chat.isFetching,
   chat: state.chat.items,
 })
 

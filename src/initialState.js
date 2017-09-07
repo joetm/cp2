@@ -12,7 +12,6 @@ const initialState = {
         deviceDetails: {},
         sidebarSearchOpen: false,
         sidebarOpen: false,
-        isFetching: false,
         // --
         isAuthenticating: false,
         isAuthenticated: false,

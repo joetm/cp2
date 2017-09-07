@@ -13,7 +13,8 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
 import { colors } from '../../common/theme'
-import Avatar from '../Shared/Avatar'
+// import Avatar from '../Shared/Avatar'
+import Avatar from 'material-ui/Avatar'
 import routes from '../../routes'
 
 
@@ -92,11 +93,10 @@ class Notification extends React.PureComponent {
         }
 
         const LeftImage = <img src={thumb} alt="" style={{width: '160px'}} />
-        const AvatarImage = <Avatar username={user.username} src={user.avatar} mini={true} />
 
         return (
             <ListItem
-              leftAvatar={AvatarImage}
+              leftAvatar={<Avatar username={user.username} src={user.avatar} mini={true} />}
               rightIconButton={ this.state.showMenu ? rightIconMenu : null }
               primaryText={title}
               secondaryText={text}
