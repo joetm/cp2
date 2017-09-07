@@ -41,7 +41,8 @@
   "/playlist": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/playlist?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
     "/playlist/?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
-  "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
   "/reviewitems": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=post&type=image&type=video&type=verification",
-    "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=image&type=video&type=verification&$1"
+    "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=image&type=video&type=verification&$1",
+  "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
+    "/streamitems?*": "/streamitems?_expand=user&$1"
 }

@@ -33,7 +33,7 @@ import jwtDecode from 'jwt-decode'
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CHAT:
-            return {...chatState, items: [...action.response]}
+            return {...chatState, isFetching: false, items: [...action.response]}
         case ACTIONS.RECEIVE_CHAT_MSG:
             const newState = {...chatState}
             newState.items.push(action.response)
@@ -101,7 +101,7 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 export function updatesReducer(updatesState = initialState.updates, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_UPDATES:
-            return {...updatesState, items: [...action.response]}
+            return {...updatesState, isFetching: false, items: [...action.response]}
         default:
             return updatesState
     }
@@ -114,7 +114,7 @@ export function updatesReducer(updatesState = initialState.updates, action) {
 export function notificationsReducer(notificationState = initialState.notifications, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_NOTIFICATIONS:
-            return {...notificationState, items: [...action.response]}
+            return {...notificationState, isFetching: false, items: [...action.response]}
         default:
             return notificationState
     }
@@ -127,7 +127,7 @@ export function notificationsReducer(notificationState = initialState.notificati
 export function imagesReducer(imagesState = initialState.images, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGES:
-            return {...imagesState, items: [...action.response]}
+            return {...imagesState, isFetching: false, items: [...action.response]}
         default:
             return imagesState
     }
@@ -153,7 +153,7 @@ export function imageReducer(imageState = initialState.image, action) {
 export function videosReducer(videosState = initialState.videos, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_VIDEOS:
-            return {...videosState, items: [...action.response]}
+            return {...videosState, isFetching: false, items: [...action.response]}
         default:
             return videosState
     }
@@ -181,7 +181,7 @@ export function videoReducer(videoState = initialState.video, action) {
 export function albumReducer(albumState = initialState.album, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_ALBUM:
-            return {...albumState, items: [...action.response]}
+            return {...albumState, isFetching: false, items: [...action.response]}
         default:
             return albumState
     }

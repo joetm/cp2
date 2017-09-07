@@ -45,12 +45,6 @@ class Home extends React.Component {
                             <Notification
                                 key={item.id}
                                 {...item}
-                                content={
-                                  <p>
-                                    <span style={{color: darkBlack}}>Recipe to try</span><br />
-                                    We should eat this: grated squash. Corn and tomatillo tacos.
-                                  </p>
-                                }
                                 secondaryTextLines={2}
                             />
                           ))
@@ -67,12 +61,6 @@ class Home extends React.Component {
                             <Notification
                                 key={item.id}
                                 {...item}
-                                content={
-                                  <p>
-                                    <span style={{color: darkBlack}}>Recipe to try</span><br />
-                                    We should eat this: grated squash. Corn and tomatillo tacos.
-                                  </p>
-                                }
                                 secondaryTextLines={2}
                             />
                           ))
@@ -89,12 +77,6 @@ class Home extends React.Component {
                             <Notification
                                 key={item.id}
                                 {...item}
-                                content={
-                                  <p>
-                                    <span style={{color: darkBlack}}>Recipe to try</span><br />
-                                    We should eat this: grated squash. Corn and tomatillo tacos.
-                                  </p>
-                                }
                                 secondaryTextLines={2}
                             />
                           ))
