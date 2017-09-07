@@ -3,18 +3,18 @@
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
-import IconButton from 'material-ui/IconButton'
 import Slider from 'material-ui/Slider'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 // --
-import StopIcon from 'material-ui/svg-icons/av/stop'
 import PlayIcon from 'material-ui/svg-icons/av/play-arrow'
 import PauseIcon from 'material-ui/svg-icons/av/pause'
+import StopIcon from 'material-ui/svg-icons/av/stop'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
 
 import ReactPlayer from 'react-player'
 import Duration from './Duration'
+import ControlButton from './ControlButton'
 import { colors } from '../../common/theme'
 
 
@@ -39,13 +39,6 @@ const styles = {
     marginTop: 0,
     paddingTop: 0,
     // opacity: 0.8,
-  },
-  controlButton: {
-    width: '32px',
-    height: '32px',
-    margin: '0 0 0 10px',
-    cursor: 'pointer',
-    clear: 'both',
   },
   info: {
     display: 'inline',
@@ -239,33 +232,24 @@ class VideoPlayer extends Component {
 
                       {
                         playing ?
-                        <IconButton tooltip="Pause">
-                            <PauseIcon
-                              color={iconColor}
-                              hoverColor={colors.palette.primary1Color}
-                              onTouchTap={this.playPause}
-                              style={styles.controlButton}
-                            />
-                        </IconButton>
+                          <ControlButton
+                            tooltip="Pause"
+                            action={this.playPause}
+                            icon={PauseIcon}
+                          />
                         :
-                        <IconButton tooltip="Play">
-                            <PlayIcon
-                              color={iconColor}
-                              hoverColor={colors.palette.primary1Color}
-                              onTouchTap={this.playPause}
-                              style={styles.controlButton}
-                            />
-                        </IconButton>
+                          <ControlButton
+                            tooltip="Play"
+                            action={this.playPause}
+                            icon={PlayIcon}
+                          />
                       }
 
-                      <IconButton tooltip="Stop">
-                          <StopIcon
-                            color={iconColor}
-                            hoverColor={colors.palette.primary1Color}
-                            onTouchTap={this.stop}
-                            style={styles.controlButton}
-                          />
-                      </IconButton>
+                      <ControlButton
+                        tooltip="Stop"
+                        action={this.stop}
+                        icon={StopIcon}
+                      />
 
                       <div style={styles.info}>
                           {/* elapsed */}
@@ -278,14 +262,12 @@ class VideoPlayer extends Component {
                           <Duration seconds={duration} />
                       </div>
 
-                      <IconButton style={{float: 'right', marginLeft: '10px'}} tooltip="Switch to full screen">
-                          <FullScreenIcon
-                            color={iconColor}
-                            hoverColor={colors.palette.primary1Color}
-                            style={styles.controlButton}
-                            onTouchTap={this.onClickFullscreen}
-                          />
-                      </IconButton>
+                      <ControlButton
+                        tooltip="Switch to full screen"
+                        action={this.onClickFullscreen}
+                        icon={FullScreenIcon}
+                        style={{float: 'right', marginLeft: '10px'}}
+                      />
 
                       <SelectField
                           value={playbackRate}
