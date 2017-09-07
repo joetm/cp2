@@ -6,10 +6,8 @@ import { connect } from 'react-redux'
 import { Link, NavLink, withRouter } from 'react-router-dom'
 import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
-import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
-import Popover from 'material-ui/Popover'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
@@ -19,7 +17,6 @@ import UploadIcon from 'material-ui/svg-icons/file/file-upload'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
-import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
 import { fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../actions'
 import { colors } from '../../common/theme'
@@ -32,6 +29,7 @@ import RouterMenuItem from './RouterMenuItem'
 import LoginButton from '../Shared/Buttons/LoginButton'
 import SignupButton from '../Shared/Buttons/SignupButton'
 import NotificationsMenu from './NotificationsMenu'
+import SearchBar from './SearchBar'
 
 
 const numAllNotifications = () => {
@@ -40,24 +38,9 @@ const numAllNotifications = () => {
 
 const _DURATION = 600 // ms
 
-const _NAVITEM_ID = {
-    MENU: 1,
-    HOME: 2,
-    REVIEW: 55,
-    ALLNOTIFICATIONS: 90,
-      FORUM: 91,
-      STREAM: 92,
-      MESSAGES: 93,
-      LIKES: 94,
-    PROFILE: 98,
-    SETTINGS: 99,
-}
 
 const styles = {
     navbar: {
-        // position: navbarIsAffixed ? 'fixed' : 'relative',
-        // top: '0px',
-        // width: '100%',
         zIndex: 9999999,
         backgroundColor: '#fff',
     },
@@ -81,22 +64,20 @@ const styles = {
 }
 
 
-// const NavbarSeparator = () => (
-//     <div style={styles.separator}></div>
-// )
-
 class NavBar extends React.Component {
-    anchorEl = null
     state = {
         notificationsMenuOpen: false,
         searchExpanded: false,
+        anchorEl: null,
     }
     attachMenuToDomNode = () => {
-        this.anchorEl = findDOMNode(this.refs.notifications)
+        console.log('attach menu to', findDOMNode(this.refs.notifications))
+        this.setState({anchorEl: findDOMNode(this.refs.notifications)})
     }
     componentDidMount() {
         this.props.fetchCurrentUser()
         this.props.fetchUnreadCount()
+        // attach the notifications menu to the dom node
         this.attachMenuToDomNode()
     }
     isForum = () => {
@@ -112,7 +93,6 @@ class NavBar extends React.Component {
         // on all other pages: switch the navbar menu with the search input
         } else {
             this.toggleSearchField()
-            this.attachMenuToDomNode()
         }
     }
     toggleNotificationsMenu = () => {
@@ -129,9 +109,7 @@ class NavBar extends React.Component {
      */
     render() {
         const { unread, dispatch, isAuthenticated, errorMessage } = this.props
-        // TODO
-        // const navbarIsAffixed = this.props.scrollPosition > 250
-        //
+
         let AllNotificationsIcons
         // TODO
         // if (!this.props.unread) {
@@ -139,6 +117,7 @@ class NavBar extends React.Component {
         // } else {
             AllNotificationsIcons = NotificationsActiveIcon
         // }
+
         return (
             <Toolbar
                 style={styles.navbar}
@@ -157,7 +136,6 @@ class NavBar extends React.Component {
                             firstChild={true}
                         >
                             <IconButton
-                                id={_NAVITEM_ID.MENU}
                                 tooltip="Menu"
                                 style={styles.firstItem}
                                 onTouchTap={this.props.openSidebar}
@@ -169,7 +147,6 @@ class NavBar extends React.Component {
                                 activeStyle={{color: colors.palette.primary1Color}}
                             >
                                 <IconButton
-                                    id={_NAVITEM_ID.HOME}
                                     tooltip="Home"
                                 >
                                     <HomeIcon />
@@ -216,7 +193,7 @@ class NavBar extends React.Component {
 
                             <NotificationsMenu
                                 open={this.state.notificationsMenuOpen}
-                                anchorEl={this.anchorEl}
+                                anchorEl={this.state.anchorEl}
                                 unread={unread}
                                 userid={this.props.userid}
                                 closeNotificationsMenu={this.closeNotificationsMenu}
@@ -224,7 +201,6 @@ class NavBar extends React.Component {
 
                             <Link to={`/profile/${this.props.userid}`}>
                                 <Avatar
-                                    id={_NAVITEM_ID.PROFILE}
                                     visible={true}
                                     src={this.props.avatar}
                                     mini={true}
@@ -248,34 +224,14 @@ class NavBar extends React.Component {
                 </ReactCSSTransitionGroup>
 
                 {
-                !this.state.searchExpanded ? null :
-                    <ToolbarGroup
-                        firstChild={true}
-                        lastChild={true}
-                    >
-                        <IconButton
-                            tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                            onTouchTap={this.searchAction}
-                            style={styles.searchIcon}
-                        >
-                            <SearchIcon />
-                        </IconButton>
-                        <TextField
-                          hintText="Search"
-                          rows={1}
-                          rowsMax={1}
-                          fullWidth={true}
-                          style={{marginBottom: '10px'}}
-                          floatingLabelText="Search"
-                        />
-                        <IconButton
-                            tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                            onTouchTap={this.toggleSearchField}
-                            style={styles.searchIcon}
-                        >
-                            <CloseIcon />
-                        </IconButton>
-                    </ToolbarGroup>
+                    this.state.searchExpanded ?
+                            <SearchBar
+                                isForum={this.isForum}
+                                searchAction={this.searchAction}
+                                toggleSearchField={this.toggleSearchField}
+                                attachMenuToDomNode={this.attachMenuToDomNode}
+                            />
+                    : null
                 }
 
             </Toolbar>

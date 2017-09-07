@@ -8,7 +8,7 @@ import StreamTpl from './StreamTpl'
 import { LISTED } from '../../viewModes'
 
 
-const Likes = () => (
+const Likes = (props) => (
     <StreamTpl
         action={props.fetchLikes}
         viewMode={LISTED}

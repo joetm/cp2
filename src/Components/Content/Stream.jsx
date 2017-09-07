@@ -7,18 +7,18 @@ import { fetchUpdates } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
-const Stream = () => (
+const Stream = (props) => (
     <StreamTpl
         action={props.fetchUpdates}
         headline="Updates"
-        content={updates}
+        content={props.updates}
     />
 )
 
 
 const mapStateToProps = (state) => ({
     isFetching: state.updates.isFetching,
-    updates: state.updates.items
+    updates: state.updates.items,
 })
 
 export default connect(

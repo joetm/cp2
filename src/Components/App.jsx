@@ -49,7 +49,7 @@ import Profile from './Profile'
 import Review from './Review'
 import Editor from './Editor'
 import Settings from './Settings'
-import Error from './Error'
+import ErrorPage from './Error'
 import LoginPage from './Login'
 import SignupPage from './Signup'
 import Legal from './Legal'
@@ -78,7 +78,7 @@ class App extends React.Component {
             isPlaystation: device.match('playstation'),
             isXbox: device.match('xbox'),
         }
-        this.props.dispatch(setDeviceDetails(obj))
+        store.dispatch(setDeviceDetails(obj))
     }
     /**
      * Render the component.
@@ -150,7 +150,7 @@ class App extends React.Component {
 
                 <Route exact path={routes.UPLOAD} component={Upload} />
 
-                <Route component={Error} code="404" />
+                <Route component={ErrorPage} code="404" />
 
               </Switch>
 
