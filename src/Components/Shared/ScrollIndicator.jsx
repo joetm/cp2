@@ -16,9 +16,6 @@ class ScrollIndicator extends React.PureComponent {
      * Render the component.
      */
     render() {
-        // console.log('doc height', this.getDocumentHeight())
-        // console.log('scrollPos', this.props.scrollPosition)
-        // console.log('percent', this.getDocumentHeight() / this.props.scrollPosition)
         let pos = ( this.getDocumentHeight() - this.props.scrollPosition ) / this.getDocumentHeight()
         if (pos <= 0) { pos = 0 }
         const indicatorStyle = {

@@ -54,18 +54,6 @@ import ModArea from './ModArea'
 
 @connect(state => state)
 class App extends React.Component {
-    state = {
-        isScrolled: false,
-    }
-    getScrollPosition() {
-        return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
-    }
-    componentWillMount() {
-        // show scroll button (overlay)
-        window.onscroll = () => {
-            this.setState({isScrolled: this.getScrollPosition() > 0})
-        }
-    }
     componentDidMount() {
         // store the mobile device info
         const device = new MobileDetect(window.navigator.userAgent)
@@ -81,9 +69,6 @@ class App extends React.Component {
         }
         this.props.dispatch(setDeviceDetails(obj))
     }
-    componentWillUnmount() {
-        window.onscroll = null
-    }
     /**
      * Render the component.
      */
@@ -93,7 +78,7 @@ class App extends React.Component {
 
             <div style={{backgroundColor: colors.bg}}>
 
-              <NavBar isScrolled={this.state.isScrolled} />
+              <NavBar />
 
               <Switch>
 
@@ -158,7 +143,6 @@ class App extends React.Component {
               </Switch>
 
               <Scrollbutton
-                  visible={this.state.isScrolled}
                   secondary={true}
               />
 

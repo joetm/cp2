@@ -17,6 +17,22 @@ const styles = {
 
 
 class Scrollbutton extends React.PureComponent {
+    state = {
+        isScrolled: false,
+    }
+    getScrollPosition() {
+        return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop
+    }
+    windowIsScrolled = () => this.getScrollPosition() > 0
+    componentWillMount() {
+        // show scroll button (overlay)
+        window.onscroll = () => {
+            this.setState({isScrolled: this.windowIsScrolled()})
+        }
+    }
+    componentWillUnmount() {
+        window.onscroll = null
+    }
     /**
      * The default action for the button -> scroll to the top.
      */
@@ -42,7 +58,7 @@ class Scrollbutton extends React.PureComponent {
      * Render the component.
      */
     render() {
-        if (!this.props.visible) {
+        if (!this.state.isScrolled) {
             return null
         }
         return (
