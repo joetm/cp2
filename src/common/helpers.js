@@ -173,3 +173,18 @@ export function checkHttpStatus(response) {
 export function parseJSON(response) {
      return response.json()
 }
+
+/**
+ * Function to scroll to top of page.
+ * See http://stackoverflow.com/a/24559613/426266
+ */
+export function scrollToTop(scrollDuration) {
+    const scrollStep = -window.scrollY / (scrollDuration / 15)
+    const scrollInterval = setInterval(function() {
+        if ( window.scrollY !== 0 ) {
+            window.scrollBy( 0, scrollStep )
+        } else {
+            clearInterval(scrollInterval)
+        }
+    }, 15);
+}

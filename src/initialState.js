@@ -90,6 +90,7 @@ const initialState = {
     // -- crowd review
     reviewitem: {
         id: null,
+        isFetching: true,
         primaryText: null,
         secondaryText: null,
         fromUsername: null,

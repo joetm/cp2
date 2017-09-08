@@ -1,1 +1,41 @@
-...HELP TEXT HERE...
+
+You have the power to review all contributions on this website.
+If a posting does not fit your values, if it is offensive or generally does not fit the community, it is in your power to reject it.
+
+<br />
+<br />
+
+Our crowd review genome*:
+
+<table border="1" style="margin: 1em 0; text-align: left">
+    <tr>
+        <th>What?</th>
+        <th>Who?</th>
+        <th>Why?</th>
+        <th>How?</th>
+    </tr>
+    <tr>
+        <th>Decide on uploaded pictures</th>
+        <th>Crowd</th>
+        <th>Love, Glory</th>
+        <th>Group Decision</th>
+    </tr>
+    <tr>
+        <th>Decide on uploaded videos</th>
+        <th>Crowd</th>
+        <th>Love, Glory</th>
+        <th>Group Decision</th>
+    </tr>
+    <tr>
+        <th>Decide on verification pictures</th>
+        <th>Moderators</th>
+        <th>Love</th>
+        <th>Individual Decision</th>
+    </tr>
+</table>
+
+Future versions of the site will also allow reviewing forum posts.  Judging forum posts requires knowing the context of the post. For now, we start with a crowd review of the uploaded images and videos.
+
+<br />
+<br />
+* Malone, Thomas W., Laubacher, Robert, Dellarocas, Chrysanthos: Harnessing Crowds: Mapping the Genome of Collective Intelligence. Working paper no. 2009-001, 2009.

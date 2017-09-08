@@ -26,7 +26,7 @@ class CustomDialog extends React.Component {
               open={this.props.isOpen}
               onRequestClose={this.props.toggleHelp}
             >
-                {this.props.msg}
+              <div dangerouslySetInnerHTML={{__html: this.props.msg}}></div>
             </Dialog>
         )
     }

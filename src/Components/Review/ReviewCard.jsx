@@ -12,9 +12,13 @@ import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
 
 import routes from '../../routes'
+import { scrollToTop } from '../../common/helpers'
 
 
 const _IMAGE_MIN_HEIGHT = 475
+
+const SFW  = 'G'
+const NSFW = 'R'
 
 
 const styles = {
@@ -41,13 +45,15 @@ class ReviewCard extends React.Component {
     state = {
       finished: false,
       stepIndex: 0,
+      selectedRating: null,
     }
     navigateToUser = (e) => {
       e.stopPropagation()
       this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)
     }
-    handleChangeRating = () => {
+    handleChangeRating = (e, value) => {
       this.nextStep()
+      this.setState({selectedRating: value})
       this.props.handleChangeRating()
     }
     nextStep = () => {
@@ -56,6 +62,22 @@ class ReviewCard extends React.Component {
         stepIndex: stepIndex + 1,
         finished: stepIndex >= 1,
       })
+    }
+    resetSteps = () => {
+        // reset steps
+        this.setState({stepIndex: 0})
+    }
+    launchAction = (action) => () => {
+        // go to the next step
+        this.nextStep()
+        // fire the chosen action
+        action()
+        // reset the steps
+        this.resetSteps()
+        // scroll up
+        scrollToTop(200)
+        // unselect (reset) the radio button group
+        this.setState({selectedRating: null})
     }
     // prevStep = () => {
     //   const { stepIndex } = this.state
@@ -79,10 +101,10 @@ class ReviewCard extends React.Component {
             likes,
             dislikes,
             // functions
-            like,
-            dislike,
             approve,
-            reject
+            reject,
+            like,
+            dislike
         } = this.props
 
         return (
@@ -129,17 +151,18 @@ class ReviewCard extends React.Component {
                   <ToolbarGroup>
                     <RadioButtonGroup
                       name="rating"
-                      defaultSelected={this.props.rating}
                       style={{margin: '12px'}}
                       onChange={this.handleChangeRating}
                     >
                       <RadioButton
-                        value="G"
-                        label="G&nbsp;(Safe)"
+                        value={SFW}
+                        label="G&nbsp;(Safe-for-work)"
+                        checked={this.state.selectedRating === SFW}
                       />
                       <RadioButton
-                        value="R"
+                        value={NSFW}
                         label="R&nbsp;(adult)"
+                        checked={this.state.selectedRating === NSFW}
                       />
                     </RadioButtonGroup>
                   </ToolbarGroup>
@@ -147,12 +170,12 @@ class ReviewCard extends React.Component {
                   <ToolbarGroup>
                     <ApproveButton
                         primary={true}
-                        action={() => {this.nextStep(); approve()}}
+                        action={this.launchAction(approve)}
                         disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
                     />
                     <RejectButton
                         secondary={true}
-                        action={() => {this.nextStep(); reject()}}
+                        action={this.launchAction(reject)}
                         disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
                     />
                   </ToolbarGroup>

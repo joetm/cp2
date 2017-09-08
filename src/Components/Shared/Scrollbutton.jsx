@@ -4,6 +4,8 @@ import React from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import UpIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
 
+import { scrollToTop } from '../../common/helpers'
+
 
 const styles = {
     scrollButtonDefault: {
@@ -38,21 +40,7 @@ class Scrollbutton extends React.Component {
      */
     defaultAction = () => {
         if (this.props.clickable === false) { return }
-        this.scrollToTop(400)
-    }
-    /**
-     * Function to scroll to top of page.
-     * See http://stackoverflow.com/a/24559613/426266
-     */
-    scrollToTop(scrollDuration) {
-        const scrollStep = -window.scrollY / (scrollDuration / 15)
-        const scrollInterval = setInterval(function() {
-                if ( window.scrollY !== 0 ) {
-                    window.scrollBy( 0, scrollStep );
-                } else {
-                    clearInterval(scrollInterval);
-                }
-            }, 15);
+        scrollToTop(400)
     }
     /**
      * Render the component.

@@ -20,6 +20,8 @@ import Spacer from '../Shared/Spacer'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
 import CellPadding from '../Shared/CellPadding'
+import CellWrapper from '../Shared/CellWrapper'
+import GridWrap from '../Shared/GridWrap'
 
 
 const _HELPTXT_URL = '/docs/crowdreview.txt'
@@ -100,46 +102,28 @@ class Review extends React.Component {
     /*
      * Open the snack bar alert.
      */
-    openAlert = () => {
-        this.setState({alertIsOpen: true})
-    }
+    openAlert = () => this.setState({alertIsOpen: true})
     /*
      * Close the snack bar alert.
      */
-    closeAlert = () => {
-        this.setState({alertIsOpen: false})
-    }
+    closeAlert = () => this.setState({alertIsOpen: false})
     /*
-     * Approve the update.
+     * Approve/Reject the item.
      */
-    approve = () => {
-        this.props.reviewApprove(this.props.reviewitem.id, this.state.rating)
+    launchAction = (action) => () => {
+        action(this.props.reviewitem.id, this.state.rating)
         this.openAlert()
         this.setState({
             isFetching: true,
             buttonsDisabled: true,
             rating: null,
         })
-        // DEV: just fetch the same item again
-        this.fetchReviewItem()
-    }
-    /*
-     * Reject the update.
-     */
-    reject = () => {
-        this.props.reviewDisapprove(this.props.reviewitem.id, this.state.rating)
-        this.openAlert()
-        this.setState({
-            isFetching: true,
-            buttonsDisabled: true,
-            rating: null,
-        })
-        // DEV: just fetch the same item again
         this.fetchReviewItem()
     }
     /*
      * Like the update.
      */
+    // TODO
     like = () => {
         if (this.state.clickedLike) {
             // undo a previous dislike
@@ -160,11 +144,12 @@ class Review extends React.Component {
     /*
      * Dislike the update.
      */
+    // TODO
     dislike = () => {
         if (this.state.clickedDislike) {
             // undo a previous dislike
             this.props.dislike(this.props.reviewitem.id, -1)
-            this.setState({ ...initialLikeState })
+            this.setState({...initialLikeState})
             return
         }
         this.props.dislike(this.props.reviewitem.id)
@@ -188,11 +173,7 @@ class Review extends React.Component {
     /*
      * Handle the event when the rating is changed.
      */
-    handleChangeRating = (e, value) => {
-        this.setState({
-            rating: value,
-        })
-    }
+    handleChangeRating = (e, value) => this.setState({rating: value})
     getPointsMsg = () => {
         const numPoints = this.state.rating !== null ? 2 : 1
         const points = numPoints > 1 ? "points" : "point"
@@ -202,10 +183,8 @@ class Review extends React.Component {
      * Render the component.
      */
     render() {
-
         const { reviewitem } = this.props
         // console.log('reviewitem', reviewitem)
-
         return (
             <div>
 
@@ -223,15 +202,16 @@ class Review extends React.Component {
                     toggleHelp={this.toggleHelp}
                 />
 
-                <div className="mdc-layout-grid">
-                  <div className="mdc-layout-grid__inner">
+                {
+                    this.props.isFetching &&
+                    <Loader />
+                }
+
+                <GridWrap>
 
                     <CellPadding />
 
-                    <div className="mdc-layout-grid__cell
-                                mdc-layout-grid__cell--span-8
-                                mdc-layout-grid__cell--span-6-tablet
-                                mdc-layout-grid__cell--span-4-phone">
+                    <CellWrapper full={8} tablet={6} phone={4}>
 
                         <ReactCSSTransitionGroup
                           transitionName="reviewcard"
@@ -247,8 +227,8 @@ class Review extends React.Component {
                                     gridColumnsTablet={3}
                                     gridColumnsPhone={1}
                                     rating={this.state.rating}
-                                    approve={this.approve}
-                                    reject={this.reject}
+                                    approve={this.launchAction(this.props.reviewApprove)}
+                                    reject={this.launchAction(this.props.reviewDisapprove)}
                                     like={this.like}
                                     dislike={this.dislike}
                                     buttonsDisabled={this.state.buttonsDisabled}
@@ -258,9 +238,9 @@ class Review extends React.Component {
                             }
                         </ReactCSSTransitionGroup>
 
-                    </div>
-                  </div>
-                </div>
+                    </CellWrapper>
+
+                </GridWrap>
 
                 <Alert
                     open={this.state.alertIsOpen}

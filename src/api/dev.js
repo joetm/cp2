@@ -10,8 +10,12 @@ const createFetchField = (field) => (limit = null) => {
     return jsonAPI.fetchFromAPI(field, null, limit)
         .then(response => response)
 }
-const createFetchAndSelectField = (field) => (selection = null) => {
+const createFetchAndSelectSpecificItem = (field) => (selection = null) => {
     return jsonAPI.fetchFromAPI(field, selection)
+        .then(response => response)
+}
+const createFetchAndSelectFirstItem = (field) => () => {
+    return jsonAPI.fetchFromAPI(field, null, 1)
         .then(response => response)
 }
 
@@ -34,12 +38,15 @@ export const fetchFavorites = createFetchField('favorites')
 
 // -------------------------------------------------------------------
 
-export const fetchUser = createFetchAndSelectField('users')
-export const fetchPicture = createFetchAndSelectField('images')
-export const fetchVideo = createFetchAndSelectField('videos')
-export const fetchNotification = createFetchAndSelectField('messages')
-export const fetchThread = createFetchAndSelectField('threads')
-export const fetchReviewItem = createFetchAndSelectField('reviewitems')
+export const fetchUser = createFetchAndSelectSpecificItem('users')
+export const fetchPicture = createFetchAndSelectSpecificItem('images')
+export const fetchVideo = createFetchAndSelectSpecificItem('videos')
+export const fetchNotification = createFetchAndSelectSpecificItem('messages')
+export const fetchThread = createFetchAndSelectSpecificItem('threads')
+
+// -------------------------------------------------------------------
+
+export const fetchReviewItem = createFetchAndSelectFirstItem('reviewitems')
 
 // -------------------------------------------------------------------
 
