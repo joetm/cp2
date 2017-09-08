@@ -7,6 +7,7 @@ import SendIcon from 'material-ui/svg-icons/content/send'
 
 import { sendChatMessage } from '../../actions'
 import colors from '../../common/theme'
+import routes from '../../routes'
 
 
 const styles = {
@@ -32,34 +33,30 @@ const styles = {
 
 
 class ChatInput extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    // bindings
-    this.handleChangeChatMsg = this.handleChangeChatMsg.bind(this)
-    this.submitMsg = this.submitMsg.bind(this)
-  }
   navigateToUser = (e) => {
-    this.props.history.push(`/profile/${e.target.id}`)
+    this.props.history.push(`${routes.PROFILE}/${e.target.id}`)
   }
-  handleChangeChatMsg(e) {
+  handleChangeChatMsg = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       this.submitMsg()
     }
   }
-  submitMsg() {
+  submitMsg = () => {
     let msg = this.refs.chatinput.getValue().trim()
-    if (msg) {
+    if (msg !== '') {
       const payload = {
         msg,
         userid: this.props.currentUserid,
         username: this.props.currentUsername,
+        avatar: this.props.currentUserAvatar, // UNSAFE
       }
-      console.log(`send: ${msg}`)
+      console.log(`send: ${msg}`, payload)
       this.props.sendChatMessage(payload)
       // clear the input field
       this.refs.chatinput.getInputNode().value = ''
     }
+    // TODO: focus the textfield
+    this.refs.chatinput.focus()
   }
   render() {
     return (
@@ -85,9 +82,9 @@ class ChatInput extends React.Component {
 
 const mapStateToProps = (state) => ({
   // TODO -> use deepstream
-  // chat: state.chat,
   currentUserid: state.currentUser.id,
   currentUsername: state.currentUser.username,
+  currentUserAvatar: state.currentUser.avatar,
 })
 
 export default connect(

@@ -47,21 +47,18 @@ class Home extends React.Component {
         <GridWrap>
 
             <CellWrapper full={6} tablet={8} phone={4}>
-                <Box
-                    updates={this.props.updates}
-                />
+                <Box updates={this.props.updates} />
                 <Separator />
-                <Box
-                    updates={this.props.favorites}
-                />
+                <Box updates={this.props.favorites} />
                 <Separator />
-                <Box
-                    updates={this.props.likes}
-                />
+                <Box updates={this.props.likes} />
             </CellWrapper>
             <CellWrapper full={6} tablet={8} phone={4}>
                 <Paper style={boxStyle} zDepth={1}>
-                    <Chat chat={this.props.chat} />
+                    <Chat
+                        chat={this.props.chat}
+                        maxHeight={1200}
+                    />
                 </Paper>
             </CellWrapper>
 
@@ -77,11 +74,13 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => ({
     updates: state.updates.items,
+      updatesIsFetching: state.updates.isFetching,
     favorites: state.favorites.items,
+      favoritesIsFetching: state.favorites.isFetching,
     likes: state.likes.items,
+      likesIsFetching: state.likes.isFetching,
     chat: state.chat.items,
-    // TODO
-    // isFetching: state.appState.isFetching,
+      chatIsFetching: state.chat.isFetching,
 })
 
 export default connect(

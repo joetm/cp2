@@ -477,7 +477,7 @@ export const fetchContactRequests = (limit) =>
 
 
 
-export const sendChatMessage = (payload) => (dispatch) => {
+export const sendChatMessage = (payload) => { // => (dispatch) => {
     // dispatch(sendChatMessageStart(payload))
     return api.sendChatMessage(payload).then(receiveChatMsg)
 }

@@ -35,9 +35,9 @@ export function chatReducer(chatState = initialState.chat, action) {
         case ACTIONS.RECEIVE_CHAT:
             return {...chatState, isFetching: false, items: [...action.response]}
         case ACTIONS.RECEIVE_CHAT_MSG:
-            const newState = {...chatState}
-            newState.items.push(action.response)
-            return newState
+            const copyitems = [...chatState.items]
+            copyitems.push(action.response)
+            return {...chatState, items: copyitems}
         default:
             return chatState
     }

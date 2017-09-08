@@ -14,6 +14,9 @@ import ChatInput from './ChatInput'
 
 
 const styles = {
+  chatList: {
+    overflowY: 'auto',
+  },
   listitem: {
   },
   chatText: {
@@ -48,7 +51,7 @@ class Chat extends React.Component {
   render() {
     return (
       <div>
-        <List>
+        <List style={{...styles.chatList, ...this.props.style, maxHeight: this.props.maxHeight}}>
           {
             this.props.chat.map((chatitem) => (
               <ListItem

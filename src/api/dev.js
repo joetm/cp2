@@ -1,6 +1,8 @@
 
 import * as jsonAPI from '../../__mocks__/mockJsonAPI'
 import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
+// DEV
+import cuid from 'cuid'
 
 // -------------------------------------------------------------------
 // DEV: ajax fetch data from mock json API + dispatch receive methods
@@ -87,7 +89,32 @@ export const sendChatMessage = (payload) =>
     jsonAPI.sendDataToAPI(payload)
         .then(response => {
             if (response === 200) {
-                return payload
+                // TODO - this comes back from the server
+                return {
+                    type: 'message',
+                    id: cuid(), // TODO
+                    content: payload.msg, // TODO
+                    approvals: 0,
+                    disapprovals: 0,
+                    dislikes: 0,
+                    lastEdit: null,
+                    likes: 0,
+                    rating: null,
+                    replies: 0,
+                    src: null,
+                    tags: [],
+                    threadid: 0,
+                    thumb: null,
+                    timestamp: Math.round(Date.now() / 1000),
+                    title: null,
+                    type: "message",
+                    userid: payload.userid, // TODO - this must come from server
+                    user: { // TODO
+                        id: payload.userid, // TODO - this must come from server
+                        username: payload.username, // TODO - this must come from server
+                        avatar: payload.avatar, // TODO - this must come from server
+                    }
+                }
             }
         })
 
