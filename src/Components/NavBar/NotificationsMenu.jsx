@@ -24,9 +24,13 @@ const NumChip = (props) => <Chip style={styles.Chip}>{props.num}</Chip>
 
 
 class NotificationsMenu extends React.Component {
+  closeMenuAndNavigate = (url) => {
+    this.props.closeNotificationsMenu()
+    this.props.history.push(url)
+  }
   render() {
 
-    const { unread, userid, closeNotificationsMenu, history } = this.props
+    const { unread, userid, closeNotificationsMenu } = this.props
 
     return (
       <div>
@@ -43,42 +47,27 @@ class NotificationsMenu extends React.Component {
             <MenuItem
               primaryText="Forum"
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.posts}</Chip>}
-              onTouchTap={() => {
-                closeNotificationsMenu()
-                history.push(routes.FORUM)
-              }}
+              onTouchTap={() => this.closeMenuAndNavigate(routes.FORUM)}
             />
             <MenuItem
               primaryText="Images"
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
-              onTouchTap={() => {
-                closeNotificationsMenu()
-                history.push(`${routes.STREAM}${routes.IMAGES}`)
-              }}
+              onTouchTap={() => this.closeMenuAndNavigate(`${routes.STREAM}/${this.props.userid}${routes.IMAGES}`)}
             />
             <MenuItem
               primaryText="Videos"
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
-              onTouchTap={() => {
-                closeNotificationsMenu()
-                history.push(`${routes.STREAM}${routes.VIDEOS}`)
-              }}
+              onTouchTap={() => this.closeMenuAndNavigate(`${routes.STREAM}/${this.props.userid}${routes.VIDEOS}`)}
             />
             <MenuItem
               primaryText="Messages"
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
-              onTouchTap={() => {
-                closeNotificationsMenu()
-                history.push(routes.NOTIFICATIONS)
-              }}
+              onTouchTap={() => this.closeMenuAndNavigate(routes.NOTIFICATIONS)}
             />
             <MenuItem
               primaryText="Likes"
               secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
-              onTouchTap={() => {
-                closeNotificationsMenu()
-                history.push(`${routes.STREAM}/${this.props.userid}${routes.LIKES}`)
-              }}
+              onTouchTap={() => this.closeMenuAndNavigate(`${routes.STREAM}/${this.props.userid}${routes.LIKES}`)}
             />
           </Menu>
 

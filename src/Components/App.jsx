@@ -37,7 +37,7 @@ import MessageHistory from './MessageHistory'
 import Followers from './Followers'
 import Users from './Users'
 import Stream from './Content'
-import Feed from './Content/Stream'
+// import Feed from './Content/Stream'
 import Updates from './Content/Updates'
 import Pictures from './Content/Pictures'
 import Videos from './Content/Videos'
@@ -98,8 +98,7 @@ class App extends React.Component {
 
                 <Route path={routes.FORUM} component={Forum} />
 
-                <Route exact path={routes.STREAM} component={Feed} />
-                <Route path={routes.STREAM} component={Stream} />
+                <Route exact path={routes.STREAM} component={Stream} />
 
                 <Route exact path={routes.UPDATES} component={Updates} />
                 <Route exact path={routes.IMAGES} component={Pictures} />
@@ -116,10 +115,7 @@ class App extends React.Component {
 
                 <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
 
-                <Route path={`${routes.PROFILE}/:userid`}
-                    render={() => (
-                        <Profile />
-                    )} />
+                <Route path={`${routes.PROFILE}/:userid`} component={Profile} />
 
                 {/*
                 <Route path={routes.PLAYLIST} component={Playlist} />

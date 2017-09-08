@@ -11,7 +11,7 @@ const createFetchField = (field) => (limit = null) => {
         .then(response => response)
 }
 const createFetchAndSelectField = (field) => (selection = null) => {
-    return jsonAPI.fetchFromAPI(field, selection, 1)
+    return jsonAPI.fetchFromAPI(field, selection)
         .then(response => response)
 }
 

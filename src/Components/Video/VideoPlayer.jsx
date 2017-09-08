@@ -102,11 +102,13 @@ class VideoPlayer extends Component {
     playerHeight: 480,
   }
   resizePlayer = () => {
-    const playerHeight = Math.round(this.refs.playerWrapper.offsetWidth / (16 * 9))
+    const playerHeight = Math.round((this.refs.playerWrapper.offsetWidth / 16) * 9)
     // TODO
     // if the player becomes taller than the window, resize the width
     // if (playerHeight > window.innerHeight) {
     // }
+    console.log('this.refs.playerWrapper.offsetWidth', this.refs.playerWrapper.offsetWidth)
+    console.log('playerHeight', playerHeight)
     this.setState({ playerHeight })
   }
   componentDidMount = () => {
