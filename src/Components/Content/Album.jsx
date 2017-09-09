@@ -11,35 +11,13 @@ import AjaxLoader from '../Shared/AjaxLoader'
 import Spacer from '../Shared/Spacer'
 
 
-const _LAZYLOAD_OFFSET = 250
-
-
-/**
- * [DEV] Return a random integer to simulate different image heights
- * @returns {number} Random integer
- */
-function randomImgHeight() {
-    return Math.floor(270 * Math.random()) + 30;
-}
+// const _LAZYLOAD_OFFSET = 250
 
 
 /**
  * Album class
  * @class
  */
-/*
-            <Masonry
-                      width={500}
-                      columns={4}
-                      gutterX={20}
-                      gutterY={20}
-                      maxHeight={550}
-                      collapsing={true}
-                      customize={this.customizeRectangles}
-                      centering={true}
-            >
-            </Masonry>
-*/
 class Album extends React.Component {
     state = {
         userid: this.props.userid
@@ -52,18 +30,6 @@ class Album extends React.Component {
         // window.addEventListener('resize', this.onresizeListener)
         this.props.fetchAlbum() // TODO: use/filter-for userid
     }
-    // onResize () {
-        // this.setState({
-        //     width: document.body.clientWidth
-        // })
-    // }
-    // customizeRectangles (rectangle, i, allRectangles, options) {
-    //     const dimension = options.dimensions[i]
-    //     if (dimension.width < rectangle.width) {
-    //       rectangle.height += 180
-    //     }
-    //     return rectangle
-    // }
     /**
      * Render the component.
      */

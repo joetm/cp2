@@ -65,7 +65,7 @@ class Contact extends React.Component {
                     />
                   </div>
 
-                  <div style={{margin:'1em auto',display:'inline-block'}}>
+                  <div style={{margin: '1em auto', display: 'inline-block'}}>
                       <ReCaptcha
                           ref="recaptcha"
                           sitekey="<client site key>"

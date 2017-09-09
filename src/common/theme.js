@@ -1,41 +1,23 @@
 /** @flow */
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import {
-  red500,
-  red200,
-  red50,
-  white,
-  grey200,
-  grey400,
-  grey800,
-  darkBlack,
-  lightBlack
-} from 'material-ui/styles/colors';
+
+import { palette, black, white, bg, grey, lightGrey, darkGrey, lightBlack } from './colors'
 
 export const colors = {
-  palette: {
-    primary1Color: red500,
-    primary2Color: red200,
-    primary3Color: red50
-  },
-  grey: grey400,
-   gray: grey400,
-  lightGrey: grey200,
-   lightGray: grey200,
-  darkGrey: grey800,
-   darkGray: grey800,
-  black: darkBlack,
+  palette,
+  grey,
+    gray: grey,
+  lightGrey,
+    lightGray: lightGrey,
+  darkGrey,
+    darkGray: darkGrey,
+  black,
   lightBlack,
   white,
-  bg: '#FAFAFA', // #F1F1F1
+  bg,
 }
-const theme = getMuiTheme(colors)
 
-export const bg = colors.bg
-export const white = colors.white
-export const black = colors.black
-export const grey = colors.grey
-export const gray = colors.gray
+const theme = getMuiTheme(colors)
 
 export default theme

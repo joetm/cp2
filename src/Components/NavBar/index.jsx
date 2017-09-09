@@ -27,7 +27,7 @@ import {
     // closeStreamSidebar,
     fetchCurrentUser,
 } from '../../actions'
-import { colors } from '../../common/theme'
+import { palette } from '../../common/colors'
 import { sum } from '../../common/helpers'
 import routes from '../../routes'
 import './style.scss'
@@ -145,7 +145,7 @@ class NavBar extends React.Component {
                             </IconButton>
                             <NavLink
                                 to="/"
-                                activeStyle={{color: colors.palette.primary1Color}}
+                                activeStyle={{color: palette.primary1Color}}
                             >
                                 <IconButton
                                     tooltip="Home"

@@ -87,9 +87,8 @@ export const fetchImage  = fetchPicture
 
 // -------------------------------------------------------------------
 
-export const sendChatMessage = (payload) => {
-    return jsonAPI.sendDataToAPI(payload)
-        .then(response => {
+export const sendChatMessage = (payload) =>
+    jsonAPI.sendDataToAPI(payload).then(response => {
             if (response === 200) {
                 // TODO - this comes back from the server
                 return {
@@ -109,8 +108,8 @@ export const sendChatMessage = (payload) => {
                     }
                 }
             }
+            return 500 // TODO
         })
-}
 
 // TODO
 export const recordLike = (payload) =>

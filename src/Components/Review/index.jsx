@@ -11,7 +11,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './style.scss'
 // --
 import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, approve, reject, like, dislike } from '../../actions'
-import { colors } from '../../common/theme'
+import { grey } from '../../common/colors'
 import { humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
@@ -29,7 +29,7 @@ const _HELPTXT_URL = '/docs/crowdreview.txt'
 const styles = {
     helpIconStyle: {
         cursor: 'pointer',
-        color: colors.grey,
+        color: grey,
         verticalAlign: 'middle',
         lineHeight: '1em',
     },

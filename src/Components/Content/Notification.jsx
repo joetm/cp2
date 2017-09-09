@@ -12,7 +12,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
 import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
-import { grey } from '../../common/theme'
+import { grey } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 // import Avatar from 'material-ui/Avatar'
 import routes from '../../routes'

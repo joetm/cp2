@@ -6,7 +6,7 @@ import React from 'react'
 import '../External/dropzone/dist/dropzone.css'
 import { SimpleReactDropzone } from 'simple-react-dropzone'
 
-// import { colors } from '../../common/theme'
+// import { palette } from '../../common/colors'
 import Spacer from '../Shared/Spacer'
 
 
@@ -26,13 +26,13 @@ const styles = {
 }
 // const actionStyles = {
 //   activeStyle: {
-//     backgroundColor: colors.palette.primary2Color,
+//     backgroundColor: palette.primary2Color,
 //   },
 //   acceptStyle: {
-//     backgroundColor: colors.palette.primary3Color,
+//     backgroundColor: palette.primary3Color,
 //   },
 //   rejectStyle: {
-//     backgroundColor: colors.palette.primary1Color,
+//     backgroundColor: palette.primary1Color,
 //   },
 // }
 

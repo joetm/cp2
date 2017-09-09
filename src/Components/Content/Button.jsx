@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+// TODO
 import { red400, grey400, darkBlack } from 'material-ui/styles/colors'
 import IconButton from 'material-ui/IconButton'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
@@ -22,6 +23,8 @@ class Button extends React.Component {
         }
         this.id = props.id
         this.msg = props.msg
+        // binding
+        this.launchAction = this.launchAction.bind(this)
     }
     toggleButtonState = () => {
         this.setState({active: !this.state.active})
@@ -50,7 +53,7 @@ class Button extends React.Component {
                 tooltip={this.tooltip}
                 iconStyle={iconButtonStyle}
                 hoveredStyle={iconButtonStyleHovered}
-                onTouchTap={this.launchAction.bind(this)}
+                onTouchTap={this.launchAction}
             >
                 { this.icon }
             </IconButton>

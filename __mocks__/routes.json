@@ -47,5 +47,6 @@
     "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=image&type=video&type=verification&$1",
   "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/streamitems?*": "/streamitems?_expand=user&$1",
-  "/currentUser": "/currentUser?_expand=profileimg"
+  "/currentUser": "/currentUser?_expand=profileimg",
+  "/mod/contactRequests": "/contactRequests?_expand=user"
 }

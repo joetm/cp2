@@ -84,7 +84,7 @@ class Sidebar extends React.Component {
      * Handle the click on a filter item.
      */
     handleTouchTap() {
-        window.alert('You clicked the Chip.')
+        // window.alert('You clicked the Chip.')
     }
     /**
      * Render the component.
@@ -107,7 +107,7 @@ class Sidebar extends React.Component {
                             hintText="Search"
                             fullWidth={false}
                             style={{marginLeft: '20px', width: '150px'}}
-                            onChange={(event, inputValue) => this.handleChangeSearchField}
+                            onChange={() => this.handleChangeSearchField}
                         />
                         <EnterIcon
                             style={styles.icon}
@@ -154,9 +154,9 @@ class Sidebar extends React.Component {
                 <Divider />
 
                 {
-                    this.state.filterTerms.map((value, i) => (
+                    this.state.filterTerms.map((value) => (
                         <Chip
-                            key={`fi_${i}`}
+                            key={`fi_${value}`}
                             onTouchTap={this.handleTouchTap}
                             style={styles.chip}
                         >

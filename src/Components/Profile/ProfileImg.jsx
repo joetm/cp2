@@ -88,7 +88,11 @@ class ProfileImg extends React.Component {
         // --
         return (
             <div>
-                <div onClick={this.props.toggleProfileDetails} role="button">
+                <div
+                    onClick={this.props.toggleProfileDetails}
+                    role="button"
+                    tabIndex={0}
+                >
                     <div style={styles.profileImgContainer}>
                         <ProfileDetails
                             {...this.props}

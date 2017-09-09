@@ -5,7 +5,7 @@ import MenuItem from 'material-ui/MenuItem'
 import Chip from 'material-ui/Chip'
 import { withRouter } from 'react-router-dom'
 
-import { colors } from '../../common/theme'
+import { lightGray, black, palette } from '../../common/colors'
 import routes from '../../routes'
 
 
@@ -19,18 +19,18 @@ const styles = {
   },
   menuHeader: {
     height: '40px',
-    backgroundColor: colors.lightGray,
+    backgroundColor: lightGray,
     display: 'flex',
     lineHeight: '40px',
     padding: '0 1em',
-    color: colors.black,
+    color: black,
   }
 }
 
 
 // const NumChip = (props) => (
 //   <Chip
-//     backgroundColor={colors.palette.primary3Color}
+//     backgroundColor={palette.primary3Color}
 //     style={styles.Chip}>{props.num}
 //   </Chip>
 // )
@@ -62,27 +62,27 @@ class NotificationsMenu extends React.Component {
           <Menu onEscKeyDown={closeNotificationsMenu}>
             <MenuItem
               primaryText="Forum"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.posts}</Chip>}
+              secondaryText={<Chip backgroundColor={palette.primary3Color} style={styles.Chip}>{unread.posts}</Chip>}
               onTouchTap={() => this.closeMenuAndNavigate(routes.FORUM)}
             />
             <MenuItem
               primaryText="Images"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
+              secondaryText={<Chip backgroundColor={palette.primary3Color} style={styles.Chip}>{unread.images}</Chip>}
               onTouchTap={() => this.closeMenuAndNavigate(`${routes.STREAM}/${this.props.userid}${routes.IMAGES}`)}
             />
             <MenuItem
               primaryText="Videos"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
+              secondaryText={<Chip backgroundColor={palette.primary3Color} style={styles.Chip}>{unread.videos}</Chip>}
               onTouchTap={() => this.closeMenuAndNavigate(`${routes.STREAM}/${this.props.userid}${routes.VIDEOS}`)}
             />
             <MenuItem
               primaryText="Messages"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
+              secondaryText={<Chip backgroundColor={palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
               onTouchTap={() => this.closeMenuAndNavigate(routes.NOTIFICATIONS)}
             />
             <MenuItem
               primaryText="Likes"
-              secondaryText={<Chip backgroundColor={colors.palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
+              secondaryText={<Chip backgroundColor={palette.primary3Color} style={styles.Chip}>{unread.likes}</Chip>}
               onTouchTap={() => this.closeMenuAndNavigate(`${routes.STREAM}/${this.props.userid}${routes.LIKES}`)}
             />
           </Menu>

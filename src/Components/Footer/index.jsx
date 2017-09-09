@@ -6,7 +6,7 @@ import Divider from 'material-ui/Divider'
 import { Link } from 'react-router-dom'
 
 import routes from '../../routes'
-import { colors } from '../../common/theme'
+import { grey } from '../../common/colors'
 import Spacer from '../Shared/Spacer'
 import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
@@ -25,7 +25,7 @@ const styles = {
 const UList = (props) => (
   <ul style={styles.unorderedList}>
     <li style={styles.listItem}>
-      <Link to={props.url} style={{color: colors.grey}}>{props.text}</Link>
+      <Link to={props.url} style={{color: grey}}>{props.text}</Link>
     </li>
   </ul>
 )

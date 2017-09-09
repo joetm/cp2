@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs'
+// TODO
 import { pinkA200 } from 'material-ui/styles/colors'
 import PhotoIcon from 'material-ui/svg-icons/image/photo'
 import ChatIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'

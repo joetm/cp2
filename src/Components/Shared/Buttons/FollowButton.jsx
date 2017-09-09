@@ -3,17 +3,17 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { colors } from '../../../common/theme'
+import { palette } from '../../../common/colors'
 
 
 const followButtonStyle = {
-    backgroundColor: colors.palette.primary1Color,
+    backgroundColor: palette.primary1Color,
     zIndex: 999,
 }
 
 
 const FollowButton = props => {
-    const buttonStyle = { ...followButtonStyle, ...props.style }
+    const buttonStyle = {...followButtonStyle, ...props.style}
     return (
         <RaisedButton
             label={props.label}

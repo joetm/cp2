@@ -20,7 +20,7 @@ class GeneralSettings extends React.Component {
     /*
      * Handle the change of the country selector.
      */
-    handleChangeCountry = (country) => {
+    handleChangeCountry = () => { // country
       // TODO
       // this.setState({ country })
       console.log('TODO')
@@ -28,7 +28,7 @@ class GeneralSettings extends React.Component {
     /*
      * Handle the change of the state selector.
      */
-    handleChangeState = (event, key, state) => {
+    handleChangeState = () => { // event, key, state
       // TODO
       // this.setState({ state })
       console.log('TODO')
@@ -36,7 +36,7 @@ class GeneralSettings extends React.Component {
     /*
      * Handle the change of the city selector.
      */
-    handleChangeCity = (event, key, city) => {
+    handleChangeCity = () => { // event, key, city
       // TODO
       // this.setState({ city })
       console.log('TODO')

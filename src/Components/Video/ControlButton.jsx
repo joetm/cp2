@@ -2,10 +2,8 @@
 
 import React from 'react'
 import IconButton from 'material-ui/IconButton'
-import { colors } from '../../common/theme'
+import { palette, black } from '../../common/colors'
 
-
-const iconColor = colors.black
 
 const controlButtonStyle = {
     width: '32px',
@@ -24,8 +22,8 @@ const ControlButton = (props) => {
             style={props.style}
         >
             <Icon
-              color={iconColor}
-              hoverColor={colors.palette.primary1Color}
+              color={black}
+              hoverColor={palette.primary1Color}
               onTouchTap={props.action}
               style={controlButtonStyle}
             />

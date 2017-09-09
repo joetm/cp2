@@ -10,7 +10,7 @@ import './signupform.css'
 import Spacer from '../Shared/Spacer'
 
 
-const SignUpForm = (props) => {
+const SignUpForm = () => {
   // const {
   // onSubmit,
   // onChange,

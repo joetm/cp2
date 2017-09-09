@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
+import { Card, CardHeader, CardMedia, CardTitle } from 'material-ui/Card'
 // import Avatar from 'material-ui/Avatar'
 
 import routes from '../../routes'
@@ -87,14 +87,10 @@ class Update extends React.Component {
     this.props.history.push(`${routes.PROFILE}/${this.props.user.id}`)
   }
   render () {
-    const {
-      user,
-      title,
-      thumb,
-    } = this.props
+    const { user, title, thumb } = this.props
 
-    const showTitle = this.props.showTitle
-    this.clickable = this.props.clickable
+    const showTitle = this.props.showTitle || false
+    this.clickable = this.props.clickable || true
 
     return (
       <div className="updateBox">

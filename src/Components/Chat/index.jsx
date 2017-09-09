@@ -9,7 +9,7 @@ import Avatar from 'material-ui/Avatar'
 // --
 
 import { sendChatMessage, fetchChat } from '../../actions'
-import { gray, black } from '../../common/theme'
+import { gray, black } from '../../common/colors'
 import routes from '../../routes'
 import ChatInput from './ChatInput'
 

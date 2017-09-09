@@ -1,6 +1,6 @@
 
 export function validEmail(email) {
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
 
@@ -71,7 +71,7 @@ export function humanRelativeDate(datestamp) {
     const minute = 60
     const hour = minute * 60
     const day = hour * 24
-    const week = day * 7
+    // const week = day * 7
     const month = day * 30
     let formattedTime
     if (delta < 30) {
@@ -127,33 +127,21 @@ export function translateDayOffset(offset) {
  * @param {number} max - Maximum of the range
  * @returns {number} Integer between min and max
  */
-export function getRandomInt(minArg, maxArg) {
-    min = Math.ceil(minArg)
-    max = Math.floor(maxArg)
-    return Math.floor(Math.random() * (max - min)) + min
+export function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + min
 }
 
 /*
  * Other actions
  */
 
-/**
- * Navigation function [TODO]
- * @param {number} arg - Argument
- * @returns {null} null
- */
-export function navigateTo(arg) {
-    // TODO
-    console.log('arg', arg)
-}
-
 // see https://stackoverflow.com/a/16449334/426266
 export const sum = (obj) => {
-  let sum = 0
+  let sumOfObjectKeys = 0
   Object.keys(obj).forEach(key => {
-    sum += parseInt(obj[key])
+    sumOfObjectKeys += parseInt(obj[key], 10)
   })
-  return sum
+  return sumOfObjectKeys
 }
 
 export function checkHttpStatus(response) {

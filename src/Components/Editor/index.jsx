@@ -5,21 +5,16 @@ import React from 'react'
 import Spacer from '../Shared/Spacer'
 
 
-class Editor extends React.Component {
-    /**
-     * Render the component.
-     */
-    render () {
-        return (
-            <div>
+const Editor = () => {
+    return (
+        <div>
 
-                <h2>TODO</h2>
+            <h2>TODO</h2>
 
-                <Spacer />
+            <Spacer />
 
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Editor

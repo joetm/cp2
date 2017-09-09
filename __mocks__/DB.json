@@ -10,9 +10,9 @@
         "states": [],
         "cities": []
     },
-    "mod": {
+    "contactRequests": {
         "isFetching": true,
-        "contactRequests": [
+        "items": [
             {
                 "type": "complaint",
                 "id": "cj78m7beo000047dr0xvm599g",

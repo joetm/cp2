@@ -5,7 +5,7 @@
 
 import api from './api'
 // import { pushState } from 'redux-router'
-import jwtDecode from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 import fetch from 'unfetch'
 
 import { checkHttpStatus, parseJSON } from './common/helpers'
@@ -306,7 +306,7 @@ export function login(email, password) { // , redirect="/"
             })
             .then(checkHttpStatus)
             .then(parseJSON)
-            .then(response => {
+            .then(() => { // response
                 try {
                     // const decoded = jwtDecode(response.token)
                     // dispatch(loginUserSuccess(response.token))

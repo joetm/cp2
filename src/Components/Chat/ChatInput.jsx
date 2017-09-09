@@ -6,7 +6,6 @@ import TextField from 'material-ui/TextField'
 import SendIcon from 'material-ui/svg-icons/content/send'
 
 import { sendChatMessage } from '../../actions'
-import colors from '../../common/theme'
 import routes from '../../routes'
 
 

@@ -120,7 +120,7 @@ module.exports = {
       minChunks: Infinity
     }),
     new ExtractTextPlugin({
-      // allChunks: true
+      // allChunks: true,
       filename: './css/style.css',
     }),
     new CopyWebpackPlugin([
@@ -132,6 +132,7 @@ module.exports = {
         template: '!!handlebars-loader!src/index.hbs',
         hash: true,
         cache: true,
+        chunksSortMode: 'dependency',
         showErrors: true
     })
     // new HtmlWebpackPlugin({
@@ -182,7 +183,7 @@ module.exports = {
         }
     }),
     new ExtractTextPlugin({
-      // allChunks: true
+      // allChunks: true,
       filename: './css/style.css',
     }),
     new CopyWebpackPlugin([
@@ -216,6 +217,7 @@ module.exports = {
         },
         hash: true,
         cache: true,
+        chunksSortMode: 'dependency',
         showErrors: false
     })
     // new HtmlWebpackPlugin({

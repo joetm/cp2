@@ -15,7 +15,7 @@ import SingleThread from './SingleThread'
 
 
 const Forum = (props) => {
-    const { url, sidebarSearchOpen, closeSearchSidebar } = props
+    const { url, sidebarSearchOpen } = props
     return (
         <div>
             <Switch>
@@ -25,7 +25,7 @@ const Forum = (props) => {
                 <Route component={ForumHome} />
             </Switch>
             <SearchSidebar
-                closeSidebar={closeSearchSidebar}
+                closeSidebar={this.props.closeSearchSidebar}
                 open={sidebarSearchOpen}
             />
             <Spacer />
