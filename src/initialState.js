@@ -12,6 +12,7 @@ const initialState = {
         deviceDetails: {},
         sidebarSearchOpen: false,
         sidebarOpen: false,
+        streamSidebarOpen: false,
         // --
         isAuthenticating: false,
         isAuthenticated: false,

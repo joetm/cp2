@@ -17,8 +17,8 @@ import { scrollToTop } from '../../common/helpers'
 
 const _IMAGE_MIN_HEIGHT = 475
 
-const SFW  = 'G'
-const NSFW = 'R'
+const SFW  = 'SFW'
+const NSFW = 'NSFW'
 
 
 const styles = {
@@ -151,18 +151,20 @@ class ReviewCard extends React.Component {
                   <ToolbarGroup>
                     <RadioButtonGroup
                       name="rating"
-                      style={{margin: '12px'}}
+                      style={{margin: '12px', display: 'flex', flexDirection: 'row'}}
                       onChange={this.handleChangeRating}
                     >
                       <RadioButton
                         value={SFW}
-                        label="G&nbsp;(Safe-for-work)"
+                        label="Safe-for-work"
                         checked={this.state.selectedRating === SFW}
+                        style={{width: '', whiteSpace: 'nowrap'}}
                       />
                       <RadioButton
                         value={NSFW}
-                        label="R&nbsp;(adult)"
+                        label="Adult (Not-safe-for-work)"
                         checked={this.state.selectedRating === NSFW}
+                        style={{marginLeft: '12px', width: '', whiteSpace: 'nowrap'}}
                       />
                     </RadioButtonGroup>
                   </ToolbarGroup>

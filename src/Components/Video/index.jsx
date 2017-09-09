@@ -31,6 +31,7 @@ const styles = {
   userinfo: {
     float: 'left',
     cursor: 'pointer',
+    // position: 'relative',
   },
 }
 
@@ -74,7 +75,6 @@ class Video extends React.Component {
                             <Avatar mini={true} src={user.avatar} />
                             {user.username}
                         </div>
-
 
                         <Tags
                             style={{float: 'right'}}

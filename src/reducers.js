@@ -419,6 +419,12 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return {...appState, sidebarOpen: false}
         case ACTIONS.TOGGLE_SIDEBAR:
             return {...appState, sidebarOpen: !appState.sidebarOpen}
+        // case ACTIONS.OPEN_STREAM_SIDEBAR:
+        //     return {...appState, streamSidebarOpen: true}
+        // case ACTIONS.CLOSE_STREAM_SIDEBAR:
+        //     return {...appState, streamSidebarOpen: false}
+        // case ACTIONS.TOGGLE_STREAM_SIDEBAR:
+        //     return {...appState, streamSidebarOpen: !appState.streamSidebarOpen}
         case ACTIONS.SET_DEVICE_DETAILS:
             return {...appState, deviceDetails: action.obj}
         case ACTIONS.SET_ACTIVE_BADGE:

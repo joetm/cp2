@@ -14,13 +14,24 @@ import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import UploadIcon from 'material-ui/svg-icons/file/file-upload'
+import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import { fetchUnreadCount, setActiveBadge, toggleSearchSidebar, closeSidebar, openSidebar, fetchCurrentUser } from '../../actions'
+import {
+    fetchUnreadCount,
+    setActiveBadge,
+    toggleSearchSidebar,
+    openSidebar,
+    closeSidebar,
+    // openStreamSidebar,
+    // closeStreamSidebar,
+    fetchCurrentUser,
+} from '../../actions'
 import { colors } from '../../common/theme'
 import { sum } from '../../common/helpers'
+import routes from '../../routes'
 import './style'
 // --
 import Avatar from '../Shared/Avatar'
@@ -71,8 +82,8 @@ class NavBar extends React.Component {
         anchorEl: null,
     }
     attachMenuToDomNode = () => {
-        console.log('attach menu to', findDOMNode(this.refs.notifications))
-        this.setState({anchorEl: findDOMNode(this.refs.notifications)})
+        console.log('attach menu to', findDOMNode(this.refs.notificationsBadge))
+        this.setState({anchorEl: findDOMNode(this.refs.notificationsBadge)})
     }
     componentDidMount() {
         this.props.fetchCurrentUser()
@@ -119,9 +130,8 @@ class NavBar extends React.Component {
         // }
 
         return (
-            <Toolbar
-                style={styles.navbar}
-            >
+        <div>
+            <Toolbar style={styles.navbar}>
 
                 <ReactCSSTransitionGroup
                     transitionName="example"
@@ -167,6 +177,7 @@ class NavBar extends React.Component {
                 {
                     !this.state.searchExpanded ?
                         <ToolbarGroup>
+
                             <IconButton
                                 tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
                                 onTouchTap={this.searchAction}
@@ -174,32 +185,30 @@ class NavBar extends React.Component {
                             >
                                 <SearchIcon />
                             </IconButton>
-                            <Link to="/upload">
-                                <IconButton
-                                    tooltip="Upload"
-                                >
+
+                            <Link to={routes.UPLOAD}>
+                                <IconButton tooltip="Upload">
                                     <UploadIcon />
                                 </IconButton>
                             </Link>
+
+                            <Link to={routes.REVIEW}>
+                                <IconButton tooltip="Crowd Review">
+                                    <ReviewIcon />
+                                </IconButton>
+                            </Link>
+
                             <CustomBadge
                                 to={null}
                                 badgeContent={sum(unread)}
                                 secondary={true}
                                 tooltip="Notifications"
                                 icon={<AllNotificationsIcons />}
-                                ref="notifications"
+                                ref="notificationsBadge"
                                 onTouchTap={this.toggleNotificationsMenu}
                             />
 
-                            <NotificationsMenu
-                                open={this.state.notificationsMenuOpen}
-                                anchorEl={this.state.anchorEl}
-                                unread={unread}
-                                userid={this.props.userid}
-                                closeNotificationsMenu={this.closeNotificationsMenu}
-                            />
-
-                            <Link to={`/profile/${this.props.userid}`}>
+                            <Link to={`${routes.PROFILE}/${this.props.userid}`}>
                                 <Avatar
                                     visible={true}
                                     src={this.props.avatar}
@@ -209,15 +218,18 @@ class NavBar extends React.Component {
                                     onTouchTap={this.toggleState}
                                 />
                             </Link>
+
                             {!isAuthenticated &&
                                     <SignupButton />
                             }
+
                             {!isAuthenticated &&
                                     <LoginButton
                                         errorMessage={errorMessage}
                                         onTouchTap={() => history.push('/login')}
                                     />
                             }
+
                         </ToolbarGroup>
                     : null
                     }
@@ -236,6 +248,15 @@ class NavBar extends React.Component {
 
             </Toolbar>
 
+            <NotificationsMenu
+                open={this.state.notificationsMenuOpen}
+                anchorEl={this.state.anchorEl}
+                unread={unread}
+                userid={this.props.userid}
+                closeNotificationsMenu={this.closeNotificationsMenu}
+            />
+
+        </div>
         )
     }
 }
@@ -261,8 +282,10 @@ export default withRouter(connect(
         fetchCurrentUser,
         fetchUnreadCount,
         setActiveBadge,
-        closeSidebar,
+        toggleSearchSidebar,
         openSidebar,
-        toggleSearchSidebar
+        closeSidebar,
+        // openStreamSidebar,
+        // closeStreamSidebar,
     }
 )(NavBar))

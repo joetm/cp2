@@ -1,4 +1,5 @@
 import React from 'react'
+import AppBar from 'material-ui/AppBar'
 import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
@@ -17,10 +18,24 @@ const styles = {
   Popover: {
     minWidth: '200px',
   },
+  menuHeader: {
+    height: '40px',
+    backgroundColor: colors.lightGray,
+    display: 'flex',
+    lineHeight: '40px',
+    padding: '0 1em',
+    color: colors.black,
+  }
 }
 
 
-const NumChip = (props) => <Chip style={styles.Chip}>{props.num}</Chip>
+const NumChip = (props) => (
+  <Chip
+    backgroundColor={colors.palette.primary3Color}
+    style={styles.Chip}>{props.num}
+  </Chip>
+)
+
 
 
 class NotificationsMenu extends React.Component {
@@ -42,6 +57,10 @@ class NotificationsMenu extends React.Component {
           targetOrigin={{horizontal: 'left', vertical: 'top'}}
           onRequestClose={closeNotificationsMenu}
         >
+
+          <div style={styles.menuHeader}>
+            Subscriptions
+          </div>
 
           <Menu onEscKeyDown={closeNotificationsMenu}>
             <MenuItem

@@ -23,7 +23,7 @@ const styles = {
         position: 'relative',
         marginTop: '-150px',
         marginLeft: '40px',
-        zIndex: 299999,
+        zIndex: 999,
         display: 'inline-block',
     },
 }
