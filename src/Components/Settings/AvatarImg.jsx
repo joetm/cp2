@@ -41,11 +41,6 @@ class AvatarSetting extends React.Component {
           }}
       >
 
-          <Avatar
-              src={avatar}
-              username={username}
-          />
-
           <DropzoneComponent
             style={dropzoneStyle}
             config={dropzoneConfig}
@@ -54,6 +49,13 @@ class AvatarSetting extends React.Component {
           />
 
           <Spacer />
+
+          <div>
+            <Avatar
+                src={avatar}
+                username={username}
+            />
+          </div>
 
           <RaisedButton
             label="Delete Avatar"

@@ -20,6 +20,7 @@ import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
 import { blockMaxWidth, dropzoneStyle } from './styles'
+import UpdateWrap from '../Shared/UpdateWrap'
 
 
 const styles = {
@@ -34,6 +35,11 @@ const styles = {
   },
   checkboxIcon: {
     color: colors.white,
+  },
+  verificationImage: {
+    width: '100%',
+    height: 'auto',
+    cursor: 'pointer',
   },
 }
 
@@ -107,14 +113,12 @@ class VerificationImg extends React.Component {
 
           <Spacer />
 
-          <GridWrap>
+          <UpdateWrap className="container">
           {
             verificationImages && verificationImages.map(item =>
-              <CellWrapper
+              <div
+                className="updateBox"
                 key={`vimg_${item.id}`}
-                full={3}
-                tablet={2}
-                phone={2}
                 style={styles.cellwrapper}
               >
                 <Checkbox
@@ -136,7 +140,7 @@ class VerificationImg extends React.Component {
                 />
                 <img
                   src={item.thumb}
-                  style={{width: '100%', height: 'auto'}}
+                  style={styles.verificationImage}
                   alt=""
                   onTouchTap={() => {
                     const index = this.state.selection.indexOf(item.id)
@@ -147,10 +151,10 @@ class VerificationImg extends React.Component {
                     }
                   }}
                 />
-              </CellWrapper>
+              </div>
             )
           }
-          </GridWrap>
+          </UpdateWrap>
 
           <Spacer />
 

@@ -41,21 +41,25 @@ class ProfileImg extends React.Component {
           }}
       >
 
-          <img
-              src={profileimg}
-              alt=""
-              style={{
-                  width: '100%',
-                  height: 'auto',
-              }}
-          />
-
           <DropzoneComponent
             style={dropzoneStyle}
             config={dropzoneConfig}
             eventHandlers={dropzoneEventHandlers}
             djsConfig={dropzoneJsConfig}
           />
+
+          <Spacer />
+
+          <div>
+            <img
+                src={profileimg}
+                alt=""
+                style={{
+                    width: '100%',
+                    height: 'auto',
+                }}
+            />
+          </div>
 
           <Spacer />
 
