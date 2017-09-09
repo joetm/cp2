@@ -28,6 +28,7 @@ const store = createStore(
         // multiple items
         updates: Reducers.updatesReducer,
         images: Reducers.imagesReducer,
+        verificationImages: Reducers.imagesReducer,
         videos: Reducers.videosReducer,
         favorites: Reducers.favoritesReducer,
         likes: Reducers.likesReducer,

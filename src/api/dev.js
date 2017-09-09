@@ -45,6 +45,7 @@ export const fetchPicture = createFetchAndSelectSpecificItem('images')
 export const fetchVideo = createFetchAndSelectSpecificItem('videos')
 export const fetchNotification = createFetchAndSelectSpecificItem('messages')
 export const fetchThread = createFetchAndSelectSpecificItem('threads')
+export const fetchUserVerificationImages = createFetchAndSelectSpecificItem('verifications')
 
 // -------------------------------------------------------------------
 
@@ -161,6 +162,10 @@ export const changeSetting = (key, value) =>
         .then(response => response)
 
 // TODO
-export const removeField = (field) =>
-    jsonAPI.removeField(field)
+export const removeUserField = (field) =>
+    jsonAPI.removeUserField(field)
+        .then(response => response)
+
+export const deleteItems = (items) =>
+    jsonAPI.deleteItems(items)
         .then(response => response)

@@ -17,12 +17,23 @@ const delay = (ms) => {
 }
 
 
-export const fetchFromAPI = (field, selection = null, limit = null) => {
+export const fetchFromAPI = (field, selection = null, limit = null, filters = null) => {
     let url = selection ? `${API}/${field}/${selection}` : `${API}/${field}`
+    let SEPARATOR = '?'
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
+        SEPARATOR = '&'
     }
-    // console.log('fetchFromAPI', field, selection, limit, url)
+    // if (filters) {
+    //     console.log('filters', filters)
+    //     for (let key in filters) {
+    //         if (filters.hasOwnProperty(key) && filters[key]) {
+    //             url = `${url}${SEPARATOR}${key}=${filters[key]}`
+    //             SEPARATOR = '&'
+    //         }
+    //     }
+    // }
+    console.log('fetchFromAPI', field, selection, limit, url)
     return fetch(url)
         .then(r => r.json())
         .then(data => {
@@ -33,6 +44,7 @@ export const fetchFromAPI = (field, selection = null, limit = null) => {
         })
         // .catch(error => throw new Error(error))
 }
+
 
 // TODO
 export const fetchFromProtectedAPI = (key, selection, limit = null) => {
@@ -123,7 +135,7 @@ export const changeSetting = (key, value) => {
 }
 
 // TODO
-export const removeField = (field) => {
+export const removeUserField = (field) => {
     return delay(500)
         .then(() => {
             try {
@@ -143,5 +155,18 @@ export const markReadRequest = (what, id) => {
             const unread = { images: 0, messages: 0, posts: 0, videos: 0, likes: 0 }
             unread[what] = 999
             return unread
+        })
+}
+
+// TODO
+export const deleteItems = (items) => {
+    return delay(500)
+        .then(() => {
+            try {
+                // TODO
+                return items
+            } catch (e) {
+                throw new Error(e)
+            }
         })
 }

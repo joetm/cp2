@@ -19,6 +19,8 @@
     "/pictures/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/pictures/:id": "/streamitems/:id?_expand=user",
     "/pictures/:id?*": "/streamitems/:id?_expand=user&$1",
+  "/verifications": "/streamitems?type=verification&_expand=user&_sort=timestamp&order=desc",
+    "/verifications/:userid": "/streamitems?type=verification&userid=:userid&_expand=user",
   "/posts": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc",
     "/posts?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
     "/posts/?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",

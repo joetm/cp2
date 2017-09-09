@@ -128,6 +128,15 @@ export function imagesReducer(imagesState = initialState.images, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGES:
             return {...imagesState, isFetching: false, items: [...action.response]}
+        case ACTIONS.RECEIVE_VERIFICATIONIMAGES:
+            return {...imagesState, isFetching: false, items: [...action.response]}
+        case ACTIONS.DELETE_IMAGES_STARTED:
+            return {...imagesState, isFetching: true}
+        case ACTIONS.DELETE_IMAGES_FAILURE:
+            return {...imagesState, isFetching: false}
+        case ACTIONS.DELETE_IMAGES_SUCCESS:
+            const items = [...imagesState.items].filter(item => action.response.indexOf(item.id) < 0)
+            return {...imagesState, isFetching: false, items}
         default:
             return imagesState
     }

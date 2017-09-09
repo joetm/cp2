@@ -104,6 +104,10 @@ const initialState = {
         timestamp: null,
     },
     // -- current user
+    verificationImages: {
+        isFetching: true,
+        items: [],
+    },
     currentUser: {
         id: null,
         username: 'anonymous',

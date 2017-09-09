@@ -92,13 +92,11 @@ class StreamTpl extends React.Component {
 
                     <Divider />
 
-                    <Wrapper
-                        className="container"
-                    >
+                    <Wrapper className="container">
                         {
-                          group.map((item, i) => (
+                          group.map((item) => (
                             <Container
-                                key={`upd_${i}`}
+                                key={`upd_${item.id}`}
                                 { ...item }
                                 full={3}
                                 tablet={4}

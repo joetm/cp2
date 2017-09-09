@@ -10,26 +10,73 @@ import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
+import Checkbox from 'material-ui/Checkbox'
 
+import { fetchUserVerificationImages, removeImages } from '../../actions'
 import Spacer from '../Shared/Spacer'
+import colors from '../../common/theme'
+import Update from '../Content/Update'
+import GridWrap from '../Shared/GridWrap'
+import CellWrapper from '../Shared/CellWrapper'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
-import { removeVerificationImg } from '../../actions'
 import { blockMaxWidth, dropzoneStyle } from './styles'
+
+
+const styles = {
+  cellwrapper: {
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  checkbox: {
+    position: 'absolute',
+    top: 10,
+    left: 0,
+  },
+  checkboxIcon: {
+    color: colors.white,
+  },
+}
 
 
 class VerificationImg extends React.Component {
   state = {
     msgOpen: false,
+    imagesFetched: false,
+    selection: [],
   }
   handleRequestClose = () => {
     this.setState({ msgOpen: false })
   }
-  deleteVerificationImg = () => {
-    this.props.removeVerificationImg()
-    this.setState({ msgOpen: true })
+  deleteVerificationImages = () => {
+    console.log('removing selection', this.state.selection)
+    this.props.removeImages(this.state.selection)
+    this.setState({
+      msgOpen: true,
+      selection: [],
+    })
+  }
+  fetchVerificationImagesOnce = () => {
+    const { userid } = this.props
+    if (userid && !this.state.imagesFetched) {
+      this.props.fetchUserVerificationImages(userid)
+      this.setState({imagesFetched: true})
+    }
+  }
+  selectImage = (id) => {
+    const newSelection = [...this.state.selection]
+    newSelection.push(id)
+    this.setState({selection: newSelection})
+  }
+  deselectImage = (index) => {
+    const newSelection = [...this.state.selection]
+    newSelection.splice(index, 1)
+    this.setState({selection: newSelection})
   }
   render() {
-    const { verificationimg } = this.props
+    const { verificationImages } = this.props
+
+    this.fetchVerificationImagesOnce()
+
     return (
       <div
           id="profileImg-settings"
@@ -40,6 +87,7 @@ class VerificationImg extends React.Component {
           }}
       >
 
+          {/*
           <img
               src={verificationimg}
               alt=""
@@ -48,6 +96,7 @@ class VerificationImg extends React.Component {
                   height: 'auto',
               }}
           />
+          */}
 
           <DropzoneComponent
             style={dropzoneStyle}
@@ -58,9 +107,58 @@ class VerificationImg extends React.Component {
 
           <Spacer />
 
+          <GridWrap>
+          {
+            verificationImages && verificationImages.map(item =>
+              <CellWrapper
+                key={`vimg_${item.id}`}
+                full={3}
+                tablet={2}
+                phone={2}
+                style={styles.cellwrapper}
+              >
+                <Checkbox
+                  style={styles.checkbox}
+                  iconStyle={styles.checkboxIcon}
+                  onCheck={(e, isInputChecked) => {
+                    const index = this.state.selection.indexOf(item.id)
+                    if (isInputChecked) {
+                      if (index === -1) {
+                        this.selectImage(item.id)
+                      }
+                    } else {
+                      if (index !== -1) {
+                        this.deselectImage(index)
+                      }
+                    }
+                  }}
+                  checked={this.state.selection.indexOf(item.id) !== -1}
+                />
+                <img
+                  src={item.thumb}
+                  style={{width: '100%', height: 'auto'}}
+                  alt=""
+                  onTouchTap={() => {
+                    const index = this.state.selection.indexOf(item.id)
+                    if (index === -1) {
+                      this.selectImage(item.id)
+                    } else {
+                      this.deselectImage(index)
+                    }
+                  }}
+                />
+              </CellWrapper>
+            )
+          }
+          </GridWrap>
+
+          <Spacer />
+
           <RaisedButton
-            label="Delete Profile Image"
-            onTouchTap={this.deleteVerificationImg}
+            label="Delete Verification Image(s)"
+            disabled={this.props.isFetching}
+            onTouchTap={this.deleteVerificationImages}
+            style={{display: this.state.selection.length ? 'block' : 'none'}}
           />
 
           <Snackbar
@@ -77,11 +175,12 @@ class VerificationImg extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    // TODO:
-    // verificationimg: state.currentUser.profileimg,
+    userid: state.currentUser.id,
+    verificationImages: state.verificationImages.items,
+    isFetching: state.verificationImages.isFetching,
 })
 
 export default connect(
     mapStateToProps,
-    { removeVerificationImg }
+    { fetchUserVerificationImages, removeImages }
 )(VerificationImg)
