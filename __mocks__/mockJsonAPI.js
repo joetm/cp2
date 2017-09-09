@@ -33,7 +33,7 @@ export const fetchFromAPI = (field, selection = null, limit = null, filters = nu
     //         }
     //     }
     // }
-    console.log('fetchFromAPI', field, selection, limit, url)
+    console.log('fetchFromAPI', 'field:', field, 'selection:', selection, 'limit:', limit, 'url:', url)
     return fetch(url)
         .then(r => r.json())
         .then(data => {

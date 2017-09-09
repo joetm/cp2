@@ -5,12 +5,6 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
-// import { CookiesProvider } from 'react-cookie'
-// --
-// deepstream mixins
-// import DeepstreamMixin from 'deepstream.io-tools-react'
-// import reactMixin from 'react-mixin'
-// --
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 // Needed for onTouchTap
@@ -26,7 +20,7 @@ objectFitImages()
 import store from '../store'
 import routes from '../routes'
 import { setDeviceDetails } from '../actions'
-import { theme, colors } from '../common/theme'
+import { theme, bg } from '../common/theme'
 import Scrollbutton from './Shared/Scrollbutton'
 // --
 import NavBar from './NavBar'
@@ -89,7 +83,7 @@ class App extends React.Component {
           <MuiThemeProvider muiTheme={theme}>
           <Provider store={store}>
 
-            <div style={{backgroundColor: colors.bg}}>
+            <div style={{backgroundColor: bg}}>
 
               <NavBar />
 
@@ -118,9 +112,7 @@ class App extends React.Component {
 
                 <Route path={`${routes.PROFILE}/:userid`} component={Profile} />
 
-                {/*
                 <Route path={routes.PLAYLIST} component={Playlist} />
-                */}
 
                 <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
 
@@ -131,13 +123,8 @@ class App extends React.Component {
                 <Route exact path={routes.LOGIN} component={LoginPage} />
                 <Route exact path={routes.SIGNUP} component={SignupPage} />
 
+                {/* DEV */}
                 <Route path={`${routes.EDIT}`} component={Editor} />
-                {/*
-                <Route path={`${routes.POSTS}/:itemid${routes.EDIT}`} component={Editor} />
-                <Route path={`${routes.VIDEOS}/:itemid${routes.EDIT}`} component={Editor} />
-                <Route path={`${routes.IMAGES}/:itemid${routes.EDIT}`} component={Editor} />
-                <Route path={`${routes.MESSAGES}/:itemid${routes.EDIT}`} component={Editor} />
-                */}
 
                 <Route path={routes.LEGAL.INDEX} component={Legal} />
 
@@ -151,9 +138,7 @@ class App extends React.Component {
 
               </Switch>
 
-              <Scrollbutton
-                  secondary={true}
-              />
+              <Scrollbutton secondary={true} />
 
               <Sidebar />
               {/* <StreamSidebar /> */}
@@ -165,7 +150,5 @@ class App extends React.Component {
         )
     }
 }
-
-// reactMixin(RoutedApp, DeepstreamMixin)
 
 export default App

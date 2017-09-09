@@ -53,147 +53,150 @@ const tabindexCounter = () => {
 }
 
 
-const Sidebar = ({ closeSidebar, userid }) => (
-  <Drawer
-    docked={false}
-    width={200}
-    open={this.props.sidebarOpen}
-    tabIndex="0"
-    onBlur={closeSidebar}
-    onRequestChange={closeSidebar}
-  >
+const Sidebar = (props) => {
+    const { sidebarOpen, closeSidebar, userid } = props
+    return (
+      <Drawer
+        docked={false}
+        width={200}
+        open={sidebarOpen}
+        tabIndex="0"
+        onBlur={closeSidebar}
+        onRequestChange={closeSidebar}
+      >
 
-    <div style={styles.logoContainer}>
-        <NavLink to="/">
-            <h1
-                style={styles.logo}
-                onTouchTap={closeSidebar}
-            >SocNet v2</h1>
-        </NavLink>
-    </div>
+        <div style={styles.logoContainer}>
+            <NavLink to="/">
+                <h1
+                    style={styles.logo}
+                    onTouchTap={closeSidebar}
+                >SocNet v2</h1>
+            </NavLink>
+        </div>
 
-    <Subheader>New</Subheader>
+        <Subheader>New</Subheader>
 
-    <MenuEntry
-        route={routes.UPDATES}
-        icon={<UpdatesIcon />}
-        text="Updates"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.UPDATES}
+            icon={<UpdatesIcon />}
+            text="Updates"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <MenuEntry
-        route={routes.FORUM}
-        icon={<ForumIcon />}
-        text="Forum"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.FORUM}
+            icon={<ForumIcon />}
+            text="Forum"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    {/*
-    <MenuEntry
-        route={routes.USERS}
-        icon={<UsersIcon />}
-        text="Users"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
-    */}
+        {/*
+        <MenuEntry
+            route={routes.USERS}
+            icon={<UsersIcon />}
+            text="Users"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
+        */}
 
-    <Divider />
+        <Divider />
 
-    <Subheader>Subscriptions</Subheader>
+        <Subheader>Subscriptions</Subheader>
 
-    <MenuEntry
-        route={routes.IMAGES}
-        icon={<UpdatesIcon />}
-        text="Images"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.IMAGES}
+            icon={<UpdatesIcon />}
+            text="Images"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <MenuEntry
-        route={routes.VIDEOS}
-        icon={<UpdatesIcon />}
-        text="Videos"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.VIDEOS}
+            icon={<UpdatesIcon />}
+            text="Videos"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <Divider />
+        <Divider />
 
-    <MenuEntry
-        route={routes.NOTIFICATIONS}
-        icon={<EmailIcon />}
-        text="Messages"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.NOTIFICATIONS}
+            icon={<EmailIcon />}
+            text="Messages"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    {/*
-    <MenuEntry
-        route={routes.PLAYLIST}
-        icon={<WatchLaterIcon />}
-        text="Watch Later"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
-    */}
+        {/*
+        <MenuEntry
+            route={routes.PLAYLIST}
+            icon={<WatchLaterIcon />}
+            text="Watch Later"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
+        */}
 
-    <MenuEntry
-        route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
-        icon={<HeartIcon />}
-        text="Favorites"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
+            icon={<HeartIcon />}
+            text="Favorites"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <MenuEntry
-        route={`${routes.STREAM}/${userid}${routes.LIKES}`}
-        icon={<LikeIcon />}
-        text="Likes"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={`${routes.STREAM}/${userid}${routes.LIKES}`}
+            icon={<LikeIcon />}
+            text="Likes"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <Divider />
+        <Divider />
 
-    <MenuEntry
-        route={routes.REVIEW}
-        icon={<ReviewIcon />}
-        text="Review"
-        onTouchTap={closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.REVIEW}
+            icon={<ReviewIcon />}
+            text="Review"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <Divider />
+        <Divider />
 
-    <MenuEntry
-        route={`${routes.PROFILE}/${userid}`}
-        icon={<ProfileIcon />}
-        text="Your Profile"
-        onTouchTap={this.props.closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={`${routes.PROFILE}/${userid}`}
+            icon={<ProfileIcon />}
+            text="Your Profile"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <MenuEntry
-        route={routes.SETTINGS.INDEX}
-        icon={<SettingsIcon />}
-        text="Settings"
-        onTouchTap={this.props.closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.SETTINGS.INDEX}
+            icon={<SettingsIcon />}
+            text="Settings"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-    <MenuEntry
-        route={routes.LOGOUT}
-        icon={<LogoutIcon />}
-        text="Log Out"
-        onTouchTap={this.props.closeSidebar}
-        tabindexCounter={tabindexCounter}
-    />
+        <MenuEntry
+            route={routes.LOGOUT}
+            icon={<LogoutIcon />}
+            text="Log Out"
+            onTouchTap={closeSidebar}
+            tabindexCounter={tabindexCounter}
+        />
 
-  </Drawer>
-)
+      </Drawer>
+    )
+}
 
 const mapStateToProps = (state) => ({
     sidebarOpen: state.appState.sidebarOpen,

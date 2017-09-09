@@ -14,23 +14,8 @@ import Alert from '../Shared/Alert'
 
 
 class GeneralSettings extends React.Component {
-    state = {
-      alertIsOpen: false,
-    }
     componentDidMount() {
       this.props.fetchCountries()
-    }
-    /*
-     * Open the snack bar alert.
-     */
-    openAlert = () => {
-        this.setState({alertIsOpen: true})
-    }
-    /*
-     * Close the snack bar alert.
-     */
-    closeAlert = () => {
-        this.setState({alertIsOpen: false})
     }
     /*
      * Handle the change of the country selector.
@@ -61,7 +46,6 @@ class GeneralSettings extends React.Component {
      */
     handleChangeUsertitle = (e) => {
         console.log('change user title', e.target.value)
-        this.openAlert()
     }
     /*
      * Handle the change of the birthdate.

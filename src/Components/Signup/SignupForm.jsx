@@ -10,12 +10,14 @@ import './signupform.css'
 import Spacer from '../Shared/Spacer'
 
 
-const SignUpForm = ({
-  onSubmit,
-  onChange,
-  errors,
-  user,
-}) => (
+const SignUpForm = (props) => {
+  // const {
+  // onSubmit,
+  // onChange,
+  // errors,
+  // user,
+  // } = props
+  return (
     <Card className="container">
         <h2 className="card-heading">Sign Up</h2>
         <p>
@@ -29,6 +31,7 @@ const SignUpForm = ({
         <Spacer />
     </Card>
 )
+}
 
 /*
   <Card className="container">

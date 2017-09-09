@@ -6,9 +6,10 @@ import { withRouter } from 'react-router-dom'
 import Divider from 'material-ui/Divider'
 import { List, ListItem } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
+// --
 
 import { sendChatMessage, fetchChat } from '../../actions'
-import { colors } from '../../common/theme'
+import { gray, black } from '../../common/theme'
 import routes from '../../routes'
 import ChatInput from './ChatInput'
 
@@ -21,7 +22,7 @@ const styles = {
   },
   chatText: {
     fontSize: '0.8em',
-    color: colors.gray,
+    color: gray,
   },
   username: {
     fontWeight: 400,
@@ -31,11 +32,11 @@ const styles = {
     cursor: 'pointer',
   },
   content: {
-    // color: colors.gray,
-    color: colors.black,
+    // color: gray,
+    color: black,
   },
   timestamp: {
-    // color: colors.gray,
+    // color: gray,
   },
 }
 

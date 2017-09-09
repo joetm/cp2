@@ -5,19 +5,16 @@ import { BrowserRouter } from 'react-router-dom'
 import './default.scss'
 // --
 // deepstream
-// import deepstream from 'deepstream.io-client-js'
+// import reactMixin from 'react-mixin'
+// import dsClient from 'deepstream.io-client-js'
 // import DeepstreamMixin from 'deepstream.io-tools-react'
 
 // promise polyfill
 require('es6-promise').polyfill()
 
-
 import App from './Components/App'
 
 
-// https://deepstream.io/tutorials/integrations/frontend-react/
-// dsRecord="some-input"
-// const client = deepstream('localhost:6020').login({}, () => {
 render(
     (
         <BrowserRouter>
@@ -27,5 +24,16 @@ render(
     document.getElementById("app")
 )
 
+// https://deepstream.io/tutorials/integrations/frontend-react/
+// const ds = dsClient('localhost:6020').login({}, () => {
+//     render(
+//         (
+//             <BrowserRouter>
+//                 <App dsRecord="chat" />
+//             </BrowserRouter>
+//         ),
+//         document.getElementById("app")
+//     )
 // })
-// DeepstreamMixin.setDeepstreamClient(client)
+// reactMixin(App, DeepstreamMixin)
+// DeepstreamMixin.setDeepstreamClient(ds)

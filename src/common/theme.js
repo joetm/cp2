@@ -32,4 +32,10 @@ export const colors = {
 }
 const theme = getMuiTheme(colors)
 
+export const bg = colors.bg
+export const white = colors.white
+export const black = colors.black
+export const grey = colors.grey
+export const gray = colors.gray
+
 export default theme

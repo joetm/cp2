@@ -27,48 +27,48 @@ class CustomBadge extends React.Component {
     this.state = {
       deactivated: false,
     }
-    // bindings
-    this.wrapNavLink = this.wrapNavLink.bind(this)
   }
-  wrapNavLink(Component) {
-      if (this.props.to) {
-          return (
-              <NavLink
-                  to={this.props.to}
-                  activeStyle={{color: colors.palette.primary1Color}}
-              >
-                {Component}
-              </NavLink>
-          )
-      }
-      return Component
+  wrapNavLink = (Component) => {
+    const { to } = this.props
+    if (to) {
+        return (
+            <NavLink
+                to={to}
+                activeStyle={{color: colors.palette.primary1Color}}
+            >
+              {Component}
+            </NavLink>
+        )
+    }
+    return Component
   }
   /**
    * Render the component.
    */
   render() {
+    const { id, icon, tooltip, active, badgeContent, onTouchTap } = this.props
     let IconColor
     if (this.state.deactivated) {
       IconColor = {color: colors.grey}
-    } else if (this.props.active) {
+    } else if (active) {
       IconColor = {color: colors.palette.primary1Color}
     } else {
       IconColor = {color: colors.darkBlack}
     }
     return this.wrapNavLink(
         <Badge
-          badgeContent={this.props.badgeContent}
+          badgeContent={badgeContent}
           secondary={true}
           badgeStyle={styles.badgeStyle}
           style={styles.badgeRootStyle}
-          onTouchTap={this.props.onTouchTap}
+          onTouchTap={onTouchTap}
         >
           <IconButton
-            tooltip={this.props.tooltip}
+            tooltip={tooltip}
             iconStyle={IconColor}
-            id={this.props.id}
+            id={id}
           >
-            {this.props.icon}
+            {icon}
           </IconButton>
         </Badge>
     )

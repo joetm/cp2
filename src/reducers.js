@@ -288,9 +288,9 @@ export function userReducer(usersState = initialState.users, action) {
             }
         case ACTIONS.RECEIVE_USERS:
             const ret = {...usersState, isFetching: false}
-            for (const id in Object.keys(action.response)) {
+            Object.keys(action.response).forEach((id) => {
                 ret[id] = {...action.response[id]}
-            }
+            })
             return ret
         case ACTIONS.DELETE_AVATAR_SUCCESS:
             // remove the avatar from the respective user

@@ -43,13 +43,13 @@ class NotificationsMenu extends React.Component {
     this.props.history.push(url)
   }
   render() {
-    const { unread, closeNotificationsMenu } = this.props
+    const { unread, closeNotificationsMenu, open, anchorEl } = this.props
     return (
       <div>
         <Popover
-          open={this.props.open}
+          open={open}
           style={styles.Popover}
-          anchorEl={this.props.anchorEl}
+          anchorEl={anchorEl}
           anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
           targetOrigin={{horizontal: 'left', vertical: 'top'}}
           onRequestClose={closeNotificationsMenu}

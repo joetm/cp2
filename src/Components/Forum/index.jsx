@@ -14,8 +14,8 @@ import SinglePost from './SinglePost'
 import SingleThread from './SingleThread'
 
 
-const Forum = () => {
-    const { url, sidebarSearchOpen, closeSearchSidebar } = this.props
+const Forum = (props) => {
+    const { url, sidebarSearchOpen, closeSearchSidebar } = props
     return (
         <div>
             <Switch>

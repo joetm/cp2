@@ -150,9 +150,9 @@ export function navigateTo(arg) {
 // see https://stackoverflow.com/a/16449334/426266
 export const sum = (obj) => {
   let sum = 0
-  for (let el in Object.keys(obj)) {
-    sum += parseInt(obj[el], 10)
-  }
+  Object.keys(obj).forEach(key => {
+    sum += parseInt(obj[key])
+  })
   return sum
 }
 
