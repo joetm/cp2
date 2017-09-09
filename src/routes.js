@@ -17,6 +17,7 @@ const routes = {
     IMAGES: "/images",
     VIDEOS: "/videos",
     VERIFICATIONS: "/verifications",
+    CHAT: "/chat",
     REVIEW: "/review",
     EDIT: "/edit",
     MESSAGES: "/messages",

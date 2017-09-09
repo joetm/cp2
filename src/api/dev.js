@@ -1,9 +1,9 @@
 
 import * as jsonAPI from '../../__mocks__/mockJsonAPI'
-// import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
+import fetch from 'unfetch'
 
-// DEV
-import cuid from 'cuid'
+import routes from '../routes'
+// import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
 
 // -------------------------------------------------------------------
 // DEV: ajax fetch data from mock json API + dispatch receive methods
@@ -38,6 +38,8 @@ export const fetchStream = createFetchField('streamitems')
 export const fetchNotifications = createFetchField('messages')
 export const fetchLikes = createFetchField('likes')
 export const fetchFavorites = createFetchField('favorites')
+// alias
+export const fetchImages = fetchPictures
 
 // -------------------------------------------------------------------
 
@@ -47,6 +49,8 @@ export const fetchVideo = createFetchAndSelectSpecificItem('videos')
 export const fetchNotification = createFetchAndSelectSpecificItem('messages')
 export const fetchThread = createFetchAndSelectSpecificItem('threads')
 export const fetchUserVerificationImages = createFetchAndSelectSpecificItem('verifications')
+// alias
+export const fetchImage  = fetchPicture
 
 // -------------------------------------------------------------------
 
@@ -81,62 +85,72 @@ export const fetchMessageHistory = (userid) =>
 
 // -------------------------------------------------------------------
 
-// alias
-export const fetchImages = fetchPictures
-export const fetchImage  = fetchPicture
+const createNewItem = (field, payload) =>
+    fetch(`${jsonAPI.ENDPOINT}${field}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+    .then(response => {
+      // console.log('response', response)
+      if (response.status === 201) {
+        return response.json()
+      } else {
+        throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
+      }
+    })
 
 // -------------------------------------------------------------------
 
-export const sendChatMessage = (payload) =>
-    jsonAPI.sendDataToAPI(payload).then(response => {
-            if (response === 200) {
-                // TODO - this comes back from the server
-                return {
-                    type: 'message',
-                    id: cuid(), // TODO
-                    content: payload.msg, // TODO
-                    approvals: 0,
-                    disapprovals: 0,
-                    likes: 0,
-                    dislikes: 0,
-                    timestamp: Math.round(Date.now() / 1000),
-                    userid: payload.userid, // TODO - this must come from server
-                    user: { // TODO
-                        id: payload.userid, // TODO - this must come from server
-                        username: payload.username, // TODO - this must come from server
-                        avatar: payload.avatar, // TODO - this must come from server
-                    }
-                }
-            }
-            return 500 // TODO
-        })
+export const sendChatMessage = (payload) => {
+    const chatMsg = {
+      type: "message", // TODO - not on client - NEEDED?
+      content: payload.content,
+      userid: payload.userid, // TODO
+      like: 0, // TODO - not on client
+      dislike: 0, // TODO - not on client
+      timestamp: +new Date(),
+    }
+    return createNewItem(routes.CHAT, chatMsg)
+      .then(data => {
+        // console.log('data', data)
+        // TODO
+        // fake expansion of user data:
+        // return {...data, user: {
+        //   id: payload.userid,
+        //   username: payload.username,
+        //   avatar: payload.avatar,
+        // }}
+        return data
+      })
+}
 
 // TODO
 export const recordLike = (payload) =>
-    jsonAPI.sendDataToAPI(payload)
-        .then(response => response)
+  jsonAPI.sendDataToAPI(payload)
+    .then(response => response)
 
 // TODO
 export const recordDislike = (payload) =>
-    jsonAPI.sendDataToAPI(payload)
-        .then(response => response)
+  jsonAPI.sendDataToAPI(payload)
+    .then(response => response)
 
 // TODO
 export const recordCrowdDecision = (vote, id, rating = null) => {
-    const payload = {
-        id,
-        rating
-    }
-    // TODO: REVIEW_APPROVE / REVIEW_DISAPPROVE
-    return jsonAPI.sendDataToAPI(payload)
-        .then(response => response)
+  const payload = { id, rating }
+  // TODO: REVIEW_APPROVE / REVIEW_DISAPPROVE
+  return jsonAPI.sendDataToAPI(payload)
+    .then(response => response)
 }
 
 // TODO
 export const markRead = (what, id) => {
-    console.log('markRead', what, id)
-    return jsonAPI.markReadRequest(what, id)
-        .then(response => response)
+  console.log('markRead', what, id)
+  return jsonAPI.markReadRequest(what, id)
+    .then(response => response)
 }
 
 // TODO
@@ -148,9 +162,9 @@ export const markRead = (what, id) => {
 // -------------------------------------------------------------------
 
 const makeAjaxCallCreator = (url) => () =>
-    fetch(url)
-        .then(response => response.json())
-        .then(data => data)
+  fetch(url)
+    .then(response => response.json())
+    .then(data => data)
 
 export const fetchCountries = makeAjaxCallCreator('/data/countries.json')
 export const fetchStates = makeAjaxCallCreator('/data/states.json')
@@ -159,14 +173,14 @@ export const fetchCities = makeAjaxCallCreator('/data/cities.json')
 // -------------------------------------------------------------------
 
 export const changeSetting = (key, value) =>
-    jsonAPI.changeSetting(key, value)
-        .then(response => response)
+  jsonAPI.changeSetting(key, value)
+    .then(response => response)
 
 // TODO
 export const removeUserField = (field) =>
-    jsonAPI.removeUserField(field)
-        .then(response => response)
+  jsonAPI.removeUserField(field)
+    .then(response => response)
 
 export const deleteItems = (items) =>
-    jsonAPI.deleteItems(items)
-        .then(response => response)
+  jsonAPI.deleteItems(items)
+    .then(response => response)

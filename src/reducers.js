@@ -32,12 +32,33 @@ import jwtDecode from 'jwt-decode'
  **/
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
+        // fill the chat state with the current user details
+        case ACTIONS.RECEIVE_CURRENT_USER:
+            const currentUser = {
+                id: action.response.id,
+                username: action.response.username,
+                avatar: action.response.avatar,
+            }
+            return {...chatState, user: currentUser}
+
+        // receiving all chat messages
         case ACTIONS.RECEIVE_CHAT:
             return {...chatState, isFetching: false, items: [...action.response]}
+
+        // receive a chat message after sending by oneself
         case ACTIONS.RECEIVE_CHAT_MSG:
             const copyitems = [...chatState.items]
-            copyitems.push(action.response)
+            const newMsg = {
+                ...action.response,
+                user: {...chatState.user}, // user expansion
+            }
+            copyitems.push(newMsg)
             return {...chatState, items: copyitems}
+
+        // TODO: receive a chat message after sending by others
+
+
+
         default:
             return chatState
     }

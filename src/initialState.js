@@ -77,6 +77,11 @@ const initialState = {
     // -- chat
     chat: {
         isFetching: true,
+        user: {
+            id: null,
+            username: null,
+            avatar: null,
+        },
         items: [],
     },
     // -- single item caching

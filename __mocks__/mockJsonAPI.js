@@ -8,7 +8,7 @@ import fetch from 'unfetch'
 
 // TODO: move this into ENV
 const PORT = 2222
-const API = `http://localhost:${PORT}`
+export const ENDPOINT = `http://localhost:${PORT}`
 
 
 // fake delay
@@ -18,7 +18,7 @@ const delay = (ms) => {
 
 
 export const fetchFromAPI = (field, selection = null, limit = null, filters = null) => {
-    let url = selection ? `${API}/${field}/${selection}` : `${API}/${field}`
+    let url = selection ? `${ENDPOINT}/${field}/${selection}` : `${ENDPOINT}/${field}`
     let SEPARATOR = '?'
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
@@ -48,7 +48,7 @@ export const fetchFromAPI = (field, selection = null, limit = null, filters = nu
 
 // TODO
 export const fetchFromProtectedAPI = (key, selection, limit = null) => {
-    let url = `${API}/${key}/${selection}`
+    let url = `${ENDPOINT}/${key}/${selection}`
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
@@ -76,7 +76,7 @@ export const fetchUnreadCountFromAPI = () => {
                     messages: 0,
                     likes: 0,
                 }
-                const url = `${API}/streamitems`
+                const url = `${ENDPOINT}/streamitems`
                 return fetch(url)
                   .then(r => r.json())
                   .then(data => {

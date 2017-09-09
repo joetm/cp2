@@ -41,15 +41,15 @@ class ChatInput extends React.Component {
     }
   }
   submitMsg = () => {
-    let msg = this.refs.chatinput.getValue().trim()
-    if (msg !== '') {
+    let content = this.refs.chatinput.getValue().trim()
+    if (content !== '') {
       const payload = {
-        msg,
+        content,
         userid: this.props.currentUserid,
         username: this.props.currentUsername,
-        avatar: this.props.currentUserAvatar, // UNSAFE
+        avatar: this.props.currentUserAvatar,
       }
-      console.log(`send: ${msg}`, payload)
+      // console.log(`send: ${content}`, payload)
       this.props.sendChatMessage(payload)
       // clear the input field
       this.refs.chatinput.getInputNode().value = ''
