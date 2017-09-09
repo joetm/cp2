@@ -52,16 +52,8 @@ const styles = {
 }
 
 
-/**
- * Avatar class
- * @class
- */
-class AvatarBubble extends React.Component {
-    /**
-     * Render the component.
-     */
-    render() {
-      const {micro, mini, macro, username, active, src, visible, style} = this.props
+const AvatarBubble = (props) => {
+      const {micro, mini, macro, username, active, src, visible, style} = props
       console.log()
       // avatar size
       let avatarStyle = {}
@@ -91,7 +83,7 @@ class AvatarBubble extends React.Component {
         return (
             <Avatar
                 style={{...avatarStyle, style}}
-                onTouchTap={this.props.onTouchTap}
+                onTouchTap={props.onTouchTap}
             >
               {username ? username.substr(0, 1) : 'X'}
             </Avatar>
@@ -102,10 +94,9 @@ class AvatarBubble extends React.Component {
               style={avatarStyle}
               src={src}
               alt={username}
-              onTouchTap={this.props.onTouchTap}
+              onTouchTap={props.onTouchTap}
           />
       )
-    }
 }
 
 export default AvatarBubble

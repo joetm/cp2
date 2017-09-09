@@ -84,7 +84,7 @@ class Sidebar extends React.Component {
      * Handle the click on a filter item.
      */
     handleTouchTap() {
-        alert('You clicked the Chip.')
+        window.alert('You clicked the Chip.')
     }
     /**
      * Render the component.

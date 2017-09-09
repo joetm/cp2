@@ -13,7 +13,7 @@ const styles = {
 }
 
 const Loader = props => {
-    let msg = props.msg === undefined ? DEFAULT_MSG : props.msg
+    const msg = props.msg === undefined ? DEFAULT_MSG : props.msg
     return (
         <p style={styles.wrapper}>{msg}</p>
     )

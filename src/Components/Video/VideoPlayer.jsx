@@ -15,7 +15,6 @@ import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
 import ReactPlayer from 'react-player'
 import Duration from './Duration'
 import ControlButton from './ControlButton'
-import { colors } from '../../common/theme'
 
 
 const styles = {
@@ -85,7 +84,6 @@ const styles = {
     paddingTop: 0,
   },
 }
-const iconColor = colors.black
 
 
 class VideoPlayer extends Component {
@@ -181,7 +179,7 @@ class VideoPlayer extends Component {
   render () {
     const { src, thumb } = this.props
     const {
-      url, playing, volume,
+      playing, volume,
       played, loaded, duration,
       playbackRate,
       soundcloudConfig,

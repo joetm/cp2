@@ -7,7 +7,6 @@ import {Card, CardHeader, CardMedia, CardTitle} from 'material-ui/Card';
 
 import routes from '../../routes'
 import Avatar from '../Shared/Avatar'
-import CellWrapper from '../Shared/CellWrapper'
 
 import '../Shared/masonry.scss'
 
@@ -66,7 +65,7 @@ class Update extends React.Component {
   clickable = true
   navigateToItem = () => {
     let url = '/'
-    switch(this.props.type) {
+    switch (this.props.type) {
       case 'image':
       case 'verification':
         url = `${routes.IMAGES}/${this.props.id}`
@@ -77,6 +76,8 @@ class Update extends React.Component {
       case 'like':
         url = `${routes.LIKES}/${this.props.id}`
         break
+      default:
+        url = `${routes.UPDATES}/${this.props.id}`
     }
     if (this.clickable) {
       this.props.history.push(url)
@@ -87,17 +88,13 @@ class Update extends React.Component {
   }
   render () {
     const {
-      type,
-      id,
       user,
       title,
-      src, thumb,
-      likes, dislikes, replies,
-      full, tablet, phone
+      thumb,
     } = this.props
 
-    const showTitle = this.props.showTitle === false ? false : true
-    this.clickable = this.props.clickable === false ? false : true
+    const showTitle = this.props.showTitle
+    this.clickable = this.props.clickable
 
     return (
       <div className="updateBox">

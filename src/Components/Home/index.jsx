@@ -3,10 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
-import Divider from 'material-ui/Divider'
-import { List } from 'material-ui/List'
-import Avatar from 'material-ui/Avatar'
-import { darkBlack } from 'material-ui/styles/colors'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
@@ -15,23 +11,22 @@ import Footer from '../Footer'
 import Chat from '../Chat'
 import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
-import Notification from '../Content/Notification'
 // import Update from '../Content/Update'
 import Box from './Box'
 import { boxStyle } from './Box'
 
 
-const styles = {
-    separator: {
-        marginTop: '1em',
-        marginBottom: '1em',
-    },
-}
+// const styles = {
+//     separator: {
+//         marginTop: '1em',
+//         marginBottom: '1em',
+//     },
+// }
 
 
-const Separator = () => (
-    <Divider style={styles.separator} />
-)
+// const Separator = () => (
+//     <Divider style={styles.separator} />
+// )
 
 
 class Home extends React.Component {

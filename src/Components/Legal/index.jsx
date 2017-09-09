@@ -11,20 +11,13 @@ import Privacy from './Privacy'
 import DMCA from './DMCA'
 
 
-class LegalPage extends React.Component {
-    /**
-     * Render the component.
-     */
-    render() {
-      return (
-          <Switch>
-                <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.COMMUNITY}`} component={Guidelines} />
-                <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.PRIVACY}`} component={Privacy} />
-                <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.DMCA}`} component={DMCA} />
-                <Route component={Guidelines} />
-          </Switch>
-      )
-    }
-}
+const LegalPage = () => (
+  <Switch>
+        <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.COMMUNITY}`} component={Guidelines} />
+        <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.PRIVACY}`} component={Privacy} />
+        <Route exact path={`${routes.LEGAL.INDEX}${routes.LEGAL.DMCA}`} component={DMCA} />
+        <Route component={Guidelines} />
+  </Switch>
+)
 
 export default LegalPage

@@ -1,6 +1,7 @@
 
 import * as jsonAPI from '../../__mocks__/mockJsonAPI'
-import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
+// import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
+
 // DEV
 import cuid from 'cuid'
 
@@ -86,8 +87,8 @@ export const fetchImage  = fetchPicture
 
 // -------------------------------------------------------------------
 
-export const sendChatMessage = (payload) =>
-    jsonAPI.sendDataToAPI(payload)
+export const sendChatMessage = (payload) => {
+    return jsonAPI.sendDataToAPI(payload)
         .then(response => {
             if (response === 200) {
                 // TODO - this comes back from the server
@@ -109,6 +110,7 @@ export const sendChatMessage = (payload) =>
                 }
             }
         })
+}
 
 // TODO
 export const recordLike = (payload) =>

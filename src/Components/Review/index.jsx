@@ -12,7 +12,7 @@ import './style.scss'
 // --
 import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, approve, reject, like, dislike } from '../../actions'
 import { colors } from '../../common/theme'
-import { humanReadableDate, humanRelativeDate } from '../../common/helpers'
+import { humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
 import Loader from '../Shared/Loader'

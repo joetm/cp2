@@ -1,5 +1,4 @@
 import React from 'react'
-import AppBar from 'material-ui/AppBar'
 import Popover from 'material-ui/Popover'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
@@ -29,12 +28,12 @@ const styles = {
 }
 
 
-const NumChip = (props) => (
-  <Chip
-    backgroundColor={colors.palette.primary3Color}
-    style={styles.Chip}>{props.num}
-  </Chip>
-)
+// const NumChip = (props) => (
+//   <Chip
+//     backgroundColor={colors.palette.primary3Color}
+//     style={styles.Chip}>{props.num}
+//   </Chip>
+// )
 
 
 
@@ -44,9 +43,7 @@ class NotificationsMenu extends React.Component {
     this.props.history.push(url)
   }
   render() {
-
-    const { unread, userid, closeNotificationsMenu } = this.props
-
+    const { unread, closeNotificationsMenu } = this.props
     return (
       <div>
         <Popover

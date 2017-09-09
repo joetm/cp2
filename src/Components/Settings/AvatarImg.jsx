@@ -23,11 +23,11 @@ class AvatarSetting extends React.Component {
     msgOpen: false,
   }
   handleRequestClose = () => {
-    this.setState({ msgOpen: false })
+    this.setState({msgOpen: false})
   }
   deleteAvatar = () => {
-    this.props.removeAvatar()
-    this.setState({ msgOpen: true })
+    this.props.removeAvatar(this.props.userid)
+    this.setState({msgOpen: true})
   }
   render() {
     const { avatar, username } = this.props
@@ -78,6 +78,7 @@ class AvatarSetting extends React.Component {
 const mapStateToProps = (state) => ({
     avatar: state.currentUser.avatar,
     username: state.currentUser.username,
+    userid: state.currentUser.id,
 })
 
 export default connect(

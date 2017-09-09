@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { login, logout } from '../../actions'
+import { login } from '../../actions'
 import LoginForm from './LoginForm'
 import { validEmail } from '../../common/helpers'
 import Spacer from '../Shared/Spacer'
@@ -49,7 +49,6 @@ class LoginPage extends React.Component {
     console.log('logging in...')
 
     this.props.login(email, password)
-
   }
 
   /**
@@ -84,7 +83,6 @@ class LoginPage extends React.Component {
       </div>
     )
   }
-
 }
 
 

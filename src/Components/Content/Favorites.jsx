@@ -7,20 +7,13 @@ import { fetchFavorites } from '../../actions'
 import StreamTpl from './StreamTpl'
 
 
-class Favorites extends React.Component {
-    /**
-     * Render the component.
-     */
-    render() {
-        return (
-            <StreamTpl
-                action={this.props.fetchFavorites}
-                headline="Favorites"
-                content={this.props.favorites}
-            />
-        )
-    }
-}
+const Favorites = (props) => (
+    <StreamTpl
+        action={props.fetchFavorites}
+        headline="Favorites"
+        content={props.favorites}
+    />
+)
 
 const mapStateToProps = (state) => ({
     isFetching: state.favorites.isFetching,

@@ -9,7 +9,7 @@ test('Link changes the class when hovered', () => {
     const component = renderer.create(
         <Home />
     );
-    let tree = component.toJSON();
-console.log(tree)
+    const tree = component.toJSON();
+    console.log(tree)
     expect(tree).toMatchSnapshot();
 })

@@ -1,7 +1,6 @@
 /** @flow */
 
 import React from 'react'
-import DownIcon from 'material-ui/svg-icons/hardware/keyboard-arrow-down'
 
 // import Scrollbutton from '../Shared/Scrollbutton'
 import ProfileDetails from './ProfileDetails'
@@ -24,16 +23,9 @@ const styles = {
         backgroundColor: '#808080',
         position: 'relative',
     },
-    // scrollButton: {
-    //     position: 'fixed',
-    //     left: '50%',
-    //     bottom: '50px',
-    //     opacity: 0.5,
-    //     zIndex: 999999999,
-    // },
     profileImgStyle: {
         position: 'relative',
-        width:'100%',
+        width: '100%',
         textAlign: 'center',
         backgroundColor: '#808080',
         overflow: 'hidden',
@@ -79,7 +71,6 @@ class ProfileImg extends React.Component {
      * Render the component.
      */
     render() {
-        const { username, avatar } = this.props
         const { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
         const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
         console.log(details)
@@ -100,7 +91,7 @@ class ProfileImg extends React.Component {
                 <div onClick={this.props.toggleProfileDetails} role="button">
                     <div style={styles.profileImgContainer}>
                         <ProfileDetails
-                            { ...this.props }
+                            {...this.props}
                         />
                         <div style={{
                             ...styles.profileImgStyle,

@@ -42,10 +42,8 @@ class Users extends React.Component {
     render () {
           const { users } = this.props
           const usersList = []
-          for (let userid in users) {
-            if (users.hasOwnProperty(userid)) {
-              usersList.push(users[userid])
-            }
+          for (const userid in Object.keys(users)) {
+            usersList.push(users[userid])
           }
           return (
             <div>

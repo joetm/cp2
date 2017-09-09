@@ -13,7 +13,7 @@ import jwtDecode from 'jwt-decode'
 // see http://redux.js.org/docs/recipes/ReducingBoilerplate.html
 // function createReducer(initialState, handlers) {
 //   return function reducer(state = initialState, action) {
-//     if (handlers.hasOwnProperty(action.type)) {
+//     if (Object.prototype.hasOwnProperty.call(handlers, action.type)) {
 //       return handlers[action.type](state, action)
 //     } else {
 //       return state
@@ -288,12 +288,18 @@ export function userReducer(usersState = initialState.users, action) {
             }
         case ACTIONS.RECEIVE_USERS:
             const ret = {...usersState, isFetching: false}
-            for (let id in action.response) {
-                if (action.response.hasOwnProperty(id)) {
-                    ret[id] = {...action.response[id]}
-                }
+            for (const id in Object.keys(action.response)) {
+                ret[id] = {...action.response[id]}
             }
             return ret
+        case ACTIONS.DELETE_AVATAR_SUCCESS:
+            // remove the avatar from the respective user
+            const copyState = {...usersState}
+            if (Object.prototype.hasOwnProperty.call(copyState, action.userid)) {
+                copyState[action.userid].avatar = null
+            }
+            console.log('copyState', copyState)
+            return copyState
         default:
             return usersState
     }
@@ -338,9 +344,8 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.GET_CURRENT_USER_ID:
             if (currentUserState.userid !== undefined) {
                 return currentUserState.id
-            } else {
-                return null
             }
+            return null
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
 
@@ -370,32 +375,41 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.SET_IS_AUTHENTICATING:
             return {...currentUserState, isAuthenticating: true}
         case ACTIONS.LOGIN_SUCCESS:
-            return {...currentUserState, ...{
-                isAuthenticating: false,
-                isAuthenticated: true,
-                token: action.token,
-                userid: jwtDecode(action.token).userid,
-                username: jwtDecode(action.token).username,
-                // 'act': jwtDecode(action.token).act,
-                statusText: 'You have been successfully logged in.',
-            }}
+            return {
+                ...currentUserState,
+                ...{
+                    isAuthenticating: false,
+                    isAuthenticated: true,
+                    token: action.token,
+                    userid: jwtDecode(action.token).userid,
+                    username: jwtDecode(action.token).username,
+                    // 'act': jwtDecode(action.token).act,
+                    statusText: 'You have been successfully logged in.',
+                }
+            }
         case ACTIONS.LOGIN_FAILURE:
-            return {...currentUserState, ...{
-                isAuthenticating: false,
-                isAuthenticated: false,
-                token: null,
-                userid: null,
-                username: null,
-                statusText: `Authentication Error: ${action.status} ${action.statusText}`
-            }}
+            return {
+                ...currentUserState,
+                ...{
+                    isAuthenticating: false,
+                    isAuthenticated: false,
+                    token: null,
+                    userid: null,
+                    username: null,
+                    statusText: `Authentication Error: ${action.status} ${action.statusText}`
+                }
+            }
         case ACTIONS.LOGOUT:
-            return {...currentUserState, ...{
-                isAuthenticated: false,
-                token: null,
-                userid: null,
-                username: null,
-                statusText: 'You have been successfully logged out.',
-            }}
+            return {
+                ...currentUserState,
+                ...{
+                    isAuthenticated: false,
+                    token: null,
+                    userid: null,
+                    username: null,
+                    statusText: 'You have been successfully logged out.',
+                }
+            }
 
         case ACTIONS.DELETE_AVATAR_SUCCESS:
             return {...currentUserState, avatar: null}

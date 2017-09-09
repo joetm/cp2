@@ -34,18 +34,19 @@ class ModArea extends React.Component {
                 <h1>Mod Area</h1>
 
                 TODO
-
+                <Wrapper>
                     {
-                        this.props.contactRequests.map((item, i) => (
+                        this.props.contactRequests.map((item) => (
                             <Container
-                                key={`upd_${i}`}
-                                { ...item }
+                                key={`upd_${item.id}`}
+                                {...item}
                                 full={3}
                                 tablet={4}
                                 phone={2}
                             />
                         ))
                     }
+                </Wrapper>
 
                 <Spacer />
 

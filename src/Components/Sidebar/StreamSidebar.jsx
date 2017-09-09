@@ -2,27 +2,13 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import Drawer from 'material-ui/Drawer'
-import MenuItem from 'material-ui/MenuItem'
 import Subheader from 'material-ui/Subheader'
-import Divider from 'material-ui/Divider'
 
-import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
-import UsersIcon from 'material-ui/svg-icons/social/group'
-import ForumIcon from 'material-ui/svg-icons/communication/forum'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import HeartIcon from 'material-ui/svg-icons/action/favorite'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
-import HomeIcon from 'material-ui/svg-icons/action/account-balance'
-import WatchLaterIcon from 'material-ui/svg-icons/action/alarm'
-// import ProfileIcon from 'material-ui/svg-icons/action/account-circle'
-import ProfileIcon from 'material-ui/svg-icons/social/person-outline'
-import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
-// import LogoutIcon from 'material-ui/svg-icons/maps/directions-run'
-import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
 import { closeStreamSidebar, getCurrentUserid } from '../../actions'
 import routes from '../../routes'
@@ -37,7 +23,7 @@ const tabindexCounter = () => {
 }
 
 
-class StreamSidebar extends React.Component {
+class StreamSidebar extends React.PureComponent {
     render() {
         const { closeStreamSidebar, userid } = this.props
         return (

@@ -2,7 +2,6 @@
 
 import React from 'react'
 // --
-import { connect } from 'react-redux'
 import { Provider } from 'react-redux'
 import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
@@ -20,6 +19,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 // --
 // object-fit-images css polyfill for IE
 import objectFitImages from 'object-fit-images'
+
 injectTapEventPlugin()
 objectFitImages()
 
@@ -56,7 +56,7 @@ import Legal from './Legal'
 import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
-import StreamSidebar from './Sidebar/StreamSidebar'
+// import StreamSidebar from './Sidebar/StreamSidebar'
 import ModArea from './ModArea'
 // import Playlist from './Playlist'
 

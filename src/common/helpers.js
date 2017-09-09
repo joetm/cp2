@@ -1,7 +1,22 @@
 
 export function validEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+}
+
+export function classifyByDateAgo(obj) {
+    const day = 60 * 60 * 24
+
+    const ts = obj.timestamp || obj.datestamp
+    const delta = Math.round((+new Date() - (ts * 1000)) / 1000)
+
+    const daysAgo = Math.floor(delta / day)
+    // console.log('daysAgo', daysAgo)
+
+    // let returnObj = { ...obj, classifier }
+    // console.log('returnObj', returnObj)
+
+    return { ...obj, daysAgo }
 }
 
 /**
@@ -52,13 +67,13 @@ export function humanReadableDate(datestamp) {
  * @returns {Object} formattedTime - Human-readable time
  */
 export function humanRelativeDate(datestamp) {
-    const delta = Math.round((+new Date - (datestamp * 1000)) / 1000);
-    const minute = 60,
-        hour = minute * 60,
-        day = hour * 24,
-        week = day * 7,
-        month = day * 30;
-    let formattedTime;
+    const delta = Math.round((+new Date() - (datestamp * 1000)) / 1000);
+    const minute = 60
+    const hour = minute * 60
+    const day = hour * 24
+    const week = day * 7
+    const month = day * 30
+    let formattedTime
     if (delta < 30) {
         formattedTime = 'just now'
     } else if (delta < minute) {
@@ -95,22 +110,6 @@ export function humanRelativeDate(datestamp) {
     }
 }
 
-export function classifyByDateAgo(obj) {
-
-    const day = 60 * 60 * 24
-
-    const ts = obj.timestamp || obj.datestamp
-    const delta = Math.round((+new Date - (ts * 1000)) / 1000);
-
-    const daysAgo = Math.floor(delta / day)
-    // console.log('daysAgo', daysAgo)
-
-    // let returnObj = { ...obj, classifier }
-    // console.log('returnObj', returnObj)
-
-    return { ...obj, daysAgo }
-}
-
 export function translateDayOffset(offset) {
     const dayNames = [
         'Today',
@@ -118,9 +117,8 @@ export function translateDayOffset(offset) {
     ]
     if (!dayNames[offset]) {
         return `${offset} days ago`
-    } else {
-        return dayNames[offset]
     }
+    return dayNames[offset]
 }
 
 /**
@@ -129,9 +127,9 @@ export function translateDayOffset(offset) {
  * @param {number} max - Maximum of the range
  * @returns {number} Integer between min and max
  */
-export function getRandomInt(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
+export function getRandomInt(minArg, maxArg) {
+    min = Math.ceil(minArg)
+    max = Math.floor(maxArg)
     return Math.floor(Math.random() * (max - min)) + min
 }
 
@@ -152,10 +150,8 @@ export function navigateTo(arg) {
 // see https://stackoverflow.com/a/16449334/426266
 export const sum = (obj) => {
   let sum = 0
-  for(let el in obj) {
-    if(obj.hasOwnProperty(el)) {
-      sum += parseInt(obj[el])
-    }
+  for (let el in Object.keys(obj)) {
+    sum += parseInt(obj[el], 10)
   }
   return sum
 }
@@ -163,11 +159,10 @@ export const sum = (obj) => {
 export function checkHttpStatus(response) {
     if (response.status >= 200 && response.status < 300) {
         return response
-    } else {
-        var error = new Error(response.statusText)
-        error.response = response
-        throw error
     }
+    const error = new Error(response.statusText)
+    error.response = response
+    throw error
 }
 
 export function parseJSON(response) {
@@ -180,7 +175,7 @@ export function parseJSON(response) {
  */
 export function scrollToTop(scrollDuration) {
     const scrollStep = -window.scrollY / (scrollDuration / 15)
-    const scrollInterval = setInterval(function() {
+    const scrollInterval = setInterval(() => {
         if (window.scrollY !== 0) {
             window.scrollBy(0, scrollStep)
         } else {
@@ -195,7 +190,7 @@ export function scrollToTop(scrollDuration) {
 export function scrollTo(el, scrollDuration) {
     const scrollStep = -window.scrollY / (scrollDuration / 15)
     const targetPos = el.offsetTop
-    const scrollInterval = setInterval(function() {
+    const scrollInterval = setInterval(() => {
         if (window.scrollY !== targetPos) {
             window.scrollBy(targetPos, scrollStep)
         } else {

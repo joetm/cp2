@@ -47,28 +47,29 @@ class Notification extends React.Component {
      */
     render () {
         //
-        const { id, thumb, user = {}, userid, type, title, content } = this.props
+        const { user = {}, userid, type, title, content } = this.props
 
         let text
         let rightIconMenu
 
         switch (type) {
-
           case 'like':
 
             text = <p>{user.username} liked your TODO</p>
 
-            rightIconMenu = <IconMenu iconButtonElement={(
-                  <IconButton
-                    tooltip="more"
-                    tooltipPosition="bottom-left"
-                    onTouchTap={e => e.stopPropagation()}
-                  >
-                    <MoreVertIcon color={colors.grey} />
-                  </IconButton>
-              )}>
-                  <MenuItem onTouchTap={this.deleteLike}>Undo</MenuItem>
-              </IconMenu>
+            rightIconMenu = (
+                <IconMenu iconButtonElement={(
+                    <IconButton
+                      tooltip="more"
+                      tooltipPosition="bottom-left"
+                      onTouchTap={e => e.stopPropagation()}
+                    >
+                      <MoreVertIcon color={colors.grey} />
+                    </IconButton>
+                )}>
+                    <MenuItem onTouchTap={this.deleteLike}>Undo</MenuItem>
+                </IconMenu>
+              )
 
             break
 
@@ -76,7 +77,8 @@ class Notification extends React.Component {
 
             text = <p>{user.username}{' '}-{' '}{content}</p>
 
-            rightIconMenu = <IconMenu iconButtonElement={(
+            rightIconMenu = (
+              <IconMenu iconButtonElement={(
                   <IconButton
                     tooltip="more"
                     tooltipPosition="bottom-left"
@@ -89,7 +91,7 @@ class Notification extends React.Component {
                   <MenuItem onTouchTap={this.forwardNotification}>Forward</MenuItem>
                   <MenuItem onTouchTap={this.deleteNotification}>Delete</MenuItem>
               </IconMenu>
-
+            )
         }
 
         // const LeftImage = <img src={thumb} alt="" style={{width: '160px'}} />
@@ -101,7 +103,7 @@ class Notification extends React.Component {
                 src={user.avatar}
                 macro={true}
               />}
-              rightIconButton={ this.state.showMenu ? rightIconMenu : null }
+              rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={title}
               secondaryText={text}
               // onMouseEnter={() => this.setState({showMenu: true})}

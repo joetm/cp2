@@ -16,7 +16,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { fetchUserVerificationImages, removeImages } from '../../actions'
 import './style.scss'
 import Spacer from '../Shared/Spacer'
-import Update from '../Content/Update'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
 import { blockMaxWidth, dropzoneStyle } from './styles'
 import UpdateWrap from '../Shared/UpdateWrap'
@@ -116,7 +115,7 @@ class VerificationImg extends React.Component {
               transitionLeaveTimeout={300}
             >
             {
-              verificationImages && verificationImages.map(item =>
+               verificationImages && verificationImages.map(item => (
                 <div
                   className="updateBox"
                   key={`vimg_${item.id}`}
@@ -152,7 +151,7 @@ class VerificationImg extends React.Component {
                     }}
                   />
                 </div>
-              )
+              ))
             }
             </ReactCSSTransitionGroup>
           </UpdateWrap>

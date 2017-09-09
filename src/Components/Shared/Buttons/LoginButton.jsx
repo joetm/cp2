@@ -21,7 +21,6 @@ class LoginButton extends React.Component {
    * Render the component.
    */
   render() {
-    const { history } = this.props
     return (
         <Route render={({ history }) => (
             <RaisedButton

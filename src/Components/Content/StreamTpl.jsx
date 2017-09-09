@@ -3,7 +3,6 @@
 import React from 'react'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
-import { List } from 'material-ui/List'
 // import Bricks from 'bricks.js'
 // import { findDOMNode } from 'react-dom'
 // Material Component: Layout (Grid)
@@ -20,13 +19,6 @@ import Spacer from '../Shared/Spacer'
 import { TILED } from '../../viewModes'
 import UpdateWrap from '../Shared/UpdateWrap'
 import ListWrap from '../Shared/ListWrap'
-
-
-const sizes = [
-  { columns: 2, gutter: 10 },
-  { mq: '768px', columns: 3, gutter: 25 },
-  { mq: '1024px', columns: 4, gutter: 50 }
-]
 
 
 class StreamTpl extends React.Component {
@@ -57,7 +49,6 @@ class StreamTpl extends React.Component {
         //   })
         //   this.bricksInstance.update()
         // }
-
     }
     componentWillUnmount() {
         this.bricksInstance = null
@@ -70,7 +61,6 @@ class StreamTpl extends React.Component {
      * Render the component.
      */
     render() {
-
         const categorizedItems = categorizeList(this.props.content)
 
         const Container = this.state.viewMode === 'list' ? Notification : Update
@@ -97,7 +87,7 @@ class StreamTpl extends React.Component {
                           group.map((item) => (
                             <Container
                                 key={`upd_${item.id}`}
-                                { ...item }
+                                {...item}
                                 full={3}
                                 tablet={4}
                                 phone={2}

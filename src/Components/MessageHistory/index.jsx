@@ -14,10 +14,6 @@ import CellPadding from '../Shared/CellPadding'
 import { fetchMessageHistory, sendMessage } from '../../actions'
 
 
-// DEV
-const MYUSERID = 1
-
-
 const styles = {
   chip: {
     margin: 4,
@@ -44,27 +40,18 @@ const styles = {
 
 
 class MessageHistory extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-      inputRows: 1,
-      userid: null,
-    }
-    // bindings
-    this._handleKeyPress = this._handleKeyPress.bind(this)
-    this.submitMsg = this.submitMsg.bind(this)
+  state = {
+    inputRows: 1,
   }
   componentDidMount() {
-    this.props.fetchMessageHistory(userid)
     const userid = this.props.match.params.opponentid
-    this.setState({userid, loading: false})
+    this.props.fetchMessageHistory(userid)
   }
   /**
    * Handle key press event on message field.
    * @param e - Event
    */
-  _handleKeyPress(e) {
+  _handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       this.submitMsg()
     }
@@ -72,7 +59,7 @@ class MessageHistory extends React.Component {
   /**
    * Submit the input field.
    */
-  submitMsg() {
+  submitMsg = () => {
     let msg = this.refs.inputfield.getValue().trim()
     if (msg) {
       this.props.sendMessage(this.props.messageHistory.userid, msg, this.props.currentUser)

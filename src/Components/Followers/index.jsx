@@ -38,7 +38,7 @@ class Followers extends React.Component {
                 {
                     followers.map(follower => (
                         <Follower
-                            { ...follower.user }
+                            {...follower.user}
                         />
                     ))
                 }

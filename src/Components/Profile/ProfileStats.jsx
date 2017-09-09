@@ -1,18 +1,13 @@
 /** @flow */
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { pinkA200 } from 'material-ui/styles/colors'
 import PhotoIcon from 'material-ui/svg-icons/image/photo'
-import VideoIcon from 'material-ui/svg-icons/av/videocam'
 import ChatIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsIcon from 'material-ui/svg-icons/communication/contacts'
-import LikesIcon from 'material-ui/svg-icons/action/thumb-up'
 import CrowdIcon from 'material-ui/svg-icons/device/location-searching'
 import RaisedButton from 'material-ui/RaisedButton'
-
-import routes from '../../routes'
 
 
 const styles = {
@@ -54,16 +49,16 @@ const styles = {
 }
 
 
-const StatText = (props) => (
-    <div style={styles.statStyle}>
-        <div style={styles.statTitleStyle}>
-            {props.title}
-        </div>
-        <div style={styles.statValueStyle}>
-            {props.value}
-        </div>
-    </div>
-)
+// const StatText = (props) => (
+//     <div style={styles.statStyle}>
+//         <div style={styles.statTitleStyle}>
+//             {props.title}
+//         </div>
+//         <div style={styles.statValueStyle}>
+//             {props.value}
+//         </div>
+//     </div>
+// )
 
 
 class ProfileStats extends React.Component {

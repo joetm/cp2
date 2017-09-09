@@ -4,7 +4,6 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
-import TextField from 'material-ui/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
@@ -102,11 +101,8 @@ class ReviewCard extends React.Component {
     render() {
         const {
             id,
-            userid,
             user,
             title,
-            content,
-            datetime,
             src,
             likes,
             dislikes,

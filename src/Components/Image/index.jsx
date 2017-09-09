@@ -23,7 +23,7 @@ class Image extends React.Component {
             <div>
                 <h2>{title}</h2>
                 <Update
-                    { ...this.props.image }
+                    {...this.props.image}
                     showTitle={false}
                     clickable={false}
                     gridColumnsFull={1}

@@ -14,7 +14,6 @@ import Stream from '../Content/Stream'
 import Likes from '../Content/Likes'
 import Spacer from '../Shared/Spacer'
 import ProfileStats from './ProfileStats'
-import ProfileDivider from './ProfileDivider'
 import ProfileUsername from './ProfileUsername'
 
 
@@ -51,7 +50,6 @@ class Profile extends React.Component {
      * Render the component.
      */
     render() {
-
         const { userid } = this.props
 
         let user
@@ -65,7 +63,7 @@ class Profile extends React.Component {
             <div>
 
                 <ProfileImg
-                    { ...user }
+                    {...user}
                     blurredImg={this.state.blurredImg}
                     pageIsScrolled={this.props.isScrolled}
                     toggleProfileDetails={this.toggleProfileDetails}
@@ -102,7 +100,6 @@ class Profile extends React.Component {
             </div>
         )
     }
-
 }
 
 const mapStateToProps = (state, ownProps) => ({

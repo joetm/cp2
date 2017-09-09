@@ -3,7 +3,6 @@
  * Redux actions
  **/
 
-import initialState from './initialState'
 import api from './api'
 // import { pushState } from 'redux-router'
 import jwtDecode from 'jwt-decode'
@@ -137,7 +136,7 @@ export const RECEIVE_CONTACT_REQUESTS   = 'MOD::RECEIVE_CONTACT_REQUESTS'
  **/
 function makeActionCreator(type, ...argNames) {
   return function (...args) {
-    let action = { type }
+    const action = { type }
     argNames.forEach((arg, index) => {
       action[argNames[index]] = args[index]
     })
@@ -186,33 +185,33 @@ export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'obj
 export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'bool')
 
 // ajax receptors
-export const receiveCurrentUser        = makeActionCreator(RECEIVE_CURRENT_USER,      'response')
-export const receiveUser               = makeActionCreator(RECEIVE_USER,              'response')
-export const receiveUsers              = makeActionCreator(RECEIVE_USERS,             'response')
-export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,         'response')
-export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,          'response')
-export const receivePosts              = makeActionCreator(RECEIVE_POSTS,             'response')
-export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,           'response')
-export const receivePost               = makeActionCreator(RECEIVE_POST,              'response')
-export const receiveUpdates            = makeActionCreator(RECEIVE_UPDATES,           'response')
-export const receiveImages             = makeActionCreator(RECEIVE_IMAGES,            'response')
-export const receiveImage              = makeActionCreator(RECEIVE_IMAGE,             'response')
+export const receiveCurrentUser        = makeActionCreator(RECEIVE_CURRENT_USER,       'response')
+export const receiveUser               = makeActionCreator(RECEIVE_USER,               'response')
+export const receiveUsers              = makeActionCreator(RECEIVE_USERS,              'response')
+export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
+export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
+export const receivePosts              = makeActionCreator(RECEIVE_POSTS,              'response')
+export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,            'response')
+export const receivePost               = makeActionCreator(RECEIVE_POST,               'response')
+export const receiveUpdates            = makeActionCreator(RECEIVE_UPDATES,            'response')
+export const receiveImages             = makeActionCreator(RECEIVE_IMAGES,             'response')
+export const receiveImage              = makeActionCreator(RECEIVE_IMAGE,              'response')
 export const receivePictures           = receiveImages
 export const receivePicture            = receiveImage
-export const receiveVerificationImages = makeActionCreator(RECEIVE_VERIFICATIONIMAGES,'response')
-export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,            'response')
-export const receiveVideo              = makeActionCreator(RECEIVE_VIDEO ,            'response')
-export const receiveThread             = makeActionCreator(RECEIVE_THREAD,            'response')
-export const receiveReviewItem         = makeActionCreator(RECEIVE_REVIEWITEM,        'response')
-export const receiveMessageHistory     = makeActionCreator(RECEIVE_MESSAGEHISTORY,    'response')
-export const receiveStream             = makeActionCreator(RECEIVE_STREAM,            'response')
-export const receiveNotifications      = makeActionCreator(RECEIVE_NOTIFICATIONS,     'response')
-export const receiveFavorites          = makeActionCreator(RECEIVE_FAVORITES,         'response')
-export const receiveLikes              = makeActionCreator(RECEIVE_LIKES,             'response')
-export const receiveAlbum              = makeActionCreator(RECEIVE_ALBUM,             'response')
-export const receiveLike               = makeActionCreator(RECEIVE_LIKE,              'response')
-export const receiveDislike            = makeActionCreator(RECEIVE_DISLIKE,           'response')
-export const receiveUnreadCount        = makeActionCreator(RECEIVE_UNREAD_COUNT,      'response')
+export const receiveVerificationImages = makeActionCreator(RECEIVE_VERIFICATIONIMAGES, 'response')
+export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,             'response')
+export const receiveVideo              = makeActionCreator(RECEIVE_VIDEO,              'response')
+export const receiveThread             = makeActionCreator(RECEIVE_THREAD,             'response')
+export const receiveReviewItem         = makeActionCreator(RECEIVE_REVIEWITEM,         'response')
+export const receiveMessageHistory     = makeActionCreator(RECEIVE_MESSAGEHISTORY,     'response')
+export const receiveStream             = makeActionCreator(RECEIVE_STREAM,             'response')
+export const receiveNotifications      = makeActionCreator(RECEIVE_NOTIFICATIONS,      'response')
+export const receiveFavorites          = makeActionCreator(RECEIVE_FAVORITES,          'response')
+export const receiveLikes              = makeActionCreator(RECEIVE_LIKES,              'response')
+export const receiveAlbum              = makeActionCreator(RECEIVE_ALBUM,              'response')
+export const receiveLike               = makeActionCreator(RECEIVE_LIKE,               'response')
+export const receiveDislike            = makeActionCreator(RECEIVE_DISLIKE,            'response')
+export const receiveUnreadCount        = makeActionCreator(RECEIVE_UNREAD_COUNT,       'response')
 
 // export const sendChatMessageStart = makeActionCreator(SEND_CHAT_MSG,             'payload')
 export const receiveChat             = makeActionCreator(RECEIVE_CHAT,              'response')
@@ -229,7 +228,7 @@ export const receiveCity             = makeActionCreator(RECEIVE_CITY,          
 export const receiveContactRequests  = makeActionCreator(RECEIVE_CONTACT_REQUESTS)
 
 export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
-export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS)
+export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS,     'userid')
 export const deleteAvatarFailure     = makeActionCreator(DELETE_AVATAR_FAILURE,     'error')
 export const deleteProfileImgStarted = makeActionCreator(DELETE_PROFILEIMG_STARTED)
 export const deleteProfileImgSuccess = makeActionCreator(DELETE_PROFILEIMG_SUCCESS)
@@ -247,7 +246,7 @@ export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,    
 export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'itemid')
 
 // export const sendSetting          = makeActionCreator(SEND_SETTING,              'key', 'value')
-export const receiveSetting          = makeActionCreator(RECEIVE_SETTING,           'payload',)
+export const receiveSetting          = makeActionCreator(RECEIVE_SETTING,           'payload')
 
 // AUTH
 export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
@@ -292,24 +291,25 @@ export const logout = () => {
 // Asynchronous action creators
 // ----------------------------------------------------
 
-export function login(email, password, redirect="/") {
+// TODO
+export function login(email, password) { // , redirect="/"
     return function(dispatch) {
         dispatch(setIsAuthenticating())
         return fetch('http://localhost:3000/auth/getToken/', {
                 method: 'post',
                 credentials: 'include',
                 headers: {
-                    'Accept': 'application/json',
+                    Accept: 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({email: email, password: password})
+                body: JSON.stringify({email, password})
             })
             .then(checkHttpStatus)
             .then(parseJSON)
             .then(response => {
                 try {
-                    let decoded = jwtDecode(response.token)
-                    dispatch(loginUserSuccess(response.token))
+                    // const decoded = jwtDecode(response.token)
+                    // dispatch(loginUserSuccess(response.token))
                     // TODO - redirect
                     // dispatch(pushState(null, redirect))
                 } catch (e) {
@@ -534,7 +534,7 @@ export const recordDisapproval = (id, rating) => {
 
 // TODO
 export const markRead = (what, id) =>
-    api.markRead(what).then(receiveUnreadCount)
+    api.markRead(what, id).then(receiveUnreadCount)
 
 // TODO
 export const markAllRead = () =>
@@ -560,10 +560,10 @@ export const updateCity = () =>
 
 // export const removeAvatar = () =>
 //     api.removeUserField('avatar').then(deleteAvatar)
-export const removeAvatar = () => (dispatch) => {
+export const removeAvatar = (userid) => (dispatch) => {
     dispatch(deleteAvatarStarted())
     return api.removeUserField('avatar')
-                .then(dispatch(deleteAvatarSuccess()))
+                .then(dispatch(deleteAvatarSuccess(userid)))
                 .catch(error => {
                   dispatch(deleteAvatarFailure(), error)
                 })

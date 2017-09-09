@@ -6,7 +6,7 @@ import React from 'react'
 import '../External/dropzone/dist/dropzone.css'
 import { SimpleReactDropzone } from 'simple-react-dropzone'
 
-import { colors } from '../../common/theme'
+// import { colors } from '../../common/theme'
 import Spacer from '../Shared/Spacer'
 
 

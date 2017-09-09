@@ -4,9 +4,7 @@ import React from 'react'
 import { findDOMNode } from 'react-dom'
 import { connect } from 'react-redux'
 import { Link, NavLink, withRouter } from 'react-router-dom'
-import IconMenu from 'material-ui/IconMenu'
 import IconButton from 'material-ui/IconButton'
-import Divider from 'material-ui/Divider'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 // --
@@ -15,8 +13,8 @@ import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import UploadIcon from 'material-ui/svg-icons/file/file-upload'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
-import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
-import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
+// import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
+// import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import {
@@ -32,20 +30,15 @@ import {
 import { colors } from '../../common/theme'
 import { sum } from '../../common/helpers'
 import routes from '../../routes'
-import './style'
+import './style.scss'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
-import RouterMenuItem from './RouterMenuItem'
 import LoginButton from '../Shared/Buttons/LoginButton'
 import SignupButton from '../Shared/Buttons/SignupButton'
 import NotificationsMenu from './NotificationsMenu'
 import SearchBar from './SearchBar'
 
-
-const numAllNotifications = () => {
-    return 0
-}
 
 const _DURATION = 600 // ms
 
@@ -55,9 +48,7 @@ const styles = {
         zIndex: 9999999,
         backgroundColor: '#fff',
     },
-    firstItem: {
-        marginLeft: '10px',
-    },
+    firstItem: {marginLeft: '10px'},
     separator: {
         margin: 0,
         padding: '10px',
@@ -119,7 +110,7 @@ class NavBar extends React.Component {
      * Render the component.
      */
     render() {
-        const { unread, dispatch, isAuthenticated, errorMessage } = this.props
+        const { unread, isAuthenticated, errorMessage } = this.props
 
         let AllNotificationsIcons
         // TODO

@@ -2,15 +2,12 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import Toggle from 'material-ui/Toggle'
-import { List } from 'material-ui/List'
 import MenuItem from 'material-ui/MenuItem'
 import TextField from 'material-ui/TextField'
 import DatePicker from 'material-ui/DatePicker'
 import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
 
-import styles from './styles'
 import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import Alert from '../Shared/Alert'
@@ -41,6 +38,7 @@ class GeneralSettings extends React.Component {
     handleChangeCountry = (country) => {
       // TODO
       // this.setState({ country })
+      console.log('TODO')
     }
     /*
      * Handle the change of the state selector.
@@ -48,6 +46,7 @@ class GeneralSettings extends React.Component {
     handleChangeState = (event, key, state) => {
       // TODO
       // this.setState({ state })
+      console.log('TODO')
     }
     /*
      * Handle the change of the city selector.
@@ -55,6 +54,7 @@ class GeneralSettings extends React.Component {
     handleChangeCity = (event, key, city) => {
       // TODO
       // this.setState({ city })
+      console.log('TODO')
     }
     /*
      * Handle the change of the user title field.

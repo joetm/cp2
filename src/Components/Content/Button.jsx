@@ -30,7 +30,7 @@ class Button extends React.Component {
      * Render the component.
      */
     render() {
-        const { tooltip } = this.props
+        // const { tooltip } = this.props
         let iconButtonStyle
         if (this.state.deactivated) {
             iconButtonStyle = {

@@ -14,25 +14,23 @@ import SinglePost from './SinglePost'
 import SingleThread from './SingleThread'
 
 
-class Forum extends React.Component {
-    render() {
-        const { url, sidebarSearchOpen, closeSearchSidebar } = this.props
-        return (
-            <div>
-                <Switch>
-                    <Route path={`${url}/post/:postid`} component={SinglePost} />
-                    <Route path={`${url}/thread/:threadid`} component={SingleThread} />
-                    <Route path={`${url}/category/:category`} component={Category} />
-                    <Route component={ForumHome} />
-                </Switch>
-                <SearchSidebar
-                    closeSidebar={closeSearchSidebar}
-                    open={sidebarSearchOpen}
-                />
-                <Spacer />
-            </div>
-        )
-    }
+const Forum = () => {
+    const { url, sidebarSearchOpen, closeSearchSidebar } = this.props
+    return (
+        <div>
+            <Switch>
+                <Route path={`${url}/post/:postid`} component={SinglePost} />
+                <Route path={`${url}/thread/:threadid`} component={SingleThread} />
+                <Route path={`${url}/category/:category`} component={Category} />
+                <Route component={ForumHome} />
+            </Switch>
+            <SearchSidebar
+                closeSidebar={closeSearchSidebar}
+                open={sidebarSearchOpen}
+            />
+            <Spacer />
+        </div>
+    )
 }
 
 const mapStateToProps = (state, ownProps) => ({

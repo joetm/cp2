@@ -6,22 +6,17 @@ import Snackbar from 'material-ui/Snackbar'
 const _DEFAULT_DURATION = 2000
 
 
-class SnackbarAlert extends React.Component {
-    /**
-     * Render the component.
-     */
-    render() {
-        const msg = this.props.msg || 'Thanks. Your vote has been recorded.'
-        const duration = this.props.duration || _DEFAULT_DURATION
-        return (
-            <Snackbar
-              open={this.props.open}
-              message={msg}
-              autoHideDuration={duration}
-              onRequestClose={this.props.closeAlert}
-            />
-        )
-    }
+const SnackbarAlert = (props) => {
+  const msg = props.msg || 'Thanks. Your vote has been recorded.'
+  const duration = props.duration || _DEFAULT_DURATION
+  return (
+      <Snackbar
+        open={props.open}
+        message={msg}
+        autoHideDuration={duration}
+        onRequestClose={props.closeAlert}
+      />
+  )
 }
 
 export default SnackbarAlert

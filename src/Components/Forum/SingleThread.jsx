@@ -25,7 +25,7 @@ class SingleThread extends React.Component {
         this.props.fetchThread(threadid)
     }
     render() {
-        const { title, posts, user } = this.props.thread
+        const { title, posts } = this.props.thread
         return (
             <div>
 

@@ -40,9 +40,8 @@ class CustomBadge extends React.Component {
                 {Component}
               </NavLink>
           )
-      } else {
-          return Component
       }
+      return Component
   }
   /**
    * Render the component.
@@ -51,8 +50,7 @@ class CustomBadge extends React.Component {
     let IconColor
     if (this.state.deactivated) {
       IconColor = {color: colors.grey}
-    }
-    else if (this.props.active) {
+    } else if (this.props.active) {
       IconColor = {color: colors.palette.primary1Color}
     } else {
       IconColor = {color: colors.darkBlack}
