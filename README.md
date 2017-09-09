@@ -23,4 +23,7 @@ To monitor deepstream:
 >
 > tail -f /var/log/deepstream/deepstream.<2017-07-23>
 
+---
+
+![Screenshot-Home-2017-09-09 20-37-51.png](https://github.com/joetm/cp2/blob/master/screenshots/Screenshot-Home-2017-09-09%2020-37-51.png?raw=true "Screenshot Homepage 2017-09-09 20-37-51")
 
