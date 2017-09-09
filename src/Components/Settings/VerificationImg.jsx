@@ -11,14 +11,13 @@ import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
 import Checkbox from 'material-ui/Checkbox'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { fetchUserVerificationImages, removeImages } from '../../actions'
+import './style.scss'
 import Spacer from '../Shared/Spacer'
-import colors from '../../common/theme'
 import Update from '../Content/Update'
-import GridWrap from '../Shared/GridWrap'
-import CellWrapper from '../Shared/CellWrapper'
-import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
 import { blockMaxWidth, dropzoneStyle } from './styles'
 import UpdateWrap from '../Shared/UpdateWrap'
 
@@ -32,9 +31,6 @@ const styles = {
     position: 'absolute',
     top: 10,
     left: 0,
-  },
-  checkboxIcon: {
-    color: colors.white,
   },
   verificationImage: {
     width: '100%',
@@ -114,46 +110,51 @@ class VerificationImg extends React.Component {
           <Spacer />
 
           <UpdateWrap className="container">
-          {
-            verificationImages && verificationImages.map(item =>
-              <div
-                className="updateBox"
-                key={`vimg_${item.id}`}
-                style={styles.cellwrapper}
-              >
-                <Checkbox
-                  style={styles.checkbox}
-                  iconStyle={styles.checkboxIcon}
-                  onCheck={(e, isInputChecked) => {
-                    const index = this.state.selection.indexOf(item.id)
-                    if (isInputChecked) {
+            <ReactCSSTransitionGroup
+              transitionName="verpic"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}
+            >
+            {
+              verificationImages && verificationImages.map(item =>
+                <div
+                  className="updateBox"
+                  key={`vimg_${item.id}`}
+                  style={styles.cellwrapper}
+                >
+                  <Checkbox
+                    style={styles.checkbox}
+                    onCheck={(e, isInputChecked) => {
+                      const index = this.state.selection.indexOf(item.id)
+                      if (isInputChecked) {
+                        if (index === -1) {
+                          this.selectImage(item.id)
+                        }
+                      } else {
+                        if (index !== -1) {
+                          this.deselectImage(index)
+                        }
+                      }
+                    }}
+                    checked={this.state.selection.indexOf(item.id) !== -1}
+                  />
+                  <img
+                    src={item.thumb}
+                    style={styles.verificationImage}
+                    alt=""
+                    onTouchTap={() => {
+                      const index = this.state.selection.indexOf(item.id)
                       if (index === -1) {
                         this.selectImage(item.id)
-                      }
-                    } else {
-                      if (index !== -1) {
+                      } else {
                         this.deselectImage(index)
                       }
-                    }
-                  }}
-                  checked={this.state.selection.indexOf(item.id) !== -1}
-                />
-                <img
-                  src={item.thumb}
-                  style={styles.verificationImage}
-                  alt=""
-                  onTouchTap={() => {
-                    const index = this.state.selection.indexOf(item.id)
-                    if (index === -1) {
-                      this.selectImage(item.id)
-                    } else {
-                      this.deselectImage(index)
-                    }
-                  }}
-                />
-              </div>
-            )
-          }
+                    }}
+                  />
+                </div>
+              )
+            }
+            </ReactCSSTransitionGroup>
           </UpdateWrap>
 
           <Spacer />

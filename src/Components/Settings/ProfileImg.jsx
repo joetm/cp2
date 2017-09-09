@@ -12,7 +12,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
 
 import Spacer from '../Shared/Spacer'
-import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
 import { removeProfileImg } from '../../actions'
 import { blockMaxWidth, dropzoneStyle } from './styles'
 

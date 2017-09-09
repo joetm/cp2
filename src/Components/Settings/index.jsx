@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { List } from 'material-ui/List'
 import { Route, Switch } from 'react-router-dom'
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation'
 // import LocationIcon from 'material-ui/svg-icons/communication/location-on'
@@ -29,12 +28,15 @@ class Settings extends React.Component {
   }
   select = (index) => this.setState({selectedIndex: index})
   render() {
+    const { url } = this.props.match
     return (
       <div style={{textAlign: 'center'}}>
 
         <h1>Settings</h1>
 
-        <BottomNavigation selectedIndex={this.state.selectedIndex}>
+        <BottomNavigation
+          selectedIndex={this.state.selectedIndex}
+        >
           <BottomNavigationItem
             label="General"
             icon={<ProfileIcon />}
@@ -62,44 +64,17 @@ class Settings extends React.Component {
           />
         </BottomNavigation>
 
+        <Spacer />
+
         <div style={styles.settingsBlock}>
-
-          {/*
-          <List>
-              <SettingsMenuEntry
-                primaryText="General"
-                secondaryText="General settings"
-                url="/general"
-              />
-              <SettingsMenuEntry
-                primaryText="Profile photo"
-                secondaryText="Change your profile photo"
-                url="/image"
-              />
-              <SettingsMenuEntry
-                primaryText="Avatar"
-                secondaryText="Change your avatar photo"
-                url="/avatar"
-              />
-              <SettingsMenuEntry
-                primaryText="Privacy"
-                secondaryText="Change your privacy settings"
-                url="/privacy"
-              />
-          </List>
-          */}
-
-          <Spacer />
-
           <Switch>
-            <Route exact path={`${this.props.match.url}${routes.SETTINGS.GENERAL}`} component={General} />
-            <Route exact path={`${this.props.match.url}${routes.SETTINGS.IMAGE}`}   component={ProfileImg} />
-            <Route exact path={`${this.props.match.url}${routes.SETTINGS.AVATAR}`}  component={AvatarImg} />
-            <Route exact path={`${this.props.match.url}${routes.SETTINGS.VERIFICATION}`}  component={VerificationImg} />
-            <Route exact path={`${this.props.match.url}${routes.SETTINGS.PRIVACY}`} component={Privacy} />
+            <Route exact path={`${url}${routes.SETTINGS.GENERAL}`} component={General} />
+            <Route exact path={`${url}${routes.SETTINGS.IMAGE}`}   component={ProfileImg} />
+            <Route exact path={`${url}${routes.SETTINGS.AVATAR}`}  component={AvatarImg} />
+            <Route exact path={`${url}${routes.SETTINGS.VERIFICATION}`} component={VerificationImg} />
+            <Route exact path={`${url}${routes.SETTINGS.PRIVACY}`} component={Privacy} />
             <Route component={General} />
           </Switch>
-
         </div>
 
         <Spacer />

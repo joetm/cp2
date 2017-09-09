@@ -11,10 +11,10 @@ import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
 
-import Spacer from '../Shared/Spacer'
-import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
-import Avatar from '../Shared/Avatar'
 import { removeAvatar } from '../../actions'
+import Spacer from '../Shared/Spacer'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
+import Avatar from '../Shared/Avatar'
 import { blockMaxWidth, dropzoneStyle } from './styles'
 
 
