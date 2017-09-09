@@ -9,14 +9,14 @@
     "/messages/?*": "/streamitems?type=message&_expand=user&_sort=timestamp&order=desc&$1",
     "/messages/:id": "/streamitems/:id?_expand=user",
     "/messages/:id?*": "/streamitems/:id?_expand=user&$1",
-  "/images": "/streamitems?type=image&type=verification&type=profileimg&_expand=user&_sort=timestamp&order=desc",
-    "/images?*": "/streamitems?type=image&type=verification&type=profileimg&_expand=user&_sort=timestamp&order=desc&$1",
-    "/images/?*": "/streamitems?type=image&type=verification&type=profileimg&_expand=user&_sort=timestamp&order=desc&$1",
+  "/images": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
+    "/images?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
+    "/images/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/images/:id": "/streamitems/:id?_expand=user",
     "/images/:id?*": "/streamitems/:id?_expand=user&$1",
-  "/pictures": "/streamitems?type=image&type=verification&type=profileimg&_expand=user&_sort=timestamp&order=desc",
-    "/pictures?*": "/streamitems?type=image&type=verification&type=profileimg&_expand=user&_sort=timestamp&order=desc&$1",
-    "/pictures/?*": "/streamitems?type=image&type=verification&type=profileimg&_expand=user&_sort=timestamp&order=desc&$1",
+  "/pictures": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
+    "/pictures?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
+    "/pictures/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/pictures/:id": "/streamitems/:id?_expand=user",
     "/pictures/:id?*": "/streamitems/:id?_expand=user&$1",
   "/posts": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc",
@@ -44,5 +44,6 @@
   "/reviewitems": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=post&type=image&type=video&type=verification",
     "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=image&type=video&type=verification&$1",
   "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
-    "/streamitems?*": "/streamitems?_expand=user&$1"
+    "/streamitems?*": "/streamitems?_expand=user&$1",
+  "/currentUser": "/currentUser?_expand=profileimg"
 }

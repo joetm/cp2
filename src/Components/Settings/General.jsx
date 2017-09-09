@@ -4,13 +4,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Toggle from 'material-ui/Toggle'
 import { List } from 'material-ui/List'
+import MenuItem from 'material-ui/MenuItem'
 import TextField from 'material-ui/TextField'
+import DatePicker from 'material-ui/DatePicker'
 import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
-import MenuItem from 'material-ui/MenuItem'
 
 import styles from './styles'
-import { fetchCountries, fetchStates, fetchCities } from '../../actions'
+import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import Alert from '../Shared/Alert'
 
@@ -62,47 +63,41 @@ class GeneralSettings extends React.Component {
         console.log('change user title', e.target.value)
         this.openAlert()
     }
+    /*
+     * Handle the change of the birthdate.
+     */
+    handleChangeBirthdate = (e, date) => {
+      const year = date.getFullYear()
+      const month = date.getMonth()
+      const day = date.getDate()
+      this.props.changeSetting('birthday', `${year}-${month}-${day}`)
+    }
     render() {
       return (
-        <div style={{textAlign: 'left'}}>
+        <div style={{textAlign: 'left'}} ref="pageContent">
 
-            <SettingsSeparator text="General" />
+            <SettingsSeparator text="Personal data" />
 
-            <List>
-              <Toggle
-                label="Simple"
-                style={styles.toggle}
-              />
-              <Toggle
-                label="Toggled by default"
-                defaultToggled={true}
-                style={styles.toggle}
-              />
-              <Toggle
-                label="Simple"
-                style={styles.toggle}
-              />
-              <Toggle
-                label="Toggled by default"
-                defaultToggled={true}
-                style={styles.toggle}
-              />
-            </List>
+            <DatePicker
+              floatingLabelText="Birth date"
+              hintText="Your birth date"
+              openToYearSelection={true}
+              autoOk={true}
+              onChange={this.handleChangeBirthdate}
+            />
 
             <SettingsSeparator text="Location" />
 
-            <div>
-                <AutoComplete
-                  floatingLabelText="Country"
-                  fullWidth={true}
-                  filter={AutoComplete.caseInsensitiveFilter}
-                  openOnFocus={false}
-                  onUpdateInput={this.handleChangeCountry}
-                  searchText={this.props.country}
-                  dataSource={this.props.countries}
-                  dataSourceConfig={{ text: 'country', value: 'country' }}
-                />
-            </div>
+            <AutoComplete
+              floatingLabelText="Country"
+              fullWidth={true}
+              filter={AutoComplete.caseInsensitiveFilter}
+              openOnFocus={false}
+              onUpdateInput={this.handleChangeCountry}
+              searchText={this.props.country}
+              dataSource={this.props.countries}
+              dataSourceConfig={{text: 'country', value: 'country'}}
+            />
 
             <div>
                 <SelectField
@@ -137,13 +132,11 @@ class GeneralSettings extends React.Component {
 
             <SettingsSeparator text="Other" />
 
-            <div>
-              <TextField
-                floatingLabelText="Custom User Title"
-                fullWidth={true}
-                onBlur={this.handleChangeUsertitle}
-              />
-            </div>
+            <TextField
+              floatingLabelText="Custom User Title"
+              fullWidth={true}
+              onBlur={this.handleChangeUsertitle}
+            />
 
             <Alert
                 open={this.state.alertIsOpen}
@@ -158,10 +151,13 @@ class GeneralSettings extends React.Component {
 
 
 const mapStateToProps = (state) => ({
+    // currentUser
     usertitle: state.currentUser.usertitle,
+    birthday: state.currentUser.birthday,
     country: state.currentUser.country,
     state: state.currentUser.state,
     city: state.currentUser.city,
+    // general
     countries: state.appState.countries,
     states: state.appState.states,
     cities: state.appState.cities,
@@ -169,5 +165,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchCountries, fetchStates, fetchCities }
+    { changeSetting, fetchCountries, fetchStates, fetchCities }
 )(GeneralSettings)

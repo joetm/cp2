@@ -17,7 +17,6 @@ const routes = {
     IMAGES: "/images",
     VIDEOS: "/videos",
     VERIFICATIONS: "/verifications",
-    SETTINGS: "/settings",
     REVIEW: "/review",
     EDIT: "/edit",
     MESSAGES: "/messages",
@@ -31,6 +30,14 @@ const routes = {
         COMMUNITY: "/community-guidelines",
         PRIVACY: "/privacy",
         DMCA: "/dmca",
+    },
+    SETTINGS: {
+        INDEX: "/settings",
+        GENERAL: "/general",
+        AVATAR: "/avatar",
+        IMAGE: "/image",
+        VERIFICATION: "/verification",
+        PRIVACY: "/privacy",
     },
     MODAREA: "/modarea",
 }

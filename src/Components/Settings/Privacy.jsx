@@ -33,35 +33,35 @@ class PrivacySettings extends React.Component {
         <List>
           <Toggle
             label="Show your location"
-            defaultToggled={true}
+            toggled={this.props.showLocation}
             style={styles.toggle}
             onToggle={this.toggleLocationVisibility}
           />
           <Toggle
             label="Show your birthday"
-            defaultToggled={false}
+            toggled={this.props.showBirthday}
             style={styles.toggle}
             onToggle={this.toggleBirthdayVisibility}
           />
-          {/*
           <Toggle
             label="Show online status"
-            defaultToggled={true}
+            toggled={this.props.showOnlineStatus}
             style={styles.toggle}
             onToggle={this.toggleOnlineVisibility}
           />
-          */}
         </List>
       </div>
     )
   }
 }
 
-// const mapStateToProps = (state) => ({
-//     threads: state.threads,
-// })
+const mapStateToProps = (state) => ({
+    showBirthday: state.currentUser.showBirthday,
+    showLocation: state.currentUser.showLocation,
+    showOnlineStatus: state.currentUser.showOnlineStatus,
+})
 
 export default connect(
-    null, // mapStateToProps,
+    mapStateToProps,
     { changeSetting }
 )(PrivacySettings)

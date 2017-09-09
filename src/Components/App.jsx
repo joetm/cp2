@@ -126,7 +126,7 @@ class App extends React.Component {
 
                 <Route path={routes.MEMBERS} component={Users} />
 
-                <Route path={routes.SETTINGS} component={Settings} />
+                <Route path={routes.SETTINGS.INDEX} component={Settings} />
 
                 <Route exact path={routes.LOGIN} component={LoginPage} />
                 <Route exact path={routes.SIGNUP} component={SignupPage} />

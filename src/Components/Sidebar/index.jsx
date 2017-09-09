@@ -181,7 +181,7 @@ class Sidebar extends React.Component {
             />
 
             <MenuEntry
-                route={routes.SETTINGS}
+                route={routes.SETTINGS.INDEX}
                 icon={<SettingsIcon />}
                 text="Settings"
                 onTouchTap={this.props.closeSidebar}

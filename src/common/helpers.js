@@ -181,8 +181,23 @@ export function parseJSON(response) {
 export function scrollToTop(scrollDuration) {
     const scrollStep = -window.scrollY / (scrollDuration / 15)
     const scrollInterval = setInterval(function() {
-        if ( window.scrollY !== 0 ) {
-            window.scrollBy( 0, scrollStep )
+        if (window.scrollY !== 0) {
+            window.scrollBy(0, scrollStep)
+        } else {
+            clearInterval(scrollInterval)
+        }
+    }, 15);
+}
+
+/**
+ * Function to scroll to an element on the page
+ */
+export function scrollTo(el, scrollDuration) {
+    const scrollStep = -window.scrollY / (scrollDuration / 15)
+    const targetPos = el.offsetTop
+    const scrollInterval = setInterval(function() {
+        if (window.scrollY !== targetPos) {
+            window.scrollBy(targetPos, scrollStep)
         } else {
             clearInterval(scrollInterval)
         }

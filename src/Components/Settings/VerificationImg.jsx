@@ -13,28 +13,27 @@ import Snackbar from 'material-ui/Snackbar'
 
 import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
-import { removeProfileImg } from '../../actions'
+import { removeVerificationImg } from '../../actions'
 import { blockMaxWidth, dropzoneStyle } from './styles'
 
 
-class ProfileImg extends React.Component {
+class VerificationImg extends React.Component {
   state = {
     msgOpen: false,
   }
   handleRequestClose = () => {
     this.setState({ msgOpen: false })
   }
-  deleteProfileImg = () => {
-    this.props.removeProfileImg()
+  deleteVerificationImg = () => {
+    this.props.removeVerificationImg()
     this.setState({ msgOpen: true })
   }
   render() {
-    const { profileimg } = this.props
+    const { verificationimg } = this.props
     return (
       <div
           id="profileImg-settings"
           style={{
-            width: blockMaxWidth,
             marginLeft: 'auto',
             marginRight: 'auto',
             maxWidth: blockMaxWidth,
@@ -42,7 +41,7 @@ class ProfileImg extends React.Component {
       >
 
           <img
-              src={profileimg}
+              src={verificationimg}
               alt=""
               style={{
                   width: '100%',
@@ -61,12 +60,12 @@ class ProfileImg extends React.Component {
 
           <RaisedButton
             label="Delete Profile Image"
-            onTouchTap={this.deleteProfileImg}
+            onTouchTap={this.deleteVerificationImg}
           />
 
           <Snackbar
             open={this.state.msgOpen}
-            message="Profile image removed"
+            message="Verification image removed"
             autoHideDuration={2000}
             onRequestClose={this.handleRequestClose}
           />
@@ -78,10 +77,11 @@ class ProfileImg extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    profileimg: state.currentUser.profileimg,
+    // TODO:
+    // verificationimg: state.currentUser.profileimg,
 })
 
 export default connect(
     mapStateToProps,
-    { removeProfileImg }
-)(ProfileImg)
+    { removeVerificationImg }
+)(VerificationImg)

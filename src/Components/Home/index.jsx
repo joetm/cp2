@@ -36,9 +36,9 @@ const Separator = () => (
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props.fetchUpdates(5)
-    this.props.fetchFavorites(5)
-    this.props.fetchLikes(5)
+    this.props.fetchUpdates(3)
+    this.props.fetchFavorites(3)
+    this.props.fetchLikes(3)
   }
   render() {
     return (
@@ -48,11 +48,10 @@ class Home extends React.Component {
 
             <CellWrapper full={6} tablet={8} phone={4}>
                 <Box updates={this.props.updates} />
-                <Separator />
                 <Box updates={this.props.favorites} />
-                <Separator />
                 <Box updates={this.props.likes} />
             </CellWrapper>
+
             <CellWrapper full={6} tablet={8} phone={4}>
                 <Paper style={boxStyle} zDepth={1}>
                     <Chat

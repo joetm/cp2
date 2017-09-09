@@ -15,18 +15,7 @@ import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from './dropzoneConfig'
 import Avatar from '../Shared/Avatar'
 import { removeAvatar } from '../../actions'
-
-
-const blockMaxWidth = '80%' // 250
-
-const styles = {
-  dropzone: {
-    height: '150px',
-    width: '100%',
-    border: '2px solid #888',
-    borderRadius: '5px',
-  },
-}
+import { blockMaxWidth, dropzoneStyle } from './styles'
 
 
 class AvatarSetting extends React.Component {
@@ -58,7 +47,7 @@ class AvatarSetting extends React.Component {
           />
 
           <DropzoneComponent
-            style={styles.dropzone}
+            style={dropzoneStyle}
             config={dropzoneConfig}
             eventHandlers={dropzoneEventHandlers}
             djsConfig={dropzoneJsConfig}

@@ -567,3 +567,4 @@ export const removeProfileImg = () => (dispatch) => {
 
 export const changeSetting = (key, value) =>
     api.changeSetting(key, value).then(receiveSetting)
+
