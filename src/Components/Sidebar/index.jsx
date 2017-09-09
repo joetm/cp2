@@ -64,7 +64,7 @@ class Sidebar extends React.Component {
             open={this.props.sidebarOpen}
             tabIndex="0"
             onBlur={closeSidebar}
-            // onRequestChange={(open) => this.setState({open})}
+            onRequestChange={closeSidebar}
           >
 
             <div style={styles.logoContainer}>

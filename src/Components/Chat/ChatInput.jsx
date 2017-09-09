@@ -69,6 +69,7 @@ class ChatInput extends React.Component {
               ref="chatinput"
               onKeyPress={this.props.sendMsgHandler || this.handleChangeChatMsg}
               style={styles.textField}
+              autoFocus
           />
         </div>
         <SendIcon

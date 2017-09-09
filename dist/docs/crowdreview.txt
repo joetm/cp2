@@ -27,6 +27,12 @@ Our crowd review genome*:
         <th>Group Decision</th>
     </tr>
     <tr>
+        <th>Decide on profile pictures</th>
+        <th>Crowd</th>
+        <th>Love, Glory</th>
+        <th>Group Decision</th>
+    </tr>
+    <tr>
         <th>Decide on verification pictures</th>
         <th>Moderators</th>
         <th>Love</th>

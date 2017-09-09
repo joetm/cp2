@@ -19,20 +19,16 @@ class ButtonRaised extends React.Component {
     toggleButtonState() {
         this.setState({active: !this.state.active})
     }
-    // launchAction() {
-    //     console.log('button clicked', this)
-    //     // this.toggleButtonState()
-    //     this.props.action() // .bind(this)
-    // }
     /**
      * Render the component.
      */
     render() {
+        const customizedStyle = this.props.style
         return (
             <RaisedButton
               label={this.msg}
               {...this.props}
-              style={styles.buttonStyle}
+              style={{...styles.buttonStyle, customizedStyle}}
               icon={this.Icon}
               onTouchTap={this.props.action}
             />

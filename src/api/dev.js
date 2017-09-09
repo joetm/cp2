@@ -96,18 +96,9 @@ export const sendChatMessage = (payload) =>
                     content: payload.msg, // TODO
                     approvals: 0,
                     disapprovals: 0,
-                    dislikes: 0,
-                    lastEdit: null,
                     likes: 0,
-                    rating: null,
-                    replies: 0,
-                    src: null,
-                    tags: [],
-                    threadid: 0,
-                    thumb: null,
+                    dislikes: 0,
                     timestamp: Math.round(Date.now() / 1000),
-                    title: null,
-                    type: "message",
                     userid: payload.userid, // TODO - this must come from server
                     user: { // TODO
                         id: payload.userid, // TODO - this must come from server

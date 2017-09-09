@@ -28,8 +28,7 @@
                 "replies": 0,
                 "tags": [],
                 "timestamp": 1501229377,
-                "lastEdit": 0,
-                "rating": null
+                "lastEdit": 0
             },
             {
                 "type": "suggestion",
@@ -47,8 +46,7 @@
                 "replies": 0,
                 "tags": [],
                 "timestamp": 1501229377,
-                "lastEdit": 0,
-                "rating": null
+                "lastEdit": 0
             },
             {
                 "type": "dmca",
@@ -66,8 +64,7 @@
                 "replies": 0,
                 "tags": [],
                 "timestamp": 1501229377,
-                "lastEdit": 0,
-                "rating": null
+                "lastEdit": 0
             }
         ]
     },
@@ -88,8 +85,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501229377,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "like",
@@ -107,8 +103,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501229577,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "like",
@@ -126,8 +121,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501229577,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "message",
@@ -145,8 +139,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1502788349,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "message",
@@ -164,8 +157,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1502789349,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "message",
@@ -183,8 +175,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1502789349,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "message",
@@ -202,8 +193,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1502788349,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "message",
@@ -221,8 +211,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1502788549,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "message",
@@ -240,8 +229,25 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1502789349,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
+        },
+        {
+            "type": "profileimg",
+            "id": "cj7d0fb220000p6drmk8wnafe",
+            "threadid": 0,
+            "title": "PROFILE IMAGE",
+            "content": "...",
+            "src": "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/s65-46645.jpg",
+            "thumb": "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/s65-46645.jpg",
+            "userid": 1,
+            "approvals": 0,
+            "disapprovals": 0,
+            "likes": 5,
+            "dislikes": 2,
+            "replies": 0,
+            "tags": [],
+            "timestamp": 1504943602,
+            "lastEdit": 0
         },
         {
             "type": "verification",
@@ -259,8 +265,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504452084,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "verification",
@@ -278,8 +283,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504452098,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "verification",
@@ -297,8 +301,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504452138,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -316,8 +319,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501229377,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -335,8 +337,7 @@
             "replies": 0,
             "tags": ["mytag"],
             "timestamp": 1501229177,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -354,8 +355,7 @@
             "replies": 0,
             "tags": ["mytag"],
             "timestamp": 1504351149,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -373,8 +373,7 @@
             "replies": 0,
             "tags": ["mytag"],
             "timestamp": 1504361149,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -392,8 +391,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501229077,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -411,8 +409,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501220077,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -430,8 +427,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501220077,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -449,8 +445,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361587,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -468,8 +463,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361587,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -487,8 +481,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361675,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -506,8 +499,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361758,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -525,8 +517,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361812,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -544,8 +535,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361863,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -563,8 +553,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1504361883,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -582,8 +571,7 @@
             "replies": 0,
             "tags": ["awesome", "picture", "image"],
             "timestamp": 1504361298,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -601,8 +589,7 @@
             "replies": 0,
             "tags": ["flight"],
             "timestamp": 1504361392,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -620,8 +607,7 @@
             "replies": 0,
             "tags": ["ooooh"],
             "timestamp": 1504361406,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "like",
@@ -639,8 +625,7 @@
             "replies": 0,
             "tags": [],
             "timestamp": 1501200077,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -658,8 +643,7 @@
             "replies": 0,
             "tags": ["test"],
             "timestamp": 1501000077,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -677,8 +661,7 @@
             "replies": 0,
             "tags": ["ok"],
             "timestamp": 1501000057,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "video",
@@ -696,8 +679,7 @@
             "replies": 0,
             "tags": ["mytag", "favs", "music", "hair", "song", "cheesy", "classic"],
             "timestamp": 1500000057,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -715,8 +697,7 @@
             "replies": 0,
             "tags": ["cars"],
             "timestamp": 1501135362,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -734,8 +715,7 @@
             "replies": 0,
             "tags": ["dinosaurs"],
             "timestamp": 1501185342,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -753,8 +733,7 @@
             "replies": 0,
             "tags": ["forums", "dinosaurs"],
             "timestamp": 1501188342,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "post",
@@ -772,8 +751,7 @@
             "dislikes": 0,
             "replies": 0,
             "timestamp": 1501198342,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         },
         {
             "type": "image",
@@ -791,8 +769,7 @@
             "replies": 0,
             "tags": ["hello", "test"],
             "timestamp": 1501239377,
-            "lastEdit": 0,
-            "rating": null
+            "lastEdit": 0
         }
     ],
     "messageHistory": {
@@ -815,8 +792,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501229377,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 },
                 {
                     "type": "message",
@@ -834,8 +810,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501229387,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 },
                 {
                     "type": "message",
@@ -853,8 +828,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501239377,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 },
                 {
                     "type": "message",
@@ -872,8 +846,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501249377,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 },
                 {
                     "type": "message",
@@ -891,8 +864,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501259377,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 },
                 {
                     "type": "message",
@@ -910,8 +882,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501269377,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 },
                 {
                     "type": "message",
@@ -929,8 +900,7 @@
                     "replies": 0,
                     "tags": [],
                     "timestamp": 1501279377,
-                    "lastEdit": 0,
-                    "rating": null
+                    "lastEdit": 0
                 }
             ]
         }
@@ -939,59 +909,29 @@
         {
             "type": "message",
             "id": "cj6z3ua2s0000nldr6ebklayi",
-            "threadid": 0,
-            "title": null,
             "content": "Wassup, homies?",
-            "src": null,
-            "thumb": null,
             "userid": 2,
-            "approvals": 22,
-            "disapprovals": 1,
             "likes": 8,
             "dislikes": 1,
-            "replies": 0,
-            "tags": [],
-            "timestamp": 1501229377,
-            "lastEdit": 0,
-            "rating": null
+            "timestamp": 1501229377
         },
         {
             "type": "message",
             "id": "cj6z3uwv80000nzdrwtyxl06t",
-            "threadid": 0,
-            "title": null,
             "content": "Just chillin'...",
-            "src": null,
-            "thumb": null,
             "userid": 3,
-            "approvals": 1,
-            "disapprovals": 1,
             "likes": 8,
             "dislikes": 1,
-            "replies": 0,
-            "tags": [],
-            "timestamp": 1501229377,
-            "lastEdit": 0,
-            "rating": null
+            "timestamp": 1501229377
         },
         {
             "type": "message",
             "id": "cj739mxcf00004sdrk09azm78",
-            "threadid": 0,
-            "title": null,
             "content": "okay, homie!!!11",
-            "src": null,
-            "thumb": null,
             "userid": 2,
-            "approvals": 0,
-            "disapprovals": 0,
             "likes": 0,
             "dislikes": 0,
-            "replies": 0,
-            "tags": [],
-            "timestamp": 1501239377,
-            "lastEdit": 0,
-            "rating": null
+            "timestamp": 1501239377
         }
     ],
     "followers": [

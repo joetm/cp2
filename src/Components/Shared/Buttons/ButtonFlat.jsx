@@ -25,9 +25,9 @@ class ButtonFlat extends React.Component {
      * Render the component.
      */
     render() {
-        // const {tooltip} = this.props
+      const customizedStyle = this.props.style
         return (
-            <div style={styles.buttonStyle}>
+            <div style={{...styles.buttonStyle, customizedStyle}}>
                 <FlatButton
                   label={`${this.msg} ${this.props.number}`}
                   labelPosition="after"
@@ -35,6 +35,7 @@ class ButtonFlat extends React.Component {
                   secondary={this.props.secondary}
                   icon={this.Icon}
                   onTouchTap={this.launchAction}
+                  style={this.props.buttonStyle}
                 />
             </div>
         )

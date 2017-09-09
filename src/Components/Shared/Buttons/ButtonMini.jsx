@@ -39,12 +39,14 @@ class ButtonMini extends React.Component {
                 color: darkBlack,
             }
         }
+        const customizedStyle = this.props.style
         return (
-            <div style={styles.buttonStyle}>
+            <div style={{...styles.buttonStyle, customizedStyle}}>
                 <IconButton
                     iconStyle={iconButtonStyle}
                     hoveredStyle={styles.iconButtonStyleHovered}
                     onTouchTap={this.launchAction}
+                    style={this.props.buttonStyle}
                 >
                     {this.Icon}
                 </IconButton>

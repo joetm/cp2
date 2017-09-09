@@ -35,8 +35,9 @@ const styles = {
         objectFit: 'cover',
         objectPosition: '50% 50%',
     },
-    userInfo: {
-      cursor: 'pointer',
+    radioButton: {
+      width: '',
+      whiteSpace: 'nowrap',
     },
 }
 
@@ -63,6 +64,15 @@ class ReviewCard extends React.Component {
         finished: stepIndex >= 1,
       })
     }
+    resetRadioButtons = () => {
+        // unselect (reset) the radio button group
+        this.setState({selectedRating: null})
+        // TODO - selectedRating is not reset!
+
+
+
+        console.log('selected:', this.state.selectedRating)
+    }
     resetSteps = () => {
         // reset steps
         this.setState({stepIndex: 0})
@@ -74,10 +84,10 @@ class ReviewCard extends React.Component {
         action()
         // reset the steps
         this.resetSteps()
+        // reset the radio buttons
+        this.resetRadioButtons()
         // scroll up
         scrollToTop(200)
-        // unselect (reset) the radio button group
-        this.setState({selectedRating: null})
     }
     // prevStep = () => {
     //   const { stepIndex } = this.state
@@ -122,17 +132,17 @@ class ReviewCard extends React.Component {
                   title={title}
                   subtitle={user ? user.username : null}
                   avatar={user ? user.avatar : null}
-                  onTouchTap={this.navigateToUser}
-                  style={styles.userInfo}
               >
-                <LikeButton
-                    number={likes}
-                    action={like}
-                />
-                <DisapproveButton
-                    number={dislikes}
-                    action={dislike}
-                />
+                <div style={{float: 'right', display: 'inline-block'}}>
+                  <LikeButton
+                      number={likes}
+                      action={like}
+                  />
+                  <DisapproveButton
+                      number={dislikes}
+                      action={dislike}
+                  />
+                </div>
               </CardHeader>
 
               <CardActions>
@@ -156,15 +166,15 @@ class ReviewCard extends React.Component {
                     >
                       <RadioButton
                         value={SFW}
-                        label="Safe-for-work"
                         checked={this.state.selectedRating === SFW}
-                        style={{width: '', whiteSpace: 'nowrap'}}
+                        label="Safe-for-work"
+                        style={styles.radioButton}
                       />
                       <RadioButton
                         value={NSFW}
-                        label="Adult (Not-safe-for-work)"
                         checked={this.state.selectedRating === NSFW}
-                        style={{marginLeft: '12px', width: '', whiteSpace: 'nowrap'}}
+                        label="Adult (Not-safe-for-work)"
+                        style={{...styles.radioButton, marginLeft: '12px'}}
                       />
                     </RadioButtonGroup>
                   </ToolbarGroup>
