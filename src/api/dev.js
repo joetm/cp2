@@ -35,7 +35,7 @@ export const fetchPictures = createFetchField('images')
 export const fetchFollowers = createFetchField('followers')
 export const fetchVideos = createFetchField('videos')
 export const fetchStream = createFetchField('streamitems')
-export const fetchNotifications = createFetchField('messages')
+export const fetchMessages = createFetchField('messages')
 export const fetchLikes = createFetchField('likes')
 export const fetchFavorites = createFetchField('favorites')
 // alias

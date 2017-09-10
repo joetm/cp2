@@ -133,15 +133,15 @@ export function updatesReducer(updatesState = initialState.updates, action) {
 }
 
 /**
- * notificationsReducer
- * @returns notificationState
+ * messagesReducer
+ * @returns messagesState
  **/
-export function notificationsReducer(notificationState = initialState.notifications, action) {
+export function messagesReducer(messagesState = initialState.messages, action) {
     switch (action.type) {
-        case ACTIONS.RECEIVE_NOTIFICATIONS:
-            return {...notificationState, isFetching: false, items: [...action.response]}
+        case ACTIONS.RECEIVE_MESSAGES:
+            return {...messagesState, isFetching: false, items: [...action.response]}
         default:
-            return notificationState
+            return messagesState
     }
 }
 
@@ -238,7 +238,7 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
  * likesReducer
  * @returns likesState
  **/
-export function likesReducer(likesState = initialState.notifications, action) {
+export function likesReducer(likesState = initialState.likes, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_LIKES:
             return {...likesState, isFetching: false, items: [...action.response]}
@@ -323,14 +323,24 @@ export function userReducer(usersState = initialState.users, action) {
                 ret[id] = {...action.response[id]}
             })
             return ret
+
         case ACTIONS.DELETE_AVATAR_SUCCESS:
             // remove the avatar from the respective user
-            const copyState = {...usersState}
-            if (Object.prototype.hasOwnProperty.call(copyState, action.userid)) {
-                copyState[action.userid].avatar = null
+            const usersAvCopy = {...usersState}
+            if (Object.prototype.hasOwnProperty.call(usersAvCopy, `${action.userid}`)) {
+                usersAvCopy[`${action.userid}`].avatar = null
             }
-            console.log('copyState', copyState)
-            return copyState
+            console.log('usersAvCopy', usersAvCopy)
+            return {...usersAvCopy, isFetching: false}
+
+        case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
+            // remove the profile image from the respective user
+            const usersPICopy = {...usersState}
+            if (Object.prototype.hasOwnProperty.call(usersPICopy, `${action.userid}`)) {
+                usersPICopy[`${action.userid}`].profileimg = null
+            }
+            return {...usersPICopy, isFetching: false}
+
         default:
             return usersState
     }
@@ -444,6 +454,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
 
         case ACTIONS.DELETE_AVATAR_SUCCESS:
             return {...currentUserState, avatar: null}
+
         case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
             return {...currentUserState, profileimg: null}
 
@@ -461,24 +472,28 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
  **/
 export function cpAppReducer(appState = initialState.appState, action) {
     switch (action.type) {
+
         case ACTIONS.OPEN_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: true}
         case ACTIONS.CLOSE_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: false}
         case ACTIONS.TOGGLE_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: !appState.sidebarSearchOpen}
+
         case ACTIONS.OPEN_SIDEBAR:
             return {...appState, sidebarOpen: true}
         case ACTIONS.CLOSE_SIDEBAR:
             return {...appState, sidebarOpen: false}
         case ACTIONS.TOGGLE_SIDEBAR:
             return {...appState, sidebarOpen: !appState.sidebarOpen}
+
         // case ACTIONS.OPEN_STREAM_SIDEBAR:
         //     return {...appState, streamSidebarOpen: true}
         // case ACTIONS.CLOSE_STREAM_SIDEBAR:
         //     return {...appState, streamSidebarOpen: false}
         // case ACTIONS.TOGGLE_STREAM_SIDEBAR:
         //     return {...appState, streamSidebarOpen: !appState.streamSidebarOpen}
+
         case ACTIONS.SET_DEVICE_DETAILS:
             return {...appState, deviceDetails: action.obj}
         case ACTIONS.SET_ACTIVE_BADGE:

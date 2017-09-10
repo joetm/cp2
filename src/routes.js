@@ -5,7 +5,7 @@ const routes = {
     ALBUM: "/album",
     STREAM: "/stream",
     UPDATES: "/updates",
-    NOTIFICATIONS: "/notifications",
+    MESSAGES: "/messages",
     LIKES: "/likes",
     FAVORITES: "/favorites",
     PLAYLIST: "/playlist",

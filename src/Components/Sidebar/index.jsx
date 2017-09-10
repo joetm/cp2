@@ -7,19 +7,13 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
-// import UsersIcon from 'material-ui/svg-icons/social/group'
 import ForumIcon from 'material-ui/svg-icons/communication/forum'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
 import HeartIcon from 'material-ui/svg-icons/action/favorite'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
-// import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
-// import HomeIcon from 'material-ui/svg-icons/action/account-balance'
-// import WatchLaterIcon from 'material-ui/svg-icons/action/alarm'
-// import ProfileIcon from 'material-ui/svg-icons/action/account-circle'
 import ProfileIcon from 'material-ui/svg-icons/social/person-outline'
 import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
-// import LogoutIcon from 'material-ui/svg-icons/maps/directions-run'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
 import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../actions'
@@ -125,7 +119,7 @@ const Sidebar = (props) => {
         <Divider />
 
         <MenuEntry
-            route={routes.NOTIFICATIONS}
+            route={routes.MESSAGES}
             icon={<EmailIcon />}
             text="Messages"
             onTouchTap={closeSidebar}

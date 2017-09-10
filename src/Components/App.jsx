@@ -17,7 +17,7 @@ import Scrollbutton from './Shared/Scrollbutton'
 import NavBar from './NavBar'
 import Home from './Home'
 import Forum from './Forum'
-import Notifications from './Content/Notifications'
+import Messages from './Content/Messages'
 import MessageHistory from './MessageHistory'
 import Followers from './Followers'
 import Users from './Users'
@@ -93,7 +93,7 @@ class App extends React.Component {
                 <Route exact path={routes.IMAGES} component={Pictures} />
                 <Route exact path={routes.VIDEOS} component={Videos} />
 
-                <Route exact path={routes.NOTIFICATIONS} component={Notifications} />
+                <Route exact path={routes.MESSAGES} component={Messages} />
                 <Route exact path={routes.LIKES} component={Likes} />
                 <Route exact path={routes.FAVORITES} component={Favorites} />
 

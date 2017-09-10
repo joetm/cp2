@@ -50,7 +50,7 @@ const initialState = {
         isFetching: true,
     },
     // -- personalized content
-    notifications: {
+    messages: {
         isFetching: true,
         items: [],
     },

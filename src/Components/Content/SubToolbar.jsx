@@ -95,7 +95,7 @@ class SubToolbar extends React.Component {
                     <IconMenu iconButtonElement={expandButton}>
                         <MenuItem primaryText="Mark All Pictures Read" />
                         <MenuItem primaryText="Mark All Videos Read" />
-                        <MenuItem primaryText="Mark All Notifications Read" />
+                        <MenuItem primaryText="Mark All Messages Read" />
                         <MenuItem primaryText="Mark All Likes Read" />
                         <MenuItem primaryText="Mark All Read" />
                     </IconMenu>

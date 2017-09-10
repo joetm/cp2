@@ -26,6 +26,7 @@ class StreamTpl extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            // initial view mode from props (or default: TILED)
             viewMode: props.viewMode || TILED,
         }
     }
@@ -87,17 +88,17 @@ class StreamTpl extends React.Component {
                     <Divider />
 
                     <Wrapper className="container">
-                        {
-                          group.map((item) => (
-                            <Container
-                                key={`upd_${item.id}`}
-                                {...item}
-                                full={3}
-                                tablet={4}
-                                phone={2}
-                            />
-                          ))
-                        }
+                      {
+                        group.map((item) => (
+                          <Container
+                              key={`upd_${item.id}`}
+                              {...item}
+                              full={3}
+                              tablet={4}
+                              phone={2}
+                          />
+                        ))
+                      }
                     </Wrapper>
 
                   </div>

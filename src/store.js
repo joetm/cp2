@@ -32,7 +32,7 @@ const store = createStore(
         videos: Reducers.videosReducer,
         favorites: Reducers.favoritesReducer,
         likes: Reducers.likesReducer,
-        notifications: Reducers.notificationsReducer,
+        messages: Reducers.messagesReducer,
         album: Reducers.albumReducer,
         threads: Reducers.threadsReducer,
         posts: Reducers.postsReducer,

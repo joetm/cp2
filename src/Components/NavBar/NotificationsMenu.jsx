@@ -78,7 +78,7 @@ class NotificationsMenu extends React.Component {
             <MenuItem
               primaryText="Messages"
               secondaryText={<Chip backgroundColor={palette.primary3Color} style={styles.Chip}>{unread.messages}</Chip>}
-              onTouchTap={() => this.closeMenuAndNavigate(routes.NOTIFICATIONS)}
+              onTouchTap={() => this.closeMenuAndNavigate(routes.MESSAGES)}
             />
             <MenuItem
               primaryText="Likes"

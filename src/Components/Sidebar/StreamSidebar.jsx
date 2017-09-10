@@ -56,7 +56,7 @@ class StreamSidebar extends React.PureComponent {
             />
 
             <MenuEntry
-                route={routes.NOTIFICATIONS}
+                route={routes.MESSAGES}
                 icon={<EmailIcon />}
                 text="Messages"
                 onTouchTap={closeStreamSidebar}
