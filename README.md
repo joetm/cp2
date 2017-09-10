@@ -1,7 +1,7 @@
 SocNet v2 [![Build Status](https://travis-ci.org/joetm/cp2.svg?branch=master)](https://travis-ci.org/joetm/cp2) [![Coverage Status](https://coveralls.io/repos/github/joetm/cp2/badge.svg?branch=master)](https://coveralls.io/github/joetm/cp2?branch=master)
 =====
 
-`
+```
 Calling from the ashes
 The phoenix rise again
 Fighting for life
@@ -17,7 +17,7 @@ To believe in
 Burning hearts and a brand new feeling
 Action
 If we're gonna make it like a true survivor
-`
+```
 
 PROD
 ----
