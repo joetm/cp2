@@ -21,12 +21,22 @@ const styles = {
 }
 
 
+const BadgeWrapper = (props) => (
+  <Badge
+    badgeContent={props.badgeContent}
+    secondary={true}
+    badgeStyle={styles.badgeStyle}
+    style={styles.badgeRootStyle}
+    onTouchTap={props.onTouchTap}
+  >
+    {props.children}
+  </Badge>
+)
+
+
 class CustomBadge extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      deactivated: false,
-    }
+  state = {
+    deactivated: false,
   }
   wrapNavLink = (Component) => {
     const { to } = this.props
@@ -55,23 +65,29 @@ class CustomBadge extends React.Component {
     } else {
       IconColor = {color: darkBlack}
     }
-    return this.wrapNavLink(
-        <Badge
-          badgeContent={badgeContent}
-          secondary={true}
-          badgeStyle={styles.badgeStyle}
-          style={styles.badgeRootStyle}
-          onTouchTap={onTouchTap}
-        >
-          <IconButton
-            tooltip={tooltip}
-            iconStyle={IconColor}
-            id={id}
-          >
-            {icon}
-          </IconButton>
-        </Badge>
+
+    const badgeButton = (
+      <IconButton
+        tooltip={tooltip}
+        style={{marginRight: badgeContent > 0 ? 0 : '16px'}}
+        iconStyle={IconColor}
+        id={id}
+      >
+        {icon}
+      </IconButton>
     )
+
+    const ComponentContent = badgeContent > 0 ?
+      (
+        <BadgeWrapper
+          badgeContent={badgeContent}
+          onTouchTap={onTouchTap}
+        >{badgeButton}</BadgeWrapper>
+      )
+      :
+      badgeButton
+
+    return this.wrapNavLink(ComponentContent)
   }
 }
 

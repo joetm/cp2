@@ -14,7 +14,7 @@ import SearchIcon from 'material-ui/svg-icons/action/search'
 import UploadIcon from 'material-ui/svg-icons/file/file-upload'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 // import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
-// import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
+import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import {
@@ -66,22 +66,22 @@ const styles = {
 
 
 class NavBar extends React.Component {
+    anchorEl = null
     state = {
         notificationsMenuOpen: false,
         searchExpanded: false,
-        anchorEl: null,
     }
     attachMenuToDomNode = () => {
         const targetDOMNode = findDOMNode(this.refs.notificationsBadge)
-        console.log('attach menu to', targetDOMNode)
-        this.setState({anchorEl: targetDOMNode})
-    }
-    componentWillMount() {
-        // attach the notifications menu to the dom node
-        this.attachMenuToDomNode()
+        if (targetDOMNode) {
+            console.log('attach menu to', targetDOMNode)
+            this.anchorEl = targetDOMNode
+        }
     }
     componentDidMount() {
         this.props.fetchCurrentUser()
+        // attach the notifications menu to the dom node
+        this.attachMenuToDomNode()
     }
     isForum = () => {
         return this.props.location.pathname.startsWith('/forum')
@@ -113,16 +113,12 @@ class NavBar extends React.Component {
     render() {
         const { unread, isAuthenticated, errorMessage } = this.props
 
-        let AllNotificationsIcons
-        // TODO
-        // if (!this.props.unread) {
-        //     AllNotificationsIcons = NotificationsNoneIcon
-        // } else {
-            AllNotificationsIcons = NotificationsActiveIcon
-        // }
+        const numUnread = sum(unread)
+
+        const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
 
         return (
-        <div>
+          <div>
             <Toolbar style={styles.navbar}>
 
                 <ReactCSSTransitionGroup
@@ -192,7 +188,7 @@ class NavBar extends React.Component {
 
                             <CustomBadge
                                 to={null}
-                                badgeContent={sum(unread)}
+                                badgeContent={numUnread}
                                 secondary={true}
                                 tooltip="Notifications"
                                 icon={<AllNotificationsIcons />}
@@ -242,13 +238,13 @@ class NavBar extends React.Component {
 
             <NotificationsMenu
                 open={this.state.notificationsMenuOpen}
-                anchorEl={this.state.anchorEl}
+                anchorEl={this.anchorEl}
                 unread={unread}
                 userid={this.props.userid}
                 closeNotificationsMenu={this.closeNotificationsMenu}
             />
 
-        </div>
+          </div>
         )
     }
 }
