@@ -23,9 +23,31 @@ import Privacy from './Privacy'
 
 class Settings extends React.Component {
   state = {
-    selectedIndex: 0,
+    selectedIndex: null,
   }
   select = (index) => this.setState({selectedIndex: index})
+  componentWillMount() {
+    const url = this.props.location.pathname
+    let index
+    switch (url) {
+      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.GENERAL}`:
+        index = 0
+        break
+      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.IMAGE}`:
+        index = 1
+        break
+      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.AVATAR}`:
+        index = 2
+        break
+      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.VERIFICATION}`:
+        index = 3
+        break
+      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.PRIVACY}`:
+        index = 4
+        break
+    }
+    this.setState({selectedIndex: index})
+  }
   render() {
     const { url } = this.props.match
     return (
@@ -39,27 +61,27 @@ class Settings extends React.Component {
           <BottomNavigationItem
             label="General"
             icon={<ProfileIcon />}
-            onClick={() => { this.select(0); this.props.history.push(`${this.props.match.url}${routes.SETTINGS.GENERAL}`) }}
+            onClick={() => { this.select(0); this.props.history.push(`${url}${routes.SETTINGS.GENERAL}`) }}
           />
           <BottomNavigationItem
             label="Profile Image"
             icon={<ImageIcon />}
-            onClick={() => { this.select(1); this.props.history.push(`${this.props.match.url}${routes.SETTINGS.IMAGE}`) }}
+            onClick={() => { this.select(1); this.props.history.push(`${url}${routes.SETTINGS.IMAGE}`) }}
           />
           <BottomNavigationItem
             label="Avatar"
             icon={<ImageIcon />}
-            onClick={() => { this.select(2); this.props.history.push(`${this.props.match.url}${routes.SETTINGS.AVATAR}`) }}
+            onClick={() => { this.select(2); this.props.history.push(`${url}${routes.SETTINGS.AVATAR}`) }}
           />
           <BottomNavigationItem
             label="Verify"
             icon={<VerifyIcon />}
-            onClick={() => { this.select(3); this.props.history.push(`${this.props.match.url}${routes.SETTINGS.VERIFICATION}`) }}
+            onClick={() => { this.select(3); this.props.history.push(`${url}${routes.SETTINGS.VERIFICATION}`) }}
           />
           <BottomNavigationItem
             label="Privacy"
             icon={<PrivacyIcon />}
-            onClick={() => { this.select(4); this.props.history.push(`${this.props.match.url}${routes.SETTINGS.PRIVACY}`) }}
+            onClick={() => { this.select(4); this.props.history.push(`${url}${routes.SETTINGS.PRIVACY}`) }}
           />
         </BottomNavigation>
 

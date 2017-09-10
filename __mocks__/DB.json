@@ -1470,7 +1470,7 @@
     "birthday": "1985-08-08",
     "showBirthday": true,
     "showLocation": false,
-    "showOnlineStatus": true,
+    "showOnlineStatus": false,
     "numPosts": 4,
     "numThreads": 3,
     "numImages": 2,
