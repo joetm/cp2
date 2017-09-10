@@ -127,12 +127,13 @@ class Update extends React.Component {
             }
           </CardMedia>
           <CardHeader
-            title={user ? user.username : null}
+            title={title}
             avatar={<Avatar
               username={user ? user.username : null}
               src={user ? user.avatar : null}
               mini={true}
             />}
+            subtitle={user ? user.username : null}
             onTouchTap={e => { e.stopPropagation(); this.navigateToUser() }}
             style={styles.userInfo}
           />
