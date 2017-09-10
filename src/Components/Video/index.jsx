@@ -44,7 +44,7 @@ class Video extends React.Component {
      * Render the component.
      */
     render() {
-        const { title, src, thumb, user, tags } = this.props.video
+        const { title, content, src, thumb, user, tags } = this.props.video
         return (
             <div style={styles.pageWrapper}>
 
@@ -62,6 +62,12 @@ class Video extends React.Component {
                         <Tags tags={tags} />
                     </div>
                 }
+
+                <Spacer />
+
+                <div>
+                    {content}
+                </div>
 
                 <Spacer />
 
