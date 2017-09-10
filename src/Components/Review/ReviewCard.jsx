@@ -67,10 +67,10 @@ class ReviewCard extends React.Component {
         // unselect (reset) the radio button group
         this.setState({selectedRating: null})
         // TODO - selectedRating is not reset!
-
-
-
         console.log('selected:', this.state.selectedRating)
+
+
+
     }
     resetSteps = () => {
         // reset steps

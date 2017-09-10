@@ -103,6 +103,24 @@ const createNewItem = (field, payload) =>
       }
     })
 
+const patchItem = (field, payload) =>
+    fetch(`${jsonAPI.ENDPOINT}${field}`, {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+    .then(response => {
+      console.log('response', response)
+      // if (response.status === 201) {
+        return response.json()
+      // } else {
+      //   throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
+      // }
+    })
+
 // -------------------------------------------------------------------
 
 export const sendChatMessage = (payload) => {
@@ -172,14 +190,15 @@ export const fetchCities = makeAjaxCallCreator('/data/cities.json')
 
 // -------------------------------------------------------------------
 
-export const changeSetting = (key, value) =>
-  jsonAPI.changeSetting(key, value)
-    .then(response => response)
+// TODO
+export const changeSetting = (field, value) =>
+  patchItem('currentUser', {field: value})
 
 // TODO
 export const removeUserField = (field) =>
-  jsonAPI.removeUserField(field)
-    .then(response => response)
+  patchItem('currentUser', {field: null})
+
+// -------------------------------------------------------------------
 
 export const deleteItems = (items) =>
   jsonAPI.deleteItems(items)

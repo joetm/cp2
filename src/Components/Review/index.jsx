@@ -49,7 +49,6 @@ class Review extends React.Component {
             helpIsOpen: false,
             alertIsOpen: false,
             helpText: '',
-            isFetching: true,
             clickedLike: false,
             clickedDislike: false,
             buttonsDisabled: true,
@@ -61,7 +60,6 @@ class Review extends React.Component {
         this.props.fetchReviewItem()
         this.setState({
             buttonsDisabled: false,
-            isFetching: false,
             rating: null,
         })
     }
@@ -76,7 +74,6 @@ class Review extends React.Component {
             this.request.abort()
             this.request = null
             this.setState({
-                isFetching: false,
                 rating: null,
             })
         }
@@ -114,7 +111,6 @@ class Review extends React.Component {
         action(this.props.reviewitem.id, this.state.rating)
         this.openAlert()
         this.setState({
-            isFetching: true,
             buttonsDisabled: true,
             rating: null,
         })
@@ -202,10 +198,7 @@ class Review extends React.Component {
                     toggleHelp={this.toggleHelp}
                 />
 
-                {
-                    this.props.isFetching &&
-                    <Loader />
-                }
+                <Loader isLoading={this.props.isFetching} />
 
                 <GridWrap>
 
@@ -219,7 +212,7 @@ class Review extends React.Component {
                           transitionLeaveTimeout={300}
                         >
                             {
-                                this.state.isFetching ? null :
+                                this.props.isFetching ? null :
                                 <ReviewCard
                                     {...reviewitem}
                                     datetime={humanRelativeDate(reviewitem.timestamp)}

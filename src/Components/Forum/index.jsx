@@ -25,7 +25,7 @@ const Forum = (props) => {
                 <Route component={ForumHome} />
             </Switch>
             <SearchSidebar
-                closeSidebar={this.props.closeSearchSidebar}
+                closeSidebar={props.closeSearchSidebar}
                 open={sidebarSearchOpen}
             />
             <Spacer />

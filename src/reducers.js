@@ -32,6 +32,7 @@ import jwtDecode from 'jwt-decode'
  **/
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
+
         // fill the chat state with the current user details
         case ACTIONS.RECEIVE_CURRENT_USER:
             const currentUser = {
@@ -56,6 +57,9 @@ export function chatReducer(chatState = initialState.chat, action) {
             return {...chatState, items: copyitems}
 
         // TODO: receive a chat message after sending by others
+
+
+
 
 
 

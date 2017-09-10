@@ -100,10 +100,9 @@ class StreamTpl extends React.Component {
                 )
               })
             }
-            {
-                !this.props.content.length &&
-                <Loader />
-            }
+
+            <Loader isLoading={this.props.content.length} />
+
             <Spacer />
 
           </div>

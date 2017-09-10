@@ -10,198 +10,63 @@
     "states": [],
     "cities": []
   },
-  "contactRequests": {
-    "isFetching": true,
-    "items": [
-      {
-        "type": "complaint",
-        "id": "cj78m7beo000047dr0xvm599g",
-        "title": "I do not like this",
-        "content": "so so so",
-        "userid": 2,
-        "timestamp": 1501229377
-      },
-      {
-        "type": "suggestion",
-        "id": "cj78mam5l000069dr5ddmsfr2",
-        "title": "Suggestion",
-        "content": "*Shia* Just DO it...",
-        "userid": 4,
-        "timestamp": 1501229377
-      },
-      {
-        "type": "dmca",
-        "id": "cj78mb2br00006fdrzs097ev5",
-        "title": "dmca",
-        "content": "...dmca content here...",
-        "userid": 7,
-        "timestamp": 1501229377
-      }
-    ]
-  },
-  "streamitems": [
+  "modRequests": [
+    {
+      "type": "complaint",
+      "id": "cj78m7beo000047dr0xvm599g",
+      "title": "I do not like this",
+      "content": "so so so",
+      "userid": 2,
+      "timestamp": 1501229377
+    },
+    {
+      "type": "suggestion",
+      "id": "cj78mam5l000069dr5ddmsfr2",
+      "title": "Suggestion",
+      "content": "*Shia* Just DO it...",
+      "userid": 4,
+      "timestamp": 1501229377
+    },
+    {
+      "type": "dmca",
+      "id": "cj78mb2br00006fdrzs097ev5",
+      "title": "dmca",
+      "content": "...dmca content here...",
+      "userid": 7,
+      "timestamp": 1501229377
+    }
+  ],
+  "likes": [
     {
       "type": "like",
       "id": "cj6z28quf0000vmdri4yk6g1m",
-      "threadid": 0,
-      "title": "Post title here, if available",
-      "content": null,
-      "src": null,
-      "thumb": null,
+      "streamitemid": 0,
       "userid": 2,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1501229377,
-      "lastEdit": 0
+      "timestamp": 1501229377
     },
     {
       "type": "like",
       "id": "cj6z2fwzg0000xgdr6p1552y5",
-      "threadid": 0,
-      "title": "Thread 222 title here, if available",
-      "content": null,
-      "src": null,
-      "thumb": null,
+      "streamitemid": 0,
       "userid": 7,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1501229577,
-      "lastEdit": 0
+      "timestamp": 1501229577
+    },
+    {
+      "type": "dislike",
+      "id": "cj6z2g8sj0000xqdro3s72fse",
+      "streamitemid": 0,
+      "userid": 7,
+      "timestamp": 1501229577
     },
     {
       "type": "like",
-      "id": "cj6z2g8sj0000xqdro3s72fse",
-      "threadid": 0,
-      "title": "AlbumImage title here, if available",
-      "content": null,
-      "src": "https://apod.nasa.gov/apod/image/1708/southcarolinaeclipseashleymarando1024.jpg",
-      "thumb": "https://apod.nasa.gov/apod/image/1708/southcarolinaeclipseashleymarando1024.jpg",
+      "id": "cj6z2ipmk00000kdrps1reqmk",
+      "streamitemid": 0,
       "userid": 7,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1501229577,
-      "lastEdit": 0
-    },
-    {
-      "type": "message",
-      "id": "cj6z2gjas0000xxdr0eetiego",
-      "threadid": 0,
-      "title": "Message 2",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac lacus sagittis, lobortis leo non, maximus mi. Suspendisse posuere nisl viverra risus pharetra, sit amet vehicula dolor accumsan. Proin posuere efficitur nisl, in pretium est convallis at. Morbi non ultricies orci, quis faucibus purus. Ut suscipit orci nisl, quis aliquet urna porta mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed tortor tellus, convallis sit amet ligula a, hendrerit eleifend turpis. Ut ac purus posuere, finibus tortor tincidunt, hendrerit ipsum. In laoreet elementum interdum. Nullam maximus felis sit amet varius finibus. In in lacus vitae diam convallis venenatis eget vel turpis. Suspendisse mauris diam, laoreet in rutrum a, aliquet et massa. Mauris odio libero, efficitur quis est vitae, aliquet sodales dui. Donec condimentum mauris ut justo rhoncus rutrum. Curabitur vel lacus gravida, gravida orci et, lobortis massa. Suspendisse vel mauris mollis, condimentum metus hendrerit, elementum ex. Etiam odio nulla, porttitor sit amet est in, varius imperdiet diam. Praesent lobortis ante at turpis venenatis, nec pretium dolor fermentum. Nullam in eros nunc. Curabitur placerat, augue et tincidunt fermentum, quam ante venenatis orci, ac tincidunt enim turpis a risus. Suspendisse potenti. Praesent laoreet maximus nulla ac ultricies. Integer erat diam, elementum non tincidunt eget, viverra nec sem. Etiam eget iaculis nulla, sed ultrices nisi. Nullam interdum elit orci, eu feugiat sem ornare non. Quisque diam ante, mattis eu ante at, suscipit ultrices ipsum. Donec pulvinar, mi id dapibus ornare, enim purus fringilla neque, ut cursus elit arcu id ligula. Fusce a est suscipit, consectetur magna vel, elementum lorem. Duis id dui vitae dui accumsan venenatis. Sed at nisi a risus sagittis mollis vitae sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam fermentum purus, sit amet pharetra magna dignissim tempor. Etiam sed purus ac tellus luctus vulputate ut vel dui. Sed tellus tellus, dapibus quis sem euismod, porttitor mollis diam. Fusce at nunc sit amet neque scelerisque aliquet. Suspendisse potenti.",
-      "src": null,
-      "thumb": null,
-      "userid": 4,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1502788349,
-      "lastEdit": 0
-    },
-    {
-      "type": "message",
-      "id": "cj6z2gqod0000y4dra9ijbjhw",
-      "threadid": 0,
-      "title": "Message 3",
-      "content": "Sed eget sollicitudin turpis. Aliquam eleifend sagittis velit vel feugiat. Praesent aliquet ipsum in eleifend ornare. Vivamus eu est ut dolor ultrices iaculis. Mauris sit amet finibus erat, sed semper ipsum. Etiam ligula erat, porta a pretium in, maximus sit amet nulla. Curabitur et purus nec nulla porttitor egestas a et purus. Nulla sit amet eros vel nunc viverra viverra. Maecenas in elementum magna. Fusce sem turpis, dapibus sed ultrices sed, pulvinar interdum felis. Aliquam erat volutpat. Sed ac sagittis mauris, vitae pretium sapien. Cras sit amet mauris congue, dictum leo ut, pretium nulla. Duis tristique tristique mauris eu tempor. Nulla ornare vestibulum pharetra. Nulla in posuere augue. Vivamus quis enim ullamcorper, dapibus diam faucibus, mollis risus. Morbi ac erat id tortor maximus bibendum quis sed orci. Nulla facilisi.",
-      "src": null,
-      "thumb": null,
-      "userid": 5,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1502789349,
-      "lastEdit": 0
-    },
-    {
-      "type": "message",
-      "id": "cj6z2gybw0000ybdrmmft5s0z",
-      "threadid": 0,
-      "title": "Message 4",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "src": null,
-      "thumb": null,
-      "userid": 6,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1502789349,
-      "lastEdit": 0
-    },
-    {
-      "type": "message",
-      "id": "cj6z2h65i0000ykdrjfil24ni",
-      "threadid": 0,
-      "title": "Brunch this weekend?",
-      "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
-      "src": null,
-      "thumb": null,
-      "userid": 3,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1502788349,
-      "lastEdit": 0
-    },
-    {
-      "type": "message",
-      "id": "cj6z2hcc60000yqdrwl3dwmd4",
-      "threadid": 0,
-      "title": "System Message",
-      "content": "Quota exceeded",
-      "src": null,
-      "thumb": null,
-      "userid": 0,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1502788549,
-      "lastEdit": 0
-    },
-    {
-      "type": "message",
-      "id": "cj6z2hplz0000yxdrvcbfmoq3",
-      "threadid": 0,
-      "title": "Hello???",
-      "content": "...",
-      "src": null,
-      "thumb": null,
-      "userid": 3,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1502789349,
-      "lastEdit": 0
-    },
+      "timestamp": 1501200077
+    }
+  ],
+  "streamitems": [
     {
       "type": "profileimg",
       "id": "cj7d0fb220000p6drmk8wnafe",
@@ -721,24 +586,6 @@
       "lastEdit": 0
     },
     {
-      "type": "like",
-      "id": "cj6z2ipmk00000kdrps1reqmk",
-      "threadid": 0,
-      "title": "Brunch this weekend?",
-      "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
-      "src": null,
-      "thumb": null,
-      "userid": 7,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [],
-      "timestamp": 1501200077,
-      "lastEdit": 0
-    },
-    {
       "type": "post",
       "id": "cj6z2ix1e00000sdrewxuanbr",
       "threadid": 0,
@@ -1075,7 +922,6 @@
       "id": "r16Ji3Wq-"
     },
     {
-      "type": "message",
       "content": "fffffffffff",
       "userid": 1,
       "like": 0,
@@ -1084,7 +930,6 @@
       "id": "HyZNg6W5Z"
     },
     {
-      "type": "message",
       "content": "ffffffffff",
       "userid": 1,
       "like": 0,
@@ -1093,7 +938,6 @@
       "id": "BkWUxTW5W"
     },
     {
-      "type": "message",
       "content": "fghfghfgh",
       "userid": 1,
       "like": 0,
@@ -1102,7 +946,6 @@
       "id": "ry_0b6WcW"
     },
     {
-      "type": "message",
       "content": "rereerer",
       "userid": 1,
       "like": 0,
@@ -1111,13 +954,94 @@
       "id": "r15RZT-5Z"
     },
     {
-      "type": "message",
       "content": "ffffffffffff",
       "userid": 1,
       "like": 0,
       "dislike": 0,
       "timestamp": 1504985831256,
       "id": "HJ1xX6b9Z"
+    },
+    {
+      "content": "hghgghhg",
+      "userid": 1,
+      "like": 0,
+      "dislike": 0,
+      "timestamp": 1504985921974,
+      "id": "Bk5S7TZ5-"
+    },
+    {
+      "content": "rtrwdffg",
+      "userid": 1,
+      "like": 0,
+      "dislike": 0,
+      "timestamp": 1504985924589,
+      "id": "rJar76Z5-"
+    },
+    {
+      "type": "message",
+      "content": "jhkhjkhjkhjk",
+      "userid": 1,
+      "like": 0,
+      "dislike": 0,
+      "timestamp": 1505028268545,
+      "id": "rJrnuvzcW"
+    }
+  ],
+  "messages": [
+    {
+      "id": "cj6z2gjas0000xxdr0eetiego",
+      "title": "Message 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac lacus sagittis, lobortis leo non, maximus mi. Suspendisse posuere nisl viverra risus pharetra, sit amet vehicula dolor accumsan. Proin posuere efficitur nisl, in pretium est convallis at. Morbi non ultricies orci, quis faucibus purus. Ut suscipit orci nisl, quis aliquet urna porta mattis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed tortor tellus, convallis sit amet ligula a, hendrerit eleifend turpis. Ut ac purus posuere, finibus tortor tincidunt, hendrerit ipsum. In laoreet elementum interdum. Nullam maximus felis sit amet varius finibus. In in lacus vitae diam convallis venenatis eget vel turpis. Suspendisse mauris diam, laoreet in rutrum a, aliquet et massa. Mauris odio libero, efficitur quis est vitae, aliquet sodales dui. Donec condimentum mauris ut justo rhoncus rutrum. Curabitur vel lacus gravida, gravida orci et, lobortis massa. Suspendisse vel mauris mollis, condimentum metus hendrerit, elementum ex. Etiam odio nulla, porttitor sit amet est in, varius imperdiet diam. Praesent lobortis ante at turpis venenatis, nec pretium dolor fermentum. Nullam in eros nunc. Curabitur placerat, augue et tincidunt fermentum, quam ante venenatis orci, ac tincidunt enim turpis a risus. Suspendisse potenti. Praesent laoreet maximus nulla ac ultricies. Integer erat diam, elementum non tincidunt eget, viverra nec sem. Etiam eget iaculis nulla, sed ultrices nisi. Nullam interdum elit orci, eu feugiat sem ornare non. Quisque diam ante, mattis eu ante at, suscipit ultrices ipsum. Donec pulvinar, mi id dapibus ornare, enim purus fringilla neque, ut cursus elit arcu id ligula. Fusce a est suscipit, consectetur magna vel, elementum lorem. Duis id dui vitae dui accumsan venenatis. Sed at nisi a risus sagittis mollis vitae sit amet orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam fermentum purus, sit amet pharetra magna dignissim tempor. Etiam sed purus ac tellus luctus vulputate ut vel dui. Sed tellus tellus, dapibus quis sem euismod, porttitor mollis diam. Fusce at nunc sit amet neque scelerisque aliquet. Suspendisse potenti.",
+      "src": null,
+      "thumb": null,
+      "userid": 4,
+      "timestamp": 1502788349
+    },
+    {
+      "id": "cj6z2gqod0000y4dra9ijbjhw",
+      "title": "Message 3",
+      "content": "Sed eget sollicitudin turpis. Aliquam eleifend sagittis velit vel feugiat. Praesent aliquet ipsum in eleifend ornare. Vivamus eu est ut dolor ultrices iaculis. Mauris sit amet finibus erat, sed semper ipsum. Etiam ligula erat, porta a pretium in, maximus sit amet nulla. Curabitur et purus nec nulla porttitor egestas a et purus. Nulla sit amet eros vel nunc viverra viverra. Maecenas in elementum magna. Fusce sem turpis, dapibus sed ultrices sed, pulvinar interdum felis. Aliquam erat volutpat. Sed ac sagittis mauris, vitae pretium sapien. Cras sit amet mauris congue, dictum leo ut, pretium nulla. Duis tristique tristique mauris eu tempor. Nulla ornare vestibulum pharetra. Nulla in posuere augue. Vivamus quis enim ullamcorper, dapibus diam faucibus, mollis risus. Morbi ac erat id tortor maximus bibendum quis sed orci. Nulla facilisi.",
+      "src": null,
+      "thumb": null,
+      "userid": 5,
+      "timestamp": 1502789349
+    },
+    {
+      "id": "cj6z2gybw0000ybdrmmft5s0z",
+      "title": "Message 4",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "src": null,
+      "thumb": null,
+      "userid": 6,
+      "timestamp": 1502789349
+    },
+    {
+      "id": "cj6z2h65i0000ykdrjfil24ni",
+      "title": "Brunch this weekend?",
+      "content": "I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?",
+      "src": null,
+      "thumb": null,
+      "userid": 3,
+      "timestamp": 1502788349
+    },
+    {
+      "type": "message",
+      "id": "cj6z2hcc60000yqdrwl3dwmd4",
+      "title": "System Message",
+      "content": "Quota exceeded",
+      "src": null,
+      "thumb": null,
+      "userid": 0,
+      "timestamp": 1502788549
+    },
+    {
+      "id": "cj6z2hplz0000yxdrvcbfmoq3",
+      "title": "Hello???",
+      "content": "Anybody out there???!!!11",
+      "src": null,
+      "thumb": null,
+      "userid": 3,
+      "timestamp": 1502789349
     }
   ],
   "followers": [

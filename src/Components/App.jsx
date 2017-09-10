@@ -95,6 +95,7 @@ class App extends React.Component {
                 <Route exact path={routes.FAVORITES} component={Favorites} />
 
                 <Route exact path={routes.REVIEW} component={Review} />
+                <Route path={`${routes.REVIEW}/:itemid`} component={Review} />
 
                 <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
                 <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
