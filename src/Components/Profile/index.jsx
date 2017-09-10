@@ -15,6 +15,7 @@ import Likes from '../Content/Likes'
 import Spacer from '../Shared/Spacer'
 import ProfileStats from './ProfileStats'
 import ProfileUsername from './ProfileUsername'
+import OnlineStatus from './OnlineStatus'
 
 
 const styles = {
@@ -50,7 +51,7 @@ class Profile extends React.Component {
      * Render the component.
      */
     render() {
-        const { userid } = this.props
+        const { userid, url } = this.props
 
         let user
         if (this.props.users[userid] === undefined) {
@@ -83,15 +84,17 @@ class Profile extends React.Component {
                     <ProfileUsername
                         name={user.username}
                     />
+
+                    <OnlineStatus isOnline={user.isOnline} applyOffset={true} />
                 </div>
 
                 <Spacer />
 
                 <Switch>
-                    <Route path={`${this.props.url}${routes.UPDATES}`} component={Stream} />
-                    <Route path={`${this.props.url}${routes.ALBUM}`} component={Album} />
-                    <Route path={`${this.props.url}${routes.FOLLOWERS}`} component={Followers} />
-                    <Route path={`${this.props.url}${routes.LIKES}`} component={Likes} />
+                    <Route path={`${url}${routes.UPDATES}`} component={Stream} />
+                    <Route path={`${url}${routes.ALBUM}`} component={Album} />
+                    <Route path={`${url}${routes.FOLLOWERS}`} component={Followers} />
+                    <Route path={`${url}${routes.LIKES}`} component={Likes} />
                     <Route component={Album} />
                 </Switch>
 

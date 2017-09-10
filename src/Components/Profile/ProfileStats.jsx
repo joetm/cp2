@@ -5,16 +5,15 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 // TODO
 import { pinkA200 } from 'material-ui/styles/colors'
 import PhotoIcon from 'material-ui/svg-icons/image/photo'
-import ChatIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
+import PostIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsIcon from 'material-ui/svg-icons/communication/contacts'
 import CrowdIcon from 'material-ui/svg-icons/device/location-searching'
 import RaisedButton from 'material-ui/RaisedButton'
 
+import { darkGray } from '../../common/colors'
+
 
 const styles = {
-    statBarStyle: {
-        backgroundColor: pinkA200,
-    },
     tabsStyle: {
         paddingLeft: '300px',
     },
@@ -73,14 +72,14 @@ class ProfileStats extends React.Component {
     render() {
         const { user } = this.props
         return (
-            <div style={styles.statBarStyle}>
+            <div style={{backgroundColor: user.isOnline ? pinkA200 : darkGray}}>
                 <Tabs
                     style={styles.tabsStyle}
                     initialSelectedIndex={this.state.initialSelectedIndex}
                     inkBarStyle={styles.inkBarStyle}
                 >
                     <Tab
-                        icon={<ChatIcon />}
+                        icon={<PostIcon />}
                         label={`${user.numPosts} Posts`}
                     />
                     <Tab
