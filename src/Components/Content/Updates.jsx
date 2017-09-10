@@ -11,6 +11,7 @@ const Updates = (props) => (
     <StreamTpl
         action={props.fetchUpdates}
         headline="Updates"
+        isFetching={props.isFetching}
         content={props.updates}
     />
 )

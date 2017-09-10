@@ -11,6 +11,7 @@ const Pictures = (props) => (
     <StreamTpl
         action={props.fetchPictures}
         headline="Pictures"
+        isFetching={props.isFetching}
         content={props.images}
     />
 )

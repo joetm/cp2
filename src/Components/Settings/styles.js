@@ -1,12 +1,5 @@
 export const blockMaxWidth = '80%' // 250
 
-export const dropzoneStyle = {
-    height: '150px',
-    width: '100%',
-    border: '2px solid #888',
-    borderRadius: '5px',
-}
-
 const styles = {
   settingsBlock: {
     // display: 'flex',

@@ -11,6 +11,7 @@ const Videos = (props) => (
     <StreamTpl
         action={props.fetchVideos}
         headline="Videos"
+        isFetching={props.isFetching}
         content={props.videos}
     />
 )

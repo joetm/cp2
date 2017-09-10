@@ -13,6 +13,7 @@ const Likes = (props) => (
         action={props.fetchLikes}
         viewMode={LISTED}
         headline="Likes"
+        isFetching={props.isFetching}
         content={props.likes}
     />
 )

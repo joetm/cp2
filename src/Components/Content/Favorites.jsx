@@ -11,6 +11,7 @@ const Favorites = (props) => (
     <StreamTpl
         action={props.fetchFavorites}
         headline="Favorites"
+        isFetching={props.isFetching}
         content={props.favorites}
     />
 )

@@ -1,7 +1,6 @@
 /** @flow */
 
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import './loader.scss'
 import { palette, bg as bgcolor } from '../../common/colors'
@@ -41,27 +40,18 @@ const styles = {
 
 const Loader = props => {
     const msg = props.msg === undefined ? DEFAULT_MSG : props.msg
-    const { isLoading } = props
+    if (!props.isLoading) {
+        return null
+    }
     return (
-        <ReactCSSTransitionGroup
-          transitionName="loader"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
-        >
-            {
-                isLoading ? (
-                    <div style={styles.wrapper}>
-                        <div style={styles.loader}>
-                            <div style={styles.loaderInnercircle}>
-                                {msg}
-                            </div>
-                            <div id="rays"></div>
-                        </div>
-                    </div>
-                )
-                : null
-            }
-        </ReactCSSTransitionGroup>
+        <div style={styles.wrapper}>
+            <div style={styles.loader}>
+                <div style={styles.loaderInnercircle}>
+                    {msg}
+                </div>
+                <div id="rays"></div>
+            </div>
+        </div>
     )
 }
 

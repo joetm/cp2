@@ -122,11 +122,13 @@ class GeneralSettings extends React.Component {
               onBlur={this.handleChangeUsertitle}
             />
 
+{/*
             <Alert
                 open={this.state.alertIsOpen}
                 close={this.closeAlert}
                 msg="Saved."
             />
+*/}
 
         </div>
       )

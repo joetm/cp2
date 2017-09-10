@@ -1469,7 +1469,7 @@
     "gender": "male",
     "birthday": "1985-08-08",
     "showBirthday": true,
-    "showLocation": true,
+    "showLocation": false,
     "showOnlineStatus": true,
     "numPosts": 4,
     "numThreads": 3,
@@ -1497,6 +1497,7 @@
     "unreadMessages": 0,
     "unreadLikes": 0,
     "profileViews": 0,
-    "followerCount": 0
+    "followerCount": 0,
+    "field": false
   }
 }

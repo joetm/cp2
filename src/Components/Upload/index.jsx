@@ -1,40 +1,18 @@
 /** @flow */
 
 import React from 'react'
-// import 'simple-react-dropzone/ui/css/filepicker.css'
-// import 'simple-react-dropzone/ui/css/dropzone.css'
 import '../External/dropzone/dist/dropzone.css'
-import { SimpleReactDropzone } from 'simple-react-dropzone'
+import 'react-dropzone-component/styles/filepicker.css'
+import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 
 // import { palette } from '../../common/colors'
 import Spacer from '../Shared/Spacer'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 
 
 const styles = {
-  dropzone: {
-    cursor: 'pointer',
-    margin: '0 auto',
-    height: '450px',
-    border: '2px solid #888',
-    borderRadius: '5px',
-  },
-  dropzoneWrapper: {
-    maxWidth: '80%',
-    textAlign: 'center',
-    margin: '0 auto',
-  },
+
 }
-// const actionStyles = {
-//   activeStyle: {
-//     backgroundColor: palette.primary2Color,
-//   },
-//   acceptStyle: {
-//     backgroundColor: palette.primary3Color,
-//   },
-//   rejectStyle: {
-//     backgroundColor: palette.primary1Color,
-//   },
-// }
 
 
 class Upload extends React.Component {
@@ -60,19 +38,13 @@ class Upload extends React.Component {
             <div>
                 <h2>Upload</h2>
 
-                <div style={styles.dropzoneWrapper}>
-                    <SimpleReactDropzone
-                        name="files"
-                        maxFiles={30}
-                        uploadUrl={'http://your-upload-url'}
-                        imediateRemove={false}
-                        maxFilesize={10} // MB
-                        existingFiles={[]}
-                        style={{ ...styles.dropzone, height: this.state.dropzoneHeight }}
-                        accept="image/jpg, image/jpeg, image/png, image/gif"
-                        onDrop={this.onDrop}
-                    />
-                      {/* ... actionStyles */}
+                <div>
+                  <DropzoneComponent
+                    style={dropzoneStyle}
+                    config={dropzoneConfig}
+                    eventHandlers={dropzoneEventHandlers}
+                    djsConfig={dropzoneJsConfig}
+                  />
                 </div>
 
                 <Spacer />

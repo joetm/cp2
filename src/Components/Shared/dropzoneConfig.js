@@ -1,3 +1,9 @@
+export const dropzoneStyle = {
+    height: '150px',
+    width: '100%',
+    border: '2px solid #888',
+    borderRadius: '5px',
+}
 export const dropzoneConfig = {
     iconFiletypes: ['.jpg', '.jpeg', '.png', '.gif'],
     showFiletypeIcon: true,

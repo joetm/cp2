@@ -61,7 +61,9 @@ class StreamTpl extends React.Component {
      * Render the component.
      */
     render() {
-        const categorizedItems = categorizeList(this.props.content)
+        const { content, isFetching } = this.props
+
+        const categorizedItems = categorizeList(content)
 
         const Container = this.state.viewMode === 'list' ? Notification : Update
         const Wrapper = this.state.viewMode === 'list' ? ListWrap : UpdateWrap
@@ -72,6 +74,8 @@ class StreamTpl extends React.Component {
             <SubToolbar changeViewMode={this.changeViewMode} />
 
             <h2>{this.props.headline}</h2>
+
+            <Loader isLoading={isFetching} />
 
             {
               categorizedItems.map((group, daysAgo) => {
@@ -100,8 +104,6 @@ class StreamTpl extends React.Component {
                 )
               })
             }
-
-            <Loader isLoading={this.props.content.length} />
 
             <Spacer />
 

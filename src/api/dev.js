@@ -106,8 +106,13 @@ const createNewItem = (field, payload) =>
       }
     })
 
-const patchItem = (field, payload) =>
-    fetch(`${jsonAPI.ENDPOINT}${field}`, {
+const patchItem = (key, payload) => {
+    let field = key
+    if (key.substring(0, 1) !== '/') {
+      field = `/${key}`
+    }
+    console.log('PATCH', field, payload)
+    return fetch(`${jsonAPI.ENDPOINT}${field}`, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
@@ -123,6 +128,7 @@ const patchItem = (field, payload) =>
       //   throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
       // }
     })
+}
 
 // -------------------------------------------------------------------
 
@@ -193,13 +199,11 @@ export const fetchCities = makeAjaxCallCreator('/data/cities.json')
 
 // -------------------------------------------------------------------
 
-// TODO
 export const changeSetting = (field, value) =>
-  patchItem('currentUser', {field: value})
+  patchItem('currentUser', {[field]: value})
 
-// TODO
 export const removeUserField = (field) =>
-  patchItem('currentUser', {field: null})
+  patchItem('currentUser', {[field]: null})
 
 // -------------------------------------------------------------------
 

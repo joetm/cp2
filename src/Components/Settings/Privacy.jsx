@@ -25,6 +25,10 @@ class PrivacySettings extends React.Component {
     // console.log('change birthday visibility', isInputChecked)
     this.props.changeSetting('showBirthday', isInputChecked)
   }
+  toggleOnlineVisibility = (event, isInputChecked) => {
+    // console.log('change online status visibility', isInputChecked)
+    this.props.changeSetting('showOnlineStatus', isInputChecked)
+  }
   render() {
     return (
       <div style={{textAlign: 'left'}}>

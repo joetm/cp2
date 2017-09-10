@@ -2,11 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-// dropzone css
 import '../External/dropzone/dist/dropzone.css'
-// react dropzone css
 import 'react-dropzone-component/styles/filepicker.css'
-// dropzone component
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
@@ -16,8 +13,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { fetchUserVerificationImages, removeImages } from '../../actions'
 import './style.scss'
 import Spacer from '../Shared/Spacer'
-import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
-import { blockMaxWidth, dropzoneStyle } from './styles'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
+import { blockMaxWidth } from './styles'
 import UpdateWrap from '../Shared/UpdateWrap'
 
 
@@ -41,18 +38,13 @@ const styles = {
 
 class VerificationImg extends React.Component {
   state = {
-    msgOpen: false,
     imagesFetched: false,
     selection: [],
-  }
-  handleRequestClose = () => {
-    this.setState({ msgOpen: false })
   }
   deleteVerificationImages = () => {
     console.log('removing selection', this.state.selection)
     this.props.removeImages(this.state.selection)
     this.setState({
-      msgOpen: true,
       selection: [],
     })
   }
@@ -73,10 +65,11 @@ class VerificationImg extends React.Component {
     newSelection.splice(index, 1)
     this.setState({selection: newSelection})
   }
+  componentWillMount() {
+    this.fetchVerificationImagesOnce()
+  }
   render() {
     const { verificationImages } = this.props
-
-    this.fetchVerificationImagesOnce()
 
     return (
       <div
@@ -115,7 +108,8 @@ class VerificationImg extends React.Component {
               transitionLeaveTimeout={300}
             >
             {
-               verificationImages && verificationImages.map(item => (
+               verificationImages &&
+               verificationImages.map(item => (
                 <div
                   className="updateBox"
                   key={`vimg_${item.id}`}
@@ -165,12 +159,14 @@ class VerificationImg extends React.Component {
             style={{display: this.state.selection.length ? 'block' : 'none'}}
           />
 
+{/*
           <Snackbar
             open={this.state.msgOpen}
             message="Verification image removed"
             autoHideDuration={2000}
             onRequestClose={this.handleRequestClose}
           />
+*/}
 
       </div>
     )

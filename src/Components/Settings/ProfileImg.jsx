@@ -12,21 +12,14 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Snackbar from 'material-ui/Snackbar'
 
 import Spacer from '../Shared/Spacer'
-import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 import { removeProfileImg } from '../../actions'
-import { blockMaxWidth, dropzoneStyle } from './styles'
+import { blockMaxWidth } from './styles'
 
 
 class ProfileImg extends React.Component {
-  state = {
-    msgOpen: false,
-  }
-  handleRequestClose = () => {
-    this.setState({ msgOpen: false })
-  }
   deleteProfileImg = () => {
     this.props.removeProfileImg()
-    this.setState({ msgOpen: true })
   }
   render() {
     const { profileimg } = this.props
@@ -68,12 +61,14 @@ class ProfileImg extends React.Component {
             onTouchTap={this.deleteProfileImg}
           />
 
+{/*
           <Snackbar
             open={this.state.msgOpen}
             message="Profile image removed"
             autoHideDuration={2000}
             onRequestClose={this.handleRequestClose}
           />
+*/}
 
       </div>
     )

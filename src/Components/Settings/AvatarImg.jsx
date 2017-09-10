@@ -13,21 +13,14 @@ import Snackbar from 'material-ui/Snackbar'
 
 import { removeAvatar } from '../../actions'
 import Spacer from '../Shared/Spacer'
-import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers } from '../Shared/dropzoneConfig'
+import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 import Avatar from '../Shared/Avatar'
-import { blockMaxWidth, dropzoneStyle } from './styles'
+import { blockMaxWidth } from './styles'
 
 
 class AvatarSetting extends React.Component {
-  state = {
-    msgOpen: false,
-  }
-  handleRequestClose = () => {
-    this.setState({msgOpen: false})
-  }
   deleteAvatar = () => {
     this.props.removeAvatar(this.props.userid)
-    this.setState({msgOpen: true})
   }
   render() {
     const { avatar, username } = this.props
@@ -62,12 +55,14 @@ class AvatarSetting extends React.Component {
             onTouchTap={this.deleteAvatar}
           />
 
+{/*
           <Snackbar
             open={this.state.msgOpen}
             message="Avatar removed"
             autoHideDuration={2000}
             onRequestClose={this.handleRequestClose}
           />
+*/}
 
       </div>
     )

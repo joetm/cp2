@@ -13,6 +13,7 @@ const Notifications = (props) => (
         action={props.fetchNotifications}
         viewMode={LISTED}
         headline="Notifications"
+        isFetching={props.isFetching}
         content={props.notifications}
     />
 )
