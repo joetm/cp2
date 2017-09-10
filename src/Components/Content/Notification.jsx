@@ -70,6 +70,18 @@ class Notification extends React.Component {
 
             break
 
+          case 'follower':
+
+            text = (
+              <p>
+                {user.usertitle}
+              </p>
+            )
+
+            rightIconMenu = null // TODO
+
+            break
+
           default:
 
             text = <p>{user.username}{' '}-{' '}{content}</p>

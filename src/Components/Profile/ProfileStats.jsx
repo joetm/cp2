@@ -113,7 +113,9 @@ class ProfileStats extends React.Component {
                         --> do this later
                     <Tab
                         icon={<LikesPin />}
+                        route={`${url}${routes.LIKES}`}
                         label={`${user.numLikes} Likes`}
+                        onActive={this.handleTabChange}
                     />
                     */}
                     <Tab

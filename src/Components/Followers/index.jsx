@@ -9,8 +9,8 @@ import Divider from 'material-ui/Divider'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
 import { fetchFollowers } from '../../actions'
+import Notification from '../Content/Notification'
 import Spacer from '../Shared/Spacer'
-import Follower from './Follower'
 
 
 /**
@@ -27,6 +27,7 @@ class Followers extends React.Component {
      */
     render () {
         const { followers } = this.props
+        // console.log('followers', followers)
         return (
           <div>
 
@@ -37,8 +38,11 @@ class Followers extends React.Component {
               <List>
                 {
                     followers.map(follower => (
-                        <Follower
-                            {...follower.user}
+                        <Notification
+                            title={follower.user.username}
+                            type="follower"
+                            content={follower.user.usertitle}
+                            user={follower.user}
                         />
                     ))
                 }
@@ -55,7 +59,7 @@ const mapStateToProps = (state, ownProps) => ({
     followers: state.followers.items,
     isFetching: state.followers.isFetching,
     userid: ownProps.match.params.userid,
-    user: state.users[ownProps.match.params.userid],
+    // user: state.users[ownProps.match.params.userid],
 })
 
 export default withRouter(connect(

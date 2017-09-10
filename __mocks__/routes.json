@@ -47,5 +47,7 @@
   "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/streamitems?*": "/streamitems?_expand=user&$1",
   "/currentUser": "/currentUser?_expand=profileimg",
+  "/followers": "/followers?_expand=user",
+    "/followers?*": "/followers?_expand=user&$1",
   "/mod/contactRequests": "/contactRequests?_expand=user"
 }
