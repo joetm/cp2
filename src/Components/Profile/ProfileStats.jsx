@@ -1,6 +1,7 @@
 /** @flow */
 
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Tabs, Tab } from 'material-ui/Tabs'
 // TODO
 import { pinkA200 } from 'material-ui/styles/colors'
@@ -11,6 +12,7 @@ import CrowdIcon from 'material-ui/svg-icons/device/location-searching'
 import RaisedButton from 'material-ui/RaisedButton'
 
 import { darkGray } from '../../common/colors'
+import routes from '../../routes'
 
 
 const styles = {
@@ -62,37 +64,49 @@ const styles = {
 
 
 class ProfileStats extends React.Component {
-    state = {
-        initialSelectedIndex: 1,
-    }
     followUser = (e) => {
         e.stopPropagation()
         console.log('follow the user {TODO}')
+
+
+
+    }
+    handleTabChange = (tab) => {
+        this.props.history.push(tab.props.route)
     }
     render() {
         const { user } = this.props
+        const { url } = this.props.match
         return (
             <div style={{backgroundColor: user.isOnline ? pinkA200 : darkGray}}>
                 <Tabs
                     style={styles.tabsStyle}
-                    initialSelectedIndex={this.state.initialSelectedIndex}
+                    initialSelectedIndex={1}
                     inkBarStyle={styles.inkBarStyle}
                 >
                     <Tab
                         icon={<PostIcon />}
+                        route={`${url}${routes.POSTS}`}
                         label={`${user.numPosts} Posts`}
+                        onActive={this.handleTabChange}
                     />
                     <Tab
                         icon={<PhotoIcon />}
+                        route={`${url}${routes.IMAGES}`}
                         label={`${user.numImages} Images`}
+                        onActive={this.handleTabChange}
                     />
                     <Tab
                         icon={<PhotoIcon />}
+                        route={`${url}${routes.VIDEOS}`}
                         label={`${user.numVideos} Videos`}
+                        onActive={this.handleTabChange}
                     />
                     <Tab
                         icon={<ContactsIcon />}
+                        route={`${url}${routes.FOLLOWERS}`}
                         label={`${user.numFollowers} Followers`}
+                        onActive={this.handleTabChange}
                     />
                     {/*
                         Not clear, if this likes received or given
@@ -104,7 +118,9 @@ class ProfileStats extends React.Component {
                     */}
                     <Tab
                         icon={<CrowdIcon />}
+                        route={routes.REVIEW}
                         label={"23 Crowd Points"}
+                        onActive={this.handleTabChange}
                     />
                     <Tab
                       label={
@@ -122,4 +138,4 @@ class ProfileStats extends React.Component {
     }
 }
 
-export default ProfileStats
+export default withRouter(ProfileStats)

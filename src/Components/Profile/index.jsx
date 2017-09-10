@@ -1,7 +1,7 @@
 /**  @flow */
 
 import React from 'react'
-import { Route, withRouter, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { fetchUser } from '../../actions'
@@ -70,9 +70,7 @@ class Profile extends React.Component {
                     toggleProfileDetails={this.toggleProfileDetails}
                 />
 
-                <ProfileStats
-                    user={user}
-                />
+                <ProfileStats user={user} />
 
                 <div style={styles.avatarBox}>
                     <Avatar
@@ -81,10 +79,7 @@ class Profile extends React.Component {
                         username={user.username}
                         onTouchTap={this.toggleProfileDetails}
                     />
-                    <ProfileUsername
-                        name={user.username}
-                    />
-
+                    <ProfileUsername name={user.username} />
                     <OnlineStatus isOnline={user.isOnline} applyOffset={true} />
                 </div>
 
@@ -113,7 +108,7 @@ const mapStateToProps = (state, ownProps) => ({
     userid: +ownProps.match.params.userid,
 })
 
-export default withRouter(connect(
+export default connect(
     mapStateToProps,
     { fetchUser }
-)(Profile))
+)(Profile)
