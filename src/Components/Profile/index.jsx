@@ -8,14 +8,17 @@ import { fetchUser } from '../../actions'
 import routes from '../../routes'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
-import Album from '../Content/Album'
-import Followers from '../Followers'
-import Stream from '../Content/Stream'
-import Likes from '../Content/Likes'
 import Spacer from '../Shared/Spacer'
 import ProfileStats from './ProfileStats'
 import ProfileUsername from './ProfileUsername'
 import OnlineStatus from './OnlineStatus'
+// --
+import Posts from '../Forum/Posts'
+import Album from '../Content/Album'
+import Videos from '../Content/Videos'
+import Followers from '../Followers'
+import Stream from '../Content/Stream'
+import Likes from '../Content/Likes'
 
 
 const styles = {
@@ -87,7 +90,9 @@ class Profile extends React.Component {
 
                 <Switch>
                     <Route path={`${url}${routes.UPDATES}`} component={Stream} />
+                    <Route path={`${url}${routes.POSTS}`} component={Posts} />
                     <Route path={`${url}${routes.ALBUM}`} component={Album} />
+                    <Route path={`${url}${routes.VIDEOS}`} component={Videos} />
                     <Route path={`${url}${routes.FOLLOWERS}`} component={Followers} />
                     <Route path={`${url}${routes.LIKES}`} component={Likes} />
                     <Route component={Album} />

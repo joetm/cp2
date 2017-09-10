@@ -64,6 +64,22 @@ const styles = {
 
 
 class ProfileStats extends React.Component {
+    constructor(props) {
+        super(props)
+        // pre-select the right tab based on the url
+        let selected = 1
+        const currUrl = props.location.pathname
+        if (currUrl.endsWith(routes.FOLLOWERS)) {
+            selected = 3
+        } else if (currUrl.endsWith(routes.VIDEOS)) {
+            selected = 2
+        } else if (currUrl.endsWith(routes.POSTS)) {
+            selected = 0
+        }
+        this.state = {
+            initialSelectedIndex: selected,
+        }
+    }
     followUser = (e) => {
         e.stopPropagation()
         console.log('follow the user {TODO}')
@@ -81,7 +97,7 @@ class ProfileStats extends React.Component {
             <div style={{backgroundColor: user.isOnline ? pinkA200 : darkGray}}>
                 <Tabs
                     style={styles.tabsStyle}
-                    initialSelectedIndex={1}
+                    initialSelectedIndex={this.state.initialSelectedIndex}
                     inkBarStyle={styles.inkBarStyle}
                 >
                     <Tab

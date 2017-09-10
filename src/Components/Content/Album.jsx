@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 import { fetchAlbum } from '../../actions'
 import Update from './Update'
-import AjaxLoader from '../Shared/AjaxLoader'
+import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
 
 
@@ -36,32 +36,29 @@ class Album extends React.Component {
 //                      <LazyLoad height={_IMAGE_HEIGHT} offsetVertical={_LAZYLOAD_OFFSET}>
 //                      </LazyLoad>
     render() {
+      const { album } = this.props
       return (
         <div>
 
           <div>
             {
-              this.props.album.map((img) =>
-                (
-                    <div key={img.id}>
-                        <Update
-                            {...img}
-                            gridColumnsFull={4}
-                            gridColumnsTablet={4}
-                            gridColumnsPhone={4}
-                        />
-                      <Spacer />
-                    </div>
-                )
-              )
+              album.map((img) => (
+                <div key={img.id}>
+                    <Update
+                        {...img}
+                        gridColumnsFull={4}
+                        gridColumnsTablet={4}
+                        gridColumnsPhone={4}
+                    />
+                  <Spacer />
+                </div>
+              ))
             }
           </div>
 
           <Spacer />
 
-          <div>
-              <AjaxLoader />
-          </div>
+          <Loader isLoading={!album.length} />
 
         </div>
       )
