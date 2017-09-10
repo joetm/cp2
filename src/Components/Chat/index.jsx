@@ -8,6 +8,7 @@ import { List, ListItem } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
 import IconButton from 'material-ui/IconButton'
+import { findDOMNode } from 'react-dom'
 
 import { sendChatMessage, fetchChat } from '../../actions'
 import { gray, black, lightGray } from '../../common/colors'
@@ -60,20 +61,33 @@ const styles = {
 
 
 class Chat extends React.Component {
+  chatContainer = null
   constructor(props) {
     super(props)
     this.state = {
       chatHeight: props.maxHeight || (window.innerHeight - _OFFSET)
     }
   }
+  updateHeight = () => {
+    this.setState({chatHeight: window.innerHeight - _OFFSET})
+  }
+  componentWillMount() {
+      this.updateHeight()
+  }
+  jumpToBottom = (el) => () => {
+    el.scrollTop = el.scrollHeight
+  }
   componentDidMount() {
     this.props.fetchChat()
-    window.onresize = () => {
-      this.setState({chatHeight: window.innerHeight - _OFFSET})
-    }
+    // change chat height when window is resized
+    window.addEventListener("resize", this.updateHeight)
+    // TODO: observers are deprecated
+    // scroll observer - see https://medium.com/@heatherbooker/how-to-auto-scroll-to-the-bottom-of-a-div-415e967e7a24
+    const observer = new MutationObserver(this.jumpToBottom(this.chatContainer))
+    observer.observe(this.chatContainer, {childList: true})
   }
   componentWillUnmount() {
-    window.onresize = null
+    window.removeEventListener("resize", this.updateHeight)
   }
   navigateToUser = (userid) => () => {
     const userUrl = `${routes.PROFILE}/${userid}`
@@ -105,11 +119,14 @@ class Chat extends React.Component {
 
         <Loader isLoading={!chat.length} />
 
-        <List style={{
-          ...styles.chatList,
-          ...this.props.style,
-          height: this.state.chatHeight,
-        }}>
+        <List
+          ref={el => this.chatContainer = findDOMNode(el)}
+          style={{
+            ...styles.chatList,
+            ...this.props.style,
+            height: this.state.chatHeight,
+          }}
+        >
           {
             chat.map((item) => (
               <ListItem
@@ -145,6 +162,7 @@ class Chat extends React.Component {
             floatingLabelText="Your Message"
             fullWidth={true}
             ref="chatinput"
+            scrollToBottom={this.scrollToBottom}
             onKeyPress={this.handleChangeChatMsg}
         />
 

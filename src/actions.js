@@ -365,13 +365,6 @@ export const fetchReviewItem = () =>
     api.fetchReviewItem().then(receiveReviewItem)
 
 /**
- * fetchReviewItem Asynchronous Action Creator
- * @returns receiveReviewItem() - Action
- */
-export const fetchUnreadCount = () =>
-    api.fetchUnreadCount().then(receiveUnreadCount)
-
-/**
  * fetchPosts Asynchronous Action Creator
  * @returns receivePosts() - Action
  */

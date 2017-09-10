@@ -12,7 +12,7 @@ const styles = {
         textAlign: 'center',
         // paddingLeft: '20px',
         // paddingRight: '20px',
-        maxWidth: '1024px',
+        maxWidth: '682px',
         margin: '0 auto',
     },
 }

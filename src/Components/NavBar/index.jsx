@@ -18,7 +18,6 @@ import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import {
-    fetchUnreadCount,
     setActiveBadge,
     toggleSearchSidebar,
     openSidebar,
@@ -76,11 +75,12 @@ class NavBar extends React.Component {
         console.log('attach menu to', findDOMNode(this.refs.notificationsBadge))
         this.setState({anchorEl: findDOMNode(this.refs.notificationsBadge)})
     }
-    componentDidMount() {
-        this.props.fetchCurrentUser()
-        this.props.fetchUnreadCount()
+    componentWillMount() {
         // attach the notifications menu to the dom node
         this.attachMenuToDomNode()
+    }
+    componentDidMount() {
+        this.props.fetchCurrentUser()
     }
     isForum = () => {
         return this.props.location.pathname.startsWith('/forum')
@@ -257,7 +257,6 @@ const mapStateToProps = (state) => ({
     userid: state.currentUser.id,
     username: state.currentUser.username,
     avatar: state.currentUser.avatar,
-    // --
     unread: {
         posts: state.currentUser.unreadPosts,
         images: state.currentUser.unreadImages,
@@ -271,7 +270,6 @@ export default withRouter(connect(
     mapStateToProps,
     {
         fetchCurrentUser,
-        fetchUnreadCount,
         setActiveBadge,
         toggleSearchSidebar,
         openSidebar,

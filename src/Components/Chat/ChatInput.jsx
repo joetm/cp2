@@ -54,8 +54,10 @@ class ChatInput extends React.Component {
       // clear the input field
       this.refs.chatinput.getInputNode().value = ''
     }
-    // TODO: focus the textfield
+    // focus the textfield
     this.refs.chatinput.focus()
+    // scroll the chat to the bottom
+    this.props.scrollToBottom()
   }
   render() {
     return (
