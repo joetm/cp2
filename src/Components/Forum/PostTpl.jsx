@@ -15,7 +15,7 @@ import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Sh
 
 const styles = {
     userinfo: {
-        // textAlign: 'left',
+        textAlign: 'center',
     },
     userinfoList: {
         listStyle: 'none',
@@ -31,7 +31,7 @@ const styles = {
 
 
 const PostTpl = (props) => {
-    const { title, content, user, timestamp, likes, dislikes } = props
+    const { title, content, isEmbedded, user, timestamp, likes, dislikes } = props
     const postedOn = humanReadableDate(timestamp)
 
     // TODO
@@ -40,17 +40,20 @@ const PostTpl = (props) => {
 
     return (
         <div>
-            <h2>{title}</h2>
+
+            <h2 style={{textAlign: isEmbedded ? 'left' : 'center'}}>{title}</h2>
+
             <GridWrap>
-                <CellWrapper full={3} tablet={6} phone={4}>
+
+                <CellWrapper full={3} tablet={2} phone={1}>
                 { user && (
-                        <div style={{textAlign: 'center'}}>
+                        <div style={styles.userinfo}>
                             <Avatar
                                 src={user.avatar}
                                 style={{margin: 'auto'}}
                             />
                             <h3>{user.username}</h3>
-                            <div style={styles.userinfo}>
+                            <div>
                                 <ul style={styles.userinfoList}>
                                     <li>#Posts: {user.numPosts}</li>
                                     <li>Joined: {humanReadableDate(user.joinDate).formattedDate}</li>
@@ -60,7 +63,8 @@ const PostTpl = (props) => {
                     )
                 }
                 </CellWrapper>
-                <CellWrapper full={9} tablet={2} phone={4}>
+
+                <CellWrapper full={9} tablet={6} phone={3}>
                     {
                         content &&
                         parser.toReact(content)

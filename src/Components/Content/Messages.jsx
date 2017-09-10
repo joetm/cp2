@@ -11,6 +11,7 @@ import { LISTED } from '../../viewModes'
 const Messages = (props) => (
     <StreamTpl
         action={props.fetchMessages}
+        isEmbedded={props.isEmbedded}
         viewMode={LISTED}
         headline="Private Messages"
         isFetching={props.isFetching}

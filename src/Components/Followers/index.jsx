@@ -19,8 +19,7 @@ import Spacer from '../Shared/Spacer'
  */
 class Followers extends React.Component {
     componentDidMount() {
-      const { userid } = this.props
-      this.props.fetchFollowers(userid)
+      this.props.fetchFollowers(this.props.userid)
     }
     /**
      * Render the component.
@@ -39,9 +38,10 @@ class Followers extends React.Component {
                 {
                     followers.map(follower => (
                         <Notification
-                            title={follower.user.username}
                             type="follower"
+                            title={follower.user.username}
                             content={follower.user.usertitle}
+                            userid={follower.user.id}
                             user={follower.user}
                         />
                     ))

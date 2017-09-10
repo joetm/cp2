@@ -10,6 +10,7 @@ import StreamTpl from './StreamTpl'
 const Favorites = (props) => (
     <StreamTpl
         action={props.fetchFavorites}
+        isEmbedded={props.isEmbedded}
         headline="Favorites"
         isFetching={props.isFetching}
         content={props.favorites}

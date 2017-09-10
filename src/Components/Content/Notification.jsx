@@ -12,10 +12,9 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
 import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
+import routes from '../../routes'
 import { grey } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
-// import Avatar from 'material-ui/Avatar'
-import routes from '../../routes'
 
 
 class Notification extends React.Component {
@@ -47,12 +46,11 @@ class Notification extends React.Component {
      */
     render () {
         //
-        const { streamitem = {}, user = {}, userid, type, title, content } = this.props
+        const { streamitem = {}, user = {}, userid, type, id, title, content, history } = this.props
 
         let text
         let rightIconMenu
-
-        console.log('type', type)
+        let touchTapAction
 
         switch (type) {
 
@@ -67,6 +65,7 @@ class Notification extends React.Component {
             )
 
             rightIconMenu = null
+            touchTapAction = null
 
             break
 
@@ -79,6 +78,18 @@ class Notification extends React.Component {
             )
 
             rightIconMenu = null // TODO
+            touchTapAction = () => history.push(`${routes.PROFILE}/${user.id}`)
+
+            break
+
+          case 'post':
+
+            text = (
+              <p>{content}</p>
+            )
+
+            rightIconMenu = null // TODO
+            touchTapAction = () => history.push(`${routes.FORUM}${routes.THREADS}/${id}`)
 
             break
 
@@ -101,19 +112,23 @@ class Notification extends React.Component {
                   <MenuItem onTouchTap={this.deleteNotification}>Delete</MenuItem>
               </IconMenu>
             )
+
+            touchTapAction = null
         }
 
         // const LeftImage = <img src={thumb} alt="" style={{width: '160px'}} />
 
         return (
             <ListItem
-              leftAvatar={<Avatar
-                username={user.username}
-                style={{cursor: 'pointer'}}
-                src={user.avatar}
-                macro={true}
-                onTouchTap={() => this.props.history.push(`${routes.PROFILE}/${userid}`)}
-              />}
+              leftAvatar={
+                <Avatar
+                  username={user.username}
+                  style={{cursor: 'pointer'}}
+                  src={user.avatar}
+                  macro={true}
+                  onTouchTap={(e) => { e.stopPropagation(); history.push(`${routes.PROFILE}/${userid}`) }}
+                />
+              }
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={title}
               secondaryText={text}
@@ -121,6 +136,7 @@ class Notification extends React.Component {
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
               style={{cursor: 'inherit'}}
+              onTouchTap={touchTapAction}
             />
         )
     }

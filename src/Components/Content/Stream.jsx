@@ -10,6 +10,7 @@ import StreamTpl from './StreamTpl'
 const Stream = (props) => (
     <StreamTpl
         action={props.fetchUpdates}
+        isEmbedded={props.isEmbedded}
         headline="Updates"
         isFetching={props.isFetching}
         content={props.updates}

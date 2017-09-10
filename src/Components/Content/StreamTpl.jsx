@@ -62,7 +62,7 @@ class StreamTpl extends React.Component {
      * Render the component.
      */
     render() {
-        const { content, isFetching } = this.props
+        const { content, isFetching, isEmbedded } = this.props
 
         const categorizedItems = categorizeList(content)
 
@@ -72,9 +72,14 @@ class StreamTpl extends React.Component {
         return (
           <div>
 
-            <SubToolbar changeViewMode={this.changeViewMode} />
+            {
+              !isEmbedded &&
+              <div>
+                <SubToolbar changeViewMode={this.changeViewMode} />
+                <h2>{this.props.headline}</h2>
+              </div>
+            }
 
-            <h2>{this.props.headline}</h2>
 
             <Loader isLoading={isFetching} />
 

@@ -11,6 +11,7 @@ import { LISTED } from '../../viewModes'
 const Likes = (props) => (
     <StreamTpl
         action={props.fetchLikes}
+        isEmbedded={props.isEmbedded}
         viewMode={LISTED}
         headline="Likes"
         isFetching={props.isFetching}

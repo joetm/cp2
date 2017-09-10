@@ -3,14 +3,14 @@
 import React from 'react'
 import { List } from 'material-ui/List'
 
-import Post from './Post'
+import Notification from '../Content/Notification'
 
 
 const PostsWrapper = (props) => {
     const { posts } = props
     return (
       <List>
-          {posts.map((post) => <Post key={`post_${post.id}`} post={post} />)}
+          {posts.map((post) => <Notification key={`post_${post.id}`} {...post} />)}
       </List>
     )
 }

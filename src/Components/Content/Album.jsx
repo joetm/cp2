@@ -40,6 +40,8 @@ class Album extends React.Component {
       return (
         <div>
 
+          <Loader isLoading={!album.length} />
+
           <div>
             {
               album.map((img) => (
@@ -57,8 +59,6 @@ class Album extends React.Component {
           </div>
 
           <Spacer />
-
-          <Loader isLoading={!album.length} />
 
         </div>
       )

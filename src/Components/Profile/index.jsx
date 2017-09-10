@@ -89,12 +89,24 @@ class Profile extends React.Component {
                 <Spacer />
 
                 <Switch>
-                    <Route path={`${url}${routes.UPDATES}`} component={Stream} />
-                    <Route path={`${url}${routes.POSTS}`} component={Posts} />
-                    <Route path={`${url}${routes.ALBUM}`} component={Album} />
-                    <Route path={`${url}${routes.VIDEOS}`} component={Videos} />
-                    <Route path={`${url}${routes.FOLLOWERS}`} component={Followers} />
-                    <Route path={`${url}${routes.LIKES}`} component={Likes} />
+                    <Route exact path={`${url}${routes.UPDATES}`}
+                        render={props => <Stream isEmbedded={true} />}
+                    />
+                    <Route exact path={`${url}${routes.POSTS}`}
+                        render={props => <Posts isEmbedded={true} />}
+                    />
+                    <Route exact path={`${url}${routes.ALBUM}`}
+                        render={props => <Album isEmbedded={true} />}
+                    />
+                    <Route exact path={`${url}${routes.VIDEOS}`}
+                        render={props => <Videos isEmbedded={true} />}
+                    />
+                    <Route exact path={`${url}${routes.FOLLOWERS}`}
+                        render={props => <Followers isEmbedded={true} />}
+                    />
+                    <Route exact path={`${url}${routes.LIKES}`}
+                        render={props => <Likes isEmbedded={true} />}
+                    />
                     <Route component={Album} />
                 </Switch>
 
