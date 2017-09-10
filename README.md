@@ -3,19 +3,31 @@ SocNet v2 [![Build Status](https://travis-ci.org/joetm/cp2.svg?branch=master)](h
 
 
 > Calling from the ashes
+>
 > The phoenix rise again
+>
 > Fighting for life
+>
 > For good for all that we believe in
 >
+>
 > Girl we need some, girl we need some action
+>
 > If we're gonna make it like a true survivor
+>
 > We need some action
+>
 > If we wanna take our love away from here
 >
+>
 > We need a living passion
+>
 > To believe in
+>
 > Burning hearts and a brand new feeling
+>
 > Action
+>
 > If we're gonna make it like a true survivor
 
 
