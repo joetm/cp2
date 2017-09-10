@@ -91,7 +91,7 @@ const AvatarBubble = (props) => {
       }
       return (
           <Avatar
-              style={avatarStyle}
+              style={{...avatarStyle, style}}
               src={src}
               alt={username}
               onTouchTap={props.onTouchTap}

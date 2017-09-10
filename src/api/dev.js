@@ -45,12 +45,15 @@ export const fetchImages = fetchPictures
 
 export const fetchUser = createFetchAndSelectSpecificItem('users')
 export const fetchPicture = createFetchAndSelectSpecificItem('images')
+export const fetchImage  = fetchPicture
+export const fetchPost = createFetchAndSelectSpecificItem('posts')
+export const fetchThread = createFetchAndSelectSpecificItem('threads')
 export const fetchVideo = createFetchAndSelectSpecificItem('videos')
 export const fetchNotification = createFetchAndSelectSpecificItem('messages')
-export const fetchThread = createFetchAndSelectSpecificItem('threads')
+
+// -------------------------------------------------------------------
+// this one is different - it selects images by the userid
 export const fetchUserVerificationImages = createFetchAndSelectSpecificItem('verifications')
-// alias
-export const fetchImage  = fetchPicture
 
 // -------------------------------------------------------------------
 

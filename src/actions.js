@@ -379,6 +379,13 @@ export const fetchPosts = (limit) =>
     api.fetchPosts(limit).then(receivePosts)
 
 /**
+ * fetchPost Asynchronous Action Creator
+ * @returns receivePost() - Action
+ */
+export const fetchPost = (postid) =>
+    api.fetchPost(postid).then(receivePost)
+
+/**
  * fetchThreads Asynchronous Action Creator
  * @returns receiveThreads() - Action
  */
@@ -386,8 +393,8 @@ export const fetchThreads = (limit) =>
     api.fetchThreads(limit).then(receiveThreads)
 
 /**
- * fetchPosts Asynchronous Action Creator
- * @returns receivePosts() - Action
+ * fetchMessageHistory Asynchronous Action Creator
+ * @returns receiveMessageHistory() - Action
  */
 export const fetchMessageHistory = (userid) =>
     api.fetchMessageHistory(userid).then(receiveMessageHistory)

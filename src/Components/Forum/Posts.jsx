@@ -1,20 +1,35 @@
 /** @flow */
 
 import React from 'react'
+import { connect } from 'react-redux'
 import { List } from 'material-ui/List'
 
+import { fetchPosts } from '../../actions'
+import Loader from '../Shared/Loader'
+import PostsWrapper from './PostsWrapper'
 import Post from './Post'
 
 
-const Posts = ({ posts }) => {
-    /**
-     * Render the component.
-     */
+const Posts = (props) => {
+    const { posts } = props
     return (
-      <List>
-          {posts.map((post) => <Post key={`post_${post.id}`} post={post} />)}
-      </List>
+        <div>
+            <h2>Posts</h2>
+            <div>
+                <Loader isLoading={!posts.length} />
+                <PostsWrapper posts={posts} />
+            </div>
+        </div>
     )
 }
 
-export default Posts
+
+const mapStateToProps = (state) => ({
+    isFetching: state.posts.isFetching,
+    posts: state.posts.items,
+})
+
+export default connect(
+    mapStateToProps,
+    { fetchPosts }
+)(Posts)

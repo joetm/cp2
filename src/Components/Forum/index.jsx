@@ -10,8 +10,11 @@ import Spacer from '../Shared/Spacer'
 import SearchSidebar from '../SearchSidebar'
 import ForumHome from './ForumHome'
 import Category from './Category'
+import Posts from './Posts'
+import Threads from './Posts'
 import SinglePost from './SinglePost'
 import SingleThread from './SingleThread'
+import routes from '../../routes'
 
 
 const Forum = (props) => {
@@ -19,9 +22,12 @@ const Forum = (props) => {
     return (
         <div>
             <Switch>
-                <Route path={`${url}/post/:postid`} component={SinglePost} />
-                <Route path={`${url}/thread/:threadid`} component={SingleThread} />
-                <Route path={`${url}/category/:category`} component={Category} />
+                <Route exact path={`${url}${routes.POSTS}`} component={Posts} />
+                <Route exact path={`${url}${routes.THREADS}`} component={Threads} />
+                <Route exact path={`${url}${routes.POSTS}/:postid`} component={SinglePost} />
+                <Route exact path={`${url}${routes.THREADS}/:threadid`} component={SingleThread} />
+                <Route exact path={`${url}${routes.CATEGORIES}`} component={Category} />
+                <Route exact path={`${url}${routes.CATEGORIES}/:category`} component={Category} />
                 <Route component={ForumHome} />
             </Switch>
             <SearchSidebar

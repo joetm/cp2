@@ -50,8 +50,9 @@ class Home extends React.Component {
             <CellWrapper full={6} tablet={8} phone={4}>
                 <Paper style={boxStyle} zDepth={1}>
                     <Chat
+                        isEmbedded={true}
                         chat={this.props.chat}
-                        maxHeight={1200}
+                        maxHeight={660}
                     />
                 </Paper>
             </CellWrapper>

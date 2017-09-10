@@ -14,6 +14,8 @@ const routes = {
     USERS: "/members",
     MEMBERS: "/members",
     POSTS: "/posts",
+    THREADS: "/threads",
+    CATEGORIES: "/categories",
     IMAGES: "/images",
     VIDEOS: "/videos",
     VERIFICATIONS: "/verifications",

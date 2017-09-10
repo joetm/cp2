@@ -254,7 +254,10 @@ export function likesReducer(likesState = initialState.notifications, action) {
 export function threadReducer(threadState = initialState.thread, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREAD:
-            return {...action.response}
+            return {
+                item: {...action.response},
+                isFetching: false,
+            }
         default:
             return threadState
     }
@@ -267,7 +270,10 @@ export function threadReducer(threadState = initialState.thread, action) {
 export function postReducer(postState = initialState.post, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_POST:
-            return {...action.response}
+            return {
+                item: {...action.response},
+                isFetching: false,
+            }
         default:
             return postState
     }

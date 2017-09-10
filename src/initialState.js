@@ -84,14 +84,26 @@ const initialState = {
         },
         items: [],
     },
-    // -- single item caching
-    thread: {},
-    post: {},
-    video: {},
-    image: {},
     messageHistory: {
         isFetching: true,
         items: [],
+    },
+    // -- single item caching
+    thread: {
+        isFetching: true,
+        item: {},
+    },
+    post: {
+        isFetching: true,
+        item: {},
+    },
+    video: {
+        isFetching: true,
+        item: {},
+    },
+    image: {
+        isFetching: true,
+        item: {},
     },
     // -- crowd review
     reviewitem: {

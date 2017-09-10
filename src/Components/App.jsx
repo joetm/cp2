@@ -31,6 +31,7 @@ import Image from './Image'
 import Likes from './Content/Likes'
 import Favorites from './Content/Favorites'
 import Profile from './Profile'
+import Chat from './Chat'
 import Review from './Review'
 import Editor from './Editor'
 import Settings from './Settings'
@@ -83,6 +84,8 @@ class App extends React.Component {
                 <Route exact path={routes.HOME} component={Home} />
 
                 <Route path={routes.FORUM} component={Forum} />
+
+                <Route exact path={routes.CHAT} component={Chat} />
 
                 <Route exact path={routes.STREAM} component={Stream} />
 

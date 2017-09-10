@@ -51,14 +51,23 @@ export function categorizeList(updatesList) {
  * @returns {Object} formattedTime - Human-readable time
  */
 export function humanReadableDate(datestamp) {
-    const date = new Date(datestamp * 1000)
-    const hours = date.getHours()
-    const minutes = `0${date.getMinutes()}`
-    const seconds = `0${date.getSeconds()}`
-    const formattedTime = `${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`
-    return {
-        formattedTime,
+    const ret = {
+        formattedDate: '',
+        formattedTime: '',
     }
+    if (!datestamp) {
+        return ret
+    }
+    const date = new Date(+datestamp * 1000)
+      const hours = date.getHours()
+      const minutes = `0${date.getMinutes()}`
+      // const seconds = `0${date.getSeconds()}`
+    const year = date.getFullYear()
+      const month = date.getMonth()
+      const day = date.getDate()
+    ret.formattedTime = `${hours}:${minutes.substr(-2)}` // :${seconds.substr(-2)}`
+    ret.formattedDate = `${year}-${month}-${day}`
+    return ret
 }
 
 /**

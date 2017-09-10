@@ -1,5 +1,7 @@
 {
-  "/likes": "/likes?_expand=user&_sort=timestamp&order=desc",
+  "/likes": "/likes?_expand=user&_expand=streamitem&_sort=timestamp&order=desc",
+    "/likes?*": "/likes?_expand=user&_expand=streamitem&$1",
+    "/likes/?*": "/likes?_expand=user&_expand=streamitem&$1",
     "/likes/:id": "/likes/:id?_expand=user&_sort=timestamp&order=desc",
   "/messages": "/messages?_expand=user&_sort=timestamp&order=desc",
     "/messages?*": "/messages?type=message&_expand=user&_sort=timestamp&order=desc&$1",

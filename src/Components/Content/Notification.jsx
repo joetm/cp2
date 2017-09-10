@@ -47,29 +47,26 @@ class Notification extends React.Component {
      */
     render () {
         //
-        const { user = {}, userid, type, title, content } = this.props
+        const { streamitem = {}, user = {}, userid, type, title, content } = this.props
 
         let text
         let rightIconMenu
 
+        console.log('type', type)
+
         switch (type) {
+
           case 'like':
+          case 'dislike':
 
-            text = <p>{user.username} liked your TODO</p>
+            text = (
+              <p>
+                {user.username} liked your{' '}
+                <a href={`/${streamitem.type}s/${streamitem.id}`}>{streamitem.type}</a>
+              </p>
+            )
 
-            rightIconMenu = (
-                <IconMenu iconButtonElement={(
-                    <IconButton
-                      tooltip="more"
-                      tooltipPosition="bottom-left"
-                      onTouchTap={e => e.stopPropagation()}
-                    >
-                      <MoreVertIcon color={grey} />
-                    </IconButton>
-                )}>
-                    <MenuItem onTouchTap={this.deleteLike}>Undo</MenuItem>
-                </IconMenu>
-              )
+            rightIconMenu = null
 
             break
 
@@ -100,8 +97,10 @@ class Notification extends React.Component {
             <ListItem
               leftAvatar={<Avatar
                 username={user.username}
+                style={{cursor: 'pointer'}}
                 src={user.avatar}
                 macro={true}
+                onTouchTap={() => this.props.history.push(`${routes.PROFILE}/${userid}`)}
               />}
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={title}
@@ -109,7 +108,7 @@ class Notification extends React.Component {
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              onTouchTap={() => this.props.history.push(`${routes.MESSAGES}/${userid}`)}
+              style={{cursor: 'inherit'}}
             />
         )
     }
