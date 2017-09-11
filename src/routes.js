@@ -36,8 +36,9 @@ const routes = {
     },
     SETTINGS: {
         INDEX: "/settings",
-        GENERAL: "/general",
+        ACCOUNT: "/account",
         AVATAR: "/avatar",
+        GENERAL: "/general",
         IMAGE: "/image",
         VERIFICATION: "/verification",
         PRIVACY: "/privacy",

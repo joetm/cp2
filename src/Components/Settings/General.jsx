@@ -42,12 +42,6 @@ class GeneralSettings extends React.Component {
       console.log('TODO')
     }
     /*
-     * Handle the change of the user title field.
-     */
-    handleChangeUsertitle = (e) => {
-        console.log('change user title', e.target.value)
-    }
-    /*
      * Handle the change of the birthdate.
      */
     handleChangeBirthdate = (e, date) => {
@@ -113,14 +107,6 @@ class GeneralSettings extends React.Component {
                   <MenuItem value="Munich" primaryText="Munich" />
                 </SelectField>
             </div>
-
-            <SettingsSeparator text="Other" />
-
-            <TextField
-              floatingLabelText="Custom User Title"
-              fullWidth={true}
-              onBlur={this.handleChangeUsertitle}
-            />
 
 {/*
             <Alert

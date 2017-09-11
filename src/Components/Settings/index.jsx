@@ -8,6 +8,7 @@ import ProfileIcon from 'material-ui/svg-icons/action/assignment-ind'
 import ImageIcon from 'material-ui/svg-icons/editor/insert-photo'
 import VerifyIcon from 'material-ui/svg-icons/action/verified-user'
 import PrivacyIcon from 'material-ui/svg-icons/action/fingerprint'
+import AccountIcon from 'material-ui/svg-icons/action/account-box'
 
 import styles from './styles'
 import routes from '../../routes'
@@ -19,6 +20,17 @@ import ProfileImg from './ProfileImg'
 import VerificationImg from './VerificationImg'
 import General from './General'
 import Privacy from './Privacy'
+import Account from './Account'
+
+
+const _SETTINGS_ROUTES = [
+  `${routes.SETTINGS.INDEX}${routes.SETTINGS.GENERAL}`,
+  `${routes.SETTINGS.INDEX}${routes.SETTINGS.IMAGE}`,
+  `${routes.SETTINGS.INDEX}${routes.SETTINGS.AVATAR}`,
+  `${routes.SETTINGS.INDEX}${routes.SETTINGS.VERIFICATION}`,
+  `${routes.SETTINGS.INDEX}${routes.SETTINGS.PRIVACY}`,
+  `${routes.SETTINGS.INDEX}${routes.SETTINGS.ACCOUNT}`,
+]
 
 
 class Settings extends React.Component {
@@ -28,25 +40,12 @@ class Settings extends React.Component {
   select = (index) => this.setState({selectedIndex: index})
   componentWillMount() {
     const url = this.props.location.pathname
-    let index
-    switch (url) {
-      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.GENERAL}`:
-        index = 0
-        break
-      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.IMAGE}`:
-        index = 1
-        break
-      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.AVATAR}`:
-        index = 2
-        break
-      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.VERIFICATION}`:
-        index = 3
-        break
-      case `${routes.SETTINGS.INDEX}${routes.SETTINGS.PRIVACY}`:
-        index = 4
-        break
-    }
+    const index = _SETTINGS_ROUTES.indexOf(url)
     this.setState({selectedIndex: index})
+  }
+  handleTabClick = (selectedTabIndex, url) => {
+    this.select(selectedTabIndex)
+    this.props.history.push(url)
   }
   render() {
     const { url } = this.props.match
@@ -61,27 +60,32 @@ class Settings extends React.Component {
           <BottomNavigationItem
             label="General"
             icon={<ProfileIcon />}
-            onClick={() => { this.select(0); this.props.history.push(`${url}${routes.SETTINGS.GENERAL}`) }}
+            onClick={() => { this.handleTabClick(0, `${url}${routes.SETTINGS.GENERAL}`) }}
           />
           <BottomNavigationItem
             label="Profile Image"
             icon={<ImageIcon />}
-            onClick={() => { this.select(1); this.props.history.push(`${url}${routes.SETTINGS.IMAGE}`) }}
+            onClick={() => { this.handleTabClick(1, `${url}${routes.SETTINGS.IMAGE}`) }}
           />
           <BottomNavigationItem
             label="Avatar"
             icon={<ImageIcon />}
-            onClick={() => { this.select(2); this.props.history.push(`${url}${routes.SETTINGS.AVATAR}`) }}
+            onClick={() => { this.handleTabClick(2, `${url}${routes.SETTINGS.AVATAR}`) }}
           />
           <BottomNavigationItem
             label="Verify"
             icon={<VerifyIcon />}
-            onClick={() => { this.select(3); this.props.history.push(`${url}${routes.SETTINGS.VERIFICATION}`) }}
+            onClick={() => { this.handleTabClick(3, `${url}${routes.SETTINGS.VERIFICATION}`) }}
           />
           <BottomNavigationItem
             label="Privacy"
             icon={<PrivacyIcon />}
-            onClick={() => { this.select(4); this.props.history.push(`${url}${routes.SETTINGS.PRIVACY}`) }}
+            onClick={() => { this.handleTabClick(4, `${url}${routes.SETTINGS.PRIVACY}`) }}
+          />
+          <BottomNavigationItem
+            label="Account"
+            icon={<AccountIcon />}
+            onClick={() => { this.handleTabClick(4, `${url}${routes.SETTINGS.ACCOUNT}`) }}
           />
         </BottomNavigation>
 
@@ -94,6 +98,7 @@ class Settings extends React.Component {
             <Route exact path={`${url}${routes.SETTINGS.AVATAR}`}  component={AvatarImg} />
             <Route exact path={`${url}${routes.SETTINGS.VERIFICATION}`} component={VerificationImg} />
             <Route exact path={`${url}${routes.SETTINGS.PRIVACY}`} component={Privacy} />
+            <Route exact path={`${url}${routes.SETTINGS.ACCOUNT}`} component={Account} />
             <Route component={General} />
           </Switch>
         </div>

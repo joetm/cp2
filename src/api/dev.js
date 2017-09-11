@@ -5,6 +5,11 @@ import fetch from 'unfetch'
 import routes from '../routes'
 // import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
 
+const JSON_HEADER = {
+  Accept: 'application/json',
+  'Content-Type': 'application/json',
+}
+
 // -------------------------------------------------------------------
 // DEV: ajax fetch data from mock json API + dispatch receive methods
 // -------------------------------------------------------------------
@@ -88,10 +93,7 @@ export const fetchMessageHistory = (userid) =>
 const createNewItem = (field, payload) =>
     fetch(`${jsonAPI.ENDPOINT}${field}`, {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: JSON_HEADER,
       body: JSON.stringify(payload),
     })
     .then(response => {
@@ -104,17 +106,13 @@ const createNewItem = (field, payload) =>
     })
 
 const patchItem = (key, itemid = null, payload) => {
-    const baseRoute = (key.substring(0, 1) !== '/' ?
-      `/${key}` : key
+    const baseRoute = key.substring(0, 1) !== '/' ? `/${key}` : key
     const itemRoute = itemid ? `/${itemid}` : ''
     const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
     console.log('PATCH', baseRoute, itemid, payload, url)
     return fetch(url, {
       method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: JSON_HEADER,
       body: JSON.stringify(payload),
     })
     .then(response => {
@@ -127,28 +125,16 @@ const patchItem = (key, itemid = null, payload) => {
     })
 }
 
-const incrementItem = (key, itemid = null, increment = 1) => {
-    const baseRoute = (key.substring(0, 1) !== '/' ?
-      `/${key}` : key
-    const itemRoute = itemid ? `/${itemid}` : ''
-    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
-    console.log('INCREMENT PATCH', baseRoute, itemid, increment, url)
-    return fetch(url, {
-      method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-counters',
-      },
-      body: JSON.stringify(`${key} + 1`),
-    })
-    .then(response => {
-      console.log('response', response)
-      // if (response.status === 201) {
-        return response.json()
-      // } else {
-      //   throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
-      // }
-    })
+const incrementItem = (key, itemid = null, field, increment = 1) => {
+  // TODO
+  // 2 requests -> this is to be done on the server
+  const baseRoute = key.substring(0, 1) !== '/' ? `/${key}` : key
+  const url = `${jsonAPI.ENDPOINT}${baseRoute}/${itemid}`
+  return fetch(url, {
+    headers: JSON_HEADER
+  })
+  .then(response => response.json())
+  .then(item => patchItem(key, itemid, {[field]: item[field] + increment}))
 }
 
 // -------------------------------------------------------------------
@@ -179,11 +165,12 @@ export const sendChatMessage = (payload) => {
 // -------------------------------------------------------------------
 
 export const recordLike = (key, id) =>
-  patchItem(key, id, {likes: 1})
+  incrementItem(key, id, 'likes', 1)
 
-// TODO
 export const recordDislike = (key, id) =>
-  patchItem(key, id, {dislikes: -1})
+  incrementItem(key, id, 'dislikes', 1)
+
+// -------------------------------------------------------------------
 
 // TODO
 export const recordCrowdDecision = (vote, id, rating = null) => {
