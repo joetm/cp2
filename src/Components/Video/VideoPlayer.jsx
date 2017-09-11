@@ -105,8 +105,6 @@ class VideoPlayer extends Component {
     // if the player becomes taller than the window, resize the width
     // if (playerHeight > window.innerHeight) {
     // }
-    console.log('this.refs.playerWrapper.offsetWidth', this.refs.playerWrapper.offsetWidth)
-    console.log('playerHeight', playerHeight)
     this.setState({ playerHeight })
   }
   componentDidMount = () => {

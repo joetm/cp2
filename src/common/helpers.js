@@ -4,6 +4,10 @@ export function validEmail(email) {
     return re.test(email);
 }
 
+export function jumpToBottom(el) {
+    el.scrollTop = el.scrollHeight
+}
+
 export function classifyByDateAgo(obj) {
     const day = 60 * 60 * 24
 

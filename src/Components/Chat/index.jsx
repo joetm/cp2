@@ -85,6 +85,7 @@ class Chat extends React.Component {
     // scroll observer - see https://medium.com/@heatherbooker/how-to-auto-scroll-to-the-bottom-of-a-div-415e967e7a24
     const observer = new MutationObserver(this.jumpToBottom(this.chatContainer))
     observer.observe(this.chatContainer, {childList: true})
+    this.jumpToBottom(this.chatContainer)
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateHeight)
