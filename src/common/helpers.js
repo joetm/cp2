@@ -20,6 +20,18 @@ export function classifyByDateAgo(obj) {
 }
 
 /**
+ * Remove duplicates from array.
+ * See https://stackoverflow.com/a/14438954/426266
+ * @param {Array} arr
+ * @returns {Array} Array with no duplicates
+ */
+export function removeDuplicatesFromArray(arr) {
+    return arr.filter((value, index, self) => {
+        return self.indexOf(value) === index
+    })
+}
+
+/**
  * Categorize a list of updates into 'today', yesterday', etc.
  * @param {number} updatesList - List of updates
  * @returns {Object} categorizedList - Categorized list of updates

@@ -15,6 +15,7 @@ import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
+import Tag from '../Shared/Tag'
 
 
 const VIDEO_MAXWIDTH = 1024
@@ -82,16 +83,34 @@ class Video extends React.Component {
                             {user.username}
                         </div>
 
-                        <Tags
-                            style={{float: 'right'}}
-                            tags={[
-                                {icon: <ImageIcon />, text: user.numImages},
-                                {icon: <VideoIcon />, text: user.numVideos},
-                                {icon: <LikeIcon />, text: user.numLikes},
-                                {icon: <StarIcon />, text: user.numFavorites},
-                                {icon: <PersonIcon />, text: user.numFollowers},
-                            ]}
-                        />
+                        <div
+                            style={{
+                                float: 'right',
+                                display: 'flex',
+                                flexWrap: 'wrap',
+                            }}
+                        >
+                            <Tag
+                                icon={<ImageIcon />}
+                                text={user.numImages}
+                            />
+                            <Tag
+                                icon={<VideoIcon />}
+                                text={user.numVideos}
+                            />
+                            <Tag
+                                icon={<LikeIcon />}
+                                text={user.numLikes}
+                            />
+                            <Tag
+                                icon={<StarIcon />}
+                                text={user.numFavorites}
+                            />
+                            <Tag
+                                icon={<PersonIcon />}
+                                text={user.numFollowers}
+                            />
+                        </div>
 
                     </div>
                 }

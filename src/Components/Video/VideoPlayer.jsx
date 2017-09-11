@@ -189,10 +189,8 @@ class VideoPlayer extends Component {
       playerWidth,
       playerHeight,
     } = this.state
-
     return (
       <div>
-
           <div ref="playerWrapper"
             style={{ ...styles.playerWrapper,
               height: playerHeight,
@@ -311,7 +309,6 @@ class VideoPlayer extends Component {
             </div>
 
           </div>
-
       </div>
     )
   }
