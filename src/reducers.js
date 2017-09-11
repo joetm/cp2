@@ -102,12 +102,11 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
  * @returns reviewState
  **/
 export function reviewReducer(reviewState = initialState.reviewitem, action) {
-    const increment = action.increment === undefined ? 1 : action.increment
     switch (action.type) {
-        case ACTIONS.LIKE:
-            return {...reviewState, likes: reviewState.likes + increment}
-        case ACTIONS.DISLIKE:
-            return {...reviewState, dislikes: reviewState.dislikes + increment}
+        case ACTIONS.FETCH_REVIEWITEM_STARTED:
+            return {...reviewState, isFetching: true}
+        case ACTIONS.FETCH_REVIEWITEM_FAILED:
+            return {...reviewState, isFetching: false, error: action.error}
         case ACTIONS.REVIEW_APPROVE:
             return {...reviewState, approvals: reviewState.approvals + 1}
         case ACTIONS.REVIEW_DISAPPROVE:
@@ -239,9 +238,18 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
  * @returns likesState
  **/
 export function likesReducer(likesState = initialState.likes, action) {
+    const increment = action.increment === undefined ? 1 : action.increment
     switch (action.type) {
         case ACTIONS.RECEIVE_LIKES:
             return {...likesState, isFetching: false, items: [...action.response]}
+
+        // TODO
+        // case ACTIONS.LIKE:
+        //     return {...likesState, likes: reviewState.likes + increment}
+        // // TODO
+        // case ACTIONS.DISLIKE:
+        //     return {...likesState, dislikes: reviewState.dislikes + increment}
+
         default:
             return likesState
     }

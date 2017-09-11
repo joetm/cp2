@@ -109,6 +109,7 @@ const initialState = {
     reviewitem: {
         id: null,
         isFetching: true,
+        error: null,
         primaryText: null,
         secondaryText: null,
         fromUsername: null,

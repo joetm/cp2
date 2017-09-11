@@ -251,6 +251,7 @@ class Review extends React.Component {
 const mapStateToProps = (state) => ({
     isFetching: state.reviewitem.isFetching,
     reviewitem: state.reviewitem,
+    error: state.reviewitem.error,
 })
 
 export default connect(

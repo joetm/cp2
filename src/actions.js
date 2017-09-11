@@ -122,6 +122,8 @@ export const LOGOUT                     = 'AUTH::LOGOUT'
 export const FETCH_VIDEO_STARTED        = 'VIDEO::FETCH_VIDEO_STARTED'
 export const FETCH_VIDEO_SUCCESS        = 'VIDEO::FETCH_VIDEO_SUCCESS'
 export const FETCH_VIDEO_FAILURE        = 'VIDEO::FETCH_VIDEO_FAILURE'
+export const FETCH_REVIEWITEM_STARTED   = 'REVIEW::FETCH_REVIEWITEM_STARTED'
+export const FETCH_REVIEWITEM_FAILED    = 'REVIEW::FETCH_REVIEWITEM_FAILED'
 
 // MOD
 export const RECEIVE_CONTACT_REQUESTS   = 'MOD::RECEIVE_CONTACT_REQUESTS'
@@ -242,6 +244,9 @@ export const removePost              = makeActionCreator(REMOVE_POST,           
 export const fetchVideoStarted       = makeActionCreator(FETCH_VIDEO_STARTED)
 export const fetchVideoFailure       = makeActionCreator(FETCH_VIDEO_FAILURE)
 
+export const fetchReviewItemStarted  = makeActionCreator(FETCH_REVIEWITEM_STARTED)
+export const fetchReviewItemFailed   = makeActionCreator(FETCH_REVIEWITEM_FAILED,   'error')
+
 export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'payload')
 export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'itemid')
 
@@ -361,8 +366,12 @@ export const fetchFollowers = (limit) =>
  * fetchReviewItem Asynchronous Action Creator
  * @returns receiveReviewItem() - Action
  */
-export const fetchReviewItem = () =>
-    api.fetchReviewItem().then(receiveReviewItem)
+export const fetchReviewItem = () => (dispatch) => {
+    dispatch(fetchReviewItemStarted())
+    return api.fetchReviewItem()
+        .then(response => dispatch(receiveReviewItem(response)))
+        .catch(error => dispatch(fetchReviewItemFailed(error)))
+}
 
 /**
  * fetchPosts Asynchronous Action Creator
