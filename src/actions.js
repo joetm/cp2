@@ -515,15 +515,15 @@ export const sendChatMessage = (payload) => { // => (dispatch) => {
  * recordLike Asynchronous Action Creator
  * @returns recordLike() - Action
  */
-export const recordLike = () =>
-    api.recordLike().then(receiveLike)
+export const recordLike = (key, id) =>
+    api.recordLike(key, id).then(receiveLike)
 
 /**
  * recordDislike Asynchronous Action Creator
  * @returns recordDislike() - Action
  */
-export const recordDislike = () =>
-    api.recordDislike().then(receiveDislike)
+export const recordDislike = (key, id) =>
+    api.recordDislike(key, id).then(receiveDislike)
 
 /**
  * recordApproval Asynchronous Action Creator

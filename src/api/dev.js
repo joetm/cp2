@@ -103,19 +103,43 @@ const createNewItem = (field, payload) =>
       }
     })
 
-const patchItem = (key, payload) => {
-    let field = key
-    if (key.substring(0, 1) !== '/') {
-      field = `/${key}`
-    }
-    console.log('PATCH', field, payload)
-    return fetch(`${jsonAPI.ENDPOINT}${field}`, {
+const patchItem = (key, itemid = null, payload) => {
+    const baseRoute = (key.substring(0, 1) !== '/' ?
+      `/${key}` : key
+    const itemRoute = itemid ? `/${itemid}` : ''
+    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
+    console.log('PATCH', baseRoute, itemid, payload, url)
+    return fetch(url, {
       method: 'PATCH',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
+    })
+    .then(response => {
+      console.log('response', response)
+      // if (response.status === 201) {
+        return response.json()
+      // } else {
+      //   throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
+      // }
+    })
+}
+
+const incrementItem = (key, itemid = null, increment = 1) => {
+    const baseRoute = (key.substring(0, 1) !== '/' ?
+      `/${key}` : key
+    const itemRoute = itemid ? `/${itemid}` : ''
+    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
+    console.log('INCREMENT PATCH', baseRoute, itemid, increment, url)
+    return fetch(url, {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/x-counters',
+      },
+      body: JSON.stringify(`${key} + 1`),
     })
     .then(response => {
       console.log('response', response)
@@ -152,15 +176,14 @@ export const sendChatMessage = (payload) => {
       })
 }
 
-// TODO
-export const recordLike = (payload) =>
-  jsonAPI.sendDataToAPI(payload)
-    .then(response => response)
+// -------------------------------------------------------------------
+
+export const recordLike = (key, id) =>
+  patchItem(key, id, {likes: 1})
 
 // TODO
-export const recordDislike = (payload) =>
-  jsonAPI.sendDataToAPI(payload)
-    .then(response => response)
+export const recordDislike = (key, id) =>
+  patchItem(key, id, {dislikes: -1})
 
 // TODO
 export const recordCrowdDecision = (vote, id, rating = null) => {
@@ -197,10 +220,10 @@ export const fetchCities = makeAjaxCallCreator('/data/cities.json')
 // -------------------------------------------------------------------
 
 export const changeSetting = (field, value) =>
-  patchItem('currentUser', {[field]: value})
+  patchItem('currentUser', null, {[field]: value})
 
 export const removeUserField = (field) =>
-  patchItem('currentUser', {[field]: null})
+  patchItem('currentUser', null, {[field]: null})
 
 // -------------------------------------------------------------------
 

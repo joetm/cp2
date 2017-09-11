@@ -4,7 +4,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { fetchPost } from '../../actions'
+import { fetchPost, recordLike, recordDislike } from '../../actions'
 import PostTpl from './PostTpl'
 import Spacer from '../Shared/Spacer'
 
@@ -15,10 +15,14 @@ class SinglePost extends React.Component {
         this.props.fetchPost(this.props.postid)
     }
     render() {
-        const { post } = this.props
+        const { post, like, dislike } = this.props
         return (
             <div>
-                <PostTpl {...post} />
+                <PostTpl
+                    {...post}
+                    like={recordLike}
+                    dislike={recordDislike}
+                />
                 <Spacer />
             </div>
         )
@@ -33,5 +37,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { fetchPost }
+    { fetchPost, recordLike, recordDislike }
 )(SinglePost))

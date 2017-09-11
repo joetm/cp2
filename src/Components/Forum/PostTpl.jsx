@@ -7,6 +7,7 @@ import ClockIcon from 'material-ui/svg-icons/action/schedule'
 
 import { gray, darkgray } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
+import Tags from '../Shared/Tags'
 import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
 import { humanReadableDate } from '../../common/helpers'
@@ -26,71 +27,89 @@ const styles = {
     postFooter: {
         margin: '1em 0',
         color: gray,
+        clear: 'both',
     },
 }
 
 
-const PostTpl = (props) => {
-    const { title, content, isEmbedded, user, timestamp, likes, dislikes } = props
-    const postedOn = humanReadableDate(timestamp)
+class PostTpl extends React.Component {
+    like = () => {
+        // TODO
+        this.props.like()
+    }
+    dislike = () => {
+        // TODO
+        this.props.dislike()
+    }
+    render() {
+        const { title, content, isEmbedded, user, tags, timestamp, likes, dislikes } = props
+        const postedOn = humanReadableDate(timestamp)
 
-    // TODO
-    const like = () => {}
-    const dislike = () => {}
+        // TODO
 
-    return (
-        <div>
+        return (
+            <div>
 
-            <h2 style={{textAlign: isEmbedded ? 'left' : 'center'}}>{title}</h2>
+                <h2 style={{textAlign: isEmbedded ? 'left' : 'center'}}>{title}</h2>
 
-            <GridWrap>
+                <GridWrap>
 
-                <CellWrapper full={3} tablet={2} phone={1}>
-                { user && (
-                        <div style={styles.userinfo}>
-                            <Avatar
-                                src={user.avatar}
-                                style={{margin: 'auto'}}
-                            />
-                            <h3>{user.username}</h3>
-                            <div>
-                                <ul style={styles.userinfoList}>
-                                    <li>#Posts: {user.numPosts}</li>
-                                    <li>Joined: {humanReadableDate(user.joinDate).formattedDate}</li>
-                                </ul>
+                    <CellWrapper full={3} tablet={2} phone={1}>
+                    { user && (
+                            <div style={styles.userinfo}>
+                                <Avatar
+                                    src={user.avatar}
+                                    style={{margin: 'auto'}}
+                                />
+                                <h3>{user.username}</h3>
+                                <div>
+                                    <ul style={styles.userinfoList}>
+                                        <li>#Posts: {user.numPosts}</li>
+                                        <li>Joined: {humanReadableDate(user.joinDate).formattedDate}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )
+                    }
+                    </CellWrapper>
+
+                    <CellWrapper full={9} tablet={6} phone={3}>
+                        {
+                            content &&
+                            parser.toReact(content)
+                        }
+                        <div style={styles.postFooter}>
+                            <div style={{float: 'left', marginTop: '24px'}}>
+                                <ClockIcon style={{height: '1em', margin: '0 0.5em 0 0'}} />
+                                {postedOn.formattedDate}
+                                {' '}
+                                {postedOn.formattedTime}
+                            </div>
+                            <div style={{float: 'right', display: 'inline-block'}}>
+                              <LikeButton
+                                  number={likes}
+                                  action={this.like}
+                              />
+                              <DisapproveButton
+                                  number={dislikes}
+                                  action={this.dislike}
+                              />
                             </div>
                         </div>
-                    )
-                }
-                </CellWrapper>
-
-                <CellWrapper full={9} tablet={6} phone={3}>
-                    {
-                        content &&
-                        parser.toReact(content)
-                    }
-                    <div style={styles.postFooter}>
-                        <div style={{float: 'left', marginTop: '24px'}}>
-                            <ClockIcon style={{height: '1em', margin: '0 0.5em 0 0'}} />
-                            {postedOn.formattedDate}
-                            {' '}
-                            {postedOn.formattedTime}
+                        <div style={styles.postFooter}>
+                            {
+                                tags && (
+                                    <div>
+                                        <Tags tags={tags} />
+                                    </div>
+                                )
+                            }
                         </div>
-                        <div style={{float: 'right', display: 'inline-block'}}>
-                          <LikeButton
-                              number={likes}
-                              action={like}
-                          />
-                          <DisapproveButton
-                              number={dislikes}
-                              action={dislike}
-                          />
-                        </div>
-                    </div>
-                </CellWrapper>
-            </GridWrap>
-        </div>
-    )
+                    </CellWrapper>
+                </GridWrap>
+            </div>
+        )
+    }
 }
 
 export default PostTpl
