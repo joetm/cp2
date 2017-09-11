@@ -1,6 +1,9 @@
 SocNet v2 [![Build Status](https://travis-ci.org/joetm/cp2.svg?branch=master)](https://travis-ci.org/joetm/cp2) [![Coverage Status](https://coveralls.io/repos/github/joetm/cp2/badge.svg?branch=master)](https://coveralls.io/github/joetm/cp2?branch=master)
 =====
 
+![Endangered Species](dinosaurs-triceratops-three-horns-head-prehistoric-wild-animal.ai.png "Dino")
+
+
 ```
 Calling from the ashes
 The phoenix rise again
