@@ -5,7 +5,7 @@ import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 
 const separatorContainerStyle = {
-  marginTop: '1.5em',
+  margin: '1.5em 0',
 }
 
 const SettingsSeparator = (props) => (

@@ -7,23 +7,73 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 
+import { findUser, changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
+import { inlineButton } from '../Shared/styles'
+import Alert from '../Shared/Alert'
 
 
 class AccountSettings extends React.Component {
     unlockButton = null
-    state = {
-        fieldsLocked: true,
-        deletionIsLocked: true,
-        dialogIsOpen: false,
+    usernamePrimary = null
+    usernameConfirmation = null
+    constructor(props) {
+      super(props)
+      this.state = {
+          fieldsLocked: true,
+          deletionIsLocked: true,
+          deletionDialogIsOpen: false,
+          usernameChangeDialogIsOpen: false,
+          usernamesMatching: false,
+          usernameError: null,
+          usertitle: null,
+          alertIsOpen: false,
+          alertMsg: "WOHOOOsername changed!",
+      }
     }
-    componentDidMount() {
-    }
+    // TODO
+    // componentWillMount() {
+    //   const usertitle = this.props.usertitle
+    //   console.log('usertitle', usertitle)
+    //   this.setState({usertitle})
+    // }
     /*
      * Handle the change of the username.
      */
-    handleChangeUsername = (e) => {
-        console.log('change username', e.target.value)
+    handleChangeUsername = () => {
+      // reset errors
+      this.setState({usernameError: null})
+      // compare the two names
+      const usernamePrimary = this.usernamePrimary.getValue().trim()
+      const usernameConfirmation = this.usernameConfirmation.getValue()
+      if (usernamePrimary !== '') {
+        this.setState({usernamesMatching: usernamePrimary === usernameConfirmation})
+      }
+    }
+    /*
+     * Change the username.
+     */
+    changeUsername = () => {
+      // must match and be > 0 length
+      const newUsername = this.usernamePrimary.getValue().trim()
+      if (!this.state.usernamesMatching || !newUsername.length) {
+        return
+      }
+      const isUnique = this.props.findUser(newUsername).then(
+        res => {
+          if (res.response !== false) {
+            // a user with this name was found
+            this.setState({usernameError: 'Username already exists! Choose a different one.'})
+            return false
+          }
+          console.log('change username', newUsername)
+          this.props.changeSetting('username', newUsername)
+          // close the dialog(s)
+          this.closeDialogs()
+          // show alert
+          this.setState({alertIsOpen: true})
+        }
+      )
     }
     /*
      * Handle the change of the email.
@@ -38,22 +88,32 @@ class AccountSettings extends React.Component {
         if (this.state.deletionIsLocked) {
           return
         }
-        this.closeDeletionDialog()
+        this.closeDialogs()
         console.log('delete account')
     }
     /*
      * Handle the change of the user title field.
      */
-    handleChangeUsertitle = (e) => {
-        console.log('change user title', e.target.value)
+    handleChangeUsertitle = (e, newValue) => {
+      const newUsertitle = newValue.trim()
+      this.setState({usertitle: newUsertitle})
     }
+    /*
+     * Change the user title.
+     */
+    changeUsertitle = (e) => {
+      const newUsertitle = e.target.value.trim()
+      console.log('change user title', newUsertitle)
+      if (newUsertitle.length) {
+        this.props.changeSetting('usertitle', newUsertitle)
+      }
+    }
+
     /*
      * Enables the locked fields.
      */
     unlockAccountSettings = () => {
-      this.setState({
-        fieldsLocked: false,
-      })
+      this.setState({fieldsLocked: false})
       // remove the button
     }
     /*
@@ -62,7 +122,7 @@ class AccountSettings extends React.Component {
     lockDeletion = (e, newValue) => {
       this.setState({
         deletionIsLocked: true,
-        dialogIsOpen: false,
+        deletionDialogIsOpen: false,
       })
     }
     /*
@@ -75,21 +135,37 @@ class AccountSettings extends React.Component {
       }
     }
     /*
-     * Open the deletiondialog
+     * Open the deletiondialog.
      */
     openDeletionDialog = () => {
       if (!this.state.fieldsLocked) {
-        this.setState({dialogIsOpen: true})
+        this.setState({deletionDialogIsOpen: true})
       }
     }
-    closeDeletionDialog = () => {
-      this.setState({dialogIsOpen: false})
+    /*
+     * Open the username dialog.
+     */
+    openNameChangeDialog = () => {
+      this.setState({usernameChangeDialogIsOpen: true})
     }
+    /*
+     * Close the dialogs.
+     */
+    closeDialogs = () => {
+      this.setState({
+        deletionDialogIsOpen: false,
+        usernameChangeDialogIsOpen: false,
+      })
+    }
+    /*
+     * Close the alert.
+     */
+    closeAlert = () => this.setState({alertIsOpen: false})
     /*
      * Render the component.
      */
     render() {
-      const { usertitle, email, username } = this.props
+      const { email, username } = this.props
       const actions = [
         <FlatButton
           label="Cancel"
@@ -111,25 +187,25 @@ class AccountSettings extends React.Component {
 
             <TextField
               floatingLabelText="Custom User Title"
-              value={usertitle}
-              onBlur={this.handleChangeUsertitle}
+              value={this.state.usertitle}
+              onChange={this.handleChangeUsertitle}
             />
             <RaisedButton
                 label="Save"
                 primary={true}
-                style={{display: 'inline-block'}}
-                onTouchTap={() => {/* TODO */}}
+                style={inlineButton}
+                onTouchTap={this.changeUsertitle}
             />
 
             <SettingsSeparator text="Login-related Options" />
 
             <p>
               Making changes to the fields below will affect the way you log into the site.
-              This means you could lock yourself out if you forget any of the entered information.
+              You could for example lock yourself out if you forget any of the entered information.
               <div>
                 <RaisedButton
                   style={{display: this.state.fieldsLocked ? 'inline-block' : 'none'}}
-                  label="OK, let me change them!"
+                  label="OK, let me change the settings!"
                   onTouchTap={this.unlockAccountSettings}
                   ref={(el) => {this.unlockButton = el}}
                 />
@@ -143,7 +219,7 @@ class AccountSettings extends React.Component {
                   label="Change Username"
                   primary={true}
                   disabled={this.state.fieldsLocked}
-                  onTouchTap={() => {/* TODO: Open another Dialog with username field */}}
+                  onTouchTap={this.openNameChangeDialog}
               />
             </p>
 
@@ -219,8 +295,8 @@ class AccountSettings extends React.Component {
               title="[DANGER] Account Deletion!"
               actions={actions}
               modal={false}
-              open={this.state.dialogIsOpen}
-              onRequestClose={this.handleClose}
+              open={this.state.deletionDialogIsOpen}
+              onRequestClose={this.closeDialogs}
             >
               <p>
               Warning: The account deletion cannot be undone!
@@ -241,6 +317,50 @@ class AccountSettings extends React.Component {
 
             </Dialog>
 
+            <Dialog
+              title="Change Username"
+              actions={[
+                <FlatButton
+                  label="Cancel"
+                  primary={true}
+                  onClick={this.closeDialogs}
+                />,
+                <RaisedButton
+                  label="Change Username"
+                  primary={true}
+                  disabled={!this.state.usernamesMatching}
+                  onTouchTap={this.changeUsername}
+                />,
+              ]}
+              modal={false}
+              open={this.state.usernameChangeDialogIsOpen}
+              onRequestClose={this.closeDialogs}
+            >
+              <div>
+                <TextField
+                  floatingLabelText="Enter new username"
+                  ref={el => {this.usernamePrimary = el}}
+                  onChange={this.handleChangeUsername}
+                  errorText={this.state.usernameError}
+                />
+              </div>
+
+              <div>
+                <TextField
+                  floatingLabelText="Confirm new username"
+                  ref={el => {this.usernameConfirmation = el}}
+                  onChange={this.handleChangeUsername}
+                  errorText={this.state.usernameError}
+                />
+              </div>
+            </Dialog>
+
+            <Alert
+              open={this.state.alertIsOpen}
+              close={this.closeAlert}
+              msg={this.state.alertMsg}
+             />
+
         </div>
       )
     }
@@ -256,5 +376,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    {  }
+    { findUser, changeSetting }
 )(AccountSettings)

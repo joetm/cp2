@@ -384,17 +384,17 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
     switch (action.type) {
         case ACTIONS.GET_CURRENT_USER:
             return currentUserState
-        case ACTIONS.GET_CURRENT_USER_MINIMAL:
-            return {
-                userid: currentUserState.id,
-                username: currentUserState.username,
-                avatar: currentUserState.avatar,
-            }
         case ACTIONS.GET_CURRENT_USER_ID:
             if (currentUserState.userid !== undefined) {
                 return currentUserState.id
             }
             return null
+        // case ACTIONS.GET_CURRENT_USER_MINIMAL:
+        //     return {
+        //         userid: currentUserState.id,
+        //         username: currentUserState.username,
+        //         avatar: currentUserState.avatar,
+        //     }
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
 

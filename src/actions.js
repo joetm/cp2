@@ -17,8 +17,9 @@ import { checkHttpStatus, parseJSON } from './common/helpers'
 
 export const COMMENT_PROFILE            = 'PROFILE::COMMENT_PROFILE'
 export const GET_USER                   = 'USER::GET_USER'
+export const GET_CURRENT_USERTITLE      = 'USER::GET_CURRENT_USERTITLE'
 export const GET_CURRENT_USER           = 'USER::GET_CURRENT_USER'
-export const GET_CURRENT_USER_MINIMAL   = 'USER::GET_CURRENT_USER_MINIMAL'
+// export const GET_CURRENT_USER_MINIMAL   = 'USER::GET_CURRENT_USER_MINIMAL'
 export const GET_CURRENT_USER_ID        = 'USER::GET_CURRENT_USER_ID'
 export const REPLY_THREAD               = 'FORUM::REPLY_THREAD'
 export const GET_POSTS                  = 'FORUM::GET_POSTS'
@@ -89,6 +90,8 @@ export const RECEIVE_COUNTRY            = 'APP::RECEIVE_COUNTRY'
 export const RECEIVE_STATE              = 'APP::RECEIVE_STATE'
 export const RECEIVE_CITY               = 'APP::RECEIVE_CITY'
 
+export const RECEIVE_SEARCH_RESULT      = 'SEARCH::RECEIVE_SEARCH_RESULT'
+
 export const RECEIVE_CHAT               = 'CHAT::RECEIVE_CHAT'
 export const RECEIVE_CHAT_MSG           = "CHAT::RECEIVE_CHAT_MSG"
 // export const SEND_CHAT_MSG             = "CHAT::SEND_CHAT_MSG"
@@ -150,13 +153,14 @@ function makeActionCreator(type, ...argNames) {
 // Redux action creators
 // ----------------------------------------------------
 
-export const getUser               = makeActionCreator(GET_USER,            'userid')
+export const getUser               = makeActionCreator(GET_USER,              'userid')
 export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
-export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
+// export const getCurrentUsertitle   = makeActionCreator(GET_CURRENT_USERTITLE)
 export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)
-export const followUser            = makeActionCreator(FOLLOW_USER,         'userid')
-export const replyThread           = makeActionCreator(REPLY_THREAD,        'threadid')
-export const commentProfile        = makeActionCreator(COMMENT_PROFILE,     'userid')
+// export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
+export const followUser            = makeActionCreator(FOLLOW_USER,           'userid')
+export const replyThread           = makeActionCreator(REPLY_THREAD,          'threadid')
+export const commentProfile        = makeActionCreator(COMMENT_PROFILE,       'userid')
 export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
 export const closeSearchSidebar    = makeActionCreator(CLOSE_SEARCH_SIDEBAR)
 export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
@@ -225,6 +229,8 @@ export const receiveCities           = makeActionCreator(RECEIVE_CITIES,        
 export const receiveCountry          = makeActionCreator(RECEIVE_COUNTRY,           'response')
 export const receiveState            = makeActionCreator(RECEIVE_STATE,             'response')
 export const receiveCity             = makeActionCreator(RECEIVE_CITY,              'response')
+
+export const receiveSearchResult     = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
 
 // MOD
 export const receiveContactRequests  = makeActionCreator(RECEIVE_CONTACT_REQUESTS)
@@ -600,3 +606,9 @@ export const removeImages = (itemids) => (dispatch) => {
 
 export const changeSetting = (key, value) =>
     api.changeSetting(key, value).then(receiveSetting)
+
+// -- registration checking actions ----------------------------------
+
+export const findUser = (username) =>
+    api.find('users', username, true)
+    .then(receiveSearchResult)

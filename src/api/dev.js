@@ -10,6 +10,10 @@ const JSON_HEADER = {
   'Content-Type': 'application/json',
 }
 
+const prefixSlash = (key) => {
+ return key.substring(0, 1) !== '/' ? `/${key}` : key
+}
+
 // -------------------------------------------------------------------
 // DEV: ajax fetch data from mock json API + dispatch receive methods
 // -------------------------------------------------------------------
@@ -106,7 +110,7 @@ const createNewItem = (field, payload) =>
     })
 
 const patchItem = (key, itemid = null, payload) => {
-    const baseRoute = key.substring(0, 1) !== '/' ? `/${key}` : key
+    const baseRoute = prefixSlash(key)
     const itemRoute = itemid ? `/${itemid}` : ''
     const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
     console.log('PATCH', baseRoute, itemid, payload, url)
@@ -128,7 +132,7 @@ const patchItem = (key, itemid = null, payload) => {
 const incrementItem = (key, itemid = null, field, increment = 1) => {
   // TODO
   // 2 requests -> this is to be done on the server
-  const baseRoute = key.substring(0, 1) !== '/' ? `/${key}` : key
+  const baseRoute = prefixSlash(key)
   const url = `${jsonAPI.ENDPOINT}${baseRoute}/${itemid}`
   return fetch(url, {
     headers: JSON_HEADER
@@ -217,3 +221,23 @@ export const removeUserField = (field) =>
 export const deleteItems = (items) =>
   jsonAPI.deleteItems(items)
     .then(response => response)
+
+// -------------------------------------------------------------------
+
+export const find = (key, field, returnEmpty = false) => {
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}?q=${encodeURIComponent(field)}`
+  console.log('find', key, field, url)
+  return fetch(url, {headers: JSON_HEADER})
+  .then(response => response.json())
+  .then(data => {
+    const found = !!data.length
+    console.log('search result', data, 'found', found)
+    if (returnEmpty) {
+      return found
+    }
+    return data
+  })
+  .catch(error => {
+      throw new Error(`Not found: [error]`)
+  })
+}
