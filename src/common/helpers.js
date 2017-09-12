@@ -5,7 +5,9 @@ export function validEmail(email) {
 }
 
 export function jumpToBottom(el) {
-    el.scrollTop = el.scrollHeight
+    if (el !== undefined) {
+        el.scrollTop = el.scrollHeight
+    }
 }
 
 export function classifyByDateAgo(obj) {

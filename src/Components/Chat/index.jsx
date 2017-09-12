@@ -11,6 +11,7 @@ import IconButton from 'material-ui/IconButton'
 import { findDOMNode } from 'react-dom'
 
 import { sendChatMessage, fetchChat } from '../../actions'
+import { jumpToBottom } from '../../common/helpers'
 import { gray, black, lightGray } from '../../common/colors'
 import routes from '../../routes'
 import ChatInput from './ChatInput'
@@ -21,11 +22,7 @@ import Spacer from '../Shared/Spacer'
 const _OFFSET = 260
 
 const styles = {
-  chatList: {
-    overflowY: 'auto',
-  },
-  listitem: {
-  },
+  chatList: { overflowY: 'auto' },
   chatText: {
     fontSize: '0.8em',
     color: gray,
@@ -34,27 +31,26 @@ const styles = {
     fontWeight: 400,
     cursor: 'pointer',
   },
-  avatar: {
-    cursor: 'pointer',
-  },
-  content: {
-    // color: gray,
-    color: black,
-  },
+  avatar: { cursor: 'pointer' },
+  content: { color: black },
   timestamp: {
-    // color: gray,
+    color: gray,
   },
   headerBar: {
     height: '40px',
     lineHeight: '40px',
     fontWeight: 400,
     backgroundColor: lightGray,
+    color: gray,
     padding: '10px',
   },
-  expandIcon: {
+  iconExpandContainer: {
     float: 'right',
     cursor: 'pointer',
-    margin: 0,
+  },
+  iconExpand: {
+    color: gray,
+    margin: '-10px 0 0 0',
     padding: 0,
   },
 }
@@ -74,18 +70,15 @@ class Chat extends React.Component {
   componentWillMount() {
       this.updateHeight()
   }
-  jumpToBottom = (el) => () => {
-    el.scrollTop = el.scrollHeight
-  }
   componentDidMount() {
     this.props.fetchChat()
     // change chat height when window is resized
     window.addEventListener("resize", this.updateHeight)
     // TODO: observers are deprecated
     // scroll observer - see https://medium.com/@heatherbooker/how-to-auto-scroll-to-the-bottom-of-a-div-415e967e7a24
-    const observer = new MutationObserver(this.jumpToBottom(this.chatContainer))
+    const observer = new MutationObserver(() => jumpToBottom(this.chatContainer))
     observer.observe(this.chatContainer, {childList: true})
-    this.jumpToBottom(this.chatContainer)
+    jumpToBottom(this.chatContainer)
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateHeight)
@@ -100,22 +93,22 @@ class Chat extends React.Component {
       <div>
 
         {
-          !isEmbedded &&
-            <h2>Chat</h2>
-        }
-
-        {
-          isEmbedded &&
-            <div style={styles.headerBar}>
-              Chat
-              <IconButton
-                tooltip="Expand"
-                style={styles.expandIcon}
-                onTouchTap={() => history.push(`${routes.CHAT}`)}
-              >
-                <FullScreenIcon />
-              </IconButton>
-            </div>
+          !isEmbedded ?
+            ( <h2>Chat</h2> )
+            :
+            (
+                <div style={styles.headerBar}>
+                  Chat
+                  <IconButton
+                    tooltip="Expand"
+                    style={styles.iconExpandContainer}
+                    iconStyle={styles.iconExpand}
+                    onTouchTap={() => history.push(`${routes.CHAT}`)}
+                  >
+                    <FullScreenIcon />
+                  </IconButton>
+                </div>
+            )
         }
 
         <Loader isLoading={!chat.length} />
@@ -163,7 +156,7 @@ class Chat extends React.Component {
             floatingLabelText="Your Message"
             fullWidth={true}
             ref="chatinput"
-            scrollToBottom={this.scrollToBottom}
+            scrollToBottom={jumpToBottom}
             onKeyPress={this.handleChangeChatMsg}
         />
 
