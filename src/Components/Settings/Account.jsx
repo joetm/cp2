@@ -11,6 +11,7 @@ import { findUser, changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import { inlineButton } from '../Shared/styles'
 import Alert from '../Shared/Alert'
+import getSuccessMsg from '../Shared/successMessages'
 
 
 class AccountSettings extends React.Component {
@@ -28,7 +29,7 @@ class AccountSettings extends React.Component {
           usernameError: null,
           usertitle: null,
           alertIsOpen: false,
-          alertMsg: "WOHOOOsername changed!",
+          alertMsg: getSuccessMsg(), // once per page
       }
     }
     // TODO
@@ -119,7 +120,7 @@ class AccountSettings extends React.Component {
     /*
      * Locks the account deletion button.
      */
-    lockDeletion = (e, newValue) => {
+    lockDeletion = () => {
       this.setState({
         deletionIsLocked: true,
         deletionDialogIsOpen: false,
@@ -201,16 +202,14 @@ class AccountSettings extends React.Component {
 
             <p>
               Making changes to the fields below will affect the way you log into the site.
-              You could for example lock yourself out if you forget any of the entered information.
-              <div>
-                <RaisedButton
-                  style={{display: this.state.fieldsLocked ? 'inline-block' : 'none'}}
-                  label="OK, let me change the settings!"
-                  onTouchTap={this.unlockAccountSettings}
-                  ref={(el) => {this.unlockButton = el}}
-                />
-              </div>
+              You could for example lock yourself out if you forget any of the entered information!
             </p>
+            <RaisedButton
+              style={{display: this.state.fieldsLocked ? 'inline-block' : 'none'}}
+              label="OK, let me change the settings!"
+              onTouchTap={this.unlockAccountSettings}
+              ref={(el) => {this.unlockButton = el}}
+            />
 
             <SettingsSeparator text="Change Username" />
 
