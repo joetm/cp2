@@ -38,6 +38,10 @@ const initialState = {
         isFetching: true,
         items: [],
     },
+    categories: {
+        isFetching: true,
+        items: [],
+    },
     threads: {
         isFetching: true,
         items: [],

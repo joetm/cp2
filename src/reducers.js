@@ -297,12 +297,27 @@ export function postsReducer(postsState = initialState.posts, action) {
  * threadsReducer
  * @returns threadsState
  **/
+// TODO
 export function threadsReducer(threadsState = initialState.threads, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREADS:
             return {...threadsState, isFetching: false, items: [...action.response]}
         default:
             return threadsState
+    }
+}
+
+/**
+ * categoriesReducer
+ * @returns categoriesState
+ **/
+export function categoriesReducer(categoriesState = initialState.categories, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_CATEGORIES:
+            console.log('action', action)
+            return {...categoriesState, isFetching: false, items: [...action.response.items]}
+        default:
+            return categoriesState
     }
 }
 

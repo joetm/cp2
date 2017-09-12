@@ -23,7 +23,6 @@ const createFetchField = (field) => (limit = null) => {
         .then(response => response)
 }
 const createFetchAndSelectSpecificItem = (field) => (selection = null) => {
-    console.log('xxx', field, selection)
     return jsonAPI.fetchFromAPI(field, selection)
         .then(response => response)
 }
@@ -38,6 +37,7 @@ export const fetchCurrentUser = createFetchField('currentUser')
 export const fetchUsers = createFetchField('users')
 export const fetchChat = createFetchField('chat')
 export const fetchPosts = createFetchField('posts')
+export const fetchCategories = createFetchField('categories')
 export const fetchThreads = createFetchField('threads')
 export const fetchAlbum = createFetchField('images')
 export const fetchUpdates = createFetchField('streamitems')

@@ -89,6 +89,15 @@ class Notification extends React.Component {
 
             break
 
+          case 'category':
+
+            text = <p>{title}</p>
+
+            rightIconMenu = null // TODO
+            touchTapAction = () => history.push(`${routes.FORUM}${routes.CATEGORIES}/${id}`)
+
+            break
+
           default:
 
             text = <p>{user.username}{' '}-{' '}{content}</p>
@@ -122,7 +131,7 @@ class Notification extends React.Component {
                   style={{cursor: 'pointer'}}
                   src={user.avatar}
                   macro={true}
-                  onTouchTap={(e) => { e.stopPropagation(); history.push(`${routes.PROFILE}/${userid}`) }}
+                  onTouchTap={e => { e.stopPropagation(); history.push(`${routes.PROFILE}/${userid}`) }}
                 />
               }
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
@@ -131,7 +140,7 @@ class Notification extends React.Component {
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}
-              style={{cursor: 'inherit'}}
+              style={{cursor: typeof touchTapAction === 'function' ? 'pointer' : 'inherit'}}
               onTouchTap={touchTapAction}
             />
         )

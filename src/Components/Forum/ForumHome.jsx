@@ -3,29 +3,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchThreads } from '../../actions'
-import PostsWrapper from './PostsWrapper'
+import { fetchCategories, fetchThreads } from '../../actions'
+import Categories from './Categories'
 import Loader from '../Shared/Loader'
 
 
 class ForumHome extends React.Component {
     componentDidMount() {
-        this.props.fetchThreads()
+        this.props.fetchCategories()
     }
-    // componentDidUpdate(prevProps) {
-    //     this.props.fetchThreads()
-    // }
     render() {
-        const { threads } = this.props
+        const { categories } = this.props
         return (
             <div>
-                <h2>Forum</h2>
+                <h2>Forum Categories</h2>
                 <div>
-                    <PostsWrapper posts={threads} />
-                    {
-                        !threads.length > 0 &&
-                        <Loader />
-                    }
+                    <Loader isLoading={!categories.length} />
+                    <Categories categories={categories} />
                 </div>
             </div>
         )
@@ -33,11 +27,11 @@ class ForumHome extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isFetching: state.threads.isFetching,
-    threads: state.threads.items,
+    isFetching: state.categories.isFetching,
+    categories: state.categories.items,
 })
 
 export default connect(
     mapStateToProps,
-    { fetchThreads }
+    { fetchCategories, fetchThreads }
 )(ForumHome)

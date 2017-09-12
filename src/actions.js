@@ -64,6 +64,7 @@ export const RECEIVE_USERS              = 'USER::RECEIVE_USERS'
 export const RECEIVE_FOLLOWERS          = 'SOCIAL::RECEIVE_FOLLOWERS'
 export const RECEIVE_CURRENT_USER       = 'USER:RECEIVE_CURRENT_USER'
 export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
+export const RECEIVE_CATEGORIES         = 'FORUM::RECEIVE_CATEGORIES'
 export const RECEIVE_THREADS            = 'FORUM::RECEIVE_THREADS'
 export const RECEIVE_POSTS              = 'FORUM::RECEIVE_POSTS'
 export const RECEIVE_POST               = 'FORUM::RECEIVE_POST'
@@ -197,6 +198,7 @@ export const receiveUsers              = makeActionCreator(RECEIVE_USERS,       
 export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
 export const receivePosts              = makeActionCreator(RECEIVE_POSTS,              'response')
+export const receiveCategories         = makeActionCreator(RECEIVE_CATEGORIES,         'response')
 export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,            'response')
 export const receivePost               = makeActionCreator(RECEIVE_POST,               'response')
 export const receiveUpdates            = makeActionCreator(RECEIVE_UPDATES,            'response')
@@ -394,11 +396,11 @@ export const fetchPost = (postid) =>
     api.fetchPost(postid).then(receivePost)
 
 /**
- * fetchThreads Asynchronous Action Creator
- * @returns receiveThreads() - Action
+ * fetchCategories Asynchronous Action Creator
+ * @returns receiveCategories() - Action
  */
-export const fetchThreads = (limit) =>
-    api.fetchThreads(limit).then(receiveThreads)
+export const fetchCategories = () =>
+    api.fetchCategories().then(receiveCategories)
 
 /**
  * fetchMessageHistory Asynchronous Action Creator
@@ -493,11 +495,18 @@ export const fetchAlbum = (userid) =>
     api.fetchAlbum(userid).then(receiveAlbum)
 
 /**
- * fetchAlbum Asynchronous Action Creator
- * @returns fetchAlbum() - Action
+ * fetchThread Asynchronous Action Creator
+ * @returns receiveThread() - Action
  */
 export const fetchThread = (threadid) =>
     api.fetchThread(threadid).then(receiveThread)
+
+/**
+ * fetchThreads Asynchronous Action Creator
+ * @returns receiveThreads() - Action
+ */
+export const fetchThreads = () =>
+    api.fetchThreads().then(receiveThreads)
 
 export const fetchChat = () =>
     api.fetchChat().then(receiveChat)

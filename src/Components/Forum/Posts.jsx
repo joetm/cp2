@@ -3,7 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchPosts } from '../../actions'
 import Loader from '../Shared/Loader'
 import PostsWrapper from './PostsWrapper'
 
@@ -21,13 +20,4 @@ const Posts = (props) => {
     )
 }
 
-
-const mapStateToProps = (state) => ({
-    isFetching: state.posts.isFetching,
-    posts: state.posts.items,
-})
-
-export default connect(
-    mapStateToProps,
-    { fetchPosts }
-)(Posts)
+export default Posts

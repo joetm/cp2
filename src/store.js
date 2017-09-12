@@ -34,6 +34,7 @@ const store = createStore(
         likes: Reducers.likesReducer,
         messages: Reducers.messagesReducer,
         album: Reducers.albumReducer,
+        categories: Reducers.categoriesReducer,
         threads: Reducers.threadsReducer,
         posts: Reducers.postsReducer,
         followers: Reducers.followersReducer,
