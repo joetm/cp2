@@ -32,6 +32,7 @@ const styles = {
 
 
 class ChatInput extends React.Component {
+  chatinput = null
   navigateToUser = (e) => {
     this.props.history.push(`${routes.PROFILE}/${e.target.id}`)
   }
@@ -41,7 +42,7 @@ class ChatInput extends React.Component {
     }
   }
   submitMsg = () => {
-    let content = this.refs.chatinput.getValue().trim()
+    let content = this.chatinput.getValue().trim()
     if (content !== '') {
       const payload = {
         content,
@@ -52,10 +53,10 @@ class ChatInput extends React.Component {
       // console.log(`send: ${content}`, payload)
       this.props.sendChatMessage(payload)
       // clear the input field
-      this.refs.chatinput.getInputNode().value = ''
+      this.chatinput.getInputNode().value = ''
     }
     // focus the textfield
-    this.refs.chatinput.focus()
+    this.chatinput.focus()
     // scroll the chat to the bottom
     this.props.scrollToBottom()
   }
@@ -67,7 +68,7 @@ class ChatInput extends React.Component {
               hintText={this.props.hintText || "What's on your mind?"}
               floatingLabelText={this.props.floatingLabelText || "Your Message"}
               fullWidth={this.props.fullWidth || true}
-              ref="chatinput"
+              ref={el => { this.chatinput = el }}
               onKeyPress={this.props.sendMsgHandler || this.handleChangeChatMsg}
               style={styles.textField}
               autoFocus

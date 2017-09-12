@@ -89,23 +89,29 @@ class Profile extends React.Component {
                 <Spacer />
 
                 <Switch>
-                    <Route exact path={`${url}${routes.UPDATES}`}
-                        render={props => <Stream isEmbedded={true} />}
+                    <Route exact
+                        path={`${url}${routes.UPDATES}`}
+                        render={() => <Stream isEmbedded={true} />}
                     />
-                    <Route exact path={`${url}${routes.POSTS}`}
-                        render={props => <Posts isEmbedded={true} />}
+                    <Route exact
+                        path={`${url}${routes.POSTS}`}
+                        render={() => <Posts isEmbedded={true} />}
                     />
-                    <Route exact path={`${url}${routes.ALBUM}`}
-                        render={props => <Album isEmbedded={true} />}
+                    <Route exact
+                        path={`${url}${routes.ALBUM}`}
+                        render={() => <Album isEmbedded={true} />}
                     />
-                    <Route exact path={`${url}${routes.VIDEOS}`}
-                        render={props => <Videos isEmbedded={true} />}
+                    <Route exact
+                        path={`${url}${routes.VIDEOS}`}
+                        render={() => <Videos isEmbedded={true} />}
                     />
-                    <Route exact path={`${url}${routes.FOLLOWERS}`}
-                        render={props => <Followers isEmbedded={true} />}
+                    <Route exact
+                        path={`${url}${routes.FOLLOWERS}`}
+                        render={() => <Followers isEmbedded={true} />}
                     />
-                    <Route exact path={`${url}${routes.LIKES}`}
-                        render={props => <Likes isEmbedded={true} />}
+                    <Route exact
+                        path={`${url}${routes.LIKES}`}
+                        render={() => <Likes isEmbedded={true} />}
                     />
                     <Route component={Album} />
                 </Switch>

@@ -9,12 +9,8 @@ import TextField from 'material-ui/TextField'
 import './loginform'
 
 
-class LoginForm extends React.Component {
-  /**
-   * Render the component.
-   */
-  render() {
-    const { onSubmit, onChange, errors, user } = this.props
+const LoginForm = (props) => {
+    const { onSubmit, onChange, errors, user } = props
     return (
       <Card className="container">
           <form method="post" action="/" onSubmit={onSubmit}>
@@ -60,7 +56,6 @@ class LoginForm extends React.Component {
           </form>
       </Card>
     )
-  }
 }
 
 export default LoginForm

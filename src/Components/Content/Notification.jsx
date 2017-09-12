@@ -53,20 +53,16 @@ class Notification extends React.Component {
         let touchTapAction
 
         switch (type) {
-
           case 'like':
           case 'dislike':
-
             text = (
               <p>
                 {user.username} liked your{' '}
                 <a href={`/${streamitem.type}s/${streamitem.id}`}>{streamitem.type}</a>
               </p>
             )
-
             rightIconMenu = null
             touchTapAction = null
-
             break
 
           case 'follower':

@@ -111,10 +111,10 @@ class MessageHistory extends React.Component {
           messages.map((item, i) => (
             <div
             key={`msg_${i}`}
-            style={{clear:'both'}}
+            style={{clear: 'both'}}
             >
               <Chip
-              style={{...styles.chip, ...{float: this.props.currentUserid === item.userid ? 'right': 'left'}}}
+              style={{...styles.chip, ...{float: this.props.currentUserid === item.userid ? 'right' : 'left'}}}
               >
                 <Avatar src={item.avatar} />
                 { parser.toReact(item.content) }

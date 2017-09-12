@@ -114,7 +114,7 @@ class Chat extends React.Component {
         <Loader isLoading={!chat.length} />
 
         <List
-          ref={el => this.chatContainer = findDOMNode(el)}
+          ref={el => { this.chatContainer = findDOMNode(el) }}
           style={{
             ...styles.chatList,
             ...this.props.style,
@@ -155,7 +155,6 @@ class Chat extends React.Component {
             hintText="What's on your mind?"
             floatingLabelText="Your Message"
             fullWidth={true}
-            ref="chatinput"
             scrollToBottom={jumpToBottom}
             onKeyPress={this.handleChangeChatMsg}
         />

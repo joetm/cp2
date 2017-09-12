@@ -3,14 +3,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import MenuItem from 'material-ui/MenuItem'
-import TextField from 'material-ui/TextField'
 import DatePicker from 'material-ui/DatePicker'
 import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
 
 import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
-import Alert from '../Shared/Alert'
 
 
 class GeneralSettings extends React.Component {
@@ -52,7 +50,7 @@ class GeneralSettings extends React.Component {
     }
     render() {
       return (
-        <div style={{textAlign: 'left'}} ref="pageContent">
+        <div style={{textAlign: 'left'}} ref={el => { this.pageContent = el }}>
 
             <SettingsSeparator text="Personal data" />
 

@@ -32,7 +32,6 @@ import jwtDecode from 'jwt-decode'
  **/
 export function chatReducer(chatState = initialState.chat, action) {
     switch (action.type) {
-
         // fill the chat state with the current user details
         case ACTIONS.RECEIVE_CURRENT_USER:
             const currentUser = {
@@ -41,7 +40,6 @@ export function chatReducer(chatState = initialState.chat, action) {
                 avatar: action.response.avatar,
             }
             return {...chatState, user: currentUser}
-
         // receiving all chat messages
         case ACTIONS.RECEIVE_CHAT:
             return {...chatState, isFetching: false, items: [...action.response]}
@@ -57,11 +55,6 @@ export function chatReducer(chatState = initialState.chat, action) {
             return {...chatState, items: copyitems}
 
         // TODO: receive a chat message after sending by others
-
-
-
-
-
 
         default:
             return chatState
@@ -244,11 +237,11 @@ export function likesReducer(likesState = initialState.likes, action) {
             return {...likesState, isFetching: false, items: [...action.response]}
 
         // TODO
-        // case ACTIONS.LIKE:
-        //     return {...likesState, likes: reviewState.likes + increment}
-        // // TODO
-        // case ACTIONS.DISLIKE:
-        //     return {...likesState, dislikes: reviewState.dislikes + increment}
+        case ACTIONS.LIKE:
+            return {...likesState, likes: likesState.likes + increment}
+        // TODO
+        case ACTIONS.DISLIKE:
+            return {...likesState, dislikes: likesState.dislikes + increment}
 
         default:
             return likesState
@@ -480,14 +473,12 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
  **/
 export function cpAppReducer(appState = initialState.appState, action) {
     switch (action.type) {
-
         case ACTIONS.OPEN_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: true}
         case ACTIONS.CLOSE_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: false}
         case ACTIONS.TOGGLE_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: !appState.sidebarSearchOpen}
-
         case ACTIONS.OPEN_SIDEBAR:
             return {...appState, sidebarOpen: true}
         case ACTIONS.CLOSE_SIDEBAR:

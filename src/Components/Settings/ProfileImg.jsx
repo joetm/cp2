@@ -9,7 +9,7 @@ import 'react-dropzone-component/styles/filepicker.css'
 // dropzone component
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
-import Snackbar from 'material-ui/Snackbar'
+// import Snackbar from 'material-ui/Snackbar'
 
 import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'

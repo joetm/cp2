@@ -104,9 +104,8 @@ const createNewItem = (field, payload) =>
       // console.log('response', response)
       if (response.status === 201) {
         return response.json()
-      } else {
-        throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
       }
+      throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
     })
 
 const patchItem = (key, itemid = null, payload) => {
@@ -238,6 +237,6 @@ export const find = (key, field, returnEmpty = false) => {
     return data
   })
   .catch(error => {
-      throw new Error(`Not found: [error]`)
+      throw new Error(`Not found: [${error}]`)
   })
 }

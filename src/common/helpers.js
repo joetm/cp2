@@ -6,6 +6,7 @@ export function validEmail(email) {
 
 export function jumpToBottom(el) {
     if (el !== undefined) {
+        // TODO - Assignment to property of function parameter 'el'
         el.scrollTop = el.scrollHeight
     }
 }

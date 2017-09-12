@@ -68,9 +68,6 @@ class ReviewCard extends React.Component {
         this.setState({selectedRating: null})
         // TODO - selectedRating is not reset!
         console.log('selected:', this.state.selectedRating)
-
-
-
     }
     resetSteps = () => {
         // reset steps

@@ -2,9 +2,8 @@
 
 import React from 'react'
 
-import { removeDuplicatesFromArray } from '../../common/helpers'
+// import { removeDuplicatesFromArray } from '../../common/helpers'
 import Tag from './Tag'
-import cuid from 'cuid'
 
 
 const tagWrapperStyle = {

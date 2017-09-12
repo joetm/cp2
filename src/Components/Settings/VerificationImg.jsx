@@ -6,7 +6,7 @@ import '../External/dropzone/dist/dropzone.css'
 import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
-import Snackbar from 'material-ui/Snackbar'
+// import Snackbar from 'material-ui/Snackbar'
 import Checkbox from 'material-ui/Checkbox'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 

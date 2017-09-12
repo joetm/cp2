@@ -1,7 +1,6 @@
 /** @flow */
 
 import React from 'react'
-import Chip from 'material-ui/Chip'
 import parser from 'bbcode-to-react'
 import ClockIcon from 'material-ui/svg-icons/action/schedule'
 
@@ -42,7 +41,7 @@ class PostTpl extends React.Component {
         this.props.dislike()
     }
     render() {
-        const { title, content, isEmbedded, user, tags, timestamp, likes, dislikes } = props
+        const { title, content, isEmbedded, user, tags, timestamp, likes, dislikes } = this.props
         const postedOn = humanReadableDate(timestamp)
 
         // TODO

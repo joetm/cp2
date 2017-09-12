@@ -60,7 +60,7 @@ class AccountSettings extends React.Component {
       if (!this.state.usernamesMatching || !newUsername.length) {
         return
       }
-      const isUnique = this.props.findUser(newUsername).then(
+      this.props.findUser(newUsername).then(
         res => {
           if (res.response !== false) {
             // a user with this name was found
@@ -73,6 +73,8 @@ class AccountSettings extends React.Component {
           this.closeDialogs()
           // show alert
           this.setState({alertIsOpen: true})
+          // expected return
+          return true
         }
       )
     }
@@ -166,7 +168,7 @@ class AccountSettings extends React.Component {
      * Render the component.
      */
     render() {
-      const { email, username } = this.props
+      const { email } = this.props
       const actions = [
         <FlatButton
           label="Cancel"
@@ -208,7 +210,7 @@ class AccountSettings extends React.Component {
               style={{display: this.state.fieldsLocked ? 'inline-block' : 'none'}}
               label="OK, let me change the settings!"
               onTouchTap={this.unlockAccountSettings}
-              ref={(el) => {this.unlockButton = el}}
+              ref={el => { this.unlockButton = el }}
             />
 
             <SettingsSeparator text="Change Username" />
@@ -243,7 +245,7 @@ class AccountSettings extends React.Component {
                   label="Update Email"
                   primary={true}
                   disabled={this.state.fieldsLocked}
-                  onTouchTap={() => {/* TODO */}}
+                  onTouchTap={() => { /* TODO */ }}
               />
             </p>
 
@@ -275,7 +277,7 @@ class AccountSettings extends React.Component {
                   label="Change password"
                   primary={true}
                   disabled={this.state.fieldsLocked}
-                  onTouchTap={() => {/* TODO */}}
+                  onTouchTap={() => { /* TODO */ }}
               />
             </p>
 
@@ -338,7 +340,7 @@ class AccountSettings extends React.Component {
               <div>
                 <TextField
                   floatingLabelText="Enter new username"
-                  ref={el => {this.usernamePrimary = el}}
+                  ref={el => { this.usernamePrimary = el }}
                   onChange={this.handleChangeUsername}
                   errorText={this.state.usernameError}
                 />
@@ -347,7 +349,7 @@ class AccountSettings extends React.Component {
               <div>
                 <TextField
                   floatingLabelText="Confirm new username"
-                  ref={el => {this.usernameConfirmation = el}}
+                  ref={el => { this.usernameConfirmation = el }}
                   onChange={this.handleChangeUsername}
                   errorText={this.state.usernameError}
                 />

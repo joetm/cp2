@@ -83,9 +83,6 @@ class ProfileStats extends React.Component {
     followUser = (e) => {
         e.stopPropagation()
         console.log('follow the user {TODO}')
-
-
-
     }
     handleTabChange = (tab) => {
         this.props.history.push(tab.props.route)

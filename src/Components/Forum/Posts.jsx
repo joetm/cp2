@@ -2,12 +2,10 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { List } from 'material-ui/List'
 
 import { fetchPosts } from '../../actions'
 import Loader from '../Shared/Loader'
 import PostsWrapper from './PostsWrapper'
-import Post from './Post'
 
 
 const Posts = (props) => {

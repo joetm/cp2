@@ -10,11 +10,6 @@ import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 
 
-const styles = {
-
-}
-
-
 class Upload extends React.Component {
     constructor() {
         super()
@@ -30,7 +25,7 @@ class Upload extends React.Component {
         console.log('set height', window.innerHeight - 145)
         this.setState({dropzoneHeight: window.innerHeight - 145})
     }
-    onDrop(acceptedFiles, rejectedFiles) {
+    onDrop() { // acceptedFiles, rejectedFiles
         // do stuff with files...
     }
     render() {

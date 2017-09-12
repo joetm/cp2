@@ -87,6 +87,12 @@ const styles = {
 
 
 class VideoPlayer extends Component {
+  // refs
+  playerWrapper = null
+  speedSelector = null
+  volumeSlider = null
+  seekSlider = null
+  // state
   state = {
     url: null,
     playing: false,
@@ -100,7 +106,7 @@ class VideoPlayer extends Component {
     playerHeight: 480,
   }
   resizePlayer = () => {
-    const playerHeight = Math.round((this.refs.playerWrapper.offsetWidth / 16) * 9)
+    const playerHeight = Math.round((this.playerWrapper.offsetWidth / 16) * 9)
     // TODO
     // if the player becomes taller than the window, resize the width
     // if (playerHeight > window.innerHeight) {
@@ -128,7 +134,7 @@ class VideoPlayer extends Component {
     this.setState({ url: null, playing: false })
   }
   setVolume = () => {
-    this.setState({ volume: parseFloat(this.refs.volumeSlider.state.value) })
+    this.setState({ volume: parseFloat(this.volumeSlider.state.value) })
   }
   setPlaybackRate = (e, key, value) => {
     const playbackRate = parseFloat(value)
@@ -144,7 +150,7 @@ class VideoPlayer extends Component {
   }
   onSeekMouseUp = () => {
     this.setState({ seeking: false })
-    this.player.seekTo(parseFloat(this.refs.seekSlider.state.value))
+    this.player.seekTo(parseFloat(this.seekSlider.state.value))
   }
   onReady = () => {
     console.log('onReady')
@@ -189,7 +195,7 @@ class VideoPlayer extends Component {
     } = this.state
     return (
       <div>
-          <div ref="playerWrapper"
+          <div ref={el => { this.playerWrapper = el }}
             style={{ ...styles.playerWrapper,
               height: playerHeight,
               width: playerWidth,
@@ -269,7 +275,7 @@ class VideoPlayer extends Component {
                           value={playbackRate}
                           style={styles.speedSelector}
                           onChange={this.setPlaybackRate}
-                          ref="speedSelector"
+                          ref={el => { this.speedSelector = el }}
                       >
                           <MenuItem value={1} primaryText="x1" />
                           <MenuItem value={1.5} primaryText="x1.5" />
@@ -277,7 +283,7 @@ class VideoPlayer extends Component {
                       </SelectField>
 
                       <Slider
-                        ref="volumeSlider"
+                        ref={el => { this.volumeSlider = el }}
                         min={0}
                         max={1}
                         step={0.01}
@@ -292,7 +298,7 @@ class VideoPlayer extends Component {
 
             <div style={styles.sliders}>
                 <Slider
-                    ref="seekSlider"
+                    ref={el => { this.seekSlider = el }}
                     min={0}
                     max={1}
                     step={0.01}
