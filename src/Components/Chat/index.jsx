@@ -7,7 +7,6 @@ import Divider from 'material-ui/Divider'
 import { List, ListItem } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
-import IconButton from 'material-ui/IconButton'
 import { findDOMNode } from 'react-dom'
 
 import { sendChatMessage, fetchChat } from '../../actions'
@@ -17,6 +16,7 @@ import routes from '../../routes'
 import ChatInput from './ChatInput'
 import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
+import BoxHeader from '../Shared/BoxHeader'
 
 
 const _OFFSET = 260
@@ -94,20 +94,16 @@ class Chat extends React.Component {
 
         {
           !isEmbedded ?
-            ( <h2>Chat</h2> )
+            <h2>Chat</h2>
             :
             (
-                <div style={styles.headerBar}>
-                  Chat
-                  <IconButton
-                    tooltip="Expand"
-                    style={styles.iconExpandContainer}
-                    iconStyle={styles.iconExpand}
-                    onTouchTap={() => history.push(`${routes.CHAT}`)}
-                  >
-                    <FullScreenIcon />
-                  </IconButton>
-                </div>
+                <BoxHeader
+                    headline="Chat"
+                    icon={<FullScreenIcon />}
+                    iconTooltip="Expand"
+                    iconUrl={routes.CHAT}
+                    history={history}
+                />
             )
         }
 

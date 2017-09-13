@@ -42,9 +42,9 @@ class Home extends React.Component {
         <GridWrap>
 
             <CellWrapper full={6} tablet={8} phone={4}>
-                <Box updates={this.props.updates} />
-                <Box updates={this.props.favorites} />
-                <Box updates={this.props.likes} />
+                <Box headline="Updates" updates={this.props.updates} />
+                <Box headline="Favorites" updates={this.props.favorites} />
+                <Box headline="Likes" updates={this.props.likes} />
             </CellWrapper>
 
             <CellWrapper full={6} tablet={8} phone={4}>
