@@ -112,20 +112,13 @@ const patchItem = (key, itemid = null, payload) => {
     const baseRoute = prefixSlash(key)
     const itemRoute = itemid ? `/${itemid}` : ''
     const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
-    console.log('PATCH', baseRoute, itemid, payload, url)
+    // console.log('PATCH', baseRoute, itemid, payload, url)
     return fetch(url, {
       method: 'PATCH',
       headers: JSON_HEADER,
       body: JSON.stringify(payload),
     })
-    .then(response => {
-      console.log('response', response)
-      // if (response.status === 201) {
-        return response.json()
-      // } else {
-      //   throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
-      // }
-    })
+    .then(response => response.json())
 }
 
 const incrementItem = (key, itemid = null, field, increment = 1) => {
@@ -133,11 +126,15 @@ const incrementItem = (key, itemid = null, field, increment = 1) => {
   // 2 requests -> this is to be done on the server
   const baseRoute = prefixSlash(key)
   const url = `${jsonAPI.ENDPOINT}${baseRoute}/${itemid}`
+  // console.log('fetch item', key, itemid, field, increment, url)
   return fetch(url, {
     headers: JSON_HEADER
   })
   .then(response => response.json())
-  .then(item => patchItem(key, itemid, {[field]: item[field] + increment}))
+  .then(item => {
+    // console.log('patch item', key, itemid, field, item[field])
+    return patchItem(key, itemid, {[field]: item[field] + increment})
+  })
 }
 
 // -------------------------------------------------------------------
@@ -230,7 +227,7 @@ export const find = (key, field, returnEmpty = false) => {
   .then(response => response.json())
   .then(data => {
     const found = !!data.length
-    console.log('search result', data, 'found', found)
+    // console.log('search result', data, 'found', found)
     if (returnEmpty) {
       return found
     }

@@ -10,7 +10,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import './style.scss'
 // --
-import { fetchReviewItem, setFetchingStatus, reviewApprove, reviewDisapprove, approve, reject, like, dislike } from '../../actions'
+import {
+    fetchReviewItem,
+    setFetchingStatus,
+    reviewApprove,
+    reviewDisapprove,
+    approve,
+    reject,
+    recordLike,
+    recordDislike
+} from '../../actions'
 import { grey } from '../../common/colors'
 import { humanRelativeDate } from '../../common/helpers'
 // --
@@ -123,14 +132,14 @@ class Review extends React.Component {
     like = () => {
         if (this.state.clickedLike) {
             // undo a previous dislike
-            this.props.like(this.props.reviewitem.id, -1)
+            this.props.recordLike(this.props.reviewitem.type, this.props.reviewitem.id)
             this.setState({ ...initialLikeState })
             return
         }
-        this.props.like(this.props.reviewitem.id)
+        this.props.recordLike(this.props.reviewitem.type, this.props.reviewitem.id)
         if (this.state.clickedDislike) {
             // decrease to undo a previous dislike
-            this.props.dislike(this.props.reviewitem.id, -1)
+            this.props.recordDislike(this.props.reviewitem.type, this.props.reviewitem.id)
         }
         this.setState({
             clickedLike: true,
@@ -144,14 +153,14 @@ class Review extends React.Component {
     dislike = () => {
         if (this.state.clickedDislike) {
             // undo a previous dislike
-            this.props.dislike(this.props.reviewitem.id, -1)
+            this.props.recordDislike(this.props.reviewitem.type, this.props.reviewitem.id)
             this.setState({...initialLikeState})
             return
         }
-        this.props.dislike(this.props.reviewitem.id)
+        this.props.recordDislike(this.props.reviewitem.type, this.props.reviewitem.id)
         if (this.state.clickedLike) {
             // decrease to undo a previous like
-            this.props.like(this.props.reviewitem.id, -1)
+            this.props.recordLike(this.props.reviewitem.type, this.props.reviewitem.id)
         }
         this.setState({
             clickedDislike: true,
@@ -256,5 +265,14 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchReviewItem, reviewApprove, reviewDisapprove, approve, reject, like, dislike, setFetchingStatus }
+    {
+        fetchReviewItem,
+        reviewApprove,
+        reviewDisapprove,
+        approve,
+        reject,
+        recordLike,
+        recordDislike,
+        setFetchingStatus
+    }
 )(Review)

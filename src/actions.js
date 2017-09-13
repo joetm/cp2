@@ -170,8 +170,8 @@ export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 // export const openStreamSidebar     = makeActionCreator(OPEN_STREAM_SIDEBAR)
 // export const closeStreamSidebar    = makeActionCreator(CLOSE_STREAM_SIDEBAR)
-export const like                  = makeActionCreator(LIKE,                'itemid', 'increment')
-export const dislike               = makeActionCreator(DISLIKE,             'itemid', 'increment')
+// export const like                  = makeActionCreator(LIKE,                'itemid')
+// export const dislike               = makeActionCreator(DISLIKE,             'itemid')
 export const undoLike              = makeActionCreator(UNDO_LIKE,           'itemid')
 export const undoDislike           = makeActionCreator(UNDO_DISLIKE,        'itemid')
 export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,      'itemid')
@@ -531,14 +531,14 @@ export const sendChatMessage = (payload) => { // => (dispatch) => {
  * @returns recordLike() - Action
  */
 export const recordLike = (key, id) =>
-    api.recordLike(key, id).then(receiveLike)
+    api.recordLike(`${key}s`, id).then(receiveLike)
 
 /**
  * recordDislike Asynchronous Action Creator
  * @returns recordDislike() - Action
  */
 export const recordDislike = (key, id) =>
-    api.recordDislike(key, id).then(receiveDislike)
+    api.recordDislike(`${key}s`, id).then(receiveDislike)
 
 /**
  * recordApproval Asynchronous Action Creator

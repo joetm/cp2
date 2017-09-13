@@ -104,8 +104,15 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
             return {...reviewState, approvals: reviewState.approvals + 1}
         case ACTIONS.REVIEW_DISAPPROVE:
             return {...reviewState, disapprovals: reviewState.disapprovals + 1}
+
+        case ACTIONS.RECEIVE_LIKE:
+            return {...reviewState, likes: action.response.likes}
+        case ACTIONS.RECEIVE_DISLIKE:
+            return {...reviewState, dislikes: action.response.dislikes}
+
         case ACTIONS.RECEIVE_REVIEWITEM:
             return {...action.response}
+
         default:
             return reviewState
     }
@@ -237,11 +244,11 @@ export function likesReducer(likesState = initialState.likes, action) {
             return {...likesState, isFetching: false, items: [...action.response]}
 
         // TODO
-        case ACTIONS.LIKE:
-            return {...likesState, likes: likesState.likes + increment}
+        // case ACTIONS.RECEIVE_LIKE:
+        //     return {...likesState, likes: likesState.likes + increment}
         // TODO
-        case ACTIONS.DISLIKE:
-            return {...likesState, dislikes: likesState.dislikes + increment}
+        // case ACTIONS.RECEIVE_DISLIKE:
+        //    return {...likesState, dislikes: likesState.dislikes + increment}
 
         default:
             return likesState
