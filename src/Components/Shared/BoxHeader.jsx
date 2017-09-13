@@ -3,7 +3,7 @@
 import React from 'react'
 import IconButton from 'material-ui/IconButton'
 
-import { gray, lightGray } from '../../common/colors'
+import { gray, darkGray, lightGray } from '../../common/colors'
 
 
 const styles = {
@@ -12,7 +12,7 @@ const styles = {
     lineHeight: '40px',
     fontWeight: 400,
     backgroundColor: lightGray,
-    color: gray,
+    color: darkGray,
     padding: '10px',
   },
   iconExpandContainer: {

@@ -14,6 +14,7 @@ import GridWrap from '../Shared/GridWrap'
 // import Update from '../Content/Update'
 import Box from './Box'
 import { boxStyle } from './Box'
+import routes from '../../routes'
 
 
 // const styles = {
@@ -42,9 +43,9 @@ class Home extends React.Component {
         <GridWrap>
 
             <CellWrapper full={6} tablet={8} phone={4}>
-                <Box headline="Updates" updates={this.props.updates} />
-                <Box headline="Favorites" updates={this.props.favorites} />
-                <Box headline="Likes" updates={this.props.likes} />
+                <Box headline="New Updates" footerLink={routes.UPDATES} items={this.props.updates} />
+                <Box headline="Your Favorites" footerLink={routes.FAVORITES} items={this.props.favorites} />
+                <Box headline="Your Likes" footerLink={routes.LIKES} items={this.props.likes} />
             </CellWrapper>
 
             <CellWrapper full={6} tablet={8} phone={4}>

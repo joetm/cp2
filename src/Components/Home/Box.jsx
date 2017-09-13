@@ -4,29 +4,40 @@ import React from 'react'
 import Paper from 'material-ui/Paper'
 import Notification from '../Content/Notification'
 import { List } from 'material-ui/List'
+import { Link } from 'react-router-dom'
 
 import Loader from '../Shared/Loader'
 import BoxHeader from '../Shared/BoxHeader'
+import { gray, lightGray } from '../../common/colors'
 
 
 export const boxStyle = {
     display: 'block',
     marginBottom: '2em',
 }
+const footerStyle = {
+    height: '30px',
+    lineHeight: '30px',
+    color: gray,
+    textAlign: 'center',
+    backgroundColor: lightGray,
+    cursor: 'pointer',
+}
 
 
 const Box = (props) => {
-    const { updates, headline } = props
+    const { items, headline, footerLink } = props
     return (
         <Paper style={boxStyle} zDepth={1}>
-            <Loader isLoading={!updates.length} />
+        <section>
+            <Loader isLoading={!items.length} />
             <BoxHeader
                 headline={headline}
                 icon={null}
             />
             <List>
                 {
-                  updates.map((item) => (
+                  items.map((item) => (
                     <Notification
                         key={item.id}
                         {...item}
@@ -35,6 +46,13 @@ const Box = (props) => {
                   ))
                 }
             </List>
+            {
+                footerLink &&
+                <Link to={footerLink}>
+                    <footer style={footerStyle}>...more...</footer>
+                </Link>
+            }
+        </section>
         </Paper>
     )
 }
