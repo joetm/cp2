@@ -10,6 +10,8 @@ const JSON_HEADER = {
   'Content-Type': 'application/json',
 }
 
+const throwError = (msg) => throw new Error(msg)
+
 const prefixSlash = (key) => {
  return key.substring(0, 1) !== '/' ? `/${key}` : key
 }
@@ -20,15 +22,21 @@ const prefixSlash = (key) => {
 
 const createFetchField = (field) => (limit = null) => {
     return jsonAPI.fetchFromAPI(field, null, limit)
-        .then(response => response)
+        .then(response => response.json())
+        .then(data => data)
+        .catch(error => throwError(error.message || "Something went wrong"))
 }
 const createFetchAndSelectSpecificItem = (field) => (selection = null) => {
     return jsonAPI.fetchFromAPI(field, selection)
-        .then(response => response)
+        .then(response => response.json())
+        .then(data => data)
+        .catch(error => throwError(error.message || "Something went wrong"))
 }
 const createFetchAndSelectFirstItem = (field) => () => {
     return jsonAPI.fetchFromAPI(field, null, 1)
-        .then(response => response)
+        .then(response => response.json())
+        .then(data => data)
+        .catch(error => throwError(error.message || "Something went wrong"))
 }
 
 // -------------------------------------------------------------------
@@ -74,7 +82,9 @@ export const fetchReviewItem = createFetchAndSelectFirstItem('reviewitems')
 // TODO
 export const fetchContactRequests = (limit = null) =>
     jsonAPI.fetchFromProtectedAPI('mod', 'contactRequests', limit)
-        .then(response => response)
+        .then(response => response.json())
+        .then(data => data)
+        .catch(error => throwError(error.message || "Something went wrong"))
 
 // -------------------------------------------------------------------
 
@@ -89,8 +99,10 @@ export const fetchMessageHistory = (userid) =>
                     messages: [],
                 }
             }
-            return response
+            return response.json()
         })
+        .then(data => data)
+        .catch(error => throwError(error.message || "Something went wrong"))
 
 // -------------------------------------------------------------------
 
@@ -100,13 +112,18 @@ const createNewItem = (field, payload) =>
       headers: JSON_HEADER,
       body: JSON.stringify(payload),
     })
-    .then(response => {
-      // console.log('response', response)
-      if (response.status === 201) {
-        return response.json()
+    .then(
+      response => {
+        // console.log('response', response)
+        if (response.status === 201) {
+          return response.json()
+        }
+        throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
       }
-      throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
-    })
+    ).then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 
 const patchItem = (key, itemid = null, payload) => {
     const baseRoute = prefixSlash(key)
@@ -119,6 +136,10 @@ const patchItem = (key, itemid = null, payload) => {
       body: JSON.stringify(payload),
     })
     .then(response => response.json())
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 const incrementItem = (key, itemid = null, field, increment = 1) => {
@@ -132,9 +153,10 @@ const incrementItem = (key, itemid = null, field, increment = 1) => {
   })
   .then(response => response.json())
   .then(item => {
-    // console.log('patch item', key, itemid, field, item[field])
-    return patchItem(key, itemid, {[field]: item[field] + increment})
+      // console.log('patch item', key, itemid, field, item[field])
+      return patchItem(key, itemid, {[field]: item[field] + increment})
   })
+  .catch(error => throwError(error.message || "Something went wrong"))
 }
 
 // -------------------------------------------------------------------
@@ -149,17 +171,8 @@ export const sendChatMessage = (payload) => {
       timestamp: +new Date(),
     }
     return createNewItem(routes.CHAT, chatMsg)
-      .then(data => {
-        // console.log('data', data)
-        // TODO
-        // fake expansion of user data:
-        // return {...data, user: {
-        //   id: payload.userid,
-        //   username: payload.username,
-        //   avatar: payload.avatar,
-        // }}
-        return data
-      })
+            .then(data => data)
+            .catch(error => throwError(error.message || 'Something went wrong'))
 }
 
 // -------------------------------------------------------------------
@@ -177,14 +190,22 @@ export const recordCrowdDecision = (vote, id, rating = null) => {
   const payload = { id, rating }
   // TODO: REVIEW_APPROVE / REVIEW_DISAPPROVE
   return jsonAPI.sendDataToAPI(payload)
-    .then(response => response)
+    .then(response => response.json())
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 // TODO
 export const markRead = (what, id) => {
   console.log('markRead', what, id)
   return jsonAPI.markReadRequest(what, id)
-    .then(response => response)
+    .then(response => response.json())
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 // TODO
@@ -198,7 +219,10 @@ export const markRead = (what, id) => {
 const makeAjaxCallCreator = (url) => () =>
   fetch(url)
     .then(response => response.json())
-    .then(data => data)
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 
 export const fetchCountries = makeAjaxCallCreator('/data/countries.json')
 export const fetchStates = makeAjaxCallCreator('/data/states.json')
@@ -216,7 +240,8 @@ export const removeUserField = (field) =>
 
 export const deleteItems = (items) =>
   jsonAPI.deleteItems(items)
-    .then(response => response)
+    .then(response => response.json())
+    .catch(error => throwError(error.message || 'Something went wrong'))
 
 // -------------------------------------------------------------------
 
@@ -233,7 +258,5 @@ export const find = (key, field, returnEmpty = false) => {
     }
     return data
   })
-  .catch(error => {
-      throw new Error(`Not found: [${error}]`)
-  })
+  .catch(error => throwError(error.message || `Not found: [${error}]`))
 }
