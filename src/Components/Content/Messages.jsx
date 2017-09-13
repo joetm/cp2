@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchMessages } from '../../actions'
 import StreamTpl from './StreamTpl'
-import { LISTED } from '../../viewModes'
+import { LISTED } from '../../common/viewModes'
 
 
 const Messages = (props) => (

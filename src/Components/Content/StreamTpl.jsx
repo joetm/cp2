@@ -16,7 +16,7 @@ import Notification from './Notification'
 import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
 import Spacer from '../Shared/Spacer'
-import { TILED } from '../../viewModes'
+import { TILED } from '../../common/viewModes'
 import UpdateWrap from '../Shared/UpdateWrap'
 import ListWrap from '../Shared/ListWrap'
 

@@ -10,72 +10,143 @@ const JSON_HEADER = {
   'Content-Type': 'application/json',
 }
 
-const throwError = (msg) => throw new Error(msg)
+const throwError = (msg) => { throw new Error(msg) }
 
 const prefixSlash = (key) => {
  return key.substring(0, 1) !== '/' ? `/${key}` : key
 }
 
 // -------------------------------------------------------------------
-// DEV: ajax fetch data from mock json API + dispatch receive methods
+// API functions
 // -------------------------------------------------------------------
 
-const createFetchField = (field) => (limit = null) => {
-    return jsonAPI.fetchFromAPI(field, null, limit)
-        .then(response => response.json())
-        .then(data => data)
-        .catch(error => throwError(error.message || "Something went wrong"))
+const createNewItem = (field, payload) =>
+    fetch(`${jsonAPI.ENDPOINT}${field}`, {
+      method: 'POST',
+      headers: JSON_HEADER,
+      body: JSON.stringify(payload),
+    })
+    .then(
+      response => {
+        // console.log('response', response)
+        if (response.status === 201) {
+          return response.json()
+        }
+        throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
+      }
+    ).then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
+
+const patchItem = (key, itemid = null, payload) => {
+    const baseRoute = prefixSlash(key)
+    const itemRoute = itemid ? `/${itemid}` : ''
+    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
+    // console.log('fetchItem', baseRoute, itemid, payload, url)
+    return fetch(url, {
+      method: 'PATCH',
+      headers: JSON_HEADER,
+      body: JSON.stringify(payload),
+    })
+    .then(response => response.json())
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
-const createFetchAndSelectSpecificItem = (field) => (selection = null) => {
-    return jsonAPI.fetchFromAPI(field, selection)
-        .then(response => response.json())
-        .then(data => data)
-        .catch(error => throwError(error.message || "Something went wrong"))
+
+const fetchItems = (key, limit) => {
+    const baseRoute = prefixSlash(key)
+    let url = `${jsonAPI.ENDPOINT}${baseRoute}`
+    if (limit) {
+        url = `${url}?_start=1&_limit=${limit}`
+    }
+    // console.log('fetchItems', baseRoute, itemid, url)
+    return fetch(url, { headers: JSON_HEADER })
+      .then(response => response.json())
+      .then(data => data)
+      .catch(error => throwError(error.message || 'Something went wrong'))
 }
-const createFetchAndSelectFirstItem = (field) => () => {
-    return jsonAPI.fetchFromAPI(field, null, 1)
-        .then(response => response.json())
-        .then(data => data)
-        .catch(error => throwError(error.message || "Something went wrong"))
+
+const fetchItem = (key, itemid) => {
+    const baseRoute = prefixSlash(key)
+    const itemRoute = `/${itemid}`
+    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
+    // console.log('PATCH', baseRoute, itemid, url)
+    return fetch(url, { headers: JSON_HEADER })
+      .then(response => response.json())
+      .then(data => data)
+      .catch(error => throwError(error.message || 'Something went wrong'))
+}
+
+const incrementItem = (key, itemid = null, field, increment = 1) => {
+  // TODO
+  // 2 requests -> this is to be done on the server
+  const baseRoute = prefixSlash(key)
+  const url = `${jsonAPI.ENDPOINT}${baseRoute}/${itemid}`
+  // console.log('fetch item', key, itemid, field, increment, url)
+  return fetch(url, {
+    headers: JSON_HEADER
+  })
+  .then(response => response.json())
+  .then(item => {
+      // console.log('patch item', key, itemid, field, item[field])
+      return patchItem(key, itemid, {[field]: item[field] + increment})
+  })
+  .catch(error => throwError(error.message || "Something went wrong"))
 }
 
 // -------------------------------------------------------------------
+// creators
+// -------------------------------------------------------------------
 
-export const fetchCurrentUser = createFetchField('currentUser')
-export const fetchUsers = createFetchField('users')
-export const fetchChat = createFetchField('chat')
-export const fetchPosts = createFetchField('posts')
-export const fetchCategories = createFetchField('categories')
-export const fetchThreads = createFetchField('threads')
-export const fetchAlbum = createFetchField('images')
-export const fetchUpdates = createFetchField('streamitems')
-export const fetchPictures = createFetchField('images')
-export const fetchFollowers = createFetchField('followers')
-export const fetchVideos = createFetchField('videos')
-export const fetchStream = createFetchField('streamitems')
-export const fetchMessages = createFetchField('messages')
-export const fetchLikes = createFetchField('likes')
-export const fetchFavorites = createFetchField('favorites')
+const selectItemsCreator = (field) => (limit = null) =>
+    fetchItems(field, limit)
+
+const selectFirstItemCreator = (field) => () =>
+    fetchItems(field, 1)
+
+const selectSpecificItemCreator = (field) => (selection = null) =>
+    fetchItem(field, selection)
+
+// -------------------------------------------------------------------
+
+export const fetchCurrentUser = selectItemsCreator('currentUser')
+export const fetchUsers = selectItemsCreator('users')
+export const fetchChat = selectItemsCreator('chat')
+export const fetchPosts = selectItemsCreator('posts')
+export const fetchCategories = selectItemsCreator('categories')
+export const fetchThreads = selectItemsCreator('threads')
+export const fetchAlbum = selectItemsCreator('images')
+export const fetchUpdates = selectItemsCreator('streamitems')
+export const fetchPictures = selectItemsCreator('images')
+export const fetchFollowers = selectItemsCreator('followers')
+export const fetchVideos = selectItemsCreator('videos')
+export const fetchStream = selectItemsCreator('streamitems')
+export const fetchMessages = selectItemsCreator('messages')
+export const fetchLikes = selectItemsCreator('likes')
+export const fetchFavorites = selectItemsCreator('favorites')
 // alias
 export const fetchImages = fetchPictures
 
 // -------------------------------------------------------------------
 
-export const fetchUser = createFetchAndSelectSpecificItem('users')
-export const fetchPicture = createFetchAndSelectSpecificItem('images')
+export const fetchUser = selectSpecificItemCreator('users')
+export const fetchPicture = selectSpecificItemCreator('images')
 export const fetchImage  = fetchPicture
-export const fetchPost = createFetchAndSelectSpecificItem('posts')
-export const fetchThread = createFetchAndSelectSpecificItem('threads')
-export const fetchVideo = createFetchAndSelectSpecificItem('videos')
-export const fetchNotification = createFetchAndSelectSpecificItem('messages')
+export const fetchPost = selectSpecificItemCreator('posts')
+export const fetchThread = selectSpecificItemCreator('threads')
+export const fetchVideo = selectSpecificItemCreator('videos')
+export const fetchNotification = selectSpecificItemCreator('messages')
 
 // -------------------------------------------------------------------
-// this one is different - it selects images by the userid
-export const fetchUserVerificationImages = createFetchAndSelectSpecificItem('verifications')
+// TODO - this one is different - it selects images by the userid
+export const fetchUserVerificationImages = selectSpecificItemCreator('verifications')
 
 // -------------------------------------------------------------------
 
-export const fetchReviewItem = createFetchAndSelectFirstItem('reviewitems')
+export const fetchReviewItem = selectFirstItemCreator('reviewitems')
 
 // -------------------------------------------------------------------
 
@@ -103,61 +174,6 @@ export const fetchMessageHistory = (userid) =>
         })
         .then(data => data)
         .catch(error => throwError(error.message || "Something went wrong"))
-
-// -------------------------------------------------------------------
-
-const createNewItem = (field, payload) =>
-    fetch(`${jsonAPI.ENDPOINT}${field}`, {
-      method: 'POST',
-      headers: JSON_HEADER,
-      body: JSON.stringify(payload),
-    })
-    .then(
-      response => {
-        // console.log('response', response)
-        if (response.status === 201) {
-          return response.json()
-        }
-        throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
-      }
-    ).then(
-      data => data,
-      error => throwError(error.message || 'Something went wrong')
-    )
-
-const patchItem = (key, itemid = null, payload) => {
-    const baseRoute = prefixSlash(key)
-    const itemRoute = itemid ? `/${itemid}` : ''
-    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
-    // console.log('PATCH', baseRoute, itemid, payload, url)
-    return fetch(url, {
-      method: 'PATCH',
-      headers: JSON_HEADER,
-      body: JSON.stringify(payload),
-    })
-    .then(response => response.json())
-    .then(
-      data => data,
-      error => throwError(error.message || 'Something went wrong')
-    )
-}
-
-const incrementItem = (key, itemid = null, field, increment = 1) => {
-  // TODO
-  // 2 requests -> this is to be done on the server
-  const baseRoute = prefixSlash(key)
-  const url = `${jsonAPI.ENDPOINT}${baseRoute}/${itemid}`
-  // console.log('fetch item', key, itemid, field, increment, url)
-  return fetch(url, {
-    headers: JSON_HEADER
-  })
-  .then(response => response.json())
-  .then(item => {
-      // console.log('patch item', key, itemid, field, item[field])
-      return patchItem(key, itemid, {[field]: item[field] + increment})
-  })
-  .catch(error => throwError(error.message || "Something went wrong"))
-}
 
 // -------------------------------------------------------------------
 
