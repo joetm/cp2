@@ -12,8 +12,7 @@ import Chat from '../Chat'
 import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
 // import Update from '../Content/Update'
-import Box from './Box'
-import { boxStyle } from './Box'
+import Box, { boxStyle } from '../Shared/Box'
 import routes from '../../routes'
 
 

@@ -42,7 +42,7 @@ class ChatInput extends React.Component {
     }
   }
   submitMsg = () => {
-    let content = this.chatinput.getValue().trim()
+    const content = this.chatinput.getValue().trim()
     if (content !== '') {
       const payload = {
         content,

@@ -32,16 +32,8 @@ const styles = {
 
 
 class PostTpl extends React.Component {
-    like = () => {
-        // TODO
-        this.props.like()
-    }
-    dislike = () => {
-        // TODO
-        this.props.dislike()
-    }
     render() {
-        const { title, content, isEmbedded, user, tags, timestamp, likes, dislikes } = this.props
+        const { title, content, isEmbedded, user, tags, timestamp, like, dislike } = this.props
         const postedOn = humanReadableDate(timestamp)
 
         // TODO
@@ -87,11 +79,11 @@ class PostTpl extends React.Component {
                             <div style={{float: 'right', display: 'inline-block'}}>
                               <LikeButton
                                   number={likes}
-                                  action={this.like}
+                                  action={like}
                               />
                               <DisapproveButton
                                   number={dislikes}
-                                  action={this.dislike}
+                                  action={dislike}
                               />
                             </div>
                         </div>

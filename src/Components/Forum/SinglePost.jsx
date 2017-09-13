@@ -15,7 +15,7 @@ class SinglePost extends React.Component {
         this.props.fetchPost(this.props.postid)
     }
     render() {
-        const { post, like, dislike } = this.props
+        const { post } = this.props
         return (
             <div>
                 <PostTpl

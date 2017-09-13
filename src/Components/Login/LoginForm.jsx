@@ -6,13 +6,13 @@ import { Card, CardText } from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
-import './loginform'
+import './loginform.scss'
 
 
 const LoginForm = (props) => {
     const { onSubmit, onChange, errors, user } = props
     return (
-      <Card className="container">
+      <Card className="loginContainer">
           <form method="post" action="/" onSubmit={onSubmit}>
               <h2 className="card-heading">Login</h2>
 

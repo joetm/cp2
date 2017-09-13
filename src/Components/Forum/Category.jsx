@@ -11,12 +11,12 @@ import Threads from './Threads'
 // import Avatar from '../Shared/Avatar'
 
 
-const styles = {
-    categoryImg: {
-        textAlign: 'center',
-        margin: '0 auto',
-    },
-}
+// const styles = {
+//     categoryImg: {
+//         textAlign: 'center',
+//         margin: '0 auto',
+//     },
+// }
 
 
 class Category extends React.Component {
@@ -24,7 +24,7 @@ class Category extends React.Component {
         this.props.fetchThreads()
     }
     // componentDidUpdate(prevProps) {
-    //     this.props.getPosts()
+    //     this.props.getCategory()
     // }
     render() {
         const { threads } = this.props

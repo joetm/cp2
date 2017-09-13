@@ -88,6 +88,7 @@ const styles = {
 
 class VideoPlayer extends Component {
   // refs
+  player = null
   playerWrapper = null
   speedSelector = null
   volumeSlider = null
@@ -203,7 +204,7 @@ class VideoPlayer extends Component {
             }}
           >
             <ReactPlayer
-              ref={player => { this.player = player }}
+              ref={el => { this.player = el }}
               width="100%"
               height="100%"
               style={styles.reactPlayer}
