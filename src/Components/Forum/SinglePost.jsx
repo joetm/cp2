@@ -8,18 +8,24 @@ import { fetchPost, recordLike, recordDislike } from '../../actions'
 import PostTpl from './PostTpl'
 import Spacer from '../Shared/Spacer'
 import Breadcrumbs from '../Shared/Breadcrumbs'
+import routes from '../../routes'
 
 
 class SinglePost extends React.Component {
     componentDidMount() {
-        console.log('fetch postid', this.props.postid)
         this.props.fetchPost(this.props.postid)
     }
     render() {
         const { post } = this.props
+        console.log(this.props)
         return (
             <div>
-                <Breadcrumbs level0="Forum" level1="Thread Title" level2="Post Title" />
+                <Breadcrumbs
+                    level0={{label: "Forum", url: routes.FORUM}}
+                    level1={{label: "Thread Title", url: `${routes.FORUM}${routes.THREADS}/${post.threadid}`}}
+                    level2={{label: post.title, url: this.props.location.pathname}}
+                    history={this.props.history}
+                />
                 <PostTpl
                     {...post}
                     like={recordLike}
