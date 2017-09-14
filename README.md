@@ -46,5 +46,5 @@ To monitor deepstream:
 
 ---
 
-![Screenshot-Home-2017-09-09 20-37-51.png](https://github.com/joetm/cp2/blob/master/screenshots/Screenshot-Home-2017-09-09%2020-37-51.png?raw=true "Screenshot Homepage 2017-09-09 20-37-51")
+![Screenshot-Home-2017-09-14 08-14-27.jpg](https://github.com/joetm/cp2/blob/master/screenshots/Screenshot-Home-2017-09-14 08-14-27.jpg?raw=true "Screenshot Homepage 2017-09-14 08-14-27")
 
