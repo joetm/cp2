@@ -40,10 +40,9 @@ const createNewItem = (field, payload) =>
     )
 
 const patchItem = (key, itemid = null, payload) => {
-    const baseRoute = prefixSlash(key)
     const itemRoute = itemid ? `/${itemid}` : ''
-    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
-    // console.log('fetchItem', baseRoute, itemid, payload, url)
+    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}${itemRoute}`
+    // console.log('patchItem', itemid, payload, url)
     return fetch(url, {
       method: 'PATCH',
       headers: JSON_HEADER,
@@ -54,6 +53,18 @@ const patchItem = (key, itemid = null, payload) => {
       data => data,
       error => throwError(error.message || 'Something went wrong')
     )
+}
+
+const deleteItem = (key, itemid) => {
+    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
+    console.log('deleteItem', key, itemid, url)
+    return fetch(url, {
+      method: 'DELETE',
+      headers: JSON_HEADER
+    })
+    .then(response => response.json())
+    .then(data => data)
+    .catch(error => throwError(error.message || 'Something went wrong'))
 }
 
 const fetchItems = (key, limit = null) => {
@@ -80,19 +91,19 @@ const fetchItem = (key, itemid) => {
 }
 
 const incrementItem = (key, itemid = null, field, increment = 1) => {
-  // TODO
-  // 2 requests -> this is to be done on the server
-  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
-  // console.log('fetch item', key, itemid, field, increment, url)
-  return fetch(url, {
-    headers: JSON_HEADER
-  })
-  .then(response => response.json())
-  .then(item => {
-      // console.log('patch item', key, itemid, field, item[field])
-      return patchItem(key, itemid, {[field]: item[field] + increment})
-  })
-  .catch(error => throwError(error.message || "Something went wrong"))
+    // TODO
+    // 2 requests -> this is to be done on the server
+    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
+    // console.log('fetch item', key, itemid, field, increment, url)
+    return fetch(url, {
+      headers: JSON_HEADER
+    })
+      .then(response => response.json())
+      .then(item => {
+          // console.log('patch item', key, itemid, field, item[field])
+          return patchItem(key, itemid, {[field]: item[field] + increment})
+      })
+      .catch(error => throwError(error.message || "Something went wrong"))
 }
 
 const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = null) => {
@@ -184,7 +195,7 @@ const fetchFromProtectedAPI = (key, selection, limit = null) => {
             }
             return data
         })
-        // .catch(error => throw new Error(error))
+        .catch(error => throwError(error.message || 'Something went wrong'))
 }
 
 // TODO
@@ -212,9 +223,7 @@ export const sendChatMessage = (payload) => {
 }
 
 // -------------------------------------------------------------------
-
 // Incrementors
-
 // -------------------------------------------------------------------
 
 export const recordLike = (key, id) =>
@@ -235,6 +244,7 @@ export const recordDisapproval = (key, id) =>
 export const recordCrowdDecision = (vote, id, rating = null) => {
   const payload = { id, rating }
   // TODO: REVIEW_APPROVE / REVIEW_DISAPPROVE
+  // TODO: do this with patch
   return jsonAPI.sendDataToAPI(payload)
     .then(response => response.json())
     .then(data => data)
@@ -253,6 +263,8 @@ export const markRead = (what, id) => {
 }
 
 // -------------------------------------------------------------------
+// ajax calls for files
+// -------------------------------------------------------------------
 
 const makeAjaxCallCreator = (url) => () =>
   fetch(url)
@@ -263,8 +275,8 @@ const makeAjaxCallCreator = (url) => () =>
     )
 
 export const fetchCountries = makeAjaxCallCreator('/data/countries.json')
-export const fetchStates = makeAjaxCallCreator('/data/states.json')
-export const fetchCities = makeAjaxCallCreator('/data/cities.json')
+export const fetchStates    = makeAjaxCallCreator('/data/states.json')
+export const fetchCities    = makeAjaxCallCreator('/data/cities.json')
 
 // -------------------------------------------------------------------
 
@@ -276,18 +288,19 @@ export const removeUserField = (field) =>
 
 // -------------------------------------------------------------------
 
-// TODO
-export const deleteItems = (items) =>
-  jsonAPI.deleteItems(items)
-    .then(response => response.json())
-    .catch(error => throwError(error.message || 'Something went wrong'))
+export const removeItem = (key, itemid) =>
+  deleteItem(key, itemid)
+
+// TODO?
+// export const removeItems = (key, itemids) =>
+//   deleteItems(key, itemids)
 
 // -------------------------------------------------------------------
 
 export const find = (key, field, returnEmpty = false) => {
   const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}?q=${encodeURIComponent(field)}`
-  console.log('find', key, field, url)
-  return fetch(url, {headers: JSON_HEADER})
+  // console.log('find', key, field, returnEmpty, url)
+  return fetch(url, { headers: JSON_HEADER })
   .then(response => response.json())
   .then(data => {
     const found = !!data.length
