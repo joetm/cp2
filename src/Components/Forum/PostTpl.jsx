@@ -33,7 +33,7 @@ const styles = {
 
 class PostTpl extends React.Component {
     render() {
-        const { title, content, isEmbedded, user, tags, timestamp, like, dislike } = this.props
+        const { title, content, isEmbedded, user, tags, timestamp, likes, dislikes, like, dislike } = this.props
         const postedOn = humanReadableDate(timestamp)
 
         // TODO

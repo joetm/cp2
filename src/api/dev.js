@@ -21,7 +21,7 @@ const prefixSlash = (key) => {
 // -------------------------------------------------------------------
 
 const createNewItem = (field, payload) =>
-    fetch(`${jsonAPI.ENDPOINT}${field}`, {
+    fetch(`${jsonAPI.ENDPOINT}${prefixSlash(field)}`, {
       method: 'POST',
       headers: JSON_HEADER,
       body: JSON.stringify(payload),
@@ -65,7 +65,9 @@ const fetchItems = (key, limit) => {
     // console.log('fetchItems', baseRoute, itemid, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
-      .then(data => data)
+      .then(data => {
+        return limit !== 1 ? data : data[0]
+      })
       .catch(error => throwError(error.message || 'Something went wrong'))
 }
 

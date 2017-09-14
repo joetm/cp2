@@ -10,13 +10,15 @@ const Categories = (props) => {
     const { categories } = props
     console.log('categories', categories)
     return (
-      <List>
-        {
-          categories.map(category =>
-            <Notification key={`cat_${category.id}`} {...category} />
-          )
-        }
-      </List>
+      <div>
+        <List>
+          {
+            categories.map(category =>
+              <Notification key={`cat_${category.id}`} {...category} />
+            )
+          }
+        </List>
+      </div>
     )
 }
 
