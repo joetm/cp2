@@ -3,8 +3,6 @@
  * A mock REST server for DEV
  **/
 
-import fetch from 'unfetch'
-
 
 // TODO: move this into ENV
 const PORT = 2222
@@ -16,86 +14,11 @@ const delay = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
-export const fetchFromAPI = (field, selection = null, limit = null, filters = null) => {
-    let url = selection ? `${ENDPOINT}/${field}/${selection}` : `${ENDPOINT}/${field}`
-    let SEPARATOR = '?'
-    if (limit) {
-        url = `${url}?_start=1&_limit=${limit}`
-        SEPARATOR = '&'
-    }
-    // if (filters) {
-    //     console.log('filters', filters)
-    //     for (let key in filters) {
-    //         if (filters.hasOwnProperty(key) && filters[key]) {
-    //             url = `${url}${SEPARATOR}${key}=${filters[key]}`
-    //             SEPARATOR = '&'
-    //         }
-    //     }
-    // }
-    console.log('fetchFromAPI', 'field:', field, 'selection:', selection, 'limit:', limit, 'url:', url)
-    return fetch(url)
-        .then(r => r.json())
-        .then(data => {
-            if (limit === 1 && data instanceof Array) {
-                return data[0]
-            }
-            return data
-        })
-        // .catch(error => throw new Error(error))
-}
-
-
-// TODO
-export const fetchFromProtectedAPI = (key, selection, limit = null) => {
-    let url = `${ENDPOINT}/${key}/${selection}`
-    if (limit) {
-        url = `${url}?_start=1&_limit=${limit}`
-    }
-    // console.log('fetchFromAPI', key, selection, limit, url)
-    return fetch(url)
-        .then(r => r.json())
-        .then(data => {
-            if (limit === 1 && data instanceof Array) {
-                return data[0]
-            }
-            return data
-        })
-        // .catch(error => throw new Error(error))
-}
-
 // TODO
 export const sendDataToAPI = (payload) => {
     return delay(500)
         .then(() => {
             try {
-                return 200
-            } catch (e) {
-                throw new Error(e)
-            }
-        })
-}
-
-// TODO
-export const changeSetting = (key, value) => {
-    return delay(500)
-        .then(() => {
-            try {
-                return {
-                    [key]: value
-                }
-            } catch (e) {
-                throw new Error(e)
-            }
-        })
-}
-
-// TODO
-export const removeUserField = (field) => {
-    return delay(500)
-        .then(() => {
-            try {
-                // console.log(`TODO: delete ${field}`)
                 return 200
             } catch (e) {
                 throw new Error(e)

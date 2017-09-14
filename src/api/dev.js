@@ -158,6 +158,7 @@ export const fetchPost = selectSpecificItemCreator('posts')
 export const fetchThread = selectSpecificItemCreator('threads')
 export const fetchVideo = selectSpecificItemCreator('videos')
 export const fetchNotification = selectSpecificItemCreator('messages')
+export const fetchMessageHistory = selectSpecificItemCreator('messageHistory')
 
 // -------------------------------------------------------------------
 // TODO - this one is different - it selects images by the userid
@@ -169,34 +170,34 @@ export const fetchReviewItem = selectFirstItemCreator('reviewitems')
 
 // -------------------------------------------------------------------
 
+const fetchFromProtectedAPI = (key, selection, limit = null) => {
+    let url = `${ENDPOINT}/${key}/${selection}`
+    if (limit) {
+        url = `${url}?_start=1&_limit=${limit}`
+    }
+    // console.log('fetchFromProtectedAPI', key, selection, limit, url)
+    return fetch(url)
+        .then(r => r.json())
+        .then(data => {
+            if (limit === 1 && data instanceof Array) {
+                return data[0]
+            }
+            return data
+        })
+        // .catch(error => throw new Error(error))
+}
+
 // TODO
 export const fetchContactRequests = (limit = null) =>
-    jsonAPI.fetchFromProtectedAPI('mod', 'contactRequests', limit)
+    fetchFromProtectedAPI('mod', 'contactRequests', limit)
         .then(response => response.json())
         .then(data => data)
         .catch(error => throwError(error.message || "Something went wrong"))
 
 // -------------------------------------------------------------------
 
-export const fetchMessageHistory = (userid) =>
-    jsonAPI.fetchFromAPI('messageHistory', userid)
-        .then(response => {
-            if (response === undefined) {
-                // this is the first time the message history was accessed for this user
-                // TODO: save the new state (?)
-                return {
-                    username: "TODO",
-                    messages: [],
-                }
-            }
-            return response.json()
-        })
-        .then(data => data)
-        .catch(error => throwError(error.message || "Something went wrong"))
-
-// -------------------------------------------------------------------
-
 export const sendChatMessage = (payload) => {
+    // TODO
     const chatMsg = {
       type: "message", // TODO - not on client - NEEDED?
       content: payload.content,
@@ -212,11 +213,21 @@ export const sendChatMessage = (payload) => {
 
 // -------------------------------------------------------------------
 
+// Incrementors
+
+// -------------------------------------------------------------------
+
 export const recordLike = (key, id) =>
-  incrementItem(key, id, 'likes', 1)
+  incrementItem(key, id, 'likes')
 
 export const recordDislike = (key, id) =>
-  incrementItem(key, id, 'dislikes', 1)
+  incrementItem(key, id, 'dislikes')
+
+export const recordApproval = (key, id) =>
+  incrementItem(key, id, 'approvals')
+
+export const recordDisapproval = (key, id) =>
+  incrementItem(key, id, 'disapprovals')
 
 // -------------------------------------------------------------------
 
@@ -226,10 +237,8 @@ export const recordCrowdDecision = (vote, id, rating = null) => {
   // TODO: REVIEW_APPROVE / REVIEW_DISAPPROVE
   return jsonAPI.sendDataToAPI(payload)
     .then(response => response.json())
-    .then(
-      data => data,
-      error => throwError(error.message || 'Something went wrong')
-    )
+    .then(data => data)
+    .catch(error => throwError(error.message || 'Something went wrong'))
 }
 
 // TODO
@@ -242,12 +251,6 @@ export const markRead = (what, id) => {
       error => throwError(error.message || 'Something went wrong')
     )
 }
-
-// TODO
-// export const markAllRead = () =>
-//     sendDataToAPI()
-//         .then((response) => ({images: 0, messages: 0, posts: 0, videos: 0, likes: 0}))
-
 
 // -------------------------------------------------------------------
 
@@ -273,6 +276,7 @@ export const removeUserField = (field) =>
 
 // -------------------------------------------------------------------
 
+// TODO
 export const deleteItems = (items) =>
   jsonAPI.deleteItems(items)
     .then(response => response.json())
