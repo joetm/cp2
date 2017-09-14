@@ -22,7 +22,7 @@ class SinglePost extends React.Component {
             <div>
                 <Breadcrumbs
                     level0={{label: "Forum", url: routes.FORUM}}
-                    level1={{label: "Thread Title", url: `${routes.FORUM}${routes.THREADS}/${post.threadid}`}}
+                    level1={{label: post.threadid, url: `${routes.FORUM}${routes.THREADS}/${post.threadid}`}}
                     level2={{label: post.title, url: this.props.location.pathname}}
                     history={this.props.history}
                 />
