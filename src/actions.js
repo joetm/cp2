@@ -67,6 +67,7 @@ export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
 export const RECEIVE_CATEGORIES         = 'FORUM::RECEIVE_CATEGORIES'
 export const RECEIVE_THREADS            = 'FORUM::RECEIVE_THREADS'
 export const RECEIVE_POSTS              = 'FORUM::RECEIVE_POSTS'
+export const RECEIVE_POSTS_FOR_THREAD   = 'FORUM::RECEIVE_POSTS_FOR_THREAD'
 export const RECEIVE_POST               = 'FORUM::RECEIVE_POST'
 export const RECEIVE_THREAD             = 'FORUM::RECEIVE_THREAD'
 export const RECEIVE_ALBUM              = 'ALBUM::RECEIVE_ALBUM'
@@ -128,6 +129,9 @@ export const FETCH_VIDEO_SUCCESS        = 'VIDEO::FETCH_VIDEO_SUCCESS'
 export const FETCH_VIDEO_FAILURE        = 'VIDEO::FETCH_VIDEO_FAILURE'
 export const FETCH_REVIEWITEM_STARTED   = 'REVIEW::FETCH_REVIEWITEM_STARTED'
 export const FETCH_REVIEWITEM_FAILED    = 'REVIEW::FETCH_REVIEWITEM_FAILED'
+
+export const FETCH_POSTS_FOR_THREAD_STARTED = 'FORUM::FETCH_POSTS_FOR_THREAD_STARTED'
+export const FETCH_POSTS_FOR_THREAD_FAILURE = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
 
 // MOD
 export const RECEIVE_CONTACT_REQUESTS   = 'MOD::RECEIVE_CONTACT_REQUESTS'
@@ -198,6 +202,7 @@ export const receiveUsers              = makeActionCreator(RECEIVE_USERS,       
 export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
 export const receivePosts              = makeActionCreator(RECEIVE_POSTS,              'response')
+export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
 export const receiveCategories         = makeActionCreator(RECEIVE_CATEGORIES,         'response')
 export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,            'response')
 export const receivePost               = makeActionCreator(RECEIVE_POST,               'response')
@@ -240,20 +245,29 @@ export const receiveContactRequests  = makeActionCreator(RECEIVE_CONTACT_REQUEST
 export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
 export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS,     'userid')
 export const deleteAvatarFailure     = makeActionCreator(DELETE_AVATAR_FAILURE,     'error')
+
 export const deleteProfileImgStarted = makeActionCreator(DELETE_PROFILEIMG_STARTED)
 export const deleteProfileImgSuccess = makeActionCreator(DELETE_PROFILEIMG_SUCCESS)
 export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILURE, 'error')
+
 export const deleteImagesStarted     = makeActionCreator(DELETE_IMAGES_STARTED)
 export const deleteImagesSuccess     = makeActionCreator(DELETE_IMAGES_SUCCESS,     'response')
 export const deleteImagesFailure     = makeActionCreator(DELETE_IMAGES_FAILURE,     'error')
 
 export const removePost              = makeActionCreator(REMOVE_POST,               'postid', 'bool')
 
-export const fetchVideoStarted       = makeActionCreator(FETCH_VIDEO_STARTED)
-export const fetchVideoFailure       = makeActionCreator(FETCH_VIDEO_FAILURE)
+// --
 
-export const fetchReviewItemStarted  = makeActionCreator(FETCH_REVIEWITEM_STARTED)
-export const fetchReviewItemFailed   = makeActionCreator(FETCH_REVIEWITEM_FAILED,   'error')
+export const fetchVideoStarted          = makeActionCreator(FETCH_VIDEO_STARTED)
+export const fetchVideoFailure          = makeActionCreator(FETCH_VIDEO_FAILURE,            'error')
+
+export const fetchPostsForThreadStarted = makeActionCreator(FETCH_POSTS_FOR_THREAD_STARTED)
+export const fetchPostsForThreadFailure = makeActionCreator(FETCH_POSTS_FOR_THREAD_FAILURE, 'error')
+
+export const fetchReviewItemStarted     = makeActionCreator(FETCH_REVIEWITEM_STARTED)
+export const fetchReviewItemFailed      = makeActionCreator(FETCH_REVIEWITEM_FAILED,        'error')
+
+// --
 
 export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'payload')
 export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'itemid')
@@ -387,6 +401,17 @@ export const fetchReviewItem = () => (dispatch) => {
  */
 export const fetchPosts = (limit) =>
     api.fetchPosts(limit).then(receivePosts)
+
+/**
+ * fetchPostsForThread Asynchronous Action Creator
+ * @returns receivePostsForThread() - Action
+ */
+export const fetchPostsForThread = (threadid, limit) => (dispatch) => {
+    dispatch(fetchPostsForThreadStarted())
+    return api.fetchPostsForThread(threadid, limit)
+      .then(response => dispatch(receivePostsForThread(response)))
+      .catch(error => dispatch(fetchPostsForThreadFailure(error)))
+}
 
 /**
  * fetchPost Asynchronous Action Creator

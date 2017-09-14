@@ -11,7 +11,7 @@ import { findUser, changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import { inlineButton } from '../Shared/styles'
 import Alert from '../Shared/Alert'
-import getSuccessMsg from '../Shared/successMessages'
+import getSuccessMsg from '../../common/successMessages'
 
 
 class AccountSettings extends React.Component {

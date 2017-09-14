@@ -93,9 +93,14 @@ const initialState = {
         items: [],
     },
     // -- single item caching
-    thread: {
+    category: {
         isFetching: true,
         item: {},
+        threads: [],
+    },
+    thread: {
+        isFetching: true,
+        items: [],
     },
     post: {
         isFetching: true,

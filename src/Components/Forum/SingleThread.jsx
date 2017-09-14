@@ -6,10 +6,11 @@ import { withRouter } from 'react-router-dom'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import BackIcon from 'material-ui/svg-icons/content/undo'
 
-import { fetchThread } from '../../actions'
+import { fetchThread, fetchPostsForThread, recordLike, recordDislike } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import Posts from './Posts'
 import Loader from '../Shared/Loader'
+import PostTpl from './PostTpl'
 
 
 const styles = {
@@ -20,38 +21,45 @@ const styles = {
     },
 }
 
+
 class SingleThread extends React.Component {
     componentDidMount() {
-        const threadid = this.props.match.params.threadid
+        const threadid = this.props.threadid
         this.props.fetchThread(threadid)
+        this.props.fetchPostsForThread(threadid)
     }
     render() {
-        const { isFetching, history } = this.props
-        const { title, posts } = this.props.thread
-        console.log('history:', history)
+        const { title, isFetching, history, items = [] } = this.props
         return (
             <div>
 
+                <FloatingActionButton
+                    mini={true}
+                    secondary={true}
+                    style={styles.backButton}
+                    onTouchTap={history.goBack}
+                >
+                    <BackIcon />
+                </FloatingActionButton>
+
                 <Loader isLoading={isFetching} />
 
-                {
-                    history.length > 0 &&
-                        <FloatingActionButton
-                            mini={true}
-                            secondary={true}
-                            style={styles.backButton}
-                            onTouchTap={history.goBack}
-                        >
-                            <BackIcon />
-                        </FloatingActionButton>
-                }
-
-                <h2>TITLE: {title}</h2>
+                <PostTpl
+                    {...this.props.thread}
+                    like={recordLike}
+                    dislike={recordDislike}
+                />
 
                 <div>
                     {
-                        posts &&
-                        <Posts posts={posts} />
+                        items.map(item =>
+                            <PostTpl
+                                key={item.id}
+                                {...item}
+                                like={recordLike}
+                                dislike={recordDislike}
+                            />
+                        )
                     }
                 </div>
 
@@ -63,12 +71,14 @@ class SingleThread extends React.Component {
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     isFetching: state.thread.isFetching,
-    thread: state.thread.item,
+    thread: state.thread,
+    threadid: ownProps.match.params.threadid,
+    items: state.thread.items,
 })
 
 export default withRouter(connect(
     mapStateToProps,
-    { fetchThread }
+    { fetchThread, fetchPostsForThread, recordLike, recordDislike }
 )(SingleThread))

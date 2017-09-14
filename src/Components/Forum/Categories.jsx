@@ -8,7 +8,6 @@ import Notification from '../Content/Notification'
 
 const Categories = (props) => {
     const { categories } = props
-    console.log('categories', categories)
     return (
       <div>
         <List>

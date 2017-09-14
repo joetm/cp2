@@ -85,7 +85,7 @@ class Notification extends React.Component {
             )
 
             rightIconMenu = null // TODO
-            touchTapAction = () => history.push(`${routes.FORUM}${routes.THREADS}/${id}`)
+            touchTapAction = () => history.push(`${routes.FORUM}${routes.POSTS}/${id}`)
 
             break
 
@@ -95,6 +95,15 @@ class Notification extends React.Component {
 
             rightIconMenu = null // TODO
             touchTapAction = () => history.push(`${routes.FORUM}${routes.CATEGORIES}/${id}`)
+
+            break
+
+          case 'thread':
+
+            text = <p>{title}</p>
+
+            rightIconMenu = null // TODO
+            touchTapAction = () => history.push(`${routes.FORUM}${routes.THREADS}/${id}`)
 
             break
 

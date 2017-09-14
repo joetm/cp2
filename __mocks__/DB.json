@@ -40,35 +40,33 @@
     {
       "type": "like",
       "id": "cj6z28quf0000vmdri4yk6g1m",
-      "streamitemid": "cj7d7oe7h0000bmdrtfufasba",
+      "threadid": "cj7d7oe7h0000bmdrtfufasba",
       "userid": 2,
       "timestamp": 1501229377
     },
     {
       "type": "like",
       "id": "cj6z2fwzg0000xgdr6p1552y5",
-      "streamitemid": "cj73drees00008ldrey49q870",
+      "threadid": "cj73drees00008ldrey49q870",
       "userid": 7,
       "timestamp": 1501229577
     },
     {
       "type": "dislike",
       "id": "cj6z2g8sj0000xqdro3s72fse",
-      "streamitemid": "cj6z2iayw0000zkdrzoyeu8ke",
+      "threadid": "cj6z2iayw0000zkdrzoyeu8ke",
       "userid": 7,
       "timestamp": 1501229577
     },
     {
       "type": "like",
       "id": "cj6z2ipmk00000kdrps1reqmk",
-      "streamitemid": "cj6z2iayw0000zkdrzoyeu8ke",
+      "threadid": "cj6z2iayw0000zkdrzoyeu8ke",
       "userid": 7,
       "timestamp": 1501200077
     }
   ],
-  "categories": {
-    "isFetching": true,
-    "items": [
+  "categories": [
       {
         "id": "cj7hw4u7o0000gjdrtlnzk1j9",
         "type": "category",
@@ -93,8 +91,104 @@
           "avatar": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgcAAABhCAMAAAB1TfJnAAAAb1BMVEX///8AeNcAc9YAddYAbdQAcNUAcdUAbNTm8Pr4/P4AatTt9fzW5vfY6PjG3PSIteioye4zityuze9dneG+0/Dg7flVmOBAjt10qeSXwOvD2vOOuekqhtujxe3P4fVGk94Sftlqo+N5ruaSvOpgmuAxcLSZAAAD4klEQVR4nO3daZOiMBCA4Q25RBS8r9EBdf//b9xxD0cgHI7CCvM+n7umUkVPJwbS+fEDAAAAAAAAAACkLI6JtWJ18GtFj6O1HpppNGp4VGjXTGgphRDS2Kg6E5axNb+jPbsetzA6tGRuxZVJBhXRMyuv0dIeWhkhWhAbcUPKZWn0RN1GC7VtaZRo2EanHqyQSVn0yKajxTBsaZxo1LvKPFhhopLwvcxEl6cNumKVfbBC6OK14iKXNUJPWhwtGjLQuQdb9mQdWSOnLQ4XDVk48kAeC8NNPloM62064JW9OZ6s3BdFL7OrxAv13uaA0YiN53iysig6v6i8TCP8Yui+kysPkqLokSsPqAc9cHDNC+uiaN81L9jyjSd0gavSl2wg5LYPLlocLpqSOAp98XvEKF8+vE2Lo0VTzrkfjmUbAo7tBss7xz7wk2ypt2XrviibCIZy0A/ZFYI6l4av0z8wivca0DELfVsR7Kk82p/eLhFMErQzSDRvnFwzwZjqt0bH64coUs3ZU+6TSWK1MVrpqM6/92g+/Ig2ehizg9Q3y8VhO6v93akfTraTkFoAAAAAAAAAAAAAAAAAAPgUbqb703OOJs5W+/jMh8tdFKytJ6VRzzizfrTy8qfonNY9/04xSfH4v/H270EYSyJ0zvW86uPdjcLrWXhb1YITr+bzlLMpboZUy/LznJuhIHTM7bFlVdYusVJwc0xWzp81PrRjcHu29ZEFnj+9ORspfz5vhGhDkDrr/vVm2f709vQzHTE6J04nwhcrQjoNhFo8d5BoXKbpgXr7yh8J9qk0KG6vhZeV6WuivlDSlyLdScXws7GDVum+Jjq+9/TyTqfTQO0aGSeale2LJMV9/a6iTCvFinY6eFVBpgWevGe1GKwz/bL0g9tR+G9yV6vouO4MP8vMCcLEjQ4VTQqziSB1reI+iLNNWD3uYOiyXa5dsk4q9wD8U7YYfKQBLXI6bZdvpqrWpev+4E3mWusaqkHXhSbXOFuq/aHoo4TxxuT79LM26IGRcNy4pOV8kU+F8XmvHLc1KN4y9sFg77yRRXvTaDYa/Jn3g0F4OCY6XzvEo6+t8TL8leOqrksqeFp7IrmQxp0Dl0lk9r/Hj2d5c92yUot35yYkXlooXXNDNdor94w/d13AVUEa5oTeWeS3BSqyQK04udJD/km5l4JuNTYe0U3LeW7DuIiRfKLeY+8rXWPBKLU8sz7st/FGVhSFy7YzWdB/wWRtCzaNhPCUOHIHy3cxOKy0MjLz3ZqnbbLZUQq+FT/cHqeeVfoPpZL4NON75G8qGIWLD7twSRkAAAAAAAAAAAC42y9KMiPDIkPXiQAAAABJRU5ErkJggg=="
         }
       }
-    ]
-  },
+  ],
+  "threads": [
+    {
+      "id": "cj6z2i43l0000zddrjguadpfb",
+      "type": "thread",
+      "title": "Oui oui",
+      "content": "Do you have Paris recommendations? Have you ever been?",
+      "src": null,
+      "thumb": null,
+      "userid": 6,
+      "approvals": 0,
+      "disapprovals": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "replies": 0,
+      "tags": [
+        "mytag"
+      ],
+      "timestamp": 1501229177,
+      "lastEdit": 0
+    },
+    {
+      "id": "cj73drees00008ldrey49q870",
+      "type": "thread",
+      "title": "Thread Test, 1, 2, 3",
+      "content": "Lorem ipsum dolor sit [b]amet[/b], [i]consectetur[/i] adipiscing elit. Morbi lobortis, diam eget volutpat hendrerit, neque turpis ultricies tortor, in elementum mi mauris eget erat. Proin eget quam non dui tincidunt feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla porta nunc at libero condimentum, sit amet efficitur lorem consequat. Donec ut justo diam. Morbi tincidunt feugiat metus, vitae fermentum lacus auctor vel. Sed vitae metus molestie, cursus nibh eget, ultricies arcu. Proin quis eros felis.\n Curabitur non tempor arcu, at accumsan mauris. Suspendisse id erat sollicitudin, condimentum justo ut, lacinia dolor. Donec molestie felis eu risus ultrices hendrerit. Sed sit amet mi justo. Phasellus pretium tellus sit amet eros lobortis venenatis. Donec dapibus at libero et malesuada. Nulla dictum augue eget imperdiet tempor. Suspendisse non arcu arcu. Nulla tristique ornare elit sed euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin lacinia sollicitudin risus. Etiam dapibus, metus mollis consectetur malesuada, nulla nisl scelerisque ante, non aliquet mauris magna id lectus. Nullam nec dui mauris. Praesent placerat quam est, vel pharetra eros iaculis nec. Quisque non dignissim mi.\n Nulla nisl purus, sagittis id odio vitae, facilisis posuere erat. Praesent rutrum magna non urna tincidunt imperdiet. Cras eget vulputate ipsum. Aliquam sed dolor ut justo vehicula mollis. Curabitur imperdiet, leo eu ullamcorper feugiat, risus dolor tempus arcu, sit amet volutpat ipsum elit quis turpis. Sed porttitor vulputate arcu, id laoreet ligula cursus id. Sed vel ornare velit. In et condimentum urna, vel tristique ante. Mauris posuere nunc consequat nunc sollicitudin semper. Duis finibus sit amet nibh ut aliquet. Pellentesque tempus libero eu vestibulum rhoncus. Donec quis diam tortor. Mauris mattis molestie quam, id tincidunt libero euismod in. Vestibulum velit sapien, aliquet eu justo quis, laoreet tincidunt mauris. Sed condimentum vitae urna eget tempor. Pellentesque hendrerit elementum ipsum, at imperdiet tellus imperdiet et.\n Ut pellentesque et orci in cursus. Suspendisse tempor, urna sed placerat bibendum, lectus lacus tristique sapien, et vestibulum ipsum elit at metus. Phasellus consectetur mauris enim, id finibus mi mollis non. Vestibulum porttitor vulputate arcu at consectetur. Proin neque justo, elementum mattis lobortis eget, eleifend in quam. Quisque et mattis justo. Pellentesque felis nulla, porta nec tincidunt sed, malesuada quis ipsum.\n In dictum est tellus, in pharetra nisl ultricies eu. Donec consectetur ante a quam tempus, at efficitur tellus euismod. Suspendisse ultrices aliquet justo viverra tempus. Nulla id tortor risus. Ut non blandit nisl. Aliquam vestibulum gravida odio sit amet molestie. Suspendisse mattis orci id lobortis lacinia. Donec non urna eu magna convallis hendrerit. Vivamus vestibulum non tortor quis iaculis. Morbi tincidunt diam quis vestibulum dignissim. Etiam pulvinar magna sem, non vulputate ante luctus et. Aliquam scelerisque, nisi vel tempus tincidunt, dolor lacus eleifend nulla, non vehicula leo mauris vel ex. Vestibulum imperdiet est nec sapien mollis, at volutpat dolor semper. Mauris laoreet congue urna. Etiam non hendrerit tortor, eget congue odio.",
+      "src": null,
+      "thumb": null,
+      "userid": 6,
+      "approvals": 0,
+      "disapprovals": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "replies": 0,
+      "tags": [
+        "mytag"
+      ],
+      "timestamp": 1504351149,
+      "lastEdit": 0
+    },
+    {
+      "id": "cj73drxhi00008sdr4b36qm7a",
+      "type": "thread",
+      "title": "Another Post Test",
+      "content": "Post content goes here",
+      "src": null,
+      "thumb": null,
+      "userid": 6,
+      "approvals": 0,
+      "disapprovals": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "replies": 0,
+      "tags": [
+        "mytag"
+      ],
+      "timestamp": 1504361149,
+      "lastEdit": 0
+    },
+    {
+      "id": "cj6z2ix1e00000sdrewxuanbr",
+      "type": "thread",
+      "title": "Dinos & Forums",
+      "content": "Forums are like dinosaurs.",
+      "src": null,
+      "thumb": null,
+      "userid": 2,
+      "approvals": 0,
+      "disapprovals": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "replies": 0,
+      "tags": [
+        "test"
+      ],
+      "timestamp": 1501000077,
+      "lastEdit": 0
+    },
+    {
+      "id": "cj6z2jkgg00001cdrphrvtlxa",
+      "type": "thread",
+      "title": "Forums & Dinos",
+      "content": "Dinosaurs are like forums.",
+      "src": null,
+      "thumb": null,
+      "userid": 5,
+      "approvals": 0,
+      "disapprovals": 0,
+      "likes": 0,
+      "dislikes": 0,
+      "replies": 0,
+      "tags": [
+        "cars"
+      ],
+      "timestamp": 1501135362,
+      "lastEdit": 0
+    }
+  ],
   "streamitems": [
     {
       "type": "profileimg",
@@ -310,66 +404,6 @@
       "replies": 0,
       "tags": [],
       "timestamp": 1501229377,
-      "lastEdit": 0
-    },
-    {
-      "type": "post",
-      "id": "cj6z2i43l0000zddrjguadpfb",
-      "threadid": 0,
-      "title": "Oui oui",
-      "content": "Do you have Paris recommendations? Have you ever been?",
-      "src": null,
-      "thumb": null,
-      "userid": 6,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [
-        "mytag"
-      ],
-      "timestamp": 1501229177,
-      "lastEdit": 0
-    },
-    {
-      "type": "post",
-      "id": "cj73drees00008ldrey49q870",
-      "threadid": 0,
-      "title": "Posting Test",
-      "content": "Lorem ipsum dolor sit [b]amet[/b], [i]consectetur[/i] adipiscing elit. Morbi lobortis, diam eget volutpat hendrerit, neque turpis ultricies tortor, in elementum mi mauris eget erat. Proin eget quam non dui tincidunt feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla porta nunc at libero condimentum, sit amet efficitur lorem consequat. Donec ut justo diam. Morbi tincidunt feugiat metus, vitae fermentum lacus auctor vel. Sed vitae metus molestie, cursus nibh eget, ultricies arcu. Proin quis eros felis.\n Curabitur non tempor arcu, at accumsan mauris. Suspendisse id erat sollicitudin, condimentum justo ut, lacinia dolor. Donec molestie felis eu risus ultrices hendrerit. Sed sit amet mi justo. Phasellus pretium tellus sit amet eros lobortis venenatis. Donec dapibus at libero et malesuada. Nulla dictum augue eget imperdiet tempor. Suspendisse non arcu arcu. Nulla tristique ornare elit sed euismod. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin lacinia sollicitudin risus. Etiam dapibus, metus mollis consectetur malesuada, nulla nisl scelerisque ante, non aliquet mauris magna id lectus. Nullam nec dui mauris. Praesent placerat quam est, vel pharetra eros iaculis nec. Quisque non dignissim mi.\n Nulla nisl purus, sagittis id odio vitae, facilisis posuere erat. Praesent rutrum magna non urna tincidunt imperdiet. Cras eget vulputate ipsum. Aliquam sed dolor ut justo vehicula mollis. Curabitur imperdiet, leo eu ullamcorper feugiat, risus dolor tempus arcu, sit amet volutpat ipsum elit quis turpis. Sed porttitor vulputate arcu, id laoreet ligula cursus id. Sed vel ornare velit. In et condimentum urna, vel tristique ante. Mauris posuere nunc consequat nunc sollicitudin semper. Duis finibus sit amet nibh ut aliquet. Pellentesque tempus libero eu vestibulum rhoncus. Donec quis diam tortor. Mauris mattis molestie quam, id tincidunt libero euismod in. Vestibulum velit sapien, aliquet eu justo quis, laoreet tincidunt mauris. Sed condimentum vitae urna eget tempor. Pellentesque hendrerit elementum ipsum, at imperdiet tellus imperdiet et.\n Ut pellentesque et orci in cursus. Suspendisse tempor, urna sed placerat bibendum, lectus lacus tristique sapien, et vestibulum ipsum elit at metus. Phasellus consectetur mauris enim, id finibus mi mollis non. Vestibulum porttitor vulputate arcu at consectetur. Proin neque justo, elementum mattis lobortis eget, eleifend in quam. Quisque et mattis justo. Pellentesque felis nulla, porta nec tincidunt sed, malesuada quis ipsum.\n In dictum est tellus, in pharetra nisl ultricies eu. Donec consectetur ante a quam tempus, at efficitur tellus euismod. Suspendisse ultrices aliquet justo viverra tempus. Nulla id tortor risus. Ut non blandit nisl. Aliquam vestibulum gravida odio sit amet molestie. Suspendisse mattis orci id lobortis lacinia. Donec non urna eu magna convallis hendrerit. Vivamus vestibulum non tortor quis iaculis. Morbi tincidunt diam quis vestibulum dignissim. Etiam pulvinar magna sem, non vulputate ante luctus et. Aliquam scelerisque, nisi vel tempus tincidunt, dolor lacus eleifend nulla, non vehicula leo mauris vel ex. Vestibulum imperdiet est nec sapien mollis, at volutpat dolor semper. Mauris laoreet congue urna. Etiam non hendrerit tortor, eget congue odio.",
-      "src": null,
-      "thumb": null,
-      "userid": 6,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [
-        "mytag"
-      ],
-      "timestamp": 1504351149,
-      "lastEdit": 0
-    },
-    {
-      "type": "post",
-      "id": "cj73drxhi00008sdr4b36qm7a",
-      "threadid": 0,
-      "title": "Another Post Test",
-      "content": "Post content goes here",
-      "src": null,
-      "thumb": null,
-      "userid": 6,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [
-        "mytag"
-      ],
-      "timestamp": 1504361149,
       "lastEdit": 0
     },
     {
@@ -616,26 +650,6 @@
     },
     {
       "type": "post",
-      "id": "cj6z2ix1e00000sdrewxuanbr",
-      "threadid": 0,
-      "title": "Oui oui",
-      "content": "Do you have Paris recommendations? Have you ever been?",
-      "src": null,
-      "thumb": null,
-      "userid": 2,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [
-        "test"
-      ],
-      "timestamp": 1501000077,
-      "lastEdit": 0
-    },
-    {
-      "type": "post",
       "id": "cj6z2j5y700000ydr8gc36oln",
       "threadid": "cj6z2ix1e00000sdrewxuanbr",
       "title": "Birdthday gift",
@@ -747,26 +761,6 @@
         "meme"
       ],
       "timestamp": 1505064400,
-      "lastEdit": 0
-    },
-    {
-      "type": "post",
-      "id": "cj6z2jkgg00001cdrphrvtlxa",
-      "threadid": 0,
-      "title": "Cars & Dinos",
-      "content": "Dinosaurs are like cars.",
-      "src": null,
-      "thumb": null,
-      "userid": 5,
-      "approvals": 0,
-      "disapprovals": 0,
-      "likes": 0,
-      "dislikes": 0,
-      "replies": 0,
-      "tags": [
-        "cars"
-      ],
-      "timestamp": 1501135362,
       "lastEdit": 0
     },
     {
@@ -1716,7 +1710,6 @@
     }
   ],
   "currentUser": {
-    "isFetching": false,
     "id": 1,
     "username": "admin",
     "usertitle": "Admin of the forums",

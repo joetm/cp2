@@ -263,7 +263,24 @@ export function threadReducer(threadState = initialState.thread, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREAD:
             return {
-                item: {...action.response},
+                ...threadState,
+                ...action.response,
+                isFetching: false,
+            }
+        case ACTIONS.FETCH_POSTS_FOR_THREAD_STARTED:
+            return {
+                ...threadState,
+                isFetching: true,
+            }
+        case ACTIONS.RECEIVE_POSTS_FOR_THREAD:
+            return {
+                ...threadState,
+                items: [...action.response],
+                isFetching: false,
+            }
+        case ACTIONS.FETCH_POSTS_FOR_THREAD_FAILURE:
+            return {
+                ...threadState,
                 isFetching: false,
             }
         default:
@@ -322,7 +339,7 @@ export function categoriesReducer(categoriesState = initialState.categories, act
     switch (action.type) {
         case ACTIONS.RECEIVE_CATEGORIES:
             console.log('action', action)
-            return {...categoriesState, isFetching: false, items: [...action.response.items]}
+            return {...categoriesState, isFetching: false, items: [...action.response]}
         default:
             return categoriesState
     }

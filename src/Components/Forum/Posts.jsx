@@ -7,10 +7,13 @@ import PostsWrapper from './PostsWrapper'
 
 
 const Posts = (props) => {
-    const { posts } = props
+    const { posts, embedded } = props
     return (
         <div>
-            <h2>Posts</h2>
+            {
+                !embedded &&
+                <h2>Posts</h2>
+            }
             <div>
                 <Loader isLoading={!posts.length} />
                 <PostsWrapper posts={posts} />

@@ -3,51 +3,64 @@
     "/likes?*": "/likes?_expand=user&_expand=streamitem&$1",
     "/likes/?*": "/likes?_expand=user&_expand=streamitem&$1",
     "/likes/:id": "/likes/:id?_expand=user&_sort=timestamp&order=desc",
+
   "/messages": "/messages?_expand=user&_sort=timestamp&order=desc",
     "/messages?*": "/messages?_expand=user&$1",
     "/messages/?*": "/messages?_expand=user&$1",
     "/messages/:id": "/messages/:id?_expand=user",
     "/messages/:id?*": "/messages/:id?_expand=user&$1",
+
   "/images": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
     "/images?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/images/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/images/:id": "/streamitems/:id?_expand=user",
     "/images/:id?*": "/streamitems/:id?_expand=user&$1",
+
   "/pictures": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
     "/pictures?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/pictures/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/pictures/:id": "/streamitems/:id?_expand=user",
     "/pictures/:id?*": "/streamitems/:id?_expand=user&$1",
+
   "/verifications": "/streamitems?type=verification&_expand=user&_sort=timestamp&order=desc",
     "/verifications/:userid": "/streamitems?type=verification&userid=:userid&_expand=user",
+
   "/posts": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc",
     "/posts?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
     "/posts/?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
     "/posts/:id": "/streamitems/:id?_expand=user",
     "/posts/:id?*": "/streamitems/:id?_expand=user&$1",
-  "/threads": "/streamitems?type=post&postid=0&_expand=user&_sort=timestamp&order=desc",
-    "/threads?*": "/streamitems?type=post&postid=0&_expand=user&_sort=timestamp&order=desc&$1",
-    "/threads/?*": "/streamitems?type=post&postid=0&_expand=user&_sort=timestamp&order=desc&$1",
-    "/threads/:id": "/streamitems/:id?_expand=user&_embed=posts",
-    "/threads/:id?*": "/streamitems/:id?_expand=user&_embed=posts&$1",
+
+  "/threads": "/threads?_expand=user&_sort=timestamp&order=desc",
+    "/threads/:id": "/threads/:id?_expand=user",
+    "/threads/:id/streamitems": "/threads/:id/streamitems?_expand=user",
+
   "/videos": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc",
     "/videos?*": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc&$1",
     "/videos/?*": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc&$1",
     "/videos/:id": "/streamitems/:id?_expand=user",
     "/videos/:id?*": "/streamitems/:id?_expand=user&$1",
+
   "/favorites": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/favorites?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
     "/favorites/?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
+
   "/chat": "/chat?_expand=user&_sort=timestamp",
+
   "/playlist": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/playlist?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
     "/playlist/?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
+
   "/reviewitems": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=post&type=image&type=video&type=verification",
     "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=image&type=video&type=verification&$1",
-  "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
-    "/streamitems?*": "/streamitems?_expand=user&$1",
+
   "/currentUser": "/currentUser?_expand=profileimg",
+
   "/followers": "/followers?_expand=user",
     "/followers?*": "/followers?_expand=user&$1",
-  "/mod/contactRequests": "/contactRequests?_expand=user"
+
+  "/mod/contactRequests": "/contactRequests?_expand=user",
+
+  "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
+    "/streamitems?*": "/streamitems?_expand=user&$1"
 }

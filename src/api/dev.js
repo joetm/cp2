@@ -56,13 +56,12 @@ const patchItem = (key, itemid = null, payload) => {
     )
 }
 
-const fetchItems = (key, limit) => {
-    const baseRoute = prefixSlash(key)
-    let url = `${jsonAPI.ENDPOINT}${baseRoute}`
+const fetchItems = (key, limit = null) => {
+    let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}`
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
-    // console.log('fetchItems', baseRoute, itemid, url)
+    // console.log('fetchItems', key, limit, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
       .then(data => {
@@ -72,10 +71,8 @@ const fetchItems = (key, limit) => {
 }
 
 const fetchItem = (key, itemid) => {
-    const baseRoute = prefixSlash(key)
-    const itemRoute = `/${itemid}`
-    const url = `${jsonAPI.ENDPOINT}${baseRoute}${itemRoute}`
-    // console.log('PATCH', baseRoute, itemid, url)
+    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
+    // console.log('PATCH', key, itemid, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
       .then(data => data)
@@ -85,8 +82,7 @@ const fetchItem = (key, itemid) => {
 const incrementItem = (key, itemid = null, field, increment = 1) => {
   // TODO
   // 2 requests -> this is to be done on the server
-  const baseRoute = prefixSlash(key)
-  const url = `${jsonAPI.ENDPOINT}${baseRoute}/${itemid}`
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
   // console.log('fetch item', key, itemid, field, increment, url)
   return fetch(url, {
     headers: JSON_HEADER
@@ -97,6 +93,20 @@ const incrementItem = (key, itemid = null, field, increment = 1) => {
       return patchItem(key, itemid, {[field]: item[field] + increment})
   })
   .catch(error => throwError(error.message || "Something went wrong"))
+}
+
+const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = null) => {
+    let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}/${subitemtype}`
+    if (limit) {
+        url = `${url}?_start=1&_limit=${limit}`
+    }
+    console.log('fetchSubitemsForItem', key, itemid, subitemtype, limit, url)
+    return fetch(url, { headers: JSON_HEADER })
+      .then(response => response.json())
+      .then(data => {
+        return limit !== 1 ? data : data[0]
+      })
+      .catch(error => throwError(error.message || 'Something went wrong'))
 }
 
 // -------------------------------------------------------------------
@@ -111,6 +121,9 @@ const selectFirstItemCreator = (field) => () =>
 
 const selectSpecificItemCreator = (field) => (selection = null) =>
     fetchItem(field, selection)
+
+const selectSubitemsForItemCreator = (key) => (...args) =>
+    fetchSubitemsForItem(key, ...args)
 
 // -------------------------------------------------------------------
 
@@ -131,6 +144,10 @@ export const fetchLikes = selectItemsCreator('likes')
 export const fetchFavorites = selectItemsCreator('favorites')
 // alias
 export const fetchImages = fetchPictures
+
+// -------------------------------------------------------------------
+
+export const fetchPostsForThread = selectSubitemsForItemCreator('threads')
 
 // -------------------------------------------------------------------
 
