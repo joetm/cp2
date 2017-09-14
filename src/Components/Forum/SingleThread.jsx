@@ -1,14 +1,15 @@
 /** @flow */
 
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import BackIcon from 'material-ui/svg-icons/content/undo'
 
 import { fetchThread } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import Posts from './Posts'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import BackIcon from 'material-ui/svg-icons/content/undo'
+import Loader from '../Shared/Loader'
 
 
 const styles = {
@@ -25,20 +26,27 @@ class SingleThread extends React.Component {
         this.props.fetchThread(threadid)
     }
     render() {
+        const { isFetching, history } = this.props
         const { title, posts } = this.props.thread
+        console.log('history:', history)
         return (
             <div>
 
-                <FloatingActionButton
-                    mini={true}
-                    secondary={true}
-                    style={styles.backButton}
-                    onTouchTap={() => this.props.history.goBack}
-                >
-                    <BackIcon />
-                </FloatingActionButton>
+                <Loader isLoading={isFetching} />
 
-                <h2>{title}</h2>
+                {
+                    history.length > 0 &&
+                        <FloatingActionButton
+                            mini={true}
+                            secondary={true}
+                            style={styles.backButton}
+                            onTouchTap={history.goBack}
+                        >
+                            <BackIcon />
+                        </FloatingActionButton>
+                }
+
+                <h2>TITLE: {title}</h2>
 
                 <div>
                     {
@@ -56,7 +64,8 @@ class SingleThread extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    thread: state.thread,
+    isFetching: state.thread.isFetching,
+    thread: state.thread.item,
 })
 
 export default withRouter(connect(
