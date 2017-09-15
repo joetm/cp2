@@ -2,7 +2,10 @@
 
 import React from 'react'
 import parser from 'bbcode-to-react'
+import IconButton from 'material-ui/IconButton'
 import ClockIcon from 'material-ui/svg-icons/action/schedule'
+import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
+import { withRouter } from 'react-router-dom'
 
 import { gray, darkgray } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
@@ -11,6 +14,7 @@ import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
 import { humanReadableDate } from '../../common/helpers'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
+import routes from '../../routes'
 
 
 const styles = {
@@ -32,8 +36,12 @@ const styles = {
 
 
 class PostTpl extends React.Component {
+    redirectToReview = (id) => {
+        console.log('redirect to review', id)
+        this.props.history.push(`${routes.REVIEW}/${id}`)
+    }
     render() {
-        const { title, content, isEmbedded, user, tags, timestamp, likes, dislikes, like, dislike } = this.props
+        const { id, title, content, isEmbedded, user, tags, timestamp, likes, dislikes, like, dislike } = this.props
         const postedOn = humanReadableDate(timestamp)
 
         // TODO
@@ -85,6 +93,11 @@ class PostTpl extends React.Component {
                                   number={dislikes}
                                   action={dislike}
                               />
+                              <IconButton
+                                onTouchTap={() => this.redirectToReview(id)}
+                              >
+                                  <ReviewIcon />
+                              </IconButton>
                             </div>
                         </div>
                         <div style={styles.postFooter}>
@@ -103,4 +116,4 @@ class PostTpl extends React.Component {
     }
 }
 
-export default PostTpl
+export default withRouter(PostTpl)

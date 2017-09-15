@@ -89,6 +89,14 @@ class Chat extends React.Component {
   }
   render() {
     const { chat, isEmbedded, history } = this.props
+    const deleteButton = (
+      <div
+        style={{cursor: 'pointer'}}
+        onTouchTap={e => {e.stopPropagation(); this.props.removeChatMsg(item.id)}}
+      >
+        DEV:DELETE
+      </div>
+    )
     return (
       <div>
 
@@ -137,13 +145,7 @@ class Chat extends React.Component {
                     style={styles.avatar}
                     onTouchTap={() => this.navigateToUser(item.user.id)}
                   />}
-                  rightIconButton={<div
-                      style={{cursor: 'pointer'}}
-                      onTouchTap={e => {e.stopPropagation(); this.props.removeChatMsg(item.id)}}
-                    >
-                      DEV:DELETE
-                    </div>
-                  }
+                  rightIconButton={deleteButton}
                   autoGenerateNestedIndicator={false}
                   disableKeyboardFocus={true}
                   disabled={true}

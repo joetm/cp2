@@ -54,7 +54,7 @@ export function chatReducer(chatState = initialState.chat, action) {
             return {...chatState, items: newChatMsgs}
 
         case ACTIONS.DELETE_MSG_SUCCESS:
-            const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === action.id})
+            const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === action.id })
             return {
                 ...chatState,
                 items: [

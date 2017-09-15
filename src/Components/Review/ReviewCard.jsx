@@ -114,12 +114,17 @@ class ReviewCard extends React.Component {
             <Card
                 key={`upd_${id}`}
             >
-              <CardMedia
-                  style={styles.cardMedia}
-                  onTouchTap={this.props.handleImageClick}
-              >
-                  <img src={src} alt="" style={styles.cardImage} />
-              </CardMedia>
+
+              {
+                src && (
+                  <CardMedia
+                      style={styles.cardMedia}
+                      onTouchTap={this.props.handleImageClick}
+                  >
+                      <img src={src} alt="" style={styles.cardImage} />
+                  </CardMedia>
+                )
+              }
 
               <CardHeader
                   title={title}
