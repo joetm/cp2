@@ -48,14 +48,14 @@ class Notification extends React.Component {
         //
         const { streamitem = {}, user = {}, userid, type, id, title, content, history } = this.props
 
-        let text
+        let secondaryText
         let rightIconMenu
         let touchTapAction
 
         switch (type) {
           case 'like':
           case 'dislike':
-            text = (
+            secondaryText = (
               <p>
                 {user.username} liked your{' '}
                 <a href={`/${streamitem.type}s/${streamitem.id}`}>{streamitem.type}</a>
@@ -67,7 +67,7 @@ class Notification extends React.Component {
 
           case 'follower':
 
-            text = (
+            secondaryText = (
               <p>
                 {user.usertitle}
               </p>
@@ -80,7 +80,7 @@ class Notification extends React.Component {
 
           case 'post':
 
-            text = (
+            secondaryText = (
               <p>{content}</p>
             )
 
@@ -91,7 +91,7 @@ class Notification extends React.Component {
 
           case 'category':
 
-            text = <p>{title}</p>
+            secondaryText = <p>{content}</p>
 
             rightIconMenu = null // TODO
             touchTapAction = () => history.push(`${routes.FORUM}${routes.CATEGORIES}/${id}`)
@@ -100,7 +100,7 @@ class Notification extends React.Component {
 
           case 'thread':
 
-            text = <p>{title}</p>
+            secondaryText = <p>{title}</p>
 
             rightIconMenu = null // TODO
             touchTapAction = () => history.push(`${routes.FORUM}${routes.THREADS}/${id}`)
@@ -109,7 +109,7 @@ class Notification extends React.Component {
 
           default:
 
-            text = <p>{user.username}{' '}-{' '}{content}</p>
+            secondaryText = <p>{user.username}{' '}-{' '}{content}</p>
 
             rightIconMenu = (
               <IconMenu iconButtonElement={(
@@ -145,7 +145,7 @@ class Notification extends React.Component {
               }
               rightIconButton={this.state.showMenu ? rightIconMenu : null}
               primaryText={title}
-              secondaryText={text}
+              secondaryText={secondaryText}
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}
               secondaryTextLines={2}

@@ -41,6 +41,7 @@ const store = createStore(
         users: Reducers.userReducer,
         // single items
         reviewitem: Reducers.reviewReducer,
+        category: Reducers.categoryReducer,
         thread: Reducers.threadReducer,
         post: Reducers.postReducer,
         video: Reducers.videoReducer,

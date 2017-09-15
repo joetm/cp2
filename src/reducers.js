@@ -347,10 +347,32 @@ export function threadsReducer(threadsState = initialState.threads, action) {
 export function categoriesReducer(categoriesState = initialState.categories, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CATEGORIES:
-            console.log('action', action)
             return {...categoriesState, isFetching: false, items: [...action.response]}
         default:
             return categoriesState
+    }
+}
+
+/**
+ * categoryReducer
+ * @returns categoryState
+ **/
+export function categoryReducer(categoryState = initialState.category, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_CATEGORY:
+            return {
+                ...categoryState,
+                ...action.response,
+                isFetching: false,
+            }
+        case ACTIONS.RECEIVE_CATEGORY_THREADS:
+            return {
+                ...categoryState,
+                isFetching: false,
+                threads: [...action.response],
+            }
+        default:
+            return categoryState
     }
 }
 

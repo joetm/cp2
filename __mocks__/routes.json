@@ -55,6 +55,8 @@
     "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=post&type=thread&type=image&type=video&$1",
     "/reviewitems/:id": "/streamitems/:id?_expand=user",
 
+  "/categories/:id/:subitems" : "/categories/:id/:subitems?_expand=user&_sort=timestamp&order=desc",
+
   "/currentUser": "/currentUser?_expand=profileimg",
 
   "/followers": "/followers?_expand=user",

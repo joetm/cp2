@@ -159,6 +159,7 @@ export const fetchImages = fetchPictures
 // -------------------------------------------------------------------
 
 export const fetchPostsForThread = selectSubitemsForItemCreator('threads')
+export const fetchThreadsForCategory = selectSubitemsForItemCreator('categories')
 
 // -------------------------------------------------------------------
 
@@ -170,6 +171,7 @@ export const fetchThread = selectSpecificItemCreator('threads')
 export const fetchVideo = selectSpecificItemCreator('videos')
 export const fetchNotification = selectSpecificItemCreator('messages')
 export const fetchMessageHistory = selectSpecificItemCreator('messageHistory')
+export const fetchCategory = selectSpecificItemCreator('categories')
 
 // -------------------------------------------------------------------
 // TODO - this one is different - it selects images by the userid

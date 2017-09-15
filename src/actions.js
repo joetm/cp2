@@ -21,11 +21,11 @@ export const GET_CURRENT_USERTITLE      = 'USER::GET_CURRENT_USERTITLE'
 export const GET_CURRENT_USER           = 'USER::GET_CURRENT_USER'
 // export const GET_CURRENT_USER_MINIMAL   = 'USER::GET_CURRENT_USER_MINIMAL'
 export const GET_CURRENT_USER_ID        = 'USER::GET_CURRENT_USER_ID'
-export const REPLY_THREAD               = 'FORUM::REPLY_THREAD'
 export const GET_POSTS                  = 'FORUM::GET_POSTS'
 export const GET_POST                   = 'FORUM::GET_POST'
 export const GET_THREAD                 = 'FORUM::GET_THREAD'
 export const EDIT_POST                  = 'FORUM::EDIT_POST'
+export const REPLY_THREAD               = 'FORUM::REPLY_THREAD'
 export const TOGGLE_SEARCH_SIDEBAR      = 'FORUM::TOGGLE_SEARCH_SIDEBAR'
 export const OPEN_SEARCH_SIDEBAR        = 'FORUM::OPEN_SEARCH_SIDEBAR'
 export const CLOSE_SEARCH_SIDEBAR       = 'FORUM::CLOSE_SEARCH_SIDEBAR'
@@ -65,7 +65,9 @@ export const RECEIVE_FOLLOWERS          = 'SOCIAL::RECEIVE_FOLLOWERS'
 export const RECEIVE_CURRENT_USER       = 'USER:RECEIVE_CURRENT_USER'
 export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
 export const RECEIVE_CATEGORIES         = 'FORUM::RECEIVE_CATEGORIES'
+export const RECEIVE_CATEGORY           = 'FORUM::RECEIVE_CATEGORY'
 export const RECEIVE_THREADS            = 'FORUM::RECEIVE_THREADS'
+export const RECEIVE_CATEGORY_THREADS   = 'FORUM::RECEIVE_CATEGORY_THREADS'
 export const RECEIVE_POSTS              = 'FORUM::RECEIVE_POSTS'
 export const RECEIVE_POSTS_FOR_THREAD   = 'FORUM::RECEIVE_POSTS_FOR_THREAD'
 export const RECEIVE_POST               = 'FORUM::RECEIVE_POST'
@@ -203,10 +205,12 @@ export const receiveUser               = makeActionCreator(RECEIVE_USER,        
 export const receiveUsers              = makeActionCreator(RECEIVE_USERS,              'response')
 export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
+export const receiveCategory           = makeActionCreator(RECEIVE_CATEGORY,           'response')
 export const receivePosts              = makeActionCreator(RECEIVE_POSTS,              'response')
 export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
 export const receiveCategories         = makeActionCreator(RECEIVE_CATEGORIES,         'response')
 export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,            'response')
+export const receiveCategoryThreads    = makeActionCreator(RECEIVE_CATEGORY_THREADS,   'response')
 export const receivePost               = makeActionCreator(RECEIVE_POST,               'response')
 export const receiveUpdates            = makeActionCreator(RECEIVE_UPDATES,            'response')
 export const receiveImages             = makeActionCreator(RECEIVE_IMAGES,             'response')
@@ -370,9 +374,8 @@ export const fetchCurrentUser = () =>
  * fetchUser Asynchronous Action Creator
  * @returns receiveUser() - Action
  */
-export const fetchUser = (userid) => {
-    return api.fetchUser(userid).then(receiveUser)
-}
+export const fetchUser = (userid) =>
+    api.fetchUser(userid).then(receiveUser)
 
 /**
  * fetchUsers Asynchronous Action Creator
@@ -403,6 +406,13 @@ export const fetchReviewItem = (itemid = null) => (dispatch) => {
         .then(response => dispatch(receiveReviewItem(response)))
         .catch(error => dispatch(fetchReviewItemFailed(error)))
 }
+
+/**
+ * fetchCategory Asynchronous Action Creator
+ * @returns receiveCategory() - Action
+ */
+export const fetchCategory = (categoryid) =>
+    api.fetchCategory(categoryid).then(receiveCategory)
 
 /**
  * fetchPosts Asynchronous Action Creator
@@ -542,6 +552,17 @@ export const fetchThread = (threadid) =>
 export const fetchThreads = () =>
     api.fetchThreads().then(receiveThreads)
 
+/**
+ * fetchThreadsForCategory Asynchronous Action Creator
+ * @returns receiveCategoryThreads() - Action
+ */
+export const fetchThreadsForCategory = (categoryid) =>
+    api.fetchThreadsForCategory(categoryid, 'threads').then(receiveCategoryThreads)
+
+/**
+ * fetchChat Asynchronous Action Creator
+ * @returns receiveChat() - Action
+ */
 export const fetchChat = () =>
     api.fetchChat().then(receiveChat)
 

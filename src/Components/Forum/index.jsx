@@ -27,7 +27,7 @@ const Forum = (props) => {
                 <Route exact path={`${url}${routes.POSTS}/:postid`} component={SinglePost} />
                 <Route exact path={`${url}${routes.THREADS}/:threadid`} component={SingleThread} />
                 <Route exact path={`${url}${routes.CATEGORIES}`} component={Category} />
-                <Route exact path={`${url}${routes.CATEGORIES}/:category`} component={Category} />
+                <Route exact path={`${url}${routes.CATEGORIES}/:categoryid`} component={Category} />
                 <Route component={ForumHome} />
             </Switch>
             <SearchSidebar
