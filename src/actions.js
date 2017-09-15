@@ -392,8 +392,13 @@ export const fetchFollowers = (limit) =>
  * fetchReviewItem Asynchronous Action Creator
  * @returns receiveReviewItem() - Action
  */
-export const fetchReviewItem = () => (dispatch) => {
+export const fetchReviewItem = (itemid = null) => (dispatch) => {
     dispatch(fetchReviewItemStarted())
+    if (itemid) {
+        return api.fetchSpecificReviewItem(itemid)
+            .then(response => dispatch(receiveReviewItem(response)))
+            .catch(error => dispatch(fetchReviewItemFailed(error)))
+    }
     return api.fetchReviewItem()
         .then(response => dispatch(receiveReviewItem(response)))
         .catch(error => dispatch(fetchReviewItemFailed(error)))

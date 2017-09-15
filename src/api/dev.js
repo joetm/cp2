@@ -178,9 +178,11 @@ export const fetchUserVerificationImages = selectSpecificItemCreator('verificati
 // -------------------------------------------------------------------
 
 export const fetchReviewItem = selectFirstItemCreator('reviewitems')
+export const fetchSpecificReviewItem = selectSpecificItemCreator('reviewitems')
 
 // -------------------------------------------------------------------
 
+// TODO
 const fetchFromProtectedAPI = (key, selection, limit = null) => {
     let url = `${ENDPOINT}/${key}/${selection}`
     if (limit) {

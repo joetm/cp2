@@ -2,7 +2,8 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import fetch from 'unfetch'
+import { withRouter } from 'react-router-dom'
+import fetch from 'unfetch' // TODO
 import HelpIcon from 'material-ui/svg-icons/action/help-outline'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
@@ -66,7 +67,7 @@ class Review extends React.Component {
         }
     }
     fetchReviewItem = () => {
-        this.props.fetchReviewItem()
+        this.props.fetchReviewItem(this.props.itemid)
         this.setState({
             buttonsDisabled: false,
             rating: null,
@@ -92,6 +93,7 @@ class Review extends React.Component {
      */
     toggleHelp = () => {
         if (this.state.helpText === '') {
+            // TODO: move this into actions
             this.request = fetch(_HELPTXT_URL)
                 .then((response) => {
                     return response.text()
@@ -128,7 +130,7 @@ class Review extends React.Component {
     /*
      * Like the update.
      */
-    // TODO
+    // TODO - move this to own component
     like = () => {
         if (this.state.clickedLike) {
             // undo a previous dislike
@@ -149,7 +151,7 @@ class Review extends React.Component {
     /*
      * Dislike the update.
      */
-    // TODO
+    // TODO - move this to own component
     dislike = () => {
         if (this.state.clickedDislike) {
             // undo a previous dislike
@@ -257,13 +259,14 @@ class Review extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
     isFetching: state.reviewitem.isFetching,
     reviewitem: state.reviewitem,
+    itemid: ownProps.match.params.itemid,
     error: state.reviewitem.error,
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     {
         fetchReviewItem,
@@ -275,4 +278,4 @@ export default connect(
         recordDislike,
         setFetchingStatus
     }
-)(Review)
+)(Review))
