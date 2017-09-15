@@ -59,11 +59,8 @@ class Review extends React.Component {
             helpIsOpen: false,
             alertIsOpen: false,
             helpText: '',
-            clickedLike: false,
-            clickedDislike: false,
             buttonsDisabled: true,
             rating: null,
-            // popOverImageIsOpen: false,
         }
     }
     fetchReviewItem = () => {
@@ -83,9 +80,7 @@ class Review extends React.Component {
         if (this.request && typeof this.request.abort === "function") {
             this.request.abort()
             this.request = null
-            this.setState({
-                rating: null,
-            })
+            this.setState({rating: null})
         }
     }
     /*
@@ -98,14 +93,10 @@ class Review extends React.Component {
                 .then((response) => {
                     return response.text()
                 }).then((txt) => {
-                this.setState({
-                    helpText: txt,
-                })
+                this.setState({helpText: txt})
             })
         }
-        this.setState({
-            helpIsOpen: !this.state.helpIsOpen
-        })
+        this.setState({helpIsOpen: !this.state.helpIsOpen})
     }
     /*
      * Open the snack bar alert.
@@ -128,59 +119,18 @@ class Review extends React.Component {
         this.fetchReviewItem()
     }
     /*
-     * Like the update.
-     */
-    // TODO - move this to own component
-    like = () => {
-        if (this.state.clickedLike) {
-            // undo a previous dislike
-            this.props.recordLike(this.props.reviewitem.type, this.props.reviewitem.id)
-            this.setState({ ...initialLikeState })
-            return
-        }
-        this.props.recordLike(this.props.reviewitem.type, this.props.reviewitem.id)
-        if (this.state.clickedDislike) {
-            // decrease to undo a previous dislike
-            this.props.recordDislike(this.props.reviewitem.type, this.props.reviewitem.id)
-        }
-        this.setState({
-            clickedLike: true,
-            clickedDislike: false,
-        })
-    }
-    /*
-     * Dislike the update.
-     */
-    // TODO - move this to own component
-    dislike = () => {
-        if (this.state.clickedDislike) {
-            // undo a previous dislike
-            this.props.recordDislike(this.props.reviewitem.type, this.props.reviewitem.id)
-            this.setState({...initialLikeState})
-            return
-        }
-        this.props.recordDislike(this.props.reviewitem.type, this.props.reviewitem.id)
-        if (this.state.clickedLike) {
-            // decrease to undo a previous like
-            this.props.recordLike(this.props.reviewitem.type, this.props.reviewitem.id)
-        }
-        this.setState({
-            clickedDislike: true,
-            clickedLike: false,
-        })
-    }
-    /*
      * Handle the event when the image is clicked.
      */
     handleImageClick = () => {
         // TODO
-        // console.log('open popover', this.props.reviewitem.src)
-        // this.setState({popOverImageIsOpen: !this.state.popOverImageIsOpen})
     }
     /*
      * Handle the event when the rating is changed.
      */
     handleChangeRating = (e, value) => this.setState({rating: value})
+    /*
+     * Construct the message for the snackbar alert.
+     */
     getPointsMsg = () => {
         const numPoints = this.state.rating !== null ? 2 : 1
         const points = numPoints > 1 ? "points" : "point"
@@ -191,7 +141,7 @@ class Review extends React.Component {
      */
     render() {
         const { reviewitem } = this.props
-        // console.log('reviewitem', reviewitem)
+        console.log('reviewitem', reviewitem)
         return (
             <div>
 

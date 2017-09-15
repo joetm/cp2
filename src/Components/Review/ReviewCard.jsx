@@ -12,6 +12,7 @@ import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
 
 import routes from '../../routes'
 import { scrollToTop } from '../../common/helpers'
+import SocialTools from '../Shared/SocialTools'
 
 
 const _IMAGE_MIN_HEIGHT = 475
@@ -99,6 +100,7 @@ class ReviewCard extends React.Component {
         const {
             id,
             user,
+            type,
             title,
             src,
             likes,
@@ -109,6 +111,8 @@ class ReviewCard extends React.Component {
             like,
             dislike
         } = this.props
+
+        console.log('this.props', this.props)
 
         return (
             <Card
@@ -131,16 +135,12 @@ class ReviewCard extends React.Component {
                   subtitle={user ? user.username : null}
                   avatar={user ? user.avatar : null}
               >
-                <div style={{float: 'right', display: 'inline-block'}}>
-                  <LikeButton
-                      number={likes}
-                      action={like}
-                  />
-                  <DisapproveButton
-                      number={dislikes}
-                      action={dislike}
-                  />
-                </div>
+                <SocialTools
+                    {...{likes, dislikes}}
+                    type={type}
+                    itemid={id}
+                    style={{float: 'right'}}
+                />
               </CardHeader>
 
               <CardActions>
