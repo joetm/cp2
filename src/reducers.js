@@ -46,13 +46,22 @@ export function chatReducer(chatState = initialState.chat, action) {
 
         // receive a chat message after sending by oneself
         case ACTIONS.RECEIVE_CHAT_MSG:
-            const copyitems = [...chatState.items]
-            const newMsg = {
+            const newChatMsgs = [...chatState.items]
+            newChatMsgs.push({
                 ...action.response,
                 user: {...chatState.user}, // user expansion
+            })
+            return {...chatState, items: newChatMsgs}
+
+        case ACTIONS.DELETE_MSG_SUCCESS:
+            const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === action.id})
+            return {
+                ...chatState,
+                items: [
+                    ...chatState.items.slice(0, chatMsgIndex),
+                    ...chatState.items.slice(chatMsgIndex + 1)
+                ]
             }
-            copyitems.push(newMsg)
-            return {...chatState, items: copyitems}
 
         // TODO: receive a chat message after sending by others
 

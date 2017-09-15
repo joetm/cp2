@@ -9,7 +9,7 @@ import Avatar from 'material-ui/Avatar'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
 import { findDOMNode } from 'react-dom'
 
-import { sendChatMessage, fetchChat } from '../../actions'
+import { sendChatMessage, fetchChat, removeChatMsg } from '../../actions'
 import { jumpToBottom } from '../../common/helpers'
 import { gray, black, lightGray } from '../../common/colors'
 import routes from '../../routes'
@@ -118,14 +118,14 @@ class Chat extends React.Component {
           }}
         >
           {
-            chat.map((item) => (
+            chat.map(item => (
               <ListItem
                   key={item.id}
                   style={styles.listitem}
                   primaryText={<div style={styles.chatText}>
                     <span
                       style={styles.username}
-                      onTouchTap={this.navigateToUser(item.user.id)}
+                      onTouchTap={() => this.navigateToUser(item.user.id)}
                     >
                       {item.user.username}
                     </span>
@@ -135,8 +135,15 @@ class Chat extends React.Component {
                   leftAvatar={<Avatar
                     src={item.user.avatar}
                     style={styles.avatar}
-                    onTouchTap={this.navigateToUser(item.user.id)}
+                    onTouchTap={() => this.navigateToUser(item.user.id)}
                   />}
+                  rightIconButton={<div
+                      style={{cursor: 'pointer'}}
+                      onTouchTap={e => {e.stopPropagation(); this.props.removeChatMsg(item.id)}}
+                    >
+                      DEV:DELETE
+                    </div>
+                  }
                   autoGenerateNestedIndicator={false}
                   disableKeyboardFocus={true}
                   disabled={true}
@@ -176,5 +183,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
   mapStateToProps,
-  { sendChatMessage, fetchChat }
+  { sendChatMessage, fetchChat, removeChatMsg }
 )(Chat))

@@ -109,6 +109,8 @@ export const DELETE_IMAGES_STARTED      = 'CONTENT:DELETE_IMAGES_STARTED'
 export const DELETE_IMAGES_SUCCESS      = 'CONTENT:DELETE_IMAGES_SUCCESS'
 export const DELETE_IMAGES_FAILURE      = 'CONTENT:DELETE_IMAGES_FAILURE'
 
+export const DELETE_MSG_SUCCESS         = 'CHAT::DELETE_MSG_SUCCESS'
+
 export const REMOVE_POST                = 'FORUM::REMOVE_POST'
 
 // export const SEND_SETTING              = 'APP::SEND_SETTING'
@@ -253,6 +255,8 @@ export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILU
 export const deleteImagesStarted     = makeActionCreator(DELETE_IMAGES_STARTED)
 export const deleteImagesSuccess     = makeActionCreator(DELETE_IMAGES_SUCCESS,     'response')
 export const deleteImagesFailure     = makeActionCreator(DELETE_IMAGES_FAILURE,     'error')
+
+export const deleteMsgSuccess        = makeActionCreator(DELETE_MSG_SUCCESS,        'id')
 
 export const removePost              = makeActionCreator(REMOVE_POST,               'postid', 'bool')
 
@@ -638,6 +642,11 @@ export const removeImages = (itemids) => (dispatch) => {
                 })
 }
 
+export const removeChatMsg = (itemid) => (dispatch) => {
+    return api.removeItem('chat', itemid)
+                .then(dispatch(deleteMsgSuccess(itemid)))
+}
+
 export const changeSetting = (key, value) =>
     api.changeSetting(key, value).then(receiveSetting)
 
@@ -645,4 +654,4 @@ export const changeSetting = (key, value) =>
 
 export const findUser = (username) =>
     api.find('users', username, true)
-    .then(receiveSearchResult)
+      .then(receiveSearchResult)
