@@ -17,6 +17,9 @@ import User from './User'
 import Filters from './Filters'
 
 
+const _PAGE_SIZE = 10
+
+
 /**
  * Users class
  * @class
@@ -26,12 +29,12 @@ class Users extends React.Component {
       filtersOpen: false,
     }
     componentDidMount() {
-      this.props.fetchUsers()
+      this.props.fetchUsers(_PAGE_SIZE, filters)
     }
     refreshUsers = (filters) => {
       // TODO
       console.log('filters', filters)
-      this.props.fetchUsers(filters)
+      this.props.fetchUsers(_PAGE_SIZE, filters)
     }
     toggleFilters = () => {
       this.setState({ filtersOpen: !this.state.filtersOpen })

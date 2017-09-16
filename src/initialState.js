@@ -53,6 +53,11 @@ const initialState = {
     users: {
         isFetching: true,
     },
+    online: {
+        isFetching: true,
+        users: [],
+        num: 0,
+    },
     // -- personalized content
     messages: {
         isFetching: true,

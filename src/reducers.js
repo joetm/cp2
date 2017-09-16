@@ -407,6 +407,19 @@ export function followersReducer(followersState = initialState.followers, action
     }
 }
 
+/**
+ * onlineReducer
+ * @returns state
+ **/
+export function onlineReducer(onlineState = initialState.online, action) {
+    switch (action.type) {
+        case ACTIONS.RECEIVE_ONLINE_USERS:
+            return {...onlineState, isFetching: false, users: [...action.response]}
+        default:
+            return onlineState
+    }
+}
+
 export function modReducer(modState = initialState.mod, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CONTACT_REQUESTS:

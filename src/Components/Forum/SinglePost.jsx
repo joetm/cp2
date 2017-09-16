@@ -5,10 +5,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { fetchPost, recordLike, recordDislike } from '../../actions'
+import routes from '../../routes'
 import PostTpl from './PostTpl'
 import Spacer from '../Shared/Spacer'
 import Breadcrumbs from '../Shared/Breadcrumbs'
-import routes from '../../routes'
+import ScrollToTop from '../Shared/ScrollToTop'
 
 
 class SinglePost extends React.Component {
@@ -20,6 +21,7 @@ class SinglePost extends React.Component {
         console.log(this.props)
         return (
             <div>
+                <ScrollToTop />
                 <Breadcrumbs
                     level0={{label: "Forum", url: routes.FORUM}}
                     level1={{label: post.threadid, url: `${routes.FORUM}${routes.THREADS}/${post.threadid}`}}

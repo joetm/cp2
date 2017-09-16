@@ -39,6 +39,7 @@ const store = createStore(
         posts: Reducers.postsReducer,
         followers: Reducers.followersReducer,
         users: Reducers.userReducer,
+        online: Reducers.onlineReducer,
         // single items
         reviewitem: Reducers.reviewReducer,
         category: Reducers.categoryReducer,

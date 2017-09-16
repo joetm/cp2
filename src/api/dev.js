@@ -140,6 +140,9 @@ const selectSubitemsForItemCreator = (key) => (...args) =>
 
 export const fetchCurrentUser = selectItemsCreator('currentUser')
 export const fetchUsers = selectItemsCreator('users')
+// TODO
+export const fetchOnlineUsers = selectItemsCreator('users')
+//
 export const fetchChat = selectItemsCreator('chat')
 export const fetchPosts = selectItemsCreator('posts')
 export const fetchCategories = selectItemsCreator('categories')

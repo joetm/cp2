@@ -61,6 +61,7 @@ export const MARK_ALL_READ              = 'STREAM::MARK_ALL_READ'
 
 export const RECEIVE_USER               = 'USER::RECEIVE_USER'
 export const RECEIVE_USERS              = 'USER::RECEIVE_USERS'
+export const RECEIVE_ONLINE_USERS       = 'USER::RECEIVE_ONLINE_USERS'
 export const RECEIVE_FOLLOWERS          = 'SOCIAL::RECEIVE_FOLLOWERS'
 export const RECEIVE_CURRENT_USER       = 'USER:RECEIVE_CURRENT_USER'
 export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
@@ -203,6 +204,7 @@ export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'boo
 export const receiveCurrentUser        = makeActionCreator(RECEIVE_CURRENT_USER,       'response')
 export const receiveUser               = makeActionCreator(RECEIVE_USER,               'response')
 export const receiveUsers              = makeActionCreator(RECEIVE_USERS,              'response')
+export const receiveOnlineUsers        = makeActionCreator(RECEIVE_ONLINE_USERS,       'response')
 export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
 export const receiveCategory           = makeActionCreator(RECEIVE_CATEGORY,           'response')
@@ -381,8 +383,16 @@ export const fetchUser = (userid) =>
  * fetchUsers Asynchronous Action Creator
  * @returns receiveUsers() - Action
  */
-export const fetchUsers = (limit) =>
-    api.fetchUsers(limit).then(receiveUsers)
+// TODO: filters
+export const fetchUsers = (limit, filters = null) =>
+    api.fetchUsers(limit, filters).then(receiveUsers)
+
+/**
+ * fetchUsers Asynchronous Action Creator
+ * @returns receiveUsers() - Action
+ */
+export const fetchOnlineUsers = (limit) =>
+    api.fetchOnlineUsers(limit).then(receiveOnlineUsers)
 
 /**
  * fetchFollowers Asynchronous Action Creator

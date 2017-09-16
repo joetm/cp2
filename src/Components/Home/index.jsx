@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
-import { fetchUpdates, fetchFavorites, fetchLikes } from '../../actions'
+import { fetchUpdates, fetchOnlineUsers } from '../../actions'
 import Footer from '../Footer'
 import Chat from '../Chat'
 import CellWrapper from '../Shared/CellWrapper'
@@ -14,37 +14,26 @@ import GridWrap from '../Shared/GridWrap'
 // import Update from '../Content/Update'
 import Box, { boxStyle } from '../Shared/Box'
 import routes from '../../routes'
-
-
-// const styles = {
-//     separator: {
-//         marginTop: '1em',
-//         marginBottom: '1em',
-//     },
-// }
-
-
-// const Separator = () => (
-//     <Divider style={styles.separator} />
-// )
+import ScrollToTop from '../Shared/ScrollToTop'
 
 
 class Home extends React.Component {
   componentDidMount() {
+    // fetch the latest streamitems
     this.props.fetchUpdates(3)
-    this.props.fetchFavorites(3)
-    this.props.fetchLikes(3)
+    // fetch users online
+    this.props.fetchOnlineUsers(3)
   }
   render() {
     return (
       <div>
+        <ScrollToTop />
 
         <GridWrap>
 
             <CellWrapper full={6} tablet={8} phone={4}>
                 <Box headline="New Updates" footerLink={routes.UPDATES} items={this.props.updates} />
-                <Box headline="Your Favorites" footerLink={routes.FAVORITES} items={this.props.favorites} />
-                <Box headline="Your Likes" footerLink={routes.LIKES} items={this.props.likes} />
+                <Box headline="Users Online" footerLink={routes.USERS} items={this.props.onlineUsers} />
             </CellWrapper>
 
             <CellWrapper full={6} tablet={8} phone={4}>
@@ -70,15 +59,13 @@ class Home extends React.Component {
 const mapStateToProps = (state) => ({
     updates: state.updates.items,
       updatesIsFetching: state.updates.isFetching,
-    favorites: state.favorites.items,
-      favoritesIsFetching: state.favorites.isFetching,
-    likes: state.likes.items,
-      likesIsFetching: state.likes.isFetching,
+    onlineUsers: state.online.users,
+      onlineUsersIsFetching: state.online.isFetching,
     chat: state.chat.items,
       chatIsFetching: state.chat.isFetching,
 })
 
 export default connect(
     mapStateToProps,
-    { fetchUpdates, fetchLikes, fetchFavorites }
+    { fetchUpdates, fetchOnlineUsers }
 )(Home)

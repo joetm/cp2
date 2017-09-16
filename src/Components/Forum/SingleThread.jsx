@@ -11,6 +11,7 @@ import Spacer from '../Shared/Spacer'
 import Posts from './Posts'
 import Loader from '../Shared/Loader'
 import PostTpl from './PostTpl'
+import ScrollToTop from '../Shared/ScrollToTop'
 
 
 const styles = {
@@ -32,6 +33,7 @@ class SingleThread extends React.Component {
         const { title, isFetching, history, items = [] } = this.props
         return (
             <div>
+                <ScrollToTop />
 
                 <FloatingActionButton
                     mini={true}

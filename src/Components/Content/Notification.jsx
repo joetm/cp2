@@ -70,6 +70,9 @@ class Notification extends React.Component {
             touchTapAction = null
             break
 
+          case 'user':
+          case 'admin':
+          case 'moderator':
           case 'follower':
 
             secondaryText = (
