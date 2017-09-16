@@ -39,7 +39,15 @@ const styles = {
       width: '',
       whiteSpace: 'nowrap',
     },
+    textContent: {
+      padding: '26px',
+    },
 }
+
+
+const TextContent = (props) => (
+  <div style={styles.textContent}>{props.children}</div>
+)
 
 
 class ReviewCard extends React.Component {
@@ -102,6 +110,7 @@ class ReviewCard extends React.Component {
             user,
             type,
             title,
+            content,
             src,
             likes,
             dislikes,
@@ -113,22 +122,24 @@ class ReviewCard extends React.Component {
         } = this.props
 
         console.log('this.props', this.props)
+        console.log('content', content)
 
         return (
             <Card
                 key={`upd_${id}`}
             >
 
-              {
-                src && (
-                  <CardMedia
-                      style={styles.cardMedia}
-                      onTouchTap={this.props.handleImageClick}
-                  >
-                      <img src={src} alt="" style={styles.cardImage} />
-                  </CardMedia>
-                )
-              }
+              <CardMedia
+                  style={styles.cardMedia}
+                  onTouchTap={this.props.handleImageClick}
+              >
+                {
+                  src &&
+                    <img src={src} alt="" style={styles.cardImage} />
+                }
+              </CardMedia>
+
+              <TextContent>{content}</TextContent>
 
               <CardHeader
                   title={title}

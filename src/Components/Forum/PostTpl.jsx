@@ -49,7 +49,10 @@ class PostTpl extends React.Component {
         return (
             <div>
 
-                <h2 style={{textAlign: isEmbedded ? 'left' : 'center'}}>{title}</h2>
+                {
+                    !isEmbedded &&
+                    <h2>{title}</h2>
+                }
 
                 <GridWrap>
 

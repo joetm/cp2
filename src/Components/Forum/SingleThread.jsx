@@ -56,6 +56,7 @@ class SingleThread extends React.Component {
                             <PostTpl
                                 key={item.id}
                                 {...item}
+                                isEmbedded={true}
                                 like={recordLike}
                                 dislike={recordDislike}
                             />

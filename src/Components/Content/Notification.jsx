@@ -46,7 +46,12 @@ class Notification extends React.Component {
      */
     render () {
         //
-        const { streamitem = {}, user = {}, userid, type, id, title, content, history } = this.props
+        const {
+          streamitem = {},
+          user = {}, userid,
+          type, id, title, thumb,
+          content, history
+        } = this.props
 
         let secondaryText
         let rightIconMenu
@@ -138,7 +143,7 @@ class Notification extends React.Component {
                 <Avatar
                   username={user.username}
                   style={{cursor: 'pointer'}}
-                  src={user.avatar}
+                  src={user.avatar || thumb}
                   macro={true}
                   onTouchTap={e => { e.stopPropagation(); history.push(`${routes.PROFILE}/${userid}`) }}
                 />
