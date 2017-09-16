@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { fetchPicture } from '../../actions'
 // --
 import Spacer from '../Shared/Spacer'
-import Update from '../Content/Update'
+import FullscreenImage from './FullscreenImage'
 
 
 class Image extends React.Component {
@@ -19,16 +19,12 @@ class Image extends React.Component {
      */
     render() {
         const { title } = this.props.image
+        console.log('XXX this.props.image', this.props.image)
         return (
             <div>
                 <h2>{title}</h2>
-                <Update
+                <FullscreenImage
                     {...this.props.image}
-                    showTitle={false}
-                    clickable={false}
-                    gridColumnsFull={1}
-                    gridColumnsTablet={1}
-                    gridColumnsPhone={1}
                 />
                 <Spacer />
             </div>
@@ -37,8 +33,8 @@ class Image extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    image: state.image,
     currentUserId: state.currentUser.id,
+    image: state.image,
     imageid: ownProps.match.params.imageid,
 })
 

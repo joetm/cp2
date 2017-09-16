@@ -112,11 +112,8 @@ class NavBar extends React.Component {
      */
     render() {
         const { unread, isAuthenticated, errorMessage } = this.props
-
         const numUnread = sum(unread)
-
         const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
-
         return (
           <div>
             <Toolbar style={styles.navbar}>

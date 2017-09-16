@@ -90,28 +90,28 @@ class App extends React.Component {
                 <Route exact path={routes.STREAM} component={Stream} />
 
                 <Route exact path={routes.UPDATES} component={Updates} />
+
                 <Route exact path={routes.IMAGES} component={Pictures} />
+                <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
+
                 <Route exact path={routes.VIDEOS} component={Videos} />
+                <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
 
                 <Route exact path={routes.MESSAGES} component={Messages} />
+                <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
+
                 <Route exact path={routes.LIKES} component={Likes} />
                 <Route exact path={routes.FAVORITES} component={Favorites} />
 
                 <Route exact path={routes.REVIEW} component={Review} />
                 <Route path={`${routes.REVIEW}/:itemid`} component={Review} />
 
-                <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
-                <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
-
-                <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
-
-                <Route path={`${routes.PROFILE}/:userid`} component={Profile} />
-
                 <Route path={routes.PLAYLIST} component={Playlist} />
 
-                <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
-
                 <Route path={routes.MEMBERS} component={Users} />
+
+                <Route path={`${routes.PROFILE}/:userid`} component={Profile} />
+                <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
 
                 <Route path={routes.SETTINGS.INDEX} component={Settings} />
 
