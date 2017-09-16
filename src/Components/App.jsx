@@ -42,6 +42,7 @@ import Legal from './Legal'
 import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
+import LoginSidebar from './Sidebar/Login'
 // import StreamSidebar from './Sidebar/StreamSidebar'
 import ModArea from './ModArea'
 import Playlist from './Playlist'
@@ -136,6 +137,7 @@ class App extends React.Component {
               <Scrollbutton secondary={true} />
 
               <Sidebar />
+              <LoginSidebar />
               {/* <StreamSidebar /> */}
 
             </div>

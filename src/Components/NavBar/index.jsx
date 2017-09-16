@@ -33,8 +33,6 @@ import './style.scss'
 // --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
-import LoginButton from '../Shared/Buttons/LoginButton'
-import SignupButton from '../Shared/Buttons/SignupButton'
 import NotificationsMenu from './NotificationsMenu'
 import SearchBar from './SearchBar'
 
@@ -203,17 +201,6 @@ class NavBar extends React.Component {
                                     onTouchTap={this.toggleState}
                                 />
                             </Link>
-
-                            {!isAuthenticated &&
-                                    <SignupButton />
-                            }
-
-                            {!isAuthenticated &&
-                                    <LoginButton
-                                        errorMessage={errorMessage}
-                                        onTouchTap={() => history.push('/login')}
-                                    />
-                            }
 
                         </ToolbarGroup>
                     : null

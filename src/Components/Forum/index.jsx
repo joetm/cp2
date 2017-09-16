@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom'
 import { closeSearchSidebar } from '../../actions'
 // --
 import Spacer from '../Shared/Spacer'
-import SearchSidebar from '../SearchSidebar'
+import SearchSidebar from '../Sidebar/SearchSidebar'
 import ForumHome from './ForumHome'
 import Category from './Category'
 import Posts from './Posts'
