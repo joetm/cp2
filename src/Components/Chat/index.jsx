@@ -17,6 +17,7 @@ import ChatInput from './ChatInput'
 import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
 import BoxHeader from '../Shared/BoxHeader'
+import ScrollToTop from '../Shared/ScrollToTop'
 
 
 const _OFFSET = 260
@@ -102,7 +103,11 @@ class Chat extends React.Component {
 
         {
           !isEmbedded ?
-            <h2>Chat</h2>
+            (
+              <ScrollToTop>
+                <h2>Chat</h2>
+              </ScrollToTop>
+            )
             :
             (
                 <BoxHeader

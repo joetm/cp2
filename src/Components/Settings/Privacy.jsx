@@ -5,16 +5,11 @@ import { connect } from 'react-redux'
 import Toggle from 'material-ui/Toggle'
 import Divider from 'material-ui/Divider'
 import { List } from 'material-ui/List'
-import Subheader from 'material-ui/Subheader'
 
 import { changeSetting } from '../../actions'
 import styles from './styles'
+import SettingsSeparator from './SettingsSeparator'
 
-/*
-  toggleOnlineVisibility = (event, isInputChecked) => {
-    console.log('change online status visibility')
-  }
-*/
 
 class PrivacySettings extends React.Component {
   toggleLocationVisibility = (event, isInputChecked) => {
@@ -32,8 +27,7 @@ class PrivacySettings extends React.Component {
   render() {
     return (
       <div style={{textAlign: 'left'}}>
-        <Subheader inset={false}>Privacy Settings</Subheader>
-        <Divider />
+        <SettingsSeparator first text="Privacy Settings" />
         <List>
           <Toggle
             label="Show your location"

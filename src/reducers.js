@@ -247,7 +247,8 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
  * @returns likesState
  **/
 export function likesReducer(likesState = initialState.likes, action) {
-    const increment = action.increment === undefined ? 1 : action.increment
+    // TODO
+    // const increment = action.increment === undefined ? 1 : action.increment
     switch (action.type) {
         case ACTIONS.RECEIVE_LIKES:
             return {...likesState, isFetching: false, items: [...action.response]}
@@ -271,27 +272,13 @@ export function likesReducer(likesState = initialState.likes, action) {
 export function threadReducer(threadState = initialState.thread, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_THREAD:
-            return {
-                ...threadState,
-                ...action.response,
-                isFetching: false,
-            }
+            return {...threadState, ...action.response, isFetching: false}
         case ACTIONS.FETCH_POSTS_FOR_THREAD_STARTED:
-            return {
-                ...threadState,
-                isFetching: true,
-            }
+            return {...threadState, isFetching: true}
         case ACTIONS.RECEIVE_POSTS_FOR_THREAD:
-            return {
-                ...threadState,
-                items: [...action.response],
-                isFetching: false,
-            }
+            return {...threadState, items: [...action.response], isFetching: false}
         case ACTIONS.FETCH_POSTS_FOR_THREAD_FAILURE:
-            return {
-                ...threadState,
-                isFetching: false,
-            }
+            return {...threadState, isFetching: false}
         default:
             return threadState
     }
@@ -304,10 +291,8 @@ export function threadReducer(threadState = initialState.thread, action) {
 export function postReducer(postState = initialState.post, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_POST:
-            return {
-                item: {...action.response},
-                isFetching: false,
-            }
+            // TODO
+            return {item: {...action.response}, isFetching: false}
         default:
             return postState
     }
@@ -360,17 +345,9 @@ export function categoriesReducer(categoriesState = initialState.categories, act
 export function categoryReducer(categoryState = initialState.category, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_CATEGORY:
-            return {
-                ...categoryState,
-                ...action.response,
-                isFetching: false,
-            }
+            return {...categoryState, ...action.response, isFetching: false}
         case ACTIONS.RECEIVE_CATEGORY_THREADS:
-            return {
-                ...categoryState,
-                isFetching: false,
-                threads: [...action.response],
-            }
+            return {...categoryState, isFetching: false, threads: [...action.response]}
         default:
             return categoryState
     }

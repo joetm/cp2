@@ -9,9 +9,10 @@ import FlatButton from 'material-ui/FlatButton'
 
 import { findUser, changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
-import { inlineButton } from '../Shared/styles'
+// import { inlineButton } from '../Shared/styles'
 import Alert from '../Shared/Alert'
 import getSuccessMsg from '../../common/successMessages'
+import { usernames } from '../../common/blocklist'
 
 
 class AccountSettings extends React.Component {
@@ -21,15 +22,29 @@ class AccountSettings extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
+          // fields
+          usertitle: null,
+          email: '',
+          confirmEmail: '',
+          // locking
           fieldsLocked: true,
           deletionIsLocked: true,
+          // match checking
+          usernamesMatching: false,
+          emailsMatching: false,
+          passwordsMatching: false,
+          // erorrs
+          usernameError: null,
+          emailError: null,
+          confirmEmailError: null,
+          passwordError: null,
+          oldpasswordError: null,
+          // snackbar alert
+          alertIsOpen: false,
+          alertMsg: getSuccessMsg(), // once per page load
+          // dialogs
           deletionDialogIsOpen: false,
           usernameChangeDialogIsOpen: false,
-          usernamesMatching: false,
-          usernameError: null,
-          usertitle: null,
-          alertIsOpen: false,
-          alertMsg: getSuccessMsg(), // once per page
       }
     }
     // TODO
@@ -81,8 +96,26 @@ class AccountSettings extends React.Component {
     /*
      * Handle the change of the email.
      */
-    handleChangeEmail = (e) => {
-        console.log('change email', e.target.value)
+    handleChangeEmail = (e, newValue) => {
+        // reset errors
+        this.setState({emailError: null})
+        // console.log('change email', newValue)
+        const email = newValue.trim()
+        if (email !== '') {
+          this.setState({email})
+        }
+    }
+    /*
+     * Handle the change of the confirmation email.
+     */
+    handleChangeConfirmEmail = (e, newValue) => {
+        // reset errors
+        this.setState({confirmEmailError: null})
+        // console.log('change confirmation email', newValue)
+        const confirmEmail = newValue.trim()
+        if (confirmEmail !== '') {
+          this.setState({confirmEmail})
+        }
     }
     /*
      * Handle the request for account deletion.
@@ -98,20 +131,19 @@ class AccountSettings extends React.Component {
      * Handle the change of the user title field.
      */
     handleChangeUsertitle = (e, newValue) => {
-      const newUsertitle = newValue.trim()
-      this.setState({usertitle: newUsertitle})
+      const usertitle = newValue.trim()
+      // allow empty usertitles
+      this.setState({usertitle})
     }
     /*
      * Change the user title.
      */
-    changeUsertitle = (e) => {
-      const newUsertitle = e.target.value.trim()
-      console.log('change user title', newUsertitle)
-      if (newUsertitle.length) {
-        this.props.changeSetting('usertitle', newUsertitle)
+    changeUsertitle = () => {
+      const usertitle = this.state.usertitle.trim()
+      if (usertitle !== '') {
+        this.props.changeSetting('usertitle', usertitle)
       }
     }
-
     /*
      * Enables the locked fields.
      */
@@ -186,19 +218,20 @@ class AccountSettings extends React.Component {
       return (
         <div style={{textAlign: 'left'}} ref="pageContent">
 
-            <SettingsSeparator text="Account Details" />
+            <SettingsSeparator first text="Account Details" />
 
             <TextField
               floatingLabelText="Custom User Title"
               value={this.state.usertitle}
               onChange={this.handleChangeUsertitle}
             />
-            <RaisedButton
+            <p>
+              <RaisedButton
                 label="Save"
                 primary={true}
-                style={inlineButton}
                 onTouchTap={this.changeUsertitle}
-            />
+              />
+            </p>
 
             <SettingsSeparator text="Login-related Options" />
 
@@ -225,19 +258,20 @@ class AccountSettings extends React.Component {
             </p>
 
             <div>
-              <TextField
-                floatingLabelText="Change Email"
-                value={email}
-                disabled={this.state.fieldsLocked}
-                onBlur={this.handleChangeEmail}
-              />
-
-              <TextField
-                floatingLabelText="Confirm Email"
-                value={email}
-                disabled={this.state.fieldsLocked}
-                onBlur={this.handleChangeEmail}
-              />
+                <TextField
+                  floatingLabelText="New Email"
+                  disabled={this.state.fieldsLocked}
+                  value={this.state.email}
+                  onChange={this.handleChangeEmail}
+                />
+            </div>
+            <div>
+                <TextField
+                  floatingLabelText="Confirm Email"
+                  disabled={this.state.fieldsLocked}
+                  value={this.state.confirmEmail}
+                  onChange={this.handleChangeConfirmEmail}
+                />
             </div>
 
             <p>
@@ -252,24 +286,31 @@ class AccountSettings extends React.Component {
             <SettingsSeparator text="Password" />
 
             <div>
-              <TextField
-                floatingLabelText="Old Password"
-                type="password"
-                disabled={this.state.fieldsLocked}
-                onBlur={this.handleChangePassword}
-              />
-              <TextField
-                floatingLabelText="New Password"
-                type="password"
-                disabled={this.state.fieldsLocked}
-                onBlur={this.handleChangePassword}
-              />
-              <TextField
-                floatingLabelText="Confirm Password"
-                type="password"
-                disabled={this.state.fieldsLocked}
-                onBlur={this.handleChangePassword}
-              />
+                <TextField
+                  floatingLabelText="Old Password"
+                  type="password"
+                  disabled={this.state.fieldsLocked}
+                  onBlur={this.handleChangePassword}
+                  errorText={this.state.oldpasswordError}
+                />
+            </div>
+            <div>
+                <TextField
+                  floatingLabelText="New Password"
+                  type="password"
+                  disabled={this.state.fieldsLocked}
+                  onBlur={this.handleChangePassword}
+                  errorText={this.state.passwordError}
+                />
+            </div>
+            <div>
+                <TextField
+                  floatingLabelText="Confirm Password"
+                  type="password"
+                  disabled={this.state.fieldsLocked}
+                  onBlur={this.handleChangePassword}
+                  errorText={this.state.passwordError}
+                />
             </div>
 
             <p>
@@ -300,19 +341,19 @@ class AccountSettings extends React.Component {
               onRequestClose={this.closeDialogs}
             >
               <p>
-              Warning: The account deletion cannot be undone!
-              <br />
-              Important: Your uploaded images, videos and posts will NOT automatically be deleted with your account.
-              If you want them deleted, then do so yourself BEFORE deleting your account!
+                Warning: The account deletion cannot be undone!
+                <br />
+                Important: Your uploaded images, videos and posts will NOT automatically be deleted with your account.
+                If you want them deleted, then do so yourself BEFORE deleting your account!
               </p>
 
               <div>
                 To confirm the deletion, enter your username.
                 <div>
-                <TextField
-                  floatingLabelText="Enter username"
-                  onChange={this.unlockDeletion}
-                />
+                  <TextField
+                    floatingLabelText="Enter username"
+                    onChange={this.unlockDeletion}
+                  />
                 </div>
               </div>
 

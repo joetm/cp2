@@ -6,18 +6,20 @@
   to { transform: rotate(360deg); }
 }
 
-#rays { /* with animation properties */
-  background: url(/img/rays.png) 0 0 no-repeat;
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 490px;
-  height: 490px;
-  /* microsoft ie */
-  animation-name: spin;
-  animation-duration: 40000ms; /* 40 seconds */
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  z-index: 4;
+.loader {
+  .rays {
+    background: url(/img/rays.png) 0 0 no-repeat;
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    width: 490px;
+    height: 490px;
+    /* microsoft ie */
+    animation-name: spin;
+    animation-duration: 40000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    z-index: 4;
+  }
 }
 

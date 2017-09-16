@@ -44,12 +44,12 @@ const Loader = props => {
         return null
     }
     return (
-        <div style={styles.wrapper}>
+        <div className="loader" style={styles.wrapper}>
             <div style={styles.loader}>
                 <div style={styles.loaderInnercircle}>
                     {msg}
                 </div>
-                <div id="rays"></div>
+                <div className="rays"></div>
             </div>
         </div>
     )

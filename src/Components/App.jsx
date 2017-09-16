@@ -13,7 +13,6 @@ import { setDeviceDetails } from '../actions'
 import { theme } from '../common/theme'
 import { bg as bgColor } from '../common/colors'
 import Scrollbutton from './Shared/Scrollbutton'
-import ScrollToTop from './Shared/ScrollToTop'
 // --
 import NavBar from './NavBar'
 import Home from './Home'
@@ -77,8 +76,6 @@ class App extends React.Component {
           <Provider store={store}>
 
             <div style={{backgroundColor: bgColor}}>
-
-              <ScrollToTop />
 
               <NavBar />
 

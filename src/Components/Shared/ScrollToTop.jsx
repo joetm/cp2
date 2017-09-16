@@ -11,8 +11,8 @@ class ScrollToTop extends React.Component {
     }
   }
   render() {
-    // return this.props.children
-    return null
+    return this.props.children || null
+    // return null
   }
 }
 

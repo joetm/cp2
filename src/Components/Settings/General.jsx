@@ -52,7 +52,7 @@ class GeneralSettings extends React.Component {
       return (
         <div style={{textAlign: 'left'}} ref={el => { this.pageContent = el }}>
 
-            <SettingsSeparator text="Personal data" />
+            <SettingsSeparator first text="Personal data" />
 
             <DatePicker
               floatingLabelText="Birth date"
