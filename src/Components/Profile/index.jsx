@@ -82,7 +82,7 @@ class Profile extends React.Component {
                         username={user.username}
                         onTouchTap={this.toggleProfileDetails}
                     />
-                    <ProfileUsername name={user.username} />
+                    <ProfileUsername name={user.username} usertitle={user.usertitle} />
                     <OnlineStatus isOnline={user.isOnline} applyOffset={true} />
                 </div>
 
