@@ -9,34 +9,22 @@ import Avatar from 'material-ui/Avatar'
 import FullScreenIcon from 'material-ui/svg-icons/action/aspect-ratio'
 import { findDOMNode } from 'react-dom'
 
-import { sendChatMessage, fetchChat, removeChatMsg } from '../../actions'
+import { sendChatMessage, fetchChat } from '../../actions'
 import { jumpToBottom } from '../../common/helpers'
-import { gray, black, lightGray } from '../../common/colors'
+import { gray, lightGray } from '../../common/colors'
 import routes from '../../routes'
 import ChatInput from './ChatInput'
 import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
 import BoxHeader from '../Shared/BoxHeader'
 import ScrollToTop from '../Shared/ScrollToTop'
+import ChatItem from './ChatItem'
 
 
 const _OFFSET = 260
 
 const styles = {
   chatList: { overflowY: 'auto' },
-  chatText: {
-    fontSize: '0.8em',
-    color: gray,
-  },
-  username: {
-    fontWeight: 400,
-    cursor: 'pointer',
-  },
-  avatar: { cursor: 'pointer' },
-  content: { color: black },
-  timestamp: {
-    color: gray,
-  },
   headerBar: {
     height: '40px',
     lineHeight: '40px',
@@ -84,20 +72,8 @@ class Chat extends React.Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateHeight)
   }
-  navigateToUser = (userid) => () => {
-    const userUrl = `${routes.PROFILE}/${userid}`
-    this.props.history.push(userUrl)
-  }
   render() {
     const { chat, isEmbedded, history } = this.props
-    const deleteButton = (
-      <div
-        style={{cursor: 'pointer'}}
-        onTouchTap={e => {e.stopPropagation(); this.props.removeChatMsg(item.id)}}
-      >
-        DEV:DELETE
-      </div>
-    )
     return (
       <div>
 
@@ -124,37 +100,14 @@ class Chat extends React.Component {
 
         <List
           ref={el => { this.chatContainer = findDOMNode(el) }}
-          style={{
-            ...styles.chatList,
-            ...this.props.style,
-            height: this.state.chatHeight,
-          }}
+          style={{...styles.chatList, ...this.props.style, height: this.state.chatHeight}}
         >
           {
             chat.map(item => (
-              <ListItem
-                  key={item.id}
-                  style={styles.listitem}
-                  primaryText={<div style={styles.chatText}>
-                    <span
-                      style={styles.username}
-                      onTouchTap={() => this.navigateToUser(item.user.id)}
-                    >
-                      {item.user.username}
-                    </span>
-                    {' '}
-                    <span style={styles.content}>{item.content}</span>
-                  </div>}
-                  leftAvatar={<Avatar
-                    src={item.user.avatar}
-                    style={styles.avatar}
-                    onTouchTap={() => this.navigateToUser(item.user.id)}
-                  />}
-                  rightIconButton={deleteButton}
-                  autoGenerateNestedIndicator={false}
-                  disableKeyboardFocus={true}
-                  disabled={true}
-              />
+                <ChatItem
+                    key={`msg_${item.id}`}
+                    {...item}
+                />
             ))
           }
         </List>
@@ -190,5 +143,5 @@ const mapStateToProps = (state) => ({
 
 export default withRouter(connect(
   mapStateToProps,
-  { sendChatMessage, fetchChat, removeChatMsg }
+  { sendChatMessage, fetchChat }
 )(Chat))

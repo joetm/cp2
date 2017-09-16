@@ -600,6 +600,7 @@ export const recordDislike = (key, id) =>
  * @returns recordApproval() - Action
  */
 export const recordApproval = (id, rating) => {
+    // TODO: use action
     return api.recordCrowdDecision(REVIEW_APPROVE, id, rating).then(reviewApprove)
 }
 
@@ -608,6 +609,7 @@ export const recordApproval = (id, rating) => {
  * @returns recordDisapproval() - Action
  */
 export const recordDisapproval = (id, rating) => {
+    // TODO: use action
     return api.recordCrowdDecision(REVIEW_DISAPPROVE, id, rating).then(reviewDisapprove)
 }
 
@@ -643,9 +645,7 @@ export const removeAvatar = (userid) => (dispatch) => {
     dispatch(deleteAvatarStarted())
     return api.removeUserField('avatar')
                 .then(dispatch(deleteAvatarSuccess(userid)))
-                .catch(error => {
-                  dispatch(deleteAvatarFailure(), error)
-                })
+                .catch(error => dispatch(deleteAvatarFailure(error)))
 }
 
 // export const removeProfileImg = () =>
@@ -654,18 +654,14 @@ export const removeProfileImg = () => (dispatch) => {
     dispatch(deleteProfileImgStarted())
     return api.removeUserField('profileimg')
                 .then(dispatch(deleteProfileImgSuccess()))
-                .catch(error => {
-                  dispatch(deleteProfileImgFailure(), error)
-                })
+                .catch(error => dispatch(deleteProfileImgFailure(error)))
 }
 
 export const removeImages = (itemids) => (dispatch) => {
     dispatch(deleteImagesStarted())
     return api.deleteItems(itemids)
                 .then(dispatch(deleteImagesSuccess(itemids)))
-                .catch(error => {
-                  dispatch(deleteImagesFailure(), error)
-                })
+                .catch(error => dispatch(deleteImagesFailure(error)))
 }
 
 export const removeChatMsg = (itemid) => (dispatch) => {
