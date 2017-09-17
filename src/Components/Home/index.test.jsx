@@ -2,14 +2,15 @@
 
 import React from 'react'
 import renderer from 'react-test-renderer'
+import ReactTestUtils from 'react-dom/test-utils'
 
 import Home from './index'
 
-test('Link changes the class when hovered', () => {
+test('TODO', () => {
     const component = renderer.create(
         <Home />
-    );
-    const tree = component.toJSON();
+    )
+    const tree = component.toJSON()
     console.log(tree)
-    expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot()
 })

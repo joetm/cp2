@@ -55,6 +55,8 @@ class AvatarSetting extends React.Component {
             onTouchTap={this.deleteAvatar}
           />
 
+          <Spacer />
+
 {/*
           <Snackbar
             open={this.state.msgOpen}

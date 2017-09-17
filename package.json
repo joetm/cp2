@@ -13,7 +13,7 @@
   "author": "JO",
   "license": "MIT",
   "scripts": {
-    "dev": "./node_modules/.bin/concurrently --kill-others \"yarn run mock-db\" \"yarn run watch\" \"yarn run dev-server\"",
+    "dev": "./node_modules/.bin/concurrently --kill-others \"yarn mock-db\" \"yarn watch\" \"yarn dev-server\"",
     "eslint": "./node_modules/.bin/eslint --config ./.eslintrc.json --ext jsx,js ./src",
     "flow": "./node_modules/.bin/flow",
     "test": "NODE_ENV=test ./node_modules/.bin/jest",
@@ -27,7 +27,7 @@
     "loadProdEnv": "source ./env/PROD",
     "depcheck": "depcheck . --ignore-dirs=dist,node_modules",
     "jsdoc": "jsdoc -r -d ./dist/docs/html -c jsdoc-config.json src",
-    "docs": "yarn run jsdoc"
+    "docs": "yarn jsdoc"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
@@ -48,7 +48,7 @@
   },
   "BAK": {
     "build": "./node_modules/.bin/babel ./src/ -d ./lib/ && ",
-    "prepublish": "yarn run build"
+    "prepublish": "yarn build"
   },
   "files": [
     "./src/**/*.{js,json,jsx}"
@@ -141,7 +141,7 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
+    "babel-jest": "^21.0.2",
     "babel-loader": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -149,6 +149,7 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-plugin-transform-es2015-shorthand-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -176,7 +177,8 @@
     "handlebars": "^4.0.10",
     "handlebars-loader": "^1.5.0",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^20.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^21.1.0",
     "jsdoc": "^3.5.4",
     "json-server": "^0.12.0",
     "node-sass": "^4.5.3",

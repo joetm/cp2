@@ -13,6 +13,7 @@ import SettingsSeparator from './SettingsSeparator'
 import Alert from '../Shared/Alert'
 import getSuccessMsg from '../../common/successMessages'
 import { usernames } from '../../common/blocklist'
+import Spacer from '../Shared/Spacer'
 
 
 class AccountSettings extends React.Component {
@@ -396,6 +397,8 @@ class AccountSettings extends React.Component {
                 />
               </div>
             </Dialog>
+
+            <Spacer />
 
             <Alert
               open={this.state.alertIsOpen}

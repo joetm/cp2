@@ -1,5 +1,16 @@
 {
     "presets": ["es2015", "stage-0", "react", "flow"],
+    "env": {
+        "test": {
+          "plugins": [
+            "transform-decorators-legacy",
+            "transform-object-rest-spread",
+            "transform-es2015-parameters",
+            "transform-es2015-destructuring",
+              "transform-es2015-modules-commonjs"
+          ]
+        }
+    },
     "plugins": [
         "transform-decorators-legacy",
         "transform-object-rest-spread",

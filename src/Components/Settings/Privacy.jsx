@@ -8,6 +8,7 @@ import { List } from 'material-ui/List'
 import { changeSetting } from '../../actions'
 import styles from './styles'
 import SettingsSeparator from './SettingsSeparator'
+import Spacer from '../Shared/Spacer'
 
 
 class PrivacySettings extends React.Component {
@@ -47,6 +48,9 @@ class PrivacySettings extends React.Component {
             onToggle={this.toggleOnlineVisibility}
           />
         </List>
+
+        <Spacer />
+
       </div>
     )
   }

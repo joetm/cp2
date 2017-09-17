@@ -159,6 +159,8 @@ class VerificationImg extends React.Component {
             style={{display: this.state.selection.length ? 'block' : 'none'}}
           />
 
+          <Spacer />
+
 {/*
           <Snackbar
             open={this.state.msgOpen}

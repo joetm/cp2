@@ -1,3 +1,4 @@
+#!/usr/local/bin/node
 
 var cuid = require('cuid')
 

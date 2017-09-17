@@ -61,6 +61,8 @@ class ProfileImg extends React.Component {
             onTouchTap={this.deleteProfileImg}
           />
 
+          <Spacer />
+
 {/*
           <Snackbar
             open={this.state.msgOpen}

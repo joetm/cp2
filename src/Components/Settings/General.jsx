@@ -12,6 +12,7 @@ import { List } from 'material-ui/List'
 import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import styles from './styles'
+import Spacer from '../Shared/Spacer'
 
 
 class GeneralSettings extends React.Component {
@@ -123,6 +124,7 @@ class GeneralSettings extends React.Component {
               />
             </List>
 
+            <Spacer />
 
 {/*
             <Alert

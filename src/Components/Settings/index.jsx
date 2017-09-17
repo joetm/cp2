@@ -35,13 +35,13 @@ const _SETTINGS_ROUTES = [
 
 class Settings extends React.Component {
   state = {
-    selectedIndex: null,
+    selectedIndex: 0,
   }
-  select = (index) => this.setState({selectedIndex: index})
+  select = (selectedIndex) => this.setState({selectedIndex})
   componentWillMount() {
     const url = this.props.location.pathname
-    const index = _SETTINGS_ROUTES.indexOf(url)
-    this.setState({selectedIndex: index})
+    const selectedIndex = _SETTINGS_ROUTES.indexOf(url)
+    this.setState({selectedIndex})
   }
   handleTabClick = (selectedTabIndex, url) => {
     this.select(selectedTabIndex)
@@ -85,7 +85,7 @@ class Settings extends React.Component {
           <BottomNavigationItem
             label="Account"
             icon={<AccountIcon />}
-            onClick={() => { this.handleTabClick(4, `${url}${routes.SETTINGS.ACCOUNT}`) }}
+            onClick={() => { this.handleTabClick(5, `${url}${routes.SETTINGS.ACCOUNT}`) }}
           />
         </BottomNavigation>
 
