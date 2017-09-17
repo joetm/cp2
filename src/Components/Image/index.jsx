@@ -8,6 +8,7 @@ import { fetchPicture } from '../../actions'
 // --
 import Spacer from '../Shared/Spacer'
 import FullscreenImage from './FullscreenImage'
+import Update from '../Content/Update'
 
 
 class Image extends React.Component {
@@ -19,12 +20,28 @@ class Image extends React.Component {
      */
     render() {
         const { title } = this.props.image
+        const { fullscreenImages } = this.props
         return (
             <div>
-                <h2>{title}</h2>
-                <FullscreenImage
-                    {...this.props.image}
-                />
+                {
+                    !fullscreenImages ?
+                    <div>
+                        <h2>{title}</h2>
+                        <Update
+                            {...this.props.image}
+                            showTitle={false}
+                            clickable={false}
+                            gridColumnsFull={1}
+                            gridColumnsTablet={1}
+                            gridColumnsPhone={1}
+                        />
+                        <Spacer />
+                    </div>
+                    :
+                    <FullscreenImage
+                        {...this.props.image}
+                    />
+                }
                 <Spacer />
             </div>
         )
@@ -33,6 +50,7 @@ class Image extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     currentUserId: state.currentUser.id,
+    fullscreenImages: state.currentUser.fullscreenImages,
     image: state.image,
     imageid: ownProps.match.params.imageid,
 })

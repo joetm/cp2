@@ -6,9 +6,12 @@ import MenuItem from 'material-ui/MenuItem'
 import DatePicker from 'material-ui/DatePicker'
 import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
+import Toggle from 'material-ui/Toggle'
+import { List } from 'material-ui/List'
 
 import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
+import styles from './styles'
 
 
 class GeneralSettings extends React.Component {
@@ -38,6 +41,9 @@ class GeneralSettings extends React.Component {
       // TODO
       // this.setState({ city })
       console.log('TODO')
+    }
+    toggleFullscreenImages = (event, isInputChecked) => {
+      this.props.changeSetting('fullscreenImages', isInputChecked)
     }
     /*
      * Handle the change of the birthdate.
@@ -106,6 +112,18 @@ class GeneralSettings extends React.Component {
                 </SelectField>
             </div>
 
+            <SettingsSeparator text="Site settings" />
+
+            <List>
+              <Toggle
+                label="Fullscreen images"
+                toggled={this.props.fullscreenImages}
+                style={styles.toggle}
+                onToggle={this.toggleFullscreenImages}
+              />
+            </List>
+
+
 {/*
             <Alert
                 open={this.state.alertIsOpen}
@@ -124,6 +142,7 @@ const mapStateToProps = (state) => ({
     // currentUser
     usertitle: state.currentUser.usertitle,
     birthday: state.currentUser.birthday,
+    fullscreenImages: state.currentUser.fullscreenImages,
     country: state.currentUser.country,
     state: state.currentUser.state,
     city: state.currentUser.city,

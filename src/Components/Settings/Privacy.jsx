@@ -3,7 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Toggle from 'material-ui/Toggle'
-import Divider from 'material-ui/Divider'
 import { List } from 'material-ui/List'
 
 import { changeSetting } from '../../actions'
