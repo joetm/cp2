@@ -47,7 +47,7 @@ const styles = {
     },
     firstItem: {
         marginLeft: '10px',
-        zIndex: 9999,
+        zIndex: 99,
     },
     separator: {
         margin: 0,
@@ -258,7 +258,5 @@ export default withRouter(connect(
         toggleSearchSidebar,
         openSidebar,
         closeSidebar,
-        // openStreamSidebar,
-        // closeStreamSidebar,
     }
 )(NavBar))
