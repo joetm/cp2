@@ -530,24 +530,6 @@
     },
     {
       "type": "message",
-      "content": "jhkhjkhjkhjk",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505028268545,
-      "id": "rJrnuvzcW"
-    },
-    {
-      "type": "message",
-      "content": "rreee",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505036059344,
-      "id": "SJX7PtGqb"
-    },
-    {
-      "type": "message",
       "content": "how far does this go",
       "userid": 1,
       "like": 0,
@@ -638,48 +620,12 @@
     },
     {
       "type": "message",
-      "content": "gf",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505037727479,
-      "id": "S1ujaFM9-"
-    },
-    {
-      "type": "message",
-      "content": "hfghfgh",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505037728626,
-      "id": "BkYiTYGcZ"
-    },
-    {
-      "type": "message",
       "content": "Wasssuuuuuup?????",
       "userid": 1,
       "like": 0,
       "dislike": 0,
       "timestamp": 1505062113248,
       "id": "HyFya1m5-"
-    },
-    {
-      "type": "message",
-      "content": "dfgdfgdfg",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505062119678,
-      "id": "Hkggaym5b"
-    },
-    {
-      "type": "message",
-      "content": "uyyuuyuy",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505063290032,
-      "id": "rJzYbg7cW"
     },
     {
       "type": "message",
@@ -775,16 +721,32 @@
     }
   ],
   "online": [
-    { "userid": 1 },
-    { "userid": 5 },
-    { "userid": 6 },
-    { "userid": 7 }
+    {
+      "userid": 1
+    },
+    {
+      "userid": 5
+    },
+    {
+      "userid": 6
+    },
+    {
+      "userid": 7
+    }
   ],
   "followers": [
-    { "userid": 3 },
-    { "userid": 4 },
-    { "userid": 5 },
-    { "userid": 6 }
+    {
+      "userid": 3
+    },
+    {
+      "userid": 4
+    },
+    {
+      "userid": 5
+    },
+    {
+      "userid": 6
+    }
   ],
   "users": [
     {

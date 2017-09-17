@@ -45,7 +45,10 @@ const styles = {
         zIndex: 9999999,
         backgroundColor: '#fff',
     },
-    firstItem: {marginLeft: '10px'},
+    firstItem: {
+        marginLeft: '10px',
+        zIndex: 9999,
+    },
     separator: {
         margin: 0,
         padding: '10px',

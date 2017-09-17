@@ -45,4 +45,6 @@ const routes = {
     MODAREA: "/modarea",
 }
 
+export const PROFILE = routes.PROFILE
+
 export default routes

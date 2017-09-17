@@ -19,7 +19,6 @@ class Image extends React.Component {
      */
     render() {
         const { title } = this.props.image
-        console.log('XXX this.props.image', this.props.image)
         return (
             <div>
                 <h2>{title}</h2>
