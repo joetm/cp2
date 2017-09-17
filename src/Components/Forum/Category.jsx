@@ -9,14 +9,7 @@ import Avatar from 'material-ui/Avatar'
 import { fetchCategory, fetchThreadsForCategory } from '../../actions'
 import Threads from './Threads'
 import Loader from '../Shared/Loader'
-
-
-// const styles = {
-//     categoryImg: {
-//         textAlign: 'center',
-//         margin: '0 auto',
-//     },
-// }
+import ScrollToTop from '../Shared/ScrollToTop'
 
 
 class Category extends React.Component {
@@ -35,6 +28,7 @@ class Category extends React.Component {
 
         return (
             <div>
+                <ScrollToTop />
                 <Loader isLoading={isFetching} />
                 <List>
                   <ListItem
