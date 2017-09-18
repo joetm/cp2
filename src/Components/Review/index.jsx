@@ -32,6 +32,7 @@ import Dialog from '../Shared/Dialog'
 import CellPadding from '../Shared/CellPadding'
 import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
+import Leaderboard from './Leaderboard'
 
 
 const _HELPTXT_URL = '/docs/crowdreview.txt'
@@ -163,7 +164,10 @@ class Review extends React.Component {
 
                 <GridWrap>
 
-                    <CellPadding />
+                    {/*
+                        // cellpadding for centering
+                        <CellPadding />
+                    */}
 
                     <CellWrapper full={8} tablet={6} phone={4}>
 
@@ -192,6 +196,10 @@ class Review extends React.Component {
                             }
                         </ReactCSSTransitionGroup>
 
+                    </CellWrapper>
+
+                    <CellWrapper full={2} tablet={2} phone={4}>
+                        <Leaderboard />
                     </CellWrapper>
 
                 </GridWrap>
