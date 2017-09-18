@@ -7802,12 +7802,6 @@ react-base16-styling@^0.5.1:
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
 
-react-click-outside@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/react-click-outside/-/react-click-outside-2.3.1.tgz#318737ebdf081a4a3bcd46825663674cbe9836eb"
-  dependencies:
-    hoist-non-react-statics "^1.2.0"
-
 react-cookie@^2.0.8:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/react-cookie/-/react-cookie-2.0.8.tgz#2b551c8d80f8c1973ac9347aab61b152c6313398"
@@ -7948,6 +7942,10 @@ react-mixin@^3.0.5:
   dependencies:
     object-assign "^4.0.1"
     smart-mixin "^2.0.0"
+
+react-onclickoutside@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/react-onclickoutside/-/react-onclickoutside-6.5.0.tgz#c45b39fe0d7f087817a9f5edab8c12349856b640"
 
 react-paginate@^4.4.3:
   version "4.4.3"

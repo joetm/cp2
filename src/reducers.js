@@ -20,6 +20,10 @@ import jwtDecode from 'jwt-decode'
 //     }
 //   }
 // }
+// {
+//     "ACTION_TYPE": (state, action) => {
+//     }
+// }
 
 
 /******************
@@ -442,12 +446,6 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 return currentUserState.id
             }
             return null
-        // case ACTIONS.GET_CURRENT_USER_MINIMAL:
-        //     return {
-        //         userid: currentUserState.id,
-        //         username: currentUserState.username,
-        //         avatar: currentUserState.avatar,
-        //     }
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
 
@@ -512,10 +510,10 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                     statusText: 'You have been successfully logged out.',
                 }
             }
+        // AUTH -------------------------------------
 
         case ACTIONS.DELETE_AVATAR_SUCCESS:
             return {...currentUserState, avatar: null}
-
         case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
             return {...currentUserState, profileimg: null}
 

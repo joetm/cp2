@@ -11,6 +11,7 @@ import SignupButton from '../../Shared/Buttons/SignupButton'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Subheader from 'material-ui/Subheader'
+import onClickOutside from 'react-onclickoutside'
 
 import routes from '../../../routes'
 import { gray } from '../../../common/colors'
@@ -46,6 +47,15 @@ class LoginSidebar extends React.Component {
             opacity: this.state.opacity !== 1 ? 1 : 0.5,
         })
     }
+    handleClickOutside = (e) => {
+        console.log('clicked outside', e)
+        // close the drawer
+        this.setState({
+            open: false,
+            buttonOffset: 0,
+            opacity: 0.5,
+        })
+    }
     render() {
         const { isAuthenticated, history } = this.props
         // TODO
@@ -62,7 +72,9 @@ class LoginSidebar extends React.Component {
                 ...styles.stickyButton,
                 right: this.state.buttonOffset,
                 opacity: this.state.opacity
-            }}>
+            }}
+                tabIndex={567}
+            >
                 <IconButton
                     onTouchTap={this.toggleLoginDrawer}
                 >
@@ -75,6 +87,7 @@ class LoginSidebar extends React.Component {
                     disableSwipeToOpen={false}
                     docked={true}
                     swipeAreaWidth={30}
+                    onRequestChange={this.closeLoginDrawer}
                 >
 
                     <div style={styles.drawer}>
@@ -122,4 +135,4 @@ class LoginSidebar extends React.Component {
     }
 }
 
-export default withRouter(LoginSidebar)
+export default onClickOutside(withRouter(LoginSidebar))

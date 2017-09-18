@@ -31,20 +31,6 @@ module.exports = {
     // chunkFilename: "js/[id].chunk.js"
   },
   devtool: debug ? "inline-sourcemap" : false,
-  jest: {
-    // "modulePaths": [
-    //   "/src/Components/External"
-    // ],
-    "moduleFileExtensions": ["js", "jsx"],
-    "moduleDirectories": ["node_modules"],
-    "moduleNameMapper": {
-      // file mocking
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      // style mocking
-      "\\.(css|scss|less)$": "<rootDir>/__mocks__/styleMock.js"
-      // "\\.(css|scss|less)$": "identity-obj-proxy"
-    }
-  },
   module: {
     loaders: [
       {

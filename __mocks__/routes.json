@@ -10,6 +10,23 @@
     "/messages/:id": "/messages/:id?_expand=user",
     "/messages/:id?*": "/messages/:id?_expand=user&$1",
 
+  "/threads": "/threads?_expand=user&_sort=timestamp&order=desc",
+    "/threads/:id": "/threads/:id?_expand=user",
+    "/threads/:id/streamitems": "/threads/:id/streamitems?_expand=user",
+
+  "/chat": "/chat?_expand=user&_sort=timestamp",
+
+  "/categories/:id/:subitems" : "/categories/:id/:subitems?_expand=user&_sort=timestamp&order=desc",
+
+  "/currentUser": "/currentUser?_expand=profileimg",
+
+  "/followers": "/followers?_expand=user",
+    "/followers?*": "/followers?_expand=user&$1",
+
+  "/mod/contactRequests": "/contactRequests?_expand=user",
+
+
+
   "/images": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
     "/images?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/images/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
@@ -31,10 +48,6 @@
     "/posts/:id": "/streamitems/:id?_expand=user",
     "/posts/:id?*": "/streamitems/:id?_expand=user&$1",
 
-  "/threads": "/threads?_expand=user&_sort=timestamp&order=desc",
-    "/threads/:id": "/threads/:id?_expand=user",
-    "/threads/:id/streamitems": "/threads/:id/streamitems?_expand=user",
-
   "/videos": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc",
     "/videos?*": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc&$1",
     "/videos/?*": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc&$1",
@@ -45,8 +58,6 @@
     "/favorites?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
     "/favorites/?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
 
-  "/chat": "/chat?_expand=user&_sort=timestamp",
-
   "/playlist": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/playlist?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
     "/playlist/?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&$1",
@@ -54,15 +65,6 @@
   "/reviewitems": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=post&type=thread&type=image&type=video",
     "/reviewitems?*": "/streamitems?_expand=user&_sort=timestamp&order=desc&type=post&type=thread&type=image&type=video&$1",
     "/reviewitems/:id": "/streamitems/:id?_expand=user",
-
-  "/categories/:id/:subitems" : "/categories/:id/:subitems?_expand=user&_sort=timestamp&order=desc",
-
-  "/currentUser": "/currentUser?_expand=profileimg",
-
-  "/followers": "/followers?_expand=user",
-    "/followers?*": "/followers?_expand=user&$1",
-
-  "/mod/contactRequests": "/contactRequests?_expand=user",
 
   "/streamitems": "/streamitems?_expand=user&_sort=timestamp&order=desc",
     "/streamitems?*": "/streamitems?_expand=user&$1"
