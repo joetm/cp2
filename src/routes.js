@@ -20,6 +20,7 @@ const routes = {
     VERIFICATIONS: "/verifications",
     CHAT: "/chat",
     REVIEW: "/review",
+    LEADERBOARD: "/leaderboard",
     EDIT: "/edit",
     MESSAGES: "/messages",
     CONTACT: "/contact",

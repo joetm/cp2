@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import fetch from 'unfetch' // TODO
 import IconButton from 'material-ui/IconButton'
 import HelpIcon from 'material-ui/svg-icons/action/help-outline'
@@ -15,7 +14,6 @@ import './style.scss'
 // --
 import {
     fetchReviewItem,
-    fetchReviewLeaderboard,
     setFetchingStatus,
     reviewApprove,
     reviewDisapprove,
@@ -75,7 +73,6 @@ class Review extends React.Component {
             buttonsDisabled: false,
             rating: null,
         })
-        this.props.fetchReviewLeaderboard()
     }
     componentDidMount() {
         this.fetchReviewItem()
@@ -224,9 +221,8 @@ class Review extends React.Component {
                 </GridWrap>
 
                 <Leaderboard
-                    items={reviewLeaderboard.items}
                     open={this.state.leaderBoardIsOpen}
-                    isFetching={reviewLeaderboard.isFetching}
+                    isEmbedded={true}
                 />
 
                 <Alert
@@ -245,16 +241,14 @@ class Review extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     isFetching: state.reviewitem.isFetching,
     reviewitem: state.reviewitem,
-    reviewLeaderboard: state.reviewLeaderboard,
     itemid: ownProps.match.params.itemid,
     error: state.reviewitem.error,
 })
 
-export default withRouter(connect(
+export default connect(
     mapStateToProps,
     {
         fetchReviewItem,
-        fetchReviewLeaderboard,
         reviewApprove,
         reviewDisapprove,
         approve,
@@ -263,4 +257,4 @@ export default withRouter(connect(
         recordDislike,
         setFetchingStatus
     }
-)(Review))
+)(Review)

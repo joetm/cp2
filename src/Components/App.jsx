@@ -43,6 +43,7 @@ import Contact from './Contact'
 import Upload from './Upload'
 import Sidebar from './Sidebar'
 import LoginSidebar from './Sidebar/Login'
+import ReviewLeaderboard from './Review/Leaderboard'
 // import StreamSidebar from './Sidebar/StreamSidebar'
 import ModArea from './ModArea'
 import Playlist from './Playlist'
@@ -105,6 +106,7 @@ class App extends React.Component {
                 <Route exact path={routes.FAVORITES} component={Favorites} />
 
                 <Route exact path={routes.REVIEW} component={Review} />
+                <Route exact path={`${routes.REVIEW}${routes.LEADERBOARD}`} component={ReviewLeaderboard} />
                 <Route path={`${routes.REVIEW}/:itemid`} component={Review} />
 
                 <Route path={routes.PLAYLIST} component={Playlist} />
