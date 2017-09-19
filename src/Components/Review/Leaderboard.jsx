@@ -8,6 +8,7 @@ import { List, ListItem } from 'material-ui/List'
 
 import { fetchReviewLeaderboard } from '../../actions'
 import Avatar from '../Shared/Avatar'
+import Loader from '../Shared/Loader'
 import routes from '../../routes'
 
 
@@ -42,13 +43,16 @@ class Leaderboard extends React.Component {
     }
     render() {
         const { reviewLeaderboard, open, history, isEmbedded = false } = this.props
-        const { items = [] } = reviewLeaderboard
+        const { items = [], isFetching} = reviewLeaderboard
 
         const Wrapper = isEmbedded ? Drawer : DivWrapper
 
         return (
             <Wrapper open={open} openSecondary={true} docked={true}>
                 <h3>Leaderboard</h3>
+
+                <Loader isLoading={isFetching} />
+
                 <List>
                     {
                       items.map(item => (
