@@ -11,6 +11,7 @@ import { fade } from 'material-ui/utils/colorManipulator'
 import spacing from 'material-ui/styles/spacing'
 
 export default {
+  borderRadius: 2,
   spacing,
   fontFamily: 'Roboto, sans-serif',
   palette: {
@@ -21,6 +22,7 @@ export default {
     accent2Color: darkBlack,
     accent3Color: darkBlack,
     textColor: darkBlack,
+    secondaryTextColor: darkBlack,
     alternateTextColor: darkBlack,
     canvasColor: darkBlack,
     borderColor: darkBlack,
