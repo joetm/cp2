@@ -22,6 +22,6 @@ export const colors = {
   bg,
 }
 
-const theme = getMuiTheme(blackIsBackTheme)
+export const theme = getMuiTheme(lightbaseTheme)
 
 export default theme

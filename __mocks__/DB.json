@@ -1120,7 +1120,7 @@
     "showBirthday": true,
     "showLocation": false,
     "showOnlineStatus": false,
-    "fullscreenImages": false,
+    "fullscreenImages": true,
     "numPosts": 4,
     "numThreads": 3,
     "numImages": 2,
@@ -1148,6 +1148,6 @@
     "unreadLikes": 23,
     "profileViews": 0,
     "followerCount": 0,
-    "theme": "dark"
+    "theme": "red"
   }
 }

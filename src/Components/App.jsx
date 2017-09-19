@@ -9,6 +9,7 @@ import store from '../store'
 import routes from '../routes'
 import { bg as bgColor } from '../common/colors'
 import Scrollbutton from './Shared/Scrollbutton'
+import Theme from './Config/Theme'
 import RecordDeviceDetails from './Config/DeviceDetails'
 // -- Components
 import NavBar from './NavBar'
@@ -50,15 +51,15 @@ import Playlist from './Playlist'
 
 // @connect(state => state)
 class App extends React.Component {
-    componentDidMount() {
-    }
     /**
      * Render the component.
      */
     render() {
       return (
           <Provider store={store}>
-            <div style={{backgroundColor: bgColor}}>
+          <Theme>
+
+            <div>
 
               <RecordDeviceDetails />
 
@@ -126,6 +127,8 @@ class App extends React.Component {
               {/* <StreamSidebar /> */}
 
             </div>
+
+          </Theme>
           </Provider>
         )
     }

@@ -3,7 +3,7 @@
 import React from 'react'
 
 import './loader.scss'
-import { palette, bg as bgcolor } from '../../common/colors'
+import { palette } from '../../common/colors'
 
 
 const DEFAULT_MSG = '...loading...'
@@ -16,7 +16,7 @@ const styles = {
         display: 'block',
     },
     loader: {
-        backgroundColor: palette.primary2Color,
+        // backgroundColor: palette.primary2Color,
         borderRadius: '150px',
         position: 'relative',
         marginRight: 'auto',
@@ -25,7 +25,7 @@ const styles = {
         height: '300px',
     },
     loaderInnercircle: {
-        backgroundColor: bgcolor,
+        // backgroundColor: bgcolor,
         width: '200px',
         height: '200px',
         margin: 'auto auto',

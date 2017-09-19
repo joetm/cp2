@@ -172,13 +172,13 @@ class NavBar extends React.Component {
                                 <SearchIcon />
                             </IconButton>
 
-                            <Link to={routes.UPLOAD}>
+                            <Link to={UPLOAD}>
                                 <IconButton tooltip="Upload">
                                     <UploadIcon />
                                 </IconButton>
                             </Link>
 
-                            <Link to={routes.REVIEW}>
+                            <Link to={REVIEW}>
                                 <IconButton tooltip="Crowd Review">
                                     <ReviewIcon />
                                 </IconButton>

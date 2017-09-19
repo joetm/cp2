@@ -29,6 +29,9 @@ require('react-tap-event-plugin')()
 import App from './Components/App'
 
 
+console.log('theme', theme)
+
+
 render(
     (
         <BrowserRouter>
