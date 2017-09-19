@@ -1,10 +1,10 @@
 /** @flow */
 
 import React from 'react'
-import Msgs from './msgs'
+import msgs from './msgs'
 
 const getMsg = (code) => {
-  return `${code} - ${Msgs[code]}.`
+  return `${code} - ${msgs[code]}.`
 }
 
 
@@ -12,9 +12,10 @@ const getMsg = (code) => {
  * Error class
  * @class
  */
-const Error = () => (
+const Error = (props) => (
   <div>
-    <h2>{getMsg(404)}</h2>
+    <h2>{getMsg(props.code || 404)}</h2>
+
   </div>
 )
 

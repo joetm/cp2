@@ -50,8 +50,12 @@ const styles = {
 
 
 const AvatarBubble = (props) => {
-      const {micro, mini, macro, username, active, src, visible, style} = props
-      console.log()
+      const {
+        micro, mini, macro,
+        username, active,
+        src, visible,
+        style
+      } = props
       // avatar size
       let avatarStyle = {}
       if (micro === true) {

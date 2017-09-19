@@ -1,8 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-// --
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
 import './default.scss'
+import { theme } from './common/theme'
 // --
 // deepstream
 // import reactMixin from 'react-mixin'
@@ -30,7 +32,9 @@ import App from './Components/App'
 render(
     (
         <BrowserRouter>
+          <MuiThemeProvider muiTheme={theme}>
             <App />
+          </MuiThemeProvider>
         </BrowserRouter>
     ),
     document.getElementById("app")

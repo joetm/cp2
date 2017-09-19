@@ -4,7 +4,9 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import { palette, black, white, bg, grey, lightGrey, darkGrey, lightBlack } from './colors'
 
-import lightbaseTheme from './lightbaseTheme'
+import defaultTheme from './themes/default'
+import lightbaseTheme from './themes/lightbase'
+import blackIsBackTheme from './themes/blackIsBack'
 
 export const colors = {
   palette,
@@ -20,11 +22,6 @@ export const colors = {
   bg,
 }
 
-// TODO
-const defaultTheme = {
-  palette: colors.palette,
-}
-
-const theme = getMuiTheme(lightbaseTheme)
+const theme = getMuiTheme(blackIsBackTheme)
 
 export default theme

@@ -3,17 +3,14 @@
 import React from 'react'
 // --
 import { Provider } from 'react-redux'
-import MobileDetect from 'mobile-detect'
 import { Route, Switch } from 'react-router-dom'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import store from '../store'
 import routes from '../routes'
-import { setDeviceDetails } from '../actions'
-import { theme } from '../common/theme'
 import { bg as bgColor } from '../common/colors'
 import Scrollbutton from './Shared/Scrollbutton'
-// --
+import RecordDeviceDetails from './Config/DeviceDetails'
+// -- Components
 import NavBar from './NavBar'
 import Home from './Home'
 import Forum from './Forum'
@@ -44,7 +41,6 @@ import Upload from './Upload'
 import Sidebar from './Sidebar'
 import LoginSidebar from './Sidebar/Login'
 import ReviewLeaderboard from './Review/Leaderboard'
-// import StreamSidebar from './Sidebar/StreamSidebar'
 import ModArea from './ModArea'
 import Playlist from './Playlist'
 
@@ -55,29 +51,16 @@ import Playlist from './Playlist'
 // @connect(state => state)
 class App extends React.Component {
     componentDidMount() {
-        // store the mobile device info
-        const device = new MobileDetect(window.navigator.userAgent)
-        const obj = {
-            isMobile: device.phone(),
-            isTablet: device.tablet(),
-            useragent: window.navigator.userAgent,
-            OS: device.os(),
-            isIPhone: device.is('iPhone'),
-            isBot: device.is('bot'),
-            isPlaystation: device.match('playstation'),
-            isXbox: device.match('xbox'),
-        }
-        store.dispatch(setDeviceDetails(obj))
     }
     /**
      * Render the component.
      */
     render() {
       return (
-          <MuiThemeProvider muiTheme={theme}>
           <Provider store={store}>
-
             <div style={{backgroundColor: bgColor}}>
+
+              <RecordDeviceDetails />
 
               <NavBar />
 
@@ -143,9 +126,7 @@ class App extends React.Component {
               {/* <StreamSidebar /> */}
 
             </div>
-
           </Provider>
-          </MuiThemeProvider>
         )
     }
 }

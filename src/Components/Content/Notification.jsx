@@ -138,14 +138,12 @@ class Notification extends React.Component {
             touchTapAction = null
         }
 
-        // const LeftImage = <img src={thumb} alt="" style={{width: '160px'}} />
-
         return (
             <ListItem
               leftAvatar={
                 <Avatar
                   username={user.username}
-                  style={{cursor: 'pointer'}}
+                  style={{cursor: 'pointer', position: 'absolute', top: '16px', left: '16px'}}
                   src={user.avatar || thumb}
                   macro={true}
                   onTouchTap={e => { e.stopPropagation(); history.push(`${routes.PROFILE}/${userid}`) }}
