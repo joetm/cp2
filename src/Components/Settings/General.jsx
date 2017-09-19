@@ -8,6 +8,7 @@ import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
 import Toggle from 'material-ui/Toggle'
 import { List } from 'material-ui/List'
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 
 import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
@@ -24,17 +25,11 @@ const styles = {
   },
 }
 
-const ColorThemeSelector = (props) => (
-  <div style={{clear: 'both'}}>
-    <div style={{...styles.colorBox, backgroundColor: '#FF0000'}}></div>
-    <div style={{...styles.colorBox, backgroundColor: '#FFFF00'}}></div>
-    <div style={{...styles.colorBox, backgroundColor: '#FF00FF'}}></div>
-    <div style={{...styles.colorBox, backgroundColor: '#0000FF'}}></div>
-  </div>
-)
-
 
 class GeneralSettings extends React.Component {
+    state = {
+      selectedTheme: 'default',
+    }
     componentDidMount() {
       this.props.fetchCountries()
     }
@@ -73,6 +68,12 @@ class GeneralSettings extends React.Component {
       const month = date.getMonth()
       const day = date.getDate()
       this.props.changeSetting('birthday', `${year}-${month}-${day}`)
+    }
+    /*
+     * Handle the change of the color theme.
+     */
+    changeColorTheme = (e, themeName) => {
+      this.props.changeSetting('theme', themeName)
     }
     render() {
       return (
@@ -145,10 +146,39 @@ class GeneralSettings extends React.Component {
 
             <SettingsSeparator text="Color theme" />
 
+            <div style={{margin: '1em 0'}}>
+              <RadioButtonGroup
+                onChange={this.changeColorTheme}
+                name="colorTheme"
+                defaultSelected={this.props.theme}
+              >
+                  <RadioButton
+                    value="default" label="Default"
+                    selected={this.props.theme === 'default'}
+                  />
+                  <RadioButton
+                    value="red" label="Red"
+                    selected={this.props.theme === 'red'}
+                  />
+                  <RadioButton
+                    value="brown" label="Browney"
+                    selected={this.props.theme === 'brown'}
+                  />
+                  <RadioButton
+                    value="dark" label="Dark"
+                    selected={this.props.theme === 'dark'}
+                  />
+              </RadioButtonGroup>
+            </div>
+
             <div style={{clear: 'both'}}>
-              <ColorThemeSelector />
-              <ColorThemeSelector />
-              <ColorThemeSelector />
+                <div style={{clear: 'both'}}>
+                    <div style={{...styles.colorBox, backgroundColor: '#F2D580'}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: '#F1B461'}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: '#BD7A56'}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: '#8B523B'}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: '#3E0901'}}></div>
+                </div>
             </div>
 
             <Spacer />
@@ -174,6 +204,8 @@ const mapStateToProps = (state) => ({
     usertitle: state.currentUser.usertitle,
     birthday: state.currentUser.birthday,
     fullscreenImages: state.currentUser.fullscreenImages,
+    theme: state.currentUser.theme,
+    //
     country: state.currentUser.country,
     state: state.currentUser.state,
     city: state.currentUser.city,

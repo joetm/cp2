@@ -31,6 +31,7 @@ class SingleThread extends React.Component {
 
                 <PostTpl
                     {...this.props.thread}
+                    macro={true}
                     like={recordLike}
                     dislike={recordDislike}
                 />
@@ -41,6 +42,7 @@ class SingleThread extends React.Component {
                             <PostTpl
                                 key={item.id}
                                 {...item}
+                                macro={true}
                                 isEmbedded={true}
                                 like={recordLike}
                                 dislike={recordDislike}

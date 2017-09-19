@@ -6,7 +6,7 @@ import Avatar from 'material-ui/Avatar'
 
 const _SIZE_MICRO = 16
 const _SIZE_MINI  = 30
-const _SIZE_MACRO = 40
+const _SIZE_MACRO = 45
 const _SIZE_MAXI  = 200
 
 
@@ -35,9 +35,6 @@ const styles = {
   avatarStyleMacro: {
     height: `${_SIZE_MACRO}px`,
     width: `${_SIZE_MACRO}px`,
-    position: 'absolute',
-    top: '16px',
-    left: '16px',
     border: '2px solid #fff',
     fontSize: `${_SIZE_MACRO * 0.5}px`,
     zIndex: 9999,

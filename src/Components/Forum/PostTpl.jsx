@@ -7,6 +7,7 @@ import ClockIcon from 'material-ui/svg-icons/action/schedule'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import { withRouter } from 'react-router-dom'
 
+import routes from '../../routes'
 import { gray, darkgray } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
@@ -14,10 +15,12 @@ import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
 import { humanReadableDate } from '../../common/helpers'
 import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
-import routes from '../../routes'
 
 
 const styles = {
+    postTplContainer: {
+        marginBottom: '1em',
+    },
     userinfo: {
         textAlign: 'center',
     },
@@ -28,7 +31,7 @@ const styles = {
         color: darkgray,
     },
     postFooter: {
-        margin: '1em 0',
+        margin: '1em 0 0 0',
         color: gray,
         clear: 'both',
     },
@@ -37,17 +40,21 @@ const styles = {
 
 class PostTpl extends React.Component {
     redirectToReview = (id) => {
-        console.log('redirect to review', id)
         this.props.history.push(`${routes.REVIEW}/${id}`)
     }
     render() {
-        const { id, title, content, isEmbedded, user, tags, timestamp, likes, dislikes, like, dislike } = this.props
+        const {
+            id, title, content, isEmbedded,
+            user, tags, timestamp,
+            likes, dislikes, like, dislike,
+            macro,
+        } = this.props
         const postedOn = humanReadableDate(timestamp)
 
         // TODO
 
         return (
-            <div>
+            <div style={styles.postTplContainer}>
 
                 {
                     !isEmbedded &&
@@ -56,11 +63,13 @@ class PostTpl extends React.Component {
 
                 <GridWrap>
 
-                    <CellWrapper full={3} tablet={2} phone={1}>
-                    { user && (
+                    <CellWrapper full={2} tablet={1} phone={1}>
+                    {
+                        user && (
                             <div style={styles.userinfo}>
                                 <Avatar
                                     src={user.avatar}
+                                    macro={macro}
                                     style={{margin: 'auto'}}
                                 />
                                 <h3>{user.username}</h3>
@@ -75,7 +84,7 @@ class PostTpl extends React.Component {
                     }
                     </CellWrapper>
 
-                    <CellWrapper full={9} tablet={6} phone={3}>
+                    <CellWrapper full={10} tablet={7} phone={3}>
                         {
                             content &&
                             parser.toReact(content)
