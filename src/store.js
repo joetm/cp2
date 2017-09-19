@@ -42,6 +42,7 @@ const store = createStore(
         online: Reducers.onlineReducer,
         // single items
         reviewitem: Reducers.reviewReducer,
+        reviewLeaderboard: Reducers.reviewLeaderboardReducer,
         category: Reducers.categoryReducer,
         thread: Reducers.threadReducer,
         post: Reducers.postReducer,

@@ -87,6 +87,7 @@ export const RECEIVE_LIKES              = 'STREAM::RECEIVE_LIKES'
 export const RECEIVE_LIKE               = 'STREAM::RECEIVE_LIKE'
 export const RECEIVE_DISLIKE            = 'STREAM::RECEIVE_DISLIKE'
 export const RECEIVE_REVIEWITEM         = 'REVIEW::RECEIVE_REVIEWITEM'
+export const RECEIVE_REVIEWLEADERBOARD  = 'REVIEW::RECEIVE_REVIEWLEADERBOARD'
 export const RECEIVE_UNREAD_COUNT       = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
 export const RECEIVE_COUNTRIES          = 'APP::RECEIVE_COUNTRIES'
 export const RECEIVE_STATES             = 'APP::RECEIVE_STATES'
@@ -129,12 +130,13 @@ export const LOGIN_FAILURE              = 'AUTH::LOGIN_FAILURE'
 export const LOGIN_SUCCESS              = 'AUTH::LOGIN_SUCCESS'
 export const LOGOUT                     = 'AUTH::LOGOUT'
 
-export const FETCH_VIDEO_STARTED        = 'VIDEO::FETCH_VIDEO_STARTED'
-export const FETCH_VIDEO_SUCCESS        = 'VIDEO::FETCH_VIDEO_SUCCESS'
-export const FETCH_VIDEO_FAILURE        = 'VIDEO::FETCH_VIDEO_FAILURE'
-export const FETCH_REVIEWITEM_STARTED   = 'REVIEW::FETCH_REVIEWITEM_STARTED'
-export const FETCH_REVIEWITEM_FAILED    = 'REVIEW::FETCH_REVIEWITEM_FAILED'
-
+export const FETCH_VIDEO_STARTED             = 'VIDEO::FETCH_VIDEO_STARTED'
+export const FETCH_VIDEO_SUCCESS             = 'VIDEO::FETCH_VIDEO_SUCCESS'
+export const FETCH_VIDEO_FAILURE             = 'VIDEO::FETCH_VIDEO_FAILURE'
+export const FETCH_REVIEWITEM_STARTED        = 'REVIEW::FETCH_REVIEWITEM_STARTED'
+export const FETCH_REVIEWITEM_FAILED         = 'REVIEW::FETCH_REVIEWITEM_FAILED'
+export const FETCH_REVIEWLEADERBOARD_STARTED = 'REVIEW::FETCH_REVIEWLEADERBOARD_STARTED'
+export const FETCH_REVIEWLEADERBOARD_FAILED  = 'REVIEW::FETCH_REVIEWLEADERBOARD_FAILED'
 export const FETCH_POSTS_FOR_THREAD_STARTED = 'FORUM::FETCH_POSTS_FOR_THREAD_STARTED'
 export const FETCH_POSTS_FOR_THREAD_FAILURE = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
 
@@ -224,6 +226,7 @@ export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,      
 export const receiveVideo              = makeActionCreator(RECEIVE_VIDEO,              'response')
 export const receiveThread             = makeActionCreator(RECEIVE_THREAD,             'response')
 export const receiveReviewItem         = makeActionCreator(RECEIVE_REVIEWITEM,         'response')
+export const receiveReviewLeaderboard  = makeActionCreator(RECEIVE_REVIEWLEADERBOARD,  'response')
 export const receiveMessageHistory     = makeActionCreator(RECEIVE_MESSAGEHISTORY,     'response')
 export const receiveStream             = makeActionCreator(RECEIVE_STREAM,             'response')
 export const receiveMessages           = makeActionCreator(RECEIVE_MESSAGES,           'response')
@@ -269,13 +272,18 @@ export const removePost              = makeActionCreator(REMOVE_POST,           
 // --
 
 export const fetchVideoStarted          = makeActionCreator(FETCH_VIDEO_STARTED)
-export const fetchVideoFailure          = makeActionCreator(FETCH_VIDEO_FAILURE,            'error')
+export const fetchVideoFailure          = makeActionCreator(FETCH_VIDEO_FAILURE,               'error')
 
 export const fetchPostsForThreadStarted = makeActionCreator(FETCH_POSTS_FOR_THREAD_STARTED)
-export const fetchPostsForThreadFailure = makeActionCreator(FETCH_POSTS_FOR_THREAD_FAILURE, 'error')
+export const fetchPostsForThreadFailure = makeActionCreator(FETCH_POSTS_FOR_THREAD_FAILURE,    'error')
 
 export const fetchReviewItemStarted     = makeActionCreator(FETCH_REVIEWITEM_STARTED)
-export const fetchReviewItemFailed      = makeActionCreator(FETCH_REVIEWITEM_FAILED,        'error')
+export const fetchReviewItemFailed      = makeActionCreator(FETCH_REVIEWITEM_FAILED,           'error')
+
+export const fetchReviewLeaderboardStarted = makeActionCreator(FETCH_REVIEWLEADERBOARD_STARTED)
+export const fetchReviewLeaderboardFailed  = makeActionCreator(FETCH_REVIEWLEADERBOARD_FAILED, 'error')
+
+
 
 // --
 
@@ -415,6 +423,17 @@ export const fetchReviewItem = (itemid = null) => (dispatch) => {
     return api.fetchReviewItem()
         .then(response => dispatch(receiveReviewItem(response)))
         .catch(error => dispatch(fetchReviewItemFailed(error)))
+}
+
+/**
+ * fetchReviewLeaderboard Asynchronous Action Creator
+ * @returns receiveReviewLeaderboard() - Action
+ */
+export const fetchReviewLeaderboard = () => (dispatch) => {
+    dispatch(fetchReviewLeaderboardStarted())
+    return api.fetchReviewLeaderboard()
+        .then(response => dispatch(receiveReviewLeaderboard(response)))
+        .catch(error => dispatch(fetchReviewLeaderboardFailed(error)))
 }
 
 /**

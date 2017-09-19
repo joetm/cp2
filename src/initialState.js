@@ -134,6 +134,10 @@ const initialState = {
         src: null,
         timestamp: null,
     },
+    reviewLeaderboard: {
+        isFetching: true,
+        items: []
+    },
     // -- current user
     verificationImages: {
         isFetching: true,

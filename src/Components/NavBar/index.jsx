@@ -75,7 +75,7 @@ class NavBar extends React.Component {
     attachMenuToDomNode = () => {
         const targetDOMNode = findDOMNode(this.refs.notificationsBadge)
         if (targetDOMNode) {
-            console.log('attach menu to', targetDOMNode)
+            // console.log('attach menu to', targetDOMNode)
             this.anchorEl = targetDOMNode
         }
     }

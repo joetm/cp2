@@ -25,6 +25,7 @@
 
   "/mod/contactRequests": "/contactRequests?_expand=user",
 
+  "/reviewLeaderboard": "/reviewLeaderboard?_expand=user&_sort=user.crowdPoints&_order=desc&_limit=10",
 
 
   "/images": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",

@@ -4,7 +4,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import fetch from 'unfetch' // TODO
+import IconButton from 'material-ui/IconButton'
 import HelpIcon from 'material-ui/svg-icons/action/help-outline'
+import LeaderboardIcon from 'material-ui/svg-icons/social/poll'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
@@ -13,6 +15,7 @@ import './style.scss'
 // --
 import {
     fetchReviewItem,
+    fetchReviewLeaderboard,
     setFetchingStatus,
     reviewApprove,
     reviewDisapprove,
@@ -21,7 +24,7 @@ import {
     recordLike,
     recordDislike
 } from '../../actions'
-import { grey } from '../../common/colors'
+import { grey, black } from '../../common/colors'
 import { humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
@@ -41,8 +44,6 @@ const styles = {
     helpIconStyle: {
         cursor: 'pointer',
         color: grey,
-        verticalAlign: 'middle',
-        lineHeight: '1em',
     },
 }
 
@@ -62,7 +63,11 @@ class Review extends React.Component {
             helpText: '',
             buttonsDisabled: true,
             rating: null,
+            leaderBoardIsOpen: false,
         }
+    }
+    toggleLeaderboard = () => {
+        this.setState({leaderBoardIsOpen: !this.state.leaderBoardIsOpen})
     }
     fetchReviewItem = () => {
         this.props.fetchReviewItem(this.props.itemid)
@@ -70,6 +75,7 @@ class Review extends React.Component {
             buttonsDisabled: false,
             rating: null,
         })
+        this.props.fetchReviewLeaderboard()
     }
     componentDidMount() {
         this.fetchReviewItem()
@@ -141,16 +147,28 @@ class Review extends React.Component {
      * Render the component.
      */
     render() {
-        const { reviewitem } = this.props
-        console.log('reviewitem', reviewitem)
+        const { reviewitem, reviewLeaderboard } = this.props
         return (
             <div>
 
                 <h2>
-                    Crowd Review <HelpIcon
-                                    style={styles.helpIconStyle}
+                    Crowd Review <IconButton
                                     onClick={this.toggleHelp}
-                                 />
+                                    iconStyle={styles.helpIconStyle}
+                                    tooltip="About this page"
+                                 >
+                                    <HelpIcon />
+                                 </IconButton>
+                                 <IconButton
+                                    onClick={this.toggleLeaderboard}
+                                    iconStyle={{
+                                        ...styles.helpIconStyle,
+                                        color: this.state.leaderBoardIsOpen ? black : grey,
+                                    }}
+                                    tooltip="Open Leaderboard"
+                                 >
+                                     <LeaderboardIcon />
+                                 </IconButton>
                 </h2>
 
                 <Dialog
@@ -164,12 +182,17 @@ class Review extends React.Component {
 
                 <GridWrap>
 
-                    {/*
-                        // cellpadding for centering
-                        <CellPadding />
-                    */}
+                    <CellPadding
+                        full={this.state.leaderBoardIsOpen ? 1 : 2}
+                        tablet={this.state.leaderBoardIsOpen ? 0 : 1}
+                        phone={0}
+                    />
 
-                    <CellWrapper full={8} tablet={6} phone={4}>
+                    <CellWrapper
+                        full={8}
+                        tablet={6}
+                        phone={4}
+                    >
 
                         <ReactCSSTransitionGroup
                           transitionName="reviewcard"
@@ -198,11 +221,13 @@ class Review extends React.Component {
 
                     </CellWrapper>
 
-                    <CellWrapper full={2} tablet={2} phone={4}>
-                        <Leaderboard />
-                    </CellWrapper>
-
                 </GridWrap>
+
+                <Leaderboard
+                    items={reviewLeaderboard.items}
+                    open={this.state.leaderBoardIsOpen}
+                    isFetching={reviewLeaderboard.isFetching}
+                />
 
                 <Alert
                     open={this.state.alertIsOpen}
@@ -220,6 +245,7 @@ class Review extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     isFetching: state.reviewitem.isFetching,
     reviewitem: state.reviewitem,
+    reviewLeaderboard: state.reviewLeaderboard,
     itemid: ownProps.match.params.itemid,
     error: state.reviewitem.error,
 })
@@ -228,6 +254,7 @@ export default withRouter(connect(
     mapStateToProps,
     {
         fetchReviewItem,
+        fetchReviewLeaderboard,
         reviewApprove,
         reviewDisapprove,
         approve,

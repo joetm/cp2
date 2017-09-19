@@ -132,6 +132,23 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 }
 
 /**
+ * reviewLeaderboardReducer
+ * @returns reviewLeaderboardState
+ **/
+export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.reviewLeaderboard, action) {
+    switch (action.type) {
+        case ACTIONS.FETCH_REVIEWLEADERBOARD_STARTED:
+            return {...reviewLeaderboardState, isFetching: true}
+        case ACTIONS.FETCH_REVIEWLEADERBOARD_FAILED:
+            return {...reviewLeaderboardState, isFetching: false, error: action.error}
+        case ACTIONS.RECEIVE_REVIEWLEADERBOARD:
+            return {...reviewLeaderboardState, isFetching: false, items: [...action.response]}
+        default:
+            return reviewLeaderboardState
+    }
+}
+
+/**
  * updatesReducer
  * @returns updatesState
  **/

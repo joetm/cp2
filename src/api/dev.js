@@ -156,6 +156,7 @@ export const fetchStream = selectItemsCreator('streamitems')
 export const fetchMessages = selectItemsCreator('messages')
 export const fetchLikes = selectItemsCreator('likes')
 export const fetchFavorites = selectItemsCreator('favorites')
+export const fetchReviewLeaderboard = selectItemsCreator('reviewLeaderboard')
 // alias
 export const fetchImages = fetchPictures
 

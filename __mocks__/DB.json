@@ -737,32 +737,24 @@
     }
   ],
   "online": [
-    {
-      "userid": 1
-    },
-    {
-      "userid": 5
-    },
-    {
-      "userid": 6
-    },
-    {
-      "userid": 7
-    }
+    { "userid": 1 },
+    { "userid": 5 },
+    { "userid": 6 },
+    { "userid": 7 }
   ],
   "followers": [
-    {
-      "userid": 3
-    },
-    {
-      "userid": 4
-    },
-    {
-      "userid": 5
-    },
-    {
-      "userid": 6
-    }
+    { "userid": 3 },
+    { "userid": 4 },
+    { "userid": 5 },
+    { "userid": 6 }
+  ],
+  "reviewLeaderboard": [
+    { "userid": 1 },
+    { "userid": 2 },
+    { "userid": 4 },
+    { "userid": 5 },
+    { "userid": 6 },
+    { "userid": 7 }
   ],
   "users": [
     {
@@ -831,7 +823,7 @@
       "numFavorites": 455,
       "numLikes": 289,
       "numFollowers": 899,
-      "crowdPoints": 0,
+      "crowdPoints": 33,
       "country": "Canada",
       "state": "Quebec",
       "city": "Quebec City",
@@ -917,7 +909,7 @@
       "numFavorites": 0,
       "numLikes": 0,
       "numFollowers": 0,
-      "crowdPoints": 0,
+      "crowdPoints": 3,
       "country": null,
       "state": null,
       "city": null,
@@ -960,7 +952,7 @@
       "numFavorites": 1,
       "numLikes": 0,
       "numFollowers": 0,
-      "crowdPoints": 0,
+      "crowdPoints": 1,
       "country": null,
       "state": null,
       "city": null,
@@ -1003,7 +995,7 @@
       "numFavorites": 0,
       "numLikes": 6,
       "numFollowers": 9,
-      "crowdPoints": 0,
+      "crowdPoints": 1,
       "country": "United States",
       "state": "Nevada",
       "city": "Las Vegas",
