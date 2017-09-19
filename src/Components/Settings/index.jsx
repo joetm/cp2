@@ -18,13 +18,13 @@ import Spacer from '../Shared/Spacer'
 import AvatarImg from './AvatarImg'
 import ProfileImg from './ProfileImg'
 import VerificationImg from './VerificationImg'
-import General from './General'
+import Site from './Site'
 import Privacy from './Privacy'
 import Account from './Account'
 
 
 const _SETTINGS_ROUTES = [
-  `${SETTINGS.INDEX}${SETTINGS.GENERAL}`,
+  `${SETTINGS.INDEX}${SETTINGS.SITE}`,
   `${SETTINGS.INDEX}${SETTINGS.IMAGE}`,
   `${SETTINGS.INDEX}${SETTINGS.AVATAR}`,
   `${SETTINGS.INDEX}${SETTINGS.VERIFICATION}`,
@@ -58,9 +58,9 @@ class Settings extends React.Component {
           selectedIndex={this.state.selectedIndex}
         >
           <BottomNavigationItem
-            label="General"
+            label="Site Settings"
             icon={<ProfileIcon />}
-            onClick={() => { this.handleTabClick(0, `${url}${SETTINGS.GENERAL}`) }}
+            onClick={() => { this.handleTabClick(0, `${url}${SETTINGS.SITE}`) }}
           />
           <BottomNavigationItem
             label="Profile Image"
@@ -93,13 +93,13 @@ class Settings extends React.Component {
 
         <div style={styles.settingsBlock}>
           <Switch>
-            <Route exact path={`${url}${SETTINGS.GENERAL}`}      component={General} />
+            <Route exact path={`${url}${SETTINGS.SITE}`}         component={Site} />
             <Route exact path={`${url}${SETTINGS.IMAGE}`}        component={ProfileImg} />
             <Route exact path={`${url}${SETTINGS.AVATAR}`}       component={AvatarImg} />
             <Route exact path={`${url}${SETTINGS.VERIFICATION}`} component={VerificationImg} />
             <Route exact path={`${url}${SETTINGS.PRIVACY}`}      component={Privacy} />
             <Route exact path={`${url}${SETTINGS.ACCOUNT}`}      component={Account} />
-            <Route component={General} />
+            <Route component={Site} />
           </Switch>
         </div>
 

@@ -22,7 +22,7 @@ const styles = {
 }
 
 
-class GeneralSettings extends React.Component {
+class SiteSettings extends React.Component {
     state = {
       selectedTheme: 'default',
     }
@@ -117,4 +117,4 @@ const mapStateToProps = (state) => ({
 export default connect(
     mapStateToProps,
     { changeSetting }
-)(GeneralSettings)
+)(SiteSettings)
