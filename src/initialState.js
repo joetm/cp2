@@ -183,6 +183,7 @@ const initialState = {
         showBirthday: false,
         showLocation: false,
         showOnlineStatus: false,
+        theme: 'default',
     },
     mod: {
         isFetching: true,

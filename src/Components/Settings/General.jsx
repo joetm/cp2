@@ -11,8 +11,27 @@ import { List } from 'material-ui/List'
 
 import { changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
-import styles from './styles'
+import sharedStyles from './styles'
 import Spacer from '../Shared/Spacer'
+
+
+const styles = {
+  colorBox: {
+    width: '100px',
+    height: '100px',
+    border: '2px solid white',
+    float: 'left',
+  },
+}
+
+const ColorThemeSelector = (props) => (
+  <div style={{clear: 'both'}}>
+    <div style={{...styles.colorBox, backgroundColor: '#FF0000'}}></div>
+    <div style={{...styles.colorBox, backgroundColor: '#FFFF00'}}></div>
+    <div style={{...styles.colorBox, backgroundColor: '#FF00FF'}}></div>
+    <div style={{...styles.colorBox, backgroundColor: '#0000FF'}}></div>
+  </div>
+)
 
 
 class GeneralSettings extends React.Component {
@@ -119,11 +138,21 @@ class GeneralSettings extends React.Component {
               <Toggle
                 label="Fullscreen images"
                 toggled={this.props.fullscreenImages}
-                style={styles.toggle}
+                style={sharedStyles.toggle}
                 onToggle={this.toggleFullscreenImages}
               />
             </List>
 
+            <SettingsSeparator text="Color theme" />
+
+            <div style={{clear: 'both'}}>
+              <ColorThemeSelector />
+              <ColorThemeSelector />
+              <ColorThemeSelector />
+            </div>
+
+            <Spacer />
+            <Spacer />
             <Spacer />
 
 {/*
