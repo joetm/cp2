@@ -153,19 +153,23 @@ class GeneralSettings extends React.Component {
                 defaultSelected={this.props.theme}
               >
                   <RadioButton
-                    value="default" label="Default"
+                    value="default"
+                    label="Default"
                     selected={this.props.theme === 'default'}
                   />
                   <RadioButton
-                    value="red" label="Red"
+                    value="red"
+                    label="Red"
                     selected={this.props.theme === 'red'}
                   />
                   <RadioButton
-                    value="brown" label="Browney"
+                    value="brown"
+                    label="Browney"
                     selected={this.props.theme === 'brown'}
                   />
                   <RadioButton
-                    value="dark" label="Dark"
+                    value="dark"
+                    label="Dark"
                     selected={this.props.theme === 'dark'}
                   />
               </RadioButtonGroup>

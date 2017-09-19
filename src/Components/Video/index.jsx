@@ -9,7 +9,7 @@ import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import StarIcon from 'material-ui/svg-icons/toggle/star'
 import PersonIcon from 'material-ui/svg-icons/social/person'
 
-import routes from '../../routes'
+import { PROFILE } from '../../routes'
 import { fetchVideo } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import VideoPlayer from './VideoPlayer'
@@ -78,7 +78,7 @@ class Video extends React.Component {
 
                         <div
                             style={styles.userinfo}
-                            onTouchTap={() => this.props.history.push(`${routes.PROFILE}/${user.id}`)}>
+                            onTouchTap={() => this.props.history.push(`${PROFILE}/${user.id}`)}>
                             <Avatar mini={true} src={user.avatar} />
                             {user.username}
                         </div>

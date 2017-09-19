@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField'
 import SendIcon from 'material-ui/svg-icons/content/send'
 
 import { sendChatMessage } from '../../actions'
-import routes from '../../routes'
+import { PROFILE } from '../../routes'
 
 
 const styles = {
@@ -34,7 +34,7 @@ const styles = {
 class ChatInput extends React.Component {
   chatinput = null
   navigateToUser = (e) => {
-    this.props.history.push(`${routes.PROFILE}/${e.target.id}`)
+    this.props.history.push(`${PROFILE}/${e.target.id}`)
   }
   handleChangeChatMsg = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {

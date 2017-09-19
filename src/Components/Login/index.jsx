@@ -29,8 +29,8 @@ class LoginPage extends React.Component {
 
     const { email, password } = this.state.user
 
-    console.log('email', email)
-    console.log('password', password)
+    // console.log('email', email)
+    // console.log('password', password)
 
     if (!email || !validEmail(email) || !password) {
       const errors = {

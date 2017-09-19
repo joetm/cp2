@@ -2,7 +2,7 @@
 import * as jsonAPI from '../../__mocks__/mockJsonAPI'
 import fetch from 'unfetch'
 
-import routes from '../routes'
+import { CHAT } from '../routes'
 // import { REVIEW_APPROVE, REVIEW_DISAPPROVE } from '../actions'
 
 const JSON_HEADER = {
@@ -225,7 +225,7 @@ export const sendChatMessage = (payload) => {
       dislike: 0, // TODO - not on client
       timestamp: +new Date(),
     }
-    return createNewItem(routes.CHAT, chatMsg)
+    return createNewItem(CHAT, chatMsg)
             .then(data => data)
             .catch(error => throwError(error.message || 'Something went wrong'))
 }

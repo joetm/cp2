@@ -5,7 +5,7 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import Divider from 'material-ui/Divider'
 import { Link } from 'react-router-dom'
 
-import routes from '../../routes'
+import { LEGAL, CONTACT } from '../../routes'
 import { grey } from '../../common/colors'
 import Spacer from '../Shared/Spacer'
 import GridWrap from '../Shared/GridWrap'
@@ -43,16 +43,16 @@ const Footer = () => (
       <GridWrap>
 
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={`${routes.LEGAL.INDEX}${routes.LEGAL.COMMUNITY}`} text="Community Guidelines" />
+          <UList url={`${LEGAL.INDEX}${LEGAL.COMMUNITY}`} text="Community Guidelines" />
         </CellWrapper>
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={`${routes.LEGAL.INDEX}${routes.LEGAL.PRIVACY}`} text="Privacy Policy" />
+          <UList url={`${LEGAL.INDEX}${LEGAL.PRIVACY}`} text="Privacy Policy" />
         </CellWrapper>
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={`${routes.LEGAL.INDEX}${routes.LEGAL.DMCA}`} text="DMCA Policy" />
+          <UList url={`${LEGAL.INDEX}${LEGAL.DMCA}`} text="DMCA Policy" />
         </CellWrapper>
         <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={routes.CONTACT} text="Contact" />
+          <UList url={CONTACT} text="Contact" />
         </CellWrapper>
 
       </GridWrap>

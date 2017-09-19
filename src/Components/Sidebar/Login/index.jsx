@@ -6,13 +6,12 @@ import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import LockIcon from 'material-ui/svg-icons/action/lock-outline'
-import LoginButton from '../../Shared/Buttons/LoginButton'
-import SignupButton from '../../Shared/Buttons/SignupButton'
+// import LoginButton from '../../Shared/Buttons/LoginButton'
+// import SignupButton from '../../Shared/Buttons/SignupButton'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
-import Subheader from 'material-ui/Subheader'
 
-import routes from '../../../routes'
+// import routes from '../../../routes'
 import { gray } from '../../../common/colors'
 
 
@@ -56,9 +55,9 @@ class LoginSidebar extends React.Component {
         })
     }
     render() {
-        const { isAuthenticated, history } = this.props
+        const { isAuthenticated } = this.props
         // TODO
-        const errorMessage = 'TODO'
+        // const errorMessage = 'TODO'
 
         if (isAuthenticated) {
             return null
@@ -68,11 +67,10 @@ class LoginSidebar extends React.Component {
 
         return (
             <div style={{
-                ...styles.stickyButton,
-                right: this.state.buttonOffset,
-                opacity: this.state.opacity
-            }}
-                tabIndex={567}
+                    ...styles.stickyButton,
+                    right: this.state.buttonOffset,
+                    opacity: this.state.opacity
+                }}
             >
                 <IconButton
                     onTouchTap={this.toggleLoginDrawer}

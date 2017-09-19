@@ -12,7 +12,7 @@ import { findDOMNode } from 'react-dom'
 import { sendChatMessage, fetchChat } from '../../actions'
 import { jumpToBottom } from '../../common/helpers'
 import { gray, lightGray } from '../../common/colors'
-import routes from '../../routes'
+import { CHAT } from '../../routes'
 import ChatInput from './ChatInput'
 import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
@@ -90,7 +90,7 @@ class Chat extends React.Component {
                     headline="Chat"
                     icon={<FullScreenIcon />}
                     iconTooltip="Expand"
-                    iconUrl={routes.CHAT}
+                    iconUrl={CHAT}
                     history={history}
                 />
             )

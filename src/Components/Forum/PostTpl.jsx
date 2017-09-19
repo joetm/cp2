@@ -7,7 +7,7 @@ import ClockIcon from 'material-ui/svg-icons/action/schedule'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import { withRouter } from 'react-router-dom'
 
-import routes from '../../routes'
+import { REVIEW } from '../../routes'
 import { gray, darkgray } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
@@ -40,7 +40,7 @@ const styles = {
 
 class PostTpl extends React.Component {
     redirectToReview = (id) => {
-        this.props.history.push(`${routes.REVIEW}/${id}`)
+        this.props.history.push(`${REVIEW}/${id}`)
     }
     render() {
         const {

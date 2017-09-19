@@ -6,7 +6,7 @@ import { ListItem } from 'material-ui/List'
 import { withRouter } from 'react-router-dom'
 
 import Avatar from '../Shared/Avatar'
-import routes from '../../routes'
+import { THREADS } from '../../routes'
 
 
 const Post = props => {
@@ -24,7 +24,7 @@ const Post = props => {
         secondaryText={user.username}
         secondaryTextLines={2}
         autoGenerateNestedIndicator={true}
-        onTouchTap={() => history.push(`${match.url}${routes.THREADS}/${post.id}`)}
+        onTouchTap={() => history.push(`${match.url}${THREADS}/${post.id}`)}
       />
   )
 }

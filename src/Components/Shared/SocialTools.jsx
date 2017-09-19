@@ -24,7 +24,7 @@ class SocialTools extends React.Component {
      * Like the update.
      */
     like = (key, itemid) => {
-        console.log(key, itemid)
+        console.log('liked:', key, itemid)
         if (this.state.clickedLike) {
             // undo a previous dislike
             this.props.recordLike(key, itemid)
@@ -45,7 +45,7 @@ class SocialTools extends React.Component {
      * Dislike the update.
      */
     dislike = (key, itemid) => {
-        console.log(key, itemid)
+        console.log('disliked:', key, itemid)
         if (this.state.clickedDislike) {
             // undo a previous dislike
             this.props.recordDislike(key, itemid)
@@ -72,10 +72,8 @@ class SocialTools extends React.Component {
           dislikes,
           type,
           itemid,
-          style = {},
-          history
+          style = {}
         } = this.props
-        console.log(this.props)
         return (
           <div style={{...{display: 'inline-block'}, ...style}}>
             <LikeButton

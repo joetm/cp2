@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { Card, CardHeader, CardMedia, CardTitle } from 'material-ui/Card'
 // import Avatar from 'material-ui/Avatar'
 
-import routes from '../../routes'
+import { IMAGES, VIDEOS, LIKES, UPDATES, PROFILE } from '../../routes'
 import Avatar from '../Shared/Avatar'
 
 import '../Shared/masonry.scss'
@@ -68,23 +68,23 @@ class Update extends React.Component {
     switch (this.props.type) {
       case 'image':
       case 'verification':
-        url = `${routes.IMAGES}/${this.props.id}`
+        url = `${IMAGES}/${this.props.id}`
         break
       case 'video':
-        url = `${routes.VIDEOS}/${this.props.id}`
+        url = `${VIDEOS}/${this.props.id}`
         break
       case 'like':
-        url = `${routes.LIKES}/${this.props.id}`
+        url = `${LIKES}/${this.props.id}`
         break
       default:
-        url = `${routes.UPDATES}/${this.props.id}`
+        url = `${UPDATES}/${this.props.id}`
     }
     if (this.clickable) {
       this.props.history.push(url)
     }
   }
   navigateToUser = () => {
-    this.props.history.push(`${routes.PROFILE}/${this.props.user.id}`)
+    this.props.history.push(`${PROFILE}/${this.props.user.id}`)
   }
   render () {
     const { user, title, thumb } = this.props

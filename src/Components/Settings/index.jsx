@@ -11,7 +11,7 @@ import PrivacyIcon from 'material-ui/svg-icons/action/fingerprint'
 import AccountIcon from 'material-ui/svg-icons/action/account-box'
 
 import styles from './styles'
-import routes from '../../routes'
+import { SETTINGS } from '../../routes'
 import Spacer from '../Shared/Spacer'
 // import SettingsMenuEntry from './SettingsMenuEntry'
 // --
@@ -24,12 +24,12 @@ import Account from './Account'
 
 
 const _SETTINGS_ROUTES = [
-  `${routes.SETTINGS.INDEX}${routes.SETTINGS.GENERAL}`,
-  `${routes.SETTINGS.INDEX}${routes.SETTINGS.IMAGE}`,
-  `${routes.SETTINGS.INDEX}${routes.SETTINGS.AVATAR}`,
-  `${routes.SETTINGS.INDEX}${routes.SETTINGS.VERIFICATION}`,
-  `${routes.SETTINGS.INDEX}${routes.SETTINGS.PRIVACY}`,
-  `${routes.SETTINGS.INDEX}${routes.SETTINGS.ACCOUNT}`,
+  `${SETTINGS.INDEX}${SETTINGS.GENERAL}`,
+  `${SETTINGS.INDEX}${SETTINGS.IMAGE}`,
+  `${SETTINGS.INDEX}${SETTINGS.AVATAR}`,
+  `${SETTINGS.INDEX}${SETTINGS.VERIFICATION}`,
+  `${SETTINGS.INDEX}${SETTINGS.PRIVACY}`,
+  `${SETTINGS.INDEX}${SETTINGS.ACCOUNT}`,
 ]
 
 
@@ -60,32 +60,32 @@ class Settings extends React.Component {
           <BottomNavigationItem
             label="General"
             icon={<ProfileIcon />}
-            onClick={() => { this.handleTabClick(0, `${url}${routes.SETTINGS.GENERAL}`) }}
+            onClick={() => { this.handleTabClick(0, `${url}${SETTINGS.GENERAL}`) }}
           />
           <BottomNavigationItem
             label="Profile Image"
             icon={<ImageIcon />}
-            onClick={() => { this.handleTabClick(1, `${url}${routes.SETTINGS.IMAGE}`) }}
+            onClick={() => { this.handleTabClick(1, `${url}${SETTINGS.IMAGE}`) }}
           />
           <BottomNavigationItem
             label="Avatar"
             icon={<ImageIcon />}
-            onClick={() => { this.handleTabClick(2, `${url}${routes.SETTINGS.AVATAR}`) }}
+            onClick={() => { this.handleTabClick(2, `${url}${SETTINGS.AVATAR}`) }}
           />
           <BottomNavigationItem
             label="Verify"
             icon={<VerifyIcon />}
-            onClick={() => { this.handleTabClick(3, `${url}${routes.SETTINGS.VERIFICATION}`) }}
+            onClick={() => { this.handleTabClick(3, `${url}${SETTINGS.VERIFICATION}`) }}
           />
           <BottomNavigationItem
             label="Privacy"
             icon={<PrivacyIcon />}
-            onClick={() => { this.handleTabClick(4, `${url}${routes.SETTINGS.PRIVACY}`) }}
+            onClick={() => { this.handleTabClick(4, `${url}${SETTINGS.PRIVACY}`) }}
           />
           <BottomNavigationItem
             label="Account"
             icon={<AccountIcon />}
-            onClick={() => { this.handleTabClick(5, `${url}${routes.SETTINGS.ACCOUNT}`) }}
+            onClick={() => { this.handleTabClick(5, `${url}${SETTINGS.ACCOUNT}`) }}
           />
         </BottomNavigation>
 
@@ -93,12 +93,12 @@ class Settings extends React.Component {
 
         <div style={styles.settingsBlock}>
           <Switch>
-            <Route exact path={`${url}${routes.SETTINGS.GENERAL}`} component={General} />
-            <Route exact path={`${url}${routes.SETTINGS.IMAGE}`}   component={ProfileImg} />
-            <Route exact path={`${url}${routes.SETTINGS.AVATAR}`}  component={AvatarImg} />
-            <Route exact path={`${url}${routes.SETTINGS.VERIFICATION}`} component={VerificationImg} />
-            <Route exact path={`${url}${routes.SETTINGS.PRIVACY}`} component={Privacy} />
-            <Route exact path={`${url}${routes.SETTINGS.ACCOUNT}`} component={Account} />
+            <Route exact path={`${url}${SETTINGS.GENERAL}`}      component={General} />
+            <Route exact path={`${url}${SETTINGS.IMAGE}`}        component={ProfileImg} />
+            <Route exact path={`${url}${SETTINGS.AVATAR}`}       component={AvatarImg} />
+            <Route exact path={`${url}${SETTINGS.VERIFICATION}`} component={VerificationImg} />
+            <Route exact path={`${url}${SETTINGS.PRIVACY}`}      component={Privacy} />
+            <Route exact path={`${url}${SETTINGS.ACCOUNT}`}      component={Account} />
             <Route component={General} />
           </Switch>
         </div>

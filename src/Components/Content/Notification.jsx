@@ -12,7 +12,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
 import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
-import routes from '../../routes'
+import { PROFILE, FORUM, CATEGORIES, POSTS, THREADS } from '../../routes'
 import { grey } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 
@@ -82,7 +82,7 @@ class Notification extends React.Component {
             )
 
             rightIconMenu = null // TODO
-            touchTapAction = () => history.push(`${routes.PROFILE}/${user.id}`)
+            touchTapAction = () => history.push(`${PROFILE}/${user.id}`)
 
             break
 
@@ -93,7 +93,7 @@ class Notification extends React.Component {
             )
 
             rightIconMenu = null // TODO
-            touchTapAction = () => history.push(`${routes.FORUM}${routes.POSTS}/${id}`)
+            touchTapAction = () => history.push(`${FORUM}${POSTS}/${id}`)
 
             break
 
@@ -102,7 +102,7 @@ class Notification extends React.Component {
             secondaryText = <p>{content}</p>
 
             rightIconMenu = null // TODO
-            touchTapAction = () => history.push(`${routes.FORUM}${routes.CATEGORIES}/${id}`)
+            touchTapAction = () => history.push(`${FORUM}${CATEGORIES}/${id}`)
 
             break
 
@@ -111,7 +111,7 @@ class Notification extends React.Component {
             secondaryText = <p>{title}</p>
 
             rightIconMenu = null // TODO
-            touchTapAction = () => history.push(`${routes.FORUM}${routes.THREADS}/${id}`)
+            touchTapAction = () => history.push(`${FORUM}${THREADS}/${id}`)
 
             break
 
@@ -146,7 +146,7 @@ class Notification extends React.Component {
                   style={{cursor: 'pointer', position: 'absolute', top: '16px', left: '16px'}}
                   src={user.avatar || thumb}
                   macro={true}
-                  onTouchTap={e => { e.stopPropagation(); history.push(`${routes.PROFILE}/${userid}`) }}
+                  onTouchTap={e => { e.stopPropagation(); history.push(`${PROFILE}/${userid}`) }}
                 />
               }
               rightIconButton={this.state.showMenu ? rightIconMenu : null}

@@ -9,7 +9,7 @@ import { List, ListItem } from 'material-ui/List'
 import { fetchReviewLeaderboard } from '../../actions'
 import Avatar from '../Shared/Avatar'
 import Loader from '../Shared/Loader'
-import routes from '../../routes'
+import { PROFILE } from '../../routes'
 
 
 const styles = {
@@ -28,8 +28,8 @@ const DivWrapper = (props) => (
 const DrawerWrapper = (props) => (
     <Drawer
       open={props.open}
-      openSecondary={props.openSecondary}
-      docked={props.docked}
+      openSecondary={true}
+      docked={true}
       style={styles.leaderBoardContainer}
     >
         {props.children}
@@ -45,10 +45,10 @@ class Leaderboard extends React.Component {
         const { reviewLeaderboard, open, history, isEmbedded = false } = this.props
         const { items = [], isFetching} = reviewLeaderboard
 
-        const Wrapper = isEmbedded ? Drawer : DivWrapper
+        const Wrapper = isEmbedded ? DrawerWrapper : DivWrapper
 
         return (
-            <Wrapper open={open} openSecondary={true} docked={true}>
+            <Wrapper open={open}>
                 <h3>Leaderboard</h3>
 
                 <Loader isLoading={isFetching} />
@@ -66,7 +66,7 @@ class Leaderboard extends React.Component {
                               macro={true}
                               onTouchTap={e => {
                                 e.stopPropagation()
-                                history.push(`${routes.PROFILE}/${item.userid}`)
+                                history.push(`${PROFILE}/${item.userid}`)
                               }}
                             />
                           }

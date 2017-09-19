@@ -12,7 +12,7 @@ import SettingsSeparator from './SettingsSeparator'
 // import { inlineButton } from '../Shared/styles'
 import Alert from '../Shared/Alert'
 import getSuccessMsg from '../../common/successMessages'
-import { usernames } from '../../common/blocklist'
+// import { usernames } from '../../common/blocklist'
 import Spacer from '../Shared/Spacer'
 
 
@@ -201,7 +201,7 @@ class AccountSettings extends React.Component {
      * Render the component.
      */
     render() {
-      const { email } = this.props
+      // const { email } = this.props
       const actions = [
         <FlatButton
           label="Cancel"
@@ -217,7 +217,7 @@ class AccountSettings extends React.Component {
         />,
       ]
       return (
-        <div style={{textAlign: 'left'}} ref="pageContent">
+        <div style={{textAlign: 'left'}} ref={el => {this.pageContent = el}}>
 
             <SettingsSeparator first text="Account Details" />
 

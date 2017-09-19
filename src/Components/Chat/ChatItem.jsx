@@ -8,7 +8,7 @@ import Avatar from 'material-ui/Avatar'
 import IconButton from 'material-ui/IconButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete'
 
-import routes from '../../routes'
+import { PROFILE } from '../../routes'
 import { removeChatMsg } from '../../actions'
 // import Avatar from '../Shared/Avatar'
 import { gray, black } from '../../common/colors'
@@ -40,7 +40,7 @@ const styles = {
 
 class ChatItem extends React.Component {
     navigateToUser = (userid) => () => {
-      this.props.history.push(`${routes.PROFILE}/${userid}`)
+      this.props.history.push(`${PROFILE}/${userid}`)
     }
     render() {
       const {

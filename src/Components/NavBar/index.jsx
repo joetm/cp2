@@ -28,7 +28,7 @@ import {
 } from '../../actions'
 import { palette } from '../../common/colors'
 import { sum } from '../../common/helpers'
-import routes from '../../routes'
+import { PROFILE, UPLOAD, REVIEW } from '../../routes'
 import './style.scss'
 // --
 import Avatar from '../Shared/Avatar'
@@ -194,7 +194,7 @@ class NavBar extends React.Component {
                                 onTouchTap={this.toggleNotificationsMenu}
                             />
 
-                            <Link to={`${routes.PROFILE}/${this.props.userid}`}>
+                            <Link to={`${PROFILE}/${this.props.userid}`}>
                                 <Avatar
                                     visible={true}
                                     src={this.props.avatar}

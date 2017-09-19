@@ -10,7 +10,7 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
 
-import routes from '../../routes'
+import { PROFILE } from '../../routes'
 import { scrollToTop } from '../../common/helpers'
 import SocialTools from '../Shared/SocialTools'
 
@@ -58,7 +58,7 @@ class ReviewCard extends React.Component {
     }
     navigateToUser = (e) => {
       e.stopPropagation()
-      this.props.history.push(`${routes.PROFILE}/${this.props.userid}`)
+      this.props.history.push(`${PROFILE}/${this.props.userid}`)
     }
     handleChangeRating = (e, value) => {
       this.nextStep()
