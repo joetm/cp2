@@ -24,16 +24,16 @@ const DivWrapper = (props) => (
     </div>
 )
 
-const DrawerWrapper = (props) => {
+const DrawerWrapper = (props) => (
     <Drawer
       open={props.open}
-      openSecondary={true}
-      docked={true}
+      openSecondary={props.openSecondary}
+      docked={props.docked}
       style={styles.leaderBoardContainer}
     >
         {props.children}
     </Drawer>
-}
+)
 
 
 class Leaderboard extends React.Component {
@@ -43,9 +43,11 @@ class Leaderboard extends React.Component {
     render() {
         const { reviewLeaderboard, open, history, isEmbedded = false } = this.props
         const { items = [] } = reviewLeaderboard
+
         const Wrapper = isEmbedded ? Drawer : DivWrapper
+
         return (
-            <Wrapper open={open}>
+            <Wrapper open={open} openSecondary={true} docked={true}>
                 <h3>Leaderboard</h3>
                 <List>
                     {
@@ -65,7 +67,7 @@ class Leaderboard extends React.Component {
                             />
                           }
                           primaryText={item.user.username}
-                          secondaryText={`${item.user.crowdPoints} points`}
+                          secondaryText={`${item.user.crowdPoints}${isEmbedded ? ' crowd ' : ' '}points`}
                           secondaryTextLines={1}
                         />
                       ))

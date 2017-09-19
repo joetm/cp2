@@ -11,7 +11,6 @@ import SignupButton from '../../Shared/Buttons/SignupButton'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Subheader from 'material-ui/Subheader'
-import onClickOutside from 'react-onclickoutside'
 
 import routes from '../../../routes'
 import { gray } from '../../../common/colors'
@@ -135,4 +134,4 @@ class LoginSidebar extends React.Component {
     }
 }
 
-export default onClickOutside(withRouter(LoginSidebar))
+export default withRouter(LoginSidebar)
