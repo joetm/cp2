@@ -17,6 +17,7 @@ import { checkHttpStatus, parseJSON } from './common/helpers'
 
 export const COMMENT_PROFILE            = 'PROFILE::COMMENT_PROFILE'
 export const GET_USER                   = 'USER::GET_USER'
+export const GET_THEME                  = 'USER::GET_THEME'
 export const GET_CURRENT_USERTITLE      = 'USER::GET_CURRENT_USERTITLE'
 export const GET_CURRENT_USER           = 'USER::GET_CURRENT_USER'
 // export const GET_CURRENT_USER_MINIMAL   = 'USER::GET_CURRENT_USER_MINIMAL'
@@ -166,6 +167,7 @@ function makeActionCreator(type, ...argNames) {
 // ----------------------------------------------------
 
 export const getUser               = makeActionCreator(GET_USER,              'userid')
+export const getTheme              = makeActionCreator(GET_THEME,             'theme')
 export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
 // export const getCurrentUsertitle   = makeActionCreator(GET_CURRENT_USERTITLE)
 export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)

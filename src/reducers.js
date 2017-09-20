@@ -463,6 +463,8 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                 return currentUserState.id
             }
             return null
+        case ACTIONS.GET_THEME:
+            return currentUserState.theme
         case ACTIONS.RECEIVE_CURRENT_USER:
             return { ...action.response }
 

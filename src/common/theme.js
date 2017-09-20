@@ -27,4 +27,13 @@ export const colors = {
 
 export const theme = getMuiTheme(lightbaseTheme)
 
+export function getTheme(themeName) {
+  switch (themeName) {
+    case 'default':
+    default:
+      return lightbaseTheme
+    break
+  }
+}
+
 export default theme
