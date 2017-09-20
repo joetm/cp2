@@ -20,7 +20,7 @@ const footerStyle = {
     lineHeight: '30px',
     color: gray,
     textAlign: 'center',
-    backgroundColor: lightGray,
+    // backgroundColor: lightGray,
     cursor: 'pointer',
 }
 

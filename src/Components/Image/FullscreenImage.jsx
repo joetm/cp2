@@ -16,7 +16,7 @@ const _OFFSETX = 10
 
 const styles = {
     fullscreenContainer: {
-        backgroundColor: black,
+        // backgroundColor: black,
         padding: 0,
         margin: 0,
         height: '100%',

@@ -22,7 +22,6 @@ const _MENUITEM = {
 const styles = {
     navbar: {
         zIndex: 9999999,
-        backgroundColor: '#fff',
         color: darkBlack,
     },
     icon: {

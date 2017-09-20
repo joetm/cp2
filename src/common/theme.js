@@ -7,9 +7,9 @@ import { palette, black, white, bg, grey, lightGrey, darkGrey, lightBlack } from
 import defaultTheme from './themes/default'
 import lightbaseTheme from './themes/lightbase'
 import blackIsBackTheme from './themes/blackIsBack'
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
-console.log('darkBaseTheme', darkBaseTheme)
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+// console.log('darkBaseTheme', darkBaseTheme)
 
 export const colors = {
   palette,

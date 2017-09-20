@@ -24,7 +24,7 @@ const styles = {
         zIndex: 9999999,
         'border-bottom-left-radius': 48,
         'border-top-left-radius': 48,
-        backgroundColor: gray,
+        // backgroundColor: gray,
     },
     drawer: {
         padding: '20px',

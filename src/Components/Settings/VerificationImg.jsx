@@ -7,33 +7,15 @@ import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 // import Snackbar from 'material-ui/Snackbar'
-import Checkbox from 'material-ui/Checkbox'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { fetchUserVerificationImages, removeImages } from '../../actions'
-import './style.scss'
+import './transitions.scss'
 import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 import { blockMaxWidth } from './styles'
 import UpdateWrap from '../Shared/UpdateWrap'
-
-
-const styles = {
-  cellwrapper: {
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  checkbox: {
-    position: 'absolute',
-    top: 10,
-    left: 0,
-  },
-  verificationImage: {
-    width: '100%',
-    height: 'auto',
-    cursor: 'pointer',
-  },
-}
+import Img from './Img'
 
 
 class VerificationImg extends React.Component {
@@ -41,12 +23,8 @@ class VerificationImg extends React.Component {
     imagesFetched: false,
     selection: [],
   }
-  deleteVerificationImages = () => {
-    console.log('removing selection', this.state.selection)
-    this.props.removeImages(this.state.selection)
-    this.setState({
-      selection: [],
-    })
+  setSelection = (selection) => {
+    this.setState({selection})
   }
   fetchVerificationImagesOnce = () => {
     const { userid } = this.props
@@ -55,15 +33,12 @@ class VerificationImg extends React.Component {
       this.setState({imagesFetched: true})
     }
   }
-  selectImage = (id) => {
-    const newSelection = [...this.state.selection]
-    newSelection.push(id)
-    this.setState({selection: newSelection})
-  }
-  deselectImage = (index) => {
-    const newSelection = [...this.state.selection]
-    newSelection.splice(index, 1)
-    this.setState({selection: newSelection})
+  deleteVerificationImages = () => {
+    // console.log('removing selection', this.state.selection)
+    this.props.removeImages(this.state.selection)
+    this.setState({
+      selection: [],
+    })
   }
   componentWillMount() {
     this.fetchVerificationImagesOnce()
@@ -80,17 +55,6 @@ class VerificationImg extends React.Component {
             maxWidth: blockMaxWidth,
           }}
       >
-
-          {/*
-          <img
-              src={verificationimg}
-              alt=""
-              style={{
-                  width: '100%',
-                  height: 'auto',
-              }}
-          />
-          */}
 
           <DropzoneComponent
             style={dropzoneStyle}
@@ -110,41 +74,10 @@ class VerificationImg extends React.Component {
             {
                verificationImages &&
                verificationImages.map(item => (
-                <div
-                  className="updateBox"
-                  key={`vimg_${item.id}`}
-                  style={styles.cellwrapper}
-                >
-                  <Checkbox
-                    style={styles.checkbox}
-                    onCheck={(e, isInputChecked) => {
-                      const index = this.state.selection.indexOf(item.id)
-                      if (isInputChecked) {
-                        if (index === -1) {
-                          this.selectImage(item.id)
-                        }
-                      } else {
-                        if (index !== -1) {
-                          this.deselectImage(index)
-                        }
-                      }
-                    }}
-                    checked={this.state.selection.indexOf(item.id) !== -1}
-                  />
-                  <img
-                    src={item.thumb}
-                    style={styles.verificationImage}
-                    alt=""
-                    onTouchTap={() => {
-                      const index = this.state.selection.indexOf(item.id)
-                      if (index === -1) {
-                        this.selectImage(item.id)
-                      } else {
-                        this.deselectImage(index)
-                      }
-                    }}
-                  />
-                </div>
+                <Img
+                    item={item}
+                    selection={this.state.selection}
+                />
               ))
             }
             </ReactCSSTransitionGroup>

@@ -8,7 +8,7 @@ import FollowButton from '../Shared/Buttons/FollowButton'
 
 const styles = {
     dividerBar: {
-        backgroundColor: palette.primary1Color,
+        // backgroundColor: palette.primary1Color,
         position: 'relative',
         padding: '44px 0',
     },

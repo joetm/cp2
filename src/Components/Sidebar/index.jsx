@@ -28,7 +28,6 @@ const styles = {
     textAlign: 'center',
     height: '56px',
     display: 'block',
-    backgroundColor: '#F0F0F0',
   },
   logo: {
     verticalAlign: 'middle',

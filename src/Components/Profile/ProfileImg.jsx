@@ -20,14 +20,12 @@ const blurFilters = {
 const styles = {
     profileImgContainer: {
         textAlign: 'center',
-        backgroundColor: '#808080',
         position: 'relative',
     },
     profileImgStyle: {
         position: 'relative',
         width: '100%',
         textAlign: 'center',
-        backgroundColor: '#808080',
         overflow: 'hidden',
         backgroundPosition: 'center center',
         backgroundSize: 'cover',

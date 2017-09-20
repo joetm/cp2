@@ -165,7 +165,7 @@ class ReviewCard extends React.Component {
                   </Step>
                 </Stepper>
 
-                <Toolbar style={{backgroundColor: '#ffffff', paddingLeft: 0, paddingRight: 0}}>
+                <Toolbar style={{paddingLeft: 0, paddingRight: 0}}>
 
                   <ToolbarGroup>
                     <RadioButtonGroup

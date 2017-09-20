@@ -19,7 +19,7 @@ const styles = {
   },
   menuHeader: {
     height: '40px',
-    backgroundColor: lightGray,
+    // backgroundColor: lightGray,
     display: 'flex',
     lineHeight: '40px',
     padding: '0 1em',

@@ -7,7 +7,7 @@ import { palette } from '../../../common/colors'
 
 
 const followButtonStyle = {
-    backgroundColor: palette.primary1Color,
+    // backgroundColor: palette.primary1Color,
     zIndex: 999,
 }
 

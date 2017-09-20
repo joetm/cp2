@@ -7,7 +7,6 @@ import { Route, Switch } from 'react-router-dom'
 
 import store from '../store'
 import routes from '../routes'
-import { bg as bgColor } from '../common/colors'
 import Scrollbutton from './Shared/Scrollbutton'
 import Theme from './Config/Theme'
 import RecordDeviceDetails from './Config/DeviceDetails'

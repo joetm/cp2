@@ -5,11 +5,30 @@ import { connect } from 'react-redux'
 import Toggle from 'material-ui/Toggle'
 import { List } from 'material-ui/List'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
+import RaisedButton from 'material-ui/RaisedButton'
 
 import { changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import sharedStyles from './styles'
 import Spacer from '../Shared/Spacer'
+import CellWrapper from '../Shared/CellWrapper'
+import GridWrap from '../Shared/GridWrap'
+
+
+const _THEMES = {
+  DEFAULT: 'default',
+  BROWN:   'brown',
+  BLACK:   'black',
+  RED:     'red',
+}
+
+// DEV
+const _COLORSFORTHEMES = {
+  [_THEMES.DEFAULT]: ['#80F0F0', '#F080F0', '#F0F080', '#FF8080', '#F0F0F0'],
+  [_THEMES.BROWN]: ['#F2D580', '#F1B461', '#BD7A56', '#8B523B', '#3E0901'],
+  [_THEMES.RED]: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000'],
+  [_THEMES.BLACK]: ['#000000', '#000000', '#000000', '#000000', '#000000'],
+}
 
 
 const styles = {
@@ -17,12 +36,13 @@ const styles = {
     width: '100px',
     height: '100px',
     border: '2px solid white',
-    float: 'left',
+    display: 'inline-block',
   },
 }
 
 
 class SiteSettings extends React.Component {
+    themeSelector = null
     state = {
       selectedTheme: 'default',
     }
@@ -32,55 +52,77 @@ class SiteSettings extends React.Component {
     /*
      * Handle the change of the color theme.
      */
-    changeColorTheme = (e, themeName) => {
-      this.props.changeSetting('theme', themeName)
+    changeColorTheme = () => {
+      this.props.changeSetting('theme', this.state.selectedTheme)
+    }
+    handleColorThemeChange = (e, themeName) => {
+      this.setState({selectedTheme: themeName})
     }
     render() {
+      const { theme } = this.props
+      const { selectedTheme } = this.state
       return (
         <div style={{textAlign: 'left'}}>
 
             <SettingsSeparator first text="Color theme" />
 
-            <div style={{margin: '1em 0'}}>
-              <RadioButtonGroup
-                onChange={this.changeColorTheme}
-                name="colorTheme"
-                defaultSelected={this.props.theme}
-              >
-                  <RadioButton
-                    value="default"
-                    label="Default"
-                    selected={this.props.theme === 'default'}
-                  />
-                  <RadioButton
-                    value="red"
-                    label="Red"
-                    selected={this.props.theme === 'red'}
-                  />
-                  <RadioButton
-                    value="brown"
-                    label="Browney"
-                    selected={this.props.theme === 'brown'}
-                  />
-                  <RadioButton
-                    value="dark"
-                    label="Dark"
-                    selected={this.props.theme === 'dark'}
-                  />
-              </RadioButtonGroup>
-            </div>
+            <GridWrap>
 
-            <div style={{clear: 'both'}}>
-                <div style={{clear: 'both'}}>
-                    <div style={{...styles.colorBox, backgroundColor: '#F2D580'}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: '#F1B461'}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: '#BD7A56'}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: '#8B523B'}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: '#3E0901'}}></div>
+              <CellWrapper full={6} tablet={4} phone={4}>
+
+                <div>
+                  <RadioButtonGroup
+                    onChange={this.handleColorThemeChange}
+                    name="colorTheme"
+                    valueSelected={selectedTheme}
+                  >
+                      <RadioButton
+                        value={_THEMES.DEFAULT}
+                        label="Default"
+                        selected={theme === _THEMES.DEFAULT}
+                      />
+                      <RadioButton
+                        value={_THEMES.RED}
+                        label="Red"
+                        selected={theme === _THEMES.RED}
+                      />
+                      <RadioButton
+                        value={_THEMES.BROWN}
+                        label="Browney"
+                        selected={theme === _THEMES.BROWN}
+                      />
+                      <RadioButton
+                        value={_THEMES.BLACK}
+                        label="Dark"
+                        selected={theme === _THEMES.BLACK}
+                      />
+                  </RadioButtonGroup>
                 </div>
-            </div>
 
-            <SettingsSeparator style={{clear: 'both'}} text="Site settings" />
+              </CellWrapper>
+
+              <CellWrapper full={6} tablet={4} phone={4}>
+                <div>
+                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][0]}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][1]}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][2]}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][3]}}></div>
+                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][4]}}></div>
+                </div>
+              </CellWrapper>
+
+            </GridWrap>
+
+            <p>
+              <RaisedButton
+                label="Save Theme"
+                primary={true}
+                onTouchTap={this.changeColorTheme}
+              />
+            </p>
+
+
+            <SettingsSeparator text="Site settings" />
 
             <List>
               <Toggle

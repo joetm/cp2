@@ -26,7 +26,6 @@ import {
     // closeStreamSidebar,
     fetchCurrentUser,
 } from '../../actions'
-import { palette } from '../../common/colors'
 import { sum } from '../../common/helpers'
 import { PROFILE, UPLOAD, REVIEW } from '../../routes'
 import './style.scss'
@@ -43,7 +42,7 @@ const _DURATION = 600 // ms
 const styles = {
     navbar: {
         zIndex: 9999999,
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
     },
     firstItem: {
         marginLeft: '10px',
@@ -138,13 +137,8 @@ class NavBar extends React.Component {
                             >
                                 <MenuIcon />
                             </IconButton>
-                            <NavLink
-                                to="/"
-                                activeStyle={{color: palette.primary1Color}}
-                            >
-                                <IconButton
-                                    tooltip="Home"
-                                >
+                            <NavLink to="/">
+                                <IconButton tooltip="Home">
                                     <HomeIcon />
                                 </IconButton>
                             </NavLink>
