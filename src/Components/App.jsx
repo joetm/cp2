@@ -5,11 +5,10 @@ import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { BrowserRouter } from 'react-router-dom'
 
 import routes from '../routes'
-import { getTheme } from '../common/theme'
+import { getTheme, getBaseTheme } from '../common/theme'
 import Scrollbutton from './Shared/Scrollbutton'
 import LoadCurrentUser from './Config/LoadCurrentUser'
 import RecordDeviceDetails from './Config/DeviceDetails'
@@ -50,6 +49,8 @@ import Playlist from './Playlist'
 // <ConnectedRouter history={browserHistory}>
 // </ConnectedRouter>
 
+console.log('MuiThemeProvider', MuiThemeProvider)
+
 
 @connect(state => ({
    theme: state.currentUser.theme
@@ -59,10 +60,11 @@ class App extends React.Component {
      * Render the component.
      */
     render() {
+      const theme = getTheme(this.props.theme)
       return (
         <BrowserRouter>
-          <MuiThemeProvider muiTheme={getTheme(this.props.theme)}>
-            <div>
+          <MuiThemeProvider muiTheme={theme}>
+            <div style={{backgroundColor: theme.palette.canvasColor}}>
 
               <LoadCurrentUser />
 
