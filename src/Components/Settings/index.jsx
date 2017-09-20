@@ -10,7 +10,7 @@ import VerifyIcon from 'material-ui/svg-icons/action/verified-user'
 import PrivacyIcon from 'material-ui/svg-icons/action/fingerprint'
 import AccountIcon from 'material-ui/svg-icons/action/account-box'
 
-import styles from './styles'
+import sharedStyles from './styles'
 import { SETTINGS } from '../../routes'
 import Spacer from '../Shared/Spacer'
 // import SettingsMenuEntry from './SettingsMenuEntry'
@@ -31,6 +31,17 @@ const _SETTINGS_ROUTES = [
   `${SETTINGS.INDEX}${SETTINGS.PRIVACY}`,
   `${SETTINGS.INDEX}${SETTINGS.ACCOUNT}`,
 ]
+
+const styles = {
+  bottomNavigationItem: {
+      display: 'flex',
+      alignItems: 'center',
+      flexGrow: 1,
+      flexShrink: 0,
+      flexBasis: '33.3333%',
+      flexBasis: '200px',
+  },
+}
 
 
 class Settings extends React.Component {
@@ -54,44 +65,53 @@ class Settings extends React.Component {
 
         <h1>Settings</h1>
 
-        <BottomNavigation
-          selectedIndex={this.state.selectedIndex}
-        >
-          <BottomNavigationItem
-            label="Site Settings"
-            icon={<ProfileIcon />}
-            onClick={() => { this.handleTabClick(0, `${url}${SETTINGS.SITE}`) }}
-          />
-          <BottomNavigationItem
-            label="Profile Image"
-            icon={<ImageIcon />}
-            onClick={() => { this.handleTabClick(1, `${url}${SETTINGS.IMAGE}`) }}
-          />
-          <BottomNavigationItem
-            label="Avatar"
-            icon={<ImageIcon />}
-            onClick={() => { this.handleTabClick(2, `${url}${SETTINGS.AVATAR}`) }}
-          />
-          <BottomNavigationItem
-            label="Verify"
-            icon={<VerifyIcon />}
-            onClick={() => { this.handleTabClick(3, `${url}${SETTINGS.VERIFICATION}`) }}
-          />
-          <BottomNavigationItem
-            label="Privacy"
-            icon={<PrivacyIcon />}
-            onClick={() => { this.handleTabClick(4, `${url}${SETTINGS.PRIVACY}`) }}
-          />
-          <BottomNavigationItem
-            label="Account"
-            icon={<AccountIcon />}
-            onClick={() => { this.handleTabClick(5, `${url}${SETTINGS.ACCOUNT}`) }}
-          />
-        </BottomNavigation>
+        <div style={{clear: 'both'}}>
+          <BottomNavigation
+            selectedIndex={this.state.selectedIndex}
+            style={{display: 'flex', flexWrap: 'wrap', height: 'auto'}}
+          >
+            <BottomNavigationItem
+              label="Site Settings"
+              icon={<ProfileIcon />}
+              onClick={() => { this.handleTabClick(0, `${url}${SETTINGS.SITE}`) }}
+              style={styles.bottomNavigationItem}
+            />
+            <BottomNavigationItem
+              label="Profile Image"
+              icon={<ImageIcon />}
+              onClick={() => { this.handleTabClick(1, `${url}${SETTINGS.IMAGE}`) }}
+              style={styles.bottomNavigationItem}
+            />
+            <BottomNavigationItem
+              label="Avatar"
+              icon={<ImageIcon />}
+              onClick={() => { this.handleTabClick(2, `${url}${SETTINGS.AVATAR}`) }}
+              style={styles.bottomNavigationItem}
+            />
+            <BottomNavigationItem
+              label="Verify"
+              icon={<VerifyIcon />}
+              onClick={() => { this.handleTabClick(3, `${url}${SETTINGS.VERIFICATION}`) }}
+              style={styles.bottomNavigationItem}
+            />
+            <BottomNavigationItem
+              label="Privacy"
+              icon={<PrivacyIcon />}
+              onClick={() => { this.handleTabClick(4, `${url}${SETTINGS.PRIVACY}`) }}
+              style={styles.bottomNavigationItem}
+            />
+            <BottomNavigationItem
+              label="Account"
+              icon={<AccountIcon />}
+              onClick={() => { this.handleTabClick(5, `${url}${SETTINGS.ACCOUNT}`) }}
+              style={styles.bottomNavigationItem}
+            />
+          </BottomNavigation>
+        </div>
 
         <Spacer />
 
-        <div style={styles.settingsBlock}>
+        <div style={sharedStyles.settingsBlock}>
           <Switch>
             <Route exact path={`${url}${SETTINGS.SITE}`}         component={Site} />
             <Route exact path={`${url}${SETTINGS.IMAGE}`}        component={ProfileImg} />

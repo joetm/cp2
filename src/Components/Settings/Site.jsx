@@ -68,7 +68,7 @@ class SiteSettings extends React.Component {
 
             <GridWrap>
 
-              <CellWrapper full={6} tablet={4} phone={4}>
+              <CellWrapper full={3} tablet={2} phone={4}>
 
                 <div>
                   <RadioButtonGroup
@@ -101,8 +101,8 @@ class SiteSettings extends React.Component {
 
               </CellWrapper>
 
-              <CellWrapper full={6} tablet={4} phone={4}>
-                <div>
+              <CellWrapper full={9} tablet={6} phone={4}>
+                <div style={{textAlign: 'right'}}>
                     <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][0]}}></div>
                     <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][1]}}></div>
                     <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][2]}}></div>
