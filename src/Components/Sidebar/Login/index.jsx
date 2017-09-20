@@ -11,9 +11,6 @@ import LockIcon from 'material-ui/svg-icons/action/lock-outline'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 
-// import routes from '../../../routes'
-import { gray } from '../../../common/colors'
-
 
 const styles = {
     stickyButton: {
@@ -24,7 +21,6 @@ const styles = {
         zIndex: 9999999,
         'border-bottom-left-radius': 48,
         'border-top-left-radius': 48,
-        // backgroundColor: gray,
     },
     drawer: {
         padding: '20px',

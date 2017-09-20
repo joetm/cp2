@@ -8,8 +8,6 @@ import defaultTheme from './themes/default'
 import lightbaseTheme from './themes/lightbase'
 import blackIsBackTheme from './themes/blackIsBack'
 
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
-// console.log('darkBaseTheme', darkBaseTheme)
 
 export const colors = {
   palette,
@@ -30,7 +28,7 @@ export const theme = getMuiTheme(lightbaseTheme)
 export function getTheme(themeName) {
   switch (themeName) {
     case 'black':
-      return getMuiTheme(darkBaseTheme)
+      return getMuiTheme(blackIsBackTheme)
     case 'default':
     default:
       return getMuiTheme(lightbaseTheme)

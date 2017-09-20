@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom'
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import { BrowserRouter } from 'react-router-dom'
 
 import routes from '../routes'
 import { getTheme } from '../common/theme'
@@ -59,8 +60,8 @@ class App extends React.Component {
      */
     render() {
       return (
+        <BrowserRouter>
           <MuiThemeProvider muiTheme={getTheme(this.props.theme)}>
-
             <div>
 
               <LoadCurrentUser />
@@ -131,8 +132,8 @@ class App extends React.Component {
               {/* <StreamSidebar /> */}
 
             </div>
-
           </MuiThemeProvider>
+        </BrowserRouter>
         )
     }
 }

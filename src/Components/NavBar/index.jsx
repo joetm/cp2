@@ -42,7 +42,6 @@ const _DURATION = 600 // ms
 const styles = {
     navbar: {
         zIndex: 9999999,
-        // backgroundColor: '#fff',
     },
     firstItem: {
         marginLeft: '10px',

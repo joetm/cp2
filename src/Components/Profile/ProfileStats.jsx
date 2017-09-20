@@ -20,7 +20,6 @@ const styles = {
         paddingLeft: '300px',
     },
     inkBarStyle: {
-        // backgroundColor: 'yellow',
     },
     statStyle: {
         marginTop: '0.4em',

@@ -29,7 +29,6 @@ const styles = {
     statBox: {
         margin: '12px',
         border: '1px',
-        // backgroundColor: '#fff',
         maxWidth: '200px',
     },
 }

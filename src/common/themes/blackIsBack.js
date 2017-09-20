@@ -13,6 +13,8 @@ import spacing from 'material-ui/styles/spacing'
 export default {
   borderRadius: 2,
   spacing,
+  backgroundColor: darkBlack,
+  background: { color: darkBlack },
   fontFamily: 'Roboto, sans-serif',
   palette: {
     primary1Color: darkBlack,

@@ -11,7 +11,6 @@ const styles = {
     height: '40px',
     lineHeight: '40px',
     fontWeight: 400,
-    backgroundColor: lightGray,
     color: darkGray,
     padding: '10px',
   },
