@@ -1,14 +1,16 @@
 /** @flow */
 
 import React from 'react'
-// --
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
-import store from '../store'
 import routes from '../routes'
+import { getTheme } from '../common/theme'
 import Scrollbutton from './Shared/Scrollbutton'
-import Theme from './Config/Theme'
+import LoadCurrentUser from './Config/LoadCurrentUser'
 import RecordDeviceDetails from './Config/DeviceDetails'
 // -- Components
 import NavBar from './NavBar'
@@ -48,17 +50,20 @@ import Playlist from './Playlist'
 // </ConnectedRouter>
 
 
-// @connect(state => state)
+@connect(state => ({
+   theme: state.currentUser.theme
+}))
 class App extends React.Component {
     /**
      * Render the component.
      */
     render() {
       return (
-          <Provider store={store}>
-          <Theme>
+          <MuiThemeProvider muiTheme={getTheme(this.props.theme)}>
 
             <div>
+
+              <LoadCurrentUser />
 
               <RecordDeviceDetails />
 
@@ -127,8 +132,7 @@ class App extends React.Component {
 
             </div>
 
-          </Theme>
-          </Provider>
+          </MuiThemeProvider>
         )
     }
 }

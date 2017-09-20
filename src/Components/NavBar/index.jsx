@@ -79,7 +79,6 @@ class NavBar extends React.Component {
         }
     }
     componentDidMount() {
-        this.props.fetchCurrentUser()
         // attach the notifications menu to the dom node
         this.attachMenuToDomNode()
     }
