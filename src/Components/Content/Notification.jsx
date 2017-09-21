@@ -143,7 +143,7 @@ class Notification extends React.Component {
               leftAvatar={
                 <Avatar
                   username={user.username}
-                  style={{cursor: 'pointer', position: 'absolute', top: '16px', left: '16px'}}
+                  style={{cursor: 'pointer', position: 'absolute', top: '10px', left: '16px'}}
                   src={user.avatar || thumb}
                   macro={true}
                   onTouchTap={e => { e.stopPropagation(); history.push(`${PROFILE}/${userid}`) }}

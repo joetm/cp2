@@ -52,7 +52,7 @@ const styles = {
 const AvatarBubble = (props) => {
       const {
         micro, mini, macro,
-        username, active,
+        username,
         src, visible,
         style
       } = props
@@ -73,26 +73,20 @@ const AvatarBubble = (props) => {
       } else {
           avatarStyle.visibility = 'visible'
       }
-      // status
-      if (active) {
-        avatarStyle.borderColor = 'red'
-      } else {
-        avatarStyle.borderColor = '#fff'
-      }
       // default Avatar for people without avatar image
       if (!src) {
         return (
             <Avatar
-                style={{...avatarStyle, style}}
+                style={{...avatarStyle, ...style}}
                 onTouchTap={props.onTouchTap}
             >
-              {username ? username.substr(0, 1) : 'X'}
+              { username ? username.substr(0, 1) : 'X' }
             </Avatar>
         )
       }
       return (
           <Avatar
-              style={{...avatarStyle, style}}
+              style={{...avatarStyle, ...style}}
               src={src}
               alt={username}
               onTouchTap={props.onTouchTap}

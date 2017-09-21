@@ -10,6 +10,7 @@ import LockIcon from 'material-ui/svg-icons/action/lock-outline'
 // import SignupButton from '../../Shared/Buttons/SignupButton'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 
 const styles = {
@@ -42,7 +43,6 @@ class LoginSidebar extends React.Component {
         })
     }
     handleClickOutside = (e) => {
-        console.log('clicked outside', e)
         // close the drawer
         this.setState({
             open: false,
@@ -65,7 +65,8 @@ class LoginSidebar extends React.Component {
             <div style={{
                     ...styles.stickyButton,
                     right: this.state.buttonOffset,
-                    opacity: this.state.opacity
+                    opacity: this.state.opacity,
+                    backgroundColor: this.props.muiTheme.palette.primary1Color,
                 }}
             >
                 <IconButton
@@ -128,4 +129,4 @@ class LoginSidebar extends React.Component {
     }
 }
 
-export default withRouter(LoginSidebar)
+export default withRouter(muiThemeable()(LoginSidebar))

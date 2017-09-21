@@ -37,15 +37,15 @@ const styles = {
     fontWeight: 400,
   },
   colorBox: {
-    width: '100px',
-    height: '100px',
+    width: '70px',
+    height: '70px',
     border: '2px solid white',
     border: '1px solid #505050',
   },
 }
 
 
-const buildThemeButtons = (theme) => {
+const buildThemeButtons = (theme, selectedTheme) => {
   const buttons = []
   for (let key in THEME_NAMES) {
     if (Object.prototype.hasOwnProperty.call(THEME_NAMES, key)) {
@@ -53,7 +53,7 @@ const buildThemeButtons = (theme) => {
         <RadioButton
           value={THEME_NAMES[key].name}
           label={THEME_NAMES[key].label}
-          selected={theme === THEME_NAMES[key].name}
+          selected={selectedTheme === THEME_NAMES[key].name}
         />
       )
     }
@@ -67,18 +67,27 @@ class SiteSettings extends React.Component {
     state = {
       selectedTheme: THEME_NAMES.DEFAULT.name,
     }
+    /*
+     * Handle the change of the fullscreen setting.
+     */
     toggleFullscreenImages = (event, isInputChecked) => {
       this.props.changeSetting('fullscreenImages', isInputChecked)
     }
     /*
-     * Handle the change of the color theme.
+     * Change the color theme.
      */
     changeColorTheme = () => {
       this.props.changeSetting('theme', this.state.selectedTheme)
     }
+    /*
+     * Handle the change of the color theme.
+     */
     handleColorThemeChange = (e, themeName) => {
       this.setState({selectedTheme: themeName})
     }
+    /*
+     * Render the component.
+     */
     render() {
       const { theme } = this.props
       const { selectedTheme } = this.state
@@ -89,7 +98,7 @@ class SiteSettings extends React.Component {
 
             <GridWrap>
 
-              <CellWrapper full={3} tablet={2} phone={4}>
+              <CellWrapper full={4} tablet={3} phone={4}>
 
                 <div>
                   <RadioButtonGroup
@@ -98,14 +107,14 @@ class SiteSettings extends React.Component {
                     valueSelected={selectedTheme}
                   >
                       {
-                        buildThemeButtons(theme)
+                        buildThemeButtons(theme, selectedTheme)
                       }
                   </RadioButtonGroup>
                 </div>
 
               </CellWrapper>
 
-              <CellWrapper full={9} tablet={6} phone={4}>
+              <CellWrapper full={8} tablet={5} phone={4}>
                 <div style={{textAlign: 'right'}}>
                     {
                         getThemeColors(selectedTheme).map((colorObj, index) => (
