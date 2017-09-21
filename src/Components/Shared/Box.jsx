@@ -5,8 +5,8 @@ import Paper from 'material-ui/Paper'
 import Notification from '../Content/Notification'
 import { List } from 'material-ui/List'
 import { Link } from 'react-router-dom'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
-import { gray, lightGray } from '../../common/colors'
 import Loader from '../Shared/Loader'
 import BoxHeader from './BoxHeader'
 
@@ -18,11 +18,9 @@ export const boxStyle = {
 const footerStyle = {
     height: '30px',
     lineHeight: '30px',
-    color: gray,
     textAlign: 'center',
     cursor: 'pointer',
 }
-
 
 const Box = (props) => {
     const { items, headline, footerLink } = props
@@ -48,7 +46,10 @@ const Box = (props) => {
             {
                 footerLink &&
                 <Link to={footerLink}>
-                    <footer style={footerStyle}>...more...</footer>
+                    <footer style={{
+                        ...footerStyle,
+                        color: props.muiTheme.palette.textColor,
+                    }}>...more...</footer>
                 </Link>
             }
         </section>
@@ -56,4 +57,4 @@ const Box = (props) => {
     )
 }
 
-export default Box
+export default muiThemeable()(Box)

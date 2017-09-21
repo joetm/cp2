@@ -2,32 +2,32 @@
 
 import React from 'react'
 import IconButton from 'material-ui/IconButton'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import { gray, darkGray, lightGray } from '../../common/colors'
 
 
-const styles = {
-  headerBar: {
-    height: '40px',
-    lineHeight: '40px',
-    fontWeight: 400,
-    color: darkGray,
-    padding: '10px',
-  },
-  iconExpandContainer: {
-    float: 'right',
-    cursor: 'pointer',
-  },
-  iconExpand: {
-    color: gray,
-    margin: '-10px 0 0 0',
-    padding: 0,
-  },
-}
-
-
 const BoxHeader = (props) => {
     const { headline, icon, iconTooltip, iconUrl, history } = props
+    const styles = {
+      headerBar: {
+        height: '40px',
+        lineHeight: '40px',
+        fontWeight: 400,
+        padding: '10px',
+        color: props.muiTheme.palette.textColor,
+        backgroundColor: props.muiTheme.palette.primary3Color,
+      },
+      iconExpandContainer: {
+        float: 'right',
+        cursor: 'pointer',
+      },
+      iconExpand: {
+        color: props.muiTheme.palette.alternateTextColor,
+        margin: '-10px 0 0 0',
+        padding: 0,
+      },
+    }
     const RightButton = icon ? (
             <IconButton
                 tooltip={iconTooltip}
@@ -47,4 +47,4 @@ const BoxHeader = (props) => {
     )
 }
 
-export default BoxHeader
+export default muiThemeable()(BoxHeader)
