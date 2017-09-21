@@ -14,47 +14,58 @@ import Spacer from '../Shared/Spacer'
 import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
 
+import { THEME_NAMES, getBaseTheme } from '../../common/theme'
 
-const _THEMES = {
-  DEFAULT: 'default',
-  BROWN:   'brown',
-  BLACK:   'black',
-  RED:     'red',
-  MOUNTAINLAKE: 'mountainlake',
-  SUNSETPARIS: 'sunsetparis',
-  BRIGHTPARIS: 'brightparis',
-  BRIGHTERPARIS: 'brighterparis',
-  RETRO: 'retro',
+
+const getThemeColors = (themeName) => {
+  const theTheme = getBaseTheme(themeName)
+  return [
+    { name: 'primary1Color', color: theTheme.palette.primary1Color },
+    { name: 'primary2Color', color: theTheme.palette.primary2Color },
+    { name: 'primary3Color', color: theTheme.palette.primary3Color },
+    { name: 'accent1Color',  color: theTheme.palette.accent1Color },
+    { name: 'accent2Color',  color: theTheme.palette.accent2Color },
+    { name: 'canvasColor',   color: theTheme.palette.canvasColor },
+  ]
 }
-
-// DEV
-const _COLORSFORTHEMES = {
-  [_THEMES.DEFAULT]: ['#80F0F0', '#F080F0', '#F0F080', '#FF8080', '#F0F0F0'],
-  [_THEMES.BROWN]: ['#F2D580', '#F1B461', '#BD7A56', '#8B523B', '#3E0901'],
-  [_THEMES.RED]: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000'],
-  [_THEMES.BLACK]: ['#000000', '#000000', '#000000', '#000000', '#000000'],
-  [_THEMES.MOUNTAINLAKE]: ['#335373', '#05705D', '#038B68', '#D8B272', '#D79B61'],
-  [_THEMES.SUNSETPARIS]: ['#F2D580', '#F1B461', '#BD7A56', '#8B523B', '#3E0901'],
-  [_THEMES.BRIGHTPARIS]: ['#023559', '#033D5C', '#F1CB02', '#F5A308', '#F35B05'],
-  [_THEMES.BRIGHTERPARIS]: ['#4480A9', '#4898C1', '#F3B607', '#F29D07', '#EF7806'],
-  [_THEMES.RETRO]: ['#583B48', '#72A38F', '#D7A778', '#DA9277', '#A66967'],
-}
-
 
 const styles = {
+  colorBoxContainer: {
+    display: 'inline-block',
+    textAlign: 'center',
+    fontSize: '0.6em',
+    fontWeight: 400,
+  },
   colorBox: {
     width: '100px',
     height: '100px',
     border: '2px solid white',
-    display: 'inline-block',
+    border: '1px solid #505050',
   },
+}
+
+
+const buildThemeButtons = (theme) => {
+  const buttons = []
+  for (let key in THEME_NAMES) {
+    if (Object.prototype.hasOwnProperty.call(THEME_NAMES, key)) {
+      buttons.push(
+        <RadioButton
+          value={THEME_NAMES[key].name}
+          label={THEME_NAMES[key].label}
+          selected={theme === THEME_NAMES[key].name}
+        />
+      )
+    }
+  }
+  return buttons
 }
 
 
 class SiteSettings extends React.Component {
     themeSelector = null
     state = {
-      selectedTheme: 'default',
+      selectedTheme: THEME_NAMES.DEFAULT.name,
     }
     toggleFullscreenImages = (event, isInputChecked) => {
       this.props.changeSetting('fullscreenImages', isInputChecked)
@@ -86,51 +97,9 @@ class SiteSettings extends React.Component {
                     name="colorTheme"
                     valueSelected={selectedTheme}
                   >
-                      <RadioButton
-                        value={_THEMES.DEFAULT}
-                        label="Default"
-                        selected={theme === _THEMES.DEFAULT}
-                      />
-                      <RadioButton
-                        value={_THEMES.RED}
-                        label="Red"
-                        selected={theme === _THEMES.RED}
-                      />
-                      <RadioButton
-                        value={_THEMES.BROWN}
-                        label="Browney"
-                        selected={theme === _THEMES.BROWN}
-                      />
-                      <RadioButton
-                        value={_THEMES.BLACK}
-                        label="Dark"
-                        selected={theme === _THEMES.BLACK}
-                      />
-                      <RadioButton
-                        value={_THEMES.MOUNTAINLAKE}
-                        label="Mountain Lake"
-                        selected={theme === _THEMES.MOUNTAINLAKE}
-                      />
-                      <RadioButton
-                        value={_THEMES.SUNSETPARIS}
-                        label="Sunset Paris"
-                        selected={theme === _THEMES.SUNSETPARIS}
-                      />
-                      <RadioButton
-                        value={_THEMES.BRIGHTPARIS}
-                        label="Bright Paris"
-                        selected={theme === _THEMES.BRIGHTPARIS}
-                      />
-                      <RadioButton
-                        value={_THEMES.BRIGHTERPARIS}
-                        label="Brighter Paris"
-                        selected={theme === _THEMES.BRIGHTERPARIS}
-                      />
-                      <RadioButton
-                        value={_THEMES.RETRO}
-                        label="Retro"
-                        selected={theme === _THEMES.RETRO}
-                      />
+                      {
+                        buildThemeButtons(theme)
+                      }
                   </RadioButtonGroup>
                 </div>
 
@@ -138,11 +107,20 @@ class SiteSettings extends React.Component {
 
               <CellWrapper full={9} tablet={6} phone={4}>
                 <div style={{textAlign: 'right'}}>
-                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][0]}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][1]}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][2]}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][3]}}></div>
-                    <div style={{...styles.colorBox, backgroundColor: _COLORSFORTHEMES[selectedTheme][4]}}></div>
+                    {
+                        getThemeColors(selectedTheme).map((colorObj, index) => (
+                          <div style={styles.colorBoxContainer}>
+                            <div
+                              key={`color_${index}`}
+                              style={{
+                                ...styles.colorBox,
+                                backgroundColor: colorObj.color
+                              }}
+                            ></div>
+                              {colorObj.name}
+                          </div>
+                        ))
+                    }
                 </div>
               </CellWrapper>
 

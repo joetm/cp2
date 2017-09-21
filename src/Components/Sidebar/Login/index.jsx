@@ -19,8 +19,8 @@ const styles = {
         right: 0,
         marginTop: -24,
         zIndex: 9999999,
-        'border-bottom-left-radius': 48,
-        'border-top-left-radius': 48,
+        borderBottomLeftRadius: 48,
+        borderTopLeftRadius: 48,
     },
     drawer: {
         padding: '20px',

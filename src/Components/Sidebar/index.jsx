@@ -3,9 +3,10 @@
 import React from 'react'
 import Drawer from 'material-ui/Drawer'
 import Subheader from 'material-ui/Subheader'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
+// --
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import ForumIcon from 'material-ui/svg-icons/communication/forum'
 import EmailIcon from 'material-ui/svg-icons/communication/mail-outline'
@@ -18,7 +19,7 @@ import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
 import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../actions'
 import routes from '../../routes'
-import MenuEntry from './MenuEntry'
+import MenuEntry from '../Shared/MenuEntry'
 
 
 const styles = {
@@ -59,12 +60,12 @@ const Sidebar = (props) => {
       >
 
         <div style={styles.logoContainer}>
-            <NavLink to="/">
+            <Link to="/">
                 <h1
                     style={styles.logo}
                     onTouchTap={closeSidebar}
                 >SocNet v2</h1>
-            </NavLink>
+            </Link>
         </div>
 
         <Subheader>New</Subheader>
