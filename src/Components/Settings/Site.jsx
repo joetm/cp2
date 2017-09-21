@@ -20,6 +20,11 @@ const _THEMES = {
   BROWN:   'brown',
   BLACK:   'black',
   RED:     'red',
+  MOUNTAINLAKE: 'mountainlake',
+  SUNSETPARIS: 'sunsetparis',
+  BRIGHTPARIS: 'brightparis',
+  BRIGHTERPARIS: 'brighterparis',
+  RETRO: 'retro',
 }
 
 // DEV
@@ -28,6 +33,11 @@ const _COLORSFORTHEMES = {
   [_THEMES.BROWN]: ['#F2D580', '#F1B461', '#BD7A56', '#8B523B', '#3E0901'],
   [_THEMES.RED]: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000'],
   [_THEMES.BLACK]: ['#000000', '#000000', '#000000', '#000000', '#000000'],
+  [_THEMES.MOUNTAINLAKE]: ['#335373', '#05705D', '#038B68', '#D8B272', '#D79B61'],
+  [_THEMES.SUNSETPARIS]: ['#F2D580', '#F1B461', '#BD7A56', '#8B523B', '#3E0901'],
+  [_THEMES.BRIGHTPARIS]: ['#023559', '#033D5C', '#F1CB02', '#F5A308', '#F35B05'],
+  [_THEMES.BRIGHTERPARIS]: ['#4480A9', '#4898C1', '#F3B607', '#F29D07', '#EF7806'],
+  [_THEMES.RETRO]: ['#583B48', '#72A38F', '#D7A778', '#DA9277', '#A66967'],
 }
 
 
@@ -95,6 +105,31 @@ class SiteSettings extends React.Component {
                         value={_THEMES.BLACK}
                         label="Dark"
                         selected={theme === _THEMES.BLACK}
+                      />
+                      <RadioButton
+                        value={_THEMES.MOUNTAINLAKE}
+                        label="Mountain Lake"
+                        selected={theme === _THEMES.MOUNTAINLAKE}
+                      />
+                      <RadioButton
+                        value={_THEMES.SUNSETPARIS}
+                        label="Sunset Paris"
+                        selected={theme === _THEMES.SUNSETPARIS}
+                      />
+                      <RadioButton
+                        value={_THEMES.BRIGHTPARIS}
+                        label="Bright Paris"
+                        selected={theme === _THEMES.BRIGHTPARIS}
+                      />
+                      <RadioButton
+                        value={_THEMES.BRIGHTERPARIS}
+                        label="Brighter Paris"
+                        selected={theme === _THEMES.BRIGHTERPARIS}
+                      />
+                      <RadioButton
+                        value={_THEMES.RETRO}
+                        label="Retro"
+                        selected={theme === _THEMES.RETRO}
                       />
                   </RadioButtonGroup>
                 </div>

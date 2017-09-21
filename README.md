@@ -34,7 +34,7 @@ DEV
 >
 > yarn install
 >
-> yarn run dev
+> yarn dev
 >
 > node server.js
 

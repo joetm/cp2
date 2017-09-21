@@ -49,8 +49,6 @@ import Playlist from './Playlist'
 // <ConnectedRouter history={browserHistory}>
 // </ConnectedRouter>
 
-console.log('MuiThemeProvider', MuiThemeProvider)
-
 
 @connect(state => ({
    theme: state.currentUser.theme
