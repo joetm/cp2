@@ -9,11 +9,6 @@ import FavoriteIcon from 'material-ui/svg-icons/action/favorite'
 import CommentIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
 
 
-const iconButtonStyleHovered = {
-    color: red400,
-}
-
-
 class Button extends React.Component {
     constructor(props) {
         super(props)
@@ -52,7 +47,6 @@ class Button extends React.Component {
             <IconButton
                 tooltip={this.tooltip}
                 iconStyle={iconButtonStyle}
-                hoveredStyle={iconButtonStyleHovered}
                 onTouchTap={this.launchAction}
             >
                 { this.icon }

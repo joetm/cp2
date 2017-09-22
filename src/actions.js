@@ -563,6 +563,13 @@ export const fetchLikes = (limit) =>
     api.fetchLikes(limit).then(receiveLikes)
 
 /**
+ * fetchLikesForVideo Asynchronous Action Creator
+ * @returns receiveLikes() - Action
+ */
+export const fetchLikesForVideo = (itemid) =>
+    api.fetchLikesForVideo(itemid, 'likes').then(receiveLikes)
+
+/**
  * fetchAlbum Asynchronous Action Creator
  * @returns fetchAlbum() - Action
  */

@@ -7,12 +7,13 @@ import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Sh
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
-import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
 
 import { PROFILE } from '../../routes'
 import { scrollToTop } from '../../common/helpers'
 import SocialTools from '../Shared/SocialTools'
+import GridWrap from '../Shared/GridWrap'
+import CellWrapper from '../Shared/CellWrapper'
 
 
 const _IMAGE_MIN_HEIGHT = 475
@@ -113,21 +114,14 @@ class ReviewCard extends React.Component {
             content,
             src,
             likes,
-            dislikes,
             // functions
             approve,
             reject,
-            like,
-            dislike
+            like
         } = this.props
 
-        console.log('this.props', this.props)
-        console.log('content', content)
-
         return (
-            <Card
-                key={`upd_${id}`}
-            >
+            <Card>
 
               <CardMedia
                   style={styles.cardMedia}
@@ -147,9 +141,10 @@ class ReviewCard extends React.Component {
                   avatar={user ? user.avatar : null}
               >
                 <SocialTools
-                    {...{likes, dislikes}}
+                    {...{likes}}
                     type={type}
                     itemid={id}
+                    hideReviewButton={true}
                     style={{float: 'right'}}
                 />
               </CardHeader>
@@ -165,9 +160,9 @@ class ReviewCard extends React.Component {
                   </Step>
                 </Stepper>
 
-                <Toolbar style={{paddingLeft: 0, paddingRight: 0}}>
+                <GridWrap>
 
-                  <ToolbarGroup>
+                  <CellWrapper full={6} tablet={4} phone={4}>
                     <RadioButtonGroup
                       name="rating"
                       style={{margin: '12px', display: 'flex', flexDirection: 'row'}}
@@ -186,22 +181,24 @@ class ReviewCard extends React.Component {
                         style={{...styles.radioButton, marginLeft: '12px'}}
                       />
                     </RadioButtonGroup>
-                  </ToolbarGroup>
+                  </CellWrapper>
 
-                  <ToolbarGroup>
-                    <ApproveButton
-                        primary={true}
-                        action={this.launchAction(approve)}
-                        disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
-                    />
-                    <RejectButton
-                        secondary={true}
-                        action={this.launchAction(reject)}
-                        disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
-                    />
-                  </ToolbarGroup>
+                  <CellWrapper full={6} tablet={4} phone={4}>
+                    <div style={{textAlign: 'right'}}>
+                      <ApproveButton
+                          primary={true}
+                          action={this.launchAction(approve)}
+                          disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
+                      />
+                      <RejectButton
+                          secondary={true}
+                          action={this.launchAction(reject)}
+                          disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
+                      />
+                    </div>
+                  </CellWrapper>
 
-                </Toolbar>
+                </GridWrap>
 
                 {/*
                 <div>

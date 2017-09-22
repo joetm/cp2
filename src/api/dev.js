@@ -164,6 +164,7 @@ export const fetchImages = fetchPictures
 
 export const fetchPostsForThread = selectSubitemsForItemCreator('threads')
 export const fetchThreadsForCategory = selectSubitemsForItemCreator('categories')
+export const fetchLikesForVideo = selectSubitemsForItemCreator('videos')
 
 // -------------------------------------------------------------------
 

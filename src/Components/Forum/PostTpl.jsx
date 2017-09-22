@@ -2,19 +2,16 @@
 
 import React from 'react'
 import parser from 'bbcode-to-react'
-import IconButton from 'material-ui/IconButton'
 import ClockIcon from 'material-ui/svg-icons/action/schedule'
-import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import { withRouter } from 'react-router-dom'
 
-import { REVIEW } from '../../routes'
 import { gray, darkgray } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
 import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
 import { humanReadableDate } from '../../common/helpers'
-import { ApproveButton, RejectButton, LikeButton, DisapproveButton } from '../Shared/Buttons'
+import SocialTools from '../Shared/SocialTools'
 
 
 const styles = {
@@ -28,30 +25,26 @@ const styles = {
         listStyle: 'none',
         margin: 0,
         padding: 0,
-        color: darkgray,
+        color: darkgray, // TODO
     },
     postFooter: {
         margin: '1em 0 0 0',
-        color: gray,
+        color: gray, // TODO
         clear: 'both',
     },
 }
 
 
 class PostTpl extends React.Component {
-    redirectToReview = (id) => {
-        this.props.history.push(`${REVIEW}/${id}`)
-    }
     render() {
         const {
-            id, title, content, isEmbedded,
+            id, title, content, type,
+            isEmbedded,
             user, tags, timestamp,
-            likes, dislikes, like, dislike,
+            likes = 0,
             macro,
         } = this.props
         const postedOn = humanReadableDate(timestamp)
-
-        // TODO
 
         return (
             <div style={styles.postTplContainer}>
@@ -97,19 +90,11 @@ class PostTpl extends React.Component {
                                 {postedOn.formattedTime}
                             </div>
                             <div style={{float: 'right', display: 'inline-block'}}>
-                              <LikeButton
-                                  number={likes}
-                                  action={like}
-                              />
-                              <DisapproveButton
-                                  number={dislikes}
-                                  action={dislike}
-                              />
-                              <IconButton
-                                onTouchTap={() => this.redirectToReview(id)}
-                              >
-                                  <ReviewIcon />
-                              </IconButton>
+                                <SocialTools
+                                    {...{likes}}
+                                    type={type}
+                                    itemid={id}
+                                />
                             </div>
                         </div>
                         <div style={styles.postFooter}>

@@ -16,6 +16,7 @@ import VideoPlayer from './VideoPlayer'
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
 import Tag from '../Shared/Tag'
+import Likes from '../Likes'
 
 
 const VIDEO_MAXWIDTH = 1024
@@ -45,7 +46,7 @@ class Video extends React.Component {
      * Render the component.
      */
     render() {
-        const { title, content, src, thumb, user, tags } = this.props.video
+        const { title, content, src, thumb, likes, user, tags } = this.props.video
         return (
             <div style={styles.pageWrapper}>
 
@@ -113,6 +114,11 @@ class Video extends React.Component {
                         </div>
 
                     </div>
+                }
+
+                {
+                    likes > 0 &&
+                        <Likes itemid={this.props.videoid} />
                 }
 
                 <Spacer />
