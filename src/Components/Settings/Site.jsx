@@ -45,7 +45,8 @@ const styles = {
 }
 
 
-const buildThemeButtons = (theme, selectedTheme) => {
+const ThemeButtons = (props) => {
+  const { selectedTheme, handleColorThemeChange } = props
   const buttons = []
   for (let key in THEME_NAMES) {
     if (Object.prototype.hasOwnProperty.call(THEME_NAMES, key)) {
@@ -58,7 +59,15 @@ const buildThemeButtons = (theme, selectedTheme) => {
       )
     }
   }
-  return buttons
+  return (
+    <RadioButtonGroup
+      onChange={handleColorThemeChange}
+      name="colorTheme"
+      valueSelected={selectedTheme}
+    >
+      { buttons }
+    </RadioButtonGroup>
+  )
 }
 
 
@@ -101,15 +110,10 @@ class SiteSettings extends React.Component {
               <CellWrapper full={4} tablet={3} phone={4}>
 
                 <div>
-                  <RadioButtonGroup
-                    onChange={this.handleColorThemeChange}
-                    name="colorTheme"
-                    valueSelected={selectedTheme}
-                  >
-                      {
-                        buildThemeButtons(theme, selectedTheme)
-                      }
-                  </RadioButtonGroup>
+                  <ThemeButtons
+                    selectedTheme={selectedTheme}
+                    handleColorThemeChange={this.handleColorThemeChange}
+                  />
                 </div>
 
               </CellWrapper>
