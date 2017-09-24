@@ -11,7 +11,6 @@ import { findDOMNode } from 'react-dom'
 
 import { sendChatMessage, fetchChat } from '../../actions'
 import { jumpToBottom } from '../../common/helpers'
-import { gray, lightGray } from '../../common/colors'
 import { CHAT } from '../../routes'
 import ChatInput from './ChatInput'
 import Loader from '../Shared/Loader'
@@ -25,22 +24,6 @@ const _OFFSET = 260
 
 const styles = {
   chatList: { overflowY: 'auto' },
-  headerBar: {
-    height: '40px',
-    lineHeight: '40px',
-    fontWeight: 400,
-    color: gray,
-    padding: '10px',
-  },
-  iconExpandContainer: {
-    float: 'right',
-    cursor: 'pointer',
-  },
-  iconExpand: {
-    color: gray,
-    margin: '-10px 0 0 0',
-    padding: 0,
-  },
 }
 
 
