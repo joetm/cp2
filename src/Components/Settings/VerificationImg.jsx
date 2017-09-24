@@ -67,13 +67,11 @@ class VerificationImg extends React.Component {
           <Spacer />
 
           <RaisedButton
-            label="Delete Verification Image(s)"
+            label={`Delete Verification Image${this.state.selection.length > 1 ? 's' : ''}`}
             disabled={this.props.isFetching}
             onTouchTap={this.deleteVerificationImages}
+            disabled={!this.state.selection.length}
           />
-{/*
-            style={{display: this.state.selection.length ? 'block' : 'none'}}
-*/}
 
           <Spacer />
 

@@ -66,16 +66,13 @@ class ProfileImg extends React.Component {
           }
 
           <Spacer />
-          <Spacer />
 
           <RaisedButton
-            label="Delete Profile Image"
+            label={`Delete Profile Image${this.state.selection.length > 1 ? 's' : ''}`}
             disabled={this.props.isFetching}
             onTouchTap={this.deleteProfileImages}
+            disabled={!this.state.selection.length}
           />
-{/*
-            style={{display: this.state.selection.length ? 'block' : 'none'}}
-*/}
 
           <Spacer />
 
