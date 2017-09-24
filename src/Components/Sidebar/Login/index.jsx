@@ -13,6 +13,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import Headline from '../../Shared/Headline'
+import DrawerCloseButton from '../../Shared/DrawerCloseButton'
 
 
 const styles = {
@@ -83,11 +84,13 @@ class LoginSidebar extends React.Component {
                     disableSwipeToOpen={false}
                     docked={true}
                     swipeAreaWidth={30}
-                    onRequestChange={this.closeLoginDrawer}
+                    onRequestChange={this.toggleLoginDrawer}
                 >
 
                     <div style={styles.drawer}>
                     <div>
+
+                        <DrawerCloseButton action={this.toggleLoginDrawer} />
 
                         <Headline level="3" style={{margin: '10px 0'}}>Login</Headline>
 
