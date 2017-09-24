@@ -1,7 +1,6 @@
 /** @flow */
 
 import {
-  pink400,
   grey100, grey300, grey400, grey500,
   white, darkBlack, fullBlack,
 } from 'material-ui/styles/colors'
@@ -16,12 +15,12 @@ export default {
       primary1Color: grey500,
       primary2Color: grey400,
       primary3Color: grey300,
-      accent1Color: darkBlack,
-      accent2Color: darkBlack,
-      accent3Color: darkBlack,
+      accent1Color: grey500,
+      accent2Color: grey300,
+      accent3Color: white,
       textColor: darkBlack,
-      secondaryTextColor: white,
-      alternateTextColor: darkBlack,
+      secondaryTextColor: grey400,
+      alternateTextColor: grey100,
       canvasColor: white,
       borderColor: grey500,
       pickerHeaderColor: grey500,

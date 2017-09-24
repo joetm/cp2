@@ -2,7 +2,7 @@
 
 import {
   pink400,
-  grey100, grey300, grey400, grey500,
+  grey100, grey300, grey400, grey500, grey800,
   white, darkBlack, fullBlack,
 } from 'material-ui/styles/colors'
 import { fade } from 'material-ui/utils/colorManipulator'
@@ -13,15 +13,15 @@ export default {
   ...baseTheme,
   ...{
     palette: {
-      primary1Color: darkBlack,
+      primary1Color: white,
       primary2Color: darkBlack,
       primary3Color: darkBlack,
-      accent1Color: darkBlack,
-      accent2Color: darkBlack,
-      accent3Color: darkBlack,
-      textColor: darkBlack,
-      secondaryTextColor: darkBlack,
-      alternateTextColor: darkBlack,
+      accent1Color: grey800,
+      accent2Color: grey800,
+      accent3Color: grey800,
+      textColor: grey100,
+      secondaryTextColor: grey500,
+      alternateTextColor: grey500,
       canvasColor: darkBlack,
       borderColor: darkBlack,
       pickerHeaderColor: darkBlack,

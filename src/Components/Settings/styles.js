@@ -12,4 +12,9 @@ const styles = {
   },
 }
 
+export const settingsBlock = styles.settingsBlock
+export const toggle = styles.toggle
+
+export const centered = {textAlign: 'center'};
+
 export default styles

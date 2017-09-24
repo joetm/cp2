@@ -10,7 +10,7 @@ import VerifyIcon from 'material-ui/svg-icons/action/verified-user'
 import PrivacyIcon from 'material-ui/svg-icons/action/fingerprint'
 import AccountIcon from 'material-ui/svg-icons/action/account-box'
 
-import sharedStyles from './styles'
+import { settingsBlock, centered } from './styles'
 import { SETTINGS } from '../../routes'
 import Spacer from '../Shared/Spacer'
 // import SettingsMenuEntry from './SettingsMenuEntry'
@@ -21,6 +21,7 @@ import VerificationImg from './VerificationImg'
 import Site from './Site'
 import Privacy from './Privacy'
 import Account from './Account'
+import Headline from '../Shared/Headline'
 
 
 const _SETTINGS_ROUTES = [
@@ -61,9 +62,9 @@ class Settings extends React.Component {
   render() {
     const { url } = this.props.match
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={centered}>
 
-        <h1>Settings</h1>
+        <Headline>Settings</Headline>
 
         <div style={{clear: 'both'}}>
           <BottomNavigation
@@ -111,7 +112,7 @@ class Settings extends React.Component {
 
         <Spacer />
 
-        <div style={sharedStyles.settingsBlock}>
+        <div style={settingsBlock}>
           <Switch>
             <Route exact path={`${url}${SETTINGS.SITE}`}         component={Site} />
             <Route exact path={`${url}${SETTINGS.IMAGE}`}        component={ProfileImg} />
