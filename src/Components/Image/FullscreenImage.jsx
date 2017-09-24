@@ -4,9 +4,10 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import Avatar from '../Shared/Avatar'
-import { white, black } from '../../common/colors'
+import { white } from '../../common/colors'
 import { PROFILE } from '../../routes'
 
 
@@ -30,6 +31,11 @@ const styles = {
         backgroundSize: 'cover',
         zIndex: 9,
     },
+    imageTitle: {
+        textAlign: 'center',
+        padding: '5px',
+        margin: 0,
+    },
 }
 
 
@@ -40,6 +46,13 @@ const FullscreenImage = (props) => {
             ...styles.fullscreenContainer,
             backgroundImage: `url(${src})`,
         }}>
+
+            <h1 style={{
+                ...styles.imageTitle,
+                color: props.muiTheme.palette.alternateTextColor,
+            }}>
+                {title}
+            </h1>
 
             {
                 user &&
@@ -65,8 +78,8 @@ const FullscreenImage = (props) => {
                     right: `${_OFFSETX}px`,
                 }}
                 iconStyle={{
-                    color: white,
-                    textShadow: '10px 10px 5px #888888',
+                    color: props.muiTheme.palette.alternateTextColor,
+                    textShadow: `10px 10px 5px ${props.muiTheme.palette.textColor}`,
                 }}
                 onTouchTap={history.goBack}
             >
@@ -77,4 +90,4 @@ const FullscreenImage = (props) => {
     )
 }
 
-export default withRouter(FullscreenImage)
+export default withRouter(muiThemeable()(FullscreenImage))
