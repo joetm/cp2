@@ -28,6 +28,7 @@ import { humanRelativeDate } from '../../common/helpers'
 import Alert from '../Shared/Alert'
 import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
+import Headline from '../Shared/Headline'
 import ReviewCard from './ReviewCard'
 import Dialog from '../Shared/Dialog'
 import CellPadding from '../Shared/CellPadding'
@@ -147,7 +148,7 @@ class Review extends React.Component {
         return (
             <div>
 
-                <h2>
+                <Headline>
                     Crowd Review <IconButton
                                     onClick={this.toggleHelp}
                                     iconStyle={{...styles.helpIconStyle, color: this.props.muiTheme.palette.secondaryTextColor}}
@@ -165,7 +166,7 @@ class Review extends React.Component {
                                  >
                                      <LeaderboardIcon />
                                  </IconButton>
-                </h2>
+                </Headline>
 
                 <Dialog
                     title="How does this work?"

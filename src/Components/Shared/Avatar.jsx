@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Avatar from 'material-ui/Avatar'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 
 const _SIZE_MICRO = 16
@@ -77,7 +78,11 @@ const AvatarBubble = (props) => {
       if (!src) {
         return (
             <Avatar
-                style={{...avatarStyle, ...style}}
+                style={{
+                  ...avatarStyle,
+                  borderColor: props.muiTheme.palette.borderColor,
+                  ...style,
+                }}
                 onTouchTap={props.onTouchTap}
             >
               { username ? username.substr(0, 1) : 'X' }
@@ -86,7 +91,11 @@ const AvatarBubble = (props) => {
       }
       return (
           <Avatar
-              style={{...avatarStyle, ...style}}
+              style={{
+                ...avatarStyle,
+                borderColor: props.muiTheme.palette.borderColor,
+                ...style,
+              }}
               src={src}
               alt={username}
               onTouchTap={props.onTouchTap}
@@ -94,4 +103,4 @@ const AvatarBubble = (props) => {
       )
 }
 
-export default AvatarBubble
+export default muiThemeable()(AvatarBubble)
