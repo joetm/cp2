@@ -7,6 +7,7 @@ import MenuItem from 'material-ui/MenuItem'
 import Paper from 'material-ui/Paper'
 import RaisedButton from 'material-ui/RaisedButton'
 import ReCaptcha from 'react-google-recaptcha'
+import ScrollToTop from '../Shared/ScrollToTop'
 
 import Spacer from '../Shared/Spacer'
 import Footer from '../Footer/'
@@ -107,6 +108,7 @@ class Contact extends React.Component {
     render() {
         return (
             <div>
+                <ScrollToTop />
 
                 <Paper style={styles.formContainer}>
 

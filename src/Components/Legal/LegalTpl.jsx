@@ -3,7 +3,7 @@
 import React from 'react'
 
 import Spacer from '../Shared/Spacer'
-import Footer from '../Footer'
+import ScrollToTop from '../Shared/ScrollToTop'
 import './style.scss'
 
 
@@ -48,13 +48,11 @@ class LegalTpl extends React.Component {
      */
     render() {
         return (
-            <div>
-                <div style={styles.wrapper}>
-                    <h1>{this.props.headline}</h1>
-                    <div dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
-                    <Spacer />
-                </div>
-                <Footer />
+            <div style={styles.wrapper}>
+                <ScrollToTop />
+                <h1>{this.props.headline}</h1>
+                <div dangerouslySetInnerHTML={{__html: this.state.txt}}></div>
+                <Spacer />
             </div>
         )
     }
