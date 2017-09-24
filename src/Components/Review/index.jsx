@@ -9,6 +9,7 @@ import LeaderboardIcon from 'material-ui/svg-icons/social/poll'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import './style.scss'
 // --
@@ -22,7 +23,6 @@ import {
     recordLike,
     recordDislike
 } from '../../actions'
-import { grey, black } from '../../common/colors'
 import { humanRelativeDate } from '../../common/helpers'
 // --
 import Alert from '../Shared/Alert'
@@ -41,7 +41,6 @@ const _HELPTXT_URL = '/docs/crowdreview.txt'
 const styles = {
     helpIconStyle: {
         cursor: 'pointer',
-        color: grey,
     },
 }
 
@@ -151,7 +150,7 @@ class Review extends React.Component {
                 <h2>
                     Crowd Review <IconButton
                                     onClick={this.toggleHelp}
-                                    iconStyle={styles.helpIconStyle}
+                                    iconStyle={{...styles.helpIconStyle, color: this.props.muiTheme.palette.secondaryTextColor}}
                                     tooltip="About this page"
                                  >
                                     <HelpIcon />
@@ -160,7 +159,7 @@ class Review extends React.Component {
                                     onClick={this.toggleLeaderboard}
                                     iconStyle={{
                                         ...styles.helpIconStyle,
-                                        color: this.state.leaderBoardIsOpen ? black : grey,
+                                        color: this.state.leaderBoardIsOpen ? this.props.muiTheme.palette.textColor : this.props.muiTheme.palette.secondaryTextColor,
                                     }}
                                     tooltip="Open Leaderboard"
                                  >
@@ -245,7 +244,7 @@ const mapStateToProps = (state, ownProps) => ({
     error: state.reviewitem.error,
 })
 
-export default connect(
+export default muiThemeable()(connect(
     mapStateToProps,
     {
         fetchReviewItem,
@@ -257,4 +256,4 @@ export default connect(
         recordDislike,
         setFetchingStatus
     }
-)(Review)
+)(Review))
