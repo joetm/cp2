@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import IconButton from 'material-ui/IconButton'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import { LikeButton } from '../Shared/Buttons' // DisapproveButton
 import { REVIEW } from '../../routes'
@@ -33,7 +34,12 @@ class SocialTools extends React.Component {
         console.log('liked:', key, itemid)
         if (this.state.clickedLike) {
             // undo a previous like
+
+
+            // TODO
             this.props.recordLike(key, itemid)
+
+
             this.setState({...initialLikeState})
             return
         }
@@ -47,29 +53,6 @@ class SocialTools extends React.Component {
             // clickedDislike: false,
         })
     }
-    /*
-     * Dislike the update.
-     */
-    /*
-    dislike = (key, itemid) => {
-        console.log('disliked:', key, itemid)
-        if (this.state.clickedDislike) {
-            // undo a previous dislike
-            this.props.recordDislike(key, itemid)
-            this.setState({...initialLikeState})
-            return
-        }
-        this.props.recordDislike(key, itemid)
-        if (this.state.clickedLike) {
-            // decrease to undo a previous like
-            this.props.recordLike(key, itemid)
-        }
-        this.setState({
-            clickedDislike: true,
-            clickedLike: false,
-        })
-    }
-    */
     /**
      * Render the component.
      * @ returns SocialTools
@@ -89,17 +72,13 @@ class SocialTools extends React.Component {
               number={likes}
               action={() => this.like(type, itemid)}
               disabled={this.state.buttonsDisabled}
+              buttonStyle={{color: this.state.clickedLike ? this.props.muiTheme.palette.textColor : this.props.muiTheme.palette.secondaryTextColor}}
             />
-            {/*
-            <DisapproveButton
-              number={dislikes}
-              action={() => this.dislike(type, itemid)}
-              disabled={this.state.buttonsDisabled}
-            />
-            */}
             {
               !hideReviewButton &&
-                <IconButton onTouchTap={() => this.redirectToReview(itemid)}>
+                <IconButton
+                  onTouchTap={() => this.redirectToReview(itemid)}
+                >
                     <ReviewIcon />
                 </IconButton>
             }
@@ -110,5 +89,5 @@ class SocialTools extends React.Component {
 
 export default withRouter(connect(
     null,
-    { recordLike } // recordDislike
-)(SocialTools))
+    { recordLike }
+)(muiThemeable()(SocialTools)))

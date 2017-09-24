@@ -25,17 +25,17 @@ class ButtonFlat extends React.Component {
      * Render the component.
      */
     render() {
-      const customizedStyle = this.props.style
+      const { number, primary, secondary, style = {}, buttonStyle } = this.props
         return (
-            <div style={{...styles.buttonStyle, customizedStyle}}>
+            <div style={{...styles.buttonStyle, ...style}}>
                 <FlatButton
-                  label={`${this.msg} ${this.props.number}`}
+                  label={`${this.msg} ${number}`}
                   labelPosition="after"
-                  primary={this.props.primary}
-                  secondary={this.props.secondary}
+                  primary={primary}
+                  secondary={secondary}
                   icon={this.Icon}
                   onTouchTap={this.launchAction}
-                  style={this.props.buttonStyle}
+                  style={buttonStyle}
                 />
             </div>
         )

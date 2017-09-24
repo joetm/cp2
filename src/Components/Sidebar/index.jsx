@@ -68,8 +68,6 @@ const Sidebar = (props) => {
             </Link>
         </div>
 
-        <Subheader>New</Subheader>
-
         <MenuEntry
             route={routes.UPDATES}
             icon={<UpdatesIcon />}
@@ -98,20 +96,20 @@ const Sidebar = (props) => {
 
         <Divider />
 
-        <Subheader>Subscriptions</Subheader>
-
         <MenuEntry
-            route={routes.IMAGES}
+            route={routes.STREAM}
             icon={<UpdatesIcon />}
-            text="Images"
+            text="Subscriptions"
             onTouchTap={closeSidebar}
             tabindexCounter={tabindexCounter}
         />
 
+        <Divider />
+
         <MenuEntry
-            route={routes.VIDEOS}
-            icon={<UpdatesIcon />}
-            text="Videos"
+            route={routes.REVIEW}
+            icon={<ReviewIcon />}
+            text="Review"
             onTouchTap={closeSidebar}
             tabindexCounter={tabindexCounter}
         />
@@ -148,16 +146,6 @@ const Sidebar = (props) => {
             route={`${routes.STREAM}/${userid}${routes.LIKES}`}
             icon={<LikeIcon />}
             text="Likes"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
-
-        <Divider />
-
-        <MenuEntry
-            route={routes.REVIEW}
-            icon={<ReviewIcon />}
-            text="Review"
             onTouchTap={closeSidebar}
             tabindexCounter={tabindexCounter}
         />
