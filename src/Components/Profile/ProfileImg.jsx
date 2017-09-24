@@ -5,6 +5,9 @@ import React from 'react'
 // import Scrollbutton from '../Shared/Scrollbutton'
 import ProfileDetails from './ProfileDetails'
 
+import "react-image-gallery/styles/css/image-gallery.css"
+import ImageGallery from 'react-image-gallery'
+
 
 const _OFFSET = 56
 const blurIntensity = 25
@@ -69,7 +72,7 @@ class ProfileImg extends React.Component {
      * Render the component.
      */
     render() {
-        const { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
+        const { profileImages = [], numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
         const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
         console.log(details)
         // --
@@ -83,22 +86,67 @@ class ProfileImg extends React.Component {
                 ...blurFilters,
             }
         }
-        // --
+
+
+
+
+    // const images = [
+    //   {
+    //     original: 'http://lorempixel.com/1000/600/nature/1/',
+    //     thumbnail: 'http://lorempixel.com/250/150/nature/1/',
+    //   },
+    //   {
+    //     original: 'http://lorempixel.com/1000/600/nature/2/',
+    //     thumbnail: 'http://lorempixel.com/250/150/nature/2/'
+    //   },
+    //   {
+    //     original: 'http://lorempixel.com/1000/600/nature/3/',
+    //     thumbnail: 'http://lorempixel.com/250/150/nature/3/'
+    //   }
+    // ]
+
+        // reformatting the signature of the images for the slideshow component
+        const images = profileImages.map(item => ({
+            original: item.src,
+            thumbnail: item.thumb,
+            originalAlt: item.title,
+            originalTitle: item.title,
+        }))
+
         return (
             <div>
                 <div
-                    onClick={this.props.toggleProfileDetails}
                     role="button"
                     tabIndex={0}
                 >
+                    {/*
+                    onTouchTap={this.props.toggleProfileDetails}
+                    */}
+
                     <div style={styles.profileImgContainer}>
+                        {/*
                         <ProfileDetails
                             {...this.props}
                         />
+                        */}
+
+                        <ImageGallery
+                          items={images}
+                          slideInterval={2000}
+                          autoPlay={false}
+                          showBullets={true}
+                          showThumbnails={false}
+                          showPlayButton={false}
+                          lazyLoad={true}
+                          showIndex={false}
+                        />
+
+{/*
                         <div style={{
                             ...styles.profileImgStyle,
                             ...profileImgDynamicStyle,
                         }}></div>
+*/}
                     </div>
                 </div>
 

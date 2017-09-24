@@ -16,7 +16,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 const styles = {
     stickyButton: {
         position: 'fixed',
-        top: '50%',
+        top: '30%',
         right: 0,
         marginTop: -24,
         zIndex: 9999999,

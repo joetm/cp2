@@ -4,7 +4,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { fetchUser } from '../../actions'
+import { fetchUser, fetchUserProfileImages } from '../../actions'
 import routes from '../../routes'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
@@ -46,6 +46,7 @@ class Profile extends React.Component {
     }
     componentDidMount() {
         this.props.fetchUser(this.props.userid)
+        this.props.fetchUserProfileImages(this.props.userid)
     }
     toggleProfileDetails = () => {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -54,7 +55,7 @@ class Profile extends React.Component {
      * Render the component.
      */
     render() {
-        const { userid, url } = this.props
+        const { userid, url, profileImages, fetchUserProfileImages } = this.props
 
         let user
         if (this.props.users[userid] === undefined) {
@@ -71,6 +72,8 @@ class Profile extends React.Component {
                     blurredImg={this.state.blurredImg}
                     pageIsScrolled={this.props.isScrolled}
                     toggleProfileDetails={this.toggleProfileDetails}
+                    profileImages={profileImages}
+                    fetchUserProfileImages={fetchUserProfileImages}
                 />
 
                 <ProfileStats user={user} />
@@ -126,6 +129,7 @@ class Profile extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     // add selected fields from the state as props to the component
     users: state.users,
+    profileImages: state.profileImages.items,
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,
     userid: +ownProps.match.params.userid,
@@ -133,5 +137,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
     mapStateToProps,
-    { fetchUser }
+    { fetchUser, fetchUserProfileImages }
 )(Profile)
