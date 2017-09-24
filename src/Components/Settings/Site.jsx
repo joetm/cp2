@@ -82,7 +82,7 @@ const ThemeButtons = (props) => {
 class SiteSettings extends React.Component {
     themeSelector = null
     state = {
-      selectedTheme: THEME_NAMES.DEFAULT.name,
+      selectedTheme: null,  // THEME_NAMES.DEFAULT.name,
     }
     /*
      * Handle the change of the fullscreen setting.
@@ -119,7 +119,7 @@ class SiteSettings extends React.Component {
 
                 <div>
                   <ThemeButtons
-                    selectedTheme={theme}
+                    selectedTheme={this.state.selectedTheme || theme}
                     handleColorThemeChange={this.handleColorThemeChange}
                   />
                 </div>
