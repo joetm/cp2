@@ -25,6 +25,7 @@ const getThemeColors = (themeName) => {
     { name: 'primary3Color', color: theTheme.palette.primary3Color },
     { name: 'accent1Color',  color: theTheme.palette.accent1Color },
     { name: 'accent2Color',  color: theTheme.palette.accent2Color },
+    { name: 'textColor', color: theTheme.palette.textColor },
     { name: 'canvasColor',   color: theTheme.palette.canvasColor },
   ]
 }
@@ -52,6 +53,7 @@ const ThemeButtons = (props) => {
     if (Object.prototype.hasOwnProperty.call(THEME_NAMES, key)) {
       buttons.push(
         <RadioButton
+          key={THEME_NAMES[key].name}
           value={THEME_NAMES[key].name}
           label={THEME_NAMES[key].label}
           selected={selectedTheme === THEME_NAMES[key].name}
@@ -121,10 +123,12 @@ class SiteSettings extends React.Component {
               <CellWrapper full={8} tablet={5} phone={4}>
                 <div style={{textAlign: 'right'}}>
                     {
-                        getThemeColors(selectedTheme).map((colorObj, index) => (
-                          <div style={styles.colorBoxContainer}>
+                        getThemeColors(selectedTheme).map(colorObj => (
+                          <div
+                            key={`color_${colorObj.name}`}
+                            style={styles.colorBoxContainer}
+                          >
                             <div
-                              key={`color_${index}`}
                               style={{
                                 ...styles.colorBox,
                                 backgroundColor: colorObj.color

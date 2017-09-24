@@ -11,44 +11,32 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { fetchUserVerificationImages, removeImages } from '../../actions'
 import './transitions.scss'
-import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 import { blockMaxWidth } from './styles'
 import UpdateWrap from '../Shared/UpdateWrap'
 import Img from './Img'
+import ImgContainer from './ImgContainer'
+import Spacer from '../Shared/Spacer'
 
 
 class VerificationImg extends React.Component {
   state = {
-    imagesFetched: false,
     selection: [],
   }
   setSelection = (selection) => {
     this.setState({selection})
   }
-  fetchVerificationImagesOnce = () => {
-    const { userid } = this.props
-    if (userid && !this.state.imagesFetched) {
-      this.props.fetchUserVerificationImages(userid)
-      this.setState({imagesFetched: true})
-    }
-  }
   deleteVerificationImages = () => {
     // console.log('removing selection', this.state.selection)
     this.props.removeImages(this.state.selection)
-    this.setState({
-      selection: [],
-    })
-  }
-  componentWillMount() {
-    this.fetchVerificationImagesOnce()
+    this.setState({selection: []})
   }
   render() {
-    const { verificationImages } = this.props
+    const { userid, verificationImages, fetchUserVerificationImages } = this.props
 
     return (
       <div
-          id="profileImg-settings"
+          id="verificationImg-settings"
           style={{
             marginLeft: 'auto',
             marginRight: 'auto',
@@ -65,23 +53,16 @@ class VerificationImg extends React.Component {
 
           <Spacer />
 
-          <UpdateWrap className="container">
-            <ReactCSSTransitionGroup
-              transitionName="verpic"
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={300}
-            >
-            {
-               verificationImages &&
-               verificationImages.map(item => (
-                <Img
-                    item={item}
-                    selection={this.state.selection}
-                />
-              ))
-            }
-            </ReactCSSTransitionGroup>
-          </UpdateWrap>
+          {
+            userid &&
+              <ImgContainer
+                images={verificationImages}
+                action={fetchUserVerificationImages}
+                userid={userid}
+                selection={this.state.selection}
+                setSelection={this.setSelection}
+              />
+          }
 
           <Spacer />
 
@@ -89,8 +70,10 @@ class VerificationImg extends React.Component {
             label="Delete Verification Image(s)"
             disabled={this.props.isFetching}
             onTouchTap={this.deleteVerificationImages}
-            style={{display: this.state.selection.length ? 'block' : 'none'}}
           />
+{/*
+            style={{display: this.state.selection.length ? 'block' : 'none'}}
+*/}
 
           <Spacer />
 

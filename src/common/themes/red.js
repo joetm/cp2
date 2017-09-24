@@ -8,20 +8,23 @@ import { fade } from 'material-ui/utils/colorManipulator'
 
 import baseTheme from './darkbase'
 
+// base colors:
+// '#BEB291', '#BF8A58', '#8B4F34', '#410300', '#710806'
+
 export default {
   ...baseTheme,
   ...{
     palette: {
-      primary1Color: red400,
-      primary2Color: red400,
-      primary3Color: red400,
-      accent1Color: red400,
-      accent2Color: red400,
-      accent3Color: red400,
+      primary1Color: '#BF8A58',
+      primary2Color: '#BEB291',
+      primary3Color: '#8B4F34',
+      accent1Color: '#410300',
+      accent2Color: '#710806',
+      accent3Color: '#710806',
       textColor: white,
       secondaryTextColor: darkBlack,
       alternateTextColor: fullBlack,
-      canvasColor: red400,
+      canvasColor: '#710806',
       borderColor: white,
       pickerHeaderColor: white,
       disabledColor: fade(red400, 0.3),

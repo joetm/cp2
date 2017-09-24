@@ -143,6 +143,10 @@ const initialState = {
         isFetching: true,
         items: [],
     },
+    profileImages: {
+        isFetching: true,
+        items: [],
+    },
     currentUser: {
         id: null,
         username: 'anonymous',

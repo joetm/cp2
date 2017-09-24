@@ -10,19 +10,30 @@ import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 // import Snackbar from 'material-ui/Snackbar'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
-import { removeProfileImg } from '../../actions'
+import { removeProfileImg, fetchUserProfileImages } from '../../actions'
 import { blockMaxWidth } from './styles'
+import UpdateWrap from '../Shared/UpdateWrap'
+import Img from './Img'
+import ImgContainer from './ImgContainer'
+import Spacer from '../Shared/Spacer'
 
 
 class ProfileImg extends React.Component {
-  deleteProfileImg = () => {
-    this.props.removeProfileImg()
+  state = {
+    selection: [],
+  }
+  setSelection = (selection) => {
+    this.setState({selection})
+  }
+  deleteProfileImages = () => {
+    // TODO
   }
   render() {
-    const { profileimg } = this.props
+    const { profileImages, fetchUserProfileImages, userid } = this.props
+
     return (
       <div
           id="profileImg-settings"
@@ -43,23 +54,28 @@ class ProfileImg extends React.Component {
 
           <Spacer />
 
-          <div>
-            <img
-                src={profileimg}
-                alt=""
-                style={{
-                    width: '100%',
-                    height: 'auto',
-                }}
-            />
-          </div>
+          {
+            userid &&
+              <ImgContainer
+                images={profileImages}
+                action={fetchUserProfileImages}
+                userid={userid}
+                selection={this.state.selection}
+                setSelection={this.setSelection}
+              />
+          }
 
+          <Spacer />
           <Spacer />
 
           <RaisedButton
             label="Delete Profile Image"
-            onTouchTap={this.deleteProfileImg}
+            disabled={this.props.isFetching}
+            onTouchTap={this.deleteProfileImages}
           />
+{/*
+            style={{display: this.state.selection.length ? 'block' : 'none'}}
+*/}
 
           <Spacer />
 
@@ -79,10 +95,12 @@ class ProfileImg extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    profileimg: state.currentUser.profileimg,
+    userid: state.currentUser.id,
+    profileImages: state.profileImages.items,
+    isFetching: state.profileImages.isFetching,
 })
 
 export default connect(
     mapStateToProps,
-    { removeProfileImg }
+    { removeProfileImg, fetchUserProfileImages }
 )(ProfileImg)

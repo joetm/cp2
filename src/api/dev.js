@@ -179,8 +179,9 @@ export const fetchMessageHistory = selectSpecificItemCreator('messageHistory')
 export const fetchCategory = selectSpecificItemCreator('categories')
 
 // -------------------------------------------------------------------
-// TODO - this one is different - it selects images by the userid
+// this one is different - it selects images by the userid
 export const fetchUserVerificationImages = selectSpecificItemCreator('verifications')
+export const fetchUserProfileImages = selectSpecificItemCreator('profileimgs')
 
 // -------------------------------------------------------------------
 

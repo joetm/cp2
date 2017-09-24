@@ -78,6 +78,7 @@ export const RECEIVE_ALBUM              = 'ALBUM::RECEIVE_ALBUM'
 export const RECEIVE_IMAGES             = 'STREAM::RECEIVE_IMAGES'
 export const RECEIVE_IMAGE              = 'STREAM::RECEIVE_IMAGE'
 export const RECEIVE_VERIFICATIONIMAGES = 'STREAM::RECEIVE_VERIFICATIONIMAGES'
+export const RECEIVE_PROFILEIMAGES      = 'PROFILE::RECEIVE_PROFILEIMAGES'
 export const RECEIVE_VIDEOS             = 'STREAM::RECEIVE_VIDEOS'
 export const RECEIVE_VIDEO              = 'STREAM::RECEIVE_VIDEO'
 export const RECEIVE_UPDATES            = 'STREAM::RECEIVE_UPDATES'
@@ -224,6 +225,7 @@ export const receiveImage              = makeActionCreator(RECEIVE_IMAGE,       
 export const receivePictures           = receiveImages
 export const receivePicture            = receiveImage
 export const receiveVerificationImages = makeActionCreator(RECEIVE_VERIFICATIONIMAGES, 'response')
+export const receiveProfileImages      = makeActionCreator(RECEIVE_PROFILEIMAGES,      'response')
 export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,             'response')
 export const receiveVideo              = makeActionCreator(RECEIVE_VIDEO,              'response')
 export const receiveThread             = makeActionCreator(RECEIVE_THREAD,             'response')
@@ -507,10 +509,17 @@ export const fetchPicture = (pictureid) =>
 
 /**
  * fetchPictures Asynchronous Action Creator
- * @returns fetchPictures() - Action
+ * @returns receiveVerificationImages() - Action
  */
 export const fetchUserVerificationImages = (userid) =>
     api.fetchUserVerificationImages(userid).then(receiveVerificationImages)
+
+/**
+ * fetchPictures Asynchronous Action Creator
+ * @returns fetchPictures() - Action
+ */
+export const fetchUserProfileImages = (userid) =>
+    api.fetchUserProfileImages(userid).then(receiveProfileImages)
 
 /**
  * fetchVideos Asynchronous Action Creator

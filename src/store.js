@@ -29,6 +29,7 @@ const store = createStore(
         updates: Reducers.updatesReducer,
         images: Reducers.imagesReducer,
         verificationImages: Reducers.imagesReducer,
+        profileImages: Reducers.imagesReducer,
         videos: Reducers.videosReducer,
         favorites: Reducers.favoritesReducer,
         likes: Reducers.likesReducer,

@@ -64,7 +64,7 @@ class Img extends React.Component {
               }
             }
           }}
-          checked={this.state.selection.indexOf(item.id) !== -1}
+          checked={this.props.selection.indexOf(item.id) !== -1}
         />
         <img
           src={item.thumb}

@@ -182,6 +182,8 @@ export function imagesReducer(imagesState = initialState.images, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGES:
             return {...imagesState, isFetching: false, items: [...action.response]}
+        case ACTIONS.RECEIVE_PROFILEIMAGES:
+            return {...imagesState, isFetching: false, items: [...action.response]}
         case ACTIONS.RECEIVE_VERIFICATIONIMAGES:
             return {...imagesState, isFetching: false, items: [...action.response]}
         case ACTIONS.DELETE_IMAGES_STARTED:

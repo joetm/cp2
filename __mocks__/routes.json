@@ -43,6 +43,9 @@
   "/verifications": "/streamitems?type=verification&_expand=user&_sort=timestamp&order=desc",
     "/verifications/:userid": "/streamitems?type=verification&userid=:userid&_expand=user",
 
+  "/profileimgs": "/streamitems?type=profileimg&_expand=user&_sort=timestamp&order=desc",
+    "/profileimgs/:userid": "/streamitems?type=profileimg&userid=:userid&_expand=user",
+
   "/posts": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc",
     "/posts?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
     "/posts/?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
