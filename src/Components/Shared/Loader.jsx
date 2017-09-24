@@ -35,10 +35,10 @@ const styles = {
 }
 
 const Loader = props => {
-    const msg = props.msg === undefined ? DEFAULT_MSG : props.msg
     if (!props.isLoading) {
         return null
     }
+    const msg = props.msg === undefined ? DEFAULT_MSG : props.msg
     return (
         <div className="loader" style={styles.wrapper}>
             <div style={styles.loader}>

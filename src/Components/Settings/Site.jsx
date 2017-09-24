@@ -25,7 +25,10 @@ const getThemeColors = (themeName) => {
     { name: 'primary3Color', color: theTheme.palette.primary3Color },
     { name: 'accent1Color',  color: theTheme.palette.accent1Color },
     { name: 'accent2Color',  color: theTheme.palette.accent2Color },
+    { name: 'accent3Color',  color: theTheme.palette.accent3Color },
     { name: 'textColor', color: theTheme.palette.textColor },
+    { name: 'secTextColor', color: theTheme.palette.secondaryTextColor },
+    { name: 'altTextColor', color: theTheme.palette.alternateTextColor },
     { name: 'canvasColor',   color: theTheme.palette.canvasColor },
   ]
 }
@@ -34,12 +37,12 @@ const styles = {
   colorBoxContainer: {
     display: 'inline-block',
     textAlign: 'center',
-    fontSize: '0.6em',
+    fontSize: '0.5em',
     fontWeight: 400,
   },
   colorBox: {
-    width: '70px',
-    height: '70px',
+    width: '50px',
+    height: '50px',
     border: '2px solid white',
     border: '1px solid #505050',
   },

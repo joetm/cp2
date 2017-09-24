@@ -223,8 +223,8 @@ export const sendChatMessage = (payload) => {
       type: "message", // TODO - not on client - NEEDED?
       content: payload.content,
       userid: payload.userid, // TODO
-      like: 0, // TODO - not on client
-      dislike: 0, // TODO - not on client
+      likes: 0, // TODO - not on client
+      dislikes: 0, // TODO - not on client
       timestamp: +new Date(),
     }
     return createNewItem(CHAT, chatMsg)
