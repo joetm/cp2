@@ -4,8 +4,8 @@ import React from 'react'
 import parser from 'bbcode-to-react'
 import ClockIcon from 'material-ui/svg-icons/action/schedule'
 import { withRouter } from 'react-router-dom'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
-import { gray, darkgray } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
 import GridWrap from '../Shared/GridWrap'
@@ -25,12 +25,14 @@ const styles = {
         listStyle: 'none',
         margin: 0,
         padding: 0,
-        color: darkgray, // TODO
     },
     postFooter: {
         margin: '1em 0 0 0',
-        color: gray, // TODO
         clear: 'both',
+    },
+    socialToolsContainer: {
+        float: 'right',
+        display: 'inline-block',
     },
 }
 
@@ -67,7 +69,10 @@ class PostTpl extends React.Component {
                                 />
                                 <h3>{user.username}</h3>
                                 <div>
-                                    <ul style={styles.userinfoList}>
+                                    <ul style={{
+                                        ...styles.userinfoList,
+                                        color: this.props.muiTheme.palette.textColor,
+                                    }}>
                                         <li>#Posts: {user.numPosts}</li>
                                         <li>Joined: {humanReadableDate(user.joinDate).formattedDate}</li>
                                     </ul>
@@ -82,14 +87,17 @@ class PostTpl extends React.Component {
                             content &&
                             parser.toReact(content)
                         }
-                        <div style={styles.postFooter}>
+                        <div style={{
+                            ...styles.postFooter,
+                            color: this.props.muiTheme.palette.secondaryTextColor,
+                        }}>
                             <div style={{float: 'left', marginTop: '24px'}}>
                                 <ClockIcon style={{height: '1em', margin: '0 0.5em 0 0'}} />
                                 {postedOn.formattedDate}
                                 {' '}
                                 {postedOn.formattedTime}
                             </div>
-                            <div style={{float: 'right', display: 'inline-block'}}>
+                            <div style={styles.socialToolsContainer}>
                                 <SocialTools
                                     {...{likes}}
                                     type={type}
@@ -113,4 +121,4 @@ class PostTpl extends React.Component {
     }
 }
 
-export default withRouter(PostTpl)
+export default withRouter(muiThemeable()(PostTpl))

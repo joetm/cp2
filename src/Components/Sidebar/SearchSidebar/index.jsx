@@ -4,7 +4,6 @@ import React from 'react'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
-import { darkBlack } from 'material-ui/styles/colors'
 import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider'
 import Chip from 'material-ui/Chip'
@@ -22,7 +21,6 @@ const _MENUITEM = {
 const styles = {
     navbar: {
         zIndex: 9999999,
-        color: darkBlack,
     },
     icon: {
         margin: '0 8px',
