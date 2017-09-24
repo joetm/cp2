@@ -34,6 +34,9 @@ const getThemeColors = (themeName) => {
 }
 
 const styles = {
+  wrapper: {
+    textAlign: 'left',
+  },
   colorBoxContainer: {
     display: 'inline-block',
     textAlign: 'center',
@@ -88,13 +91,13 @@ class SiteSettings extends React.Component {
       this.props.changeSetting('fullscreenImages', isInputChecked)
     }
     /*
-     * Change the color theme.
+     * Save the new color theme.
      */
     changeColorTheme = () => {
       this.props.changeSetting('theme', this.state.selectedTheme)
     }
     /*
-     * Handle the change of the color theme.
+     * Handle the change of the color theme selector.
      */
     handleColorThemeChange = (e, themeName) => {
       this.setState({selectedTheme: themeName})
@@ -106,7 +109,7 @@ class SiteSettings extends React.Component {
       const { theme } = this.props
       const { selectedTheme } = this.state
       return (
-        <div style={{textAlign: 'left'}}>
+        <div style={styles.wrapper}>
 
             <SettingsSeparator first text="Color theme" />
 
@@ -116,7 +119,7 @@ class SiteSettings extends React.Component {
 
                 <div>
                   <ThemeButtons
-                    selectedTheme={selectedTheme}
+                    selectedTheme={theme}
                     handleColorThemeChange={this.handleColorThemeChange}
                   />
                 </div>
