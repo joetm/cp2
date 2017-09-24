@@ -11,27 +11,27 @@ import { fade } from 'material-ui/utils/colorManipulator'
 import baseTheme from './darkbase'
 
 // base colors:
-// '#583B48', '#72A38F', '#D7A778', '#DA9277', '#A66967'
+// '#0B080A', '#F4D582', '#F3B86B', '#5A1C08', '#8E513F'
 
 export default {
   ...baseTheme,
   ...{
     palette: {
-      primary1Color: '#583B48',
-      primary2Color: '#72A38F',
-      primary3Color: '#D7A778',
+      primary1Color: '#5A1C08',
+      primary2Color: '#8E513F',
+      primary3Color: '#8E513F',
       accent1Color: '#DA9277',
-      accent2Color: '#A66967',
-      accent3Color: '#A66967',
-      textColor: darkBlack,
-      secondaryTextColor: fullBlack,
-      alternateTextColor: white,
-      canvasColor: white,
-      borderColor: grey100,
-      pickerHeaderColor: grey100,
-      disabledColor: fade(darkBlack, 0.3),
-      clockCircleColor: fade(darkBlack, 0.07),
-      shadowColor: fullBlack,
+      accent2Color: '#8E513F',
+      accent3Color: '#8E513F',
+      textColor: '#0B080A',
+      secondaryTextColor: '#0B080A',
+      alternateTextColor: '#F4D582',
+      canvasColor: '#F4D582',
+      borderColor: '#8E513F',
+      pickerHeaderColor: '#8E513F',
+      disabledColor: fade('#F3B86B', 0.3),
+      clockCircleColor: fade('#F3B86B', 0.07),
+      shadowColor: '#0B080A',
     },
   }
 }

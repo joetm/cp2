@@ -7,11 +7,9 @@ import redTheme from './themes/red'
 import retroTheme from './themes/retro'
 import whiteTheme from './themes/white'
 import blackTheme from './themes/black'
-// import brownTheme from './themes/brown'
-// import mountainlakeTheme from './themes/mountainlake'
-// import sunsetparisTheme from './themes/sunsetparis'
-// import brightparisTheme from './themes/brightparis'
-// import brighterparisTheme from './themes/brighterparis'
+import mountainlakeTheme from './themes/mountainlake'
+import sunsetparisTheme from './themes/sunsetparis'
+import brightparisTheme from './themes/brightparis'
 
 
 export const THEME_NAMES = {
@@ -19,11 +17,9 @@ export const THEME_NAMES = {
   BLACK: { name: 'black', label: 'Donnie' },
   WHITE: { name: 'white', label: 'Walter' },
   RED: { name: 'red', label: 'Vlad' },
-  // BROWN: { name: 'brown', label: 'Browney' },
-  // MOUNTAINLAKE: { name: 'mountainlake', label: 'Mountain Lake' },
-  // SUNSETPARIS: { name: 'sunsetparis', label: 'Sunset Paris' },
-  // BRIGHTPARIS: { name: 'brightparis', label: 'Bright Paris' },
-  // BRIGHTERPARIS: { name: 'brighterparis', label: 'Even Brighter Paris' },
+  MOUNTAINLAKE: { name: 'mountainlake', label: 'Mountain Lake' },
+  SUNSETPARIS: { name: 'sunsetparis', label: 'C\'était un rendez-vous' },
+  BRIGHTPARIS: { name: 'brightparis', label: 'Bright Paris' },
   RETRO: { name: 'retro', label: 'Retro' },
 };
 
@@ -35,14 +31,12 @@ export function getBaseTheme(themeName) {
       return whiteTheme
     case THEME_NAMES.RED.name:
       return redTheme
-    // case THEME_NAMES.MOUNTAINLAKE.name:
-    //   return mountainlakeTheme
-    // case THEME_NAMES.SUNSETPARIS.name:
-    //   return sunsetparisTheme
-    // case THEME_NAMES.BRIGHTPARIS.name:
-    //   return brightparisTheme
-    // case THEME_NAMES.BRIGHTERPARIS.name:
-    //   return brighterparisTheme
+    case THEME_NAMES.MOUNTAINLAKE.name:
+      return mountainlakeTheme
+    case THEME_NAMES.SUNSETPARIS.name:
+      return sunsetparisTheme
+    case THEME_NAMES.BRIGHTPARIS.name:
+      return brightparisTheme
     case THEME_NAMES.RETRO.name:
       return retroTheme
     case THEME_NAMES.DEFAULT.name:

@@ -11,26 +11,26 @@ import { fade } from 'material-ui/utils/colorManipulator'
 import baseTheme from './lightbase'
 
 // base colors:
-// '#583B48', '#72A38F', '#D7A778', '#DA9277', '#A66967'
+// '#02355B', '#014155', '#F5CE05', '#F7A107', '#F55B23'
 
 export default {
   ...baseTheme,
   ...{
     palette: {
-      primary1Color: '#583B48',
-      primary2Color: '#72A38F',
+      primary1Color: '#F7A107',
+      primary2Color: '#F55B23',
       primary3Color: '#D7A778',
-      accent1Color: '#DA9277',
-      accent2Color: '#A66967',
-      accent3Color: '#A66967',
-      textColor: darkBlack,
-      secondaryTextColor: fullBlack,
-      alternateTextColor: white,
-      canvasColor: white,
-      borderColor: grey100,
-      pickerHeaderColor: grey100,
-      disabledColor: fade(darkBlack, 0.3),
-      clockCircleColor: fade(darkBlack, 0.07),
+      accent1Color: '#02355B',
+      accent2Color: '#F55B23',
+      accent3Color: '#02355B',
+      textColor: '#02355B',
+      secondaryTextColor: '#014155',
+      alternateTextColor: darkBlack,
+      canvasColor: '#F5CE05',
+      borderColor: '#F55B23',
+      pickerHeaderColor: '#F55B23',
+      disabledColor: fade('#F55B23', 0.3),
+      clockCircleColor: fade('#F55B23', 0.07),
       shadowColor: fullBlack,
     },
   }
