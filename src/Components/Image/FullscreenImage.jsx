@@ -7,7 +7,6 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import Avatar from '../Shared/Avatar'
-import { white } from '../../common/colors'
 import { PROFILE } from '../../routes'
 
 

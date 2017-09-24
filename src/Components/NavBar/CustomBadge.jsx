@@ -4,8 +4,7 @@ import React from 'react'
 import Badge from 'material-ui/Badge'
 import IconButton from 'material-ui/IconButton'
 import { NavLink } from 'react-router-dom'
-
-import { palette, grey, darkBlack } from '../../common/colors'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 
 const styles = {
@@ -44,7 +43,7 @@ class CustomBadge extends React.Component {
         return (
             <NavLink
                 to={to}
-                activeStyle={{color: palette.primary1Color}}
+                activeStyle={{color: this.props.muiTheme.palette.primary1Color}}
             >
               {Component}
             </NavLink>
@@ -59,11 +58,11 @@ class CustomBadge extends React.Component {
     const { id, icon, tooltip, active, badgeContent, onTouchTap } = this.props
     let IconColor
     if (this.state.deactivated) {
-      IconColor = {color: grey}
+      IconColor = {color: this.props.muiTheme.palette.secondaryTextColor}
     } else if (active) {
-      IconColor = {color: palette.primary1Color}
+      IconColor = {color: this.props.muiTheme.palette.primary1Color}
     } else {
-      IconColor = {color: darkBlack}
+      IconColor = {color: this.props.muiTheme.palette.textColor}
     }
 
     const badgeButton = (
@@ -91,4 +90,4 @@ class CustomBadge extends React.Component {
   }
 }
 
-export default CustomBadge
+export default muiThemeable()(CustomBadge)

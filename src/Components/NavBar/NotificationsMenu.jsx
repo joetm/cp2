@@ -5,7 +5,6 @@ import MenuItem from 'material-ui/MenuItem'
 import Chip from 'material-ui/Chip'
 import { withRouter } from 'react-router-dom'
 
-import { black } from '../../common/colors'
 import routes from '../../routes'
 
 
@@ -22,7 +21,7 @@ const styles = {
     display: 'flex',
     lineHeight: '40px',
     padding: '0 1em',
-    color: black,
+    fontWeight: 800,
   }
 }
 
