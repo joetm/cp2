@@ -3,8 +3,6 @@
 import React from 'react'
 
 import './loader.scss'
-import { palette } from '../../common/colors'
-
 
 const DEFAULT_MSG = '...loading...'
 
