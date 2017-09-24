@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Divider from 'material-ui/Divider'
+import IconButton from 'material-ui/IconButton'
 
 import { fetchLikesForVideo } from '../../actions'
 import Avatar from '../Shared/Avatar'
@@ -21,29 +22,29 @@ class Likes extends React.Component {
         this.props.fetchLikesForVideo(this.props.itemid)
     }
     render() {
+        const { likes = [] } = this.props
+        if (!likes.length) {
+          return null
+        }
         return (
             <div>
 
               <Spacer />
               <Spacer />
 
-              <Loader isLoading={this.props.isFetching} />
-
               <h4 style={{textAlign: 'left', marginBottom: '1em', paddingBottom: 0}}>Likes</h4>
 
-              <Divider style={{marginBottom: '1em'}} />
+              <Loader isLoading={this.props.isFetching} />
 
-                <Avatar src="/uploads/avatar/face-13.jpg" micro={true} />
+              <Divider />
 
-                <Avatar src="/uploads/avatar/face-13.jpg" micro={true} />
-
-                <Avatar src="/uploads/avatar/face-13.jpg" micro={true} />
-
-                <Avatar src="/uploads/avatar/face-13.jpg" micro={true} />
-
-                <Avatar src="/uploads/avatar/face-13.jpg" micro={true} />
-
-                <Avatar src="/uploads/avatar/face-13.jpg" micro={true} />
+              {
+                likes.map(item => (
+                  <IconButton tooltip={item.user.username}>
+                    <Avatar src={item.user.avatar} micro={true} />
+                  </IconButton>
+                ))
+              }
 
               <Spacer />
 

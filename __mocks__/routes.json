@@ -8,10 +8,12 @@
     "/messages?*": "/messages?_expand=user&$1",
     "/messages/?*": "/messages?_expand=user&$1",
     "/messages/:id": "/messages/:id?_expand=user",
+    "/messages/:id/likes": "/likes?streamitemid=:id&_expand=user",
     "/messages/:id?*": "/messages/:id?_expand=user&$1",
 
   "/threads": "/threads?_expand=user&_sort=timestamp&order=desc",
     "/threads/:id": "/threads/:id?_expand=user",
+    "/threads/:id/likes": "/likes?streamitemid=:id&_expand=user",
     "/threads/:id/streamitems": "/threads/:id/streamitems?_expand=user",
 
   "/chat": "/chat?_expand=user&_sort=timestamp",
@@ -32,17 +34,18 @@
     "/images?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/images/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/images/:id": "/streamitems/:id?_expand=user",
+    "/images/:id/likes": "/likes?streamitemid=:id&_expand=user",
     "/images/:id?*": "/streamitems/:id?_expand=user&$1",
 
   "/pictures": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
     "/pictures?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/pictures/?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",
     "/pictures/:id": "/streamitems/:id?_expand=user",
+    "/pictures/:id/likes": "/likes?streamitemid=:id&_expand=user",
     "/pictures/:id?*": "/streamitems/:id?_expand=user&$1",
 
   "/verifications": "/streamitems?type=verification&_expand=user&_sort=timestamp&order=desc",
     "/verifications/:userid": "/streamitems?type=verification&userid=:userid&_expand=user",
-
   "/profileimgs": "/streamitems?type=profileimg&_expand=user&_sort=timestamp&order=desc",
     "/profileimgs/:userid": "/streamitems?type=profileimg&userid=:userid&_expand=user",
 
@@ -50,12 +53,14 @@
     "/posts?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
     "/posts/?*": "/streamitems?type=post&_expand=user&_sort=timestamp&order=desc&$1",
     "/posts/:id": "/streamitems/:id?_expand=user",
+    "/posts/:id/likes": "/likes?streamitemid=:id&_expand=user",
     "/posts/:id?*": "/streamitems/:id?_expand=user&$1",
 
   "/videos": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc",
     "/videos?*": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc&$1",
     "/videos/?*": "/streamitems?type=video&_expand=user&_sort=timestamp&order=desc&$1",
     "/videos/:id": "/streamitems/:id?_expand=user",
+    "/videos/:id/likes": "/likes?streamitemid=:id&_expand=user",
     "/videos/:id?*": "/streamitems/:id?_expand=user&$1",
 
   "/favorites": "/streamitems?_expand=user&_sort=timestamp&order=desc",

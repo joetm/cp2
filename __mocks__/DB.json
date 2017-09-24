@@ -40,9 +40,16 @@
     {
       "type": "like",
       "id": "cj6z2fwzg0000xgdr6p1552y5",
-      "threadid": "cj73drees00008ldrey49q870",
+      "streamitemid": "cj73drees00008ldrey49q870",
       "userid": 7,
       "timestamp": 1501229577
+    },
+    {
+      "type": "like",
+      "id": "cj7yg3p5h0000ludrk0wzb3dp",
+      "streamitemid": "cj7ur1pyv0000hmdratu3ff7w",
+      "userid": 4,
+      "timestamp": 1506239573
     }
   ],
   "categories": [
@@ -726,64 +733,64 @@
     {
       "content": "Yoyoyo!",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504983780964,
       "id": "r16Ji3Wq-"
     },
     {
       "content": "fffffffffff",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985128431,
       "id": "HyZNg6W5Z"
     },
     {
       "content": "ffffffffff",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985161016,
       "id": "BkWUxTW5W"
     },
     {
       "content": "fghfghfgh",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985551684,
       "id": "ry_0b6WcW"
     },
     {
       "content": "rereerer",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985553807,
       "id": "r15RZT-5Z"
     },
     {
       "content": "ffffffffffff",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985831256,
       "id": "HJ1xX6b9Z"
     },
     {
       "content": "hghgghhg",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985921974,
       "id": "Bk5S7TZ5-"
     },
     {
       "content": "rtrwdffg",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1504985924589,
       "id": "rJar76Z5-"
     },
@@ -791,8 +798,8 @@
       "type": "message",
       "content": "how far does this go",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036063867,
       "id": "rkdQDKf9W"
     },
@@ -800,8 +807,8 @@
       "type": "message",
       "content": "more more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036067384,
       "id": "SkoQDFfc-"
     },
@@ -809,8 +816,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036068607,
       "id": "BJ6QwYG5Z"
     },
@@ -818,8 +825,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036069616,
       "id": "ry0QDYGcW"
     },
@@ -827,8 +834,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036071041,
       "id": "BJyNwtG5-"
     },
@@ -836,8 +843,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036072112,
       "id": "SJg4DYMcW"
     },
@@ -845,8 +852,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036073151,
       "id": "SyWNPFz9Z"
     },
@@ -854,8 +861,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036074215,
       "id": "B1fVDYGqb"
     },
@@ -863,8 +870,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036075336,
       "id": "S17VDFMcb"
     },
@@ -872,8 +879,8 @@
       "type": "message",
       "content": "more",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505036076551,
       "id": "BySVPKfqZ"
     },
@@ -881,8 +888,8 @@
       "type": "message",
       "content": "Wasssuuuuuup?????",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505062113248,
       "id": "HyFya1m5-"
     },
@@ -890,8 +897,8 @@
       "type": "message",
       "content": "wassup???",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505233105539,
       "id": "Hkc0dtHqW"
     },
@@ -899,8 +906,8 @@
       "type": "message",
       "content": "okie dokie!",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505233393074,
       "id": "S1Kl9tS5Z"
     },
@@ -908,8 +915,8 @@
       "type": "message",
       "content": "wattup???",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505233455980,
       "id": "S1O4cFScZ"
     },
@@ -917,8 +924,8 @@
       "type": "message",
       "content": "okie dokie!",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505233464252,
       "id": "SJercKB5W"
     },
@@ -926,19 +933,10 @@
       "type": "message",
       "content": "RRTY",
       "userid": 1,
-      "like": 0,
-      "dislike": 0,
+      "likes": 0,
+      "dislikes": 0,
       "timestamp": 1505555537203,
       "id": "SktINO9cZ"
-    },
-    {
-      "type": "message",
-      "content": "RTRT",
-      "userid": 1,
-      "like": 0,
-      "dislike": 0,
-      "timestamp": 1505668764433,
-      "id": "ByHs0mh5W"
     }
   ],
   "messages": [
@@ -1352,8 +1350,8 @@
     "gender": "male",
     "birthday": "2018-8-7",
     "showBirthday": true,
-    "showLocation": false,
-    "showOnlineStatus": false,
+    "showLocation": true,
+    "showOnlineStatus": true,
     "fullscreenImages": true,
     "numPosts": 4,
     "numThreads": 3,
