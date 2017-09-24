@@ -12,6 +12,7 @@ import parser from 'bbcode-to-react'
 import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
 import { fetchMessageHistory, sendMessage } from '../../actions'
+import Headline from '../Shared/Headline'
 
 
 const styles = {
@@ -79,11 +80,9 @@ class MessageHistory extends React.Component {
     const messages = messageHistory.messages !== undefined ? messageHistory.messages : []
     const errorMsg = !messages.length ? <div style={styles.errorMsg}>No messages.</div> : null
 
-    console.log('messages', messages)
-
     return (
       <div>
-      <h2>Private Message History</h2>
+      <Headline>Private Message History</Headline>
 
       {messageHistory.username &&
         <Subheader style={styles.subheader}>

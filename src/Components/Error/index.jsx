@@ -1,7 +1,10 @@
 /** @flow */
 
 import React from 'react'
+
 import msgs from './msgs'
+import Headline from '../Shared/Headline'
+
 
 const getMsg = (code) => {
   return `${code} - ${msgs[code]}.`
@@ -14,7 +17,7 @@ const getMsg = (code) => {
  */
 const Error = (props) => (
   <div>
-    <h2>{getMsg(props.code || 404)}</h2>
+    <Headline>{getMsg(props.code || 404)}</Headline>
 
   </div>
 )

@@ -4,6 +4,7 @@ import React from 'react'
 
 import Loader from '../Shared/Loader'
 import PostsWrapper from './PostsWrapper'
+import Headline from '../Shared/Headline'
 
 
 const Posts = (props) => {
@@ -12,7 +13,7 @@ const Posts = (props) => {
         <div>
             {
                 !embedded &&
-                <h2>Posts</h2>
+                <Headline level="2">Posts</Headline>
             }
             <div>
                 <Loader isLoading={!posts.length} />

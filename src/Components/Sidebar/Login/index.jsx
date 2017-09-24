@@ -12,6 +12,8 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
+import Headline from '../../Shared/Headline'
+
 
 const styles = {
     stickyButton: {
@@ -87,7 +89,7 @@ class LoginSidebar extends React.Component {
                     <div style={styles.drawer}>
                     <div>
 
-                        <h3 style={{margin: '10px 0'}}>Login</h3>
+                        <Headline level="3" style={{margin: '10px 0'}}>Login</Headline>
 
                         <TextField
                             floatingLabelText="Email"
@@ -106,7 +108,7 @@ class LoginSidebar extends React.Component {
                             style={{margin: '30px 0 0 0'}}
                         />
 
-                        <h3 style={{margin: '50px 0 40px 0'}}>Registration</h3>
+                        <Headline level="3" style={{margin: '50px 0 40px 0'}}>Registration</Headline>
 
                         <RaisedButton
                             label="Login"

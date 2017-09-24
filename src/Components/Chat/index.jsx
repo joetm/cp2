@@ -17,6 +17,7 @@ import Loader from '../Shared/Loader'
 import Spacer from '../Shared/Spacer'
 import BoxHeader from '../Shared/BoxHeader'
 import ScrollToTop from '../Shared/ScrollToTop'
+import Headline from '../Shared/Headline'
 import ChatItem from './ChatItem'
 
 
@@ -63,7 +64,7 @@ class Chat extends React.Component {
           !isEmbedded ?
             (
               <ScrollToTop>
-                <h2>Chat</h2>
+                <Headline level="2">Chat</Headline>
               </ScrollToTop>
             )
             :

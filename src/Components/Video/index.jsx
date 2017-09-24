@@ -17,6 +17,7 @@ import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
 import Tag from '../Shared/Tag'
 import Likes from '../Likes'
+import Headline from '../Shared/Headline'
 
 
 const VIDEO_MAXWIDTH = 1024
@@ -50,7 +51,7 @@ class Video extends React.Component {
         return (
             <div style={styles.pageWrapper}>
 
-                <h2>{title}</h2>
+                <Headline>{title}</Headline>
 
                 <VideoPlayer
                     src={src}

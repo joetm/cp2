@@ -10,6 +10,7 @@ import Notification from '../Content/Notification'
 import Update from '../Content/Update'
 import ListWrap from '../Shared/ListWrap'
 import GridWrap from '../Shared/GridWrap'
+import Headline from '../Shared/Headline'
 
 
 class ModArea extends React.Component {
@@ -31,7 +32,7 @@ class ModArea extends React.Component {
         return (
             <div>
 
-                <h1>Mod Area</h1>
+                <Headline>Mod Area</Headline>
 
                 TODO
                 <Wrapper>

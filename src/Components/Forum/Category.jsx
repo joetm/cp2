@@ -10,6 +10,7 @@ import { fetchCategory, fetchThreadsForCategory } from '../../actions'
 import Threads from './Threads'
 import Loader from '../Shared/Loader'
 import ScrollToTop from '../Shared/ScrollToTop'
+import Headline from '../Shared/Headline'
 
 
 class Category extends React.Component {
@@ -32,7 +33,7 @@ class Category extends React.Component {
                 <Loader isLoading={isFetching} />
                 <List>
                   <ListItem
-                    primaryText={<h2>{title}</h2>}
+                    primaryText={<Headline level="2">{title}</Headline>}
                     leftAvatar={<Avatar src={thumb} />}
                     rightIconButton={CategoryInfo}
                     disableKeyboardFocus={true}

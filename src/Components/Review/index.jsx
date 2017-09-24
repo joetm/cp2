@@ -148,7 +148,7 @@ class Review extends React.Component {
         return (
             <div>
 
-                <Headline>
+                <Headline level="2">
                     Crowd Review <IconButton
                                     onClick={this.toggleHelp}
                                     iconStyle={{...styles.helpIconStyle, color: this.props.muiTheme.palette.secondaryTextColor}}
@@ -223,6 +223,7 @@ class Review extends React.Component {
                 <Leaderboard
                     open={this.state.leaderBoardIsOpen}
                     isEmbedded={true}
+                    toggleLeaderboard={this.toggleLeaderboard}
                 />
 
                 <Alert

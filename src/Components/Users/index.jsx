@@ -15,6 +15,7 @@ import Loader from '../Shared/Loader'
 import Pagination from '../Shared/Pagination'
 import User from './User'
 import Filters from './Filters'
+import Headline from '../Shared/Headline'
 
 
 const _PAGE_SIZE = 10
@@ -72,7 +73,7 @@ class Users extends React.Component {
               </Toolbar>
 
 
-              <h2>Users</h2>
+              <Headline>Users</Headline>
               <Divider />
 
               {

@@ -11,6 +11,7 @@ import Divider from 'material-ui/Divider'
 import { fetchFollowers } from '../../actions'
 import Notification from '../Content/Notification'
 import Spacer from '../Shared/Spacer'
+import Headline from '../Shared/Headline'
 
 
 /**
@@ -30,7 +31,7 @@ class Followers extends React.Component {
         return (
           <div>
 
-              <h2>Followers</h2>
+              <Headline level="2">Followers</Headline>
 
               <Divider />
 

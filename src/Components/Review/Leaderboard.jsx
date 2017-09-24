@@ -5,17 +5,25 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Drawer from 'material-ui/Drawer'
 import { List, ListItem } from 'material-ui/List'
+import IconButton from 'material-ui/IconButton'
+import CloseIcon from 'material-ui/svg-icons/navigation/close'
 
 import { fetchReviewLeaderboard } from '../../actions'
 import Avatar from '../Shared/Avatar'
 import Loader from '../Shared/Loader'
 import { PROFILE } from '../../routes'
+import Headline from '../Shared/Headline'
 
 
 const styles = {
     leaderBoardContainer: {
         overflowY: 'auto',
         zIndex: 0,
+    },
+    closeButton: {
+      position: 'absolute',
+      top: '5px',
+      right: '5px',
     },
 }
 
@@ -42,14 +50,28 @@ class Leaderboard extends React.Component {
         this.props.fetchReviewLeaderboard()
     }
     render() {
-        const { reviewLeaderboard, open, history, isEmbedded = false } = this.props
+        const {
+          reviewLeaderboard,
+          toggleLeaderboard,
+          open,
+          history,
+          isEmbedded = false,
+        } = this.props
         const { items = [], isFetching} = reviewLeaderboard
 
         const Wrapper = isEmbedded ? DrawerWrapper : DivWrapper
 
         return (
             <Wrapper open={open}>
-                <h3>Leaderboard</h3>
+
+                <IconButton
+                  style={styles.closeButton}
+                  onTouchTap={toggleLeaderboard}
+                >
+                  <CloseIcon />
+                </IconButton>
+
+                <Headline level="3">Leaderboard</Headline>
 
                 <Loader isLoading={isFetching} />
 

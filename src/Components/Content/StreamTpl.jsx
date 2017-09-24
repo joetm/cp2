@@ -19,6 +19,7 @@ import Spacer from '../Shared/Spacer'
 import { TILED } from '../../common/viewModes'
 import UpdateWrap from '../Shared/UpdateWrap'
 import ListWrap from '../Shared/ListWrap'
+import Headline from '../Shared/Headline'
 
 
 class StreamTpl extends React.Component {
@@ -76,7 +77,7 @@ class StreamTpl extends React.Component {
               !isEmbedded &&
               <div>
                 <SubToolbar changeViewMode={this.changeViewMode} />
-                <h2>{this.props.headline}</h2>
+                <Headline level="2">{this.props.headline}</Headline>
               </div>
             }
 

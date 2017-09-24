@@ -6,6 +6,7 @@ import React from 'react'
 // TODO
 // import { fetchPlaylist } from '../../actions'
 import Spacer from '../Shared/Spacer'
+import Headline from '../Shared/Headline'
 
 
 class Playlist extends React.Component {
@@ -18,7 +19,7 @@ class Playlist extends React.Component {
   render() {
     return (
       <div>
-        <h2>Playlist</h2>
+        <Headline>Playlist</Headline>
         TODO
         <Spacer />
       </div>

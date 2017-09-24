@@ -28,7 +28,7 @@ class AccountSettings extends React.Component {
       super(props)
       this.state = {
           // fields
-          usertitle: null,
+          usertitle: '',
           email: '',
           confirmEmail: '',
           // locking

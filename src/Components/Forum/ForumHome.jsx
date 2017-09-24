@@ -7,6 +7,7 @@ import { fetchCategories, fetchThreads } from '../../actions'
 import Categories from './Categories'
 import Loader from '../Shared/Loader'
 import ScrollToTop from '../Shared/ScrollToTop'
+import Headline from '../Shared/Headline'
 
 
 class ForumHome extends React.Component {
@@ -18,7 +19,7 @@ class ForumHome extends React.Component {
         return (
             <div>
                 <ScrollToTop />
-                <h2>Forum Categories</h2>
+                <Headline level="2">Forum Categories</Headline>
                 <div>
                     <Loader isLoading={!categories.length} />
                     <Categories categories={categories} />

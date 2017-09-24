@@ -8,6 +8,7 @@ import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 // import { palette } from '../../common/colors'
 import Spacer from '../Shared/Spacer'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
+import Headline from '../Shared/Headline'
 
 
 class Upload extends React.Component {
@@ -31,7 +32,7 @@ class Upload extends React.Component {
     render() {
         return (
             <div>
-                <h2>Upload</h2>
+                <Headline>Upload</Headline>
 
                 <div>
                   <DropzoneComponent

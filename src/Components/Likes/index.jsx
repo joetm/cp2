@@ -11,6 +11,7 @@ import { fetchLikesForVideo } from '../../actions'
 import Avatar from '../Shared/Avatar'
 import Spacer from '../Shared/Spacer'
 import Loader from '../Shared/Loader'
+import Headline from '../Shared/Headline'
 
 
 /**
@@ -32,7 +33,7 @@ class Likes extends React.Component {
               <Spacer />
               <Spacer />
 
-              <h4 style={{textAlign: 'left', marginBottom: '1em', paddingBottom: 0}}>Likes</h4>
+              <Headline level="4" style={{textAlign: 'left', marginBottom: '1em', paddingBottom: 0}}>Likes</Headline>
 
               <Loader isLoading={this.props.isFetching} />
 

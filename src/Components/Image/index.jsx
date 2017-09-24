@@ -9,6 +9,7 @@ import { fetchPicture } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import FullscreenImage from './FullscreenImage'
 import Update from '../Content/Update'
+import Headline from '../Shared/Headline'
 
 
 class Image extends React.Component {
@@ -26,7 +27,7 @@ class Image extends React.Component {
                 {
                     !fullscreenImages ?
                     <div>
-                        <h2>{title}</h2>
+                        <Headline>{title}</Headline>
                         <Update
                             {...this.props.image}
                             showTitle={false}

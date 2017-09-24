@@ -8,6 +8,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import Avatar from '../Shared/Avatar'
 import { PROFILE } from '../../routes'
+import Headline from '../Shared/Headline'
 
 
 const _OFFSETY = 0
@@ -46,12 +47,12 @@ const FullscreenImage = (props) => {
             backgroundImage: `url(${src})`,
         }}>
 
-            <h1 style={{
+            <Headline style={{
                 ...styles.imageTitle,
                 color: props.muiTheme.palette.alternateTextColor,
             }}>
                 {title}
-            </h1>
+            </Headline>
 
             {
                 user &&

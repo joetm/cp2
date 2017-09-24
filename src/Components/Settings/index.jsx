@@ -26,8 +26,8 @@ import Headline from '../Shared/Headline'
 
 const _SETTINGS_ROUTES = [
   `${SETTINGS.INDEX}${SETTINGS.SITE}`,
-  `${SETTINGS.INDEX}${SETTINGS.IMAGE}`,
   `${SETTINGS.INDEX}${SETTINGS.AVATAR}`,
+  `${SETTINGS.INDEX}${SETTINGS.IMAGE}`,
   `${SETTINGS.INDEX}${SETTINGS.VERIFICATION}`,
   `${SETTINGS.INDEX}${SETTINGS.PRIVACY}`,
   `${SETTINGS.INDEX}${SETTINGS.ACCOUNT}`,
@@ -78,15 +78,15 @@ class Settings extends React.Component {
               style={styles.bottomNavigationItem}
             />
             <BottomNavigationItem
-              label="Profile Image"
+              label="Avatar"
               icon={<ImageIcon />}
-              onClick={() => { this.handleTabClick(1, `${url}${SETTINGS.IMAGE}`) }}
+              onClick={() => { this.handleTabClick(1, `${url}${SETTINGS.AVATAR}`) }}
               style={styles.bottomNavigationItem}
             />
             <BottomNavigationItem
-              label="Avatar"
+              label="Profile Image"
               icon={<ImageIcon />}
-              onClick={() => { this.handleTabClick(2, `${url}${SETTINGS.AVATAR}`) }}
+              onClick={() => { this.handleTabClick(2, `${url}${SETTINGS.IMAGE}`) }}
               style={styles.bottomNavigationItem}
             />
             <BottomNavigationItem
@@ -115,8 +115,8 @@ class Settings extends React.Component {
         <div style={settingsBlock}>
           <Switch>
             <Route exact path={`${url}${SETTINGS.SITE}`}         component={Site} />
-            <Route exact path={`${url}${SETTINGS.IMAGE}`}        component={ProfileImg} />
             <Route exact path={`${url}${SETTINGS.AVATAR}`}       component={AvatarImg} />
+            <Route exact path={`${url}${SETTINGS.IMAGE}`}        component={ProfileImg} />
             <Route exact path={`${url}${SETTINGS.VERIFICATION}`} component={VerificationImg} />
             <Route exact path={`${url}${SETTINGS.PRIVACY}`}      component={Privacy} />
             <Route exact path={`${url}${SETTINGS.ACCOUNT}`}      component={Account} />

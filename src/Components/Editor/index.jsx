@@ -4,6 +4,7 @@ import React from 'react'
 
 import Spacer from '../Shared/Spacer'
 import ScrollToTop from '../Shared/ScrollToTop'
+import Headline from '../Shared/Headline'
 
 
 const Editor = () => {
@@ -11,7 +12,7 @@ const Editor = () => {
         <div>
             <ScrollToTop />
 
-            <h2>TODO</h2>
+            <Headline>TODO</Headline>
 
             <Spacer />
 

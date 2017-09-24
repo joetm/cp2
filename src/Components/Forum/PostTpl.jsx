@@ -10,6 +10,7 @@ import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
 import GridWrap from '../Shared/GridWrap'
 import CellWrapper from '../Shared/CellWrapper'
+import Headline from '../Shared/Headline'
 import { humanReadableDate } from '../../common/helpers'
 import SocialTools from '../Shared/SocialTools'
 
@@ -53,7 +54,7 @@ class PostTpl extends React.Component {
 
                 {
                     !isEmbedded &&
-                    <h2>{title}</h2>
+                    <Headline level="2">{title}</Headline>
                 }
 
                 <GridWrap>
@@ -67,7 +68,7 @@ class PostTpl extends React.Component {
                                     macro={macro}
                                     style={{margin: 'auto'}}
                                 />
-                                <h3>{user.username}</h3>
+                                <Headline level="3">{user.username}</Headline>
                                 <div>
                                     <ul style={{
                                         ...styles.userinfoList,
