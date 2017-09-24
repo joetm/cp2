@@ -13,7 +13,6 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
 import { PROFILE, FORUM, CATEGORIES, POSTS, THREADS } from '../../routes'
-import { grey } from '../../common/colors'
 import Avatar from '../Shared/Avatar'
 
 
@@ -126,7 +125,7 @@ class Notification extends React.Component {
                     tooltipPosition="bottom-left"
                     onTouchTap={e => e.stopPropagation()}
                   >
-                    <MoreVertIcon color={grey} />
+                    <MoreVertIcon />
                   </IconButton>
               )}>
                   <MenuItem onTouchTap={this.replyNotification}>Reply</MenuItem>
