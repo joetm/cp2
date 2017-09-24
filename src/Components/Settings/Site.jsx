@@ -129,7 +129,7 @@ class SiteSettings extends React.Component {
               <CellWrapper full={8} tablet={5} phone={4}>
                 <div style={{textAlign: 'right'}}>
                     {
-                        getThemeColors(selectedTheme).map(colorObj => (
+                        getThemeColors(selectedTheme || theme).map(colorObj => (
                           <div
                             key={`color_${colorObj.name}`}
                             style={styles.colorBoxContainer}
