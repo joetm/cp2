@@ -22,19 +22,21 @@ const styles = {
 }
 
 
-const UList = (props) => (
-  <ul style={styles.unorderedList}>
-    <li style={styles.listItem}>
-      <Link
-        to={props.url}
-        style={{color: props.muiTheme.palette.secondaryTextColor}}
-      >
-        {props.text}
-      </Link>
-    </li>
-  </ul>
-)
-
+const UList = muiThemeable()((props) => {
+  const { secondaryTextColor } = props.muiTheme.palette || null
+  return (
+    <ul style={styles.unorderedList}>
+      <li style={styles.listItem}>
+        <Link
+          to={props.url}
+          style={{color: secondaryTextColor}}
+        >
+          {props.text}
+        </Link>
+      </li>
+    </ul>
+  )
+})
 
 /**
  * Footer class
@@ -67,4 +69,4 @@ const Footer = () => (
     </div>
 )
 
-export default muiThemeable()(Footer)
+export default Footer

@@ -74,7 +74,6 @@ class ProfileImg extends React.Component {
     render() {
         const { profileImages = [], numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
         const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
-        console.log(details)
         // --
         let profileImgDynamicStyle = {
             height: `${this.state.profileImgHeight}px`,
@@ -87,24 +86,6 @@ class ProfileImg extends React.Component {
             }
         }
 
-
-
-
-    // const images = [
-    //   {
-    //     original: 'http://lorempixel.com/1000/600/nature/1/',
-    //     thumbnail: 'http://lorempixel.com/250/150/nature/1/',
-    //   },
-    //   {
-    //     original: 'http://lorempixel.com/1000/600/nature/2/',
-    //     thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-    //   },
-    //   {
-    //     original: 'http://lorempixel.com/1000/600/nature/3/',
-    //     thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-    //   }
-    // ]
-
         // reformatting the signature of the images for the slideshow component
         const images = profileImages.map(item => ({
             original: item.src,
@@ -116,10 +97,10 @@ class ProfileImg extends React.Component {
         return (
             <div>
                 <div
-                    role="button"
-                    tabIndex={0}
                 >
                     {/*
+                    role="button"
+                    tabIndex={0}
                     onTouchTap={this.props.toggleProfileDetails}
                     */}
 
@@ -130,16 +111,19 @@ class ProfileImg extends React.Component {
                         />
                         */}
 
-                        <ImageGallery
-                          items={images}
-                          slideInterval={2000}
-                          autoPlay={false}
-                          showBullets={true}
-                          showThumbnails={false}
-                          showPlayButton={false}
-                          lazyLoad={true}
-                          showIndex={false}
-                        />
+                        {
+                            images.length &&
+                                <ImageGallery
+                                  items={images}
+                                  slideInterval={2000}
+                                  autoPlay={false}
+                                  showBullets={true}
+                                  showThumbnails={false}
+                                  showPlayButton={false}
+                                  lazyLoad={true}
+                                  showIndex={false}
+                                />
+                        }
 
 {/*
                         <div style={{
