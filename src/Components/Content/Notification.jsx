@@ -16,6 +16,16 @@ import { PROFILE, FORUM, CATEGORIES, POSTS, THREADS } from '../../routes'
 import Avatar from '../Shared/Avatar'
 
 
+const styles = {
+  avatarIcon: {
+    cursor: 'pointer',
+    position: 'absolute',
+    top: '10px',
+    left: '16px',
+  }
+}
+
+
 class Notification extends React.Component {
     state = {
       showMenu: true,
@@ -47,11 +57,16 @@ class Notification extends React.Component {
         //
         const {
           streamitem = {},
-          user = {}, userid,
+          user = {},
+          userid,
+          username,
+          avatar,
           type, id, title, thumb,
           content, history
         } = this.props
+        const { showMenu } = this.state
 
+        let primaryText
         let secondaryText
         let rightIconMenu
         let touchTapAction
@@ -74,12 +89,12 @@ class Notification extends React.Component {
           case 'moderator':
           case 'follower':
 
+            primaryText = username
             secondaryText = (
               <p>
                 {user.usertitle}
               </p>
             )
-
             rightIconMenu = null // TODO
             touchTapAction = () => history.push(`${PROFILE}/${user.id}`)
 
@@ -141,15 +156,18 @@ class Notification extends React.Component {
             <ListItem
               leftAvatar={
                 <Avatar
-                  username={user.username}
-                  style={{cursor: 'pointer', position: 'absolute', top: '10px', left: '16px'}}
-                  src={user.avatar || thumb}
+                  username={user.username || username}
+                  style={styles.avatarIcon}
+                  src={user.avatar || avatar || thumb}
                   macro={true}
-                  onTouchTap={e => { e.stopPropagation(); history.push(`${PROFILE}/${userid}`) }}
+                  onTouchTap={e => {
+                    e.stopPropagation()
+                    history.push(`${PROFILE}/${userid}`)
+                  }}
                 />
               }
-              rightIconButton={this.state.showMenu ? rightIconMenu : null}
-              primaryText={title}
+              rightIconButton={showMenu ? rightIconMenu : null}
+              primaryText={primaryText || title}
               secondaryText={secondaryText}
               // onMouseEnter={() => this.setState({showMenu: true})}
               // onMouseLeave={() => this.setState({showMenu: false})}

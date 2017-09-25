@@ -25,11 +25,10 @@
   "/followers": "/followers?_expand=user",
     "/followers?*": "/followers?_expand=user&$1",
 
-  "/mod/contactRequests": "/contactRequests?_expand=user",
-
   "/reviewLeaderboard": "/reviewLeaderboard?_expand=user&_sort=user.crowdPoints&_order=desc&_limit=10",
 
-  "/mod/items": "/moditems?_expand=user&_sort=timestamp&_order=desc",
+  "/mod/threads": "/modthreads?_expand=user&type=dmca&type=suggestion&type=complaint&_sort=timestamp&_order=desc",
+    "/mod/threads/:id/replies": "/modthreads?_expand=user&moditemid=:id&_sort=timestamp&_order=desc",
 
 
   "/images": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",

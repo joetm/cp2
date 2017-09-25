@@ -25,6 +25,7 @@ class Home extends React.Component {
     this.props.fetchOnlineUsers(3)
   }
   render() {
+    const { updates, onlineUsers, chat } = this.props
     return (
       <div>
         <ScrollToTop />
@@ -32,15 +33,15 @@ class Home extends React.Component {
         <GridWrap>
 
             <CellWrapper full={6} tablet={8} phone={4}>
-                <Box headline="New Updates" footerLink={routes.UPDATES} items={this.props.updates} />
-                <Box headline="Users Online" footerLink={routes.USERS} items={this.props.onlineUsers} />
+                <Box headline="New Updates" footerLink={routes.UPDATES} items={updates} />
+                <Box headline="Users Online" footerLink={routes.USERS} items={onlineUsers} />
             </CellWrapper>
 
             <CellWrapper full={6} tablet={8} phone={4}>
                 <Paper style={boxStyle} zDepth={1}>
                     <Chat
                         isEmbedded={true}
-                        chat={this.props.chat}
+                        chat={chat}
                         maxHeight={660}
                     />
                 </Paper>

@@ -210,7 +210,7 @@ const fetchFromProtectedAPI = (key, selection, limit = null) => {
 
 // TODO
 export const fetchModItems = (limit = null) =>
-    fetchFromProtectedAPI('mod', 'items', limit)
+    fetchFromProtectedAPI('mod', 'threads', limit)
 
 // -------------------------------------------------------------------
 

@@ -26,33 +26,33 @@ const Box = (props) => {
     const { items, headline, footerLink } = props
     return (
         <Paper style={boxStyle} zDepth={1}>
-        <section>
-            <Loader isLoading={!items.length} />
-            <BoxHeader
-                headline={headline}
-                icon={null}
-            />
-            <List>
+            <section>
+                <Loader isLoading={!items.length} />
+                <BoxHeader
+                    headline={headline}
+                    icon={null}
+                />
+                <List>
+                    {
+                      items.map((item) => (
+                        <Notification
+                            key={item.id}
+                            {...item}
+                            secondaryTextLines={2}
+                        />
+                      ))
+                    }
+                </List>
                 {
-                  items.map((item) => (
-                    <Notification
-                        key={item.id}
-                        {...item}
-                        secondaryTextLines={2}
-                    />
-                  ))
+                    footerLink &&
+                    <Link to={footerLink}>
+                        <footer style={{
+                            ...footerStyle,
+                            color: props.muiTheme.palette.textColor,
+                        }}>...more...</footer>
+                    </Link>
                 }
-            </List>
-            {
-                footerLink &&
-                <Link to={footerLink}>
-                    <footer style={{
-                        ...footerStyle,
-                        color: props.muiTheme.palette.textColor,
-                    }}>...more...</footer>
-                </Link>
-            }
-        </section>
+            </section>
         </Paper>
     )
 }
