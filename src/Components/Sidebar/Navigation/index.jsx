@@ -17,9 +17,10 @@ import ProfileIcon from 'material-ui/svg-icons/social/person-outline'
 import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
-import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../actions'
-import routes from '../../routes'
-import MenuEntry from '../Shared/MenuEntry'
+import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../../actions'
+import routes from '../../../routes'
+import MenuEntry from '../../Shared/MenuEntry'
+import Headline from '../../Shared/Headline'
 
 
 const styles = {
@@ -61,10 +62,10 @@ const Sidebar = (props) => {
 
         <div style={styles.logoContainer}>
             <Link to="/">
-                <h1
+                <Headline
                     style={styles.logo}
                     onTouchTap={closeSidebar}
-                >SocNet v2</h1>
+                >SocNet v2</Headline>
             </Link>
         </div>
 

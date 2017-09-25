@@ -16,7 +16,7 @@ const BoxHeader = (props) => {
         fontWeight: 400,
         padding: '10px',
         color: props.muiTheme.palette.textColor,
-        backgroundColor: props.muiTheme.palette.primary3Color,
+        backgroundColor: props.muiTheme.palette.primary2Color,
       },
       iconExpandContainer: {
         float: 'right',
