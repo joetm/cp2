@@ -18,22 +18,26 @@ class SinglePost extends React.Component {
     }
     render() {
         const { post } = this.props
-        console.log(this.props)
         return (
-            <div>
+            <div style={{position: 'relative'}}>
+
                 <ScrollToTop />
+
                 <Breadcrumbs
                     level0={{label: "Forum", url: routes.FORUM}}
                     level1={{label: post.threadid, url: `${routes.FORUM}${routes.THREADS}/${post.threadid}`}}
                     level2={{label: post.title, url: this.props.location.pathname}}
                     history={this.props.history}
                 />
+
                 <PostTpl
                     {...post}
                     like={recordLike}
                     dislike={recordDislike}
                 />
+
                 <Spacer />
+
             </div>
         )
     }

@@ -8,8 +8,8 @@ import BackIcon from 'material-ui/svg-icons/content/undo'
 
 const styles = {
     backButton: {
-        position: 'relative',
-        top: '20px',
+        position: 'absolute',
+        top: '0px',
         left: '20px',
     },
 }

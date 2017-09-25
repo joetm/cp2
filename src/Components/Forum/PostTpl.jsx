@@ -41,9 +41,14 @@ const styles = {
 class PostTpl extends React.Component {
     render() {
         const {
-            id, title, content, type,
+            id,
+            title,
+            content,
+            type,
             isEmbedded,
-            user, tags, timestamp,
+            user,
+            tags,
+            timestamp,
             likes = 0,
             macro,
         } = this.props

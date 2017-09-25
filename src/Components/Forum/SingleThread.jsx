@@ -20,17 +20,19 @@ class SingleThread extends React.Component {
         this.props.fetchPostsForThread(threadid)
     }
     render() {
-        const { title, isFetching, history, items = [] } = this.props
+        const { thread, title, isFetching, history, items = [] } = this.props
         return (
-            <div>
+            <div style={{position: 'relative'}}>
+
                 <ScrollToTop />
 
                 <BackButton />
 
                 <Loader isLoading={isFetching} />
 
+                {/* first post */}
                 <PostTpl
-                    {...this.props.thread}
+                    {...thread}
                     macro={true}
                     like={recordLike}
                     dislike={recordDislike}
