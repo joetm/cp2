@@ -191,7 +191,7 @@ const initialState = {
     },
     mod: {
         isFetching: true,
-        contactRequests: [],
+        items: [],
     },
 }
 

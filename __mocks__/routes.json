@@ -29,6 +29,8 @@
 
   "/reviewLeaderboard": "/reviewLeaderboard?_expand=user&_sort=user.crowdPoints&_order=desc&_limit=10",
 
+  "/mod/items": "/moditems?_expand=user&_sort=timestamp&_order=desc",
+
 
   "/images": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc",
     "/images?*": "/streamitems?type=image&type=verification&_expand=user&_sort=timestamp&order=desc&$1",

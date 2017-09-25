@@ -192,13 +192,13 @@ export const fetchSpecificReviewItem = selectSpecificItemCreator('reviewitems')
 
 // TODO
 const fetchFromProtectedAPI = (key, selection, limit = null) => {
-    let url = `${ENDPOINT}/${key}/${selection}`
+    let url = `${jsonAPI.ENDPOINT}/${key}/${selection}`
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
     // console.log('fetchFromProtectedAPI', key, selection, limit, url)
     return fetch(url)
-        .then(r => r.json())
+        .then(response => response.json())
         .then(data => {
             if (limit === 1 && data instanceof Array) {
                 return data[0]
@@ -209,11 +209,8 @@ const fetchFromProtectedAPI = (key, selection, limit = null) => {
 }
 
 // TODO
-export const fetchContactRequests = (limit = null) =>
-    fetchFromProtectedAPI('mod', 'contactRequests', limit)
-        .then(response => response.json())
-        .then(data => data)
-        .catch(error => throwError(error.message || "Something went wrong"))
+export const fetchModItems = (limit = null) =>
+    fetchFromProtectedAPI('mod', 'items', limit)
 
 // -------------------------------------------------------------------
 

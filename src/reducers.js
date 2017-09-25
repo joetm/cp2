@@ -445,8 +445,8 @@ export function onlineReducer(onlineState = initialState.online, action) {
 
 export function modReducer(modState = initialState.mod, action) {
     switch (action.type) {
-        case ACTIONS.RECEIVE_CONTACT_REQUESTS:
-            return {...modState, isFetching: false, contactRequests: [...action.response]}
+        case ACTIONS.RECEIVE_MOD_ITEMS:
+            return {...modState, isFetching: false, items: [...action.response]}
         default:
             return modState
     }

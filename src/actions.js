@@ -143,7 +143,7 @@ export const FETCH_POSTS_FOR_THREAD_STARTED = 'FORUM::FETCH_POSTS_FOR_THREAD_STA
 export const FETCH_POSTS_FOR_THREAD_FAILURE = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
 
 // MOD
-export const RECEIVE_CONTACT_REQUESTS   = 'MOD::RECEIVE_CONTACT_REQUESTS'
+export const RECEIVE_MOD_ITEMS   = 'MOD::RECEIVE_MOD_ITEMS'
 
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
@@ -255,7 +255,7 @@ export const receiveCity             = makeActionCreator(RECEIVE_CITY,          
 export const receiveSearchResult     = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
 
 // MOD
-export const receiveContactRequests  = makeActionCreator(RECEIVE_CONTACT_REQUESTS)
+export const receiveModItems         = makeActionCreator(RECEIVE_MOD_ITEMS,         'response')
 
 export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
 export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS,     'userid')
@@ -615,11 +615,11 @@ export const fetchChat = () =>
 
 
 /**
- * fetchContactRequests Asynchronous Action Creator
+ * fetchModItems Asynchronous Action Creator
  * @returns fetchContactRequests() - Action
  */
-export const fetchContactRequests = (limit) =>
-    api.fetchContactRequests(limit).then(receiveContactRequests)
+export const fetchModItems = (limit) =>
+    api.fetchModItems(limit).then(receiveModItems)
 
 
 

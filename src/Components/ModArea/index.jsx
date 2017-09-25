@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchContactRequests } from '../../actions'
+import { fetchModItems } from '../../actions'
 import Spacer from '../Shared/Spacer'
 import Footer from '../Footer'
 import Notification from '../Content/Notification'
@@ -18,7 +18,7 @@ class ModArea extends React.Component {
         viewMode: 'list',
     }
     componentDidMount() {
-        this.props.fetchContactRequests()
+        this.props.fetchModItems()
     }
     componentWillUnmount() {
 
@@ -27,6 +27,7 @@ class ModArea extends React.Component {
      * Render the component.
      */
     render() {
+        const { items } = this.props
         const Container = this.state.viewMode === 'list' ? Notification : Update
         const Wrapper = this.state.viewMode === 'list' ? ListWrap : GridWrap
         return (
@@ -34,10 +35,9 @@ class ModArea extends React.Component {
 
                 <Headline>Mod Area</Headline>
 
-                TODO
                 <Wrapper>
                     {
-                        this.props.contactRequests.map((item) => (
+                        items.map((item) => (
                             <Container
                                 key={`upd_${item.id}`}
                                 {...item}
@@ -60,10 +60,10 @@ class ModArea extends React.Component {
 
 const mapStateToProps = (state) => ({
     isFetching: state.mod.isFetching,
-    contactRequests: state.mod.contactRequests,
+    items: state.mod.items,
 })
 
 export default connect(
     mapStateToProps,
-    { fetchContactRequests }
+    { fetchModItems }
 )(ModArea)
