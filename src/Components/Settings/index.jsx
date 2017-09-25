@@ -3,7 +3,6 @@
 import React from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation'
-// import LocationIcon from 'material-ui/svg-icons/communication/location-on'
 import ProfileIcon from 'material-ui/svg-icons/action/assignment-ind'
 import ImageIcon from 'material-ui/svg-icons/editor/insert-photo'
 import VerifyIcon from 'material-ui/svg-icons/action/verified-user'
@@ -13,8 +12,6 @@ import AccountIcon from 'material-ui/svg-icons/action/account-box'
 import { settingsBlock, centered } from './styles'
 import { SETTINGS } from '../../routes'
 import Spacer from '../Shared/Spacer'
-// import SettingsMenuEntry from './SettingsMenuEntry'
-// --
 import AvatarImg from './AvatarImg'
 import ProfileImg from './ProfileImg'
 import VerificationImg from './VerificationImg'
@@ -52,7 +49,10 @@ class Settings extends React.Component {
   select = (selectedIndex) => this.setState({selectedIndex})
   componentWillMount() {
     const url = this.props.location.pathname
-    const selectedIndex = _SETTINGS_ROUTES.indexOf(url)
+    let selectedIndex = _SETTINGS_ROUTES.indexOf(url)
+    if (selectedIndex < 0) {
+      selectedIndex = 0
+    }
     this.setState({selectedIndex})
   }
   handleTabClick = (selectedTabIndex, url) => {

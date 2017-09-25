@@ -68,6 +68,7 @@ class Update extends React.Component {
     switch (this.props.type) {
       case 'image':
       case 'verification':
+      case 'profileimg':
         url = `${IMAGES}/${this.props.id}`
         break
       case 'video':
