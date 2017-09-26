@@ -135,18 +135,15 @@ class AccountSettings extends React.Component {
      * Handle the change of the user title field.
      */
     handleChangeUsertitle = (e, newValue) => {
-      const usertitle = newValue.trim()
-      // allow empty usertitles
-      this.setState({usertitle})
+      this.setState({usertitle: newValue})
     }
     /*
      * Change the user title.
      */
     changeUsertitle = () => {
       const usertitle = this.state.usertitle.trim()
-      if (usertitle !== '') {
-        this.props.changeSetting('usertitle', usertitle)
-      }
+      // allow empty usertitles!
+      this.props.changeSetting('usertitle', usertitle)
     }
     /*
      * Handle the change of the country selector.
@@ -237,8 +234,7 @@ class AccountSettings extends React.Component {
      * Render the component.
      */
     render() {
-      const { birthday } = this.props
-      console.log(birthday)
+      const { birthday, country, state, city, usertitle } = this.props
 
       const actions = [
         <FlatButton
@@ -277,7 +273,7 @@ class AccountSettings extends React.Component {
               filter={AutoComplete.caseInsensitiveFilter}
               openOnFocus={false}
               onUpdateInput={this.handleChangeCountry}
-              searchText={this.props.country}
+              searchText={country}
               dataSource={this.props.countries}
               dataSourceConfig={{text: 'country', value: 'country'}}
             />
@@ -286,7 +282,7 @@ class AccountSettings extends React.Component {
                 <SelectField
                   floatingLabelText="State"
                   fullWidth={true}
-                  value={this.props.state}
+                  value={state}
                   onChange={this.handleChangeState}
                 >
                   <MenuItem value="TODO1" primaryText="TODO1" />
@@ -302,7 +298,7 @@ class AccountSettings extends React.Component {
                 <SelectField
                   floatingLabelText="City"
                   fullWidth={true}
-                  value={this.props.city}
+                  value={city}
                   onChange={this.handleChangeCity}
                 >
                   <MenuItem value="Aachen" primaryText="Aachen" />
@@ -313,11 +309,11 @@ class AccountSettings extends React.Component {
                 </SelectField>
             </div>
 
-            <SettingsSeparator first text="Account Details" />
+            <SettingsSeparator text="Account Details" />
 
             <TextField
               floatingLabelText="Custom User Title"
-              value={this.state.usertitle}
+              value={this.state.usertitle || usertitle}
               onChange={this.handleChangeUsertitle}
             />
             <p>
@@ -332,7 +328,7 @@ class AccountSettings extends React.Component {
 
             <p>
               Making changes to the fields below will affect the way you log into the site.
-              You could for example lock yourself out if you forget any of the entered information!
+              You could lock yourself out if you forget any of the entered information!
             </p>
             <RaisedButton
               style={{display: this.state.fieldsLocked ? 'inline-block' : 'none'}}
