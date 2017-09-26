@@ -1493,6 +1493,7 @@
     "unreadLikes": 23,
     "profileViews": 0,
     "followerCount": 0,
-    "theme": "default"
+    "theme": "default",
+    "scaleImages": true
   }
 }

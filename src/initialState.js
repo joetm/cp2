@@ -187,6 +187,8 @@ const initialState = {
         showBirthday: false,
         showLocation: false,
         showOnlineStatus: false,
+        fullscreenImages: true,
+        scaleImages: false,
         theme: 'default',
     },
     mod: {

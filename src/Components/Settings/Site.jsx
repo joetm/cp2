@@ -91,6 +91,12 @@ class SiteSettings extends React.Component {
       this.props.changeSetting('fullscreenImages', isInputChecked)
     }
     /*
+     * Handle the change of the scaleImages setting.
+     */
+    toggleScaleImages = (event, isInputChecked) => {
+      this.props.changeSetting('scaleImages', isInputChecked)
+    }
+    /*
      * Save the new color theme.
      */
     changeColorTheme = () => {
@@ -106,7 +112,7 @@ class SiteSettings extends React.Component {
      * Render the component.
      */
     render() {
-      const { theme } = this.props
+      const { theme, fullscreenImages, scaleImages } = this.props
       const { selectedTheme } = this.state
       return (
         <div style={styles.wrapper}>
@@ -163,10 +169,19 @@ class SiteSettings extends React.Component {
             <List>
               <Toggle
                 label="Fullscreen images"
-                toggled={this.props.fullscreenImages}
+                toggled={fullscreenImages}
                 style={sharedStyles.toggle}
                 onToggle={this.toggleFullscreenImages}
               />
+              {
+                !fullscreenImages &&
+                  <Toggle
+                    label="Scale embedded images"
+                    toggled={scaleImages}
+                    style={sharedStyles.toggle}
+                    onToggle={this.toggleScaleImages}
+                  />
+              }
             </List>
 
             <Spacer />
@@ -189,6 +204,7 @@ class SiteSettings extends React.Component {
 
 const mapStateToProps = (state) => ({
     fullscreenImages: state.currentUser.fullscreenImages,
+    scaleImages: state.currentUser.scaleImages,
     theme: state.currentUser.theme,
 })
 
