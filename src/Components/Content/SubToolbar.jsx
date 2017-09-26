@@ -12,6 +12,7 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 import allRoutes from '../../routes'
+import { MINIMAL_LIST, MASONRY_GALLERY, GROUPED_GALLERY } from '../../common/viewModes'
 
 
 const _ID = {
@@ -50,55 +51,46 @@ class SubToolbar extends React.Component {
                         <MenuItem
                             value={_ID.UPDATES}
                             primaryText="All"
-                            onTouchTap={() => { history.push(routing.UPDATES) }}
+                            onTouchTap={() => history.push(routing.UPDATES)}
                         />
                         <MenuItem
                             value={_ID.IMAGES}
                             primaryText="Pictures"
-                            onTouchTap={() => { history.push(routing.IMAGES) }}
+                            onTouchTap={() => history.push(routing.IMAGES)}
                         />
                         <MenuItem
                             value={_ID.VIDEOS}
                             primaryText="Videos"
-                            onTouchTap={() => { history.push(routing.VIDEOS) }}
+                            onTouchTap={() => history.push(routing.VIDEOS)}
                         />
                         {/* TODO: this is only a filter for images */}
                         <MenuItem
                             value={_ID.VERIFICATION}
                             primaryText="Verifications"
-                            onTouchTap={() => { history.push(routing.VERIFICATIONS) }}
+                            onTouchTap={() => history.push(routing.VERIFICATIONS)}
                         />
                         <MenuItem
                             value={_ID.FAVORITES}
                             primaryText="Favorites"
-                            onTouchTap={() => { history.push(routing.FAVORITES) }}
+                            onTouchTap={() => history.push(routing.FAVORITES)}
                         />
                         <MenuItem
                             value={_ID.LIKES}
                             primaryText="Likes"
-                            onTouchTap={() => { history.push(routing.LIKES) }}
+                            onTouchTap={() => history.push(routing.LIKES)}
                         />
                     </DropDownMenu>
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <IconButton onTouchTap={changeViewMode('list')}>
+                    <IconButton onTouchTap={changeViewMode(MINIMAL_LIST)}>
                         <ListModeIcon />
                     </IconButton>
-                    <IconButton onTouchTap={changeViewMode('full')}>
+                    <IconButton onTouchTap={changeViewMode(GROUPED_GALLERY)}>
                         <GalleryModeIcon />
                     </IconButton>
-                    <IconButton onTouchTap={changeViewMode('masonry')}>
+                    <IconButton onTouchTap={changeViewMode(MASONRY_GALLERY)}>
                         <MasonryModeIcon />
                     </IconButton>
-                    {/*
-                    <IconMenu iconButtonElement={expandButton}>
-                        <MenuItem primaryText="Mark All Pictures Read" />
-                        <MenuItem primaryText="Mark All Videos Read" />
-                        <MenuItem primaryText="Mark All Messages Read" />
-                        <MenuItem primaryText="Mark All Likes Read" />
-                        <MenuItem primaryText="Mark All Read" />
-                    </IconMenu>
-                    */}
                 </ToolbarGroup>
             </Toolbar>
         )

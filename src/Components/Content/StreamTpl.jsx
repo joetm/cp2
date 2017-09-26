@@ -3,11 +3,9 @@
 import React from 'react'
 import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
-// import Bricks from 'bricks.js'
-// import { findDOMNode } from 'react-dom'
 
 import { translateDayOffset, categorizeList } from '../../common/helpers'
-import { TILED } from '../../common/viewModes'
+import { MINIMAL_LIST, MASONRY_GALLERY, GROUPED_GALLERY } from '../../common/viewModes'
 import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
 import Headline from '../Shared/Headline'
@@ -24,30 +22,12 @@ class StreamTpl extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // initial view mode from props (or default: TILED)
-            viewMode: props.viewMode || TILED,
+            // initial view mode from props (or default: GROUPED_GALLERY)
+            viewMode: props.viewMode || GROUPED_GALLERY,
         }
     }
     componentDidMount() {
         this.props.action()
-
-        // if (this.state.viewMode !== 'list') {
-        //   this.bricksInstance = Bricks({
-        //     container: '.container', // findDOMNode('.wrapper'), // this.refs.wrapper, // '.wrapper',
-        //     packed: 'data-packed',
-        //     sizes
-        //   })
-        //   this.bricksInstance
-        //     .on('pack',   () => console.log('ALL grid items packed.'))
-        //     .on('update', () => console.log('NEW grid items packed.'))
-        //     .on('resize', size => console.log('The grid has be re-packed to accommodate a new BREAKPOINT.'))
-        //   document.addEventListener('DOMContentLoaded', event => {
-        //       this.bricksInstance
-        //         .resize(true)     // bind resize handler
-        //         .pack()           // pack initial items
-        //   })
-        //   this.bricksInstance.update()
-        // }
     }
     componentWillUnmount() {
         this.bricksInstance = null
@@ -69,18 +49,18 @@ class StreamTpl extends React.Component {
         let useCategories = true
 
         switch (viewMode) {
-          case 'list': // minimized notifications
+          case MINIMAL_LIST: // minimized notifications
             Wrapper = ListWrap
             Container = Notification
             useCategories = true
             break
-          case 'masonry': // no gutter full-screen masonry gallery
+          case MASONRY_GALLERY: // no gutter full-screen masonry gallery
             Wrapper = MasonryWrap
             Container = MasonryItem
             useCategories = false
             break
           default:
-          case 'full': // grouped updates on cards
+          case GROUPED_GALLERY: // grouped updates on cards
             Wrapper = UpdateWrap
             Container = Update
             useCategories = true

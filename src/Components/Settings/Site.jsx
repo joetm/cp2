@@ -6,15 +6,20 @@ import Toggle from 'material-ui/Toggle'
 import { List } from 'material-ui/List'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import RaisedButton from 'material-ui/RaisedButton'
+import ListModeIcon from 'material-ui/svg-icons/action/view-list'
+import GalleryModeIcon from 'material-ui/svg-icons/action/view-module'
+import MasonryModeIcon from 'material-ui/svg-icons/action/view-quilt'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
+import { THEME_NAMES, getBaseTheme } from '../../common/theme'
+import { MINIMAL_LIST, MASONRY_GALLERY, GROUPED_GALLERY } from '../../common/viewModes'
 import { changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import sharedStyles from './styles'
 import Spacer from '../Shared/Spacer'
 import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
-
-import { THEME_NAMES, getBaseTheme } from '../../common/theme'
 
 
 const getThemeColors = (themeName) => {
@@ -109,10 +114,16 @@ class SiteSettings extends React.Component {
       this.setState({selectedTheme: themeName})
     }
     /*
+     * Handle the change of the view mode.
+     */
+    handleChangeViewMode = (e, key, value) => {
+      this.props.changeSetting('viewMode', value)
+    }
+    /*
      * Render the component.
      */
     render() {
-      const { theme, fullscreenImages, scaleImages } = this.props
+      const { theme, fullscreenImages, scaleImages, viewMode } = this.props
       const { selectedTheme } = this.state
       return (
         <div style={styles.wrapper}>
@@ -166,6 +177,28 @@ class SiteSettings extends React.Component {
 
             <SettingsSeparator text="Site settings" />
 
+            <SelectField
+              floatingLabelText="View Mode"
+              value={viewMode}
+              onChange={this.handleChangeViewMode}
+            >
+              <MenuItem
+                value={GROUPED_GALLERY}
+                primaryText="Grouped Gallery"
+                leftIcon={<GalleryModeIcon />}
+              />
+              <MenuItem
+                value={MASONRY_GALLERY}
+                primaryText="Borderless Masonry"
+                leftIcon={<MasonryModeIcon />}
+              />
+              <MenuItem
+                value={MINIMAL_LIST}
+                primaryText="Minimized List"
+                leftIcon={<ListModeIcon />}
+              />
+            </SelectField>
+
             <List>
               <Toggle
                 label="Fullscreen images"
@@ -205,6 +238,7 @@ class SiteSettings extends React.Component {
 const mapStateToProps = (state) => ({
     fullscreenImages: state.currentUser.fullscreenImages,
     scaleImages: state.currentUser.scaleImages,
+    viewMode: state.currentUser.viewMode,
     theme: state.currentUser.theme,
 })
 

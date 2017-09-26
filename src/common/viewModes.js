@@ -1,3 +1,4 @@
 
-export const LISTED = 'list'
-export const TILED  = 'tile'
+export const GROUPED_GALLERY = 'gallery'
+export const MASONRY_GALLERY = 'masonry'
+export const MINIMAL_LIST    = 'list'

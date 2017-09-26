@@ -23,6 +23,8 @@ export const THEME_NAMES = {
   RETRO: { name: 'retro', label: 'Retro' },
 };
 
+export const DEFAULT_THEME = THEME_NAMES.DEFAULT.name;
+
 export function getBaseTheme(themeName) {
   switch (themeName) {
     case THEME_NAMES.BLACK.name:

@@ -3,6 +3,10 @@
  * Redux Initial Store State for PROD
  **/
 
+// default view mode
+import { GROUPED_GALLERY } from './common/viewModes'
+import { DEFAULT_THEME } from './common/theme'
+
 /**
  * INITIAL STATE OF APPLICATION
  **/
@@ -187,8 +191,9 @@ const initialState = {
         showLocation: false,
         showOnlineStatus: false,
         fullscreenImages: true,
+        viewMode: GROUPED_GALLERY,
         scaleImages: false,
-        theme: 'default',
+        theme: DEFAULT_THEME,
     },
     mod: {
         isFetching: true,
