@@ -205,7 +205,7 @@ export function imagesReducer(imagesState = initialState.images, action) {
 export function imageReducer(imageState = initialState.image, action) {
     switch (action.type) {
         case ACTIONS.RECEIVE_IMAGE:
-            return {...action.response}
+            return {...imageState, isFetching: false, item: {...action.response}}
         default:
             return imageState
     }

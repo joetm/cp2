@@ -14,10 +14,11 @@ const styles = {
     top: 10,
     left: 0,
   },
-  verificationImage: {
+  image: {
     width: '100%',
     height: 'auto',
     cursor: 'pointer',
+    minHeight: '100px',
   },
 }
 
@@ -68,7 +69,7 @@ class Img extends React.Component {
         />
         <img
           src={item.thumb}
-          style={styles.verificationImage}
+          style={styles.image}
           alt=""
           onTouchTap={() => {this.handleSelectionChange(item.id)}}
         />
