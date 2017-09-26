@@ -1,6 +1,7 @@
 {
   "name": "cp2",
   "version": "0.0.1",
+  "license": "TBA",
   "description": "",
   "keywords": [],
   "main": "./src/index.js",

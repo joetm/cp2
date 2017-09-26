@@ -3,15 +3,12 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Tabs, Tab } from 'material-ui/Tabs'
-// TODO
-import { pinkA200 } from 'material-ui/styles/colors'
 import PhotoIcon from 'material-ui/svg-icons/image/photo'
 import PostIcon from 'material-ui/svg-icons/communication/chat-bubble-outline'
 import ContactsIcon from 'material-ui/svg-icons/communication/contacts'
 import CrowdIcon from 'material-ui/svg-icons/device/location-searching'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import { darkGray } from '../../common/colors'
 import routes from '../../routes'
 
 
@@ -50,18 +47,6 @@ const styles = {
 }
 
 
-// const StatText = (props) => (
-//     <div style={styles.statStyle}>
-//         <div style={styles.statTitleStyle}>
-//             {props.title}
-//         </div>
-//         <div style={styles.statValueStyle}>
-//             {props.value}
-//         </div>
-//     </div>
-// )
-
-
 class ProfileStats extends React.Component {
     constructor(props) {
         super(props)
@@ -87,10 +72,11 @@ class ProfileStats extends React.Component {
         this.props.history.push(tab.props.route)
     }
     render() {
-        const { user } = this.props
+        const { user, palette } = this.props
+        console.log('palette', palette)
         const { url } = this.props.match
         return (
-            <div style={{backgroundColor: user.isOnline ? pinkA200 : darkGray}}>
+            <div style={{backgroundColor: user.isOnline ? palette.primary2Color : palette.primary1Color}}>
                 <Tabs
                     style={styles.tabsStyle}
                     initialSelectedIndex={this.state.initialSelectedIndex}

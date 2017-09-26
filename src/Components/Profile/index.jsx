@@ -3,6 +3,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
+import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import { fetchUser, fetchUserProfileImages } from '../../actions'
 import routes from '../../routes'
@@ -12,7 +13,6 @@ import Spacer from '../Shared/Spacer'
 import ProfileStats from './ProfileStats'
 import ProfileUsername from './ProfileUsername'
 import OnlineStatus from './OnlineStatus'
-// --
 import Posts from '../Forum/Posts'
 import Album from '../Content/Album'
 import Videos from '../Content/Videos'
@@ -37,12 +37,9 @@ const styles = {
  * @class
  */
 class Profile extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            blurredImg: false,
-            user: {},
-        }
+    state = {
+        blurredImg: false,
+        user: {},
     }
     componentDidMount() {
         this.props.fetchUser(this.props.userid)
@@ -55,7 +52,7 @@ class Profile extends React.Component {
      * Render the component.
      */
     render() {
-        const { userid, url, profileImages, fetchUserProfileImages } = this.props
+        const { userid, url, profileImages, fetchUserProfileImages, palette } = this.props
 
         let user
         if (this.props.users[userid] === undefined) {
@@ -74,9 +71,13 @@ class Profile extends React.Component {
                     toggleProfileDetails={this.toggleProfileDetails}
                     profileImages={profileImages}
                     fetchUserProfileImages={fetchUserProfileImages}
+                    palette={palette}
                 />
 
-                <ProfileStats user={user} />
+                <ProfileStats
+                    user={user}
+                    palette={palette}
+                />
 
                 <div style={styles.avatarBox}>
                     <Avatar
@@ -85,8 +86,16 @@ class Profile extends React.Component {
                         username={user.username}
                         onTouchTap={this.toggleProfileDetails}
                     />
-                    <ProfileUsername name={user.username} usertitle={user.usertitle} />
-                    <OnlineStatus isOnline={user.isOnline} applyOffset={true} />
+                    <ProfileUsername
+                        name={user.username}
+                        usertitle={user.usertitle}
+                        palette={palette}
+                    />
+                    <OnlineStatus
+                        isOnline={user.isOnline}
+                        applyOffset={true}
+                        palette={palette}
+                    />
                 </div>
 
                 <Spacer />
@@ -133,9 +142,10 @@ const mapStateToProps = (state, ownProps) => ({
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,
     userid: +ownProps.match.params.userid,
+    palette: ownProps.muiTheme.palette,
 })
 
-export default connect(
+export default muiThemeable()(connect(
     mapStateToProps,
     { fetchUser, fetchUserProfileImages }
-)(Profile)
+)(Profile))

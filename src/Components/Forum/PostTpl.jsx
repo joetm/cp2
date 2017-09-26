@@ -18,9 +18,9 @@ import SocialTools from '../Shared/SocialTools'
 const styles = {
     postTplContainer: {
         marginBottom: '1em',
+        position: 'relative',
     },
     userinfo: {
-        textAlign: 'center',
     },
     userinfoList: {
         listStyle: 'none',
@@ -35,6 +35,10 @@ const styles = {
         float: 'right',
         display: 'inline-block',
     },
+    clockIcon: {
+        height: '1em',
+        margin: '0 0.5em 0 0',
+    },
 }
 
 
@@ -43,85 +47,66 @@ class PostTpl extends React.Component {
         const {
             id,
             title,
-            content,
+            content = '',
             type,
             isEmbedded,
-            user,
+            user = {},
             tags,
             timestamp,
             likes = 0,
             macro,
         } = this.props
+        const { username, avatar, numPosts, joinDate } = user
         const postedOn = humanReadableDate(timestamp)
 
         return (
             <div style={styles.postTplContainer}>
 
+                <div style={styles.userinfo}>
+                    <Avatar src={avatar} macro={macro} />
+                    <Headline level="3">{username}</Headline>
+                    <ul style={{
+                        ...styles.userinfoList,
+                        color: this.props.muiTheme.palette.textColor,
+                    }}>
+                        <li>#Posts: {numPosts}</li>
+                        <li>Joined: {humanReadableDate(joinDate).formattedDate}</li>
+                    </ul>
+                </div>
+
                 {
-                    !isEmbedded &&
-                    <Headline level="2">{title}</Headline>
+                    parser.toReact(content)
                 }
 
-                <GridWrap>
+                <div style={{
+                    ...styles.postFooter,
+                    color: this.props.muiTheme.palette.secondaryTextColor,
+                }}>
+                    <div style={{float: 'left', marginTop: '24px'}}>
+                        <ClockIcon style={styles.clockIcon} />
+                        {postedOn.formattedDate}
+                        {' '}
+                        {postedOn.formattedTime}
+                    </div>
+                    <div style={styles.socialToolsContainer}>
+                        <SocialTools
+                            {...{likes}}
+                            type={type}
+                            itemid={id}
+                        />
+                    </div>
+                </div>
 
-                    <CellWrapper full={2} tablet={1} phone={1}>
+                <div style={styles.postFooter}>
                     {
-                        user && (
-                            <div style={styles.userinfo}>
-                                <Avatar
-                                    src={user.avatar}
-                                    macro={macro}
-                                    style={{margin: 'auto'}}
-                                />
-                                <Headline level="3">{user.username}</Headline>
-                                <div>
-                                    <ul style={{
-                                        ...styles.userinfoList,
-                                        color: this.props.muiTheme.palette.textColor,
-                                    }}>
-                                        <li>#Posts: {user.numPosts}</li>
-                                        <li>Joined: {humanReadableDate(user.joinDate).formattedDate}</li>
-                                    </ul>
-                                </div>
+                        tags && (
+                            <div>
+                                <Tags tags={tags} />
                             </div>
                         )
                     }
-                    </CellWrapper>
+                </div>
 
-                    <CellWrapper full={10} tablet={7} phone={3}>
-                        {
-                            content &&
-                            parser.toReact(content)
-                        }
-                        <div style={{
-                            ...styles.postFooter,
-                            color: this.props.muiTheme.palette.secondaryTextColor,
-                        }}>
-                            <div style={{float: 'left', marginTop: '24px'}}>
-                                <ClockIcon style={{height: '1em', margin: '0 0.5em 0 0'}} />
-                                {postedOn.formattedDate}
-                                {' '}
-                                {postedOn.formattedTime}
-                            </div>
-                            <div style={styles.socialToolsContainer}>
-                                <SocialTools
-                                    {...{likes}}
-                                    type={type}
-                                    itemid={id}
-                                />
-                            </div>
-                        </div>
-                        <div style={styles.postFooter}>
-                            {
-                                tags && (
-                                    <div>
-                                        <Tags tags={tags} />
-                                    </div>
-                                )
-                            }
-                        </div>
-                    </CellWrapper>
-                </GridWrap>
             </div>
         )
     }

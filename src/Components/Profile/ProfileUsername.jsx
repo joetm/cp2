@@ -5,28 +5,28 @@ import React from 'react'
 import { gray, darkGray } from '../../common/colors'
 
 
-const profileUsername = {
-    color: darkGray,
-    fontSize: '1.5em',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
-}
-const profileUsertitle = {
-    color: gray,
-    fontSize: '1em',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
+const styles = {
+    profileUsername: {
+        fontSize: '1.5em',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        textAlign: 'center',
+    },
+    profileUsertitle: {
+        fontSize: '1em',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        textAlign: 'center',
+    }
 }
 
 
 const ProfileUsername = (props) => (
     <div>
-        <div style={profileUsername}>
+        <div style={{...styles.profileUsername, color: props.palette.textColor}}>
             {props.name}
         </div>
-        <div style={profileUsertitle}>
+        <div style={{...styles.profileUsertitle, color: props.palette.primary1Color}}>
             {props.usertitle}
         </div>
     </div>
