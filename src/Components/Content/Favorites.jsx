@@ -13,7 +13,7 @@ const Favorites = (props) => (
         isEmbedded={props.isEmbedded}
         headline="Favorites"
         isFetching={props.isFetching}
-        content={props.favorites}
+        items={props.favorites}
     />
 )
 

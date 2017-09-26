@@ -6,11 +6,12 @@ import IconButton from 'material-ui/IconButton'
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more'
 import ListModeIcon from 'material-ui/svg-icons/action/view-list'
 import GalleryModeIcon from 'material-ui/svg-icons/action/view-module'
+import MasonryModeIcon from 'material-ui/svg-icons/action/view-quilt'
 import MenuItem from 'material-ui/MenuItem'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
-import routes from '../../routes'
+import allRoutes from '../../routes'
 
 
 const _ID = {
@@ -34,14 +35,14 @@ class SubToolbar extends React.Component {
      * Render the component.
      */
     render() {
-        const { history, changeViewMode } = this.props
-        const routing = this.props.routes === undefined ? routes : this.props.routes
-
+        const { routes, history, changeViewMode } = this.props
+        const { value } = this.state
+        const routing = routes ? routes : allRoutes
         return (
             <Toolbar>
                 <ToolbarGroup firstChild={true}>
                     <DropDownMenu
-                        value={this.state.value}
+                        value={value}
                         onChange={this.handleChange}
                         iconButton={expandButton}
                         iconStyle={{marginTop: '-12px'}}
@@ -61,7 +62,6 @@ class SubToolbar extends React.Component {
                             primaryText="Videos"
                             onTouchTap={() => { history.push(routing.VIDEOS) }}
                         />
-
                         {/* TODO: this is only a filter for images */}
                         <MenuItem
                             value={_ID.VERIFICATION}
@@ -81,15 +81,14 @@ class SubToolbar extends React.Component {
                     </DropDownMenu>
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <IconButton
-                        onTouchTap={changeViewMode('list')}
-                    >
+                    <IconButton onTouchTap={changeViewMode('list')}>
                         <ListModeIcon />
                     </IconButton>
-                    <IconButton
-                        onTouchTap={changeViewMode('full')}
-                    >
+                    <IconButton onTouchTap={changeViewMode('full')}>
                         <GalleryModeIcon />
+                    </IconButton>
+                    <IconButton onTouchTap={changeViewMode('masonry')}>
+                        <MasonryModeIcon />
                     </IconButton>
                     {/*
                     <IconMenu iconButtonElement={expandButton}>

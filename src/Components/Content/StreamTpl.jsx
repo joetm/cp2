@@ -5,22 +5,19 @@ import Subheader from 'material-ui/Subheader'
 import Divider from 'material-ui/Divider'
 // import Bricks from 'bricks.js'
 // import { findDOMNode } from 'react-dom'
-// Material Component: Layout (Grid)
-import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import { translateDayOffset, categorizeList } from '../../common/helpers'
-// --
-import Update from './Update'
-import Notification from './Notification'
-// --
+import { TILED } from '../../common/viewModes'
 import Loader from '../Shared/Loader'
 import SubToolbar from './SubToolbar'
+import Headline from '../Shared/Headline'
 import Spacer from '../Shared/Spacer'
-import { TILED } from '../../common/viewModes'
+import Update from './Update'
+import MasonryItem from './MasonryItem'
+import Notification from './Notification'
 import UpdateWrap from '../Shared/UpdateWrap'
 import ListWrap from '../Shared/ListWrap'
-import Headline from '../Shared/Headline'
-
+import MasonryWrap from '../Shared/MasonryWrap'
 
 class StreamTpl extends React.Component {
     bricksInstance = null
@@ -63,12 +60,76 @@ class StreamTpl extends React.Component {
      * Render the component.
      */
     render() {
-        const { content, isFetching, isEmbedded } = this.props
+        const { items, isFetching, headline, isEmbedded } = this.props
+        const { viewMode } = this.state
 
-        const categorizedItems = categorizeList(content)
+        let updates = []
+        let Container
+        let Wrapper
+        let useCategories = true
 
-        const Container = this.state.viewMode === 'list' ? Notification : Update
-        const Wrapper = this.state.viewMode === 'list' ? ListWrap : UpdateWrap
+        switch (viewMode) {
+          case 'list': // minimized notifications
+            Wrapper = ListWrap
+            Container = Notification
+            useCategories = true
+            break
+          case 'masonry': // no gutter full-screen masonry gallery
+            Wrapper = MasonryWrap
+            Container = MasonryItem
+            useCategories = false
+            break
+          default:
+          case 'full': // grouped updates on cards
+            Wrapper = UpdateWrap
+            Container = Update
+            useCategories = true
+            break
+        }
+
+        if (useCategories) {
+
+          updates = categorizeList(items).map((group, daysAgo) => {
+            return (
+              <div key={`grp_${daysAgo}`}>
+                <Subheader>{ translateDayOffset(daysAgo) }</Subheader>
+                <Divider />
+                <Wrapper className="container">
+                  {
+                    group.map((item) => (
+                      <Container
+                          key={`upd_${item.id}`}
+                          {...item}
+                          full={3}
+                          tablet={4}
+                          phone={2}
+                      />
+                    ))
+                  }
+                </Wrapper>
+              </div>
+            )
+          })
+
+        } else {
+
+          updates = (
+            <Wrapper className="container">
+              {
+                items.map((item) => (
+                  <Container
+                      key={`upd_${item.id}`}
+                      {...item}
+                      full={3}
+                      tablet={4}
+                      phone={2}
+                  />
+                ))
+              }
+            </Wrapper>
+          )
+
+        }
 
         return (
           <div>
@@ -77,40 +138,13 @@ class StreamTpl extends React.Component {
               !isEmbedded &&
               <div>
                 <SubToolbar changeViewMode={this.changeViewMode} />
-                <Headline level="2">{this.props.headline}</Headline>
+                <Headline level="2">{headline}</Headline>
               </div>
             }
 
-
             <Loader isLoading={isFetching} />
 
-            {
-              categorizedItems.map((group, daysAgo) => {
-                return (
-                  <div key={`grp_${daysAgo}`}>
-
-                    <Subheader>{ translateDayOffset(daysAgo) }</Subheader>
-
-                    <Divider />
-
-                    <Wrapper className="container">
-                      {
-                        group.map((item) => (
-                          <Container
-                              key={`upd_${item.id}`}
-                              {...item}
-                              full={3}
-                              tablet={4}
-                              phone={2}
-                          />
-                        ))
-                      }
-                    </Wrapper>
-
-                  </div>
-                )
-              })
-            }
+            { updates }
 
             <Spacer />
 

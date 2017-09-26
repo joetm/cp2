@@ -63,8 +63,10 @@ const deleteItem = (key, itemid) => {
       headers: JSON_HEADER
     })
     .then(response => response.json())
-    .then(data => data)
-    .catch(error => throwError(error.message || 'Something went wrong'))
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 const fetchItems = (key, limit = null) => {
@@ -75,10 +77,10 @@ const fetchItems = (key, limit = null) => {
     // console.log('fetchItems', key, limit, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
-      .then(data => {
-        return limit !== 1 ? data : data[0]
-      })
-      .catch(error => throwError(error.message || 'Something went wrong'))
+      .then(
+        data => { return limit !== 1 ? data : data[0] },
+        error => throwError(error.message || 'Something went wrong')
+      )
 }
 
 const fetchItem = (key, itemid) => {
@@ -86,8 +88,10 @@ const fetchItem = (key, itemid) => {
     // console.log('PATCH', key, itemid, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
-      .then(data => data)
-      .catch(error => throwError(error.message || 'Something went wrong'))
+      .then(
+        data => data,
+        error => throwError(error.message || 'Something went wrong')
+      )
 }
 
 const incrementItem = (key, itemid = null, field, increment = 1) => {
@@ -99,11 +103,10 @@ const incrementItem = (key, itemid = null, field, increment = 1) => {
       headers: JSON_HEADER
     })
       .then(response => response.json())
-      .then(item => {
-          // console.log('patch item', key, itemid, field, item[field])
-          return patchItem(key, itemid, {[field]: item[field] + increment})
-      })
-      .catch(error => throwError(error.message || "Something went wrong"))
+      .then(
+        item => patchItem(key, itemid, {[field]: item[field] + increment}),
+        error => throwError(error.message || "Something went wrong")
+      )
 }
 
 const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = null) => {
@@ -114,10 +117,10 @@ const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = 
     console.log('fetchSubitemsForItem', key, itemid, subitemtype, limit, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
-      .then(data => {
-        return limit !== 1 ? data : data[0]
-      })
-      .catch(error => throwError(error.message || 'Something went wrong'))
+      .then(
+        data => { return limit !== 1 ? data : data[0] },
+        error => throwError(error.message || 'Something went wrong')
+      )
 }
 
 // -------------------------------------------------------------------
@@ -199,13 +202,15 @@ const fetchFromProtectedAPI = (key, selection, limit = null) => {
     // console.log('fetchFromProtectedAPI', key, selection, limit, url)
     return fetch(url)
         .then(response => response.json())
-        .then(data => {
+        .then(
+          data => {
             if (limit === 1 && data instanceof Array) {
                 return data[0]
             }
             return data
-        })
-        .catch(error => throwError(error.message || 'Something went wrong'))
+          },
+          error => throwError(error.message || 'Something went wrong')
+        )
 }
 
 // TODO
@@ -225,8 +230,10 @@ export const sendChatMessage = (payload) => {
       timestamp: +new Date(),
     }
     return createNewItem(CHAT, chatMsg)
-            .then(data => data)
-            .catch(error => throwError(error.message || 'Something went wrong'))
+            .then(
+              data => data,
+              error => throwError(error.message || 'Something went wrong')
+            )
 }
 
 // -------------------------------------------------------------------
@@ -254,8 +261,10 @@ export const recordCrowdDecision = (vote, id, rating = null) => {
   // TODO: do this with patch
   return jsonAPI.sendDataToAPI(payload)
     .then(response => response.json())
-    .then(data => data)
-    .catch(error => throwError(error.message || 'Something went wrong'))
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 // TODO
@@ -310,12 +319,10 @@ export const find = (key, field, returnEmpty = false) => {
   return fetch(url, { headers: JSON_HEADER })
   .then(response => response.json())
   .then(data => {
-    const found = !!data.length
-    // console.log('search result', data, 'found', found)
-    if (returnEmpty) {
-      return found
-    }
-    return data
-  })
-  .catch(error => throwError(error.message || `Not found: [${error}]`))
+      const found = !!data.length
+      if (returnEmpty) { return found }
+      return data
+    },
+    error => throwError(error.message || `Not found: [${error}]`)
+  )
 }

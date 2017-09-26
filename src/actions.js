@@ -119,18 +119,18 @@ export const DELETE_MSG_SUCCESS         = 'CHAT::DELETE_MSG_SUCCESS'
 
 export const REMOVE_POST                = 'FORUM::REMOVE_POST'
 
-// export const SEND_SETTING              = 'APP::SEND_SETTING'
-export const RECEIVE_SETTING            = 'APP::RECEIVE_SETTING'
+// export const SEND_SETTING                 = 'APP::SEND_SETTING'
+export const RECEIVE_SETTING                 = 'APP::RECEIVE_SETTING'
 
-export const REPLY_NOTIFICATION         = 'SOCIAL::REPLY_NOTIFICATION'
-export const FORWARD_NOTIFICATION       = 'SOCIAL::FORWARD_NOTIFICATION'
-export const DELETE_NOTIFICATION        = 'SOCIAL::DELETE_NOTIFICATION'
+export const REPLY_NOTIFICATION              = 'SOCIAL::REPLY_NOTIFICATION'
+export const FORWARD_NOTIFICATION            = 'SOCIAL::FORWARD_NOTIFICATION'
+export const DELETE_NOTIFICATION             = 'SOCIAL::DELETE_NOTIFICATION'
 
 // AUTH
-export const LOGIN_REQUEST              = 'AUTH::LOGIN_REQUEST'
-export const LOGIN_FAILURE              = 'AUTH::LOGIN_FAILURE'
-export const LOGIN_SUCCESS              = 'AUTH::LOGIN_SUCCESS'
-export const LOGOUT                     = 'AUTH::LOGOUT'
+export const LOGIN_REQUEST                   = 'AUTH::LOGIN_REQUEST'
+export const LOGIN_FAILURE                   = 'AUTH::LOGIN_FAILURE'
+export const LOGIN_SUCCESS                   = 'AUTH::LOGIN_SUCCESS'
+export const LOGOUT                          = 'AUTH::LOGOUT'
 
 export const FETCH_VIDEO_STARTED             = 'VIDEO::FETCH_VIDEO_STARTED'
 export const FETCH_VIDEO_SUCCESS             = 'VIDEO::FETCH_VIDEO_SUCCESS'
@@ -139,14 +139,14 @@ export const FETCH_REVIEWITEM_STARTED        = 'REVIEW::FETCH_REVIEWITEM_STARTED
 export const FETCH_REVIEWITEM_FAILED         = 'REVIEW::FETCH_REVIEWITEM_FAILED'
 export const FETCH_REVIEWLEADERBOARD_STARTED = 'REVIEW::FETCH_REVIEWLEADERBOARD_STARTED'
 export const FETCH_REVIEWLEADERBOARD_FAILED  = 'REVIEW::FETCH_REVIEWLEADERBOARD_FAILED'
-export const FETCH_POSTS_FOR_THREAD_STARTED = 'FORUM::FETCH_POSTS_FOR_THREAD_STARTED'
-export const FETCH_POSTS_FOR_THREAD_FAILURE = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
+export const FETCH_POSTS_FOR_THREAD_STARTED  = 'FORUM::FETCH_POSTS_FOR_THREAD_STARTED'
+export const FETCH_POSTS_FOR_THREAD_FAILURE  = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
 
 // MOD
-export const RECEIVE_MOD_ITEMS   = 'MOD::RECEIVE_MOD_ITEMS'
+export const RECEIVE_MOD_ITEMS               = 'MOD::RECEIVE_MOD_ITEMS'
 
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
-// export const RECEIVE_PROTECTED_DATA   = 'AUTH::RECEIVE_PROTECTED_DATA'
+// export const RECEIVE_PROTECTED_DATA       = 'AUTH::RECEIVE_PROTECTED_DATA'
 
 /**
  * Function to reduce redux boilerplate code
@@ -155,7 +155,13 @@ export const RECEIVE_MOD_ITEMS   = 'MOD::RECEIVE_MOD_ITEMS'
  **/
 function makeActionCreator(type, ...argNames) {
   return function (...args) {
-    const action = { type }
+    const action = {
+        type,
+        // fsa compliance
+        // payload: {},
+        // error: null
+        // meta: {},
+    }
     argNames.forEach((arg, index) => {
       action[argNames[index]] = args[index]
     })
@@ -184,13 +190,13 @@ export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 // export const openStreamSidebar     = makeActionCreator(OPEN_STREAM_SIDEBAR)
 // export const closeStreamSidebar    = makeActionCreator(CLOSE_STREAM_SIDEBAR)
-// export const like                  = makeActionCreator(LIKE,                'itemid')
-// export const dislike               = makeActionCreator(DISLIKE,             'itemid')
-export const undoLike              = makeActionCreator(UNDO_LIKE,              'itemid')
-export const undoDislike           = makeActionCreator(UNDO_DISLIKE,           'itemid')
-export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,         'itemid')
-export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE,      'itemid')
-export const sendMessage           = makeActionCreator(SEND_MESSAGE,           'toUserId', 'msg', 'currentUser')
+// export const like                  = makeActionCreator(LIKE,             'itemid')
+// export const dislike               = makeActionCreator(DISLIKE,          'itemid')
+export const undoLike              = makeActionCreator(UNDO_LIKE,           'itemid')
+export const undoDislike           = makeActionCreator(UNDO_DISLIKE,        'itemid')
+export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,      'itemid')
+export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE,   'itemid')
+export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'toUserId', 'msg', 'currentUser')
 
 // forum actions
 export const getPosts              = makeActionCreator(GET_POSTS)
@@ -421,12 +427,16 @@ export const fetchReviewItem = (itemid = null) => (dispatch) => {
     dispatch(fetchReviewItemStarted())
     if (itemid) {
         return api.fetchSpecificReviewItem(itemid)
-            .then(response => dispatch(receiveReviewItem(response)))
-            .catch(error => dispatch(fetchReviewItemFailed(error)))
+            .then(
+                response => dispatch(receiveReviewItem(response)),
+                error => dispatch(fetchReviewItemFailed(error))
+            )
     }
     return api.fetchReviewItem()
-        .then(response => dispatch(receiveReviewItem(response)))
-        .catch(error => dispatch(fetchReviewItemFailed(error)))
+        .then(
+            response => dispatch(receiveReviewItem(response)),
+            error => dispatch(fetchReviewItemFailed(error))
+        )
 }
 
 /**
@@ -436,8 +446,10 @@ export const fetchReviewItem = (itemid = null) => (dispatch) => {
 export const fetchReviewLeaderboard = () => (dispatch) => {
     dispatch(fetchReviewLeaderboardStarted())
     return api.fetchReviewLeaderboard()
-        .then(response => dispatch(receiveReviewLeaderboard(response)))
-        .catch(error => dispatch(fetchReviewLeaderboardFailed(error)))
+        .then(
+            response => dispatch(receiveReviewLeaderboard(response)),
+            error => dispatch(fetchReviewLeaderboardFailed(error))
+        )
 }
 
 /**
@@ -461,8 +473,10 @@ export const fetchPosts = (limit) =>
 export const fetchPostsForThread = (threadid, limit) => (dispatch) => {
     dispatch(fetchPostsForThreadStarted())
     return api.fetchPostsForThread(threadid, limit)
-      .then(response => dispatch(receivePostsForThread(response)))
-      .catch(error => dispatch(fetchPostsForThreadFailure(error)))
+      .then(
+        response => dispatch(receivePostsForThread(response)),
+        error => dispatch(fetchPostsForThreadFailure(error))
+      )
 }
 
 /**
@@ -537,10 +551,10 @@ export const fetchVideos = (limit) =>
 export const fetchVideo = (videoid) => (dispatch) => {
     dispatch(fetchVideoStarted())
     return api.fetchVideo(videoid)
-                .then((response) => dispatch(receiveVideo(response)))
-                .catch(error => {
-                  dispatch(fetchVideoFailure(error))
-                })
+                .then(
+                    response => dispatch(receiveVideo(response)),
+                    error => dispatch(fetchVideoFailure(error))
+                )
 }
 
 /**
@@ -691,8 +705,10 @@ export const updateCity = () =>
 export const removeAvatar = (userid) => (dispatch) => {
     dispatch(deleteAvatarStarted())
     return api.removeUserField('avatar')
-                .then(dispatch(deleteAvatarSuccess(userid)))
-                .catch(error => dispatch(deleteAvatarFailure(error)))
+                .then(
+                    dispatch(deleteAvatarSuccess(userid)),
+                    error => dispatch(deleteAvatarFailure(error))
+                )
 }
 
 // export const removeProfileImg = () =>
@@ -700,20 +716,27 @@ export const removeAvatar = (userid) => (dispatch) => {
 export const removeProfileImg = () => (dispatch) => {
     dispatch(deleteProfileImgStarted())
     return api.removeUserField('profileimg')
-                .then(dispatch(deleteProfileImgSuccess()))
-                .catch(error => dispatch(deleteProfileImgFailure(error)))
+                .then(
+                    dispatch(deleteProfileImgSuccess()),
+                    error => dispatch(deleteProfileImgFailure(error))
+                )
 }
 
 export const removeImages = (itemids) => (dispatch) => {
     dispatch(deleteImagesStarted())
     return api.deleteItems(itemids)
-                .then(dispatch(deleteImagesSuccess(itemids)))
-                .catch(error => dispatch(deleteImagesFailure(error)))
+                .then(
+                    dispatch(deleteImagesSuccess(itemids)),
+                    error => dispatch(deleteImagesFailure(error))
+                )
 }
 
 export const removeChatMsg = (itemid) => (dispatch) => {
     return api.removeItem('chat', itemid)
-                .then(dispatch(deleteMsgSuccess(itemid)))
+                .then(
+                    dispatch(deleteMsgSuccess(itemid))
+                    // TODO: error
+                )
 }
 
 export const changeSetting = (key, value) =>

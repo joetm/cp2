@@ -13,7 +13,7 @@ const Pictures = (props) => (
         isEmbedded={props.isEmbedded}
         headline="Pictures"
         isFetching={props.isFetching}
-        content={props.images}
+        items={props.images}
     />
 )
 

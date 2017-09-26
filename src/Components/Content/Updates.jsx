@@ -13,7 +13,7 @@ const Updates = (props) => (
         isEmbedded={props.isEmbedded}
         headline="Updates"
         isFetching={props.isFetching}
-        content={props.updates}
+        items={props.updates}
     />
 )
 

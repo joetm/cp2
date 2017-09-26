@@ -15,7 +15,7 @@ const Messages = (props) => (
         viewMode={LISTED}
         headline="Private Messages"
         isFetching={props.isFetching}
-        content={props.messages}
+        items={props.messages}
     />
 )
 

@@ -15,7 +15,7 @@ const Likes = (props) => (
         viewMode={LISTED}
         headline="Likes"
         isFetching={props.isFetching}
-        content={props.likes}
+        items={props.likes}
     />
 )
 
