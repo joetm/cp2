@@ -13,10 +13,9 @@ import AutoComplete from 'material-ui/AutoComplete'
 
 import { findUser, changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
-// import { inlineButton } from '../Shared/styles'
 import Alert from '../Shared/Alert'
 import getSuccessMsg from '../../common/successMessages'
-// import { usernames } from '../../common/blocklist'
+// import { usernames } from '../../common/blocklists/usernames'
 import Spacer from '../Shared/Spacer'
 
 
@@ -24,33 +23,30 @@ class AccountSettings extends React.Component {
     unlockButton = null
     usernamePrimary = null
     usernameConfirmation = null
-    constructor(props) {
-      super(props)
-      this.state = {
-          // fields
-          usertitle: '',
-          email: '',
-          confirmEmail: '',
-          // locking
-          fieldsLocked: true,
-          deletionIsLocked: true,
-          // match checking
-          usernamesMatching: false,
-          emailsMatching: false,
-          passwordsMatching: false,
-          // erorrs
-          usernameError: null,
-          emailError: null,
-          confirmEmailError: null,
-          passwordError: null,
-          oldpasswordError: null,
-          // snackbar alert
-          alertIsOpen: false,
-          alertMsg: getSuccessMsg(), // once per page load
-          // dialogs
-          deletionDialogIsOpen: false,
-          usernameChangeDialogIsOpen: false,
-      }
+    state = {
+      // fields
+      usertitle: '',
+      email: '',
+      confirmEmail: '',
+      // locking
+      fieldsLocked: true,
+      deletionIsLocked: true,
+      // match checking
+      usernamesMatching: false,
+      emailsMatching: false,
+      passwordsMatching: false,
+      // erorrs
+      usernameError: null,
+      emailError: null,
+      confirmEmailError: null,
+      passwordError: null,
+      oldpasswordError: null,
+      // snackbar alert
+      alertIsOpen: false,
+      alertMsg: getSuccessMsg(), // once per page load
+      // dialogs
+      deletionDialogIsOpen: false,
+      usernameChangeDialogIsOpen: false,
     }
     componentDidMount() {
       this.props.fetchCountries()
@@ -241,7 +237,9 @@ class AccountSettings extends React.Component {
      * Render the component.
      */
     render() {
-      // const { email } = this.props
+      const { birthday } = this.props
+      console.log(birthday)
+
       const actions = [
         <FlatButton
           label="Cancel"
@@ -256,6 +254,7 @@ class AccountSettings extends React.Component {
           onTouchTap={this.handleAccountDeletion}
         />,
       ]
+
       return (
         <div style={{textAlign: 'left'}}>
 
@@ -266,6 +265,7 @@ class AccountSettings extends React.Component {
               hintText="Your birth date"
               openToYearSelection={true}
               autoOk={true}
+              value={birthday ? ( new Date(birthday) ) : null}
               onChange={this.handleChangeBirthdate}
             />
 
