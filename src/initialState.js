@@ -116,7 +116,6 @@ const initialState = {
     },
     image: {
         isFetching: true,
-        item: {},
     },
     // -- crowd review
     reviewitem: {

@@ -54,7 +54,7 @@ class Image extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     currentUserId: state.currentUser.id,
     fullscreenImages: state.currentUser.fullscreenImages,
-    image: state.image,
+    image: state.image[ownProps.match.params.imageid],
     imageid: ownProps.match.params.imageid,
 })
 
