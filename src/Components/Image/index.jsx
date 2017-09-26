@@ -7,9 +7,10 @@ import { withRouter } from 'react-router-dom'
 import { fetchPicture } from '../../actions'
 // --
 import Spacer from '../Shared/Spacer'
-import FullscreenImage from './FullscreenImage'
 import Update from '../Content/Update'
 import Headline from '../Shared/Headline'
+import InlineImage from './InlineImage'
+import FullscreenImage from './FullscreenImage'
 
 
 class Image extends React.Component {
@@ -20,16 +21,17 @@ class Image extends React.Component {
      * Render the component.
      */
     render() {
-        const { title } = this.props.image
-        const { fullscreenImages } = this.props
+        const { image = {}, fullscreenImages } = this.props
+        const { title } = image
         return (
             <div>
                 {
                     !fullscreenImages ?
                     <div>
                         <Headline>{title}</Headline>
-                        <Update
-                            {...this.props.image}
+                        <InlineImage
+                            {...image}
+                            scaleImages={true}
                             showTitle={false}
                             clickable={false}
                             gridColumnsFull={1}
@@ -40,7 +42,7 @@ class Image extends React.Component {
                     </div>
                     :
                     <FullscreenImage
-                        {...this.props.image}
+                        {...image}
                     />
                 }
                 <Spacer />

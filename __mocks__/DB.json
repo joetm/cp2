@@ -1465,7 +1465,7 @@
     "showBirthday": true,
     "showLocation": true,
     "showOnlineStatus": true,
-    "fullscreenImages": true,
+    "fullscreenImages": false,
     "numPosts": 4,
     "numThreads": 3,
     "numImages": 2,
