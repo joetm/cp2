@@ -6,8 +6,7 @@ import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import LockIcon from 'material-ui/svg-icons/action/lock-outline'
-// import LoginButton from '../../Shared/Buttons/LoginButton'
-// import SignupButton from '../../Shared/Buttons/SignupButton'
+import LockOpenIcon from 'material-ui/svg-icons/action/lock-open'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
@@ -62,7 +61,7 @@ class LoginSidebar extends React.Component {
             return null
         }
 
-        const Icon = this.state.open ? CloseIcon : LockIcon
+        const Icon = this.state.open ? LockOpenIcon : LockIcon
 
         return (
             <div style={{
