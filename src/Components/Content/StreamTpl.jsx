@@ -17,38 +17,35 @@ import UpdateWrap from '../Shared/UpdateWrap'
 import ListWrap from '../Shared/ListWrap'
 import MasonryWrap from '../Shared/MasonryWrap'
 
+
 class StreamTpl extends React.Component {
     bricksInstance = null
     constructor(props) {
         super(props)
         this.state = {
             // initial view mode from props (or default: GROUPED_GALLERY)
-            viewMode: props.viewMode || GROUPED_GALLERY,
+            selectedViewMode: props.viewMode || GROUPED_GALLERY,
         }
     }
     componentDidMount() {
         this.props.action()
     }
-    componentWillUnmount() {
-        this.bricksInstance = null
-    }
-    changeViewMode = (viewMode) => () => {
-        // console.log('changeViewMode', viewMode)
-        this.setState({ viewMode })
+    changeViewMode = (selectedViewMode) => () => {
+        this.setState({ selectedViewMode })
     }
     /**
      * Render the component.
      */
     render() {
-        const { items, isFetching, headline, isEmbedded } = this.props
-        const { viewMode } = this.state
+        const { items, isFetching, headline, isEmbedded, viewMode } = this.props
+        const { selectedViewMode } = this.state
 
         let updates = []
         let Container
         let Wrapper
         let useCategories = true
 
-        switch (viewMode) {
+        switch (selectedViewMode) {
           case MINIMAL_LIST: // minimized notifications
             Wrapper = ListWrap
             Container = Notification
@@ -117,7 +114,10 @@ class StreamTpl extends React.Component {
             {
               !isEmbedded &&
               <div>
-                <SubToolbar changeViewMode={this.changeViewMode} />
+                <SubToolbar
+                  changeViewMode={this.changeViewMode}
+                  selectedViewMode={selectedViewMode}
+                />
                 <Headline level="2">{headline}</Headline>
               </div>
             }

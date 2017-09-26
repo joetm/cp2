@@ -36,7 +36,7 @@ class SubToolbar extends React.Component {
      * Render the component.
      */
     render() {
-        const { routes, history, changeViewMode } = this.props
+        const { routes, history, changeViewMode, selectedViewMode } = this.props
         const { value } = this.state
         const routing = routes ? routes : allRoutes
         return (
@@ -82,14 +82,23 @@ class SubToolbar extends React.Component {
                     </DropDownMenu>
                 </ToolbarGroup>
                 <ToolbarGroup>
-                    <IconButton onTouchTap={changeViewMode(MINIMAL_LIST)}>
-                        <ListModeIcon />
-                    </IconButton>
-                    <IconButton onTouchTap={changeViewMode(GROUPED_GALLERY)}>
+                    <IconButton
+                        onTouchTap={changeViewMode(GROUPED_GALLERY)}
+                        iconStyle={{color: selectedViewMode === GROUPED_GALLERY ? 'red' : 'black'}}
+                    >
                         <GalleryModeIcon />
                     </IconButton>
-                    <IconButton onTouchTap={changeViewMode(MASONRY_GALLERY)}>
+                    <IconButton
+                        onTouchTap={changeViewMode(MASONRY_GALLERY)}
+                        iconStyle={{color: selectedViewMode === MASONRY_GALLERY ? 'red' : 'black'}}
+                    >
                         <MasonryModeIcon />
+                    </IconButton>
+                    <IconButton
+                        onTouchTap={changeViewMode(MINIMAL_LIST)}
+                        iconStyle={{color: selectedViewMode === MINIMAL_LIST ? 'red' : 'black'}}
+                    >
+                        <ListModeIcon />
                     </IconButton>
                 </ToolbarGroup>
             </Toolbar>
