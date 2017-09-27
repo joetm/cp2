@@ -4,6 +4,7 @@
  **/
 
 import cuid from 'cuid'
+import { handle } from 'redux-pack'
 
 import initialState from './initialState'
 import * as ACTIONS from './actions'
@@ -225,17 +226,25 @@ export function videosReducer(videosState = initialState.videos, action) {
 }
 
 /**
- * videoReducer
+ * videoReducer (redux-pack)
  * @returns videoState
  **/
 export function videoReducer(videoState = initialState.video, action) {
-    switch (action.type) {
-        case ACTIONS.FETCH_VIDEO_STARTED:
-            return { } // TODO
-        case ACTIONS.RECEIVE_VIDEO:
-            return {...action.response}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_VIDEO:
+          return handle(videoState, action, {
+            start: prevState => ({
+              ...prevState,
+              isFetching: true,
+              error: null
+            }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, [payload.id]: payload }),
+          })
         default:
-            return videoState
+          return videoState
     }
 }
 

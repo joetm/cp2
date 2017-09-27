@@ -47,7 +47,8 @@ class Video extends React.Component {
      * Render the component.
      */
     render() {
-        const { title, content, src, thumb, likes, user, tags } = this.props.video
+        const { video = {} } = this.props
+        const { title, content, src, thumb, likes, user, tags } = video
         return (
             <div style={styles.pageWrapper}>
 
@@ -131,9 +132,9 @@ class Video extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    video: state.video,
-    isFetching: state.appState.isFetching,
     videoid: ownProps.match.params.videoid,
+    video: state.video[ownProps.match.params.videoid],
+    isFetching: state.appState.isFetching,
 })
 
 export default withRouter(connect(

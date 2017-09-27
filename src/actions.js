@@ -132,9 +132,7 @@ export const LOGIN_FAILURE                   = 'AUTH::LOGIN_FAILURE'
 export const LOGIN_SUCCESS                   = 'AUTH::LOGIN_SUCCESS'
 export const LOGOUT                          = 'AUTH::LOGOUT'
 
-export const FETCH_VIDEO_STARTED             = 'VIDEO::FETCH_VIDEO_STARTED'
-export const FETCH_VIDEO_SUCCESS             = 'VIDEO::FETCH_VIDEO_SUCCESS'
-export const FETCH_VIDEO_FAILURE             = 'VIDEO::FETCH_VIDEO_FAILURE'
+export const FETCH_VIDEO                     = 'VIDEO::FETCH_VIDEO'
 export const FETCH_REVIEWITEM_STARTED        = 'REVIEW::FETCH_REVIEWITEM_STARTED'
 export const FETCH_REVIEWITEM_FAILED         = 'REVIEW::FETCH_REVIEWITEM_FAILED'
 export const FETCH_REVIEWLEADERBOARD_STARTED = 'REVIEW::FETCH_REVIEWLEADERBOARD_STARTED'
@@ -233,7 +231,7 @@ export const receivePicture            = receiveImage
 export const receiveVerificationImages = makeActionCreator(RECEIVE_VERIFICATIONIMAGES, 'response')
 export const receiveProfileImages      = makeActionCreator(RECEIVE_PROFILEIMAGES,      'response')
 export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,             'response')
-export const receiveVideo              = makeActionCreator(RECEIVE_VIDEO,              'response')
+// export const receiveVideo              = makeActionCreator(RECEIVE_VIDEO,              'response')
 export const receiveThread             = makeActionCreator(RECEIVE_THREAD,             'response')
 export const receiveReviewItem         = makeActionCreator(RECEIVE_REVIEWITEM,         'response')
 export const receiveReviewLeaderboard  = makeActionCreator(RECEIVE_REVIEWLEADERBOARD,  'response')
@@ -280,9 +278,6 @@ export const deleteMsgSuccess        = makeActionCreator(DELETE_MSG_SUCCESS,    
 export const removePost              = makeActionCreator(REMOVE_POST,               'postid', 'bool')
 
 // --
-
-export const fetchVideoStarted          = makeActionCreator(FETCH_VIDEO_STARTED)
-export const fetchVideoFailure          = makeActionCreator(FETCH_VIDEO_FAILURE,               'error')
 
 export const fetchPostsForThreadStarted = makeActionCreator(FETCH_POSTS_FOR_THREAD_STARTED)
 export const fetchPostsForThreadFailure = makeActionCreator(FETCH_POSTS_FOR_THREAD_FAILURE,    'error')
@@ -543,18 +538,14 @@ export const fetchVideos = (limit) =>
     api.fetchVideos(limit).then(receiveVideos)
 
 /**
- * fetchVideo Asynchronous Action Creator
+ * fetchVideo Asynchronous (redux-pack) Action
  * @returns fetchVideo() - Action
  */
-// export const fetchVideo = (videoid) =>
-//     api.fetchVideo(videoid).then(receiveVideo)
-export const fetchVideo = (videoid) => (dispatch) => {
-    dispatch(fetchVideoStarted())
-    return api.fetchVideo(videoid)
-                .then(
-                    response => dispatch(receiveVideo(response)),
-                    error => dispatch(fetchVideoFailure(error))
-                )
+export function fetchVideo(id) {
+  return {
+    type: FETCH_VIDEO,
+    promise: api.fetchVideo(id),
+  };
 }
 
 /**

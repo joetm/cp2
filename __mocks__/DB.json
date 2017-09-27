@@ -1491,7 +1491,7 @@
     "showLocation": true,
     "showOnlineStatus": true,
     "fullscreenImages": true,
-    "viewMode": "gallery",
+    "viewMode": "masonry",
     "numPosts": 4,
     "numThreads": 3,
     "numImages": 2,

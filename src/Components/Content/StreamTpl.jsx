@@ -19,12 +19,10 @@ import MasonryWrap from '../Shared/MasonryWrap'
 
 
 class StreamTpl extends React.Component {
-    bricksInstance = null
     constructor(props) {
         super(props)
         this.state = {
-            // initial view mode from props (or default: GROUPED_GALLERY)
-            selectedViewMode: props.viewMode || GROUPED_GALLERY,
+            selectedViewMode: null,
         }
     }
     componentDidMount() {
@@ -45,7 +43,7 @@ class StreamTpl extends React.Component {
         let Wrapper
         let useCategories = true
 
-        switch (selectedViewMode) {
+        switch (selectedViewMode || viewMode) {
           case MINIMAL_LIST: // minimized notifications
             Wrapper = ListWrap
             Container = Notification
@@ -116,7 +114,7 @@ class StreamTpl extends React.Component {
               <div>
                 <SubToolbar
                   changeViewMode={this.changeViewMode}
-                  selectedViewMode={selectedViewMode}
+                  selectedViewMode={selectedViewMode || viewMode}
                 />
                 <Headline level="2">{headline}</Headline>
               </div>
