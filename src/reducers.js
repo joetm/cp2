@@ -137,15 +137,17 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
  * @returns reviewLeaderboardState
  **/
 export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.reviewLeaderboard, action) {
-    switch (action.type) {
-        case ACTIONS.FETCH_REVIEWLEADERBOARD_STARTED:
-            return {...reviewLeaderboardState, isFetching: true}
-        case ACTIONS.FETCH_REVIEWLEADERBOARD_FAILED:
-            return {...reviewLeaderboardState, isFetching: false, error: action.error}
-        case ACTIONS.RECEIVE_REVIEWLEADERBOARD:
-            return {...reviewLeaderboardState, isFetching: false, items: [...action.response]}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_REVIEWLEADERBOARD:
+          return handle(reviewLeaderboardState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: [...payload] }),
+          })
         default:
-            return reviewLeaderboardState
+          return reviewLeaderboardState
     }
 }
 
@@ -167,11 +169,17 @@ export function updatesReducer(updatesState = initialState.updates, action) {
  * @returns messagesState
  **/
 export function messagesReducer(messagesState = initialState.messages, action) {
-    switch (action.type) {
-        case ACTIONS.RECEIVE_MESSAGES:
-            return {...messagesState, isFetching: false, items: [...action.response]}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_MESSAGES:
+          return handle(messagesState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: [...payload] }),
+          })
         default:
-            return messagesState
+          return messagesState
     }
 }
 
