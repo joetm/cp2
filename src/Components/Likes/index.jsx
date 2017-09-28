@@ -41,7 +41,7 @@ class Likes extends React.Component {
 
               {
                 likes.map(item => (
-                  <IconButton tooltip={item.user.username}>
+                  <IconButton key={item.id} tooltip={item.user.username}>
                     <Avatar src={item.user.avatar} micro={true} />
                   </IconButton>
                 ))

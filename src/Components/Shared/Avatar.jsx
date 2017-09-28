@@ -5,7 +5,7 @@ import Avatar from 'material-ui/Avatar'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 
-const _SIZE_MICRO = 16
+const _SIZE_MICRO = 20
 const _SIZE_MINI  = 30
 const _SIZE_MACRO = 45
 const _SIZE_MAXI  = 200

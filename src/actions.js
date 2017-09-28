@@ -37,7 +37,7 @@ export const CLOSE_SIDEBAR              = 'FORUM::CLOSE_SIDEBAR'
 // export const CLOSE_STREAM_SIDEBAR      = 'FORUM::CLOSE_STREAM_SIDEBAR'
 export const SELECT_THREAD              = 'FORUM::SELECT_THREAD'
 export const SEND_MESSAGE               = 'CHAT::SEND_MESSAGE'
-export const RECEIVE_MESSAGEHISTORY     = 'CHAT::RECEIVE_MESSAGEHISTORY'
+export const FETCH_MESSAGEHISTORY       = 'CHAT::FETCH_MESSAGEHISTORY'
 export const REVIEW_APPROVE             = 'REVIEW::APPROVE'
 export const REVIEW_DISAPPROVE          = 'REVIEW::DISAPPROVE'
 export const LIKE                       = 'SOCIAL::LIKE'
@@ -60,30 +60,32 @@ export const MARK_THREAD_READ           = 'STREAM::MARK_THREAD_READ'
 export const MARK_POST_READ             = 'STREAM::MARK_POST_READ'
 export const MARK_ALL_READ              = 'STREAM::MARK_ALL_READ'
 
-export const RECEIVE_USER               = 'USER::RECEIVE_USER'
-export const RECEIVE_USERS              = 'USER::RECEIVE_USERS'
+export const FETCH_USERS                = 'USER::FETCH_USERS'
+export const FETCH_USER                 = 'USER::FETCH_USER'
 export const RECEIVE_ONLINE_USERS       = 'USER::RECEIVE_ONLINE_USERS'
-export const RECEIVE_FOLLOWERS          = 'SOCIAL::RECEIVE_FOLLOWERS'
-export const RECEIVE_CURRENT_USER       = 'USER:RECEIVE_CURRENT_USER'
+export const FETCH_FOLLOWERS            = 'SOCIAL::FETCH_FOLLOWERS'
+export const FETCH_CURRENT_USER         = 'USER:FETCH_CURRENT_USER'
 export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
 export const FETCH_CATEGORIES           = 'FORUM::FETCH_CATEGORIES'
 export const FETCH_CATEGORY             = 'FORUM::FETCH_CATEGORY'
-export const RECEIVE_THREADS            = 'FORUM::RECEIVE_THREADS'
-export const RECEIVE_CATEGORY_THREADS   = 'FORUM::RECEIVE_CATEGORY_THREADS'
+export const FETCH_THREADS              = 'FORUM::FETCH_THREADS'
+export const FETCH_CATEGORY_THREADS     = 'FORUM::FETCH_CATEGORY_THREADS'
 export const RECEIVE_POSTS_FOR_THREAD   = 'FORUM::RECEIVE_POSTS_FOR_THREAD'
-export const RECEIVE_THREAD             = 'FORUM::RECEIVE_THREAD'
-export const RECEIVE_ALBUM              = 'ALBUM::RECEIVE_ALBUM'
+export const FETCH_PICTURES             = 'ALBUM::FETCH_PICTURES'
+export const FETCH_PICTURE              = 'ALBUM::FETCH_PICTURE'
+export const FETCH_THREAD               = 'FORUM::FETCH_THREAD'
+export const FETCH_ALBUM                = 'ALBUM::FETCH_ALBUM'
 export const RECEIVE_IMAGES             = 'STREAM::RECEIVE_IMAGES'
-export const RECEIVE_IMAGE              = 'STREAM::RECEIVE_IMAGE'
-export const RECEIVE_VERIFICATIONIMAGES = 'STREAM::RECEIVE_VERIFICATIONIMAGES'
-export const RECEIVE_PROFILEIMAGES      = 'PROFILE::RECEIVE_PROFILEIMAGES'
-export const RECEIVE_VIDEOS             = 'STREAM::RECEIVE_VIDEOS'
+export const FETCH_IMAGE                = 'STREAM::FETCH_IMAGE'
+export const FETCH_VERIFICATIONIMAGES   = 'STREAM::FETCH_VERIFICATIONIMAGES'
+export const FETCH_PROFILEIMAGES        = 'PROFILE::FETCH_PROFILEIMAGES'
+export const FETCH_VIDEOS               = 'STREAM::FETCH_VIDEOS'
 export const RECEIVE_VIDEO              = 'STREAM::RECEIVE_VIDEO'
-export const RECEIVE_UPDATES            = 'STREAM::RECEIVE_UPDATES'
-export const RECEIVE_STREAM             = 'STREAM::RECEIVE_STREAM'
+export const FETCH_UPDATES              = 'STREAM::FETCH_UPDATES'
+export const FETCH_STREAM               = 'STREAM::FETCH_STREAM'
 export const FETCH_MESSAGES             = 'STREAM::FETCH_MESSAGES'
-export const RECEIVE_FAVORITES          = 'STREAM::RECEIVE_FAVORITES'
-export const RECEIVE_LIKES              = 'STREAM::RECEIVE_LIKES'
+export const FETCH_FAVORITES            = 'STREAM::FETCH_FAVORITES'
+export const FETCH_LIKES                = 'STREAM::FETCH_LIKES'
 export const RECEIVE_LIKE               = 'STREAM::RECEIVE_LIKE'
 export const RECEIVE_DISLIKE            = 'STREAM::RECEIVE_DISLIKE'
 export const RECEIVE_REVIEWITEM         = 'REVIEW::RECEIVE_REVIEWITEM'
@@ -97,7 +99,7 @@ export const RECEIVE_CITY               = 'APP::RECEIVE_CITY'
 
 export const RECEIVE_SEARCH_RESULT      = 'SEARCH::RECEIVE_SEARCH_RESULT'
 
-export const RECEIVE_CHAT               = 'CHAT::RECEIVE_CHAT'
+export const FETCH_CHAT                 = 'CHAT::FETCH_CHAT'
 export const RECEIVE_CHAT_MSG           = "CHAT::RECEIVE_CHAT_MSG"
 // export const SEND_CHAT_MSG             = "CHAT::SEND_CHAT_MSG"
 
@@ -139,7 +141,7 @@ export const FETCH_POSTS_FOR_THREAD_STARTED  = 'FORUM::FETCH_POSTS_FOR_THREAD_ST
 export const FETCH_POSTS_FOR_THREAD_FAILURE  = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
 
 // MOD
-export const RECEIVE_MOD_ITEMS               = 'MOD::RECEIVE_MOD_ITEMS'
+export const FETCH_MOD_ITEMS                 = 'MOD::FETCH_MOD_ITEMS'
 
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA       = 'AUTH::RECEIVE_PROTECTED_DATA'
@@ -208,36 +210,16 @@ export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'obj
 export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'bool')
 
 // ajax receptors
-export const receiveCurrentUser        = makeActionCreator(RECEIVE_CURRENT_USER,       'response')
-export const receiveUser               = makeActionCreator(RECEIVE_USER,               'response')
-export const receiveUsers              = makeActionCreator(RECEIVE_USERS,              'response')
 export const receiveOnlineUsers        = makeActionCreator(RECEIVE_ONLINE_USERS,       'response')
-export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
 export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
-export const receiveCategories         = makeActionCreator(RECEIVE_CATEGORIES,         'response')
-export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,            'response')
-export const receiveCategoryThreads    = makeActionCreator(RECEIVE_CATEGORY_THREADS,   'response')
-export const receiveUpdates            = makeActionCreator(RECEIVE_UPDATES,            'response')
 export const receiveImages             = makeActionCreator(RECEIVE_IMAGES,             'response')
-export const receiveImage              = makeActionCreator(RECEIVE_IMAGE,              'response')
 export const receivePictures           = receiveImages
-export const receivePicture            = receiveImage
-export const receiveVerificationImages = makeActionCreator(RECEIVE_VERIFICATIONIMAGES, 'response')
-export const receiveProfileImages      = makeActionCreator(RECEIVE_PROFILEIMAGES,      'response')
-export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,             'response')
-export const receiveThread             = makeActionCreator(RECEIVE_THREAD,             'response')
-export const receiveMessageHistory     = makeActionCreator(RECEIVE_MESSAGEHISTORY,     'response')
-export const receiveStream             = makeActionCreator(RECEIVE_STREAM,             'response')
-export const receiveFavorites          = makeActionCreator(RECEIVE_FAVORITES,          'response')
-export const receiveLikes              = makeActionCreator(RECEIVE_LIKES,              'response')
-export const receiveAlbum              = makeActionCreator(RECEIVE_ALBUM,              'response')
 export const receiveLike               = makeActionCreator(RECEIVE_LIKE,               'response')
 export const receiveDislike            = makeActionCreator(RECEIVE_DISLIKE,            'response')
 export const receiveUnreadCount        = makeActionCreator(RECEIVE_UNREAD_COUNT,       'response')
 
 // export const sendChatMessageStart = makeActionCreator(SEND_CHAT_MSG,             'payload')
-export const receiveChat             = makeActionCreator(RECEIVE_CHAT,              'response')
 export const receiveChatMsg          = makeActionCreator(RECEIVE_CHAT_MSG,          'response')
 
 export const receiveCountries        = makeActionCreator(RECEIVE_COUNTRIES,         'response')
@@ -248,9 +230,6 @@ export const receiveState            = makeActionCreator(RECEIVE_STATE,         
 export const receiveCity             = makeActionCreator(RECEIVE_CITY,              'response')
 
 export const receiveSearchResult     = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
-
-// MOD
-export const receiveModItems         = makeActionCreator(RECEIVE_MOD_ITEMS,         'response')
 
 export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
 export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS,     'userid')
@@ -363,25 +342,31 @@ export function login(email, password) { // , redirect="/"
 
 /**
  * fetchCurrentUser Asynchronous Action Creator
- * @returns receiveCurrentUser() - Action
+ * @returns Redux-pack action
  */
-export const fetchCurrentUser = () =>
-    api.fetchCurrentUser().then(receiveCurrentUser)
+export const fetchCurrentUser = () => ({
+    type: FETCH_CURRENT_USER,
+    promise: api.fetchCurrentUser(),
+})
 
 /**
  * fetchUser Asynchronous Action Creator
  * @returns receiveUser() - Action
  */
-export const fetchUser = (userid) =>
-    api.fetchUser(userid).then(receiveUser)
+export const fetchUser = (userid) => ({
+    type: FETCH_USER,
+    promise: api.fetchUser(userid),
+})
 
 /**
  * fetchUsers Asynchronous Action Creator
  * @returns receiveUsers() - Action
  */
 // TODO: filters
-export const fetchUsers = (limit, filters = null) =>
-    api.fetchUsers(limit, filters).then(receiveUsers)
+export const fetchUsers = (limit, filters = null) => ({
+    type: FETCH_USERS,
+    promise: api.fetchUsers(limit, filters),
+})
 
 /**
  * fetchUsers Asynchronous Action Creator
@@ -392,10 +377,12 @@ export const fetchOnlineUsers = (limit) =>
 
 /**
  * fetchFollowers Asynchronous Action Creator
- * @returns receiveFollowers() - Action
+ * @returns Redux-pack action
  */
-export const fetchFollowers = (limit) =>
-    api.fetchFollowers(limit).then(receiveFollowers)
+export const fetchFollowers = (limit) => ({
+    type: FETCH_FOLLOWERS,
+    promise: api.fetchFollowers(limit),
+})
 
 /**
  * fetchReviewItem Asynchronous Action Creator
@@ -468,50 +455,64 @@ export const fetchCategories = () => ({
  * fetchMessageHistory Asynchronous Action Creator
  * @returns receiveMessageHistory() - Action
  */
-export const fetchMessageHistory = (userid) =>
-    api.fetchMessageHistory(userid).then(receiveMessageHistory)
+export const fetchMessageHistory = (userid) => ({
+    type: FETCH_MESSAGEHISTORY,
+    promise: api.fetchMessageHistory(userid),
+})
 
 /**
  * fetchUpdates Asynchronous Action Creator
  * @returns fetchUpdates() - Action
  */
-export const fetchUpdates = (limit) =>
-    api.fetchUpdates(limit).then(receiveUpdates)
+export const fetchUpdates = (limit) => ({
+    type: FETCH_UPDATES,
+    promise: api.fetchUpdates(limit),
+})
 
 /**
  * fetchPictures Asynchronous Action Creator
- * @returns fetchPictures() - Action
+ * @returns Redux-pack action
  */
-export const fetchPictures = (limit) =>
-    api.fetchPictures(limit).then(receiveImages)
+export const fetchPictures = (limit) => ({
+  type: FETCH_PICTURES,
+  promise: api.fetchPictures(limit)
+})
 
 /**
  * fetchPicture Asynchronous Action Creator
- * @returns fetchPicture() - Action
+ * @returns Redux-pack action
  */
-export const fetchPicture = (pictureid) =>
-    api.fetchPicture(pictureid).then(receiveImage)
+export const fetchPicture = (pictureid) => ({
+  type: FETCH_PICTURE,
+  promise: api.fetchPicture(pictureid)
+})
 
 /**
- * fetchPictures Asynchronous Action Creator
+ * fetchUserVerificationImages Asynchronous Action Creator
  * @returns receiveVerificationImages() - Action
  */
-export const fetchUserVerificationImages = (userid) =>
-    api.fetchUserVerificationImages(userid).then(receiveVerificationImages)
+export const fetchUserVerificationImages = (userid) => ({
+  type: FETCH_VERIFICATIONIMAGES,
+  promise: api.fetchUserVerificationImages(userid)
+})
 
 /**
- * fetchPictures Asynchronous Action Creator
+ * fetchUserProfileImages Asynchronous Action Creator
  * @returns fetchPictures() - Action
  */
-export const fetchUserProfileImages = (userid) =>
-    api.fetchUserProfileImages(userid).then(receiveProfileImages)
+export const fetchUserProfileImages = (userid) => ({
+  type: FETCH_PROFILEIMAGES,
+  promise: api.fetchUserProfileImages(userid)
+})
 
 /**
  * fetchVideos Asynchronous Action Creator
- * @returns fetchVideos() - Action
+ * @returns Redux-pack action
  */
-export const fetchVideos = (limit) =>
-    api.fetchVideos(limit).then(receiveVideos)
+export const fetchVideos = (limit) => ({
+    type: FETCH_VIDEOS,
+    promise: api.fetchVideos(limit),
+})
 
 /**
  * fetchVideo Asynchronous (redux-pack) Action
@@ -524,10 +525,12 @@ export const fetchVideo = (id) => ({
 
 /**
  * fetchStream Asynchronous Action Creator
- * @returns fetchStream() - Action
+ * @returns Redux-pack action
  */
-export const fetchStream = (limit) =>
-    api.fetchStream(limit).then(receiveStream)
+export const fetchStream = (limit) => ({
+    type: FETCH_STREAM,
+    promise: api.fetchStream(limit),
+})
 
 /**
  * fetchMessages Asynchronous Action Creator
@@ -542,67 +545,82 @@ export const fetchMessages = (limit) => ({
  * fetchFavorites Asynchronous Action Creator
  * @returns fetchFavorites() - Action
  */
-export const fetchFavorites = (limit) =>
-    api.fetchFavorites(limit).then(receiveFavorites)
+export const fetchFavorites = (limit) => ({
+  type: FETCH_FAVORITES,
+  promise: api.fetchFavorites(limit),
+})
 
 /**
  * fetchLikes Asynchronous Action Creator
  * @returns fetchLikes() - Action
  */
-export const fetchLikes = (limit) =>
-    api.fetchLikes(limit).then(receiveLikes)
+export const fetchLikes = (limit) => ({
+  type: FETCH_LIKES,
+  promise: api.fetchLikes(limit),
+})
 
 /**
  * fetchLikesForVideo Asynchronous Action Creator
  * @returns receiveLikes() - Action
  */
-export const fetchLikesForVideo = (itemid) =>
-    api.fetchLikesForVideo(itemid, 'likes').then(receiveLikes)
+export const fetchLikesForVideo = (itemid) => ({
+   type: FETCH_LIKES,
+   promise: api.fetchLikesForVideo(itemid, 'likes'),
+})
 
 /**
  * fetchAlbum Asynchronous Action Creator
  * @returns fetchAlbum() - Action
  */
-export const fetchAlbum = (userid) =>
-    api.fetchAlbum(userid).then(receiveAlbum)
+export const fetchAlbum = (userid) => ({
+   type: FETCH_ALBUM,
+   promise: api.fetchAlbum(userid),
+})
 
 /**
  * fetchThread Asynchronous Action Creator
- * @returns receiveThread() - Action
+ * @returns Redux-pack action
  */
-export const fetchThread = (threadid) =>
-    api.fetchThread(threadid).then(receiveThread)
+export const fetchThread = (threadid) => ({
+  type: FETCH_THREAD,
+  promise: api.fetchThread(threadid)
+})
 
 /**
  * fetchThreads Asynchronous Action Creator
- * @returns receiveThreads() - Action
+ * @returns Redux-pack action
  */
-export const fetchThreads = () =>
-    api.fetchThreads().then(receiveThreads)
+export const fetchThreads = () => ({
+  type: FETCH_THREADS,
+  promise: api.fetchThreads(),
+})
 
 /**
  * fetchThreadsForCategory Asynchronous Action Creator
- * @returns receiveCategoryThreads() - Action
+ * @returns Redux-pack action
  */
-export const fetchThreadsForCategory = (categoryid) =>
-    api.fetchThreadsForCategory(categoryid, 'threads').then(receiveCategoryThreads)
+export const fetchThreadsForCategory = (categoryid) => ({
+  type: FETCH_CATEGORY_THREADS,
+  promise: api.fetchThreadsForCategory(categoryid, 'threads'),
+})
 
 /**
  * fetchChat Asynchronous Action Creator
  * @returns receiveChat() - Action
  */
-export const fetchChat = () =>
-    api.fetchChat().then(receiveChat)
-
+export const fetchChat = () => ({
+  type: FETCH_CHAT,
+  promise: api.fetchChat(),
+})
 
 /**
  * fetchModItems Asynchronous Action Creator
- * @returns fetchContactRequests() - Action
+ * @returns Redux-pack action
  */
-export const fetchModItems = (limit) =>
-    api.fetchModItems(limit).then(receiveModItems)
-
-
+export const fetchModItems = (limit) => ({
+  type: FETCH_MOD_ITEMS,
+  promise: api.fetchModItems(limit),
+})
 
 export const sendChatMessage = (payload) => { // => (dispatch) => {
     // dispatch(sendChatMessageStart(payload))
