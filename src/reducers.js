@@ -109,26 +109,25 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
  * @returns reviewState
  **/
 export function reviewReducer(reviewState = initialState.reviewitem, action) {
-    switch (action.type) {
-        case ACTIONS.FETCH_REVIEWITEM_STARTED:
-            return {...reviewState, isFetching: true}
-        case ACTIONS.FETCH_REVIEWITEM_FAILED:
-            return {...reviewState, isFetching: false, error: action.error}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_REVIEWITEM:
+          return handle(reviewState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, ...payload }),
+          })
         case ACTIONS.REVIEW_APPROVE:
             return {...reviewState, approvals: reviewState.approvals + 1}
         case ACTIONS.REVIEW_DISAPPROVE:
             return {...reviewState, disapprovals: reviewState.disapprovals + 1}
-
         case ACTIONS.RECEIVE_LIKE:
-            return {...reviewState, likes: action.response.likes}
+            return {...reviewState, likes: action.payload.likes}
         case ACTIONS.RECEIVE_DISLIKE:
-            return {...reviewState, dislikes: action.response.dislikes}
-
-        case ACTIONS.RECEIVE_REVIEWITEM:
-            return {...action.response}
-
+            return {...reviewState, dislikes: action.payload.dislikes}
         default:
-            return reviewState
+          return reviewState
     }
 }
 

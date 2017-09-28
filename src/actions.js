@@ -132,8 +132,7 @@ export const LOGIN_SUCCESS                   = 'AUTH::LOGIN_SUCCESS'
 export const LOGOUT                          = 'AUTH::LOGOUT'
 
 export const FETCH_VIDEO                     = 'VIDEO::FETCH_VIDEO'
-export const FETCH_REVIEWITEM_STARTED        = 'REVIEW::FETCH_REVIEWITEM_STARTED'
-export const FETCH_REVIEWITEM_FAILED         = 'REVIEW::FETCH_REVIEWITEM_FAILED'
+export const FETCH_REVIEWITEM                = 'REVIEW::FETCH_REVIEWITEM'
 export const FETCH_REVIEWLEADERBOARD         = 'REVIEW::FETCH_REVIEWLEADERBOARD'
 export const FETCH_POSTS_FOR_THREAD_STARTED  = 'FORUM::FETCH_POSTS_FOR_THREAD_STARTED'
 export const FETCH_POSTS_FOR_THREAD_FAILURE  = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
@@ -230,7 +229,6 @@ export const receiveVerificationImages = makeActionCreator(RECEIVE_VERIFICATIONI
 export const receiveProfileImages      = makeActionCreator(RECEIVE_PROFILEIMAGES,      'response')
 export const receiveVideos             = makeActionCreator(RECEIVE_VIDEOS,             'response')
 export const receiveThread             = makeActionCreator(RECEIVE_THREAD,             'response')
-export const receiveReviewItem         = makeActionCreator(RECEIVE_REVIEWITEM,         'response')
 export const receiveMessageHistory     = makeActionCreator(RECEIVE_MESSAGEHISTORY,     'response')
 export const receiveStream             = makeActionCreator(RECEIVE_STREAM,             'response')
 export const receiveFavorites          = makeActionCreator(RECEIVE_FAVORITES,          'response')
@@ -276,9 +274,6 @@ export const removePost              = makeActionCreator(REMOVE_POST,           
 
 export const fetchPostsForThreadStarted = makeActionCreator(FETCH_POSTS_FOR_THREAD_STARTED)
 export const fetchPostsForThreadFailure = makeActionCreator(FETCH_POSTS_FOR_THREAD_FAILURE,    'error')
-
-export const fetchReviewItemStarted     = makeActionCreator(FETCH_REVIEWITEM_STARTED)
-export const fetchReviewItemFailed      = makeActionCreator(FETCH_REVIEWITEM_FAILED,           'error')
 
 // --
 
@@ -406,34 +401,21 @@ export const fetchFollowers = (limit) =>
 
 /**
  * fetchReviewItem Asynchronous Action Creator
- * @returns receiveReviewItem() - Action
+ * @returns Redux-pack action
  */
-export const fetchReviewItem = (itemid = null) => (dispatch) => {
-    dispatch(fetchReviewItemStarted())
-    if (itemid) {
-        return api.fetchSpecificReviewItem(itemid)
-            .then(
-                response => dispatch(receiveReviewItem(response)),
-                error => dispatch(fetchReviewItemFailed(error))
-            )
-    }
-    return api.fetchReviewItem()
-        .then(
-            response => dispatch(receiveReviewItem(response)),
-            error => dispatch(fetchReviewItemFailed(error))
-        )
-}
+export const fetchReviewItem = (itemid = null) => ({
+    type: FETCH_REVIEWITEM,
+    promise: itemid ? api.fetchSpecificReviewItem(itemid) : api.fetchReviewItem(),
+})
 
 /**
  * fetchReviewLeaderboard Asynchronous Action Creator
  * @returns receiveReviewLeaderboard() - Action
  */
-export function fetchReviewLeaderboard() {
-  return {
+export const fetchReviewLeaderboard = () => ({
     type: FETCH_REVIEWLEADERBOARD,
     promise: api.fetchReviewLeaderboard(),
-  }
-}
+})
 
 /**
  * fetchCategory Asynchronous Action Creator

@@ -8,6 +8,7 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 // Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
+import TextField from 'material-ui/TextField'
 
 import { PROFILE } from '../../routes'
 import { scrollToTop } from '../../common/helpers'
@@ -162,10 +163,10 @@ class ReviewCard extends React.Component {
 
                 <GridWrap>
 
-                  <CellWrapper full={6} tablet={4} phone={4}>
+                  <CellWrapper full={6} tablet={8} phone={4}>
                     <RadioButtonGroup
                       name="rating"
-                      style={{margin: '12px', display: 'flex', flexDirection: 'row'}}
+                      style={{display: 'flex', flexDirection: 'row'}}
                       onChange={this.handleChangeRating}
                     >
                       <RadioButton
@@ -183,7 +184,7 @@ class ReviewCard extends React.Component {
                     </RadioButtonGroup>
                   </CellWrapper>
 
-                  <CellWrapper full={6} tablet={4} phone={4}>
+                  <CellWrapper full={6} tablet={8} phone={4}>
                     <div style={{textAlign: 'right'}}>
                       <ApproveButton
                           primary={true}
@@ -200,15 +201,17 @@ class ReviewCard extends React.Component {
 
                 </GridWrap>
 
-                {/*
+{/*
                 <div>
                   <TextField
                     fullWidth={true}
+                    multiLine={true}
+                    rows={1}
                     hintText={"Your reasoning for rating"}
-                    floatingLabelText={"Optional: Reasoning"}
+                    floatingLabelText={"Optional explanation"}
                   />
                 </div>
-                */}
+*/}
 
               </CardActions>
 
