@@ -67,7 +67,7 @@ export const RECEIVE_FOLLOWERS          = 'SOCIAL::RECEIVE_FOLLOWERS'
 export const RECEIVE_CURRENT_USER       = 'USER:RECEIVE_CURRENT_USER'
 export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
 export const RECEIVE_CATEGORIES         = 'FORUM::RECEIVE_CATEGORIES'
-export const RECEIVE_CATEGORY           = 'FORUM::RECEIVE_CATEGORY'
+export const FETCH_CATEGORY             = 'FORUM::FETCH_CATEGORY'
 export const RECEIVE_THREADS            = 'FORUM::RECEIVE_THREADS'
 export const RECEIVE_CATEGORY_THREADS   = 'FORUM::RECEIVE_CATEGORY_THREADS'
 export const RECEIVE_POSTS              = 'FORUM::RECEIVE_POSTS'
@@ -213,7 +213,6 @@ export const receiveUsers              = makeActionCreator(RECEIVE_USERS,       
 export const receiveOnlineUsers        = makeActionCreator(RECEIVE_ONLINE_USERS,       'response')
 export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
-export const receiveCategory           = makeActionCreator(RECEIVE_CATEGORY,           'response')
 export const receivePosts              = makeActionCreator(RECEIVE_POSTS,              'response')
 export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
 export const receiveCategories         = makeActionCreator(RECEIVE_CATEGORIES,         'response')
@@ -421,8 +420,10 @@ export const fetchReviewLeaderboard = () => ({
  * fetchCategory Asynchronous Action Creator
  * @returns receiveCategory() - Action
  */
-export const fetchCategory = (categoryid) =>
-    api.fetchCategory(categoryid).then(receiveCategory)
+export const fetchCategory = (categoryid) => ({
+    type: FETCH_CATEGORY,
+    promise: api.fetchCategory(categoryid),
+})
 
 /**
  * fetchPosts Asynchronous Action Creator

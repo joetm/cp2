@@ -382,13 +382,19 @@ export function categoriesReducer(categoriesState = initialState.categories, act
  * @returns categoryState
  **/
 export function categoryReducer(categoryState = initialState.category, action) {
-    switch (action.type) {
-        case ACTIONS.RECEIVE_CATEGORY:
-            return {...categoryState, ...action.response, isFetching: false}
+    const { type, payload, response } = action // TODO
+    switch (type) {
+        case ACTIONS.FETCH_CATEGORY:
+          return handle(categoryState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, ...payload }),
+          })
         case ACTIONS.RECEIVE_CATEGORY_THREADS:
-            return {...categoryState, isFetching: false, threads: [...action.response]}
+            return {...categoryState, isFetching: false, threads: [...response]}
         default:
-            return categoryState
+          return categoryState
     }
 }
 
