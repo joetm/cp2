@@ -51,7 +51,7 @@ class Leaderboard extends React.Component {
           history,
           isEmbedded = false,
         } = this.props
-        const { items = [], isFetching} = reviewLeaderboard
+        const { items = [], isFetching = true} = reviewLeaderboard
 
         const Wrapper = isEmbedded ? DrawerWrapper : DivWrapper
 
@@ -68,7 +68,7 @@ class Leaderboard extends React.Component {
                     {
                       items.map(item => (
                         <ListItem
-                          key={item.id}
+                          key={item.userid}
                           leftAvatar={
                             <Avatar
                               username={item.user.username}

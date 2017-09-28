@@ -144,7 +144,7 @@ export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.r
             start:   prevState => ({ ...prevState, isFetching: true, error: null }),
             finish:  prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, items: [...payload] }),
+            success: prevState => ({ ...prevState, items: payload }),
           })
         default:
           return reviewLeaderboardState
