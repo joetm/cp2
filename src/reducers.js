@@ -241,11 +241,7 @@ export function videoReducer(videoState = initialState.video, action) {
     switch (type) {
         case ACTIONS.FETCH_VIDEO:
           return handle(videoState, action, {
-            start: prevState => ({
-              ...prevState,
-              isFetching: true,
-              error: null
-            }),
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
             finish:  prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, [payload.id]: payload }),
@@ -328,12 +324,17 @@ export function threadReducer(threadState = initialState.thread, action) {
  * @returns postState
  **/
 export function postReducer(postState = initialState.post, action) {
-    switch (action.type) {
-        case ACTIONS.RECEIVE_POST:
-            // TODO
-            return {item: {...action.response}, isFetching: false}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_POST:
+          return handle(postState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, [payload.id]: payload }),
+          })
         default:
-            return postState
+          return postState
     }
 }
 
@@ -342,11 +343,17 @@ export function postReducer(postState = initialState.post, action) {
  * @returns postsState
  **/
 export function postsReducer(postsState = initialState.posts, action) {
-    switch (action.type) {
-        case ACTIONS.RECEIVE_POSTS:
-            return {...postsState, isFetching: false, items: [...action.response]}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_POSTS:
+          return handle(postsState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: payload }),
+          })
         default:
-            return postsState
+          return postsState
     }
 }
 
@@ -369,11 +376,17 @@ export function threadsReducer(threadsState = initialState.threads, action) {
  * @returns categoriesState
  **/
 export function categoriesReducer(categoriesState = initialState.categories, action) {
-    switch (action.type) {
-        case ACTIONS.RECEIVE_CATEGORIES:
-            return {...categoriesState, isFetching: false, items: [...action.response]}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_CATEGORIES:
+          return handle(categoriesState, action, {
+            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish:  prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: payload }),
+          })
         default:
-            return categoriesState
+          return categoriesState
     }
 }
 

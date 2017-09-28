@@ -45,8 +45,8 @@ class SinglePost extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     isFetching: state.post.isFetching,
-    post: state.post.item,
     postid: ownProps.match.params.postid,
+    post: state.post[ownProps.match.params.postid],
 })
 
 export default withRouter(connect(

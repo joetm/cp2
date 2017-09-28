@@ -66,13 +66,11 @@ export const RECEIVE_ONLINE_USERS       = 'USER::RECEIVE_ONLINE_USERS'
 export const RECEIVE_FOLLOWERS          = 'SOCIAL::RECEIVE_FOLLOWERS'
 export const RECEIVE_CURRENT_USER       = 'USER:RECEIVE_CURRENT_USER'
 export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
-export const RECEIVE_CATEGORIES         = 'FORUM::RECEIVE_CATEGORIES'
+export const FETCH_CATEGORIES           = 'FORUM::FETCH_CATEGORIES'
 export const FETCH_CATEGORY             = 'FORUM::FETCH_CATEGORY'
 export const RECEIVE_THREADS            = 'FORUM::RECEIVE_THREADS'
 export const RECEIVE_CATEGORY_THREADS   = 'FORUM::RECEIVE_CATEGORY_THREADS'
-export const RECEIVE_POSTS              = 'FORUM::RECEIVE_POSTS'
 export const RECEIVE_POSTS_FOR_THREAD   = 'FORUM::RECEIVE_POSTS_FOR_THREAD'
-export const RECEIVE_POST               = 'FORUM::RECEIVE_POST'
 export const RECEIVE_THREAD             = 'FORUM::RECEIVE_THREAD'
 export const RECEIVE_ALBUM              = 'ALBUM::RECEIVE_ALBUM'
 export const RECEIVE_IMAGES             = 'STREAM::RECEIVE_IMAGES'
@@ -130,6 +128,9 @@ export const LOGIN_REQUEST                   = 'AUTH::LOGIN_REQUEST'
 export const LOGIN_FAILURE                   = 'AUTH::LOGIN_FAILURE'
 export const LOGIN_SUCCESS                   = 'AUTH::LOGIN_SUCCESS'
 export const LOGOUT                          = 'AUTH::LOGOUT'
+
+export const FETCH_POSTS                     = 'FORUM::FETCH_POSTS'
+export const FETCH_POST                      = 'FORUM::FETCH_POST'
 
 export const FETCH_VIDEO                     = 'VIDEO::FETCH_VIDEO'
 export const FETCH_REVIEWITEM                = 'REVIEW::FETCH_REVIEWITEM'
@@ -213,12 +214,10 @@ export const receiveUsers              = makeActionCreator(RECEIVE_USERS,       
 export const receiveOnlineUsers        = makeActionCreator(RECEIVE_ONLINE_USERS,       'response')
 export const receiveFollowers          = makeActionCreator(RECEIVE_FOLLOWERS,          'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
-export const receivePosts              = makeActionCreator(RECEIVE_POSTS,              'response')
 export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
 export const receiveCategories         = makeActionCreator(RECEIVE_CATEGORIES,         'response')
 export const receiveThreads            = makeActionCreator(RECEIVE_THREADS,            'response')
 export const receiveCategoryThreads    = makeActionCreator(RECEIVE_CATEGORY_THREADS,   'response')
-export const receivePost               = makeActionCreator(RECEIVE_POST,               'response')
 export const receiveUpdates            = makeActionCreator(RECEIVE_UPDATES,            'response')
 export const receiveImages             = makeActionCreator(RECEIVE_IMAGES,             'response')
 export const receiveImage              = makeActionCreator(RECEIVE_IMAGE,              'response')
@@ -427,10 +426,12 @@ export const fetchCategory = (categoryid) => ({
 
 /**
  * fetchPosts Asynchronous Action Creator
- * @returns receivePosts() - Action
+ * @returns Redux-pack action
  */
-export const fetchPosts = (limit) =>
-    api.fetchPosts(limit).then(receivePosts)
+export const fetchPosts = (limit) => ({
+    type: FETCH_POSTS,
+    promise: api.fetchPosts(limit),
+})
 
 /**
  * fetchPostsForThread Asynchronous Action Creator
@@ -447,17 +448,21 @@ export const fetchPostsForThread = (threadid, limit) => (dispatch) => {
 
 /**
  * fetchPost Asynchronous Action Creator
- * @returns receivePost() - Action
+ * @returns Redux-pack action
  */
-export const fetchPost = (postid) =>
-    api.fetchPost(postid).then(receivePost)
+export const fetchPost = (postid) => ({
+    type: FETCH_POST,
+    promise: api.fetchPost(postid),
+})
 
 /**
  * fetchCategories Asynchronous Action Creator
  * @returns receiveCategories() - Action
  */
-export const fetchCategories = () =>
-    api.fetchCategories().then(receiveCategories)
+export const fetchCategories = () => ({
+    type: FETCH_CATEGORIES,
+    promise: api.fetchCategories(),
+})
 
 /**
  * fetchMessageHistory Asynchronous Action Creator
