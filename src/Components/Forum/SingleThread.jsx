@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom'
 
 import { fetchThread, fetchPostsForThread, recordLike, recordDislike } from '../../actions'
 import Spacer from '../Shared/Spacer'
-import Posts from './Posts'
 import Loader from '../Shared/Loader'
 import PostTpl from './PostTpl'
 import ScrollToTop from '../Shared/ScrollToTop'

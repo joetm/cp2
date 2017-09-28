@@ -7,7 +7,7 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 const Headline = (props) => {
     const { level, style } = props
     const elementStyle = {color: props.muiTheme.palette.textColor, ...style}
-    switch('' + level) {
+    switch (`${level}`) {
         case '5':
             return <h5 style={elementStyle}>{props.children}</h5>
         case '4':

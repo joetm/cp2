@@ -9,7 +9,7 @@ import ContactsIcon from 'material-ui/svg-icons/communication/contacts'
 import CrowdIcon from 'material-ui/svg-icons/device/location-searching'
 import RaisedButton from 'material-ui/RaisedButton'
 
-import routes from '../../routes'
+import * as routes from '../../routes'
 
 
 const styles = {

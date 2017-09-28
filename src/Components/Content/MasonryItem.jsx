@@ -4,7 +4,6 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { IMAGES, VIDEOS, LIKES, UPDATES, PROFILE } from '../../routes'
-import Avatar from '../Shared/Avatar'
 
 
 const styles = {
@@ -49,7 +48,7 @@ class MasonryItem extends React.Component {
     this.props.history.push(`${PROFILE}/${this.props.user.id}`)
   }
   render () {
-    const { user, title, thumb, showTitle, clickable = true } = this.props
+    const { thumb, clickable = true } = this.props
     this.isClickable = clickable
 
     return (

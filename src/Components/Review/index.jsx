@@ -45,10 +45,6 @@ const styles = {
     },
 }
 
-const initialLikeState = {
-    clickedDislike: false,
-    clickedLike: false,
-}
 
 class Review extends React.Component {
     request = null
@@ -144,7 +140,7 @@ class Review extends React.Component {
      * Render the component.
      */
     render() {
-        const { reviewitem, reviewLeaderboard } = this.props
+        const { reviewitem } = this.props
         return (
             <div>
 

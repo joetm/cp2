@@ -4,8 +4,6 @@ import React from 'react'
 import IconButton from 'material-ui/IconButton'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
-import { gray, darkGray, lightGray } from '../../common/colors'
-
 
 const BoxHeader = (props) => {
     const { headline, icon, iconTooltip, iconUrl, history } = props

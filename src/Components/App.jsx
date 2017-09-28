@@ -2,13 +2,11 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+import { Route, Switch, BrowserRouter } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import { BrowserRouter } from 'react-router-dom'
 
-import routes from '../routes'
-import { getTheme, getBaseTheme } from '../common/theme'
+import * as routes from '../routes'
+import { getTheme } from '../common/theme'
 import Scrollbutton from './Shared/Scrollbutton'
 import LoadCurrentUser from './Config/LoadCurrentUser'
 import RecordDeviceDetails from './Config/DeviceDetails'

@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { ListItem } from 'material-ui/List'
 import Avatar from 'material-ui/Avatar'
 
-import routes from '../../routes'
+import { PROFILE } from '../../routes'
 import OnlineIcon from '../Shared/Icons/OnlineStatus/OnlineIcon'
 import OfflineIcon from '../Shared/Icons/OnlineStatus/OfflineIcon'
 import UnknownIcon from '../Shared/Icons/OnlineStatus/UnknownIcon'
@@ -54,7 +54,7 @@ const SubText = (props) => {
  */
 class User extends React.Component {
     handleClick = () => {
-        this.props.history.push(`${routes.PROFILE}/${this.props.id}`)
+        this.props.history.push(`${PROFILE}/${this.props.id}`)
     }
     /**
      * Render the component.

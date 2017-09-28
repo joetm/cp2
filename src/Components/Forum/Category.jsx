@@ -22,8 +22,7 @@ class Category extends React.Component {
     // componentDidUpdate(prevProps) {
     // }
     render() {
-        console.log('this.props.category', this.props.category)
-        const { isFetching, title, content, thumb, threads = [] } = this.props.category
+        const { isFetching, title, thumb, threads = [] } = this.props.category
 
         const CategoryInfo = <div><InfoIcon /> {threads.length} threads</div>
 

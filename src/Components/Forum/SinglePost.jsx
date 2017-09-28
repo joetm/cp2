@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { fetchPost, recordLike, recordDislike } from '../../actions'
-import routes from '../../routes'
+import { FORUM, THREADS } from '../../routes'
 import PostTpl from './PostTpl'
 import Spacer from '../Shared/Spacer'
 import Breadcrumbs from '../Shared/Breadcrumbs'
@@ -17,17 +17,17 @@ class SinglePost extends React.Component {
         this.props.fetchPost(this.props.postid)
     }
     render() {
-        const { post } = this.props
+        const { post, history, location } = this.props
         return (
             <div style={{position: 'relative'}}>
 
                 <ScrollToTop />
 
                 <Breadcrumbs
-                    level0={{label: "Forum", url: routes.FORUM}}
-                    level1={{label: post.threadid, url: `${routes.FORUM}${routes.THREADS}/${post.threadid}`}}
-                    level2={{label: post.title, url: this.props.location.pathname}}
-                    history={this.props.history}
+                    level0={{label: "Forum", url: FORUM}}
+                    level1={{label: post.threadid, url: `${FORUM}${THREADS}/${post.threadid}`}}
+                    level2={{label: post.title, url: location.pathname}}
+                    history={history}
                 />
 
                 <PostTpl

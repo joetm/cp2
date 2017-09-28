@@ -1,7 +1,7 @@
 /** @flow */
 
 import {
-  grey100, grey300, grey400, grey500,
+  grey300,
   white,
   darkBlack,
   fullBlack,

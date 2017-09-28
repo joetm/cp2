@@ -61,7 +61,6 @@ class SocialTools extends React.Component {
         const {
           itemid,
           likes,
-          dislikes,
           type,
           hideReviewButton,
           style = {}

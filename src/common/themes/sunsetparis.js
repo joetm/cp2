@@ -1,11 +1,5 @@
 /** @flow */
 
-import {
-  grey100, grey300, grey400, grey500,
-  white,
-  darkBlack,
-  fullBlack,
-} from 'material-ui/styles/colors'
 import { fade } from 'material-ui/utils/colorManipulator'
 
 import baseTheme from './darkbase'

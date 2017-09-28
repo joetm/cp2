@@ -11,8 +11,8 @@ import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 
 import { closeStreamSidebar, getCurrentUserid } from '../../../actions'
-import routes from '../../../routes'
-import MenuEntry from '../MenuEntry'
+import { IMAGES, VIDEOS, MESSAGES, STREAM, FAVORITES, LIKES } from '../../../routes'
+import MenuEntry from '../../Shared/MenuEntry'
 
 
 let tabindex = 0
@@ -40,7 +40,7 @@ class StreamSidebar extends React.PureComponent {
             <Subheader>Subscriptions</Subheader>
 
             <MenuEntry
-                route={routes.IMAGES}
+                route={IMAGES}
                 icon={<UpdatesIcon />}
                 text="Images"
                 onTouchTap={closeStreamSidebar}
@@ -48,7 +48,7 @@ class StreamSidebar extends React.PureComponent {
             />
 
             <MenuEntry
-                route={routes.VIDEOS}
+                route={VIDEOS}
                 icon={<UpdatesIcon />}
                 text="Videos"
                 onTouchTap={closeStreamSidebar}
@@ -56,7 +56,7 @@ class StreamSidebar extends React.PureComponent {
             />
 
             <MenuEntry
-                route={routes.MESSAGES}
+                route={MESSAGES}
                 icon={<EmailIcon />}
                 text="Messages"
                 onTouchTap={closeStreamSidebar}
@@ -74,7 +74,7 @@ class StreamSidebar extends React.PureComponent {
             */}
 
             <MenuEntry
-                route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
+                route={`${STREAM}/${userid}${FAVORITES}`}
                 icon={<HeartIcon />}
                 text="Favorites"
                 onTouchTap={closeStreamSidebar}
@@ -82,7 +82,7 @@ class StreamSidebar extends React.PureComponent {
             />
 
             <MenuEntry
-                route={`${routes.STREAM}/${userid}${routes.LIKES}`}
+                route={`${STREAM}/${userid}${LIKES}`}
                 icon={<LikeIcon />}
                 text="Likes"
                 onTouchTap={closeStreamSidebar}

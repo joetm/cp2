@@ -14,7 +14,7 @@ import Posts from './Posts'
 import Threads from './Threads'
 import SinglePost from './SinglePost'
 import SingleThread from './SingleThread'
-import routes from '../../routes'
+import * as routes from '../../routes'
 
 
 const Forum = (props) => {

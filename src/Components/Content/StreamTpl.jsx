@@ -63,7 +63,6 @@ class StreamTpl extends React.Component {
         }
 
         if (useCategories) {
-
           updates = categorizeList(items).map((group, daysAgo) => {
             return (
               <div key={`grp_${daysAgo}`}>
@@ -85,9 +84,7 @@ class StreamTpl extends React.Component {
               </div>
             )
           })
-
         } else {
-
           updates = (
             <Wrapper className="container">
               {
@@ -103,7 +100,6 @@ class StreamTpl extends React.Component {
               }
             </Wrapper>
           )
-
         }
 
         return (

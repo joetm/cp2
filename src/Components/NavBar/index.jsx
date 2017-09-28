@@ -109,7 +109,7 @@ class NavBar extends React.Component {
      * Render the component.
      */
     render() {
-        const { unread, isAuthenticated, errorMessage } = this.props
+        const { unread } = this.props
         const numUnread = sum(unread)
         const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
         return (

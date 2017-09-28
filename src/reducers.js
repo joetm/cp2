@@ -41,8 +41,8 @@ export function chatReducer(chatState = initialState.chat, action) {
         // receiving all chat messages
         case ACTIONS.FETCH_CHAT:
           return handle(chatState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -101,10 +101,10 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
             return messageHistoryState
         case ACTIONS.FETCH_MESSAGEHISTORY:
           return handle(msgHistState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...payload }),
+            success: () => ({ ...payload }),
           })
         default:
           return msgHistState
@@ -120,8 +120,8 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
     switch (type) {
         case ACTIONS.FETCH_REVIEWITEM:
           return handle(reviewState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, ...payload }),
           })
@@ -147,8 +147,8 @@ export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.r
     switch (type) {
         case ACTIONS.FETCH_REVIEWLEADERBOARD:
           return handle(reviewLeaderboardState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -166,8 +166,8 @@ export function updatesReducer(updatesState = initialState.updates, action) {
     switch (type) {
         case ACTIONS.FETCH_UPDATES:
           return handle(updatesState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -185,8 +185,8 @@ export function messagesReducer(messagesState = initialState.messages, action) {
     switch (type) {
         case ACTIONS.FETCH_MESSAGES:
           return handle(messagesState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: [...payload] }),
           })
@@ -228,8 +228,8 @@ export function imageReducer(imageState = initialState.image, action) {
     switch (type) {
         case ACTIONS.FETCH_PICTURE:
           return handle(imageState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, [payload.id]: [...payload] }),
           })
@@ -247,8 +247,8 @@ export function videosReducer(videosState = initialState.videos, action) {
     switch (type) {
         case ACTIONS.FETCH_MESSAGES:
           return handle(videosState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: [...payload] }),
           })
@@ -266,8 +266,8 @@ export function videoReducer(videoState = initialState.video, action) {
     switch (type) {
         case ACTIONS.FETCH_VIDEO:
           return handle(videoState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, [payload.id]: payload }),
           })
@@ -285,8 +285,8 @@ export function albumReducer(albumState = initialState.album, action) {
     switch (type) {
         case ACTIONS.FETCH_ALBUM:
           return handle(albumState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -304,8 +304,8 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
     switch (type) {
         case ACTIONS.FETCH_FAVORITES:
           return handle(favoritesState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -323,8 +323,8 @@ export function likesReducer(likesState = initialState.likes, action) {
     switch (type) {
         case ACTIONS.FETCH_LIKES:
           return handle(likesState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -361,8 +361,8 @@ export function postReducer(postState = initialState.post, action) {
     switch (type) {
         case ACTIONS.FETCH_POST:
           return handle(postState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, [payload.id]: payload }),
           })
@@ -380,8 +380,8 @@ export function postsReducer(postsState = initialState.posts, action) {
     switch (type) {
         case ACTIONS.FETCH_POSTS:
           return handle(postsState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -400,8 +400,8 @@ export function threadsReducer(threadsState = initialState.threads, action) {
     switch (type) {
         case ACTIONS.FETCH_THREADS:
           return handle(threadsState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -419,8 +419,8 @@ export function categoriesReducer(categoriesState = initialState.categories, act
     switch (type) {
         case ACTIONS.FETCH_CATEGORIES:
           return handle(categoriesState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -438,8 +438,8 @@ export function categoryReducer(categoryState = initialState.category, action) {
     switch (type) {
         case ACTIONS.FETCH_CATEGORY:
           return handle(categoryState, action, {
-            start:   prevState => ({...prevState, isFetching: true, error: null}),
-            finish:  prevState => ({...prevState, isFetching: false}),
+            start: prevState => ({...prevState, isFetching: true, error: null}),
+            finish: prevState => ({...prevState, isFetching: false}),
             failure: prevState => ({...prevState, error: payload}),
             success: prevState => ({...prevState, ...payload}),
           })
@@ -496,8 +496,8 @@ export function followersReducer(followersState = initialState.followers, action
     switch (type) {
         case ACTIONS.FETCH_FOLLOWERS:
           return handle(followersState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
@@ -524,8 +524,8 @@ export function modReducer(modState = initialState.mod, action) {
     switch (type) {
         case ACTIONS.FETCH_MOD_ITEMS:
           return handle(modState, action, {
-            start:   prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish:  prevState => ({ ...prevState, isFetching: false }),
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })

@@ -4,7 +4,6 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
-import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import LockIcon from 'material-ui/svg-icons/action/lock-outline'
 import LockOpenIcon from 'material-ui/svg-icons/action/lock-open'
 import TextField from 'material-ui/TextField'
@@ -44,7 +43,7 @@ class LoginSidebar extends React.Component {
             opacity: this.state.opacity !== 1 ? 1 : 0.5,
         })
     }
-    handleClickOutside = (e) => {
+    handleClickOutside = () => {
         // close the drawer
         this.setState({
             open: false,

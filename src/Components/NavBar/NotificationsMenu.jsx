@@ -5,7 +5,7 @@ import MenuItem from 'material-ui/MenuItem'
 import Chip from 'material-ui/Chip'
 import { withRouter } from 'react-router-dom'
 
-import routes from '../../routes'
+import * as routes from '../../routes'
 
 
 const styles = {

@@ -2,8 +2,6 @@
 
 import React from 'react'
 
-import { gray, darkGray } from '../../common/colors'
-
 
 const styles = {
     profileUsername: {

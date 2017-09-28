@@ -18,7 +18,7 @@ import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
 import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../../actions'
-import routes from '../../../routes'
+import * as routes from '../../../routes'
 import MenuEntry from '../../Shared/MenuEntry'
 import Headline from '../../Shared/Headline'
 

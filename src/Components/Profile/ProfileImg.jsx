@@ -3,7 +3,7 @@
 import React from 'react'
 
 // import Scrollbutton from '../Shared/Scrollbutton'
-import ProfileDetails from './ProfileDetails'
+// import ProfileDetails from './ProfileDetails'
 
 import "react-image-gallery/styles/css/image-gallery.css"
 import ImageGallery from 'react-image-gallery'

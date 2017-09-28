@@ -6,15 +6,11 @@ import '../External/dropzone/dist/dropzone.css'
 import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
-// import Snackbar from 'material-ui/Snackbar'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { fetchUserVerificationImages, removeImages } from '../../actions'
 import './transitions.scss'
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 import { blockMaxWidth } from './styles'
-import UpdateWrap from '../Shared/UpdateWrap'
-import Img from './Img'
 import ImgContainer from './ImgContainer'
 import Spacer from '../Shared/Spacer'
 
@@ -69,9 +65,10 @@ class VerificationImg extends React.Component {
           <RaisedButton
             label={`Delete Verification Image${this.state.selection.length > 1 ? 's' : ''}`}
             disabled={this.props.isFetching}
-            onTouchTap={this.deleteVerificationImages}
             disabled={!this.state.selection.length}
+            onTouchTap={this.deleteVerificationImages}
           />
+{/*TODO: duplicate prop*/}
 
           <Spacer />
 

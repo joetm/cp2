@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom'
 import { fetchPicture } from '../../actions'
 // --
 import Spacer from '../Shared/Spacer'
-import Update from '../Content/Update'
 import Headline from '../Shared/Headline'
 import InlineImage from './InlineImage'
 import FullscreenImage from './FullscreenImage'

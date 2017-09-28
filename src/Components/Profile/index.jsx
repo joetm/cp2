@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import { fetchUser, fetchUserProfileImages } from '../../actions'
-import routes from '../../routes'
+import * as routes from '../../routes'
 import ProfileImg from './ProfileImg'
 import Avatar from '../Shared/Avatar'
 import Spacer from '../Shared/Spacer'

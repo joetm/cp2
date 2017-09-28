@@ -8,8 +8,6 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 
 import Avatar from '../Shared/Avatar'
 import Tags from '../Shared/Tags'
-import GridWrap from '../Shared/GridWrap'
-import CellWrapper from '../Shared/CellWrapper'
 import Headline from '../Shared/Headline'
 import { humanReadableDate } from '../../common/helpers'
 import SocialTools from '../Shared/SocialTools'
