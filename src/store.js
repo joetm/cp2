@@ -29,7 +29,7 @@ const store = createStore(
         appState: Reducers.cpAppReducer,
         // multiple items
         updates: Reducers.updatesReducer,
-        images: Reducers.imagesReducer,
+        images: Reducers.imageReducer,
         verificationImages: Reducers.imagesReducer,
         profileImages: Reducers.imagesReducer,
         videos: Reducers.videosReducer,

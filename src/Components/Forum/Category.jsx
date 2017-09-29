@@ -22,7 +22,8 @@ class Category extends React.Component {
     // componentDidUpdate(prevProps) {
     // }
     render() {
-        const { isFetching, title, thumb, threads = [] } = this.props.category
+        const { category, isFetching, threads = [] } = this.props
+        const { title, thumb } = category
 
         const CategoryInfo = <div><InfoIcon /> {threads.length} threads</div>
 
@@ -52,9 +53,10 @@ class Category extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    isFetching: state.threads.isFetching,
-    category: state.category,
+    isFetching: state.category.isFetching,
     categoryid: ownProps.match.params.categoryid,
+    threads: state.category.threads,
+    category: state.category[ownProps.match.params.categoryid],
 })
 
 export default connect(

@@ -196,34 +196,10 @@ export function messagesReducer(messagesState = initialState.messages, action) {
 }
 
 /**
- * imagesReducer
- * @returns imagesState
- **/
-export function imagesReducer(imagesState = initialState.images, action) {
-    switch (action.type) {
-        case ACTIONS.FETCH_IMAGES:
-            return {...imagesState, isFetching: false, items: [...action.payload]}
-        case ACTIONS.FETCH_PROFILEIMAGES:
-            return {...imagesState, isFetching: false, items: [...action.payload]}
-        case ACTIONS.FETCH_VERIFICATIONIMAGES:
-            return {...imagesState, isFetching: false, items: [...action.payload]}
-        case ACTIONS.DELETE_IMAGES_STARTED:
-            return {...imagesState, isFetching: true}
-        case ACTIONS.DELETE_IMAGES_FAILURE:
-            return {...imagesState, isFetching: false}
-        case ACTIONS.DELETE_IMAGES_SUCCESS:
-            const items = [...imagesState.items].filter(item => action.response.indexOf(item.id) < 0)
-            return {...imagesState, isFetching: false, items}
-        default:
-            return imagesState
-    }
-}
-
-/**
  * imageReducer
  * @returns imageState
  **/
-export function imageReducer(imageState = initialState.image, action) {
+export function imageReducer(imageState = initialState.images, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_PICTURE:
@@ -231,8 +207,21 @@ export function imageReducer(imageState = initialState.image, action) {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
             finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, [payload.id]: [...payload] }),
+            success: prevState => ({ ...prevState, [payload.id]: {...payload} }),
           })
+        case ACTIONS.FETCH_IMAGES:
+            return {...imageState, isFetching: false, items: [...action.payload]}
+        case ACTIONS.FETCH_PROFILEIMAGES:
+            return {...imageState, isFetching: false, items: [...action.payload]}
+        case ACTIONS.FETCH_VERIFICATIONIMAGES:
+            return {...imageState, isFetching: false, items: [...action.payload]}
+        case ACTIONS.DELETE_IMAGES_STARTED:
+            return {...imageState, isFetching: true}
+        case ACTIONS.DELETE_IMAGES_FAILURE:
+            return {...imageState, isFetching: false}
+        case ACTIONS.DELETE_IMAGES_SUCCESS:
+            const items = [...imageState.items].filter(item => action.response.indexOf(item.id) < 0)
+            return {...imageState, isFetching: false, items}
         default:
           return imageState
     }

@@ -15,7 +15,7 @@ class ForumHome extends React.Component {
         this.props.fetchCategories()
     }
     render() {
-        const { categories } = this.props
+        const { categories = [] } = this.props
         return (
             <div>
                 <ScrollToTop />

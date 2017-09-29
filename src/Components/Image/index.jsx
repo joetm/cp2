@@ -26,23 +26,23 @@ class Image extends React.Component {
             <div>
                 {
                     !fullscreenImages ?
-                    <div>
-                        <Headline>{title}</Headline>
-                        <InlineImage
-                            {...image}
-                            scaleImages={true}
-                            showTitle={false}
-                            clickable={false}
-                            gridColumnsFull={1}
-                            gridColumnsTablet={1}
-                            gridColumnsPhone={1}
-                        />
-                        <Spacer />
-                    </div>
+                        <div>
+                            <Headline>{title}</Headline>
+                            <InlineImage
+                                {...image}
+                                scaleImages={true}
+                                showTitle={false}
+                                clickable={false}
+                                gridColumnsFull={1}
+                                gridColumnsTablet={1}
+                                gridColumnsPhone={1}
+                            />
+                            <Spacer />
+                        </div>
                     :
-                    <FullscreenImage
-                        {...image}
-                    />
+                        <FullscreenImage
+                            {...image}
+                        />
                 }
                 <Spacer />
             </div>
