@@ -73,7 +73,6 @@ class ProfileStats extends React.Component {
     }
     render() {
         const { user, palette } = this.props
-        console.log('palette', palette)
         const { url } = this.props.match
         return (
             <div style={{backgroundColor: user.isOnline ? palette.primary2Color : palette.primary1Color}}>

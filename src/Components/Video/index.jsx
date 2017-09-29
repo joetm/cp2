@@ -18,6 +18,7 @@ import Tags from '../Shared/Tags'
 import Tag from '../Shared/Tag'
 import Likes from '../Likes'
 import Headline from '../Shared/Headline'
+import ScrollToTop from '../Shared/ScrollToTop'
 
 
 const VIDEO_MAXWIDTH = 1024
@@ -51,6 +52,8 @@ class Video extends React.Component {
         const { title, content, src, thumb, likes, user, tags } = video
         return (
             <div style={styles.pageWrapper}>
+
+                <ScrollToTop />
 
                 <Headline>{title}</Headline>
 

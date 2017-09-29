@@ -42,8 +42,9 @@ class Profile extends React.Component {
         user: {},
     }
     componentDidMount() {
-        this.props.fetchUser(this.props.userid)
-        this.props.fetchUserProfileImages(this.props.userid)
+        const { userid } = this.props
+        this.props.fetchUser(userid)
+        this.props.fetchUserProfileImages(userid)
     }
     toggleProfileDetails = () => {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -52,15 +53,7 @@ class Profile extends React.Component {
      * Render the component.
      */
     render() {
-        const { userid, url, profileImages, fetchUserProfileImages, palette } = this.props
-
-        let user
-        if (this.props.users[userid] === undefined) {
-            user = {}
-        } else {
-            user = this.props.users[userid]
-        }
-
+        const { user = {}, userid, url, profileImages, fetchUserProfileImages, palette } = this.props
         return (
             <div>
 
@@ -137,7 +130,7 @@ class Profile extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     // add selected fields from the state as props to the component
-    users: state.users,
+    user: state.users[ownProps.match.params.userid],
     profileImages: state.profileImages.items,
     // https://github.com/reactjs/react-router-redux#how-do-i-access-router-state-in-a-container-component
     url: ownProps.match.url,

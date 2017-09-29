@@ -395,20 +395,21 @@ export function categoryReducer(categoryState = initialState.category, action) {
  * userReducer
  * @returns state
  **/
-export function userReducer(usersState = initialState.users, action) {
-    switch (action.type) {
+export function userReducer(userState = initialState.users, action) {
+    const { type, payload } = action
+    switch (type) {
         case ACTIONS.FETCH_USER:
-            return { ...usersState, isFetching: false, [action.payload.id]: {...action.payload} }
+            return { ...userState, isFetching: false, [payload.id]: {...payload} }
         case ACTIONS.FETCH_USERS:
-            const ret = {...usersState, isFetching: false}
-            Object.keys(action.payload).forEach((id) => {
-                ret[id] = {...action.payload[id]}
+            const ret = {...userState, isFetching: false}
+            Object.keys(action.payload).forEach(id => {
+                ret[id] = {...payload[id]}
             })
             return ret
 
         case ACTIONS.DELETE_AVATAR_SUCCESS:
             // remove the avatar from the respective user
-            const usersAvCopy = {...usersState}
+            const usersAvCopy = {...userState}
             if (Object.prototype.hasOwnProperty.call(usersAvCopy, `${action.userid}`)) {
                 usersAvCopy[`${action.userid}`].avatar = null
             }
@@ -417,14 +418,14 @@ export function userReducer(usersState = initialState.users, action) {
 
         case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
             // remove the profile image from the respective user
-            const usersPICopy = {...usersState}
+            const usersPICopy = {...userState}
             if (Object.prototype.hasOwnProperty.call(usersPICopy, `${action.userid}`)) {
                 usersPICopy[`${action.userid}`].profileimg = null
             }
             return {...usersPICopy, isFetching: false}
 
         default:
-            return usersState
+            return userState
     }
 }
 
