@@ -311,25 +311,6 @@ export function likesReducer(likesState = initialState.likes, action) {
 }
 
 /**
- * threadReducer
- * @returns threadState
- **/
-export function threadReducer(threadState = initialState.thread, action) {
-    switch (action.type) {
-        case ACTIONS.FETCH_THREAD:
-            return {...threadState, ...action.payload, isFetching: false}
-        case ACTIONS.FETCH_POSTS_FOR_THREAD_STARTED:
-            return {...threadState, isFetching: true}
-        case ACTIONS.RECEIVE_POSTS_FOR_THREAD:
-            return {...threadState, items: [...action.response], isFetching: false}
-        case ACTIONS.FETCH_POSTS_FOR_THREAD_FAILURE:
-            return {...threadState, isFetching: false}
-        default:
-            return threadState
-    }
-}
-
-/**
  * postReducer
  * @returns postState
  **/
@@ -368,41 +349,29 @@ export function postsReducer(postsState = initialState.posts, action) {
 }
 
 /**
- * threadsReducer
- * @returns threadsState
+ * threadReducer
+ * @returns threadState
  **/
-// TODO
-export function threadsReducer(threadsState = initialState.threads, action) {
-    const { type, payload } = action
+export function threadReducer(threadState = initialState.thread, action) {
+    const {type, payload, response } = action // TODO
     switch (type) {
         case ACTIONS.FETCH_THREADS:
-          return handle(threadsState, action, {
+          return handle(threadState, action, {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
             finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
+        case ACTIONS.FETCH_THREAD:
+            return {...threadState, isFetching: false, [payload.id]: {...payload}}
+        case ACTIONS.FETCH_POSTS_FOR_THREAD_STARTED:
+            return {...threadState, isFetching: true}
+        case ACTIONS.RECEIVE_POSTS_FOR_THREAD:
+            return {...threadState, items: [...response], isFetching: false}
+        case ACTIONS.FETCH_POSTS_FOR_THREAD_FAILURE:
+            return {...threadState, isFetching: false}
         default:
-          return threadsState
-    }
-}
-
-/**
- * categoriesReducer
- * @returns categoriesState
- **/
-export function categoriesReducer(categoriesState = initialState.categories, action) {
-    const { type, payload } = action
-    switch (type) {
-        case ACTIONS.FETCH_CATEGORIES:
-          return handle(categoriesState, action, {
-            start: prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish: prevState => ({ ...prevState, isFetching: false }),
-            failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, items: payload }),
-          })
-        default:
-          return categoriesState
+            return threadState
     }
 }
 
@@ -413,15 +382,22 @@ export function categoriesReducer(categoriesState = initialState.categories, act
 export function categoryReducer(categoryState = initialState.category, action) {
     const { type, payload } = action
     switch (type) {
+        case ACTIONS.FETCH_CATEGORIES:
+          return handle(categoryState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: payload }),
+          })
         case ACTIONS.FETCH_CATEGORY:
           return handle(categoryState, action, {
             start: prevState => ({...prevState, isFetching: true, error: null}),
             finish: prevState => ({...prevState, isFetching: false}),
             failure: prevState => ({...prevState, error: payload}),
-            success: prevState => ({...prevState, ...payload}),
+            success: prevState => ({...prevState, [payload.id]: {...payload}}),
           })
         case ACTIONS.FETCH_CATEGORY_THREADS:
-            return {...categoryState, isFetching: false, threads: [...payload]}
+            return {...categoryState, isFetching: false, threads: [...payload]} // TODO
         default:
           return categoryState
     }
