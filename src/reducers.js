@@ -228,31 +228,19 @@ export function imageReducer(imageState = initialState.images, action) {
 }
 
 /**
- * videosReducer
- * @returns videosState
- **/
-export function videosReducer(videosState = initialState.videos, action) {
-    const { type, payload } = action
-    switch (type) {
-        case ACTIONS.FETCH_MESSAGES:
-          return handle(videosState, action, {
-            start: prevState => ({ ...prevState, isFetching: true, error: null }),
-            finish: prevState => ({ ...prevState, isFetching: false }),
-            failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, items: [...payload] }),
-          })
-        default:
-          return videosState
-    }
-}
-
-/**
  * videoReducer (redux-pack)
  * @returns videoState
  **/
 export function videoReducer(videoState = initialState.video, action) {
     const { type, payload } = action
     switch (type) {
+        case ACTIONS.FETCH_VIDEOS:
+          return handle(videoState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: [...payload] }),
+          })
         case ACTIONS.FETCH_VIDEO:
           return handle(videoState, action, {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
