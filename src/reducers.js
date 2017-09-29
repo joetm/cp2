@@ -49,19 +49,24 @@ export function chatReducer(chatState = initialState.chat, action) {
         // fill the chat state with the current user details
         case ACTIONS.RECEIVE_CURRENT_USER:
             const currentUser = {
-                id: action.response.id,
-                username: action.response.username,
-                avatar: action.response.avatar,
+                id: payload.id,
+                username: payload.username,
+                avatar: payload.avatar,
             }
             return {...chatState, user: currentUser}
         // receive a chat message after sending by oneself
-        case ACTIONS.RECEIVE_CHAT_MSG:
-            const newChatMsgs = [...chatState.items]
-            newChatMsgs.push({
-                ...action.response,
-                user: {...chatState.user}, // user expansion
-            })
-            return {...chatState, items: newChatMsgs}
+        case ACTIONS.SEND_CHAT_MSG:
+          const newChatMsgs = [...chatState.items]
+          newChatMsgs.push({
+              ...payload,
+              user: {...chatState.user}, // user expansion with the current user details
+          })
+          return handle(chatState, action, {
+            // start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            // finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: newChatMsgs }),
+          })
         case ACTIONS.DELETE_MSG_SUCCESS:
             const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === action.id })
             return {
@@ -352,12 +357,13 @@ export function threadReducer(threadState = initialState.thread, action) {
           })
         case ACTIONS.FETCH_THREAD:
             return {...threadState, isFetching: false, [payload.id]: {...payload}}
-        case ACTIONS.FETCH_POSTS_FOR_THREAD_STARTED:
-            return {...threadState, isFetching: true}
-        case ACTIONS.RECEIVE_POSTS_FOR_THREAD:
-            return {...threadState, items: [...response], isFetching: false}
-        case ACTIONS.FETCH_POSTS_FOR_THREAD_FAILURE:
-            return {...threadState, isFetching: false}
+        case ACTIONS.FETCH_POSTS_FOR_THREAD:
+          return handle(threadState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: payload }),
+          })
         default:
             return threadState
     }
@@ -481,7 +487,8 @@ export function modReducer(modState = initialState.mod, action) {
  * @returns state
  **/
 export function currentUserReducer(currentUserState = initialState.currentUser, action) {
-    switch (action.type) {
+    const { type, payload } = action
+    switch (type) {
         case ACTIONS.GET_CURRENT_USER:
             return currentUserState
         case ACTIONS.GET_CURRENT_USER_ID:
@@ -492,7 +499,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.GET_THEME:
             return currentUserState.theme
         case ACTIONS.FETCH_CURRENT_USER:
-            return { ...action.payload }
+            return { isFetching: false, error: null, ...payload }
 
         case ACTIONS.RECEIVE_UNREAD_COUNT:
             return { ...currentUserState,
@@ -563,7 +570,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
             return {...currentUserState, profileimg: null}
 
         case ACTIONS.RECEIVE_SETTING:
-            return {...currentUserState, ...action.payload}
+            return {...currentUserState, ...payload}
 
         default:
             return currentUserState

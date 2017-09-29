@@ -75,7 +75,6 @@ export const FETCH_PICTURES             = 'ALBUM::FETCH_PICTURES'
 export const FETCH_PICTURE              = 'ALBUM::FETCH_PICTURE'
 export const FETCH_THREAD               = 'FORUM::FETCH_THREAD'
 export const FETCH_ALBUM                = 'ALBUM::FETCH_ALBUM'
-export const RECEIVE_IMAGES             = 'STREAM::RECEIVE_IMAGES'
 export const FETCH_IMAGE                = 'STREAM::FETCH_IMAGE'
 export const FETCH_VERIFICATIONIMAGES   = 'STREAM::FETCH_VERIFICATIONIMAGES'
 export const FETCH_PROFILEIMAGES        = 'PROFILE::FETCH_PROFILEIMAGES'
@@ -100,8 +99,7 @@ export const RECEIVE_CITY               = 'APP::RECEIVE_CITY'
 export const RECEIVE_SEARCH_RESULT      = 'SEARCH::RECEIVE_SEARCH_RESULT'
 
 export const FETCH_CHAT                 = 'CHAT::FETCH_CHAT'
-export const RECEIVE_CHAT_MSG           = "CHAT::RECEIVE_CHAT_MSG"
-// export const SEND_CHAT_MSG             = "CHAT::SEND_CHAT_MSG"
+export const SEND_CHAT_MSG              = "CHAT::SEND_CHAT_MSG"
 
 // export const DELETE_AVATAR           = 'APP:RECEIVE_AVATAR'
 export const DELETE_AVATAR_STARTED      = 'CONTENT::DELETE_AVATAR_STARTED'
@@ -136,8 +134,7 @@ export const FETCH_POST                      = 'FORUM::FETCH_POST'
 
 export const FETCH_REVIEWITEM                = 'REVIEW::FETCH_REVIEWITEM'
 export const FETCH_REVIEWLEADERBOARD         = 'REVIEW::FETCH_REVIEWLEADERBOARD'
-export const FETCH_POSTS_FOR_THREAD_STARTED  = 'FORUM::FETCH_POSTS_FOR_THREAD_STARTED'
-export const FETCH_POSTS_FOR_THREAD_FAILURE  = 'FORUM::FETCH_POSTS_FOR_THREAD_FAILURE'
+export const FETCH_POSTS_FOR_THREAD          = 'FORUM::FETCH_POSTS_FOR_THREAD'
 
 // MOD
 export const FETCH_MOD_ITEMS                 = 'MOD::FETCH_MOD_ITEMS'
@@ -212,44 +209,31 @@ export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'boo
 export const receiveOnlineUsers        = makeActionCreator(RECEIVE_ONLINE_USERS,       'response')
 export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
 export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
-export const receiveImages             = makeActionCreator(RECEIVE_IMAGES,             'response')
-export const receivePictures           = receiveImages
 export const receiveLike               = makeActionCreator(RECEIVE_LIKE,               'response')
 export const receiveDislike            = makeActionCreator(RECEIVE_DISLIKE,            'response')
 export const receiveUnreadCount        = makeActionCreator(RECEIVE_UNREAD_COUNT,       'response')
-
-// export const sendChatMessageStart = makeActionCreator(SEND_CHAT_MSG,             'payload')
-export const receiveChatMsg          = makeActionCreator(RECEIVE_CHAT_MSG,          'response')
-
 export const receiveCountries        = makeActionCreator(RECEIVE_COUNTRIES,         'response')
 export const receiveStates           = makeActionCreator(RECEIVE_STATES,            'response')
 export const receiveCities           = makeActionCreator(RECEIVE_CITIES,            'response')
 export const receiveCountry          = makeActionCreator(RECEIVE_COUNTRY,           'response')
 export const receiveState            = makeActionCreator(RECEIVE_STATE,             'response')
 export const receiveCity             = makeActionCreator(RECEIVE_CITY,              'response')
-
 export const receiveSearchResult     = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
 
 export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
 export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS,     'userid')
 export const deleteAvatarFailure     = makeActionCreator(DELETE_AVATAR_FAILURE,     'error')
-
 export const deleteProfileImgStarted = makeActionCreator(DELETE_PROFILEIMG_STARTED)
 export const deleteProfileImgSuccess = makeActionCreator(DELETE_PROFILEIMG_SUCCESS)
 export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILURE, 'error')
-
 export const deleteImagesStarted     = makeActionCreator(DELETE_IMAGES_STARTED)
 export const deleteImagesSuccess     = makeActionCreator(DELETE_IMAGES_SUCCESS,     'response')
 export const deleteImagesFailure     = makeActionCreator(DELETE_IMAGES_FAILURE,     'error')
-
 export const deleteMsgSuccess        = makeActionCreator(DELETE_MSG_SUCCESS,        'id')
-
 export const removePost              = makeActionCreator(REMOVE_POST,               'postid', 'bool')
 
 // --
 
-export const fetchPostsForThreadStarted = makeActionCreator(FETCH_POSTS_FOR_THREAD_STARTED)
-export const fetchPostsForThreadFailure = makeActionCreator(FETCH_POSTS_FOR_THREAD_FAILURE,    'error')
 
 // --
 
@@ -421,16 +405,12 @@ export const fetchPosts = (limit) => ({
 
 /**
  * fetchPostsForThread Asynchronous Action Creator
- * @returns receivePostsForThread() - Action
+ * @returns Redux-pack action
  */
-export const fetchPostsForThread = (threadid, limit) => (dispatch) => {
-    dispatch(fetchPostsForThreadStarted())
-    return api.fetchPostsForThread(threadid, limit)
-      .then(
-        response => dispatch(receivePostsForThread(response)),
-        error => dispatch(fetchPostsForThreadFailure(error))
-      )
-}
+export const fetchPostsForThread = (threadid, limit) => ({
+    type: FETCH_POSTS_FOR_THREAD,
+    promise: api.fetchPostsForThread(threadid, limit),
+})
 
 /**
  * fetchPost Asynchronous Action Creator
@@ -621,10 +601,10 @@ export const fetchModItems = (limit) => ({
   promise: api.fetchModItems(limit),
 })
 
-export const sendChatMessage = (payload) => { // => (dispatch) => {
-    // dispatch(sendChatMessageStart(payload))
-    return api.sendChatMessage(payload).then(receiveChatMsg)
-}
+export const sendChatMessage = (payload) => ({
+  type: SEND_CHAT_MSG,
+  promise: api.sendChatMessage(payload),
+})
 
 /**
  * recordLike Asynchronous Action Creator
