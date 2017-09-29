@@ -150,7 +150,7 @@ export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.r
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
             finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, items: payload }),
+            success: prevState => ({ ...prevState, leaderboard: payload }),
           })
         default:
           return reviewLeaderboardState
@@ -161,7 +161,7 @@ export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.r
  * updatesReducer
  * @returns updatesState
  **/
-export function updatesReducer(updatesState = initialState.updates, action) {
+export function updateReducer(updatesState = initialState.updates, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_UPDATES:
@@ -180,7 +180,7 @@ export function updatesReducer(updatesState = initialState.updates, action) {
  * messagesReducer
  * @returns messagesState
  **/
-export function messagesReducer(messagesState = initialState.messages, action) {
+export function messageReducer(messagesState = initialState.messages, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_MESSAGES:
@@ -273,10 +273,10 @@ export function albumReducer(albumState = initialState.album, action) {
 }
 
 /**
- * favoritesReducer
+ * favoriteReducer
  * @returns favoritesState
  **/
-export function favoritesReducer(favoritesState = initialState.favorites, action) {
+export function favoriteReducer(favoritesState = initialState.favorites, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_FAVORITES:
@@ -295,7 +295,7 @@ export function favoritesReducer(favoritesState = initialState.favorites, action
  * likesReducer
  * @returns likesState
  **/
-export function likesReducer(likesState = initialState.likes, action) {
+export function likeReducer(likesState = initialState.likes, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_LIKES:
@@ -324,27 +324,15 @@ export function postReducer(postState = initialState.post, action) {
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, [payload.id]: payload }),
           })
-        default:
-          return postState
-    }
-}
-
-/**
- * postsReducer
- * @returns postsState
- **/
-export function postsReducer(postsState = initialState.posts, action) {
-    const { type, payload } = action
-    switch (type) {
         case ACTIONS.FETCH_POSTS:
-          return handle(postsState, action, {
+          return handle(postState, action, {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
             finish: prevState => ({ ...prevState, isFetching: false }),
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: payload }),
           })
         default:
-          return postsState
+          return postState
     }
 }
 
@@ -444,7 +432,7 @@ export function userReducer(usersState = initialState.users, action) {
  * followersReducer
  * @returns state
  **/
-export function followersReducer(followersState = initialState.followers, action) {
+export function followerReducer(followersState = initialState.followers, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_FOLLOWERS:
