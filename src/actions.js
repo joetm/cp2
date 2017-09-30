@@ -92,21 +92,21 @@ export const CHANGE_SETTING           = 'APP::CHANGE_SETTING'
  * Deprecated (no longer needed with redux-pack)
  * @returns action
  **/
-// function makeActionCreator(type, ...argNames) {
-//   return function (...args) {
-//     const action = {
-//         type,
-//         // fsa compliance
-//         payload: {},
-//         error: null
-//         // meta: {},
-//     }
-//     argNames.forEach((arg, index) => {
-//       action[argNames[index]] = args[index]
-//     })
-//     return action
-//   }
-// }
+function makeActionCreator(type, ...argNames) {
+  return function (...args) {
+    const action = {
+        type,
+        // fsa compliance
+        payload: {},
+        error: null
+        // meta: {},
+    }
+    argNames.forEach((arg, index) => {
+      action[argNames[index]] = args[index]
+    })
+    return action
+  }
+}
 
 // ----------------------------------------------------
 // Redux action creators

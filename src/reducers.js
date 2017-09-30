@@ -52,16 +52,20 @@ export function chatReducer(chatState = initialState.chat, action) {
             success: prevState => ({ ...prevState, items: newChatMsgs }),
           })
         case ACTIONS.DELETE_CHAT_MSG:
-          const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === payload.id })
           return handle(chatState, action, {
             // start: prevState => ({ ...prevState, isDeleting: true, error: null }),
             // finish: prevState => ({ ...prevState, isDeleting: false }),
             failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, items: [
-                    ...prevState.items.slice(0, chatMsgIndex),
-                    ...prevState.items.slice(chatMsgIndex + 1)
-                ]
-            }),
+            success: prevState => {
+                const chatMsgIndex = prevState.items.findIndex(msg => msg.id === payload.id)
+                return ({
+                    ...prevState,
+                    items: [
+                        ...prevState.items.slice(0, chatMsgIndex),
+                        ...prevState.items.slice(chatMsgIndex + 1)
+                    ]
+                })
+            },
           })
         //
         default:
