@@ -657,7 +657,7 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return {...appState, sidebarOpen: !appState.sidebarOpen}
 
         case ACTIONS.SET_DEVICE_DETAILS:
-            return {...appState, deviceDetails: payload}
+            return {...appState, deviceDetails: {...payload}}
         case ACTIONS.SET_ACTIVE_BADGE:
             return {...appState, activeBadge: +action.id}
 

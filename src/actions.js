@@ -89,23 +89,24 @@ export const CHANGE_SETTING           = 'APP::CHANGE_SETTING'
 /**
  * Function to reduce redux boilerplate code
  * See: http://redux.js.org/docs/recipes/ReducingBoilerplate.html
+ * Deprecated (no longer needed with redux-pack)
  * @returns action
  **/
-function makeActionCreator(type, ...argNames) {
-  return function (...args) {
-    const action = {
-        type,
-        // fsa compliance
-        payload: {},
-        error: null
-        // meta: {},
-    }
-    argNames.forEach((arg, index) => {
-      action[argNames[index]] = args[index]
-    })
-    return action
-  }
-}
+// function makeActionCreator(type, ...argNames) {
+//   return function (...args) {
+//     const action = {
+//         type,
+//         // fsa compliance
+//         payload: {},
+//         error: null
+//         // meta: {},
+//     }
+//     argNames.forEach((arg, index) => {
+//       action[argNames[index]] = args[index]
+//     })
+//     return action
+//   }
+// }
 
 // ----------------------------------------------------
 // Redux action creators
@@ -119,9 +120,8 @@ export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 
 // ----------------------------------------------------
 
-export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'payload')
-export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'payload')
-
+export const sendMessage = (payload) => ({ type: SEND_MESSAGE, payload });
+export const setDeviceDetails = (payload) => ({ type: SET_DEVICE_DETAILS, payload });
 
 // ----------------------------------------------------
 // Asynchronous action creators
