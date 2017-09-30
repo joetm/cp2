@@ -10,7 +10,7 @@ import HeartIcon from 'material-ui/svg-icons/action/favorite'
 import LikeIcon from 'material-ui/svg-icons/action/thumb-up'
 import UpdatesIcon from 'material-ui/svg-icons/image/burst-mode'
 
-import { closeStreamSidebar, getCurrentUserid } from '../../../actions'
+import { closeStreamSidebar } from '../../../actions'
 import { IMAGES, VIDEOS, MESSAGES, STREAM, FAVORITES, LIKES } from '../../../routes'
 import MenuEntry from '../../Shared/MenuEntry'
 
@@ -101,5 +101,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { closeStreamSidebar, getCurrentUserid }
+    { closeStreamSidebar }
 )(StreamSidebar)

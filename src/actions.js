@@ -4,9 +4,7 @@
  **/
 
 import api from './api'
-// import { pushState } from 'redux-router'
-// import jwtDecode from 'jwt-decode'
-import fetch from 'unfetch'
+// import jwtDecode from 'jwt-decode' // TODO
 
 import { checkHttpStatus, parseJSON } from './common/helpers'
 
@@ -16,8 +14,6 @@ import { checkHttpStatus, parseJSON } from './common/helpers'
  */
 
 export const GET_CURRENT_USERTITLE    = 'USER::GET_CURRENT_USERTITLE'
-export const GET_CURRENT_USER         = 'USER::GET_CURRENT_USER'
-export const GET_CURRENT_USER_ID      = 'USER::GET_CURRENT_USER_ID'
 export const GET_POSTS                = 'FORUM::GET_POSTS'
 export const GET_POST                 = 'FORUM::GET_POST'
 export const GET_THREAD               = 'FORUM::GET_THREAD'
@@ -35,15 +31,12 @@ export const FETCH_MESSAGEHISTORY     = 'CHAT::FETCH_MESSAGEHISTORY'
 export const REVIEW_APPROVE           = 'REVIEW::APPROVE'
 export const REVIEW_DISAPPROVE        = 'REVIEW::DISAPPROVE'
 export const LIKE                     = 'SOCIAL::LIKE'
-export const DISLIKE                  = 'SOCIAL::DISLIKE'
 export const UNDO_LIKE                = 'SOCIAL::UNDO_LIKE'
-export const UNDO_DISLIKE             = 'SOCIAL::UNDO_DISLIKE'
-export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
-export const GET_UPDATES              = 'STREAM::GET_UPDATES'
 export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
 
 export const FETCH_USERS              = 'USER::FETCH_USERS'
 export const FETCH_USER               = 'USER::FETCH_USER'
+export const FETCH_USER_BY_USERNAME   = 'USER::FETCH_USER_BY_USERNAME'
 export const FETCH_ONLINE_USERS       = 'USER::FETCH_ONLINE_USERS'
 export const FETCH_FOLLOWERS          = 'SOCIAL::FETCH_FOLLOWERS'
 export const FETCH_CURRENT_USER       = 'USER:FETCH_CURRENT_USER'
@@ -78,20 +71,10 @@ export const FETCH_CITIES             = 'APP::FETCH_CITIES'
 export const FETCH_MOD_ITEMS          = 'MOD::FETCH_MOD_ITEMS'
 
 export const RECEIVE_LIKE             = 'STREAM::RECEIVE_LIKE'
-export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
 export const RECEIVE_COUNTRY          = 'APP::RECEIVE_COUNTRY'
 export const RECEIVE_STATE            = 'APP::RECEIVE_STATE'
 export const RECEIVE_CITY             = 'APP::RECEIVE_CITY'
 export const RECEIVE_SEARCH_RESULT    = 'SEARCH::RECEIVE_SEARCH_RESULT'
-
-export const MARK_IMAGES_READ         = 'STREAM::MARK_IMAGES_READ'
-export const MARK_VIDEOS_READ         = 'STREAM::MARK_VIDEOS_READ'
-export const MARK_POSTS_READ          = 'STREAM::MARK_POSTS_READ'
-export const MARK_MESSAGES_READ       = 'STREAM::MARK_MESSAGES_READ'
-export const MARK_LIKES_READ          = 'STREAM::MARK_LIKES_READ'
-export const MARK_THREAD_READ         = 'STREAM::MARK_THREAD_READ'
-export const MARK_POST_READ           = 'STREAM::MARK_POST_READ'
-export const MARK_ALL_READ            = 'STREAM::MARK_ALL_READ'
 
 export const SEND_CHAT_MSG            = "CHAT::SEND_CHAT_MSG"
 
@@ -102,14 +85,6 @@ export const DELETE_CHAT_MSG          = 'CHAT::DELETE_CHAT_MSG'
 
 export const CHANGE_SETTING           = 'APP::CHANGE_SETTING'
 
-// AUTH
-// export const LOGIN_REQUEST            = 'AUTH::LOGIN_REQUEST'
-// export const LOGIN_FAILURE            = 'AUTH::LOGIN_FAILURE'
-// export const LOGIN_SUCCESS            = 'AUTH::LOGIN_SUCCESS'
-// export const LOGOUT                   = 'AUTH::LOGOUT'
-
-// export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
-// export const RECEIVE_PROTECTED_DATA       = 'AUTH::RECEIVE_PROTECTED_DATA'
 
 /**
  * Function to reduce redux boilerplate code
@@ -121,8 +96,8 @@ function makeActionCreator(type, ...argNames) {
     const action = {
         type,
         // fsa compliance
-        // payload: {},
-        // error: null
+        payload: {},
+        error: null
         // meta: {},
     }
     argNames.forEach((arg, index) => {
@@ -136,103 +111,21 @@ function makeActionCreator(type, ...argNames) {
 // Redux action creators
 // ----------------------------------------------------
 
-export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
-export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)
-export const replyThread           = makeActionCreator(REPLY_THREAD,          'threadid')
 export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
 export const closeSearchSidebar    = makeActionCreator(CLOSE_SEARCH_SIDEBAR)
 export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
-export const toggleSidebar         = makeActionCreator(TOGGLE_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
-export const undoLike              = makeActionCreator(UNDO_LIKE,           'itemid')
-export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,      'itemid')
-export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE,   'itemid')
-export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'toUserId', 'msg', 'currentUser')
-export const getPosts              = makeActionCreator(GET_POSTS)
-export const getPost               = makeActionCreator(GET_POST,            'postid', 'response')
-export const getThread             = makeActionCreator(GET_THREAD,          'threadid', 'response')
-export const editPost              = makeActionCreator(EDIT_POST,           'postid', 'response')
-export const selectThread          = makeActionCreator(SELECT_THREAD,       'threadid')
-export const getUpdates            = makeActionCreator(GET_UPDATES)
-export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'obj')
-
-export const receiveUnreadCount    = makeActionCreator(RECEIVE_UNREAD_COUNT,       'response')
-export const receiveSearchResult   = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
-// export const setIsAuthenticating   = makeActionCreator(LOGIN_REQUEST)
-
 
 // ----------------------------------------------------
-// JWT
-// ----------------------------------------------------
 
-// export const loginSuccess = (token) => {
-//     localStorage.setItem('token', token)
-//     return {
-//         type: LOGIN_SUCCESS,
-//         token,
-//     }
-// }
-// export const loginFailure = (status, statusText) => {
-//     localStorage.removeItem('token')
-//     return {
-//         type: LOGIN_FAILURE,
-//         status,
-//         statusText,
-//     }
-// }
-// export const logout = () => {
-//     localStorage.removeItem('token')
-//     return {
-//         type: LOGOUT,
-//     }
-// }
-// export const login = () => {
-//     localStorage.removeItem('token')
-//     return {
-//         type: LOGIN_REQUEST,
-//     }
-// }
+export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'payload')
+export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'payload')
+
 
 // ----------------------------------------------------
 // Asynchronous action creators
 // ----------------------------------------------------
-
-// TODO
-// export function login(email, password) { // , redirect="/"
-//     return function(dispatch) {
-//         dispatch(setIsAuthenticating())
-//         return fetch('http://localhost:3000/auth/getToken/', {
-//                 method: 'post',
-//                 credentials: 'include',
-//                 headers: {
-//                     Accept: 'application/json',
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify({email, password})
-//             })
-//             .then(checkHttpStatus)
-//             .then(parseJSON)
-//             .then(() => { // response
-//                 try {
-//                     // const decoded = jwtDecode(response.token)
-//                     // dispatch(loginUserSuccess(response.token))
-//                     // TODO - redirect
-//                     // dispatch(pushState(null, redirect))
-//                 } catch (e) {
-//                     dispatch(loginFailure({
-//                         response: {
-//                             status: 403,
-//                             statusText: 'Invalid token'
-//                         }
-//                     }));
-//                 }
-//             })
-//             .catch(error => {
-//                 dispatch(loginFailure(error))
-//             })
-//     }
-// }
 
 /**
  * fetchCurrentUser Asynchronous Action Creator
@@ -250,6 +143,15 @@ export const fetchCurrentUser = () => ({
 export const fetchUser = (userid) => ({
     type: FETCH_USER,
     promise: api.fetchUser(userid),
+})
+
+/**
+ * fetchUserByUsername Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const fetchUserByUsername = (username) => ({
+    type: FETCH_USER_BY_USERNAME,
+    promise: api.fetchUserByUsername(username),
 })
 
 /**
@@ -532,27 +434,19 @@ export const recordLike = (key, id) => ({
  * recordApproval Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const recordApproval = (id, rating) => {
-    // TODO: use action
-    return api.recordCrowdDecision(REVIEW_APPROVE, id, rating).then(reviewApprove)
-}
+export const recordApproval = (id, rating) => ({
+  type: REVIEW_APPROVE,
+  promise: api.recordCrowdDecision(REVIEW_APPROVE, id, rating),
+})
 
 /**
  * recordDisapproval Asynchronous Action Creator
  * @returns recordDisapproval() - Action
  */
-export const recordDisapproval = (id, rating) => {
-    // TODO: use action
-    return api.recordCrowdDecision(REVIEW_DISAPPROVE, id, rating).then(reviewDisapprove)
-}
-
-// TODO
-export const markRead = (what, id) =>
-    api.markRead(what, id).then(receiveUnreadCount)
-
-// TODO
-export const markAllRead = () =>
-    api.markAllRead().then(receiveUnreadCount)
+export const recordDisapproval = (id, rating) => ({
+  type: REVIEW_DISAPPROVE,
+  promise: api.recordCrowdDecision(REVIEW_DISAPPROVE, id, rating),
+})
 
 /**
  * fetchCountries Asynchronous Action Creator
@@ -652,12 +546,3 @@ export const changeSetting = (key, value) => ({
   type: CHANGE_SETTING,
   promise: api.changeSetting(key, value),
 })
-
-// -- registration checking actions ----------------------------------
-
-/**
- * changeSetting Asynchronous Action Creator
- * @returns Promise, resolves to receiveSearchResult action
- */
-export const findUser = (username) =>
-    api.find('users', username, true).then(receiveSearchResult)

@@ -17,7 +17,7 @@ import ProfileIcon from 'material-ui/svg-icons/social/person-outline'
 import LogoutIcon   from 'material-ui/svg-icons/action/exit-to-app'
 import SettingsIcon from 'material-ui/svg-icons/action/settings'
 
-import { toggleSidebar, closeSidebar, getCurrentUserid } from '../../../actions'
+import { closeSidebar } from '../../../actions'
 import * as routes from '../../../routes'
 import MenuEntry from '../../Shared/MenuEntry'
 import Headline from '../../Shared/Headline'
@@ -188,5 +188,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { closeSidebar, toggleSidebar, getCurrentUserid }
+    { closeSidebar }
 )(Sidebar)

@@ -17,15 +17,7 @@ import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
-import {
-    setActiveBadge,
-    toggleSearchSidebar,
-    openSidebar,
-    closeSidebar,
-    // openStreamSidebar,
-    // closeStreamSidebar,
-    fetchCurrentUser,
-} from '../../actions'
+import { toggleSearchSidebar, openSidebar, closeSidebar, fetchCurrentUser } from '../../actions'
 import { sum } from '../../common/helpers'
 import { PROFILE, UPLOAD, REVIEW } from '../../routes'
 import './style.scss'
@@ -109,7 +101,7 @@ class NavBar extends React.Component {
      * Render the component.
      */
     render() {
-        const { unread } = this.props
+        const { unread, openSidebar, userid, username, avatar } = this.props
         const numUnread = sum(unread)
         const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
         return (
@@ -131,7 +123,7 @@ class NavBar extends React.Component {
                             <IconButton
                                 tooltip="Menu"
                                 style={styles.firstItem}
-                                onTouchTap={this.props.openSidebar}
+                                onTouchTap={openSidebar}
                             >
                                 <MenuIcon />
                             </IconButton>
@@ -186,12 +178,12 @@ class NavBar extends React.Component {
                                 onTouchTap={this.toggleNotificationsMenu}
                             />
 
-                            <Link to={`${PROFILE}/${this.props.userid}`}>
+                            <Link to={`${PROFILE}/${userid}`}>
                                 <Avatar
                                     visible={true}
-                                    src={this.props.avatar}
+                                    src={avatar}
                                     mini={true}
-                                    username={this.props.username}
+                                    username={username}
                                     tooltip="Your Profile"
                                     onTouchTap={this.toggleState}
                                 />
@@ -219,7 +211,7 @@ class NavBar extends React.Component {
                 open={this.state.notificationsMenuOpen}
                 anchorEl={this.anchorEl}
                 unread={unread}
-                userid={this.props.userid}
+                userid={userid}
                 closeNotificationsMenu={this.closeNotificationsMenu}
             />
 
@@ -246,7 +238,6 @@ export default withRouter(connect(
     mapStateToProps,
     {
         fetchCurrentUser,
-        setActiveBadge,
         toggleSearchSidebar,
         openSidebar,
         closeSidebar,

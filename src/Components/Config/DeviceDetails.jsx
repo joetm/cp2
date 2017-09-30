@@ -12,9 +12,10 @@ class DeviceDetails extends React.Component {
      * Record the viewing device details.
      */
     componentDidMount() {
+        const { setDeviceDetails } = this.props
         // store the mobile device info
         const device = new MobileDetect(window.navigator.userAgent)
-        this.props.setDeviceDetails({
+        setDeviceDetails({
             isMobile: device.phone(),
             isTablet: device.tablet(),
             useragent: window.navigator.userAgent,

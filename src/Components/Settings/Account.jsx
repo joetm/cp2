@@ -11,7 +11,7 @@ import DatePicker from 'material-ui/DatePicker'
 import SelectField from 'material-ui/SelectField'
 import AutoComplete from 'material-ui/AutoComplete'
 
-import { findUser, changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
+import { fetchUserByUsername, changeSetting, fetchCountries, fetchStates, fetchCities } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
 import Alert from '../Shared/Alert'
 import getSuccessMsg from '../../common/successMessages'
@@ -75,11 +75,12 @@ class AccountSettings extends React.Component {
      */
     changeUsername = () => {
       // must match and be > 0 length
+      const { fetchUserByUsername } = this.props
       const newUsername = this.usernamePrimary.getValue().trim()
       if (!this.state.usernamesMatching || !newUsername.length) {
         return
       }
-      this.props.findUser(newUsername).then(
+      fetchUserByUsername(newUsername).then(
         res => {
           if (res.response !== false) {
             // a user with this name was found
@@ -522,5 +523,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { findUser, changeSetting, fetchCountries, fetchStates, fetchCities }
+    { fetchUserByUsername, changeSetting, fetchCountries, fetchStates, fetchCities }
 )(AccountSettings)

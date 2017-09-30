@@ -94,6 +94,17 @@ const fetchItem = (key, itemid) => {
       )
 }
 
+const fetchItemByKey = (key, field) => {
+    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}?q=${field}`
+    // console.log('PATCH', key, itemid, url)
+    return fetch(url, { headers: JSON_HEADER })
+      .then(response => response.json())
+      .then(
+        data => data,
+        error => throwError(error.message || 'Something went wrong')
+      )
+}
+
 const incrementItem = (key, itemid = null, field, increment = 1) => {
     // TODO
     // 2 requests -> this is to be done on the server
@@ -139,6 +150,9 @@ const selectSpecificItemCreator = (field) => (selection = null) =>
 const selectSubitemsForItemCreator = (key) => (...args) =>
     fetchSubitemsForItem(key, ...args)
 
+const selectItemByKeyCreator = (key) => (...args) =>
+    fetchItemByKey(key, ...args)
+
 // -------------------------------------------------------------------
 
 export const fetchCurrentUser = selectItemsCreator('currentUser')
@@ -180,6 +194,10 @@ export const fetchVideo = selectSpecificItemCreator('videos')
 export const fetchNotification = selectSpecificItemCreator('messages')
 export const fetchMessageHistory = selectSpecificItemCreator('messageHistory')
 export const fetchCategory = selectSpecificItemCreator('categories')
+
+// -------------------------------------------------------------------
+
+export const fetchUserByUsername = selectItemByKeyCreator('users')
 
 // -------------------------------------------------------------------
 // this one is different - it selects images by the userid

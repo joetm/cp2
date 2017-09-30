@@ -11,7 +11,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 // import Subheader from 'material-ui/Subheader'
 // import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble'
 
-import { undoLike, replyNotification, forwardNotification, deleteNotification } from '../../actions'
+import { replyNotification, forwardNotification, deleteNotification } from '../../actions'
 import { PROFILE, FORUM, CATEGORIES, POSTS, THREADS } from '../../routes'
 import Avatar from '../Shared/Avatar'
 
@@ -47,7 +47,6 @@ class Notification extends React.Component {
     }
     deleteLike = () => {
         // TODO
-        // this.props.undoLike(this.props.id)
         console.log('TODO: delete like')
     }
     /**
@@ -185,5 +184,5 @@ class Notification extends React.Component {
 
 export default withRouter(connect(
     null,
-    { undoLike, replyNotification, forwardNotification, deleteNotification }
+    { replyNotification, forwardNotification, deleteNotification }
 )(Notification))

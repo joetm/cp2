@@ -82,11 +82,11 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
                 type: "message",
                 id: cuid(),
                 title: null,
-                content: action.msg.trim(),
+                content: payload.msg.trim(),
                 src: null,
-                userid: action.currentUser.id,
-                username: action.currentUser.username,
-                avatar: action.currentUser.avatar,
+                userid: payload.userid,
+                username: payload.username,
+                avatar: payload.avatar,
                 tags: [],
                 threadid: null,
                 timestamp: Math.round(Date.now() / 1000),
@@ -119,9 +119,19 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
             success: prevState => ({ ...prevState, ...payload }),
           })
         case ACTIONS.REVIEW_APPROVE:
-            return {...reviewState, approvals: reviewState.approvals + 1}
+          return handle(reviewState, action, {
+            start: prevState => ({ ...prevState, isSaving: true, error: null }),
+            finish: prevState => ({ ...prevState, isSaving: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, approvals: prevState.approvals + 1 }),
+          })
         case ACTIONS.REVIEW_DISAPPROVE:
-            return {...reviewState, disapprovals: reviewState.disapprovals + 1}
+          return handle(reviewState, action, {
+            start: prevState => ({ ...prevState, isSaving: true, error: null }),
+            finish: prevState => ({ ...prevState, isSaving: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, disapprovals: prevState.disapprovals + 1 }),
+          })
         case ACTIONS.RECEIVE_LIKE:
           return handle(reviewState, action, {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
@@ -504,8 +514,6 @@ export function modReducer(modState = initialState.mod, action) {
 export function currentUserReducer(currentUserState = initialState.currentUser, action) {
     const { type, payload } = action
     switch (type) {
-        case ACTIONS.GET_CURRENT_USER:
-            return currentUserState
         case ACTIONS.GET_CURRENT_USER_ID:
             if (currentUserState.userid !== undefined) {
                 return currentUserState.id
@@ -516,67 +524,67 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
         case ACTIONS.FETCH_CURRENT_USER:
             return { isFetching: false, error: null, ...payload }
 
-        case ACTIONS.RECEIVE_UNREAD_COUNT:
-            return { ...currentUserState,
-                unreadPosts: action.response.posts,
-                unreadImages: action.response.images,
-                unreadVideos: action.response.videos,
-                unreadMessages: action.response.messages,
-                unreadLikes: action.response.likes,
-            }
+        // case ACTIONS.RECEIVE_UNREAD_COUNT:
+        //     return { ...currentUserState,
+        //         unreadPosts: action.response.posts,
+        //         unreadImages: action.response.images,
+        //         unreadVideos: action.response.videos,
+        //         unreadMessages: action.response.messages,
+        //         unreadLikes: action.response.likes,
+        //     }
 
-        case ACTIONS.MARK_IMAGES_READ:
-            return {...currentUserState, unreadImages: 0}
-        case ACTIONS.MARK_VIDEOS_READ:
-            return {...currentUserState, unreadVideos: 0}
-        case ACTIONS.MARK_POSTS_READ:
-            return {...currentUserState, unreadPosts: 0}
-        case ACTIONS.MARK_MESSAGES_READ:
-            return {...currentUserState, unreadMessages: 0}
-        case ACTIONS.MARK_LIKES_READ:
-            return {...currentUserState, unreadLikes: 0}
-        case ACTIONS.MARK_ALL_READ:
-            return {...currentUserState, unreadImages: 0, unreadVideos: 0, unreadPosts: 0, unreadMessages: 0, unreadLikes: 0}
+        // case ACTIONS.MARK_IMAGES_READ:
+        //     return {...currentUserState, unreadImages: 0}
+        // case ACTIONS.MARK_VIDEOS_READ:
+        //     return {...currentUserState, unreadVideos: 0}
+        // case ACTIONS.MARK_POSTS_READ:
+        //     return {...currentUserState, unreadPosts: 0}
+        // case ACTIONS.MARK_MESSAGES_READ:
+        //     return {...currentUserState, unreadMessages: 0}
+        // case ACTIONS.MARK_LIKES_READ:
+        //     return {...currentUserState, unreadLikes: 0}
+        // case ACTIONS.MARK_ALL_READ:
+        //     return {...currentUserState, unreadImages: 0, unreadVideos: 0, unreadPosts: 0, unreadMessages: 0, unreadLikes: 0}
 
         // AUTH -------------------------------------
-        case ACTIONS.SET_IS_AUTHENTICATING:
-            return {...currentUserState, isAuthenticating: true}
-        case ACTIONS.LOGIN_SUCCESS:
-            return {
-                ...currentUserState,
-                ...{
-                    isAuthenticating: false,
-                    isAuthenticated: true,
-                    token: action.token,
-                    userid: jwtDecode(action.token).userid,
-                    username: jwtDecode(action.token).username,
-                    // 'act': jwtDecode(action.token).act,
-                    statusText: 'You have been successfully logged in.',
-                }
-            }
-        case ACTIONS.LOGIN_FAILURE:
-            return {
-                ...currentUserState,
-                ...{
-                    isAuthenticating: false,
-                    isAuthenticated: false,
-                    token: null,
-                    userid: null,
-                    username: null,
-                    statusText: `Authentication Error: ${action.status} ${action.statusText}`
-                }
-            }
-        case ACTIONS.LOGOUT:
-            return {
-                ...currentUserState,
-                ...{
-                    isAuthenticated: false,
-                    token: null,
-                    userid: null,
-                    username: null,
-                    statusText: 'You have been successfully logged out.',
-                }
-            }
+        // case ACTIONS.SET_IS_AUTHENTICATING:
+        //     return {...currentUserState, isAuthenticating: true}
+        // case ACTIONS.LOGIN_SUCCESS:
+        //     return {
+        //         ...currentUserState,
+        //         ...{
+        //             isAuthenticating: false,
+        //             isAuthenticated: true,
+        //             token: action.token,
+        //             userid: jwtDecode(action.token).userid,
+        //             username: jwtDecode(action.token).username,
+        //             // 'act': jwtDecode(action.token).act,
+        //             statusText: 'You have been successfully logged in.',
+        //         }
+        //     }
+        // case ACTIONS.LOGIN_FAILURE:
+        //     return {
+        //         ...currentUserState,
+        //         ...{
+        //             isAuthenticating: false,
+        //             isAuthenticated: false,
+        //             token: null,
+        //             userid: null,
+        //             username: null,
+        //             statusText: `Authentication Error: ${action.status} ${action.statusText}`
+        //         }
+        //     }
+        // case ACTIONS.LOGOUT:
+        //     return {
+        //         ...currentUserState,
+        //         ...{
+        //             isAuthenticated: false,
+        //             token: null,
+        //             userid: null,
+        //             username: null,
+        //             statusText: 'You have been successfully logged out.',
+        //         }
+        //     }
 
         case ACTIONS.DELETE_AVATAR:
           return handle(currentUserState, action, {
@@ -649,7 +657,7 @@ export function cpAppReducer(appState = initialState.appState, action) {
             return {...appState, sidebarOpen: !appState.sidebarOpen}
 
         case ACTIONS.SET_DEVICE_DETAILS:
-            return {...appState, deviceDetails: action.obj}
+            return {...appState, deviceDetails: payload}
         case ACTIONS.SET_ACTIVE_BADGE:
             return {...appState, activeBadge: +action.id}
 

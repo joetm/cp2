@@ -13,6 +13,7 @@ import Spacer from '../Shared/Spacer'
 import CellPadding from '../Shared/CellPadding'
 import { fetchMessageHistory, sendMessage } from '../../actions'
 import Headline from '../Shared/Headline'
+import GridWrap from '../Shared/GridWrap'
 
 
 const styles = {
@@ -45,8 +46,7 @@ class MessageHistory extends React.Component {
     inputRows: 1,
   }
   componentDidMount() {
-    const userid = this.props.match.params.opponentid
-    this.props.fetchMessageHistory(userid)
+    this.props.fetchMessageHistory(this.props.match.params.opponentid)
   }
   /**
    * Handle key press event on message field.
@@ -61,12 +61,14 @@ class MessageHistory extends React.Component {
    * Submit the input field.
    */
   submitMsg = () => {
+    const { sendMessage, messageHistory = {}, currentUser } = this.props
+    const { userid, username, avatar } = currentUser
     let msg = this.refs.inputfield.getValue().trim()
     if (msg) {
-      this.props.sendMessage(this.props.messageHistory.userid, msg, this.props.currentUser)
+      sendMessage({ userid, username, avatar, msg })
       // clear the input field
       this.refs.inputfield.getInputNode().value = ''
-      // reset number of rows in the input field
+      // TODO: reset number of rows in the input field
       this.setState({inputRows: 1})
       // TODO: reset the height of the text field
       // this.refs.inputfield.input.state.height = 24
@@ -84,14 +86,14 @@ class MessageHistory extends React.Component {
       <div>
       <Headline>Private Message History</Headline>
 
-      {messageHistory.username &&
-        <Subheader style={styles.subheader}>
-        with {messageHistory.username}
-        </Subheader>
+      {
+        messageHistory.username &&
+          <Subheader style={styles.subheader}>
+            with {messageHistory.username}
+          </Subheader>
       }
 
-      <div className="mdc-layout-grid">
-      <div className="mdc-layout-grid__inner">
+      <GridWrap>
 
       <CellPadding
       full={2}
@@ -151,8 +153,8 @@ class MessageHistory extends React.Component {
       </div>
 
       </div>
-      </div>
-      </div>
+
+      </GridWrap>
 
       <Spacer />
 
