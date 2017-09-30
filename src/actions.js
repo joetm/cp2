@@ -15,129 +15,98 @@ import { checkHttpStatus, parseJSON } from './common/helpers'
  * Redux action types
  */
 
-export const COMMENT_PROFILE            = 'PROFILE::COMMENT_PROFILE'
-export const GET_USER                   = 'USER::GET_USER'
-export const GET_THEME                  = 'USER::GET_THEME'
-export const GET_CURRENT_USERTITLE      = 'USER::GET_CURRENT_USERTITLE'
-export const GET_CURRENT_USER           = 'USER::GET_CURRENT_USER'
-// export const GET_CURRENT_USER_MINIMAL   = 'USER::GET_CURRENT_USER_MINIMAL'
-export const GET_CURRENT_USER_ID        = 'USER::GET_CURRENT_USER_ID'
-export const GET_POSTS                  = 'FORUM::GET_POSTS'
-export const GET_POST                   = 'FORUM::GET_POST'
-export const GET_THREAD                 = 'FORUM::GET_THREAD'
-export const EDIT_POST                  = 'FORUM::EDIT_POST'
-export const REPLY_THREAD               = 'FORUM::REPLY_THREAD'
-export const TOGGLE_SEARCH_SIDEBAR      = 'FORUM::TOGGLE_SEARCH_SIDEBAR'
-export const OPEN_SEARCH_SIDEBAR        = 'FORUM::OPEN_SEARCH_SIDEBAR'
-export const CLOSE_SEARCH_SIDEBAR       = 'FORUM::CLOSE_SEARCH_SIDEBAR'
-export const TOGGLE_SIDEBAR             = 'FORUM::TOGGLE_SIDEBAR'
-export const OPEN_SIDEBAR               = 'FORUM::OPEN_SIDEBAR'
-export const CLOSE_SIDEBAR              = 'FORUM::CLOSE_SIDEBAR'
-// export const OPEN_STREAM_SIDEBAR       = 'FORUM::OPEN_STREAM_SIDEBAR'
-// export const CLOSE_STREAM_SIDEBAR      = 'FORUM::CLOSE_STREAM_SIDEBAR'
-export const SELECT_THREAD              = 'FORUM::SELECT_THREAD'
-export const SEND_MESSAGE               = 'CHAT::SEND_MESSAGE'
-export const FETCH_MESSAGEHISTORY       = 'CHAT::FETCH_MESSAGEHISTORY'
-export const REVIEW_APPROVE             = 'REVIEW::APPROVE'
-export const REVIEW_DISAPPROVE          = 'REVIEW::DISAPPROVE'
-export const LIKE                       = 'SOCIAL::LIKE'
-export const DISLIKE                    = 'SOCIAL::DISLIKE'
-export const UNDO_LIKE                  = 'SOCIAL::UNDO_LIKE'
-export const UNDO_DISLIKE               = 'SOCIAL::UNDO_DISLIKE'
-export const FOLLOW_USER                = 'SOCIAL::FOLLOW_USER'
-export const SET_ACTIVE_BADGE           = 'NAV::SET_ACTIVE_BADGE'
-export const GET_UPDATES                = 'STREAM::GET_UPDATES'
-export const SET_DEVICE_DETAILS         = 'APP::SET_DEVICE_DETAILS'
-export const SET_FETCHING_STATUS        = 'APP::SET_FETCHING_STATUS'
-// export const UNKNOWN                   = 'APP::UNKNOWN'
+export const GET_CURRENT_USERTITLE    = 'USER::GET_CURRENT_USERTITLE'
+export const GET_CURRENT_USER         = 'USER::GET_CURRENT_USER'
+export const GET_CURRENT_USER_ID      = 'USER::GET_CURRENT_USER_ID'
+export const GET_POSTS                = 'FORUM::GET_POSTS'
+export const GET_POST                 = 'FORUM::GET_POST'
+export const GET_THREAD               = 'FORUM::GET_THREAD'
+export const EDIT_POST                = 'FORUM::EDIT_POST'
+export const REPLY_THREAD             = 'FORUM::REPLY_THREAD'
+export const TOGGLE_SEARCH_SIDEBAR    = 'FORUM::TOGGLE_SEARCH_SIDEBAR'
+export const OPEN_SEARCH_SIDEBAR      = 'FORUM::OPEN_SEARCH_SIDEBAR'
+export const CLOSE_SEARCH_SIDEBAR     = 'FORUM::CLOSE_SEARCH_SIDEBAR'
+export const TOGGLE_SIDEBAR           = 'FORUM::TOGGLE_SIDEBAR'
+export const OPEN_SIDEBAR             = 'FORUM::OPEN_SIDEBAR'
+export const CLOSE_SIDEBAR            = 'FORUM::CLOSE_SIDEBAR'
+export const SELECT_THREAD            = 'FORUM::SELECT_THREAD'
+export const SEND_MESSAGE             = 'CHAT::SEND_MESSAGE'
+export const FETCH_MESSAGEHISTORY     = 'CHAT::FETCH_MESSAGEHISTORY'
+export const REVIEW_APPROVE           = 'REVIEW::APPROVE'
+export const REVIEW_DISAPPROVE        = 'REVIEW::DISAPPROVE'
+export const LIKE                     = 'SOCIAL::LIKE'
+export const DISLIKE                  = 'SOCIAL::DISLIKE'
+export const UNDO_LIKE                = 'SOCIAL::UNDO_LIKE'
+export const UNDO_DISLIKE             = 'SOCIAL::UNDO_DISLIKE'
+export const SET_ACTIVE_BADGE         = 'NAV::SET_ACTIVE_BADGE'
+export const GET_UPDATES              = 'STREAM::GET_UPDATES'
+export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
 
-export const MARK_IMAGES_READ           = 'STREAM::MARK_IMAGES_READ'
-export const MARK_VIDEOS_READ           = 'STREAM::MARK_VIDEOS_READ'
-export const MARK_POSTS_READ            = 'STREAM::MARK_POSTS_READ'
-export const MARK_MESSAGES_READ         = 'STREAM::MARK_MESSAGES_READ'
-export const MARK_LIKES_READ            = 'STREAM::MARK_LIKES_READ'
-export const MARK_THREAD_READ           = 'STREAM::MARK_THREAD_READ'
-export const MARK_POST_READ             = 'STREAM::MARK_POST_READ'
-export const MARK_ALL_READ              = 'STREAM::MARK_ALL_READ'
+export const FETCH_USERS              = 'USER::FETCH_USERS'
+export const FETCH_USER               = 'USER::FETCH_USER'
+export const FETCH_ONLINE_USERS       = 'USER::FETCH_ONLINE_USERS'
+export const FETCH_FOLLOWERS          = 'SOCIAL::FETCH_FOLLOWERS'
+export const FETCH_CURRENT_USER       = 'USER:FETCH_CURRENT_USER'
+export const FETCH_CATEGORIES         = 'FORUM::FETCH_CATEGORIES'
+export const FETCH_CATEGORY           = 'FORUM::FETCH_CATEGORY'
+export const FETCH_THREADS            = 'FORUM::FETCH_THREADS'
+export const FETCH_CATEGORY_THREADS   = 'FORUM::FETCH_CATEGORY_THREADS'
+export const FETCH_PICTURES           = 'ALBUM::FETCH_PICTURES'
+export const FETCH_PICTURE            = 'ALBUM::FETCH_PICTURE'
+export const FETCH_THREAD             = 'FORUM::FETCH_THREAD'
+export const FETCH_ALBUM              = 'ALBUM::FETCH_ALBUM'
+export const FETCH_IMAGE              = 'STREAM::FETCH_IMAGE'
+export const FETCH_VERIFICATIONIMAGES = 'STREAM::FETCH_VERIFICATIONIMAGES'
+export const FETCH_PROFILEIMAGES      = 'PROFILE::FETCH_PROFILEIMAGES'
+export const FETCH_VIDEOS             = 'STREAM::FETCH_VIDEOS'
+export const FETCH_VIDEO              = 'VIDEO::FETCH_VIDEO'
+export const FETCH_UPDATES            = 'STREAM::FETCH_UPDATES'
+export const FETCH_STREAM             = 'STREAM::FETCH_STREAM'
+export const FETCH_MESSAGES           = 'STREAM::FETCH_MESSAGES'
+export const FETCH_FAVORITES          = 'STREAM::FETCH_FAVORITES'
+export const FETCH_LIKES              = 'STREAM::FETCH_LIKES'
+export const FETCH_CHAT               = 'CHAT::FETCH_CHAT'
+export const FETCH_POSTS              = 'FORUM::FETCH_POSTS'
+export const FETCH_POST               = 'FORUM::FETCH_POST'
+export const FETCH_REVIEWITEM         = 'REVIEW::FETCH_REVIEWITEM'
+export const FETCH_REVIEWLEADERBOARD  = 'REVIEW::FETCH_REVIEWLEADERBOARD'
+export const FETCH_POSTS_FOR_THREAD   = 'FORUM::FETCH_POSTS_FOR_THREAD'
+export const FETCH_COUNTRIES          = 'APP::FETCH_COUNTRIES'
+export const FETCH_STATES             = 'APP::FETCH_STATES'
+export const FETCH_CITIES             = 'APP::FETCH_CITIES'
 
-export const FETCH_USERS                = 'USER::FETCH_USERS'
-export const FETCH_USER                 = 'USER::FETCH_USER'
-export const RECEIVE_ONLINE_USERS       = 'USER::RECEIVE_ONLINE_USERS'
-export const FETCH_FOLLOWERS            = 'SOCIAL::FETCH_FOLLOWERS'
-export const FETCH_CURRENT_USER         = 'USER:FETCH_CURRENT_USER'
-export const RECEIVE_COMMENTS           = 'PROFILE::RECEIVE_COMMENTS'
-export const FETCH_CATEGORIES           = 'FORUM::FETCH_CATEGORIES'
-export const FETCH_CATEGORY             = 'FORUM::FETCH_CATEGORY'
-export const FETCH_THREADS              = 'FORUM::FETCH_THREADS'
-export const FETCH_CATEGORY_THREADS     = 'FORUM::FETCH_CATEGORY_THREADS'
-export const RECEIVE_POSTS_FOR_THREAD   = 'FORUM::RECEIVE_POSTS_FOR_THREAD'
-export const FETCH_PICTURES             = 'ALBUM::FETCH_PICTURES'
-export const FETCH_PICTURE              = 'ALBUM::FETCH_PICTURE'
-export const FETCH_THREAD               = 'FORUM::FETCH_THREAD'
-export const FETCH_ALBUM                = 'ALBUM::FETCH_ALBUM'
-export const FETCH_IMAGE                = 'STREAM::FETCH_IMAGE'
-export const FETCH_VERIFICATIONIMAGES   = 'STREAM::FETCH_VERIFICATIONIMAGES'
-export const FETCH_PROFILEIMAGES        = 'PROFILE::FETCH_PROFILEIMAGES'
-export const FETCH_VIDEOS               = 'STREAM::FETCH_VIDEOS'
-export const FETCH_VIDEO                = 'VIDEO::FETCH_VIDEO'
-export const FETCH_UPDATES              = 'STREAM::FETCH_UPDATES'
-export const FETCH_STREAM               = 'STREAM::FETCH_STREAM'
-export const FETCH_MESSAGES             = 'STREAM::FETCH_MESSAGES'
-export const FETCH_FAVORITES            = 'STREAM::FETCH_FAVORITES'
-export const FETCH_LIKES                = 'STREAM::FETCH_LIKES'
-export const RECEIVE_LIKE               = 'STREAM::RECEIVE_LIKE'
-export const RECEIVE_DISLIKE            = 'STREAM::RECEIVE_DISLIKE'
-export const RECEIVE_REVIEWITEM         = 'REVIEW::RECEIVE_REVIEWITEM'
-export const RECEIVE_UNREAD_COUNT       = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
-export const RECEIVE_COUNTRIES          = 'APP::RECEIVE_COUNTRIES'
-export const RECEIVE_STATES             = 'APP::RECEIVE_STATES'
-export const RECEIVE_CITIES             = 'APP::RECEIVE_CITIES'
-export const RECEIVE_COUNTRY            = 'APP::RECEIVE_COUNTRY'
-export const RECEIVE_STATE              = 'APP::RECEIVE_STATE'
-export const RECEIVE_CITY               = 'APP::RECEIVE_CITY'
+export const FETCH_MOD_ITEMS          = 'MOD::FETCH_MOD_ITEMS'
 
-export const RECEIVE_SEARCH_RESULT      = 'SEARCH::RECEIVE_SEARCH_RESULT'
+export const RECEIVE_LIKE             = 'STREAM::RECEIVE_LIKE'
+export const RECEIVE_UNREAD_COUNT     = 'NOTIFICATIONS::RECEIVE_UNREAD_COUNT'
+export const RECEIVE_COUNTRY          = 'APP::RECEIVE_COUNTRY'
+export const RECEIVE_STATE            = 'APP::RECEIVE_STATE'
+export const RECEIVE_CITY             = 'APP::RECEIVE_CITY'
+export const RECEIVE_SEARCH_RESULT    = 'SEARCH::RECEIVE_SEARCH_RESULT'
 
-export const FETCH_CHAT                 = 'CHAT::FETCH_CHAT'
-export const SEND_CHAT_MSG              = "CHAT::SEND_CHAT_MSG"
+export const MARK_IMAGES_READ         = 'STREAM::MARK_IMAGES_READ'
+export const MARK_VIDEOS_READ         = 'STREAM::MARK_VIDEOS_READ'
+export const MARK_POSTS_READ          = 'STREAM::MARK_POSTS_READ'
+export const MARK_MESSAGES_READ       = 'STREAM::MARK_MESSAGES_READ'
+export const MARK_LIKES_READ          = 'STREAM::MARK_LIKES_READ'
+export const MARK_THREAD_READ         = 'STREAM::MARK_THREAD_READ'
+export const MARK_POST_READ           = 'STREAM::MARK_POST_READ'
+export const MARK_ALL_READ            = 'STREAM::MARK_ALL_READ'
 
-// export const DELETE_AVATAR           = 'APP:RECEIVE_AVATAR'
-export const DELETE_AVATAR_STARTED      = 'CONTENT::DELETE_AVATAR_STARTED'
-export const DELETE_AVATAR_SUCCESS      = 'CONTENT::DELETE_AVATAR_SUCCESS'
-export const DELETE_AVATAR_FAILURE      = 'CONTENT::DELETE_AVATAR_FAILURE'
-export const DELETE_PROFILEIMG_STARTED  = 'CONTENT:DELETE_PROFILEIMG_STARTED'
-export const DELETE_PROFILEIMG_SUCCESS  = 'CONTENT:DELETE_PROFILEIMG_SUCCESS'
-export const DELETE_PROFILEIMG_FAILURE  = 'CONTENT:DELETE_PROFILEIMG_FAILURE'
-export const DELETE_IMAGES_STARTED      = 'CONTENT:DELETE_IMAGES_STARTED'
-export const DELETE_IMAGES_SUCCESS      = 'CONTENT:DELETE_IMAGES_SUCCESS'
-export const DELETE_IMAGES_FAILURE      = 'CONTENT:DELETE_IMAGES_FAILURE'
+export const SEND_CHAT_MSG            = "CHAT::SEND_CHAT_MSG"
 
-export const DELETE_MSG_SUCCESS         = 'CHAT::DELETE_MSG_SUCCESS'
+export const DELETE_AVATAR            = 'CONTENT::DELETE_AVATAR'
+export const DELETE_PROFILEIMG        = 'CONTENT:DELETE_PROFILEIMG'
+export const DELETE_IMAGES            = 'CONTENT:DELETE_IMAGES'
+export const DELETE_CHAT_MSG          = 'CHAT::DELETE_CHAT_MSG'
 
-export const REMOVE_POST                = 'FORUM::REMOVE_POST'
-
-// export const SEND_SETTING                 = 'APP::SEND_SETTING'
-export const RECEIVE_SETTING                 = 'APP::RECEIVE_SETTING'
-
-export const REPLY_NOTIFICATION              = 'SOCIAL::REPLY_NOTIFICATION'
-export const FORWARD_NOTIFICATION            = 'SOCIAL::FORWARD_NOTIFICATION'
-export const DELETE_NOTIFICATION             = 'SOCIAL::DELETE_NOTIFICATION'
+export const CHANGE_SETTING           = 'APP::CHANGE_SETTING'
 
 // AUTH
-export const LOGIN_REQUEST                   = 'AUTH::LOGIN_REQUEST'
-export const LOGIN_FAILURE                   = 'AUTH::LOGIN_FAILURE'
-export const LOGIN_SUCCESS                   = 'AUTH::LOGIN_SUCCESS'
-export const LOGOUT                          = 'AUTH::LOGOUT'
-
-export const FETCH_POSTS                     = 'FORUM::FETCH_POSTS'
-export const FETCH_POST                      = 'FORUM::FETCH_POST'
-
-export const FETCH_REVIEWITEM                = 'REVIEW::FETCH_REVIEWITEM'
-export const FETCH_REVIEWLEADERBOARD         = 'REVIEW::FETCH_REVIEWLEADERBOARD'
-export const FETCH_POSTS_FOR_THREAD          = 'FORUM::FETCH_POSTS_FOR_THREAD'
-
-// MOD
-export const FETCH_MOD_ITEMS                 = 'MOD::FETCH_MOD_ITEMS'
+// export const LOGIN_REQUEST            = 'AUTH::LOGIN_REQUEST'
+// export const LOGIN_FAILURE            = 'AUTH::LOGIN_FAILURE'
+// export const LOGIN_SUCCESS            = 'AUTH::LOGIN_SUCCESS'
+// export const LOGOUT                   = 'AUTH::LOGOUT'
 
 // export const FETCH_PROTECTED_DATA_REQUEST = 'AUTH::FETCH_PROTECTED_DATA_REQUEST'
 // export const RECEIVE_PROTECTED_DATA       = 'AUTH::RECEIVE_PROTECTED_DATA'
@@ -167,114 +136,57 @@ function makeActionCreator(type, ...argNames) {
 // Redux action creators
 // ----------------------------------------------------
 
-export const getUser               = makeActionCreator(GET_USER,              'userid')
-export const getTheme              = makeActionCreator(GET_THEME,             'theme')
 export const getCurrentUser        = makeActionCreator(GET_CURRENT_USER)
-// export const getCurrentUsertitle   = makeActionCreator(GET_CURRENT_USERTITLE)
 export const getCurrentUserid      = makeActionCreator(GET_CURRENT_USER_ID)
-// export const getCurrentUserMinimal = makeActionCreator(GET_CURRENT_USER_MINIMAL)
-export const followUser            = makeActionCreator(FOLLOW_USER,           'userid')
 export const replyThread           = makeActionCreator(REPLY_THREAD,          'threadid')
-export const commentProfile        = makeActionCreator(COMMENT_PROFILE,       'userid')
 export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
 export const closeSearchSidebar    = makeActionCreator(CLOSE_SEARCH_SIDEBAR)
 export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
 export const toggleSidebar         = makeActionCreator(TOGGLE_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
-// export const openStreamSidebar     = makeActionCreator(OPEN_STREAM_SIDEBAR)
-// export const closeStreamSidebar    = makeActionCreator(CLOSE_STREAM_SIDEBAR)
-// export const like                  = makeActionCreator(LIKE,             'itemid')
-// export const dislike               = makeActionCreator(DISLIKE,          'itemid')
 export const undoLike              = makeActionCreator(UNDO_LIKE,           'itemid')
-export const undoDislike           = makeActionCreator(UNDO_DISLIKE,        'itemid')
 export const reviewApprove         = makeActionCreator(REVIEW_APPROVE,      'itemid')
 export const reviewDisapprove      = makeActionCreator(REVIEW_DISAPPROVE,   'itemid')
 export const sendMessage           = makeActionCreator(SEND_MESSAGE,        'toUserId', 'msg', 'currentUser')
-
-// forum actions
 export const getPosts              = makeActionCreator(GET_POSTS)
 export const getPost               = makeActionCreator(GET_POST,            'postid', 'response')
 export const getThread             = makeActionCreator(GET_THREAD,          'threadid', 'response')
 export const editPost              = makeActionCreator(EDIT_POST,           'postid', 'response')
 export const selectThread          = makeActionCreator(SELECT_THREAD,       'threadid')
 export const getUpdates            = makeActionCreator(GET_UPDATES)
-
-// other app actions
-export const setActiveBadge        = makeActionCreator(SET_ACTIVE_BADGE,    'id')
 export const setDeviceDetails      = makeActionCreator(SET_DEVICE_DETAILS,  'obj')
-export const setFetchingStatus     = makeActionCreator(SET_FETCHING_STATUS, 'bool')
 
-// ajax receptors
-export const receiveOnlineUsers        = makeActionCreator(RECEIVE_ONLINE_USERS,       'response')
-export const receiveComments           = makeActionCreator(RECEIVE_COMMENTS,           'response')
-export const receivePostsForThread     = makeActionCreator(RECEIVE_POSTS_FOR_THREAD,   'response')
-export const receiveLike               = makeActionCreator(RECEIVE_LIKE,               'response')
-export const receiveDislike            = makeActionCreator(RECEIVE_DISLIKE,            'response')
-export const receiveUnreadCount        = makeActionCreator(RECEIVE_UNREAD_COUNT,       'response')
-export const receiveCountries        = makeActionCreator(RECEIVE_COUNTRIES,         'response')
-export const receiveStates           = makeActionCreator(RECEIVE_STATES,            'response')
-export const receiveCities           = makeActionCreator(RECEIVE_CITIES,            'response')
-export const receiveCountry          = makeActionCreator(RECEIVE_COUNTRY,           'response')
-export const receiveState            = makeActionCreator(RECEIVE_STATE,             'response')
-export const receiveCity             = makeActionCreator(RECEIVE_CITY,              'response')
-export const receiveSearchResult     = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
-
-export const deleteAvatarStarted     = makeActionCreator(DELETE_AVATAR_STARTED)
-export const deleteAvatarSuccess     = makeActionCreator(DELETE_AVATAR_SUCCESS,     'userid')
-export const deleteAvatarFailure     = makeActionCreator(DELETE_AVATAR_FAILURE,     'error')
-export const deleteProfileImgStarted = makeActionCreator(DELETE_PROFILEIMG_STARTED)
-export const deleteProfileImgSuccess = makeActionCreator(DELETE_PROFILEIMG_SUCCESS)
-export const deleteProfileImgFailure = makeActionCreator(DELETE_PROFILEIMG_FAILURE, 'error')
-export const deleteImagesStarted     = makeActionCreator(DELETE_IMAGES_STARTED)
-export const deleteImagesSuccess     = makeActionCreator(DELETE_IMAGES_SUCCESS,     'response')
-export const deleteImagesFailure     = makeActionCreator(DELETE_IMAGES_FAILURE,     'error')
-export const deleteMsgSuccess        = makeActionCreator(DELETE_MSG_SUCCESS,        'id')
-export const removePost              = makeActionCreator(REMOVE_POST,               'postid', 'bool')
-
-// --
-
-
-// --
-
-export const replyNotification       = makeActionCreator(REPLY_NOTIFICATION,        'payload')
-export const forwardNotification     = makeActionCreator(FORWARD_NOTIFICATION,      'itemid')
-
-// export const sendSetting          = makeActionCreator(SEND_SETTING,              'key', 'value')
-export const receiveSetting          = makeActionCreator(RECEIVE_SETTING,           'payload')
-
-// AUTH
-export const setIsAuthenticating     = makeActionCreator(LOGIN_REQUEST)
-
-
-// const unknownAction = { type: UNKNOWN }
+export const receiveUnreadCount    = makeActionCreator(RECEIVE_UNREAD_COUNT,       'response')
+export const receiveSearchResult   = makeActionCreator(RECEIVE_SEARCH_RESULT,     'response')
+// export const setIsAuthenticating   = makeActionCreator(LOGIN_REQUEST)
 
 
 // ----------------------------------------------------
 // JWT
 // ----------------------------------------------------
 
-export const loginSuccess = (token) => {
-    localStorage.setItem('token', token)
-    return {
-        type: LOGIN_SUCCESS,
-        token,
-    }
-}
-export const loginFailure = (status, statusText) => {
-    localStorage.removeItem('token')
-    return {
-        type: LOGIN_FAILURE,
-        status,
-        statusText,
-    }
-}
-export const logout = () => {
-    localStorage.removeItem('token')
-    return {
-        type: LOGOUT,
-    }
-}
+// export const loginSuccess = (token) => {
+//     localStorage.setItem('token', token)
+//     return {
+//         type: LOGIN_SUCCESS,
+//         token,
+//     }
+// }
+// export const loginFailure = (status, statusText) => {
+//     localStorage.removeItem('token')
+//     return {
+//         type: LOGIN_FAILURE,
+//         status,
+//         statusText,
+//     }
+// }
+// export const logout = () => {
+//     localStorage.removeItem('token')
+//     return {
+//         type: LOGOUT,
+//     }
+// }
 // export const login = () => {
 //     localStorage.removeItem('token')
 //     return {
@@ -287,41 +199,40 @@ export const logout = () => {
 // ----------------------------------------------------
 
 // TODO
-export function login(email, password) { // , redirect="/"
-    return function(dispatch) {
-        dispatch(setIsAuthenticating())
-        return fetch('http://localhost:3000/auth/getToken/', {
-                method: 'post',
-                credentials: 'include',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({email, password})
-            })
-            .then(checkHttpStatus)
-            .then(parseJSON)
-            .then(() => { // response
-                try {
-                    // const decoded = jwtDecode(response.token)
-                    // dispatch(loginUserSuccess(response.token))
-                    // TODO - redirect
-                    // dispatch(pushState(null, redirect))
-                } catch (e) {
-                    dispatch(loginFailure({
-                        response: {
-                            status: 403,
-                            statusText: 'Invalid token'
-                        }
-                    }));
-                }
-            })
-            .catch(error => {
-                dispatch(loginFailure(error))
-            })
-    }
-}
-
+// export function login(email, password) { // , redirect="/"
+//     return function(dispatch) {
+//         dispatch(setIsAuthenticating())
+//         return fetch('http://localhost:3000/auth/getToken/', {
+//                 method: 'post',
+//                 credentials: 'include',
+//                 headers: {
+//                     Accept: 'application/json',
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({email, password})
+//             })
+//             .then(checkHttpStatus)
+//             .then(parseJSON)
+//             .then(() => { // response
+//                 try {
+//                     // const decoded = jwtDecode(response.token)
+//                     // dispatch(loginUserSuccess(response.token))
+//                     // TODO - redirect
+//                     // dispatch(pushState(null, redirect))
+//                 } catch (e) {
+//                     dispatch(loginFailure({
+//                         response: {
+//                             status: 403,
+//                             statusText: 'Invalid token'
+//                         }
+//                     }));
+//                 }
+//             })
+//             .catch(error => {
+//                 dispatch(loginFailure(error))
+//             })
+//     }
+// }
 
 /**
  * fetchCurrentUser Asynchronous Action Creator
@@ -334,7 +245,7 @@ export const fetchCurrentUser = () => ({
 
 /**
  * fetchUser Asynchronous Action Creator
- * @returns receiveUser() - Action
+ * @returns Redux-pack action
  */
 export const fetchUser = (userid) => ({
     type: FETCH_USER,
@@ -343,7 +254,7 @@ export const fetchUser = (userid) => ({
 
 /**
  * fetchUsers Asynchronous Action Creator
- * @returns receiveUsers() - Action
+ * @returns Redux-pack action
  */
 // TODO: filters
 export const fetchUsers = (limit, filters = null) => ({
@@ -353,10 +264,12 @@ export const fetchUsers = (limit, filters = null) => ({
 
 /**
  * fetchUsers Asynchronous Action Creator
- * @returns receiveUsers() - Action
+ * @returns Redux-pack action
  */
-export const fetchOnlineUsers = (limit) =>
-    api.fetchOnlineUsers(limit).then(receiveOnlineUsers)
+export const fetchOnlineUsers = (limit) => ({
+    type: FETCH_ONLINE_USERS,
+    promise: api.fetchOnlineUsers(limit),
+})
 
 /**
  * fetchFollowers Asynchronous Action Creator
@@ -378,7 +291,7 @@ export const fetchReviewItem = (itemid = null) => ({
 
 /**
  * fetchReviewLeaderboard Asynchronous Action Creator
- * @returns receiveReviewLeaderboard() - Action
+ * @returns Redux-pack action
  */
 export const fetchReviewLeaderboard = () => ({
     type: FETCH_REVIEWLEADERBOARD,
@@ -387,7 +300,7 @@ export const fetchReviewLeaderboard = () => ({
 
 /**
  * fetchCategory Asynchronous Action Creator
- * @returns receiveCategory() - Action
+ * @returns Redux-pack action
  */
 export const fetchCategory = (categoryid) => ({
     type: FETCH_CATEGORY,
@@ -423,7 +336,7 @@ export const fetchPost = (postid) => ({
 
 /**
  * fetchCategories Asynchronous Action Creator
- * @returns receiveCategories() - Action
+ * @returns Redux-pack action
  */
 export const fetchCategories = () => ({
     type: FETCH_CATEGORIES,
@@ -432,7 +345,7 @@ export const fetchCategories = () => ({
 
 /**
  * fetchMessageHistory Asynchronous Action Creator
- * @returns receiveMessageHistory() - Action
+ * @returns Redux-pack action
  */
 export const fetchMessageHistory = (userid) => ({
     type: FETCH_MESSAGEHISTORY,
@@ -441,7 +354,7 @@ export const fetchMessageHistory = (userid) => ({
 
 /**
  * fetchUpdates Asynchronous Action Creator
- * @returns fetchUpdates() - Action
+ * @returns Redux-pack action
  */
 export const fetchUpdates = (limit) => ({
     type: FETCH_UPDATES,
@@ -468,7 +381,7 @@ export const fetchPicture = (pictureid) => ({
 
 /**
  * fetchUserVerificationImages Asynchronous Action Creator
- * @returns receiveVerificationImages() - Action
+ * @returns Redux-pack action
  */
 export const fetchUserVerificationImages = (userid) => ({
   type: FETCH_VERIFICATIONIMAGES,
@@ -477,7 +390,7 @@ export const fetchUserVerificationImages = (userid) => ({
 
 /**
  * fetchUserProfileImages Asynchronous Action Creator
- * @returns fetchPictures() - Action
+ * @returns Redux-pack action
  */
 export const fetchUserProfileImages = (userid) => ({
   type: FETCH_PROFILEIMAGES,
@@ -495,7 +408,7 @@ export const fetchVideos = (limit) => ({
 
 /**
  * fetchVideo Asynchronous (redux-pack) Action
- * @returns fetchVideo() - Action
+ * @returns Redux-pack action
  */
 export const fetchVideo = (id) => ({
   type: FETCH_VIDEO,
@@ -522,7 +435,7 @@ export const fetchMessages = (limit) => ({
 
 /**
  * fetchFavorites Asynchronous Action Creator
- * @returns fetchFavorites() - Action
+ * @returns Redux-pack action
  */
 export const fetchFavorites = (limit) => ({
   type: FETCH_FAVORITES,
@@ -531,7 +444,7 @@ export const fetchFavorites = (limit) => ({
 
 /**
  * fetchLikes Asynchronous Action Creator
- * @returns fetchLikes() - Action
+ * @returns Redux-pack action
  */
 export const fetchLikes = (limit) => ({
   type: FETCH_LIKES,
@@ -540,7 +453,7 @@ export const fetchLikes = (limit) => ({
 
 /**
  * fetchLikesForVideo Asynchronous Action Creator
- * @returns receiveLikes() - Action
+ * @returns Redux-pack action
  */
 export const fetchLikesForVideo = (itemid) => ({
    type: FETCH_LIKES,
@@ -549,7 +462,7 @@ export const fetchLikesForVideo = (itemid) => ({
 
 /**
  * fetchAlbum Asynchronous Action Creator
- * @returns fetchAlbum() - Action
+ * @returns Redux-pack action
  */
 export const fetchAlbum = (userid) => ({
    type: FETCH_ALBUM,
@@ -585,7 +498,7 @@ export const fetchThreadsForCategory = (categoryid) => ({
 
 /**
  * fetchChat Asynchronous Action Creator
- * @returns receiveChat() - Action
+ * @returns Redux-pack action
  */
 export const fetchChat = () => ({
   type: FETCH_CHAT,
@@ -608,21 +521,16 @@ export const sendChatMessage = (payload) => ({
 
 /**
  * recordLike Asynchronous Action Creator
- * @returns recordLike() - Action
+ * @returns Redux-pack action
  */
-export const recordLike = (key, id) =>
-    api.recordLike(`${key}s`, id).then(receiveLike)
-
-/**
- * recordDislike Asynchronous Action Creator
- * @returns recordDislike() - Action
- */
-export const recordDislike = (key, id) =>
-    api.recordDislike(`${key}s`, id).then(receiveDislike)
+export const recordLike = (key, id) => ({
+  type: RECEIVE_LIKE,
+  promise: api.recordLike(`${key}s`, id),
+})
 
 /**
  * recordApproval Asynchronous Action Creator
- * @returns recordApproval() - Action
+ * @returns Redux-pack action
  */
 export const recordApproval = (id, rating) => {
     // TODO: use action
@@ -646,68 +554,110 @@ export const markRead = (what, id) =>
 export const markAllRead = () =>
     api.markAllRead().then(receiveUnreadCount)
 
-export const fetchCountries = () =>
-    api.fetchCountries().then(receiveCountries)
+/**
+ * fetchCountries Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const fetchCountries = () => ({
+  type: FETCH_COUNTRIES,
+  promise: api.fetchCountries(),
+})
 
-export const fetchStates = () =>
-    api.fetchStates().then(receiveStates)
+/**
+ * fetchStates Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const fetchStates = () => ({
+  type: FETCH_STATES,
+  promise: api.fetchStates(),
+})
 
-export const fetchCities = () =>
-    api.fetchCities().then(receiveCities)
+/**
+ * fetchCities Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const fetchCities = () => ({
+  type: FETCH_CITIES,
+  promise: api.fetchCities(),
+})
 
-export const updateCountry = () =>
-    api.updateCountry().then(receiveCountry)
+/**
+ * updateCountry Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const updateCountry = () => ({
+  type: RECEIVE_COUNTRY,
+  promise: api.updateCountry(),
+})
 
-export const updateState = () =>
-    api.updateState().then(receiveState)
+/**
+ * updateState Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const updateState = () => ({
+  type: RECEIVE_STATE,
+  promise: api.updateState(),
+})
 
-export const updateCity = () =>
-    api.updateCity().then(receiveCity)
+/**
+ * updateCity Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const updateCity = () => ({
+  type: RECEIVE_CITY,
+  promise: api.updateCity(),
+})
 
-// export const removeAvatar = () =>
-//     api.removeUserField('avatar').then(deleteAvatar)
-export const removeAvatar = (userid) => (dispatch) => {
-    dispatch(deleteAvatarStarted())
-    return api.removeUserField('avatar')
-                .then(
-                    dispatch(deleteAvatarSuccess(userid)),
-                    error => dispatch(deleteAvatarFailure(error))
-                )
-}
+/**
+ * removeAvatar Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const removeAvatar = () => ({
+  type: DELETE_AVATAR,
+  promise: api.removeUserField('avatar'),
+})
 
-// export const removeProfileImg = () =>
-//     api.removeUserField('profileimg').then(deleteProfileImg)
-export const removeProfileImg = () => (dispatch) => {
-    dispatch(deleteProfileImgStarted())
-    return api.removeUserField('profileimg')
-                .then(
-                    dispatch(deleteProfileImgSuccess()),
-                    error => dispatch(deleteProfileImgFailure(error))
-                )
-}
+/**
+ * removeProfileImg Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const removeProfileImg = () => ({
+  type: DELETE_PROFILEIMG,
+  promise: api.removeUserField('profileimg'),
+})
 
-export const removeImages = (itemids) => (dispatch) => {
-    dispatch(deleteImagesStarted())
-    return api.deleteItems(itemids)
-                .then(
-                    dispatch(deleteImagesSuccess(itemids)),
-                    error => dispatch(deleteImagesFailure(error))
-                )
-}
+/**
+ * removeImages Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const removeImages = (itemids) => ({
+  type: DELETE_IMAGES,
+  promise: api.deleteItems(itemids),
+})
 
-export const removeChatMsg = (itemid) => (dispatch) => {
-    return api.removeItem('chat', itemid)
-                .then(
-                    dispatch(deleteMsgSuccess(itemid))
-                    // TODO: error
-                )
-}
+/**
+ * removeChatMsg Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const removeChatMsg = (itemid) => ({
+  type: DELETE_CHAT_MSG,
+  promise: api.removeItem('chat', itemid),
+})
 
-export const changeSetting = (key, value) =>
-    api.changeSetting(key, value).then(receiveSetting)
+/**
+ * changeSetting Asynchronous Action Creator
+ * @returns Redux-pack action
+ */
+export const changeSetting = (key, value) => ({
+  type: CHANGE_SETTING,
+  promise: api.changeSetting(key, value),
+})
 
 // -- registration checking actions ----------------------------------
 
+/**
+ * changeSetting Asynchronous Action Creator
+ * @returns Promise, resolves to receiveSearchResult action
+ */
 export const findUser = (username) =>
-    api.find('users', username, true)
-      .then(receiveSearchResult)
+    api.find('users', username, true).then(receiveSearchResult)

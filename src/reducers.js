@@ -11,22 +11,6 @@ import * as ACTIONS from './actions'
 import jwtDecode from 'jwt-decode'
 
 
-// see http://redux.js.org/docs/recipes/ReducingBoilerplate.html
-// function createReducer(initialState, handlers) {
-//   return function reducer(state = initialState, action) {
-//     if (Object.prototype.hasOwnProperty.call(handlers, action.type)) {
-//       return handlers[action.type](state, action)
-//     } else {
-//       return state
-//     }
-//   }
-// }
-// {
-//     "ACTION_TYPE": (state, action) => {
-//     }
-// }
-
-
 /******************
  * Redux reducers *
  ******************/
@@ -67,15 +51,19 @@ export function chatReducer(chatState = initialState.chat, action) {
             failure: prevState => ({ ...prevState, error: payload }),
             success: prevState => ({ ...prevState, items: newChatMsgs }),
           })
-        case ACTIONS.DELETE_MSG_SUCCESS:
-            const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === action.id })
-            return {
-                ...chatState,
-                items: [
-                    ...chatState.items.slice(0, chatMsgIndex),
-                    ...chatState.items.slice(chatMsgIndex + 1)
+        case ACTIONS.DELETE_CHAT_MSG:
+          const chatMsgIndex = chatState.items.findIndex(msg => { return msg.id === payload.id })
+          return handle(chatState, action, {
+            // start: prevState => ({ ...prevState, isDeleting: true, error: null }),
+            // finish: prevState => ({ ...prevState, isDeleting: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: [
+                    ...prevState.items.slice(0, chatMsgIndex),
+                    ...prevState.items.slice(chatMsgIndex + 1)
                 ]
-            }
+            }),
+          })
+        //
         default:
           return chatState
     }
@@ -135,7 +123,12 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
         case ACTIONS.REVIEW_DISAPPROVE:
             return {...reviewState, disapprovals: reviewState.disapprovals + 1}
         case ACTIONS.RECEIVE_LIKE:
-            return {...reviewState, likes: action.payload.likes}
+          return handle(reviewState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, likes: payload.likes }),
+          })
         case ACTIONS.RECEIVE_DISLIKE:
             return {...reviewState, dislikes: action.payload.dislikes}
         default:
@@ -207,6 +200,7 @@ export function messageReducer(messagesState = initialState.messages, action) {
 export function imageReducer(imageState = initialState.images, action) {
     const { type, payload } = action
     switch (type) {
+        //
         case ACTIONS.FETCH_PICTURE:
           return handle(imageState, action, {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
@@ -220,13 +214,15 @@ export function imageReducer(imageState = initialState.images, action) {
             return {...imageState, isFetching: false, items: [...action.payload]}
         case ACTIONS.FETCH_VERIFICATIONIMAGES:
             return {...imageState, isFetching: false, items: [...action.payload]}
-        case ACTIONS.DELETE_IMAGES_STARTED:
-            return {...imageState, isFetching: true}
-        case ACTIONS.DELETE_IMAGES_FAILURE:
-            return {...imageState, isFetching: false}
-        case ACTIONS.DELETE_IMAGES_SUCCESS:
-            const items = [...imageState.items].filter(item => action.response.indexOf(item.id) < 0)
-            return {...imageState, isFetching: false, items}
+        //
+        case ACTIONS.DELETE_IMAGES:
+          return handle(imageState, action, {
+            start: prevState => ({ ...prevState, isDeleting: true, error: null }),
+            finish: prevState => ({ ...prevState, isDeleting: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, items: [...imageState.items].filter(item => payload.indexOf(item.id) < 0) }),
+          })
+        //
         default:
           return imageState
     }
@@ -413,22 +409,35 @@ export function userReducer(userState = initialState.users, action) {
             })
             return ret
 
-        case ACTIONS.DELETE_AVATAR_SUCCESS:
-            // remove the avatar from the respective user
-            const usersAvCopy = {...userState}
-            if (Object.prototype.hasOwnProperty.call(usersAvCopy, `${action.userid}`)) {
+        case ACTIONS.DELETE_AVATAR:
+          // remove the avatar from the respective user
+          return handle(userState, action, {
+            // start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            // finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => {
+              const usersAvCopy = {...prevState}
+              if (Object.prototype.hasOwnProperty.call(usersAvCopy, `${action.userid}`)) {
                 usersAvCopy[`${action.userid}`].avatar = null
-            }
-            console.log('usersAvCopy', usersAvCopy)
-            return {...usersAvCopy, isFetching: false}
+              }
+              return {...usersAvCopy } // TODO
+            },
+          })
 
-        case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
-            // remove the profile image from the respective user
-            const usersPICopy = {...userState}
-            if (Object.prototype.hasOwnProperty.call(usersPICopy, `${action.userid}`)) {
-                usersPICopy[`${action.userid}`].profileimg = null
-            }
-            return {...usersPICopy, isFetching: false}
+        case ACTIONS.DELETE_PROFILEIMG:
+          // remove the profile image from the respective user
+          return handle(userState, action, {
+            // start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            // finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => {
+              const usersPICopy = {...prevState}
+              if (Object.prototype.hasOwnProperty.call(usersPICopy, `${action.userid}`)) {
+                  usersPICopy[`${action.userid}`].profileimg = null
+              }
+              return {...usersPICopy } // TODO
+            },
+          })
 
         default:
             return userState
@@ -459,11 +468,17 @@ export function followerReducer(followersState = initialState.followers, action)
  * @returns state
  **/
 export function onlineReducer(onlineState = initialState.online, action) {
-    switch (action.type) {
-        case ACTIONS.RECEIVE_ONLINE_USERS:
-            return {...onlineState, isFetching: false, users: [...action.response]}
+    const { type, payload } = action
+    switch (type) {
+        case ACTIONS.FETCH_ONLINE_USERS:
+          return handle(onlineState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, users: [...payload] }),
+          })
         default:
-            return onlineState
+          return onlineState
     }
 }
 
@@ -562,15 +577,29 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
                     statusText: 'You have been successfully logged out.',
                 }
             }
-        // AUTH -------------------------------------
 
-        case ACTIONS.DELETE_AVATAR_SUCCESS:
-            return {...currentUserState, avatar: null}
-        case ACTIONS.DELETE_PROFILEIMG_SUCCESS:
-            return {...currentUserState, profileimg: null}
+        case ACTIONS.DELETE_AVATAR:
+          return handle(currentUserState, action, {
+            // start: prevState => ({ ...prevState, isSaving: true, error: null }),
+            // finish: prevState => ({ ...prevState, isSaving: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, avatar: null }),
+          })
+        case ACTIONS.DELETE_PROFILEIMG:
+          return handle(currentUserState, action, {
+            // start: prevState => ({ ...prevState, isSaving: true, error: null }),
+            // finish: prevState => ({ ...prevState, isSaving: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, profileimg: null }),
+          })
 
-        case ACTIONS.RECEIVE_SETTING:
-            return {...currentUserState, ...payload}
+        case ACTIONS.CHANGE_SETTING:
+          return handle(currentUserState, action, {
+            // start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            // finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, ...payload }),
+          })
 
         default:
             return currentUserState
@@ -582,7 +611,30 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
  * @returns appState
  **/
 export function cpAppReducer(appState = initialState.appState, action) {
-    switch (action.type) {
+    const { type, payload, response } = action // TODO
+    switch (type) {
+        case ACTIONS.FETCH_COUNTRIES:
+          return handle(appState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, countries: [...payload] }),
+          })
+        case ACTIONS.FETCH_STATES:
+          return handle(appState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, states: [...payload] }),
+          })
+        case ACTIONS.FETCH_CITIES:
+          return handle(appState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, cities: [...payload] }),
+          })
+
         case ACTIONS.OPEN_SEARCH_SIDEBAR:
             return {...appState, sidebarSearchOpen: true}
         case ACTIONS.CLOSE_SEARCH_SIDEBAR:
@@ -596,26 +648,12 @@ export function cpAppReducer(appState = initialState.appState, action) {
         case ACTIONS.TOGGLE_SIDEBAR:
             return {...appState, sidebarOpen: !appState.sidebarOpen}
 
-        // case ACTIONS.OPEN_STREAM_SIDEBAR:
-        //     return {...appState, streamSidebarOpen: true}
-        // case ACTIONS.CLOSE_STREAM_SIDEBAR:
-        //     return {...appState, streamSidebarOpen: false}
-        // case ACTIONS.TOGGLE_STREAM_SIDEBAR:
-        //     return {...appState, streamSidebarOpen: !appState.streamSidebarOpen}
-
         case ACTIONS.SET_DEVICE_DETAILS:
             return {...appState, deviceDetails: action.obj}
         case ACTIONS.SET_ACTIVE_BADGE:
             return {...appState, activeBadge: +action.id}
 
-        case ACTIONS.RECEIVE_COUNTRIES:
-            return {...appState, countries: [...action.response]}
-        case ACTIONS.RECEIVE_STATES:
-            return {...appState, states: [...action.response]}
-        case ACTIONS.RECEIVE_CITIES:
-            return {...appState, cities: [...action.response]}
-
         default:
-            return appState
+          return appState
     }
 }
