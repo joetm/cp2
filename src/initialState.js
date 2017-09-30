@@ -108,23 +108,28 @@ const initialState = {
     },
     thread: {
         isFetching: true,
+        isSaving: false,
         items: [],
     },
     post: {
         isFetching: true,
+        isSaving: false,
         item: {},
     },
     video: {
         isFetching: true,
+        isSaving: false,
         item: {},
     },
     image: {
         isFetching: true,
+        isSaving: false,
     },
     // -- crowd review
     reviewitem: {
         id: null,
         isFetching: true,
+        isSaving: false,
         error: null,
         primaryText: null,
         secondaryText: null,
@@ -152,6 +157,7 @@ const initialState = {
     },
     currentUser: {
         id: null,
+        isSaving: false,
         username: 'anonymous',
         // email: null,
         token: null,
