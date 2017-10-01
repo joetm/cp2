@@ -24,9 +24,11 @@ class SinglePost extends React.Component {
       <div style={{position: 'relative'}}>
         <ScrollToTop />
         <Breadcrumbs
-            level0={{label: "Forum", url: FORUM}}
-            level1={{label: post.threadid, url: `${FORUM}${THREADS}/${post.threadid}`}}
-            level2={{label: post.title, url: location.pathname}}
+            levels={[
+              {label: "Forum", url: FORUM},
+              {label: post.threadid, url: `${FORUM}${THREADS}/${post.threadid}`},
+              {label: post.title, url: location.pathname},
+            ]}
             history={history}
         />
         <Loader isLoading={isFetching} />
