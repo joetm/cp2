@@ -105,11 +105,11 @@ export const CHANGE_SETTING           = 'APP::CHANGE_SETTING'
 function makeActionCreator(type, ...argNames) {
   return function (...args) {
     const action = {
-        type,
-        // fsa compliance
-        payload: {},
-        error: null
-        // meta: {},
+      type,
+      // fsa compliance
+      payload: {},
+      error: null
+      // meta: {},
     }
     argNames.forEach((arg, index) => {
       action[argNames[index]] = args[index]

@@ -49,91 +49,91 @@ import Playlist from './Playlist'
 
 
 @connect(state => ({
-   theme: state.currentUser.theme
+ theme: state.currentUser.theme
 }))
 class App extends React.Component {
-    /**
-     * Render the component.
-     */
-    render() {
-      const theme = getTheme(this.props.theme)
-      return (
-        <BrowserRouter>
-          <MuiThemeProvider muiTheme={theme}>
-            <div style={{backgroundColor: theme.palette.canvasColor}}>
+  /**
+   * Render the component.
+   */
+  render() {
+    const theme = getTheme(this.props.theme)
+    return (
+      <BrowserRouter>
+        <MuiThemeProvider muiTheme={theme}>
+          <div style={{backgroundColor: theme.palette.canvasColor}}>
 
-              <LoadCurrentUser />
+            <LoadCurrentUser />
 
-              <RecordDeviceDetails />
+            <RecordDeviceDetails />
 
-              <NavBar />
+            <NavBar />
 
-              <Switch>
+            <Switch>
 
-                <Route exact path={routes.HOME} component={Home} />
+              <Route exact path={routes.HOME} component={Home} />
 
-                <Route path={routes.FORUM} component={Forum} />
+              <Route path={routes.FORUM} component={Forum} />
 
-                <Route exact path={routes.CHAT} component={Chat} />
+              <Route exact path={routes.CHAT} component={Chat} />
 
-                <Route exact path={routes.STREAM} component={Stream} />
+              <Route exact path={routes.STREAM} component={Stream} />
 
-                <Route exact path={routes.UPDATES} component={Updates} />
+              <Route exact path={routes.UPDATES} component={Updates} />
 
-                <Route exact path={routes.IMAGES} component={Pictures} />
-                <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
+              <Route exact path={routes.IMAGES} component={Pictures} />
+              <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
 
-                <Route exact path={routes.VIDEOS} component={Videos} />
-                <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
+              <Route exact path={routes.VIDEOS} component={Videos} />
+              <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />
 
-                <Route exact path={routes.MESSAGES} component={Messages} />
-                <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
+              <Route exact path={routes.MESSAGES} component={Messages} />
+              <Route path={`${routes.MESSAGES}/:opponentid`} component={MessageHistory} />
 
-                <Route exact path={routes.LIKES} component={Likes} />
-                <Route exact path={routes.FAVORITES} component={Favorites} />
+              <Route exact path={routes.LIKES} component={Likes} />
+              <Route exact path={routes.FAVORITES} component={Favorites} />
 
-                <Route exact path={routes.REVIEW} component={Review} />
-                <Route exact path={`${routes.REVIEW}${routes.LEADERBOARD}`} component={ReviewLeaderboard} />
-                <Route path={`${routes.REVIEW}/:itemid`} component={Review} />
+              <Route exact path={routes.REVIEW} component={Review} />
+              <Route exact path={`${routes.REVIEW}${routes.LEADERBOARD}`} component={ReviewLeaderboard} />
+              <Route path={`${routes.REVIEW}/:itemid`} component={Review} />
 
-                <Route path={routes.PLAYLIST} component={Playlist} />
+              <Route path={routes.PLAYLIST} component={Playlist} />
 
-                <Route path={routes.MEMBERS} component={Users} />
+              <Route path={routes.MEMBERS} component={Users} />
 
-                <Route path={`${routes.PROFILE}/:userid`} component={Profile} />
-                <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
+              <Route path={`${routes.PROFILE}/:userid`} component={Profile} />
+              <Route path={`${routes.FOLLOWERS}/:userid`} component={Followers} />
 
-                <Route path={routes.SETTINGS.INDEX} component={Settings} />
+              <Route path={routes.SETTINGS.INDEX} component={Settings} />
 
-                <Route exact path={routes.LOGIN} component={LoginPage} />
-                <Route exact path={routes.SIGNUP} component={SignupPage} />
+              <Route exact path={routes.LOGIN} component={LoginPage} />
+              <Route exact path={routes.SIGNUP} component={SignupPage} />
 
-                {/* DEV */}
-                <Route path={`${routes.EDIT}`} component={Editor} />
+              {/* DEV */}
+              <Route path={`${routes.EDIT}`} component={Editor} />
 
-                <Route path={routes.LEGAL.INDEX} component={Legal} />
+              <Route path={routes.LEGAL.INDEX} component={Legal} />
 
-                <Route exact path={routes.CONTACT} component={Contact} />
+              <Route exact path={routes.CONTACT} component={Contact} />
 
-                <Route path={routes.MODAREA} component={ModArea} />
+              <Route path={routes.MODAREA} component={ModArea} />
 
-                <Route exact path={routes.UPLOAD} component={Upload} />
+              <Route exact path={routes.UPLOAD} component={Upload} />
 
-                <Route component={ErrorPage} code="404" />
+              <Route component={ErrorPage} code="404" />
 
-              </Switch>
+            </Switch>
 
-              <Scrollbutton secondary={true} />
+            <Scrollbutton secondary={true} />
 
-              <Sidebar />
-              <LoginSidebar />
-              {/* <StreamSidebar /> */}
+            <Sidebar />
+            <LoginSidebar />
+            {/* <StreamSidebar /> */}
 
-            </div>
-          </MuiThemeProvider>
-        </BrowserRouter>
-        )
-    }
+          </div>
+        </MuiThemeProvider>
+      </BrowserRouter>
+      )
+  }
 }
 
 export default App

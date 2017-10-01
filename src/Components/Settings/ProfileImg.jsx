@@ -36,53 +36,53 @@ class ProfileImg extends React.Component {
 
     return (
       <div
-          id="profileImg-settings"
-          style={{
-            width: blockMaxWidth,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: blockMaxWidth,
-          }}
+        id="profileImg-settings"
+        style={{
+          width: blockMaxWidth,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: blockMaxWidth,
+        }}
       >
 
-          <DropzoneComponent
-            style={dropzoneStyle}
-            config={dropzoneConfig}
-            eventHandlers={dropzoneEventHandlers}
-            djsConfig={dropzoneJsConfig}
-          />
+        <DropzoneComponent
+          style={dropzoneStyle}
+          config={dropzoneConfig}
+          eventHandlers={dropzoneEventHandlers}
+          djsConfig={dropzoneJsConfig}
+        />
 
-          <Spacer />
+        <Spacer />
 
-          {
-            userid &&
-              <ImgContainer
-                images={profileImages}
-                action={fetchUserProfileImages}
-                userid={userid}
-                selection={this.state.selection}
-                setSelection={this.setSelection}
-              />
-          }
+        {
+          userid &&
+            <ImgContainer
+              images={profileImages}
+              action={fetchUserProfileImages}
+              userid={userid}
+              selection={this.state.selection}
+              setSelection={this.setSelection}
+            />
+        }
 
-          <Spacer />
+        <Spacer />
 
-          <RaisedButton
-            label={`Delete Profile Image${this.state.selection.length > 1 ? 's' : ''}`}
-            disabled={this.props.isFetching}
-            onTouchTap={this.deleteProfileImages}
-            disabled={!this.state.selection.length}
-          />
+        <RaisedButton
+          label={`Delete Profile Image${this.state.selection.length > 1 ? 's' : ''}`}
+          disabled={this.props.isFetching}
+          onTouchTap={this.deleteProfileImages}
+          disabled={!this.state.selection.length}
+        />
 
-          <Spacer />
+        <Spacer />
 
 {/*
-          <Snackbar
-            open={this.state.msgOpen}
-            message="Profile image removed"
-            autoHideDuration={2000}
-            onRequestClose={this.handleRequestClose}
-          />
+        <Snackbar
+          open={this.state.msgOpen}
+          message="Profile image removed"
+          autoHideDuration={2000}
+          onRequestClose={this.handleRequestClose}
+        />
 */}
 
       </div>
@@ -92,12 +92,12 @@ class ProfileImg extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    userid: state.currentUser.id,
-    profileImages: state.profileImages.items,
-    isFetching: state.profileImages.isFetching,
+  userid: state.currentUser.id,
+  profileImages: state.profileImages.items,
+  isFetching: state.profileImages.isFetching,
 })
 
 export default connect(
-    mapStateToProps,
-    { removeProfileImg, fetchUserProfileImages }
+  mapStateToProps,
+  { removeProfileImg, fetchUserProfileImages }
 )(ProfileImg)

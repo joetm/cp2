@@ -7,15 +7,15 @@ import PostsWrapper from './PostsWrapper'
 
 
 const Threads = (props) => {
-    const { threads } = props
-    return (
-        <div>
-            <div>
-                <Loader isLoading={!threads.length} />
-                <PostsWrapper posts={threads} />
-            </div>
-        </div>
-    )
+  const { threads } = props
+  return (
+    <div>
+      <div>
+        <Loader isLoading={!threads.length} />
+        <PostsWrapper posts={threads} />
+      </div>
+    </div>
+  )
 }
 
 export default Threads

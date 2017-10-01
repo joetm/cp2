@@ -19,47 +19,47 @@ import Headline from '../Shared/Headline'
  * @class
  */
 class Likes extends React.Component {
-    componentWillMount() {
-        this.props.fetchLikesForVideo(this.props.itemid)
+  componentWillMount() {
+    this.props.fetchLikesForVideo(this.props.itemid)
+  }
+  render() {
+    const { likes = [] } = this.props
+    if (!likes.length) {
+      return null
     }
-    render() {
-        const { likes = [] } = this.props
-        if (!likes.length) {
-          return null
+    return (
+      <div>
+
+        <Spacer />
+        <Spacer />
+
+        <Headline level="4" style={{textAlign: 'left', marginBottom: '1em', paddingBottom: 0}}>Likes</Headline>
+
+        <Loader isLoading={this.props.isFetching} />
+
+        <Divider />
+
+        {
+          likes.map(item => (
+            <IconButton key={item.id} tooltip={item.user.username}>
+              <Avatar src={item.user.avatar} micro={true} />
+            </IconButton>
+          ))
         }
-        return (
-            <div>
 
-              <Spacer />
-              <Spacer />
+        <Spacer />
 
-              <Headline level="4" style={{textAlign: 'left', marginBottom: '1em', paddingBottom: 0}}>Likes</Headline>
-
-              <Loader isLoading={this.props.isFetching} />
-
-              <Divider />
-
-              {
-                likes.map(item => (
-                  <IconButton key={item.id} tooltip={item.user.username}>
-                    <Avatar src={item.user.avatar} micro={true} />
-                  </IconButton>
-                ))
-              }
-
-              <Spacer />
-
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    isFetching: state.likes.isFetching,
-    likes: state.likes.items,
+  isFetching: state.likes.isFetching,
+  likes: state.likes.items,
 })
 
 export default withRouter(connect(
-    mapStateToProps,
-    { fetchLikesForVideo }
+  mapStateToProps,
+  { fetchLikesForVideo }
 )(Likes))

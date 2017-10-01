@@ -32,12 +32,12 @@ const _SETTINGS_ROUTES = [
 
 const styles = {
   bottomNavigationItem: {
-      display: 'flex',
-      alignItems: 'center',
-      flexGrow: 1,
-      flexShrink: 0,
-      flexBasis: '33.3333%',
-      flexBasis: '200px',
+    display: 'flex',
+    alignItems: 'center',
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: '33.3333%',
+    flexBasis: '200px',
   },
 }
 

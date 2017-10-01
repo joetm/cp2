@@ -13,12 +13,12 @@ import CellWrapper from '../Shared/CellWrapper'
 
 
 const styles = {
-    unorderedList: {
-        listStyleType: 'none',
-    },
-    listItem: {
-        // margin: '1em auto',
-    }
+  unorderedList: {
+    listStyleType: 'none',
+  },
+  listItem: {
+    // margin: '1em auto',
+  }
 }
 
 
@@ -43,30 +43,30 @@ const UList = muiThemeable()((props) => {
  * @class
  */
 const Footer = () => (
-    <div style={{textAlign: 'center'}}>
+  <div style={{textAlign: 'center'}}>
 
-      <Divider />
+    <Divider />
 
-      <GridWrap>
+    <GridWrap>
 
-        <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={`${LEGAL.INDEX}${LEGAL.COMMUNITY}`} text="Community Guidelines" />
-        </CellWrapper>
-        <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={`${LEGAL.INDEX}${LEGAL.PRIVACY}`} text="Privacy Policy" />
-        </CellWrapper>
-        <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={`${LEGAL.INDEX}${LEGAL.DMCA}`} text="DMCA Policy" />
-        </CellWrapper>
-        <CellWrapper full={3} tablet={2} phone={2}>
-          <UList url={CONTACT} text="Contact" />
-        </CellWrapper>
+      <CellWrapper full={3} tablet={2} phone={2}>
+        <UList url={`${LEGAL.INDEX}${LEGAL.COMMUNITY}`} text="Community Guidelines" />
+      </CellWrapper>
+      <CellWrapper full={3} tablet={2} phone={2}>
+        <UList url={`${LEGAL.INDEX}${LEGAL.PRIVACY}`} text="Privacy Policy" />
+      </CellWrapper>
+      <CellWrapper full={3} tablet={2} phone={2}>
+        <UList url={`${LEGAL.INDEX}${LEGAL.DMCA}`} text="DMCA Policy" />
+      </CellWrapper>
+      <CellWrapper full={3} tablet={2} phone={2}>
+        <UList url={CONTACT} text="Contact" />
+      </CellWrapper>
 
-      </GridWrap>
+    </GridWrap>
 
-      <Spacer />
+    <Spacer />
 
-    </div>
+  </div>
 )
 
 export default Footer

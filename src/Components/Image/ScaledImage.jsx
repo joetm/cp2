@@ -17,28 +17,28 @@ class ScaledImage extends React.Component {
     })
   }
   render() {
-      const { src, alt } = this.props
-      const { width, height } = this.state.dimensions
-      // the images should always be scaled to the max dimension of the browser window
-      // console.log(window.innerWidth)
-      // console.log(window.innerHeight)
-      const dynamicStyle = {}
-      // case: portrait image
+    const { src, alt } = this.props
+    const { width, height } = this.state.dimensions
+    // the images should always be scaled to the max dimension of the browser window
+    // console.log(window.innerWidth)
+    // console.log(window.innerHeight)
+    const dynamicStyle = {}
+    // case: portrait image
 //        if (width <= height) {
-        dynamicStyle.maxHeight = `${window.innerHeight}px`
-        dynamicStyle.width = 'auto'
+      dynamicStyle.maxHeight = `${window.innerHeight}px`
+      dynamicStyle.width = 'auto'
 //        } else {
 //          dynamicStyle.maxWidth = `${window.innerWidth}px`
 //          dynamicStyle.height = 'auto'
 //        }
-      return (
-          <img
-            style={dynamicStyle}
-            onLoad={this.onImgLoad}
-            alt={alt}
-            src={src}
-          />
-      )
+    return (
+      <img
+        style={dynamicStyle}
+        onLoad={this.onImgLoad}
+        alt={alt}
+        src={src}
+      />
+    )
   }
 }
 

@@ -113,12 +113,12 @@ class Video extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    videoid: ownProps.match.params.videoid,
-    video: state.videos[ownProps.match.params.videoid],
-    isFetching: state.appState.isFetching,
+  videoid: ownProps.match.params.videoid,
+  video: state.videos[ownProps.match.params.videoid],
+  isFetching: state.appState.isFetching,
 })
 
 export default withRouter(connect(
-    mapStateToProps,
-    { loadVideo: fetchVideo }
+  mapStateToProps,
+  { loadVideo: fetchVideo }
 )(Video))

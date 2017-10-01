@@ -10,12 +10,12 @@ const SnackbarAlert = (props) => {
   const msg = props.msg || 'Thanks. Your vote has been recorded.'
   const duration = props.duration || _DEFAULT_DURATION
   return (
-      <Snackbar
-        open={props.open}
-        message={msg}
-        autoHideDuration={duration}
-        onRequestClose={props.closeAlert}
-      />
+    <Snackbar
+      open={props.open}
+      message={msg}
+      autoHideDuration={duration}
+      onRequestClose={props.closeAlert}
+    />
   )
 }
 

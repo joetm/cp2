@@ -10,24 +10,24 @@ import { PROFILE } from '../../routes'
 
 
 const styles = {
-    wrapper: {
-      position: 'relative',
-      paddingBottom: '10px',
-    },
-    textfieldWrapper: {
-      position: 'relative',
-      marginRight: '50px',
-      marginLeft: '10px',
-    },
-    sendIcon: {
-      cursor: 'pointer',
-      position: 'absolute',
-      top: '30px',
-      right: '10px',
-    },
-    textField: {
-      marginRight: '50px',
-    },
+  wrapper: {
+    position: 'relative',
+    paddingBottom: '10px',
+  },
+  textfieldWrapper: {
+    position: 'relative',
+    marginRight: '50px',
+    marginLeft: '10px',
+  },
+  sendIcon: {
+    cursor: 'pointer',
+    position: 'absolute',
+    top: '30px',
+    right: '10px',
+  },
+  textField: {
+    marginRight: '50px',
+  },
 }
 
 
@@ -65,13 +65,13 @@ class ChatInput extends React.Component {
       <div style={styles.wrapper}>
         <div style={styles.textfieldWrapper}>
           <TextField
-              hintText={this.props.hintText || "What's on your mind?"}
-              floatingLabelText={this.props.floatingLabelText || "Your Message"}
-              fullWidth={this.props.fullWidth || true}
-              ref={el => { this.chatinput = el }}
-              onKeyPress={this.props.sendMsgHandler || this.handleChangeChatMsg}
-              style={styles.textField}
-              autoFocus
+            hintText={this.props.hintText || "What's on your mind?"}
+            floatingLabelText={this.props.floatingLabelText || "Your Message"}
+            fullWidth={this.props.fullWidth || true}
+            ref={el => { this.chatinput = el }}
+            onKeyPress={this.props.sendMsgHandler || this.handleChangeChatMsg}
+            style={styles.textField}
+            autoFocus
           />
         </div>
         <SendIcon

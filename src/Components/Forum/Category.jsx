@@ -23,7 +23,7 @@ class Category extends React.Component {
     const { category = {}, isFetching, threads = [] } = this.props
 
     const CategoryInfo = (<div>
-        <InfoIcon /> {threads.length} threads
+      <InfoIcon /> {threads.length} threads
     </div>)
 
     return (

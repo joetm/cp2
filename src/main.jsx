@@ -29,12 +29,12 @@ import App from './Components/App'
 
 
 render(
-    (
-      <Provider store={store}>
-        <App />
-      </Provider>
-    ),
-    document.getElementById("app")
+  (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  ),
+  document.getElementById("app")
 )
 
 // https://deepstream.io/tutorials/integrations/frontend-react/

@@ -12,11 +12,11 @@ import Spacer from '../Shared/Spacer'
 
 class LoginPage extends React.Component {
   state = {
-      errors: {},
-      user: {
-        email: null,
-        password: null,
-      }
+    errors: {},
+    user: {
+      email: null,
+      password: null,
+    }
   }
   /**
    * Process the form.

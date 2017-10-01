@@ -6,13 +6,13 @@ import { NavLink } from 'react-router-dom'
 
 
 const MenuEntry = (props) => (
-    <NavLink to={props.route} tabIndex={props.tabindexCounter}>
-        <MenuItem
-            onTouchTap={props.onTouchTap}
-            primaryText={props.text}
-            leftIcon={props.icon}
-        />
-    </NavLink>
+  <NavLink to={props.route} tabIndex={props.tabindexCounter}>
+    <MenuItem
+      onTouchTap={props.onTouchTap}
+      primaryText={props.text}
+      leftIcon={props.icon}
+    />
+  </NavLink>
 )
 
 export default MenuEntry

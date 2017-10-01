@@ -43,150 +43,150 @@ const styles = {
 let tabindex = 0
 
 const tabindexCounter = () => {
-    tabindex += 1
-    return tabindex
+  tabindex += 1
+  return tabindex
 }
 
 
 const Sidebar = (props) => {
-    const { sidebarOpen, closeSidebar, userid } = props
-    return (
-      <Drawer
-        docked={false}
-        width={200}
-        open={sidebarOpen}
-        tabIndex="0"
-        onBlur={closeSidebar}
-        onRequestChange={closeSidebar}
-      >
+  const { sidebarOpen, closeSidebar, userid } = props
+  return (
+    <Drawer
+      docked={false}
+      width={200}
+      open={sidebarOpen}
+      tabIndex="0"
+      onBlur={closeSidebar}
+      onRequestChange={closeSidebar}
+    >
 
-        <div style={styles.logoContainer}>
-            <Link to="/">
-                <Headline
-                    style={styles.logo}
-                    onTouchTap={closeSidebar}
-                >SocNet v2</Headline>
-            </Link>
-        </div>
-
-        <MenuEntry
-            route={routes.UPDATES}
-            icon={<UpdatesIcon />}
-            text="Updates"
+      <div style={styles.logoContainer}>
+        <Link to="/">
+          <Headline
+            style={styles.logo}
             onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+          >SocNet v2</Headline>
+        </Link>
+      </div>
 
-        <MenuEntry
-            route={routes.FORUM}
-            icon={<ForumIcon />}
-            text="Forum"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <MenuEntry
+        route={routes.UPDATES}
+        icon={<UpdatesIcon />}
+        text="Updates"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        {/*
-        <MenuEntry
-            route={routes.USERS}
-            icon={<UsersIcon />}
-            text="Users"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
-        */}
+      <MenuEntry
+        route={routes.FORUM}
+        icon={<ForumIcon />}
+        text="Forum"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <Divider />
+      {/*
+      <MenuEntry
+        route={routes.USERS}
+        icon={<UsersIcon />}
+        text="Users"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
+      */}
 
-        <MenuEntry
-            route={routes.STREAM}
-            icon={<UpdatesIcon />}
-            text="Subscriptions"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <Divider />
 
-        <Divider />
+      <MenuEntry
+        route={routes.STREAM}
+        icon={<UpdatesIcon />}
+        text="Subscriptions"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <MenuEntry
-            route={routes.REVIEW}
-            icon={<ReviewIcon />}
-            text="Review"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <Divider />
 
-        <Divider />
+      <MenuEntry
+        route={routes.REVIEW}
+        icon={<ReviewIcon />}
+        text="Review"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <MenuEntry
-            route={routes.MESSAGES}
-            icon={<EmailIcon />}
-            text="Messages"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <Divider />
 
-        {/*
-        <MenuEntry
-            route={routes.PLAYLIST}
-            icon={<WatchLaterIcon />}
-            text="Watch Later"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
-        */}
+      <MenuEntry
+        route={routes.MESSAGES}
+        icon={<EmailIcon />}
+        text="Messages"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <MenuEntry
-            route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
-            icon={<HeartIcon />}
-            text="Favorites"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      {/*
+      <MenuEntry
+        route={routes.PLAYLIST}
+        icon={<WatchLaterIcon />}
+        text="Watch Later"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
+      */}
 
-        <MenuEntry
-            route={`${routes.STREAM}/${userid}${routes.LIKES}`}
-            icon={<LikeIcon />}
-            text="Likes"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <MenuEntry
+        route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
+        icon={<HeartIcon />}
+        text="Favorites"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <Divider />
+      <MenuEntry
+        route={`${routes.STREAM}/${userid}${routes.LIKES}`}
+        icon={<LikeIcon />}
+        text="Likes"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <MenuEntry
-            route={`${routes.PROFILE}/${userid}`}
-            icon={<ProfileIcon />}
-            text="Your Profile"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <Divider />
 
-        <MenuEntry
-            route={routes.SETTINGS.INDEX}
-            icon={<SettingsIcon />}
-            text="Settings"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <MenuEntry
+        route={`${routes.PROFILE}/${userid}`}
+        icon={<ProfileIcon />}
+        text="Your Profile"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-        <MenuEntry
-            route={routes.LOGOUT}
-            icon={<LogoutIcon />}
-            text="Log Out"
-            onTouchTap={closeSidebar}
-            tabindexCounter={tabindexCounter}
-        />
+      <MenuEntry
+        route={routes.SETTINGS.INDEX}
+        icon={<SettingsIcon />}
+        text="Settings"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
 
-      </Drawer>
-    )
+      <MenuEntry
+        route={routes.LOGOUT}
+        icon={<LogoutIcon />}
+        text="Log Out"
+        onTouchTap={closeSidebar}
+        tabindexCounter={tabindexCounter}
+      />
+
+    </Drawer>
+  )
 }
 
 const mapStateToProps = (state) => ({
-    sidebarOpen: state.appState.sidebarOpen,
-    userid: state.currentUser.id,
+  sidebarOpen: state.appState.sidebarOpen,
+  userid: state.currentUser.id,
 })
 
 export default connect(
-    mapStateToProps,
-    { closeSidebar }
+  mapStateToProps,
+  { closeSidebar }
 )(Sidebar)

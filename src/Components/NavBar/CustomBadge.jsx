@@ -8,15 +8,15 @@ import muiThemeable from 'material-ui/styles/muiThemeable'
 
 
 const styles = {
-    badgeRootStyle: {
-        margin: '0 20px 0 0',
-        padding: '0px 10px',
-        cursor: 'pointer',
-    },
-    badgeStyle: {
-        top: -6,
-        right: 0,
-    },
+  badgeRootStyle: {
+    margin: '0 20px 0 0',
+    padding: '0px 10px',
+    cursor: 'pointer',
+  },
+  badgeStyle: {
+    top: -6,
+    right: 0,
+  },
 }
 
 
@@ -40,14 +40,14 @@ class CustomBadge extends React.Component {
   wrapNavLink = (Component) => {
     const { to } = this.props
     if (to) {
-        return (
-            <NavLink
-                to={to}
-                activeStyle={{color: this.props.muiTheme.palette.primary1Color}}
-            >
-              {Component}
-            </NavLink>
-        )
+      return (
+        <NavLink
+          to={to}
+          activeStyle={{color: this.props.muiTheme.palette.primary1Color}}
+        >
+          {Component}
+        </NavLink>
+      )
     }
     return Component
   }

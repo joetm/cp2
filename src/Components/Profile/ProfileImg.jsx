@@ -21,133 +21,132 @@ const blurFilters = {
 }
 
 const styles = {
-    profileImgContainer: {
-        textAlign: 'center',
-        position: 'relative',
-    },
-    profileImgStyle: {
-        position: 'relative',
-        width: '100%',
-        textAlign: 'center',
-        overflow: 'hidden',
-        backgroundPosition: 'center center',
-        backgroundSize: 'cover',
-    },
+  profileImgContainer: {
+    textAlign: 'center',
+    position: 'relative',
+  },
+  profileImgStyle: {
+    position: 'relative',
+    width: '100%',
+    textAlign: 'center',
+    overflow: 'hidden',
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+  },
 }
 
 
 class ProfileImg extends React.Component {
-    state = {
-        profileImgHeight: window.innerHeight - _OFFSET,
+  state = {
+    profileImgHeight: window.innerHeight - _OFFSET,
+  }
+  componentWillMount = () => {
+    // resize profile image
+    window.onresize = () => {
+      const height = window.innerHeight - _OFFSET
+      this.setState({profileImgHeight: height})
     }
-    componentWillMount = () => {
-        // resize profile image
-        window.onresize = () => {
-            const height = window.innerHeight - _OFFSET
-            this.setState({profileImgHeight: height})
-        }
+  }
+  componentWillUnmount() {
+    window.onresize = null
+  }
+  /**
+   * ScrollButton event handler.
+   */
+  scrollDown = (e) => {
+    e.stopPropagation()
+
+    const scrollDuration = 200
+    const scrollPosition = window.scrollY + 240
+    const scrollStep = scrollPosition / (scrollDuration / 15)
+
+    const scrollInterval = setInterval(() => {
+      if ( window.scrollY < scrollPosition ) {
+        window.scrollBy(0, scrollStep)
+      } else {
+        clearInterval(scrollInterval)
+      }
+    }, 15)
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    const { profileImages = [], numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
+    const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
+    // --
+    let profileImgDynamicStyle = {
+      height: `${this.state.profileImgHeight}px`,
+      backgroundImage: `url(${this.props.profileimg})`,
     }
-    componentWillUnmount() {
-        window.onresize = null
+    if (this.props.blurredImg) {
+      profileImgDynamicStyle = {
+        ...profileImgDynamicStyle,
+        ...blurFilters,
+      }
     }
-    /**
-     * ScrollButton event handler.
-     */
-    scrollDown = (e) => {
-        e.stopPropagation()
 
-        const scrollDuration = 200
-        const scrollPosition = window.scrollY + 240
-        const scrollStep = scrollPosition / (scrollDuration / 15)
+    // reformatting the signature of the images for the slideshow component
+    const images = profileImages.map(item => ({
+      original: item.src,
+      thumbnail: item.thumb,
+      originalAlt: item.title,
+      originalTitle: item.title,
+    }))
 
-        const scrollInterval = setInterval(() => {
-                if ( window.scrollY < scrollPosition ) {
-                    window.scrollBy(0, scrollStep)
-                } else {
-                    clearInterval(scrollInterval)
-                }
-            }, 15)
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        const { profileImages = [], numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
-        const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
-        // --
-        let profileImgDynamicStyle = {
-            height: `${this.state.profileImgHeight}px`,
-            backgroundImage: `url(${this.props.profileimg})`,
-        }
-        if (this.props.blurredImg) {
-            profileImgDynamicStyle = {
-                ...profileImgDynamicStyle,
-                ...blurFilters,
-            }
-        }
+    return (
+      <div>
+        <div>
+          {/*
+          role="button"
+          tabIndex={0}
+          onTouchTap={this.props.toggleProfileDetails}
+          */}
 
-        // reformatting the signature of the images for the slideshow component
-        const images = profileImages.map(item => ({
-            original: item.src,
-            thumbnail: item.thumb,
-            originalAlt: item.title,
-            originalTitle: item.title,
-        }))
+          <div style={styles.profileImgContainer}>
+            {/*
+            <ProfileDetails
+                {...this.props}
+            />
+            */}
 
-        return (
-            <div>
-                <div
-                >
-                    {/*
-                    role="button"
-                    tabIndex={0}
-                    onTouchTap={this.props.toggleProfileDetails}
-                    */}
-
-                    <div style={styles.profileImgContainer}>
-                        {/*
-                        <ProfileDetails
-                            {...this.props}
-                        />
-                        */}
-
-                        {
-                            images.length &&
-                                <ImageGallery
-                                  items={images}
-                                  slideInterval={2000}
-                                  autoPlay={false}
-                                  showBullets={true}
-                                  showThumbnails={false}
-                                  showPlayButton={false}
-                                  lazyLoad={true}
-                                  showIndex={false}
-                                />
-                        }
+            {
+              images.length &&
+                <ImageGallery
+                  items={images}
+                  slideInterval={2000}
+                  autoPlay={false}
+                  showBullets={true}
+                  showThumbnails={false}
+                  showPlayButton={false}
+                  lazyLoad={true}
+                  showIndex={false}
+                />
+          }
 
 {/*
-                        <div style={{
-                            ...styles.profileImgStyle,
-                            ...profileImgDynamicStyle,
-                        }}></div>
+          <div style={{
+            ...styles.profileImgStyle,
+            ...profileImgDynamicStyle,
+          }}></div>
 */}
-                    </div>
-                </div>
+        </div>
+    </div>
 
-                {/*
-                <Scrollbutton
-                    style={{ ...styles.scrollButton, display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block' }}
-                    visible={!this.props.blurredImg}
-                    secondary={true}
-                    clickable={true}
-                    onTouchTap={this.scrollDown}
-                    icon={<DownIcon />}
-                />
-                */}
+        {/*
+        <Scrollbutton
+            style={{ ...styles.scrollButton, display: this.props.pageIsScrolled || this.props.blurredImg ? 'none' : 'block' }}
+            visible={!this.props.blurredImg}
+            secondary={true}
+            clickable={true}
+            onTouchTap={this.scrollDown}
+            icon={<DownIcon />}
+        />
+        */}
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 export default ProfileImg

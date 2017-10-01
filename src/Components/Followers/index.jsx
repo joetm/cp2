@@ -19,51 +19,50 @@ import Headline from '../Shared/Headline'
  * @class
  */
 class Followers extends React.Component {
-    componentDidMount() {
-      this.props.fetchFollowers(this.props.userid)
-    }
-    /**
-     * Render the component.
-     */
-    render () {
-        const { followers } = this.props
-        // console.log('followers', followers)
-        return (
-          <div>
+  componentDidMount() {
+    this.props.fetchFollowers(this.props.userid)
+  }
+  /**
+   * Render the component.
+   */
+  render () {
+    const { followers } = this.props
+    // console.log('followers', followers)
+    return (
+      <div>
+        <Headline level="2">Followers</Headline>
 
-              <Headline level="2">Followers</Headline>
+        <Divider />
 
-              <Divider />
+        <List>
+          {
+            followers.map(follower => (
+              <Notification
+                type="follower"
+                title={follower.user.username}
+                content={follower.user.usertitle}
+                userid={follower.user.id}
+                user={follower.user}
+              />
+            ))
+          }
+        </List>
 
-              <List>
-                {
-                    followers.map(follower => (
-                        <Notification
-                            type="follower"
-                            title={follower.user.username}
-                            content={follower.user.usertitle}
-                            userid={follower.user.id}
-                            user={follower.user}
-                        />
-                    ))
-                }
-              </List>
+        <Spacer />
 
-              <Spacer />
-
-          </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    followers: state.followers.items,
-    isFetching: state.followers.isFetching,
-    userid: ownProps.match.params.userid,
-    // user: state.users[ownProps.match.params.userid],
+  followers: state.followers.items,
+  isFetching: state.followers.isFetching,
+  userid: ownProps.match.params.userid,
+  // user: state.users[ownProps.match.params.userid],
 })
 
 export default withRouter(connect(
-    mapStateToProps,
-    { fetchFollowers }
+  mapStateToProps,
+  { fetchFollowers }
 )(Followers))

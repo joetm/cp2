@@ -51,56 +51,56 @@ const styles = {
 
 
 const AvatarBubble = (props) => {
-      const {
-        micro, mini, macro,
-        username,
-        src, visible,
-        style
-      } = props
-      // avatar size
-      let avatarStyle = {}
-      if (micro === true) {
-          avatarStyle = styles.avatarStyleMicro
-      } else if (mini === true) {
-          avatarStyle = styles.avatarStyleMini
-      } else if (macro === true) {
-          avatarStyle = styles.avatarStyleMacro
-      } else {
-          avatarStyle = styles.avatarStyleMaxi
-      }
-      // visibility
-      if (visible) {
-          avatarStyle.visibility = visible ? 'visible' : 'hidden'
-      } else {
-          avatarStyle.visibility = 'visible'
-      }
-      // default Avatar for people without avatar image
-      if (!src) {
-        return (
-            <Avatar
-                style={{
-                  ...avatarStyle,
-                  borderColor: props.muiTheme.palette.borderColor,
-                  ...style,
-                }}
-                onTouchTap={props.onTouchTap}
-            >
-              { username ? username.substr(0, 1) : 'X' }
-            </Avatar>
-        )
-      }
-      return (
-          <Avatar
-              style={{
-                ...avatarStyle,
-                borderColor: props.muiTheme.palette.borderColor,
-                ...style,
-              }}
-              src={src}
-              alt={username}
-              onTouchTap={props.onTouchTap}
-          />
-      )
+  const {
+    micro, mini, macro,
+    username,
+    src, visible,
+    style
+  } = props
+  // avatar size
+  let avatarStyle = {}
+  if (micro === true) {
+    avatarStyle = styles.avatarStyleMicro
+  } else if (mini === true) {
+    avatarStyle = styles.avatarStyleMini
+  } else if (macro === true) {
+    avatarStyle = styles.avatarStyleMacro
+  } else {
+    avatarStyle = styles.avatarStyleMaxi
+  }
+  // visibility
+  if (visible) {
+    avatarStyle.visibility = visible ? 'visible' : 'hidden'
+  } else {
+    avatarStyle.visibility = 'visible'
+  }
+  // default Avatar for people without avatar image
+  if (!src) {
+    return (
+      <Avatar
+        style={{
+          ...avatarStyle,
+          borderColor: props.muiTheme.palette.borderColor,
+          ...style,
+        }}
+        onTouchTap={props.onTouchTap}
+      >
+        { username ? username.substr(0, 1) : 'X' }
+      </Avatar>
+    )
+  }
+  return (
+    <Avatar
+      style={{
+        ...avatarStyle,
+        borderColor: props.muiTheme.palette.borderColor,
+        ...style,
+      }}
+      src={src}
+      alt={username}
+      onTouchTap={props.onTouchTap}
+    />
+  )
 }
 
 export default muiThemeable()(AvatarBubble)

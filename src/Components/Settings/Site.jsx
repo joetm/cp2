@@ -84,164 +84,158 @@ const ThemeButtons = (props) => {
 
 
 class SiteSettings extends React.Component {
-    themeSelector = null
-    state = {
-      selectedTheme: null,  // THEME_NAMES.DEFAULT.name,
-    }
-    /*
-     * Handle the change of the fullscreen setting.
-     */
-    toggleFullscreenImages = (event, isInputChecked) => {
-      this.props.changeSetting('fullscreenImages', isInputChecked)
-    }
-    /*
-     * Handle the change of the scaleImages setting.
-     */
-    toggleScaleImages = (event, isInputChecked) => {
-      this.props.changeSetting('scaleImages', isInputChecked)
-    }
-    /*
-     * Save the new color theme.
-     */
-    changeColorTheme = () => {
-      this.props.changeSetting('theme', this.state.selectedTheme)
-    }
-    /*
-     * Handle the change of the color theme selector.
-     */
-    handleColorThemeChange = (e, themeName) => {
-      this.setState({selectedTheme: themeName})
-    }
-    /*
-     * Handle the change of the view mode.
-     */
-    handleChangeViewMode = (e, key, value) => {
-      this.props.changeSetting('viewMode', value)
-    }
-    /*
-     * Render the component.
-     */
-    render() {
-      const { theme, fullscreenImages, scaleImages, viewMode } = this.props
-      const { selectedTheme } = this.state
-      return (
-        <div style={styles.wrapper}>
+  themeSelector = null
+  state = {
+    selectedTheme: null,  // THEME_NAMES.DEFAULT.name,
+  }
+  /*
+   * Handle the change of the fullscreen setting.
+   */
+  toggleFullscreenImages = (event, isInputChecked) => {
+    this.props.changeSetting('fullscreenImages', isInputChecked)
+  }
+  /*
+   * Handle the change of the scaleImages setting.
+   */
+  toggleScaleImages = (event, isInputChecked) => {
+    this.props.changeSetting('scaleImages', isInputChecked)
+  }
+  /*
+   * Save the new color theme.
+   */
+  changeColorTheme = () => {
+    this.props.changeSetting('theme', this.state.selectedTheme)
+  }
+  /*
+   * Handle the change of the color theme selector.
+   */
+  handleColorThemeChange = (e, themeName) => {
+    this.setState({selectedTheme: themeName})
+  }
+  /*
+   * Handle the change of the view mode.
+   */
+  handleChangeViewMode = (e, key, value) => {
+    this.props.changeSetting('viewMode', value)
+  }
+  /*
+   * Render the component.
+   */
+  render() {
+    const { theme, fullscreenImages, scaleImages, viewMode } = this.props
+    const { selectedTheme } = this.state
+    return (
+      <div style={styles.wrapper}>
 
-            <SettingsSeparator first text="Color theme" />
+        <SettingsSeparator first text="Color theme" />
 
-            <GridWrap>
+        <GridWrap>
 
-              <CellWrapper full={4} tablet={3} phone={4}>
-
-                <div>
-                  <ThemeButtons
-                    selectedTheme={this.state.selectedTheme || theme}
-                    handleColorThemeChange={this.handleColorThemeChange}
-                  />
-                </div>
-
-              </CellWrapper>
-
-              <CellWrapper full={8} tablet={5} phone={4}>
-                <div style={{textAlign: 'right'}}>
-                    {
-                        getThemeColors(selectedTheme || theme).map(colorObj => (
-                          <div
-                            key={`color_${colorObj.name}`}
-                            style={styles.colorBoxContainer}
-                          >
-                            <div
-                              style={{
-                                ...styles.colorBox,
-                                backgroundColor: colorObj.color
-                              }}
-                            ></div>
-                              {colorObj.name}
-                          </div>
-                        ))
-                    }
-                </div>
-              </CellWrapper>
-
-            </GridWrap>
-
-            <p>
-              <RaisedButton
-                label="Save Theme"
-                primary={true}
-                onTouchTap={this.changeColorTheme}
+          <CellWrapper full={4} tablet={3} phone={4}>
+            <div>
+              <ThemeButtons
+                selectedTheme={this.state.selectedTheme || theme}
+                handleColorThemeChange={this.handleColorThemeChange}
               />
-            </p>
+            </div>
+          </CellWrapper>
 
-
-            <SettingsSeparator text="Site settings" />
-
-            <SelectField
-              floatingLabelText="View Mode"
-              value={viewMode}
-              onChange={this.handleChangeViewMode}
-            >
-              <MenuItem
-                value={GROUPED_GALLERY}
-                primaryText="Grouped Gallery"
-                leftIcon={<GalleryModeIcon />}
-              />
-              <MenuItem
-                value={MASONRY_GALLERY}
-                primaryText="Borderless Masonry"
-                leftIcon={<MasonryModeIcon />}
-              />
-              <MenuItem
-                value={MINIMAL_LIST}
-                primaryText="Minimized List"
-                leftIcon={<ListModeIcon />}
-              />
-            </SelectField>
-
-            <List>
-              <Toggle
-                label="Fullscreen images"
-                toggled={fullscreenImages}
-                style={toggleStyle}
-                onToggle={this.toggleFullscreenImages}
-              />
+          <CellWrapper full={8} tablet={5} phone={4}>
+            <div style={{textAlign: 'right'}}>
               {
-                !fullscreenImages &&
-                  <Toggle
-                    label="Scale embedded images"
-                    toggled={scaleImages}
-                    style={toggleStyle}
-                    onToggle={this.toggleScaleImages}
-                  />
+                getThemeColors(selectedTheme || theme).map(colorObj => (
+                  <div
+                    key={`color_${colorObj.name}`}
+                    style={styles.colorBoxContainer}
+                  >
+                    <div
+                      style={{
+                        ...styles.colorBox,
+                        backgroundColor: colorObj.color
+                      }}
+                    ></div>
+                      {colorObj.name}
+                  </div>
+                ))
               }
-            </List>
+            </div>
+          </CellWrapper>
 
-            <Spacer />
-            <Spacer />
-            <Spacer />
+        </GridWrap>
+
+        <RaisedButton
+          label="Save Theme"
+          primary={true}
+          onTouchTap={this.changeColorTheme}
+        />
+
+        <SettingsSeparator text="Site settings" />
+
+        <SelectField
+          floatingLabelText="View Mode"
+          value={viewMode}
+          onChange={this.handleChangeViewMode}
+        >
+          <MenuItem
+            value={GROUPED_GALLERY}
+            primaryText="Grouped Gallery"
+            leftIcon={<GalleryModeIcon />}
+          />
+          <MenuItem
+            value={MASONRY_GALLERY}
+            primaryText="Borderless Masonry"
+            leftIcon={<MasonryModeIcon />}
+          />
+          <MenuItem
+            value={MINIMAL_LIST}
+            primaryText="Minimized List"
+            leftIcon={<ListModeIcon />}
+          />
+        </SelectField>
+
+        <List>
+          <Toggle
+            label="Fullscreen images"
+            toggled={fullscreenImages}
+            style={toggleStyle}
+            onToggle={this.toggleFullscreenImages}
+          />
+          {
+            !fullscreenImages &&
+              <Toggle
+                label="Scale embedded images"
+                toggled={scaleImages}
+                style={toggleStyle}
+                onToggle={this.toggleScaleImages}
+              />
+          }
+        </List>
+
+        <Spacer />
+        <Spacer />
 
 {/*
-            <Alert
-                open={this.state.alertIsOpen}
-                close={this.closeAlert}
-                msg="Saved."
-            />
+        <Alert
+            open={this.state.alertIsOpen}
+            close={this.closeAlert}
+            msg="Saved."
+        />
 */}
 
-        </div>
-      )
-    }
+      </div>
+    )
+  }
 }
 
 
 const mapStateToProps = (state) => ({
-    fullscreenImages: state.currentUser.fullscreenImages,
-    scaleImages: state.currentUser.scaleImages,
-    viewMode: state.currentUser.viewMode,
-    theme: state.currentUser.theme,
+  fullscreenImages: state.currentUser.fullscreenImages,
+  scaleImages: state.currentUser.scaleImages,
+  viewMode: state.currentUser.viewMode,
+  theme: state.currentUser.theme,
 })
 
 export default connect(
-    mapStateToProps,
-    { changeSetting }
+  mapStateToProps,
+  { changeSetting }
 )(SiteSettings)

@@ -7,9 +7,9 @@ const blockquoteStyle = {
 }
 
 const Blockquote = (props) => (
-    <blockquote style={{...blockquoteStyle, ...props.style}}>
-        {props.children}
-    </blockquote>
+  <blockquote style={{...blockquoteStyle, ...props.style}}>
+    {props.children}
+  </blockquote>
 )
 
 export default Blockquote

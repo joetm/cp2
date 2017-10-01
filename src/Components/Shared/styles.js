@@ -1,11 +1,11 @@
 
 export const inlineButton = {
-    display: 'inline-block',
-    marginLeft: '1em',
+  display: 'inline-block',
+  marginLeft: '1em',
 }
 
 const styles = {
-    inlineButton,
+  inlineButton,
 }
 
 export default styles

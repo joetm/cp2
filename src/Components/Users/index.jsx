@@ -26,100 +26,98 @@ const _PAGE_SIZE = 10
  * @class
  */
 class Users extends React.Component {
-    state = {
-      filtersOpen: false,
-    }
-    componentDidMount() {
-      this.props.fetchUsers(_PAGE_SIZE, filters)
-    }
-    refreshUsers = (filters) => {
+  state = {
+    filtersOpen: false,
+  }
+  componentDidMount() {
+    this.props.fetchUsers(_PAGE_SIZE, filters)
+  }
+  refreshUsers = (filters) => {
+    // TODO
+    console.log('filters', filters)
+    this.props.fetchUsers(_PAGE_SIZE, filters)
+  }
+  toggleFilters = () => {
+    this.setState({ filtersOpen: !this.state.filtersOpen })
+  }
+  /**
+   * Render the component.
+   */
+  render () {
+    const { users } = this.props
+    const usersList = []
+    if (users) {
       // TODO
-      console.log('filters', filters)
-      this.props.fetchUsers(_PAGE_SIZE, filters)
+      Object.keys(users).forEach(key =>
+        usersList.push(users[key])
+      )
     }
-    toggleFilters = () => {
-      this.setState({ filtersOpen: !this.state.filtersOpen })
-    }
-    /**
-     * Render the component.
-     */
-    render () {
-          const { users } = this.props
-          const usersList = []
-          if (users) {
-            // TODO
-            Object.keys(users).forEach(key =>
-              usersList.push(users[key])
-            )
+    return (
+      <div>
+
+        <Toolbar>
+          <ToolbarGroup firstChild={true}></ToolbarGroup>
+          <ToolbarGroup>
+            {
+              this.state.filtersOpen ?
+                <IconButton onTouchTap={this.toggleFilters}>
+                  <ImplodeFiltersIcon />
+                </IconButton>
+              :
+                <IconButton onTouchTap={this.toggleFilters}>
+                  <ExpandFiltersIcon />
+                </IconButton>
+            }
+          </ToolbarGroup>
+        </Toolbar>
+
+        <Headline>Users</Headline>
+        <Divider />
+
+        {
+          this.state.filtersOpen &&
+          <Filters
+            refreshUsers={this.refreshUsers}
+          />
+        }
+
+        <Divider />
+
+        <List>
+          {
+            usersList.map((user) => (
+              <User
+                key={`usr_${user.id}`}
+                {...user}
+              />
+            ))
           }
-          return (
-            <div>
+        </List>
 
-              <Toolbar>
-                  <ToolbarGroup firstChild={true}>
-                  </ToolbarGroup>
-                  <ToolbarGroup>
-                      {
-                        this.state.filtersOpen ?
-                          <IconButton onTouchTap={this.toggleFilters}>
-                            <ImplodeFiltersIcon />
-                          </IconButton>
-                        :
-                          <IconButton onTouchTap={this.toggleFilters}>
-                            <ExpandFiltersIcon />
-                          </IconButton>
-                      }
-                  </ToolbarGroup>
-              </Toolbar>
+        {
+          !usersList.length &&
+          <Loader />
+        }
 
+        {
+          usersList.length > 0 &&
+          <Pagination />
+        }
 
-              <Headline>Users</Headline>
-              <Divider />
+        <Spacer />
 
-              {
-                this.state.filtersOpen &&
-                <Filters
-                  refreshUsers={this.refreshUsers}
-                />
-              }
-
-              <Divider />
-
-              <List>
-                {
-                  usersList.map((user) => (
-                    <User
-                      key={`usr_${user.id}`}
-                      {...user}
-                    />
-                  ))
-                }
-              </List>
-
-              {
-                !usersList.length &&
-                <Loader />
-              }
-
-              {
-                usersList.length > 0 &&
-                <Pagination />
-              }
-
-              <Spacer />
-
-            </div>
-          )
-    }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
-    isFetching: state.users.isFetching,
-    users: state.users.items,
-    countries: state.appState.countries,
+  isFetching: state.users.isFetching,
+  users: state.users.items,
+  countries: state.appState.countries,
 })
 
 export default connect(
-    mapStateToProps,
-    { fetchUsers }
+  mapStateToProps,
+  { fetchUsers }
 )(Users)

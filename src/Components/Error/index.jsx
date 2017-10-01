@@ -18,7 +18,6 @@ const getMsg = (code) => {
 const Error = (props) => (
   <div>
     <Headline>{getMsg(props.code || 404)}</Headline>
-
   </div>
 )
 

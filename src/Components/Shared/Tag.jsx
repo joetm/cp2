@@ -12,15 +12,15 @@ const styles = {
 
 
 const Tag = props => {
-    return (
-        <Chip style={styles.tag}>
-            {
-                props.icon &&
-                <ChipAvatar icon={props.icon} />
-            }
-            {props.text}
-        </Chip>
-    )
+  return (
+    <Chip style={styles.tag}>
+      {
+        props.icon &&
+        <ChipAvatar icon={props.icon} />
+      }
+      {props.text}
+    </Chip>
+  )
 }
 
 export default Tag

@@ -53,26 +53,26 @@ const SubText = (props) => {
  * @class
  */
 class User extends React.Component {
-    handleClick = () => {
-        this.props.history.push(`${PROFILE}/${this.props.id}`)
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        const { username, usertitle, avatar, verified, city, state, country } = this.props
-        // const verifiedStatus = verified ? '- verified' : ''
-        const location = city || state || country ? `- ${city}, ${state}, ${country}` : ''
-        const secondaryText = <SubText {...{username}} {...{usertitle}} {...{verified}} {...{location}} />
-        return (
-            <ListItem
-              primaryText={username}
-              secondaryText={secondaryText}
-              leftAvatar={<Avatar src={avatar} />}
-              onClick={this.handleClick}
-            />
-        )
-    }
+  handleClick = () => {
+    this.props.history.push(`${PROFILE}/${this.props.id}`)
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    const { username, usertitle, avatar, verified, city, state, country } = this.props
+    // const verifiedStatus = verified ? '- verified' : ''
+    const location = city || state || country ? `- ${city}, ${state}, ${country}` : ''
+    const secondaryText = <SubText {...{username}} {...{usertitle}} {...{verified}} {...{location}} />
+    return (
+      <ListItem
+        primaryText={username}
+        secondaryText={secondaryText}
+        leftAvatar={<Avatar src={avatar} />}
+        onClick={this.handleClick}
+      />
+    )
+  }
 }
 
 export default withRouter(User)

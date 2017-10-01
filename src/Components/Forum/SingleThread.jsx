@@ -14,9 +14,9 @@ import BackButton from '../Shared/Buttons/BackButton'
 
 class SingleThread extends React.Component {
   componentDidMount() {
-      const { threadid } = this.props
-      this.props.fetchThread(threadid)
-      this.props.fetchPostsForThread(threadid)
+    const { threadid } = this.props
+    this.props.fetchThread(threadid)
+    this.props.fetchPostsForThread(threadid)
   }
   /*
    * Render the component.

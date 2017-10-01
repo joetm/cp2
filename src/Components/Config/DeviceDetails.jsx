@@ -8,33 +8,33 @@ import { setDeviceDetails } from '../../actions'
 
 
 class DeviceDetails extends React.Component {
-    /**
-     * Record the viewing device details.
-     */
-    componentDidMount() {
-        const { setDeviceDetails } = this.props
-        // store the mobile device info
-        const device = new MobileDetect(window.navigator.userAgent)
-        setDeviceDetails({
-            isMobile: device.phone(),
-            isTablet: device.tablet(),
-            useragent: window.navigator.userAgent,
-            OS: device.os(),
-            isIPhone: device.is('iPhone'),
-            isBot: device.is('bot'),
-            isPlaystation: device.match('playstation'),
-            isXbox: device.match('xbox'),
-        })
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        return null
-    }
+  /**
+   * Record the viewing device details.
+   */
+  componentDidMount() {
+    const { setDeviceDetails } = this.props
+    // store the mobile device info
+    const device = new MobileDetect(window.navigator.userAgent)
+    setDeviceDetails({
+      isMobile: device.phone(),
+      isTablet: device.tablet(),
+      useragent: window.navigator.userAgent,
+      OS: device.os(),
+      isIPhone: device.is('iPhone'),
+      isBot: device.is('bot'),
+      isPlaystation: device.match('playstation'),
+      isXbox: device.match('xbox'),
+    })
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    return null
+  }
 }
 
 export default connect(
-    null,
-    { setDeviceDetails }
+  null,
+  { setDeviceDetails }
 )(DeviceDetails)

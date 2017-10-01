@@ -44,34 +44,34 @@ class ChatItem extends React.Component {
       } = this.props
       return (
         <ListItem
-            primaryText={<div style={styles.chatText}>
-              <span
-                style={{...styles.username, color: this.props.muiTheme.palette.secondaryTextColor}}
-                onTouchTap={() => this.navigateToUser(user.id)}
-              >
-                {user.username}
-              </span>
-              {' '}
-              <span style={{color: this.props.muiTheme.palette.textColor}}>{content}</span>
-            </div>}
-            leftAvatar={
-              <Avatar
-                src={user.avatar}
-                style={styles.avatar}
-                onTouchTap={() => this.navigateToUser(user.id)}
-              />
-            }
-            rightIconButton={
-              <IconButton
-                onTouchTap={() => removeChatMsg(id)}
-                iconStyle={{color: this.props.muiTheme.palette.secondaryTextColor}}
-              >
-                <DeleteIcon />
-              </IconButton>
-            }
-            autoGenerateNestedIndicator={false}
-            disableKeyboardFocus={true}
-            disabled={true}
+          primaryText={<div style={styles.chatText}>
+            <span
+              style={{...styles.username, color: this.props.muiTheme.palette.secondaryTextColor}}
+              onTouchTap={() => this.navigateToUser(user.id)}
+            >
+              {user.username}
+            </span>
+            {' '}
+            <span style={{color: this.props.muiTheme.palette.textColor}}>{content}</span>
+          </div>}
+          leftAvatar={
+            <Avatar
+              src={user.avatar}
+              style={styles.avatar}
+              onTouchTap={() => this.navigateToUser(user.id)}
+            />
+          }
+          rightIconButton={
+            <IconButton
+              onTouchTap={() => removeChatMsg(id)}
+              iconStyle={{color: this.props.muiTheme.palette.secondaryTextColor}}
+            >
+              <DeleteIcon />
+            </IconButton>
+          }
+          autoGenerateNestedIndicator={false}
+          disableKeyboardFocus={true}
+          disabled={true}
         />
       )
     }

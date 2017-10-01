@@ -7,21 +7,18 @@ import { Link, NavLink, withRouter } from 'react-router-dom'
 import IconButton from 'material-ui/IconButton'
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-// --
 import HomeIcon from 'material-ui/svg-icons/action/account-balance'
 import MenuIcon from 'material-ui/svg-icons/navigation/menu'
 import SearchIcon from 'material-ui/svg-icons/action/search'
 import UploadIcon from 'material-ui/svg-icons/file/file-upload'
 import ReviewIcon from 'material-ui/svg-icons/social/whatshot'
-// import NotificationsIcon from 'material-ui/svg-icons/social/notifications'
 import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-none'
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import { toggleSearchSidebar, openSidebar, closeSidebar, fetchCurrentUser } from '../../actions'
+import './style.scss'
 import { sum } from '../../common/helpers'
 import { PROFILE, UPLOAD, REVIEW } from '../../routes'
-import './style.scss'
-// --
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
 import NotificationsMenu from './NotificationsMenu'
@@ -110,19 +107,19 @@ class NavBar extends React.Component {
         <Toolbar style={styles.navbar}>
 
           <ReactCSSTransitionGroup
-              transitionName="example"
-              transitionAppear={true}
-              transitionAppearTimeout={_DURATION}
-              transitionEnterTimeout={_DURATION}
-              transitionLeaveTimeout={_DURATION}
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={_DURATION}
+            transitionEnterTimeout={_DURATION}
+            transitionLeaveTimeout={_DURATION}
           >
             {
               !this.state.searchExpanded ?
                 <ToolbarGroup firstChild={true}>
                   <IconButton
-                      tooltip="Menu"
-                      style={styles.firstItem}
-                      onTouchTap={openSidebar}
+                    tooltip="Menu"
+                    style={styles.firstItem}
+                    onTouchTap={openSidebar}
                   >
                     <MenuIcon />
                   </IconButton>
@@ -137,11 +134,11 @@ class NavBar extends React.Component {
           </ReactCSSTransitionGroup>
 
           <ReactCSSTransitionGroup
-              transitionName="example"
-              transitionAppear={true}
-              transitionAppearTimeout={_DURATION}
-              transitionEnterTimeout={_DURATION}
-              transitionLeaveTimeout={_DURATION}
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={_DURATION}
+            transitionEnterTimeout={_DURATION}
+            transitionLeaveTimeout={_DURATION}
           >
             {
               !this.state.searchExpanded ?

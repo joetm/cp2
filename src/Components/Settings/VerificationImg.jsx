@@ -32,53 +32,53 @@ class VerificationImg extends React.Component {
 
     return (
       <div
-          id="verificationImg-settings"
-          style={{
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: blockMaxWidth,
-          }}
+        id="verificationImg-settings"
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          maxWidth: blockMaxWidth,
+        }}
       >
 
-          <DropzoneComponent
-            style={dropzoneStyle}
-            config={dropzoneConfig}
-            eventHandlers={dropzoneEventHandlers}
-            djsConfig={dropzoneJsConfig}
-          />
+        <DropzoneComponent
+          style={dropzoneStyle}
+          config={dropzoneConfig}
+          eventHandlers={dropzoneEventHandlers}
+          djsConfig={dropzoneJsConfig}
+        />
 
-          <Spacer />
+        <Spacer />
 
-          {
-            userid &&
-              <ImgContainer
-                images={verificationImages}
-                action={this.props.fetchUserVerificationImages}
-                userid={userid}
-                selection={this.state.selection}
-                setSelection={this.setSelection}
-              />
-          }
+        {
+          userid &&
+            <ImgContainer
+              images={verificationImages}
+              action={this.props.fetchUserVerificationImages}
+              userid={userid}
+              selection={this.state.selection}
+              setSelection={this.setSelection}
+            />
+        }
 
-          <Spacer />
+        <Spacer />
 
-          <RaisedButton
-            label={`Delete Verification Image${this.state.selection.length > 1 ? 's' : ''}`}
-            disabled={this.props.isFetching}
-            disabled={!this.state.selection.length}
-            onTouchTap={this.deleteVerificationImages}
-          />
+        <RaisedButton
+          label={`Delete Verification Image${this.state.selection.length > 1 ? 's' : ''}`}
+          disabled={this.props.isFetching}
+          disabled={!this.state.selection.length}
+          onTouchTap={this.deleteVerificationImages}
+        />
 {/*TODO: duplicate prop*/}
 
-          <Spacer />
+        <Spacer />
 
 {/*
-          <Snackbar
-            open={this.state.msgOpen}
-            message="Verification image removed"
-            autoHideDuration={2000}
-            onRequestClose={this.handleRequestClose}
-          />
+        <Snackbar
+          open={this.state.msgOpen}
+          message="Verification image removed"
+          autoHideDuration={2000}
+          onRequestClose={this.handleRequestClose}
+        />
 */}
 
       </div>
@@ -88,12 +88,12 @@ class VerificationImg extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    userid: state.currentUser.id,
-    verificationImages: state.verificationImages.items,
-    isFetching: state.verificationImages.isFetching,
+  userid: state.currentUser.id,
+  verificationImages: state.verificationImages.items,
+  isFetching: state.verificationImages.isFetching,
 })
 
 export default connect(
-    mapStateToProps,
-    { fetchUserVerificationImages, removeImages }
+  mapStateToProps,
+  { fetchUserVerificationImages, removeImages }
 )(VerificationImg)

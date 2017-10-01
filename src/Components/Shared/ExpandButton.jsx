@@ -5,9 +5,9 @@ import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-mo
 import IconButton from 'material-ui/IconButton'
 
 const ExpandButton = () => (
-    <IconButton touch={true}>
-        <NavigationExpandMoreIcon />
-    </IconButton>
+  <IconButton touch={true}>
+    <NavigationExpandMoreIcon />
+  </IconButton>
 )
 
 export default ExpandButton

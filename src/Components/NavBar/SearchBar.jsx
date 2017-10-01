@@ -9,9 +9,9 @@ import { ToolbarGroup } from 'material-ui/Toolbar'
 
 
 const styles = {
-    searchIcon: {
-        cursor: 'pointer',
-    },
+  searchIcon: {
+    cursor: 'pointer',
+  },
 }
 
 
@@ -21,15 +21,13 @@ class SearchBar extends React.Component {
   }
   render() {
     return (
-      <ToolbarGroup
-          style={{width: '100%'}}
-      >
+      <ToolbarGroup style={{width: '100%'}}>
         <IconButton
-            tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-            onTouchTap={this.props.searchAction}
-            style={styles.searchIcon}
+          tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+          onTouchTap={this.props.searchAction}
+          style={styles.searchIcon}
         >
-            <SearchIcon />
+          <SearchIcon />
         </IconButton>
         <TextField
           hintText="Search"
@@ -40,11 +38,11 @@ class SearchBar extends React.Component {
           floatingLabelText="Search"
         />
         <IconButton
-            tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-            onTouchTap={this.props.toggleSearchField}
-            style={styles.searchIcon}
+          tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+          onTouchTap={this.props.toggleSearchField}
+          style={styles.searchIcon}
         >
-            <CloseIcon />
+          <CloseIcon />
         </IconButton>
       </ToolbarGroup>
     )

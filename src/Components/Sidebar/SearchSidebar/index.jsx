@@ -14,157 +14,155 @@ import EnterIcon from 'material-ui/svg-icons/action/get-app'
 
 
 const _MENUITEM = {
-    TODAY: 1,
-    XXX: 2,
+  TODAY: 1,
+  XXX: 2,
 }
 
 const styles = {
-    navbar: {
-        zIndex: 9999999,
-    },
-    icon: {
-        margin: '0 8px',
-        cursor: 'pointer',
-    },
-    chip: {
-        margin: 4,
-    },
-    wrapper: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
+  navbar: {
+    zIndex: 9999999,
+  },
+  icon: {
+    margin: '0 8px',
+    cursor: 'pointer',
+  },
+  chip: {
+    margin: 4,
+  },
+  wrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
 }
 
 
 class Sidebar extends React.Component {
-    inputValue = ''
-    /**
-     * Constructor.
-     * @param props
-     */
-    constructor(props) {
-        super(props)
-        this.state = {
-            selected: 0,
-            filterTerms: [],
-        }
-        // bindings
-        this.handleTouchTap = this.handleTouchTap.bind(this)
-        this.enterValueIntoList = this.enterValueIntoList.bind(this)
+  inputValue = ''
+  /**
+   * Constructor.
+   * @param props
+   */
+  constructor(props) {
+    super(props)
+    this.state = {
+      selected: 0,
+      filterTerms: [],
     }
-    /**
-     * Add the value to the filter list.
-     */
-    enterValueIntoList() {
-        console.log(this.inputValue)
-        const values = this.state.filterTerms
-        if (this.inputValue !== '' && values.indexOf(this.inputValue) === -1) {
-            values.push(this.inputValue)
-            this.setState({filterTerms: values})
-        }
+    // bindings
+    this.handleTouchTap = this.handleTouchTap.bind(this)
+    this.enterValueIntoList = this.enterValueIntoList.bind(this)
+  }
+  /**
+   * Add the value to the filter list.
+   */
+  enterValueIntoList() {
+    console.log(this.inputValue)
+    const values = this.state.filterTerms
+    if (this.inputValue !== '' && values.indexOf(this.inputValue) === -1) {
+      values.push(this.inputValue)
+      this.setState({filterTerms: values})
     }
-    /**
-     * Handle the change of the search field.
-     */
-    handleChangeSearchField(event, inputValue) {
-        this.inputValue = inputValue
-    }
-    // handleRequestDelete() {
-    //     const chipValues = this.state.filterTerms
-    //     const index = chipValues.indexOf(value)
-    //     if (index > -1) {
-    //         chipValues.splice(index, 1);
-    //         this.setState({filterTerms: chipValues});
-    //     }
-    // }
-    /**
-     * Handle the click on a filter item.
-     */
-    handleTouchTap() {
-        // window.alert('You clicked the Chip.')
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        return (
-            <Drawer
-                open={this.props.open}
-                openSecondary={true}
-                disableSwipeToOpen={false}
-                docked={true}
-                swipeAreaWidth={30}
+  }
+  /**
+   * Handle the change of the search field.
+   */
+  handleChangeSearchField(event, inputValue) {
+    this.inputValue = inputValue
+  }
+  // handleRequestDelete() {
+  //     const chipValues = this.state.filterTerms
+  //     const index = chipValues.indexOf(value)
+  //     if (index > -1) {
+  //         chipValues.splice(index, 1);
+  //         this.setState({filterTerms: chipValues});
+  //     }
+  // }
+  /**
+   * Handle the click on a filter item.
+   */
+  handleTouchTap() {
+    // window.alert('You clicked the Chip.')
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    return (
+      <Drawer
+        open={this.props.open}
+        openSecondary={true}
+        disableSwipeToOpen={false}
+        docked={true}
+        swipeAreaWidth={30}
+      >
+
+        <Toolbar style={styles.navbar}>
+          <ToolbarGroup firstChild={true}>
+              <TextField
+                hintText="Search"
+                fullWidth={false}
+                style={{marginLeft: '20px', width: '150px'}}
+                onChange={() => this.handleChangeSearchField}
+              />
+              <EnterIcon
+                style={styles.icon}
+                onTouchTap={() => this.enterValueIntoList}
+              />
+          </ToolbarGroup>
+          <ToolbarGroup>
+            <CloseIcon
+              style={styles.icon}
+              onTouchTap={this.props.closeSidebar}
+            />
+          </ToolbarGroup>
+        </Toolbar>
+
+        <Divider />
+
+        <MenuItem
+          id={_MENUITEM.TODAY}
+          checked={this.state.selected === _MENUITEM.TODAY}
+          disabled={this.state.selected === _MENUITEM.TODAY}
+          secondaryText="69"
+          onTouchTap={() => this.setState({
+            // open:false,
+            selected: _MENUITEM.TODAY
+          })}
+        >
+          Today&apos;s Threads
+        </MenuItem>
+        <MenuItem
+          checked={this.state.selected === _MENUITEM.XXX}
+          disabled={this.state.selected === _MENUITEM.XXX}
+          secondaryText="1234"
+          onTouchTap={() => {
+              this.setState({
+                // open:false,
+                selected: _MENUITEM.XXX,
+              })
+            }
+          }
+        >
+          XXX
+        </MenuItem>
+
+        <Divider />
+
+        {
+          this.state.filterTerms.map((value) => (
+            <Chip
+              key={`fi_${value}`}
+              onTouchTap={this.handleTouchTap}
+              style={styles.chip}
             >
+              {value}
+            </Chip>
+          ))
+        }
 
-                <Toolbar
-                    style={styles.navbar}
-                >
-                    <ToolbarGroup firstChild={true}>
-                        <TextField
-                            hintText="Search"
-                            fullWidth={false}
-                            style={{marginLeft: '20px', width: '150px'}}
-                            onChange={() => this.handleChangeSearchField}
-                        />
-                        <EnterIcon
-                            style={styles.icon}
-                            onTouchTap={() => this.enterValueIntoList}
-                        />
-                    </ToolbarGroup>
-                    <ToolbarGroup>
-                        <CloseIcon
-                            style={styles.icon}
-                            onTouchTap={this.props.closeSidebar}
-                        />
-                    </ToolbarGroup>
-                </Toolbar>
-
-                <Divider />
-
-                <MenuItem
-                    id={_MENUITEM.TODAY}
-                    checked={this.state.selected === _MENUITEM.TODAY}
-                    disabled={this.state.selected === _MENUITEM.TODAY}
-                    secondaryText="69"
-                    onTouchTap={() => this.setState({
-                        // open:false,
-                        selected: _MENUITEM.TODAY
-                    })}
-                >
-                    Today&apos;s Threads
-                </MenuItem>
-                <MenuItem
-                    checked={this.state.selected === _MENUITEM.XXX}
-                    disabled={this.state.selected === _MENUITEM.XXX}
-                    secondaryText="1234"
-                    onTouchTap={() => {
-                            this.setState({
-                                // open:false,
-                                selected: _MENUITEM.XXX,
-                            })
-                        }
-                    }
-                >
-                    XXX
-                </MenuItem>
-
-                <Divider />
-
-                {
-                    this.state.filterTerms.map((value) => (
-                        <Chip
-                            key={`fi_${value}`}
-                            onTouchTap={this.handleTouchTap}
-                            style={styles.chip}
-                        >
-                            {value}
-                        </Chip>
-                    ))
-                }
-
-            </Drawer>
-        )
-    }
+      </Drawer>
+    )
+  }
 }
 
 export default Sidebar

@@ -6,16 +6,16 @@ import MenuItem from 'material-ui/MenuItem'
 
 
 const RouterMenuItem = withRouter(props => {
-    const {primaryText, icon} = props
-    return (
-        <MenuItem
-            primaryText={primaryText}
-            leftIcon={icon}
-            onClick={() => {
-                props.history.push(props.url)
-            }}
-        />
-    )
+  const {primaryText, icon} = props
+  return (
+    <MenuItem
+      primaryText={primaryText}
+      leftIcon={icon}
+      onClick={() => {
+        props.history.push(props.url)
+      }}
+    />
+  )
 })
 
 // fix to close the open menu on click

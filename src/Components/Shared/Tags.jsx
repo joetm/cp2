@@ -15,14 +15,14 @@ const tagWrapperStyle = {
  * @param props.tags Either array of plain text tags ["tag1, "tag2"] or objects [{icon: <Icon1 />, text: "tag1"}, {icon: <Icon2 />, text: "tag2"}]
  */
 const Tags = props => {
-    const { tags } = props
-    return (
-      <div style={{...tagWrapperStyle, ...props.style}}>
-        {
-          tags.map(tag => <Tag key={`tag_${tag}`} icon={tag.icon || null} text={tag} />)
-        }
-      </div>
-    )
+  const { tags } = props
+  return (
+    <div style={{...tagWrapperStyle, ...props.style}}>
+      {
+        tags.map(tag => <Tag key={`tag_${tag}`} icon={tag.icon || null} text={tag} />)
+      }
+    </div>
+  )
 }
 
 export default Tags

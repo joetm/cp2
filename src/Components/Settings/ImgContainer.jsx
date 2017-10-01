@@ -25,10 +25,10 @@ class ImgContainer extends React.Component {
            images &&
            images.map(item => (
             <Img
-                key={item.id}
-                item={item}
-                selection={selection}
-                setSelection={setSelection}
+              key={item.id}
+              item={item}
+              selection={selection}
+              setSelection={setSelection}
             />
           ))
         }

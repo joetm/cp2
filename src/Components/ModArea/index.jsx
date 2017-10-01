@@ -14,56 +14,56 @@ import Headline from '../Shared/Headline'
 
 
 class ModArea extends React.Component {
-    state = {
-        viewMode: 'list',
-    }
-    componentDidMount() {
-        this.props.fetchModItems()
-    }
-    componentWillUnmount() {
+  state = {
+    viewMode: 'list',
+  }
+  componentDidMount() {
+    this.props.fetchModItems()
+  }
+  componentWillUnmount() {
 
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        const { items } = this.props
-        const Container = this.state.viewMode === 'list' ? Notification : Update
-        const Wrapper = this.state.viewMode === 'list' ? ListWrap : GridWrap
-        return (
-            <div>
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    const { items } = this.props
+    const Container = this.state.viewMode === 'list' ? Notification : Update
+    const Wrapper = this.state.viewMode === 'list' ? ListWrap : GridWrap
+    return (
+      <div>
 
-                <Headline>Mod Area</Headline>
+        <Headline>Mod Area</Headline>
 
-                <Wrapper>
-                    {
-                        items.map((item) => (
-                            <Container
-                                key={`upd_${item.id}`}
-                                {...item}
-                                full={3}
-                                tablet={4}
-                                phone={2}
-                            />
-                        ))
-                    }
-                </Wrapper>
+        <Wrapper>
+          {
+            items.map((item) => (
+              <Container
+                key={`upd_${item.id}`}
+                {...item}
+                full={3}
+                tablet={4}
+                phone={2}
+              />
+            ))
+          }
+        </Wrapper>
 
-                <Spacer />
+        <Spacer />
 
-                <Footer />
+        <Footer />
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
-    isFetching: state.mod.isFetching,
-    items: state.mod.items,
+  isFetching: state.mod.isFetching,
+  items: state.mod.items,
 })
 
 export default connect(
-    mapStateToProps,
-    { fetchModItems }
+  mapStateToProps,
+  { fetchModItems }
 )(ModArea)

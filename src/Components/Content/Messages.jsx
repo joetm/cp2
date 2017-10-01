@@ -9,22 +9,22 @@ import { LISTED } from '../../common/viewModes'
 
 
 const Messages = (props) => (
-    <StreamTpl
-        action={props.fetchMessages}
-        isEmbedded={props.isEmbedded}
-        viewMode={LISTED}
-        headline="Private Messages"
-        isFetching={props.isFetching}
-        items={props.messages}
-    />
+  <StreamTpl
+    action={props.fetchMessages}
+    isEmbedded={props.isEmbedded}
+    viewMode={LISTED}
+    headline="Private Messages"
+    isFetching={props.isFetching}
+    items={props.messages}
+  />
 )
 
 const mapStateToProps = (state) => ({
-    isFetching: state.messages.isFetching,
-    messages: state.messages.items,
+  isFetching: state.messages.isFetching,
+  messages: state.messages.items,
 })
 
 export default connect(
-    mapStateToProps,
-    { fetchMessages }
+  mapStateToProps,
+  { fetchMessages }
 )(Messages)

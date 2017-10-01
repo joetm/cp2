@@ -8,16 +8,13 @@ import Headline from '../Shared/Headline'
 
 
 const Editor = () => {
-    return (
-        <div>
-            <ScrollToTop />
-
-            <Headline>TODO</Headline>
-
-            <Spacer />
-
-        </div>
-    )
+  return (
+    <div>
+      <ScrollToTop />
+      <Headline>TODO</Headline>
+      <Spacer />
+    </div>
+  )
 }
 
 export default Editor

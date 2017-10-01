@@ -31,8 +31,8 @@ class Home extends React.Component {
         <ScrollToTop />
         <GridWrap>
           <CellWrapper full={6} tablet={8} phone={4}>
-              <Box headline="New Updates" footerLink={routes.UPDATES} items={updates} />
-              <Box headline="Users Online" footerLink={routes.USERS} items={onlineUsers} />
+            <Box headline="New Updates" footerLink={routes.UPDATES} items={updates} />
+            <Box headline="Users Online" footerLink={routes.USERS} items={onlineUsers} />
           </CellWrapper>
           <CellWrapper full={6} tablet={8} phone={4}>
             <Paper style={boxStyle} zDepth={1}>

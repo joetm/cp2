@@ -16,78 +16,78 @@ const _OFFSETX = 10
 
 
 const styles = {
-    fullscreenContainer: {
-        padding: 0,
-        margin: 0,
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        // image fit
-        objectFit: 'cover', /*scale-down*/
-        // image
-        backgroundPosition: 'center center',
-        backgroundSize: 'cover',
-        zIndex: 9,
-    },
-    imageTitle: {
-        textAlign: 'center',
-        padding: '5px',
-        margin: 0,
-    },
+  fullscreenContainer: {
+    padding: 0,
+    margin: 0,
+    height: '100%',
+    width: '100%',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    // image fit
+    objectFit: 'cover', /*scale-down*/
+    // image
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+    zIndex: 9,
+  },
+  imageTitle: {
+    textAlign: 'center',
+    padding: '5px',
+    margin: 0,
+  },
 }
 
 
 const FullscreenImage = (props) => {
-    const { title, user, src, userid, history } = props
-    return (
-        <div style={{
-            ...styles.fullscreenContainer,
-            backgroundImage: `url(${src})`,
-        }}>
+  const { title, user, src, userid, history } = props
+  return (
+    <div style={{
+        ...styles.fullscreenContainer,
+        backgroundImage: `url(${src})`,
+    }}>
 
-            <Headline style={{
-                ...styles.imageTitle,
-                color: props.muiTheme.palette.alternateTextColor,
-            }}>
-                {title}
-            </Headline>
+      <Headline style={{
+          ...styles.imageTitle,
+          color: props.muiTheme.palette.alternateTextColor,
+      }}>
+          {title}
+      </Headline>
 
-            {
-                user &&
-                <IconButton
-                    style={{
-                        position: 'absolute',
-                        top: `${_OFFSETY}px`,
-                        left: `${_OFFSETX + 60}px`,
-                    }}
-                >
-                    <Avatar
-                        mini={true}
-                        src={user.avatar}
-                        onTouchTap={() => history.push(`${PROFILE}/${userid}`)}
-                    />
-                </IconButton>
-            }
+      {
+        user &&
+        <IconButton
+          style={{
+            position: 'absolute',
+            top: `${_OFFSETY}px`,
+            left: `${_OFFSETX + 60}px`,
+          }}
+        >
+          <Avatar
+            mini={true}
+            src={user.avatar}
+            onTouchTap={() => history.push(`${PROFILE}/${userid}`)}
+          />
+        </IconButton>
+      }
 
-            <IconButton
-                style={{
-                    position: 'absolute',
-                    top: `${_OFFSETY}px`,
-                    right: `${_OFFSETX}px`,
-                }}
-                iconStyle={{
-                    color: props.muiTheme.palette.alternateTextColor,
-                    textShadow: `10px 10px 5px ${props.muiTheme.palette.textColor}`,
-                }}
-                onTouchTap={history.goBack}
-            >
-                <CloseIcon />
-            </IconButton>
+      <IconButton
+        style={{
+          position: 'absolute',
+          top: `${_OFFSETY}px`,
+          right: `${_OFFSETX}px`,
+        }}
+        iconStyle={{
+          color: props.muiTheme.palette.alternateTextColor,
+          textShadow: `10px 10px 5px ${props.muiTheme.palette.textColor}`,
+        }}
+        onTouchTap={history.goBack}
+      >
+        <CloseIcon />
+      </IconButton>
 
-        </div>
-    )
+    </div>
+  )
 }
 
 export default withRouter(muiThemeable()(FullscreenImage))

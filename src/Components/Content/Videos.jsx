@@ -8,21 +8,21 @@ import StreamTpl from './StreamTpl'
 
 
 const Videos = (props) => (
-    <StreamTpl
-        action={props.fetchVideos}
-        isEmbedded={props.isEmbedded}
-        headline="Videos"
-        isFetching={props.isFetching}
-        items={props.videos}
-    />
+  <StreamTpl
+    action={props.fetchVideos}
+    isEmbedded={props.isEmbedded}
+    headline="Videos"
+    isFetching={props.isFetching}
+    items={props.videos}
+  />
 )
 
 const mapStateToProps = (state) => ({
-    isFetching: state.videos.isFetching,
-    videos: state.videos.items,
+  isFetching: state.videos.isFetching,
+  videos: state.videos.items,
 })
 
 export default connect(
-    mapStateToProps,
-    { fetchVideos }
+  mapStateToProps,
+  { fetchVideos }
 )(Videos)

@@ -57,12 +57,12 @@ class PrivacySettings extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    showBirthday: state.currentUser.showBirthday,
-    showLocation: state.currentUser.showLocation,
-    showOnlineStatus: state.currentUser.showOnlineStatus,
+  showBirthday: state.currentUser.showBirthday,
+  showLocation: state.currentUser.showLocation,
+  showOnlineStatus: state.currentUser.showOnlineStatus,
 })
 
 export default connect(
-    mapStateToProps,
-    { changeSetting }
+  mapStateToProps,
+  { changeSetting }
 )(PrivacySettings)
