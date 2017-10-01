@@ -16,9 +16,9 @@ import NotificationsNoneIcon from 'material-ui/svg-icons/social/notifications-no
 import NotificationsActiveIcon from 'material-ui/svg-icons/social/notifications-active'
 
 import { toggleSearchSidebar, openSidebar, closeSidebar, fetchCurrentUser } from '../../actions'
+import { PROFILE, UPLOAD, REVIEW, IMAGES } from '../../routes'
 import './style.scss'
 import { sum } from '../../common/helpers'
-import { PROFILE, UPLOAD, REVIEW } from '../../routes'
 import Avatar from '../Shared/Avatar'
 import CustomBadge from './CustomBadge'
 import NotificationsMenu from './NotificationsMenu'
@@ -99,9 +99,24 @@ class NavBar extends React.Component {
    * Render the component.
    */
   render() {
-    const { unread, openSidebar, userid, username, avatar } = this.props
+    const {
+      unread,
+      openSidebar,
+      userid,
+      username,
+      avatar,
+      fullscreenImages,
+      location
+    } = this.props
+
+    // do not render the navbar on fullscreen image page
+    if (fullscreenImages && location.pathname.startsWith(`${IMAGES}/`)) {
+      return null
+    }
+
     const numUnread = sum(unread)
-    const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
+    const AllNotificationsIcons = !numUnread ?
+      NotificationsNoneIcon : NotificationsActiveIcon
     return (
       <div>
         <Toolbar style={styles.navbar}>
@@ -220,6 +235,7 @@ const mapStateToProps = (state) => ({
   userid: state.currentUser.id,
   username: state.currentUser.username,
   avatar: state.currentUser.avatar,
+  fullscreenImages: state.currentUser.fullscreenImages,
   unread: {
     posts: state.currentUser.unreadPosts,
     images: state.currentUser.unreadImages,
