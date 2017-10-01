@@ -374,7 +374,12 @@ export function threadReducer(threadState = initialState.threads, action) {
             success: prevState => ({ ...prevState, items: payload }),
           })
         case ACTIONS.FETCH_THREAD:
-            return {...threadState, isFetching: false, [payload.id]: {...payload}}
+          return handle(threadState, action, {
+            start: prevState => ({ ...prevState, isFetching: true, error: null }),
+            finish: prevState => ({ ...prevState, isFetching: false }),
+            failure: prevState => ({ ...prevState, error: payload }),
+            success: prevState => ({ ...prevState, [payload.id]: {...payload} }),
+          })
         case ACTIONS.FETCH_POSTS_FOR_THREAD:
           return handle(threadState, action, {
             start: prevState => ({ ...prevState, isFetching: true, error: null }),
