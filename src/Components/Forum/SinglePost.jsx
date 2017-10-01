@@ -10,6 +10,7 @@ import PostTpl from './PostTpl'
 import Spacer from '../Shared/Spacer'
 import Breadcrumbs from '../Shared/Breadcrumbs'
 import ScrollToTop from '../Shared/ScrollToTop'
+import Loader from '../Shared/Loader'
 
 
 class SinglePost extends React.Component {
@@ -18,7 +19,7 @@ class SinglePost extends React.Component {
     fetchPost(postid)
   }
   render() {
-    const { post, history, location } = this.props
+    const { post = {}, isFetching, history, location } = this.props
     return (
       <div style={{position: 'relative'}}>
         <ScrollToTop />
@@ -28,6 +29,7 @@ class SinglePost extends React.Component {
             level2={{label: post.title, url: location.pathname}}
             history={history}
         />
+        <Loader isLoading={isFetching} />
         <PostTpl {...post} />
         <Spacer />
       </div>
@@ -36,7 +38,7 @@ class SinglePost extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  isFetching: state.post.isFetching,
+  isFetching: state.posts.isFetching,
   postid: ownProps.match.params.postid,
   post: state.posts[ownProps.match.params.postid],
 })
