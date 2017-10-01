@@ -13,6 +13,10 @@ import { checkHttpStatus, parseJSON } from './common/helpers'
  * Redux action types
  */
 
+// -------------------------
+// Synchronous action types
+// -------------------------
+
 export const GET_CURRENT_USERTITLE    = 'USER::GET_CURRENT_USERTITLE'
 export const GET_POSTS                = 'FORUM::GET_POSTS'
 export const GET_POST                 = 'FORUM::GET_POST'
@@ -33,6 +37,10 @@ export const REVIEW_DISAPPROVE        = 'REVIEW::DISAPPROVE'
 export const LIKE                     = 'SOCIAL::LIKE'
 export const UNDO_LIKE                = 'SOCIAL::UNDO_LIKE'
 export const SET_DEVICE_DETAILS       = 'APP::SET_DEVICE_DETAILS'
+
+// -------------------------
+// Asynchronous action types
+// -------------------------
 
 export const FETCH_USERS              = 'USER::FETCH_USERS'
 export const FETCH_USER               = 'USER::FETCH_USER'
@@ -139,19 +147,6 @@ function shouldFetchSingle(state) {
   return response
 }
 
-function shouldFetchMultiple(state) {
-  let response
-  if (!state || !state.items) {
-    response = true
-  } else if (state.isFetching) {
-    response = false
-  } else {
-    response = state.isStale
-  }
-  console.log('shouldFetchMultiple', state, response)
-  return response
-}
-
 // ----------------------------------------------------
 // Asynchronous action creators
 // ----------------------------------------------------
@@ -163,92 +158,113 @@ export const sendMessage = (payload) => ({ type: SEND_MESSAGE, payload });
  * fetchCurrentUser Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchCurrentUser = () => ({
+export const fetchCurrentUser = () => (dispatch, getState) => {
+  dispatch({
     type: FETCH_CURRENT_USER,
-    promise: api.fetchCurrentUser(),
-})
+    promise: api.fetchCurrentUser(getState),
+  })
+}
 
 /**
  * fetchUser Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchUser = (userid) => ({
+export const fetchUser = (userid) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_USER,
-    promise: api.fetchUser(userid),
-})
+    promise: api.fetchUser(getState, userid),
+  })
+}
 
 /**
  * fetchUserByUsername Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchUserByUsername = (username) => ({
+export const fetchUserByUsername = (username) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_USER_BY_USERNAME,
-    promise: api.fetchUserByUsername(username),
-})
+    promise: api.fetchUserByUsername(getState, username),
+  })
+}
 
 /**
  * fetchUsers Asynchronous Action Creator
  * @returns Redux-pack action
  */
 // TODO: filters
-export const fetchUsers = (limit, filters = null) => ({
+export const fetchUsers = (limit, filters = null)  => (dispatch, getState) => {
+  dispatch({
     type: FETCH_USERS,
-    promise: api.fetchUsers(limit, filters),
-})
+    promise: api.fetchUsers(getState, limit, filters),
+  })
+}
 
 /**
  * fetchUsers Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchOnlineUsers = (limit) => ({
+export const fetchOnlineUsers = (limit) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_ONLINE_USERS,
-    promise: api.fetchOnlineUsers(limit),
-})
+    promise: api.fetchOnlineUsers(getState, limit),
+  })
+}
 
 /**
  * fetchFollowers Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchFollowers = (limit) => ({
+export const fetchFollowers = (limit) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_FOLLOWERS,
-    promise: api.fetchFollowers(limit),
-})
+    promise: api.fetchFollowers(getState, limit),
+  })
+}
 
 /**
  * fetchReviewItem Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchReviewItem = (itemid = null) => ({
+export const fetchReviewItem = (itemid = null) => (dispatch, getState) => ({
     type: FETCH_REVIEWITEM,
-    promise: itemid ? api.fetchSpecificReviewItem(itemid) : api.fetchReviewItem(),
+    promise: itemid ?
+      api.fetchSpecificReviewItem(getState, itemid)
+      :
+      api.fetchReviewItem(getState),
 })
 
 /**
  * fetchReviewLeaderboard Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchReviewLeaderboard = () => ({
+export const fetchReviewLeaderboard = () => (dispatch, getState) => {
+  dispatch({
     type: FETCH_REVIEWLEADERBOARD,
-    promise: api.fetchReviewLeaderboard(),
-})
+    promise: api.fetchReviewLeaderboard(getState)
+  })
+}
 
 /**
  * fetchCategory Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchCategory = (categoryid) => ({
+export const fetchCategory = (categoryid) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_CATEGORY,
-    promise: api.fetchCategory(categoryid),
-})
+    promise: api.fetchCategory(getState, categoryid),
+  })
+}
 
 /**
  * fetchPosts Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchPosts = (limit) => ({
+export const fetchPosts = (limit) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_POSTS,
-    promise: api.fetchPosts(limit),
-})
+    promise: api.fetchPosts(getState, limit)
+  })
+}
 
 /**
  * fetchPostsForThread Asynchronous Action Creator
@@ -263,48 +279,55 @@ export const fetchPostsForThread = (threadid, limit) => ({
  * fetchPost Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchPost = (postid) => ({
+export const fetchPost = (postid) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_POST,
-    promise: api.fetchPost(postid),
-})
+    promise: api.fetchPost(getState, postid),
+  })
+}
 
 /**
  * fetchCategories Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchCategories = () => ({
+export const fetchCategories = () => (dispatch, getState) => {
+  const cachedState = getState()['categories']
+  dispatch({
     type: FETCH_CATEGORIES,
-    promise: api.fetchCategories(),
-})
+    promise: api.fetchCategories(getState)
+  })
+}
 
 /**
  * fetchMessageHistory Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchMessageHistory = (userid) => ({
+export const fetchMessageHistory = (userid) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_MESSAGEHISTORY,
-    promise: api.fetchMessageHistory(userid),
-})
+    promise: api.fetchMessageHistory(getState, userid),
+  })
+}
 
 /**
  * fetchUpdates Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchUpdates = (limit) => ({
+export const fetchUpdates = (limit) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_UPDATES,
-    promise: api.fetchUpdates(limit),
-})
+    promise: api.fetchUpdates(getState, limit)
+  })
+}
 
 /**
  * fetchPictures Asynchronous Action Creator
  * @returns Redux-pack action
  */
 export const fetchPictures = (limit) => (dispatch, getState) => {
-  const cachedState = getState()['images']
   dispatch({
     type: FETCH_IMAGES,
-    promise: shouldFetchMultiple(cachedState) ?
-      api.fetchPictures(limit) : Promise.resolve(cachedState.items)
+    promise: api.fetchPictures(getState, limit)
   })
 }
 
@@ -313,11 +336,9 @@ export const fetchPictures = (limit) => (dispatch, getState) => {
  * @returns Redux-pack action
  */
 export const fetchPicture = (pictureid) => (dispatch, getState) => {
-  const cachedState = getState()['images'][pictureid]
   dispatch({
     type: FETCH_IMAGE,
-    promise: shouldFetchSingle(cachedState) ?
-      api.fetchPicture(pictureid) : Promise.resolve(cachedState),
+    promise: api.fetchPicture(getState, pictureid)
   })
 }
 
@@ -325,30 +346,32 @@ export const fetchPicture = (pictureid) => (dispatch, getState) => {
  * fetchUserVerificationImages Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchUserVerificationImages = (userid) => ({
-  type: FETCH_VERIFICATIONIMAGES,
-  promise: api.fetchUserVerificationImages(userid)
-})
+export const fetchUserVerificationImages = (userid) => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_VERIFICATIONIMAGES,
+    promise: api.fetchUserVerificationImages(getState, userid)
+  })
+}
 
 /**
  * fetchUserProfileImages Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchUserProfileImages = (userid) => ({
-  type: FETCH_PROFILEIMAGES,
-  promise: api.fetchUserProfileImages(userid)
-})
+export const fetchUserProfileImages = (userid) => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_PROFILEIMAGES,
+    promise: api.fetchUserProfileImages(getState, userid)
+  })
+}
 
 /**
  * fetchVideos Asynchronous Action Creator
  * @returns Redux-pack action
  */
 export const fetchVideos = (limit) => (dispatch, getState) => {
-  const cachedState = getState()['videos']
   dispatch({
     type: FETCH_VIDEOS,
-    promise: shouldFetchMultiple(cachedState) ?
-      api.fetchVideos(limit) : Promise.resolve(cachedState.items)
+    promise: api.fetchVideos(getState, limit)
   })
 }
 
@@ -357,11 +380,9 @@ export const fetchVideos = (limit) => (dispatch, getState) => {
  * @returns Redux-pack action
  */
 export const fetchVideo = (id) => (dispatch, getState) => {
-  const cachedState = getState()['videos'][id]
   dispatch({
     type: FETCH_VIDEO,
-    promise: shouldFetchSingle(cachedState) ?
-      api.fetchVideo(id) : Promise.resolve(cachedState),
+    promise: api.fetchVideo(getState, id)
   })
 }
 
@@ -369,37 +390,45 @@ export const fetchVideo = (id) => (dispatch, getState) => {
  * fetchStream Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchStream = (limit) => ({
+export const fetchStream = (limit) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_STREAM,
-    promise: api.fetchStream(limit),
-})
+    promise: api.fetchStream(getState, limit),
+  })
+}
 
 /**
  * fetchMessages Asynchronous Action Creator
  * @returns Redux-packed Action
  */
-export const fetchMessages = (limit) => ({
+export const fetchMessages = (limit) => (dispatch, getState) => {
+  dispatch({
   type: FETCH_MESSAGES,
-  promise: api.fetchMessages(limit),
-})
+  promise: api.fetchMessages(getState, limit),
+  })
+}
 
 /**
  * fetchFavorites Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchFavorites = (limit) => ({
-  type: FETCH_FAVORITES,
-  promise: api.fetchFavorites(limit),
-})
+export const fetchFavorites = (limit) => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_FAVORITES,
+    promise: api.fetchFavorites(getState, limit),
+  })
+}
 
 /**
  * fetchLikes Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchLikes = (limit) => ({
-  type: FETCH_LIKES,
-  promise: api.fetchLikes(limit),
-})
+export const fetchLikes = (limit) => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_LIKES,
+    promise: api.fetchLikes(getState, limit),
+  })
+}
 
 /**
  * fetchLikesForVideo Asynchronous Action Creator
@@ -414,28 +443,34 @@ export const fetchLikesForVideo = (itemid) => ({
  * fetchAlbum Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchAlbum = (userid) => ({
-   type: FETCH_ALBUM,
-   promise: api.fetchAlbum(userid),
-})
+export const fetchAlbum = (userid) => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_ALBUM,
+    promise: api.fetchAlbum(getState, userid),
+  })
+}
 
 /**
  * fetchThread Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchThread = (threadid) => ({
-  type: FETCH_THREAD,
-  promise: api.fetchThread(threadid)
-})
+export const fetchThread = (threadid) => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_THREAD,
+    promise: api.fetchThread(getState, threadid)
+  })
+}
 
 /**
  * fetchThreads Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchThreads = () => ({
-  type: FETCH_THREADS,
-  promise: api.fetchThreads(),
-})
+export const fetchThreads = () => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_THREADS,
+    promise: api.fetchThreads(getState),
+  })
+}
 
 /**
  * fetchThreadsForCategory Asynchronous Action Creator
@@ -450,10 +485,12 @@ export const fetchThreadsForCategory = (categoryid) => ({
  * fetchChat Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchChat = () => ({
-  type: FETCH_CHAT,
-  promise: api.fetchChat(),
-})
+export const fetchChat = () => (dispatch, getState) => {
+  dispatch({
+    type: FETCH_CHAT,
+    promise: api.fetchChat(getState),
+  })
+}
 
 /**
  * fetchModItems Asynchronous Action Creator

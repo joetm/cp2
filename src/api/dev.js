@@ -69,7 +69,26 @@ const deleteItem = (key, itemid) => {
   )
 }
 
-const fetchItems = (key, limit = null) => {
+const fetchItems = (key, getState, limit = null) => {
+  // -----------------------------------------------
+  // first check if the data is cached and not stale
+  // -----------------------------------------------
+  const cachedState = getState()[key]
+  let mustFetch
+  if (!cachedState || !cachedState.items) {
+    mustFetch = true
+  } else if (cachedState.isFetching) {
+    mustFetch = false
+  } else {
+    mustFetch = cachedState.isStale
+  }
+  console.log('fetchItems[DEV]', key, cachedState, mustFetch)
+  if (!mustFetch) {
+    return Promise.resolve(cachedState.items)
+  }
+  // -----------------------------------------------
+  // otherwise: fetch new data from API
+  // -----------------------------------------------
   let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}`
   if (limit) {
       url = `${url}?_start=1&_limit=${limit}`
@@ -83,7 +102,26 @@ const fetchItems = (key, limit = null) => {
     )
 }
 
-const fetchItem = (key, itemid) => {
+const fetchItem = (key, getState, itemid) => {
+  // -----------------------------------------------
+  // first check if the data is cached and not stale
+  // -----------------------------------------------
+  const cachedState = getState()[key][itemid]
+  let mustFetch
+  if (!cachedState) {
+    mustFetch = true
+  } else if (cachedState.isFetching) {
+    mustFetch = false
+  } else {
+    mustFetch = cachedState.isStale
+  }
+  console.log('fetchItem[DEV]', cachedState, mustFetch)
+  if (!mustFetch) {
+    return Promise.resolve(cachedState)
+  }
+  // -----------------------------------------------
+  // otherwise: fetch new data from API
+  // -----------------------------------------------
   const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
   // console.log('PATCH', key, itemid, url)
   return fetch(url, { headers: JSON_HEADER })
@@ -94,7 +132,14 @@ const fetchItem = (key, itemid) => {
     )
 }
 
-const fetchItemByKey = (key, field) => {
+const fetchItemByKey = (key, getState, field) => {
+  // -----------------------------------------------
+  // first check if the data is cached and not stale
+  // -----------------------------------------------
+    // TODO
+  // -----------------------------------------------
+  // otherwise: fetch new data from API
+  // -----------------------------------------------
   const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}?q=${field}`
   // console.log('PATCH', key, itemid, url)
   return fetch(url, { headers: JSON_HEADER })
@@ -121,6 +166,13 @@ const incrementItem = (key, itemid = null, field, increment = 1) => {
 }
 
 const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = null) => {
+  // -----------------------------------------------
+  // first check if the data is cached and not stale
+  // -----------------------------------------------
+    // TODO
+  // -----------------------------------------------
+  // otherwise: fetch new data from API
+  // -----------------------------------------------
   let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}/${subitemtype}`
   if (limit) {
       url = `${url}?_start=1&_limit=${limit}`
@@ -138,28 +190,26 @@ const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = 
 // creators
 // -------------------------------------------------------------------
 
-const selectItemsCreator = (field) => (limit = null) =>
-  fetchItems(field, limit)
+const selectItemsCreator = (field) => (getState, limit = null) =>
+  fetchItems(field, getState, limit)
 
-const selectFirstItemCreator = (field) => () =>
-  fetchItems(field, 1)
+const selectFirstItemCreator = (field) => (getState) =>
+  fetchItems(field, getState, 1)
 
-const selectSpecificItemCreator = (field) => (selection = null) =>
-  fetchItem(field, selection)
+const selectSpecificItemCreator = (field) => (getState, selection = null) =>
+  fetchItem(field, getState, selection)
 
 const selectSubitemsForItemCreator = (key) => (...args) =>
   fetchSubitemsForItem(key, ...args)
 
-const selectItemByKeyCreator = (key) => (...args) =>
-  fetchItemByKey(key, ...args)
+const selectItemByKeyCreator = (key) => (getState, ...args) =>
+  fetchItemByKey(key, getState, ...args)
 
 // -------------------------------------------------------------------
 
 export const fetchCurrentUser = selectItemsCreator('currentUser')
 export const fetchUsers = selectItemsCreator('users')
-// TODO
 export const fetchOnlineUsers = selectItemsCreator('users')
-//
 export const fetchChat = selectItemsCreator('chat')
 export const fetchPosts = selectItemsCreator('posts')
 export const fetchCategories = selectItemsCreator('categories')
@@ -191,7 +241,6 @@ export const fetchImage  = fetchPicture
 export const fetchPost = selectSpecificItemCreator('posts')
 export const fetchThread = selectSpecificItemCreator('threads')
 export const fetchVideo = selectSpecificItemCreator('videos')
-export const fetchNotification = selectSpecificItemCreator('messages')
 export const fetchMessageHistory = selectSpecificItemCreator('messageHistory')
 export const fetchCategory = selectSpecificItemCreator('categories')
 

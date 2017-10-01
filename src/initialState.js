@@ -28,7 +28,7 @@ const initialState = {
     // -- common content
     updates: {
         isFetching: false,
-        // isInvalid: false,
+        isStale: true,
         items: [],
     },
     images: {
@@ -43,12 +43,12 @@ const initialState = {
     },
     posts: {
         isFetching: false,
-        // isInvalid: false,
+        isStale: true,
         items: [],
     },
     categories: {
         isFetching: false,
-        // isInvalid: false,
+        isStale: true,
         items: [],
         threads: [], // TODO
     },
@@ -130,7 +130,7 @@ const initialState = {
     },
     reviewLeaderboard: {
         isFetching: false,
-        // isInvalid: false,
+        isStale: true,
         items: [],
     },
     // -- single item caching
