@@ -28,7 +28,7 @@ class VerificationImg extends React.Component {
     this.setState({selection: []})
   }
   render() {
-    const { userid, verificationImages, fetchUserVerificationImages } = this.props
+    const { userid, verificationImages } = this.props
 
     return (
       <div
@@ -53,7 +53,7 @@ class VerificationImg extends React.Component {
             userid &&
               <ImgContainer
                 images={verificationImages}
-                action={fetchUserVerificationImages}
+                action={this.props.fetchUserVerificationImages}
                 userid={userid}
                 selection={this.state.selection}
                 setSelection={this.setSelection}

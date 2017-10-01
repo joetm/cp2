@@ -42,8 +42,8 @@ const styles = {
 
 class Video extends React.Component {
   componentDidMount() {
-    const { videoid, fetchVideo } = this.props
-    fetchVideo(videoid)
+    const { videoid } = this.props
+    this.props.fetchVideo(videoid)
   }
   /**
    * Render the component.
@@ -60,12 +60,12 @@ class Video extends React.Component {
         <VideoPlayer src={src} thumb={thumb} />
 
         {
-            tags && (
-              <div>
-                  <span style={styles.tagHeader}>Tags:</span>
-                  <Tags tags={tags} />
-              </div>
-            )
+          tags && (
+            <div>
+              <span style={styles.tagHeader}>Tags:</span>
+              <Tags tags={tags} />
+            </div>
+          )
         }
 
         <Spacer />

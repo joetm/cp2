@@ -14,7 +14,7 @@ import BackButton from '../Shared/Buttons/BackButton'
 
 class SingleThread extends React.Component {
   componentDidMount() {
-      const threadid = this.props.threadid
+      const { threadid } = this.props
       this.props.fetchThread(threadid)
       this.props.fetchPostsForThread(threadid)
   }
@@ -37,14 +37,14 @@ class SingleThread extends React.Component {
 
         <div>
           {
-            items.map(item =>
+            items.map(item => (
               <PostTpl
                 key={item.id}
                 {...item}
                 macro={true}
                 isEmbedded={true}
               />
-            )
+            ))
           }
         </div>
 

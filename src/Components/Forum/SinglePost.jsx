@@ -15,8 +15,8 @@ import Loader from '../Shared/Loader'
 
 class SinglePost extends React.Component {
   componentDidMount() {
-    const { postid, fetchPost } = this.props
-    fetchPost(postid)
+    const { postid } = this.props
+    this.props.fetchPost(postid)
   }
   render() {
     const { post = {}, isFetching, history, location } = this.props

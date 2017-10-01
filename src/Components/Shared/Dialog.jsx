@@ -7,11 +7,11 @@ import FlatButton from 'material-ui/FlatButton'
 
 const CustomDialog = (props) => {
   const defaultActions = [
-      <FlatButton
-          label="Close"
-          primary={true}
-          onTouchTap={props.toggleHelp}
-      />,
+    <FlatButton
+      label="Close"
+      primary={true}
+      onTouchTap={props.toggleHelp}
+    />,
   ]
   return (
     <Dialog
