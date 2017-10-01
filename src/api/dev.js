@@ -21,47 +21,72 @@ const prefixSlash = (key) => {
 // -------------------------------------------------------------------
 
 const createNewItem = (field, payload) =>
-    fetch(`${jsonAPI.ENDPOINT}${prefixSlash(field)}`, {
-      method: 'POST',
-      headers: JSON_HEADER,
-      body: JSON.stringify(payload),
-    })
-    .then(
-      response => {
-        // console.log('response', response)
-        if (response.status === 201) {
-          return response.json()
-        }
-        throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
+  fetch(`${jsonAPI.ENDPOINT}${prefixSlash(field)}`, {
+    method: 'POST',
+    headers: JSON_HEADER,
+    body: JSON.stringify(payload),
+  })
+  .then(
+    response => {
+      // console.log('response', response)
+      if (response.status === 201) {
+        return response.json()
       }
-    ).then(
-      data => data,
-      error => throwError(error.message || 'Something went wrong')
-    )
+      throw new Error(`Something went wrong: [${response.status}] ${response.statusText}`)
+    }
+  ).then(
+    data => data,
+    error => throwError(error.message || 'Something went wrong')
+  )
 
 const patchItem = (key, itemid = null, payload) => {
-    const itemRoute = itemid ? `/${itemid}` : ''
-    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}${itemRoute}`
-    // console.log('patchItem', itemid, payload, url)
-    return fetch(url, {
-      method: 'PATCH',
-      headers: JSON_HEADER,
-      body: JSON.stringify(payload),
-    })
-    .then(response => response.json())
-    .then(
-      data => data,
-      error => throwError(error.message || 'Something went wrong')
-    )
+  const itemRoute = itemid ? `/${itemid}` : ''
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}${itemRoute}`
+  // console.log('patchItem', itemid, payload, url)
+  return fetch(url, {
+    method: 'PATCH',
+    headers: JSON_HEADER,
+    body: JSON.stringify(payload),
+  })
+  .then(response => response.json())
+  .then(
+    data => data,
+    error => throwError(error.message || 'Something went wrong')
+  )
 }
 
 const deleteItem = (key, itemid) => {
-    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
-    console.log('deleteItem', key, itemid, url)
-    return fetch(url, {
-      method: 'DELETE',
-      headers: JSON_HEADER
-    })
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
+  console.log('deleteItem', key, itemid, url)
+  return fetch(url, {
+    method: 'DELETE',
+    headers: JSON_HEADER
+  })
+  .then(response => response.json())
+  .then(
+    data => data,
+    error => throwError(error.message || 'Something went wrong')
+  )
+}
+
+const fetchItems = (key, limit = null) => {
+  let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}`
+  if (limit) {
+      url = `${url}?_start=1&_limit=${limit}`
+  }
+  // console.log('fetchItems', key, limit, url)
+  return fetch(url, { headers: JSON_HEADER })
+    .then(response => response.json())
+    .then(
+      data => { return limit !== 1 ? data : data[0] },
+      error => throwError(error.message || 'Something went wrong')
+    )
+}
+
+const fetchItem = (key, itemid) => {
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
+  // console.log('PATCH', key, itemid, url)
+  return fetch(url, { headers: JSON_HEADER })
     .then(response => response.json())
     .then(
       data => data,
@@ -69,69 +94,44 @@ const deleteItem = (key, itemid) => {
     )
 }
 
-const fetchItems = (key, limit = null) => {
-    let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}`
-    if (limit) {
-        url = `${url}?_start=1&_limit=${limit}`
-    }
-    // console.log('fetchItems', key, limit, url)
-    return fetch(url, { headers: JSON_HEADER })
-      .then(response => response.json())
-      .then(
-        data => { return limit !== 1 ? data : data[0] },
-        error => throwError(error.message || 'Something went wrong')
-      )
-}
-
-const fetchItem = (key, itemid) => {
-    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
-    // console.log('PATCH', key, itemid, url)
-    return fetch(url, { headers: JSON_HEADER })
-      .then(response => response.json())
-      .then(
-        data => data,
-        error => throwError(error.message || 'Something went wrong')
-      )
-}
-
 const fetchItemByKey = (key, field) => {
-    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}?q=${field}`
-    // console.log('PATCH', key, itemid, url)
-    return fetch(url, { headers: JSON_HEADER })
-      .then(response => response.json())
-      .then(
-        data => data,
-        error => throwError(error.message || 'Something went wrong')
-      )
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}?q=${field}`
+  // console.log('PATCH', key, itemid, url)
+  return fetch(url, { headers: JSON_HEADER })
+    .then(response => response.json())
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 const incrementItem = (key, itemid = null, field, increment = 1) => {
-    // TODO
-    // 2 requests -> this is to be done on the server
-    const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
-    // console.log('fetch item', key, itemid, field, increment, url)
-    return fetch(url, {
-      headers: JSON_HEADER
-    })
-      .then(response => response.json())
-      .then(
-        item => patchItem(key, itemid, {[field]: item[field] + increment}),
-        error => throwError(error.message || "Something went wrong")
-      )
+  // TODO
+  // 2 requests -> this is to be done on the server
+  const url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}`
+  // console.log('fetch item', key, itemid, field, increment, url)
+  return fetch(url, {
+    headers: JSON_HEADER
+  })
+    .then(response => response.json())
+    .then(
+      item => patchItem(key, itemid, {[field]: item[field] + increment}),
+      error => throwError(error.message || "Something went wrong")
+    )
 }
 
 const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = null) => {
-    let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}/${subitemtype}`
-    if (limit) {
-        url = `${url}?_start=1&_limit=${limit}`
-    }
-    // console.log('fetchSubitemsForItem', key, itemid, subitemtype, limit, url)
-    return fetch(url, { headers: JSON_HEADER })
-      .then(response => response.json())
-      .then(
-        data => { return limit !== 1 ? data : data[0] },
-        error => throwError(error.message || 'Something went wrong')
-      )
+  let url = `${jsonAPI.ENDPOINT}${prefixSlash(key)}/${itemid}/${subitemtype}`
+  if (limit) {
+      url = `${url}?_start=1&_limit=${limit}`
+  }
+  // console.log('fetchSubitemsForItem', key, itemid, subitemtype, limit, url)
+  return fetch(url, { headers: JSON_HEADER })
+    .then(response => response.json())
+    .then(
+      data => { return limit !== 1 ? data : data[0] },
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 // -------------------------------------------------------------------
@@ -139,19 +139,19 @@ const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = 
 // -------------------------------------------------------------------
 
 const selectItemsCreator = (field) => (limit = null) =>
-    fetchItems(field, limit)
+  fetchItems(field, limit)
 
 const selectFirstItemCreator = (field) => () =>
-    fetchItems(field, 1)
+  fetchItems(field, 1)
 
 const selectSpecificItemCreator = (field) => (selection = null) =>
-    fetchItem(field, selection)
+  fetchItem(field, selection)
 
 const selectSubitemsForItemCreator = (key) => (...args) =>
-    fetchSubitemsForItem(key, ...args)
+  fetchSubitemsForItem(key, ...args)
 
 const selectItemByKeyCreator = (key) => (...args) =>
-    fetchItemByKey(key, ...args)
+  fetchItemByKey(key, ...args)
 
 // -------------------------------------------------------------------
 
@@ -213,45 +213,45 @@ export const fetchSpecificReviewItem = selectSpecificItemCreator('reviewitems')
 
 // TODO
 const fetchFromProtectedAPI = (key, selection, limit = null) => {
-    let url = `${jsonAPI.ENDPOINT}/${key}/${selection}`
-    if (limit) {
-        url = `${url}?_start=1&_limit=${limit}`
-    }
-    // console.log('fetchFromProtectedAPI', key, selection, limit, url)
-    return fetch(url)
-        .then(response => response.json())
-        .then(
-          data => {
-            if (limit === 1 && data instanceof Array) {
-                return data[0]
-            }
-            return data
-          },
-          error => throwError(error.message || 'Something went wrong')
-        )
+  let url = `${jsonAPI.ENDPOINT}/${key}/${selection}`
+  if (limit) {
+      url = `${url}?_start=1&_limit=${limit}`
+  }
+  // console.log('fetchFromProtectedAPI', key, selection, limit, url)
+  return fetch(url)
+    .then(response => response.json())
+    .then(
+      data => {
+        if (limit === 1 && data instanceof Array) {
+          return data[0]
+        }
+        return data
+      },
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 // TODO
 export const fetchModItems = (limit = null) =>
-    fetchFromProtectedAPI('mod', 'threads', limit)
+  fetchFromProtectedAPI('mod', 'threads', limit)
 
 // -------------------------------------------------------------------
 
 export const sendChatMessage = (payload) => {
-    // TODO
-    const chatMsg = {
-      type: "message", // TODO - not on client - NEEDED?
-      content: payload.content,
-      userid: payload.userid, // TODO
-      likes: 0, // TODO - not on client
-      dislikes: 0, // TODO - not on client
-      timestamp: +new Date(),
-    }
-    return createNewItem(CHAT, chatMsg)
-            .then(
-              data => data,
-              error => throwError(error.message || 'Something went wrong')
-            )
+  // TODO
+  const chatMsg = {
+    type: "message", // TODO - not on client - NEEDED?
+    content: payload.content,
+    userid: payload.userid, // TODO
+    likes: 0, // TODO - not on client
+    dislikes: 0, // TODO - not on client
+    timestamp: +new Date(),
+  }
+  return createNewItem(CHAT, chatMsg)
+    .then(
+      data => data,
+      error => throwError(error.message || 'Something went wrong')
+    )
 }
 
 // -------------------------------------------------------------------

@@ -17,7 +17,7 @@ middlewares.push(promise)
 middlewares.push(thunkMiddleware)
 middlewares.push(reduxPackMiddleware)
 if (process.env.NODE_ENV !== 'production') {
-    middlewares.push(createLogger())
+  middlewares.push(createLogger())
 }
 
 const enhancer = compose(
@@ -25,37 +25,37 @@ const enhancer = compose(
 )
 
 const store = createStore(
-    combineReducers({
-        appState: Reducers.cpAppReducer,
-        // multiple items
-        updates: Reducers.updateReducer,
-        images: Reducers.imageReducer,
-        verificationImages: Reducers.imageReducer,
-        profileImages: Reducers.imageReducer,
-        videos: Reducers.videoReducer,
-        favorites: Reducers.favoriteReducer,
-        likes: Reducers.likeReducer,
-        messages: Reducers.messageReducer,
-        album: Reducers.albumReducer,
-        categories: Reducers.categoryReducer,
-        threads: Reducers.threadReducer,
-        posts: Reducers.postReducer,
-        followers: Reducers.followerReducer,
-        users: Reducers.userReducer,
-        online: Reducers.onlineReducer,
-        // single items
-        reviewitem: Reducers.reviewReducer,
-        reviewLeaderboard: Reducers.reviewLeaderboardReducer,
-        // --
-        currentUser: Reducers.currentUserReducer,
-        messageHistory: Reducers.messageHistoryReducer,
-        chat: Reducers.chatReducer,
-        // mod
-        mod: Reducers.modReducer,
-        // auth: Reducers.authReducer,
-        router: routerReducer // add the routerReducer to the store on the `router` key
-    }),
-    enhancer
+  combineReducers({
+    appState: Reducers.cpAppReducer,
+    // multiple items
+    updates: Reducers.updateReducer,
+    images: Reducers.imageReducer,
+    verificationImages: Reducers.imageReducer,
+    profileImages: Reducers.imageReducer,
+    videos: Reducers.videoReducer,
+    favorites: Reducers.favoriteReducer,
+    likes: Reducers.likeReducer,
+    messages: Reducers.messageReducer,
+    album: Reducers.albumReducer,
+    categories: Reducers.categoryReducer,
+    threads: Reducers.threadReducer,
+    posts: Reducers.postReducer,
+    followers: Reducers.followerReducer,
+    users: Reducers.userReducer,
+    online: Reducers.onlineReducer,
+    // single items
+    reviewitem: Reducers.reviewReducer,
+    reviewLeaderboard: Reducers.reviewLeaderboardReducer,
+    // --
+    currentUser: Reducers.currentUserReducer,
+    messageHistory: Reducers.messageHistoryReducer,
+    chat: Reducers.chatReducer,
+    // mod
+    mod: Reducers.modReducer,
+    // auth: Reducers.authReducer,
+    router: routerReducer // add the routerReducer to the store on the `router` key
+  }),
+  enhancer
 )
 
 export default store
