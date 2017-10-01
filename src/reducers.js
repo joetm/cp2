@@ -287,10 +287,16 @@ export function videoReducer(videoState = initialState.videos, action) {
       })
     case ACTIONS.FETCH_VIDEO:
       return handle(videoState, action, {
-        start: prevState => ({ ...prevState, isFetching: true, isInvalid: false, error: null }),
-        finish: prevState => ({ ...prevState, isFetching: false }),
-        failure: prevState => ({ ...prevState, error: payload, isInvalid: true }),
-        success: prevState => ({ ...prevState, isInvalid: false, [payload.id]: payload }),
+        // start: prevState => ({ ...prevState, isFetching: true, error: null }),
+        // finish: prevState => ({ ...prevState, isFetching: false }),
+        failure: prevState => ({
+          ...prevState,
+          [payload.id]: {...prevState[payload.id], error: payload},
+        }),
+        success: prevState => ({
+          ...prevState,
+          [payload.id]: {...payload, isInvalid: false},
+        }),
       })
     // Synchronous actions
     // -----------------------------------------------
