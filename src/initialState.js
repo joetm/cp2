@@ -119,12 +119,12 @@ const initialState = {
     isStale: true,
     items: [],
   },
-  verificationImages: {
+  verifications: {
     isFetching: false,
     isStale: true,
     items: [],
   },
-  profileImages: {
+  profileimgs: {
     isFetching: false,
     isStale: true,
     items: [],

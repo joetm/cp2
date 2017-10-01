@@ -53,6 +53,24 @@ const styles = {
 }
 
 
+const FirstGroup = (props) => (
+  <ToolbarGroup firstChild={true}>
+    <IconButton
+      tooltip="Menu"
+      style={styles.firstItem}
+      onTouchTap={props.openSidebar}
+    >
+      <MenuIcon />
+    </IconButton>
+    <NavLink to="/">
+      <IconButton tooltip="Home">
+        <HomeIcon />
+      </IconButton>
+    </NavLink>
+  </ToolbarGroup>
+)
+
+
 class NavBar extends React.Component {
   anchorEl = null
   notificationsBadge = null
@@ -109,14 +127,27 @@ class NavBar extends React.Component {
       location
     } = this.props
 
-    // do not render the navbar on fullscreen image page
+    const { searchExpanded, notificationsMenuOpen } = this.state
+
+    // render a minimal navbar on fullscreen image page
     if (fullscreenImages && location.pathname.startsWith(`${IMAGES}/`)) {
-      return null
+      return (
+        <div>
+          <Toolbar style={styles.navbar}>
+            {
+              !this.state.searchExpanded ?
+                <FirstGroup openSidebar={openSidebar} /> : null
+            }
+          </Toolbar>
+        </div>
+      )
     }
 
     const numUnread = sum(unread)
+
     const AllNotificationsIcons = !numUnread ?
       NotificationsNoneIcon : NotificationsActiveIcon
+
     return (
       <div>
         <Toolbar style={styles.navbar}>
@@ -129,22 +160,8 @@ class NavBar extends React.Component {
             transitionLeaveTimeout={_DURATION}
           >
             {
-              !this.state.searchExpanded ?
-                <ToolbarGroup firstChild={true}>
-                  <IconButton
-                    tooltip="Menu"
-                    style={styles.firstItem}
-                    onTouchTap={openSidebar}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <NavLink to="/">
-                    <IconButton tooltip="Home">
-                      <HomeIcon />
-                    </IconButton>
-                  </NavLink>
-                </ToolbarGroup>
-              : null
+              !searchExpanded ?
+                <FirstGroup openSidebar={openSidebar} /> : null
             }
           </ReactCSSTransitionGroup>
 
@@ -156,7 +173,7 @@ class NavBar extends React.Component {
             transitionLeaveTimeout={_DURATION}
           >
             {
-              !this.state.searchExpanded ?
+              !searchExpanded ?
                 <ToolbarGroup>
                   <IconButton
                     tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
@@ -205,7 +222,7 @@ class NavBar extends React.Component {
           </ReactCSSTransitionGroup>
 
           {
-            this.state.searchExpanded ?
+            searchExpanded ?
               <SearchBar
                 isForum={this.isForum}
                 searchAction={this.searchAction}
@@ -218,7 +235,7 @@ class NavBar extends React.Component {
         </Toolbar>
 
         <NotificationsMenu
-          open={this.state.notificationsMenuOpen}
+          open={notificationsMenuOpen}
           anchorEl={this.anchorEl}
           unread={unread}
           userid={userid}

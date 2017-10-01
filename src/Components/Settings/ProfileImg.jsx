@@ -26,14 +26,14 @@ class ProfileImg extends React.Component {
     selection: [],
   }
   setSelection = (selection) => {
-    this.setState({selection})
+    this.setState({ selection })
   }
   deleteProfileImages = () => {
     // TODO
   }
   render() {
-    const { profileImages, fetchUserProfileImages, userid } = this.props
-
+    const { userid, isFetching, profileImages, fetchUserProfileImages } = this.props
+    const { selection } = this.state
     return (
       <div
         id="profileImg-settings"
@@ -60,7 +60,7 @@ class ProfileImg extends React.Component {
               images={profileImages}
               action={fetchUserProfileImages}
               userid={userid}
-              selection={this.state.selection}
+              selection={selection}
               setSelection={this.setSelection}
             />
         }
@@ -68,10 +68,10 @@ class ProfileImg extends React.Component {
         <Spacer />
 
         <RaisedButton
-          label={`Delete Profile Image${this.state.selection.length > 1 ? 's' : ''}`}
-          disabled={this.props.isFetching}
+          label={`Delete Profile Image${selection.length > 1 ? 's' : ''}`}
+          disabled={isFetching}
           onTouchTap={this.deleteProfileImages}
-          disabled={!this.state.selection.length}
+          disabled={!selection.length}
         />
 
         <Spacer />

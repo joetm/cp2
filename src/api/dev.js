@@ -106,6 +106,7 @@ const fetchItem = (key, getState, itemid) => {
   // -----------------------------------------------
   // first check if the data is cached and not stale
   // -----------------------------------------------
+  console.log('xxx', key, getState()[key], itemid)
   const cachedState = getState()[key][itemid]
   let mustFetch
   if (!cachedState) {
