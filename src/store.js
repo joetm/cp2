@@ -46,7 +46,6 @@ const store = createStore(
         // single items
         reviewitem: Reducers.reviewReducer,
         reviewLeaderboard: Reducers.reviewLeaderboardReducer,
-        category: Reducers.categoryReducer,
         // --
         currentUser: Reducers.currentUserReducer,
         messageHistory: Reducers.messageHistoryReducer,

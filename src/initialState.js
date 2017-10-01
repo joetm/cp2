@@ -50,6 +50,7 @@ const initialState = {
         isFetching: true,
         // isInvalid: false,
         items: [],
+        threads: [], // TODO
     },
     threads: {
         isFetching: true,
@@ -118,11 +119,6 @@ const initialState = {
         items: [],
     },
     // -- single item caching
-    category: {
-        isFetching: true,
-        // isInvalid: false,
-        threads: [],
-    },
     // -- crowd review
     reviewitem: {
         id: null,

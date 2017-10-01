@@ -396,7 +396,7 @@ export function threadReducer(threadState = initialState.threads, action) {
  * categoryReducer
  * @returns categoryState
  **/
-export function categoryReducer(categoryState = initialState.category, action) {
+export function categoryReducer(categoryState = initialState.categories, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_CATEGORIES:
