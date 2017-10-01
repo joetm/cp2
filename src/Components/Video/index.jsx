@@ -41,102 +41,98 @@ const styles = {
 
 
 class Video extends React.Component {
-    componentDidMount() {
-        this.props.fetchVideo(this.props.videoid)
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        const { video = {} } = this.props
-        const { title, content, src, thumb, likes, user, tags } = video
-        return (
-            <div style={styles.pageWrapper}>
+  componentDidMount() {
+    const { videoid, fetchVideo } = this.props
+    fetchVideo(videoid)
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    const { video = {} } = this.props
+    const { title, content, src, thumb, likes, user, tags } = video
+    return (
+      <div style={styles.pageWrapper}>
+        <ScrollToTop />
 
-                <ScrollToTop />
+        <Headline>{title}</Headline>
 
-                <Headline>{title}</Headline>
+        <VideoPlayer src={src} thumb={thumb} />
 
-                <VideoPlayer
-                    src={src}
-                    thumb={thumb}
-                />
+        {
+            tags && (
+              <div>
+                  <span style={styles.tagHeader}>Tags:</span>
+                  <Tags tags={tags} />
+              </div>
+            )
+        }
 
-                {
-                    tags &&
-                    <div>
-                        <span style={styles.tagHeader}>Tags:</span>
-                        <Tags tags={tags} />
-                    </div>
-                }
+        <Spacer />
 
-                <Spacer />
+        <div>{content}</div>
 
-                <div>
-                    {content}
-                </div>
+        <Spacer />
 
-                <Spacer />
+        {
+          user !== undefined &&
+          <div style={{clear: 'both'}}>
 
-                {
-                    user !== undefined &&
-                    <div style={{clear: 'both'}}>
-
-                        <div
-                            style={styles.userinfo}
-                            onTouchTap={() => this.props.history.push(`${PROFILE}/${user.id}`)}>
-                            <Avatar mini={true} src={user.avatar} />
-                            {user.username}
-                        </div>
-
-                        <div
-                            style={{
-                                float: 'right',
-                                display: 'flex',
-                                flexWrap: 'wrap',
-                            }}
-                        >
-                            <Tag
-                                icon={<ImageIcon />}
-                                text={user.numImages}
-                            />
-                            <Tag
-                                icon={<VideoIcon />}
-                                text={user.numVideos}
-                            />
-                            <Tag
-                                icon={<LikeIcon />}
-                                text={user.numLikes}
-                            />
-                            <Tag
-                                icon={<StarIcon />}
-                                text={user.numFavorites}
-                            />
-                            <Tag
-                                icon={<PersonIcon />}
-                                text={user.numFollowers}
-                            />
-                        </div>
-
-                    </div>
-                }
-
-                {
-                    likes > 0 &&
-                        <Likes itemid={this.props.videoid} />
-                }
-
-                <Spacer />
-                <Spacer />
-
+            <div
+              style={styles.userinfo}
+              onTouchTap={() => this.props.history.push(`${PROFILE}/${user.id}`)}>
+              <Avatar mini={true} src={user.avatar} />
+              {user.username}
             </div>
-        )
-    }
+
+            <div
+              style={{
+                float: 'right',
+                display: 'flex',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Tag
+                icon={<ImageIcon />}
+                text={user.numImages}
+              />
+              <Tag
+                icon={<VideoIcon />}
+                text={user.numVideos}
+              />
+              <Tag
+                icon={<LikeIcon />}
+                text={user.numLikes}
+              />
+              <Tag
+                icon={<StarIcon />}
+                text={user.numFavorites}
+              />
+              <Tag
+                icon={<PersonIcon />}
+                text={user.numFollowers}
+              />
+            </div>
+
+          </div>
+        }
+
+        {
+          likes > 0 &&
+            <Likes itemid={this.props.videoid} />
+        }
+
+        <Spacer />
+        <Spacer />
+
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state, ownProps) => ({
     videoid: ownProps.match.params.videoid,
-    video: state.video[ownProps.match.params.videoid],
+    video: state.videos[ownProps.match.params.videoid],
     isFetching: state.appState.isFetching,
 })
 

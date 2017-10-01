@@ -19,7 +19,8 @@ class SingleThread extends React.Component {
         this.props.fetchPostsForThread(threadid)
     }
     render() {
-        const { thread, title, isFetching, history, items = [] } = this.props
+        const { thread, title, isFetching, history } = this.props
+        const { items = [] } = thread
         return (
             <div style={{position: 'relative'}}>
 
@@ -62,9 +63,8 @@ class SingleThread extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     isFetching: state.thread.isFetching,
-    thread: state.thread,
+    thread: state.threads[ownProps.match.params.threadid],
     threadid: ownProps.match.params.threadid,
-    items: state.thread.items,
 })
 
 export default withRouter(connect(

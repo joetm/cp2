@@ -223,18 +223,26 @@ export function imageReducer(imageState = initialState.images, action) {
             success: prevState => ({ ...prevState, [payload.id]: {...payload} }),
           })
         case ACTIONS.FETCH_IMAGES:
-            return {...imageState, isFetching: false, items: [...action.payload]}
+            return {...imageState, isFetching: false, items: [...payload]}
         case ACTIONS.FETCH_PROFILEIMAGES:
-            return {...imageState, isFetching: false, items: [...action.payload]}
+            return {...imageState, isFetching: false, items: [...payload]}
         case ACTIONS.FETCH_VERIFICATIONIMAGES:
-            return {...imageState, isFetching: false, items: [...action.payload]}
+            return {...imageState, isFetching: false, items: [...payload]}
         //
         case ACTIONS.DELETE_IMAGES:
           return handle(imageState, action, {
             start: prevState => ({ ...prevState, isDeleting: true, error: null }),
             finish: prevState => ({ ...prevState, isDeleting: false }),
             failure: prevState => ({ ...prevState, error: payload }),
-            success: prevState => ({ ...prevState, items: [...imageState.items].filter(item => payload.indexOf(item.id) < 0) }),
+            success: prevState => {
+              const newState = {...prevState}
+              payload.forEach(item => {
+                if (Object.prototype.hasOwnProperty.call(newState, item.id)) {
+                  delete newState[item.id]
+                }
+              })
+              return { newState, items: [...imageState.items].filter(item => payload.indexOf(item.id) < 0) }
+            },
           })
         //
         default:
@@ -246,7 +254,7 @@ export function imageReducer(imageState = initialState.images, action) {
  * videoReducer (redux-pack)
  * @returns videoState
  **/
-export function videoReducer(videoState = initialState.video, action) {
+export function videoReducer(videoState = initialState.videos, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_VIDEOS:
@@ -355,8 +363,8 @@ export function postReducer(postState = initialState.post, action) {
  * threadReducer
  * @returns threadState
  **/
-export function threadReducer(threadState = initialState.thread, action) {
-    const {type, payload, response } = action // TODO
+export function threadReducer(threadState = initialState.threads, action) {
+    const {type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_THREADS:
           return handle(threadState, action, {

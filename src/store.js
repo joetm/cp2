@@ -47,10 +47,6 @@ const store = createStore(
         reviewitem: Reducers.reviewReducer,
         reviewLeaderboard: Reducers.reviewLeaderboardReducer,
         category: Reducers.categoryReducer,
-        thread: Reducers.threadReducer,
-        post: Reducers.postReducer,
-        video: Reducers.videoReducer,
-        image: Reducers.imageReducer,
         // --
         currentUser: Reducers.currentUserReducer,
         messageHistory: Reducers.messageHistoryReducer,

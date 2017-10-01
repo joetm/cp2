@@ -109,7 +109,7 @@ function makeActionCreator(type, ...argNames) {
 }
 
 // ----------------------------------------------------
-// Redux action creators
+// Synchronous action creators
 // ----------------------------------------------------
 
 export const toggleSearchSidebar   = makeActionCreator(TOGGLE_SEARCH_SIDEBAR)
@@ -118,14 +118,27 @@ export const openSearchSidebar     = makeActionCreator(OPEN_SEARCH_SIDEBAR)
 export const openSidebar           = makeActionCreator(OPEN_SIDEBAR)
 export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 
+export const setDeviceDetails = (payload) => ({ type: SET_DEVICE_DETAILS, payload });
+
 // ----------------------------------------------------
 
-export const sendMessage = (payload) => ({ type: SEND_MESSAGE, payload });
-export const setDeviceDetails = (payload) => ({ type: SET_DEVICE_DETAILS, payload });
+function shouldFetch(state, key, itemid = null) {
+  const stateField = state[key]
+  if (!stateField.items) {
+    return true
+  } else if (stateField.isFetching) {
+    return false
+  } else {
+    return true // stateField.isInvalid
+  }
+}
 
 // ----------------------------------------------------
 // Asynchronous action creators
 // ----------------------------------------------------
+
+// TODO
+export const sendMessage = (payload) => ({ type: SEND_MESSAGE, payload });
 
 /**
  * fetchCurrentUser Asynchronous Action Creator
