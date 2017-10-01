@@ -9,6 +9,7 @@ import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import Avatar from '../Shared/Avatar'
 import ProfileUsername from './ProfileUsername'
+import GridWrap from '../Shared/GridWrap'
 
 
 const styles = {
@@ -49,8 +50,8 @@ const ProfileDetails = props => {
         <CloseIcon />
       </FloatingActionButton>
 
-      <div className="mdc-layout-grid">
-        <div className="mdc-layout-grid__inner">
+      <GridWrap>
+
           <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
             <div className="mdc-layout-grid">
               <div className="mdc-layout-grid__inner">
@@ -67,11 +68,11 @@ const ProfileDetails = props => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="mdc-layout-grid">
-        <div className="mdc-layout-grid__inner">
+      </GridWrap>
+
+      <GridWrap>
+
           <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
 
             <div style={styles.detailsContainerStyle}>
@@ -100,8 +101,8 @@ const ProfileDetails = props => {
             </div>
 
           </div>
-        </div>
-      </div>
+
+      </GridWrap>
 
     </div>
   )

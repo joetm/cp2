@@ -14,7 +14,6 @@ import Headline from '../Shared/Headline'
 const _OFFSETY = 0
 const _OFFSETX = 10
 
-
 const styles = {
   fullscreenContainer: {
     padding: 0,
