@@ -55,7 +55,7 @@ class Video extends React.Component {
    */
   render() {
     const { video = {}, videoid, history } = this.props
-    const { title, content, src, thumb, likes, user, tags } = video
+    const { title, content, src, thumb, likes, user = {}, tags } = video
     return (
       <div style={styles.pageWrapper}>
         <ScrollToTop />

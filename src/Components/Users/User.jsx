@@ -26,6 +26,7 @@ const styles = {
 }
 
 const SubText = (props) => {
+  const { usertitle, verified, location } = props
   let Icon
   switch (props.status) {
     case 'online':
@@ -41,9 +42,9 @@ const SubText = (props) => {
   return (
     <span style={styles.subText}>
       <Icon />
-      {props.usertitle}
-      {props.verified ? <VerifiedIcon /> : null}
-      {props.location}
+      {usertitle}
+      {verified ? <VerifiedIcon /> : null}
+      {location}
     </span>
   )
 }
@@ -53,8 +54,12 @@ const SubText = (props) => {
  * @class
  */
 class User extends React.Component {
+  /**
+   * Handle the click on the Listitem.
+   */
   handleClick = () => {
-    this.props.history.push(`${PROFILE}/${this.props.id}`)
+    const { id, history } = this.props
+    history.push(`${PROFILE}/${id}`)
   }
   /**
    * Render the component.

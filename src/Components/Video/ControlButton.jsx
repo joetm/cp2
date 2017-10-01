@@ -15,16 +15,13 @@ const controlButtonStyle = {
 
 
 const ControlButton = (props) => {
-  const Icon = props.icon
+  const { icon, tooltip, action, style } = props
   return (
-    <IconButton
-      tooltip={props.tooltip}
-      style={props.style}
-    >
-      <Icon
+    <IconButton tooltip={tooltip} style={style}>
+      <icon
         color={black}
         hoverColor={palette.primary1Color}
-        onTouchTap={props.action}
+        onTouchTap={action}
         style={controlButtonStyle}
       />
     </IconButton>

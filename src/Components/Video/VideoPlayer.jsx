@@ -139,7 +139,7 @@ class VideoPlayer extends Component {
   }
   setPlaybackRate = (e, key, value) => {
     const playbackRate = parseFloat(value)
-    console.log('Setting playback speed to ', playbackRate)
+    console.info('Setting playback speed to ', playbackRate)
     this.setState({ playbackRate })
   }
   onSeekMouseDown = () => {
