@@ -69,13 +69,13 @@ class Chat extends React.Component {
             )
             :
             (
-                <BoxHeader
-                    headline="Chat"
-                    icon={<FullScreenIcon />}
-                    iconTooltip="Expand"
-                    iconUrl={CHAT}
-                    history={history}
-                />
+              <BoxHeader
+                headline="Chat"
+                icon={<FullScreenIcon />}
+                iconTooltip="Expand"
+                iconUrl={CHAT}
+                history={history}
+              />
             )
         }
 
@@ -87,10 +87,10 @@ class Chat extends React.Component {
         >
           {
             chat.map(item => (
-                <ChatItem
-                    key={`msg_${item.id}`}
-                    {...item}
-                />
+              <ChatItem
+                key={`msg_${item.id}`}
+                {...item}
+              />
             ))
           }
         </List>
@@ -98,11 +98,11 @@ class Chat extends React.Component {
         <Divider />
 
         <ChatInput
-            hintText="What's on your mind?"
-            floatingLabelText="Your Message"
-            fullWidth={true}
-            scrollToBottom={jumpToBottom}
-            onKeyPress={this.handleChangeChatMsg}
+          hintText="What's on your mind?"
+          floatingLabelText="Your Message"
+          fullWidth={true}
+          scrollToBottom={jumpToBottom}
+          onKeyPress={this.handleChangeChatMsg}
         />
 
         {

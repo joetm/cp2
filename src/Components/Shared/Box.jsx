@@ -23,7 +23,7 @@ const footerStyle = {
 }
 
 const Box = (props) => {
-    const { items, headline, footerLink } = props
+    const { items = [], headline, footerLink } = props
     return (
         <Paper style={boxStyle} zDepth={1}>
             <section>

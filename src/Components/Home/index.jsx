@@ -29,28 +29,22 @@ class Home extends React.Component {
     return (
       <div>
         <ScrollToTop />
-
         <GridWrap>
-
-            <CellWrapper full={6} tablet={8} phone={4}>
-                <Box headline="New Updates" footerLink={routes.UPDATES} items={updates} />
-                <Box headline="Users Online" footerLink={routes.USERS} items={onlineUsers} />
-            </CellWrapper>
-
-            <CellWrapper full={6} tablet={8} phone={4}>
-                <Paper style={boxStyle} zDepth={1}>
-                    <Chat
-                        isEmbedded={true}
-                        chat={chat}
-                        maxHeight={660}
-                    />
-                </Paper>
-            </CellWrapper>
-
+          <CellWrapper full={6} tablet={8} phone={4}>
+              <Box headline="New Updates" footerLink={routes.UPDATES} items={updates} />
+              <Box headline="Users Online" footerLink={routes.USERS} items={onlineUsers} />
+          </CellWrapper>
+          <CellWrapper full={6} tablet={8} phone={4}>
+            <Paper style={boxStyle} zDepth={1}>
+              <Chat
+                isEmbedded={true}
+                chat={chat}
+                maxHeight={660}
+              />
+            </Paper>
+          </CellWrapper>
         </GridWrap>
-
         <Footer />
-
       </div>
     )
   }
@@ -58,15 +52,15 @@ class Home extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-    updates: state.updates.items,
-      updatesIsFetching: state.updates.isFetching,
-    onlineUsers: state.online.users,
-      onlineUsersIsFetching: state.online.isFetching,
-    chat: state.chat.items,
-      chatIsFetching: state.chat.isFetching,
+  updates: state.updates.items,
+    updatesIsFetching: state.updates.isFetching,
+  onlineUsers: state.online.items,
+    onlineUsersIsFetching: state.online.isFetching,
+  chat: state.chat.items,
+    chatIsFetching: state.chat.isFetching,
 })
 
 export default connect(
-    mapStateToProps,
-    { fetchUpdates, fetchOnlineUsers }
+  mapStateToProps,
+  { fetchUpdates, fetchOnlineUsers }
 )(Home)

@@ -27,83 +27,84 @@ const initialState = {
     },
     // -- common content
     updates: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     images: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     videos: {
-        isFetching: true,
-        // isInvalid: false,
+        isFetching: false,
+        // isInvalid: true,
         items: [],
     },
     posts: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     categories: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
         threads: [], // TODO
     },
     threads: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     album: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     users: {
-        isFetching: true,
+        isFetching: false,
+        items: [],
     },
     online: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
-        users: [],
+        items: [],
         num: 0,
     },
     // -- personalized content
     messages: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     stream: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     favorites: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     likes: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     playlist: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     followers: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     chat: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         user: {
             id: null,
@@ -113,30 +114,30 @@ const initialState = {
         items: [],
     },
     messageHistory: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     verificationImages: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     profileImages: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },
     reviewLeaderboard: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
-        items: []
+        items: [],
     },
     // -- single item caching
     // -- crowd review
     reviewitem: {
         id: null,
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         isSaving: false,
         error: null,
@@ -154,6 +155,7 @@ const initialState = {
     // -- current user
     currentUser: {
         id: null,
+        isFetching: false,
         isSaving: false,
         // isInvalid: false,
         username: 'anonymous',
@@ -200,7 +202,7 @@ const initialState = {
         theme: DEFAULT_THEME,
     },
     mod: {
-        isFetching: true,
+        isFetching: false,
         // isInvalid: false,
         items: [],
     },

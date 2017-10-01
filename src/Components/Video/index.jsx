@@ -37,19 +37,24 @@ const styles = {
     cursor: 'pointer',
     // position: 'relative',
   },
+  tagContainer: {
+    float: 'right',
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
 }
 
 
 class Video extends React.Component {
   componentDidMount() {
-    const { videoid } = this.props
-    this.props.fetchVideo(videoid)
+    const { videoid, loadVideo } = this.props
+    loadVideo(videoid)
   }
   /**
    * Render the component.
    */
   render() {
-    const { video = {} } = this.props
+    const { video = {}, videoid, history } = this.props
     const { title, content, src, thumb, likes, user, tags } = video
     return (
       <div style={styles.pageWrapper}>
@@ -75,51 +80,28 @@ class Video extends React.Component {
         <Spacer />
 
         {
-          user !== undefined &&
-          <div style={{clear: 'both'}}>
-
-            <div
-              style={styles.userinfo}
-              onTouchTap={() => this.props.history.push(`${PROFILE}/${user.id}`)}>
-              <Avatar mini={true} src={user.avatar} />
-              {user.username}
+          user !== undefined && (
+            <div style={{clear: 'both'}}>
+              <div
+                style={styles.userinfo}
+                onTouchTap={() => history.push(`${PROFILE}/${user.id}`)}>
+                  <Avatar mini={true} src={user.avatar} />
+                  {user.username}
+              </div>
+              <div style={styles.tagContainer}>
+                <Tag icon={<ImageIcon />} text={user.numImages} />
+                <Tag icon={<VideoIcon />} text={user.numVideos} />
+                <Tag icon={<LikeIcon />} text={user.numLikes} />
+                <Tag icon={<StarIcon />} text={user.numFavorites} />
+                <Tag icon={<PersonIcon />} text={user.numFollowers} />
+              </div>
             </div>
-
-            <div
-              style={{
-                float: 'right',
-                display: 'flex',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Tag
-                icon={<ImageIcon />}
-                text={user.numImages}
-              />
-              <Tag
-                icon={<VideoIcon />}
-                text={user.numVideos}
-              />
-              <Tag
-                icon={<LikeIcon />}
-                text={user.numLikes}
-              />
-              <Tag
-                icon={<StarIcon />}
-                text={user.numFavorites}
-              />
-              <Tag
-                icon={<PersonIcon />}
-                text={user.numFollowers}
-              />
-            </div>
-
-          </div>
+          )
         }
 
         {
           likes > 0 &&
-            <Likes itemid={this.props.videoid} />
+            <Likes itemid={videoid} />
         }
 
         <Spacer />
@@ -138,5 +120,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default withRouter(connect(
     mapStateToProps,
-    { fetchVideo }
+    { loadVideo: fetchVideo }
 )(Video))

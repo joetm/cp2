@@ -85,6 +85,9 @@ export const DELETE_CHAT_MSG          = 'CHAT::DELETE_CHAT_MSG'
 
 export const CHANGE_SETTING           = 'APP::CHANGE_SETTING'
 
+// ----------------------------------------------------
+// Synchronous action helpers
+// ----------------------------------------------------
 
 /**
  * Function to reduce redux boilerplate code
@@ -121,16 +124,33 @@ export const closeSidebar          = makeActionCreator(CLOSE_SIDEBAR)
 export const setDeviceDetails = (payload) => ({ type: SET_DEVICE_DETAILS, payload });
 
 // ----------------------------------------------------
+// Asynchronous action helpers
+// ----------------------------------------------------
 
-function shouldFetch(state, key, itemid = null) {
-  const stateField = state[key]
-  if (!stateField.items) {
-    return true
-  } else if (stateField.isFetching) {
-    return false
+function shouldFetchSingle(state) {
+  let response
+  if (!state) {
+    response = true
+  } else if (state.isFetching) {
+    response = false
   } else {
-    return true // stateField.isInvalid
+    response = state.isInvalid
   }
+  console.log('shouldFetchSingle', state, response)
+  return response
+}
+
+function shouldFetchMultiple(state) {
+  let response
+  if (!state || !state.items) {
+    response = true
+  } else if (state.isFetching) {
+    response = false
+  } else {
+    response = true // state.isInvalid
+  }
+  console.log('shouldFetchMultiple', state, response)
+  return response
 }
 
 // ----------------------------------------------------
@@ -325,10 +345,14 @@ export const fetchVideos = (limit) => ({
  * fetchVideo Asynchronous (redux-pack) Action
  * @returns Redux-pack action
  */
-export const fetchVideo = (id) => ({
-  type: FETCH_VIDEO,
-  promise: api.fetchVideo(id)
-})
+export const fetchVideo = (id) => (dispatch, getState) => {
+  const cachedState = getState()['videos'][id]
+  dispatch({
+    type: FETCH_VIDEO,
+    promise: shouldFetchSingle(cachedState) ?
+      api.fetchVideo(id) : Promise.resolve(cachedState),
+  })
+}
 
 /**
  * fetchStream Asynchronous Action Creator

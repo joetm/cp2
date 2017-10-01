@@ -35,16 +35,17 @@ export function chatReducer(chatState = initialState.chat, action) {
       }
       return {...chatState, user: currentUser}
     case ACTIONS.SEND_CHAT_MSG:
-      const newChatMsgs = [...chatState.items]
-      newChatMsgs.push({
-        ...payload,
-        user: {...chatState.user}, // user expansion with the current user details
-      })
       return handle(chatState, action, {
         // start: prevState => ({ ...prevState, isFetching: true, error: null }),
         // finish: prevState => ({ ...prevState, isFetching: false }),
         failure: prevState => ({ ...prevState, error: payload }),
-        success: prevState => ({ ...prevState, items: newChatMsgs }),
+        success: prevState => ({
+          ...prevState,
+          items: [...chatState.items].concat({
+            ...payload,
+            user: {...chatState.user}, // user expansion with the current user details
+          })
+        }),
       })
     case ACTIONS.DELETE_CHAT_MSG:
       return handle(chatState, action, {
@@ -78,22 +79,23 @@ export function messageHistoryReducer(msgHistState = initialState.messageHistory
   switch (type) {
     // Asynchronous actions
     // -----------------------------------------------
-    case ACTIONS.SEND_MESSAGE:
-      const messageHistoryState = {...msgHistState}
-      messageHistoryState.messages.push({
-        type: "message",
-        id: cuid(),
-        title: null,
-        content: payload.msg.trim(),
-        src: null,
-        userid: payload.userid,
-        username: payload.username,
-        avatar: payload.avatar,
-        tags: [],
-        threadid: null,
-        timestamp: Math.round(Date.now() / 1000),
-      })
-      return messageHistoryState
+    case ACTIONS.SEND_MESSAGE: // TODO
+      return {
+        ...msgHistState,
+        messages: msgHistState.messages.concat({ // concat is state-safe
+          type: "message",
+          id: cuid(),
+          title: null,
+          content: payload.msg.trim(),
+          src: null,
+          userid: payload.userid,
+          username: payload.username,
+          avatar: payload.avatar,
+          tags: [],
+          threadid: null,
+          timestamp: Math.round(Date.now() / 1000),
+        })
+      }
     case ACTIONS.FETCH_MESSAGEHISTORY:
       return handle(msgHistState, action, {
         start: prevState => ({ ...prevState, isFetching: true, error: null }),
@@ -285,10 +287,10 @@ export function videoReducer(videoState = initialState.videos, action) {
       })
     case ACTIONS.FETCH_VIDEO:
       return handle(videoState, action, {
-        start: prevState => ({ ...prevState, isFetching: true, error: null }),
+        start: prevState => ({ ...prevState, isFetching: true, isInvalid: false, error: null }),
         finish: prevState => ({ ...prevState, isFetching: false }),
-        failure: prevState => ({ ...prevState, error: payload }),
-        success: prevState => ({ ...prevState, [payload.id]: payload }),
+        failure: prevState => ({ ...prevState, error: payload, isInvalid: true }),
+        success: prevState => ({ ...prevState, isInvalid: false, [payload.id]: payload }),
       })
     // Synchronous actions
     // -----------------------------------------------
@@ -571,7 +573,7 @@ export function onlineReducer(onlineState = initialState.online, action) {
         start: prevState => ({ ...prevState, isFetching: true, error: null }),
         finish: prevState => ({ ...prevState, isFetching: false }),
         failure: prevState => ({ ...prevState, error: payload }),
-        success: prevState => ({ ...prevState, users: [...payload] }),
+        success: prevState => ({ ...prevState, items: [...payload] }),
       })
     // Synchronous actions
     // -----------------------------------------------

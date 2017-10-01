@@ -17,7 +17,14 @@ middlewares.push(promise)
 middlewares.push(thunkMiddleware)
 middlewares.push(reduxPackMiddleware)
 if (process.env.NODE_ENV !== 'production') {
-  middlewares.push(createLogger())
+  const loggerOptions = {
+    titleFormatter: (action, time, took) => {
+      const reduxPackLifecycle = action.meta && action.meta['redux-pack/LIFECYCLE'] ?
+        `(${action.meta['redux-pack/LIFECYCLE']})` : ''
+      return `${action.type}${reduxPackLifecycle} @ ${time} (in ${took.toFixed(2)} ms)`
+    }
+  }
+  middlewares.push(createLogger(loggerOptions))
 }
 
 const enhancer = compose(

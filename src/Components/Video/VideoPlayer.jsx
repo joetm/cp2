@@ -196,124 +196,128 @@ class VideoPlayer extends Component {
     } = this.state
     return (
       <div>
-          <div ref={el => { this.playerWrapper = el }}
-            style={{ ...styles.playerWrapper,
-              height: playerHeight,
-              width: playerWidth,
-              backgroundImage: `url(${thumb})`,
-            }}
-          >
-            <ReactPlayer
-              ref={el => { this.player = el }}
-              width="100%"
-              height="100%"
-              style={styles.reactPlayer}
-              url={src}
-              playing={playing}
-              playbackRate={playbackRate}
-              volume={volume}
-              soundcloudConfig={soundcloudConfig}
-              vimeoConfig={vimeoConfig}
-              youtubeConfig={youtubeConfig}
-              fileConfig={fileConfig}
-              onReady={this.onReady}
-              onStart={this.onStart}
-              onPlay={() => this.setState({ playing: true })}
-              onPause={() => this.setState({ playing: false })}
-              onBuffer={() => console.log('onBuffer')}
-              onEnded={() => this.setState({ playing: false })}
-              onError={this.onError}
-              onProgress={this.onProgress}
-              onDuration={(theduration) => this.setState({ duration: theduration })}
+        <div ref={el => { this.playerWrapper = el }}
+          style={{ ...styles.playerWrapper,
+            height: playerHeight,
+            width: playerWidth,
+            backgroundImage: `url(${thumb})`,
+          }}
+        >
+          <ReactPlayer
+            ref={el => { this.player = el }}
+            width="100%"
+            height="100%"
+            style={styles.reactPlayer}
+            url={src}
+            playing={playing}
+            playbackRate={playbackRate}
+            volume={volume}
+            soundcloudConfig={soundcloudConfig}
+            vimeoConfig={vimeoConfig}
+            youtubeConfig={youtubeConfig}
+            fileConfig={fileConfig}
+            onReady={this.onReady}
+            onStart={this.onStart}
+            onPlay={() => this.setState({ playing: true })}
+            onPause={() => this.setState({ playing: false })}
+            onBuffer={() => console.log('onBuffer')}
+            onEnded={() => this.setState({ playing: false })}
+            onError={this.onError}
+            onProgress={this.onProgress}
+            onDuration={(theduration) => this.setState({ duration: theduration })}
+          />
+        </div>
+
+        <div id="controls">
+          {
+            this.state.controlsShowing ?
+              <div style={styles.controls}>
+
+                {
+                  playing ?
+                    <ControlButton
+                      tooltip="Pause"
+                      action={this.playPause}
+                      icon={PauseIcon}
+                    />
+                  :
+                    <ControlButton
+                      tooltip="Play"
+                      action={this.playPause}
+                      icon={PlayIcon}
+                    />
+                }
+
+                <ControlButton
+                  tooltip="Stop"
+                  action={this.stop}
+                  icon={StopIcon}
+                />
+
+                <div style={styles.info}>
+                  {/* elapsed */}
+                  <Duration seconds={duration * played} />
+                  /
+                  {/* remaining */}
+                  <Duration seconds={duration * (1 - played)} />
+                  /
+                  {/* duration */}
+                  <Duration seconds={duration} />
+                </div>
+
+                <ControlButton
+                  tooltip="Switch to full screen"
+                  action={this.onClickFullscreen}
+                  icon={FullScreenIcon}
+                  style={{float: 'right', marginLeft: '10px'}}
+                />
+
+                <SelectField
+                  value={playbackRate}
+                  style={styles.speedSelector}
+                  onChange={this.setPlaybackRate}
+                  ref={el => { this.speedSelector = el }}
+                >
+                  <MenuItem value={1} primaryText="x1" />
+                  <MenuItem value={1.5} primaryText="x1.5" />
+                  <MenuItem value={2} primaryText="x2" />
+                </SelectField>
+
+                <Slider
+                  ref={el => { this.volumeSlider = el }}
+                  min={0}
+                  max={1}
+                  step={0.01}
+                  value={volume}
+                  onChange={this.setVolume}
+                  style={styles.volumeSlider}
+                />
+
+              </div>
+              : null
+          }
+
+          <div style={styles.sliders}>
+            <Slider
+              ref={el => { this.seekSlider = el }}
+              min={0}
+              max={1}
+              step={0.01}
+              value={played}
+              onMouseDown={this.onSeekMouseDown}
+              onChange={this.onSeekChange}
+              onMouseUp={this.onSeekMouseUp}
+              style={styles.seekSliderContainer}
+              sliderStyle={styles.seekSlider}
+            />
+            <progress
+              max={1}
+              value={loaded}
+              style={styles.progressIndicator}
             />
           </div>
 
-          <div id="controls">
-            {
-              this.state.controlsShowing ?
-                <div style={styles.controls}>
-
-                      {
-                        playing ?
-                          <ControlButton
-                            tooltip="Pause"
-                            action={this.playPause}
-                            icon={PauseIcon}
-                          />
-                        :
-                          <ControlButton
-                            tooltip="Play"
-                            action={this.playPause}
-                            icon={PlayIcon}
-                          />
-                      }
-
-                      <ControlButton
-                        tooltip="Stop"
-                        action={this.stop}
-                        icon={StopIcon}
-                      />
-
-                      <div style={styles.info}>
-                          {/* elapsed */}
-                          <Duration seconds={duration * played} />
-                          /
-                          {/* remaining */}
-                          <Duration seconds={duration * (1 - played)} />
-                          /
-                          {/* duration */}
-                          <Duration seconds={duration} />
-                      </div>
-
-                      <ControlButton
-                        tooltip="Switch to full screen"
-                        action={this.onClickFullscreen}
-                        icon={FullScreenIcon}
-                        style={{float: 'right', marginLeft: '10px'}}
-                      />
-
-                      <SelectField
-                          value={playbackRate}
-                          style={styles.speedSelector}
-                          onChange={this.setPlaybackRate}
-                          ref={el => { this.speedSelector = el }}
-                      >
-                          <MenuItem value={1} primaryText="x1" />
-                          <MenuItem value={1.5} primaryText="x1.5" />
-                          <MenuItem value={2} primaryText="x2" />
-                      </SelectField>
-
-                      <Slider
-                        ref={el => { this.volumeSlider = el }}
-                        min={0}
-                        max={1}
-                        step={0.01}
-                        value={volume}
-                        onChange={this.setVolume}
-                        style={styles.volumeSlider}
-                      />
-
-                </div>
-                : null
-            }
-
-            <div style={styles.sliders}>
-                <Slider
-                    ref={el => { this.seekSlider = el }}
-                    min={0}
-                    max={1}
-                    step={0.01}
-                    value={played}
-                    onMouseDown={this.onSeekMouseDown}
-                    onChange={this.onSeekChange}
-                    onMouseUp={this.onSeekMouseUp}
-                    style={styles.seekSliderContainer}
-                    sliderStyle={styles.seekSlider}
-                />
-                <progress max={1} value={loaded} style={styles.progressIndicator} />
-            </div>
-
-          </div>
+        </div>
       </div>
     )
   }
