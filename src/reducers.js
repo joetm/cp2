@@ -337,7 +337,7 @@ export function likeReducer(likesState = initialState.likes, action) {
  * postReducer
  * @returns postState
  **/
-export function postReducer(postState = initialState.post, action) {
+export function postReducer(postState = initialState.posts, action) {
     const { type, payload } = action
     switch (type) {
         case ACTIONS.FETCH_POST:
