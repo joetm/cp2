@@ -63,7 +63,7 @@ class MessageHistory extends React.Component {
   submitMsg = () => {
     const { sendMessage, messageHistory = {}, currentUser } = this.props
     const { userid, username, avatar } = currentUser
-    let msg = this.refs.inputfield.getValue().trim()
+    const msg = this.refs.inputfield.getValue().trim()
     if (msg) {
       sendMessage({ userid, username, avatar, msg })
       // clear the input field

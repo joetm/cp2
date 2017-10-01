@@ -16,7 +16,7 @@ import { THEME_NAMES, getBaseTheme } from '../../common/theme'
 import { MINIMAL_LIST, MASONRY_GALLERY, GROUPED_GALLERY } from '../../common/viewModes'
 import { changeSetting } from '../../actions'
 import SettingsSeparator from './SettingsSeparator'
-import sharedStyles from './styles'
+import { toggle as toggleStyle } from './styles'
 import Spacer from '../Shared/Spacer'
 import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
@@ -202,7 +202,7 @@ class SiteSettings extends React.Component {
               <Toggle
                 label="Fullscreen images"
                 toggled={fullscreenImages}
-                style={sharedStyles.toggle}
+                style={toggleStyle}
                 onToggle={this.toggleFullscreenImages}
               />
               {
@@ -210,7 +210,7 @@ class SiteSettings extends React.Component {
                   <Toggle
                     label="Scale embedded images"
                     toggled={scaleImages}
-                    style={sharedStyles.toggle}
+                    style={toggleStyle}
                     onToggle={this.toggleScaleImages}
                   />
               }

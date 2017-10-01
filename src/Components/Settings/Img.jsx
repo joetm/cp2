@@ -34,7 +34,7 @@ class Img extends React.Component {
     selection.splice(index, 1)
     this.props.setSelection(selection)
   }
-  handleSelectionChange = (itemid, isInputChecked = null) => {
+  handleSelectionChange = (itemid) => {
     const index = this.props.selection.indexOf(itemid)
     if (index === -1) {
       this.selectImage(itemid)
@@ -71,7 +71,7 @@ class Img extends React.Component {
           src={item.thumb}
           style={styles.image}
           alt=""
-          onTouchTap={() => {this.handleSelectionChange(item.id)}}
+          onTouchTap={() => { this.handleSelectionChange(item.id) }}
         />
       </div>
     )

@@ -6,7 +6,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import './transitions.scss'
 import UpdateWrap from '../Shared/UpdateWrap'
 import Img from './Img'
-import Spacer from '../Shared/Spacer'
 
 
 class ImgContainer extends React.Component {

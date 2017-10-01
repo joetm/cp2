@@ -508,7 +508,6 @@ const mapStateToProps = (state) => ({
     usertitle: state.currentUser.usertitle,
     birthday: state.currentUser.birthday,
     username: state.currentUser.username,
-    usertitle: state.currentUser.usertitle,
     //
     country: state.currentUser.country,
     state: state.currentUser.state,

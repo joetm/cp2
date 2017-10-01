@@ -8,7 +8,7 @@ import { handle } from 'redux-pack'
 
 import initialState from './initialState'
 import * as ACTIONS from './actions'
-import jwtDecode from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 
 
 /**
@@ -655,7 +655,7 @@ export function currentUserReducer(currentUserState = initialState.currentUser, 
  * @returns appState
  **/
 export function cpAppReducer(appState = initialState.appState, action) {
-  const { type, payload, response } = action // TODO
+  const { type, payload } = action
   switch (type) {
     // Asynchronous actions
     // -----------------------------------------------

@@ -32,214 +32,212 @@ const _DURATION = 600 // ms
 
 
 const styles = {
-    navbar: {
-        zIndex: 9999999,
-    },
-    firstItem: {
-        marginLeft: '10px',
-        zIndex: 99,
-    },
-    separator: {
-        margin: 0,
-        padding: '10px',
-    },
-    normalIcon: {
-        paddingLeft: '20px',
-        cursor: 'pointer',
-    },
-    searchIcon: {
-        cursor: 'pointer',
-    },
-    badgeRootStyle: {
-        cursor: 'pointer',
-    },
+  navbar: {
+    zIndex: 9999999,
+  },
+  firstItem: {
+    marginLeft: '10px',
+    zIndex: 99,
+  },
+  separator: {
+    margin: 0,
+    padding: '10px',
+  },
+  normalIcon: {
+    paddingLeft: '20px',
+    cursor: 'pointer',
+  },
+  searchIcon: {
+    cursor: 'pointer',
+  },
+  badgeRootStyle: {
+    cursor: 'pointer',
+  },
 }
 
 
 class NavBar extends React.Component {
-    anchorEl = null
-    state = {
-        notificationsMenuOpen: false,
-        searchExpanded: false,
+  anchorEl = null
+  notificationsBadge = null
+  state = {
+    notificationsMenuOpen: false,
+    searchExpanded: false,
+  }
+  attachMenuToDomNode = () => {
+    const targetDOMNode = findDOMNode(this.notificationsBadge)
+    if (targetDOMNode) {
+      // console.log('attach menu to', targetDOMNode)
+      this.anchorEl = targetDOMNode
     }
-    attachMenuToDomNode = () => {
-        const targetDOMNode = findDOMNode(this.refs.notificationsBadge)
-        if (targetDOMNode) {
-            // console.log('attach menu to', targetDOMNode)
-            this.anchorEl = targetDOMNode
-        }
+  }
+  componentDidMount() {
+    // attach the notifications menu to the dom node
+    this.attachMenuToDomNode()
+  }
+  isForum = () => {
+    return this.props.location.pathname.startsWith('/forum')
+  }
+  toggleSearchField = () => {
+    this.setState({searchExpanded: !this.state.searchExpanded})
+  }
+  searchAction = () => {
+    // on the forum, open the sidebar
+    if (this.isForum()) {
+      this.props.toggleSearchSidebar()
+    // on all other pages: switch the navbar menu with the search input
+    } else {
+      this.toggleSearchField()
     }
-    componentDidMount() {
-        // attach the notifications menu to the dom node
-        this.attachMenuToDomNode()
-    }
-    isForum = () => {
-        return this.props.location.pathname.startsWith('/forum')
-    }
-    toggleSearchField = () => {
-        this.setState({searchExpanded: !this.state.searchExpanded})
-    }
-    searchAction = () => {
-        // on the forum, open the sidebar
-        if (this.isForum()) {
-            this.props.toggleSearchSidebar()
-        // on all other pages: switch the navbar menu with the search input
-        } else {
-            this.toggleSearchField()
-        }
-    }
-    toggleNotificationsMenu = () => {
-        this.setState({notificationsMenuOpen: !this.state.notificationsMenuOpen})
-    }
-    closeNotificationsMenu = () => {
-        this.setState({notificationsMenuOpen: false})
-    }
-    toggleState = () => {
-        this.props.closeSidebar()
-    }
-    /**
-     * Render the component.
-     */
-    render() {
-        const { unread, openSidebar, userid, username, avatar } = this.props
-        const numUnread = sum(unread)
-        const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
-        return (
-          <div>
-            <Toolbar style={styles.navbar}>
+  }
+  toggleNotificationsMenu = () => {
+    this.setState({notificationsMenuOpen: !this.state.notificationsMenuOpen})
+  }
+  closeNotificationsMenu = () => {
+    this.setState({notificationsMenuOpen: false})
+  }
+  toggleState = () => {
+    this.props.closeSidebar()
+  }
+  /**
+   * Render the component.
+   */
+  render() {
+    const { unread, openSidebar, userid, username, avatar } = this.props
+    const numUnread = sum(unread)
+    const AllNotificationsIcons = !numUnread ? NotificationsNoneIcon : NotificationsActiveIcon
+    return (
+      <div>
+        <Toolbar style={styles.navbar}>
 
-                <ReactCSSTransitionGroup
-                    transitionName="example"
-                    transitionAppear={true}
-                    transitionAppearTimeout={_DURATION}
-                    transitionEnterTimeout={_DURATION}
-                    transitionLeaveTimeout={_DURATION}
-                >
-                {
-                    !this.state.searchExpanded ?
-                        <ToolbarGroup
-                            firstChild={true}
-                        >
-                            <IconButton
-                                tooltip="Menu"
-                                style={styles.firstItem}
-                                onTouchTap={openSidebar}
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <NavLink to="/">
-                                <IconButton tooltip="Home">
-                                    <HomeIcon />
-                                </IconButton>
-                            </NavLink>
-                        </ToolbarGroup>
-                : null
-                }
-                </ReactCSSTransitionGroup>
+          <ReactCSSTransitionGroup
+              transitionName="example"
+              transitionAppear={true}
+              transitionAppearTimeout={_DURATION}
+              transitionEnterTimeout={_DURATION}
+              transitionLeaveTimeout={_DURATION}
+          >
+            {
+              !this.state.searchExpanded ?
+                <ToolbarGroup firstChild={true}>
+                  <IconButton
+                      tooltip="Menu"
+                      style={styles.firstItem}
+                      onTouchTap={openSidebar}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <NavLink to="/">
+                    <IconButton tooltip="Home">
+                      <HomeIcon />
+                    </IconButton>
+                  </NavLink>
+                </ToolbarGroup>
+              : null
+            }
+          </ReactCSSTransitionGroup>
 
-                <ReactCSSTransitionGroup
-                    transitionName="example"
-                    transitionAppear={true}
-                    transitionAppearTimeout={_DURATION}
-                    transitionEnterTimeout={_DURATION}
-                    transitionLeaveTimeout={_DURATION}
-                >
-                {
-                    !this.state.searchExpanded ?
-                        <ToolbarGroup>
+          <ReactCSSTransitionGroup
+              transitionName="example"
+              transitionAppear={true}
+              transitionAppearTimeout={_DURATION}
+              transitionEnterTimeout={_DURATION}
+              transitionLeaveTimeout={_DURATION}
+          >
+            {
+              !this.state.searchExpanded ?
+                <ToolbarGroup>
+                  <IconButton
+                    tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
+                    onTouchTap={this.searchAction}
+                    style={styles.searchIcon}
+                  >
+                    <SearchIcon />
+                  </IconButton>
 
-                            <IconButton
-                                tooltip={this.isForum() ? "Toggle Sidebar" : "Search"}
-                                onTouchTap={this.searchAction}
-                                style={styles.searchIcon}
-                            >
-                                <SearchIcon />
-                            </IconButton>
+                  <Link to={UPLOAD}>
+                    <IconButton tooltip="Upload">
+                      <UploadIcon />
+                    </IconButton>
+                  </Link>
 
-                            <Link to={UPLOAD}>
-                                <IconButton tooltip="Upload">
-                                    <UploadIcon />
-                                </IconButton>
-                            </Link>
+                  <Link to={REVIEW}>
+                    <IconButton tooltip="Crowd Review">
+                      <ReviewIcon />
+                    </IconButton>
+                  </Link>
 
-                            <Link to={REVIEW}>
-                                <IconButton tooltip="Crowd Review">
-                                    <ReviewIcon />
-                                </IconButton>
-                            </Link>
+                  <CustomBadge
+                    to={null}
+                    badgeContent={numUnread}
+                    secondary={true}
+                    tooltip="Notifications"
+                    icon={<AllNotificationsIcons />}
+                    ref={el => { this.notificationsBadge = el }}
+                    onTouchTap={this.toggleNotificationsMenu}
+                  />
 
-                            <CustomBadge
-                                to={null}
-                                badgeContent={numUnread}
-                                secondary={true}
-                                tooltip="Notifications"
-                                icon={<AllNotificationsIcons />}
-                                ref="notificationsBadge"
-                                onTouchTap={this.toggleNotificationsMenu}
-                            />
+                  <Link to={`${PROFILE}/${userid}`}>
+                    <Avatar
+                      visible={true}
+                      src={avatar}
+                      mini={true}
+                      username={username}
+                      tooltip="Your Profile"
+                      onTouchTap={this.toggleState}
+                    />
+                  </Link>
 
-                            <Link to={`${PROFILE}/${userid}`}>
-                                <Avatar
-                                    visible={true}
-                                    src={avatar}
-                                    mini={true}
-                                    username={username}
-                                    tooltip="Your Profile"
-                                    onTouchTap={this.toggleState}
-                                />
-                            </Link>
+                </ToolbarGroup>
+              : null
+            }
+          </ReactCSSTransitionGroup>
 
-                        </ToolbarGroup>
-                    : null
-                    }
-                </ReactCSSTransitionGroup>
+          {
+            this.state.searchExpanded ?
+              <SearchBar
+                isForum={this.isForum}
+                searchAction={this.searchAction}
+                toggleSearchField={this.toggleSearchField}
+                attachMenuToDomNode={this.attachMenuToDomNode}
+              />
+            : null
+          }
 
-                {
-                    this.state.searchExpanded ?
-                            <SearchBar
-                                isForum={this.isForum}
-                                searchAction={this.searchAction}
-                                toggleSearchField={this.toggleSearchField}
-                                attachMenuToDomNode={this.attachMenuToDomNode}
-                            />
-                    : null
-                }
+        </Toolbar>
 
-            </Toolbar>
+        <NotificationsMenu
+          open={this.state.notificationsMenuOpen}
+          anchorEl={this.anchorEl}
+          unread={unread}
+          userid={userid}
+          closeNotificationsMenu={this.closeNotificationsMenu}
+        />
 
-            <NotificationsMenu
-                open={this.state.notificationsMenuOpen}
-                anchorEl={this.anchorEl}
-                unread={unread}
-                userid={userid}
-                closeNotificationsMenu={this.closeNotificationsMenu}
-            />
-
-          </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
-    sidebarSearchOpen: state.appState.sidebarSearchOpen,
-    userid: state.currentUser.id,
-    username: state.currentUser.username,
-    avatar: state.currentUser.avatar,
-    unread: {
-        posts: state.currentUser.unreadPosts,
-        images: state.currentUser.unreadImages,
-        videos: state.currentUser.unreadVideos,
-        messages: state.currentUser.unreadMessages,
-        likes: state.currentUser.unreadLikes,
-    }
+  sidebarSearchOpen: state.appState.sidebarSearchOpen,
+  userid: state.currentUser.id,
+  username: state.currentUser.username,
+  avatar: state.currentUser.avatar,
+  unread: {
+    posts: state.currentUser.unreadPosts,
+    images: state.currentUser.unreadImages,
+    videos: state.currentUser.unreadVideos,
+    messages: state.currentUser.unreadMessages,
+    likes: state.currentUser.unreadLikes,
+  }
 })
 
 export default withRouter(connect(
-    mapStateToProps,
-    {
-        fetchCurrentUser,
-        toggleSearchSidebar,
-        openSidebar,
-        closeSidebar,
-    }
+  mapStateToProps,
+  {
+    fetchCurrentUser,
+    toggleSearchSidebar,
+    openSidebar,
+    closeSidebar,
+  }
 )(NavBar))

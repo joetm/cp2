@@ -6,7 +6,7 @@ import Toggle from 'material-ui/Toggle'
 import { List } from 'material-ui/List'
 
 import { changeSetting } from '../../actions'
-import styles from './styles'
+import { toggle as toggleStyle } from './styles'
 import SettingsSeparator from './SettingsSeparator'
 import Spacer from '../Shared/Spacer'
 
@@ -32,19 +32,19 @@ class PrivacySettings extends React.Component {
           <Toggle
             label="Show your location"
             toggled={this.props.showLocation}
-            style={styles.toggle}
+            style={toggleStyle}
             onToggle={this.toggleLocationVisibility}
           />
           <Toggle
             label="Show your birthday"
             toggled={this.props.showBirthday}
-            style={styles.toggle}
+            style={toggleStyle}
             onToggle={this.toggleBirthdayVisibility}
           />
           <Toggle
             label="Show online status"
             toggled={this.props.showOnlineStatus}
-            style={styles.toggle}
+            style={toggleStyle}
             onToggle={this.toggleOnlineVisibility}
           />
         </List>

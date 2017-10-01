@@ -22,7 +22,7 @@ class SingleThread extends React.Component {
    * Render the component.
    */
   render() {
-    const { thread = {}, isFetching, history } = this.props
+    const { thread = {}, isFetching } = this.props
     const { title, items = [] } = thread
     return (
       <div style={{position: 'relative'}}>

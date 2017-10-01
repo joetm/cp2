@@ -42,9 +42,9 @@ class Profile extends React.Component {
         user: {},
     }
     componentDidMount() {
-        const { userid } = this.props
-        this.props.fetchUser(userid)
-        this.props.fetchUserProfileImages(userid)
+        const { userid, fetchUser, fetchUserProfileImages } = this.props
+        fetchUser(userid)
+        fetchUserProfileImages(userid)
     }
     toggleProfileDetails = () => {
         this.setState({blurredImg: !this.state.blurredImg})
@@ -53,7 +53,7 @@ class Profile extends React.Component {
      * Render the component.
      */
     render() {
-        const { user = {}, userid, url, profileImages, fetchUserProfileImages, palette } = this.props
+        const { user = {}, url, profileImages, fetchUserProfileImages, palette } = this.props
         return (
             <div>
 

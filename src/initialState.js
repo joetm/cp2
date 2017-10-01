@@ -102,7 +102,6 @@ const initialState = {
         // isInvalid: false,
         items: [],
     },
-    // -- chat
     chat: {
         isFetching: true,
         // isInvalid: false,
@@ -117,6 +116,21 @@ const initialState = {
         isFetching: true,
         // isInvalid: false,
         items: [],
+    },
+    verificationImages: {
+        isFetching: true,
+        // isInvalid: false,
+        items: [],
+    },
+    profileImages: {
+        isFetching: true,
+        // isInvalid: false,
+        items: [],
+    },
+    reviewLeaderboard: {
+        isFetching: true,
+        // isInvalid: false,
+        items: []
     },
     // -- single item caching
     // -- crowd review
@@ -137,22 +151,7 @@ const initialState = {
         src: null,
         timestamp: null,
     },
-    reviewLeaderboard: {
-        isFetching: true,
-        // isInvalid: false,
-        items: []
-    },
     // -- current user
-    verificationImages: {
-        isFetching: true,
-        // isInvalid: false,
-        items: [],
-    },
-    profileImages: {
-        isFetching: true,
-        // isInvalid: false,
-        items: [],
-    },
     currentUser: {
         id: null,
         isSaving: false,

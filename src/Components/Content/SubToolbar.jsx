@@ -16,94 +16,93 @@ import { MINIMAL_LIST, MASONRY_GALLERY, GROUPED_GALLERY } from '../../common/vie
 
 
 const _ID = {
-    UPDATES: 1,
-    IMAGES: 5,
-    VIDEOS: 6,
-    VERIFICATION: 8,
-    FAVORITES: 8,
-    LIKES: 9,
+  UPDATES: 1,
+  IMAGES: 5,
+  VIDEOS: 6,
+  VERIFICATION: 8,
+  FAVORITES: 8,
+  LIKES: 9,
 }
 
 const expandButton = <IconButton><NavigationExpandMoreIcon /></IconButton>
 
 
 class SubToolbar extends React.Component {
-    state = {
-        value: _ID.UPDATES,
-    }
-    handleChange = (event, index, value) => this.setState({ value })
-    /**
-     * Render the component.
-     */
-    render() {
-        const { routes, history, changeViewMode, selectedViewMode } = this.props
-        const { value } = this.state
-        const routing = routes ? routes : allRoutes
-        return (
-            <Toolbar>
-                <ToolbarGroup firstChild={true}>
-                    <DropDownMenu
-                        value={value}
-                        onChange={this.handleChange}
-                        iconButton={expandButton}
-                        iconStyle={{marginTop: '-12px'}}
-                    >
-                        <MenuItem
-                            value={_ID.UPDATES}
-                            primaryText="All"
-                            onTouchTap={() => history.push(routing.UPDATES)}
-                        />
-                        <MenuItem
-                            value={_ID.IMAGES}
-                            primaryText="Pictures"
-                            onTouchTap={() => history.push(routing.IMAGES)}
-                        />
-                        <MenuItem
-                            value={_ID.VIDEOS}
-                            primaryText="Videos"
-                            onTouchTap={() => history.push(routing.VIDEOS)}
-                        />
-                        {/* TODO: this is only a filter for images */}
-                        <MenuItem
-                            value={_ID.VERIFICATION}
-                            primaryText="Verifications"
-                            onTouchTap={() => history.push(routing.VERIFICATIONS)}
-                        />
-                        <MenuItem
-                            value={_ID.FAVORITES}
-                            primaryText="Favorites"
-                            onTouchTap={() => history.push(routing.FAVORITES)}
-                        />
-                        <MenuItem
-                            value={_ID.LIKES}
-                            primaryText="Likes"
-                            onTouchTap={() => history.push(routing.LIKES)}
-                        />
-                    </DropDownMenu>
-                </ToolbarGroup>
-                <ToolbarGroup>
-                    <IconButton
-                        onTouchTap={changeViewMode(GROUPED_GALLERY)}
-                        iconStyle={{color: selectedViewMode === GROUPED_GALLERY ? 'red' : 'black'}}
-                    >
-                        <GalleryModeIcon />
-                    </IconButton>
-                    <IconButton
-                        onTouchTap={changeViewMode(MASONRY_GALLERY)}
-                        iconStyle={{color: selectedViewMode === MASONRY_GALLERY ? 'red' : 'black'}}
-                    >
-                        <MasonryModeIcon />
-                    </IconButton>
-                    <IconButton
-                        onTouchTap={changeViewMode(MINIMAL_LIST)}
-                        iconStyle={{color: selectedViewMode === MINIMAL_LIST ? 'red' : 'black'}}
-                    >
-                        <ListModeIcon />
-                    </IconButton>
-                </ToolbarGroup>
-            </Toolbar>
-        )
-    }
+  state = {
+    value: _ID.UPDATES,
+  }
+  handleChange = (event, index, value) => this.setState({ value })
+  /**
+   * Render the component.
+   */
+  render() {
+    const { routes = allRoutes, history, changeViewMode, selectedViewMode } = this.props
+    const { value } = this.state
+    return (
+      <Toolbar>
+        <ToolbarGroup firstChild={true}>
+          <DropDownMenu
+            value={value}
+            onChange={this.handleChange}
+            iconButton={expandButton}
+            iconStyle={{marginTop: '-12px'}}
+          >
+            <MenuItem
+              value={_ID.UPDATES}
+              primaryText="All"
+              onTouchTap={() => history.push(routes.UPDATES)}
+            />
+            <MenuItem
+              value={_ID.IMAGES}
+              primaryText="Pictures"
+              onTouchTap={() => history.push(routes.IMAGES)}
+            />
+            <MenuItem
+              value={_ID.VIDEOS}
+              primaryText="Videos"
+              onTouchTap={() => history.push(routes.VIDEOS)}
+            />
+            {/* TODO: this is only a filter for images */}
+            <MenuItem
+              value={_ID.VERIFICATION}
+              primaryText="Verifications"
+              onTouchTap={() => history.push(routes.VERIFICATIONS)}
+            />
+            <MenuItem
+              value={_ID.FAVORITES}
+              primaryText="Favorites"
+              onTouchTap={() => history.push(routes.FAVORITES)}
+            />
+            <MenuItem
+              value={_ID.LIKES}
+              primaryText="Likes"
+              onTouchTap={() => history.push(routes.LIKES)}
+            />
+          </DropDownMenu>
+        </ToolbarGroup>
+        <ToolbarGroup>
+          <IconButton
+            onTouchTap={changeViewMode(GROUPED_GALLERY)}
+            iconStyle={{color: selectedViewMode === GROUPED_GALLERY ? 'red' : 'black'}}
+          >
+            <GalleryModeIcon />
+          </IconButton>
+          <IconButton
+            onTouchTap={changeViewMode(MASONRY_GALLERY)}
+            iconStyle={{color: selectedViewMode === MASONRY_GALLERY ? 'red' : 'black'}}
+          >
+            <MasonryModeIcon />
+          </IconButton>
+          <IconButton
+            onTouchTap={changeViewMode(MINIMAL_LIST)}
+            iconStyle={{color: selectedViewMode === MINIMAL_LIST ? 'red' : 'black'}}
+          >
+            <ListModeIcon />
+          </IconButton>
+        </ToolbarGroup>
+      </Toolbar>
+    )
+  }
 }
 
 // withRouter: inject the history as prop of the SubToolbar component
