@@ -164,7 +164,7 @@ class ReviewCard extends React.Component {
             <CellWrapper full={6} tablet={8} phone={4}>
               <RadioButtonGroup
                 name="rating"
-                style={{display: 'flex', flexDirection: 'row'}}
+                style={{display: 'flex', flexDirection: 'column'}}
                 onChange={this.handleChangeRating}
               >
                 <RadioButton
@@ -177,7 +177,7 @@ class ReviewCard extends React.Component {
                   value={NSFW}
                   checked={this.state.selectedRating === NSFW}
                   label="Adult (Not-safe-for-work)"
-                  style={{...styles.radioButton, marginLeft: '12px'}}
+                  style={{...styles.radioButton, marginTop: '12px'}}
                 />
               </RadioButtonGroup>
             </CellWrapper>
@@ -185,14 +185,20 @@ class ReviewCard extends React.Component {
             <CellWrapper full={6} tablet={8} phone={4}>
               <div style={{textAlign: 'right'}}>
                 <ApproveButton
-                    primary={true}
-                    action={this.launchAction(approve)}
-                    disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
+                  primary={true}
+                  action={this.launchAction(approve)}
+                  disabled={
+                    this.props.buttonsDisabled
+                    || this.state.stepIndex === 0
+                  }
                 />
                 <RejectButton
-                    secondary={true}
-                    action={this.launchAction(reject)}
-                    disabled={this.props.buttonsDisabled || this.state.stepIndex === 0}
+                  secondary={true}
+                  action={this.launchAction(reject)}
+                  disabled={
+                    this.props.buttonsDisabled
+                    || this.state.stepIndex === 0
+                  }
                 />
               </div>
             </CellWrapper>
@@ -200,15 +206,15 @@ class ReviewCard extends React.Component {
           </GridWrap>
 
 {/*
-                <div>
-                  <TextField
-                    fullWidth={true}
-                    multiLine={true}
-                    rows={1}
-                    hintText={"Your reasoning for rating"}
-                    floatingLabelText={"Optional explanation"}
-                  />
-                </div>
+          <div>
+            <TextField
+              fullWidth={true}
+              multiLine={true}
+              rows={1}
+              hintText={"Your reasoning for rating"}
+              floatingLabelText={"Optional explanation"}
+            />
+          </div>
 */}
 
         </CardActions>
