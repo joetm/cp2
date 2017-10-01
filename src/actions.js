@@ -225,13 +225,15 @@ export const fetchFollowers = (limit) => (dispatch, getState) => {
  * fetchReviewItem Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchReviewItem = (itemid = null) => (dispatch, getState) => ({
+export const fetchReviewItem = (itemid = null) => (dispatch, getState) => {
+  dispatch({
     type: FETCH_REVIEWITEM,
     promise: itemid ?
       api.fetchSpecificReviewItem(getState, itemid)
       :
       api.fetchReviewItem(getState),
-})
+  })
+}
 
 /**
  * fetchReviewLeaderboard Asynchronous Action Creator

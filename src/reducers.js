@@ -147,6 +147,40 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
         failure: prevState => ({ ...prevState, error: payload }),
         success: prevState => ({ ...prevState, likes: payload.likes }),
       })
+    case ACTIONS.FETCH_REVIEWLEADERBOARD:
+      const leaderboardKey = 'leaderboard'
+      return handle(reviewState, action, {
+        start: prevState => ({
+          ...prevState,
+          leaderboard: {
+            ...prevState[leaderboardKey],
+            isFetching: true,
+            error: null,
+          }
+        }),
+        finish: prevState => ({
+          ...prevState,
+          leaderboard: {
+            ...prevState[leaderboardKey],
+            isFetching: false,
+          }
+        }),
+        failure: prevState => ({
+          ...prevState,
+          leaderboard: {
+            ...prevState[leaderboardKey],
+            error: payload,
+          }
+        }),
+        success: prevState => ({
+          ...prevState,
+          leaderboard: {
+            ...prevState[leaderboardKey],
+            isStale: false,
+            items: [...payload]
+          }
+        }),
+      })
     // Synchronous actions
     // -----------------------------------------------
     case ACTIONS.RECEIVE_DISLIKE:
@@ -165,13 +199,6 @@ export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.r
   switch (type) {
     // Asynchronous actions
     // -----------------------------------------------
-    case ACTIONS.FETCH_REVIEWLEADERBOARD:
-      return handle(reviewLeaderboardState, action, {
-        start: prevState => ({ ...prevState, isFetching: true, error: null }),
-        finish: prevState => ({ ...prevState, isFetching: false }),
-        failure: prevState => ({ ...prevState, error: payload }),
-        success: prevState => ({ ...prevState, leaderboard: payload }),
-      })
     // Synchronous actions
     // -----------------------------------------------
     default:
