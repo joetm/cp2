@@ -44,11 +44,10 @@ export const FETCH_CATEGORIES         = 'FORUM::FETCH_CATEGORIES'
 export const FETCH_CATEGORY           = 'FORUM::FETCH_CATEGORY'
 export const FETCH_THREADS            = 'FORUM::FETCH_THREADS'
 export const FETCH_CATEGORY_THREADS   = 'FORUM::FETCH_CATEGORY_THREADS'
-export const FETCH_PICTURES           = 'ALBUM::FETCH_PICTURES'
-export const FETCH_PICTURE            = 'ALBUM::FETCH_PICTURE'
+export const FETCH_IMAGES             = 'STREAM::FETCH_IMAGES'
+export const FETCH_IMAGE              = 'STREAM::FETCH_IMAGE'
 export const FETCH_THREAD             = 'FORUM::FETCH_THREAD'
 export const FETCH_ALBUM              = 'ALBUM::FETCH_ALBUM'
-export const FETCH_IMAGE              = 'STREAM::FETCH_IMAGE'
 export const FETCH_VERIFICATIONIMAGES = 'STREAM::FETCH_VERIFICATIONIMAGES'
 export const FETCH_PROFILEIMAGES      = 'PROFILE::FETCH_PROFILEIMAGES'
 export const FETCH_VIDEOS             = 'STREAM::FETCH_VIDEOS'
@@ -134,7 +133,7 @@ function shouldFetchSingle(state) {
   } else if (state.isFetching) {
     response = false
   } else {
-    response = state.isInvalid
+    response = state.isStale
   }
   console.log('shouldFetchSingle', state, response)
   return response
@@ -147,7 +146,7 @@ function shouldFetchMultiple(state) {
   } else if (state.isFetching) {
     response = false
   } else {
-    response = true // state.isInvalid
+    response = state.isStale
   }
   console.log('shouldFetchMultiple', state, response)
   return response
@@ -300,19 +299,27 @@ export const fetchUpdates = (limit) => ({
  * fetchPictures Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchPictures = (limit) => ({
-  type: FETCH_PICTURES,
-  promise: api.fetchPictures(limit)
-})
+export const fetchPictures = (limit) => (dispatch, getState) => {
+  const cachedState = getState()['images']
+  dispatch({
+    type: FETCH_IMAGES,
+    promise: shouldFetchMultiple(cachedState) ?
+      api.fetchPictures(limit) : Promise.resolve(cachedState.items)
+  })
+}
 
 /**
  * fetchPicture Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchPicture = (pictureid) => ({
-  type: FETCH_PICTURE,
-  promise: api.fetchPicture(pictureid)
-})
+export const fetchPicture = (pictureid) => (dispatch, getState) => {
+  const cachedState = getState()['images'][pictureid]
+  dispatch({
+    type: FETCH_IMAGE,
+    promise: shouldFetchSingle(cachedState) ?
+      api.fetchPicture(pictureid) : Promise.resolve(cachedState),
+  })
+}
 
 /**
  * fetchUserVerificationImages Asynchronous Action Creator
@@ -336,10 +343,14 @@ export const fetchUserProfileImages = (userid) => ({
  * fetchVideos Asynchronous Action Creator
  * @returns Redux-pack action
  */
-export const fetchVideos = (limit) => ({
+export const fetchVideos = (limit) => (dispatch, getState) => {
+  const cachedState = getState()['videos']
+  dispatch({
     type: FETCH_VIDEOS,
-    promise: api.fetchVideos(limit),
-})
+    promise: shouldFetchMultiple(cachedState) ?
+      api.fetchVideos(limit) : Promise.resolve(cachedState.items)
+  })
+}
 
 /**
  * fetchVideo Asynchronous (redux-pack) Action

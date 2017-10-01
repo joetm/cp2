@@ -33,12 +33,12 @@ const initialState = {
     },
     images: {
         isFetching: false,
-        // isInvalid: false,
+        isStale: true,
         items: [],
     },
     videos: {
         isFetching: false,
-        // isInvalid: true,
+        isStale: true,
         items: [],
     },
     posts: {
