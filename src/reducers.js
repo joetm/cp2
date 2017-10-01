@@ -401,7 +401,12 @@ export function categoryReducer(categoryState = initialState.category, action) {
             success: prevState => ({...prevState, [payload.id]: {...payload}}),
           })
         case ACTIONS.FETCH_CATEGORY_THREADS:
-            return {...categoryState, isFetching: false, threads: [...payload]} // TODO
+          return handle(categoryState, action, {
+            start: prevState => ({...prevState, isFetching: true, error: null}),
+            finish: prevState => ({...prevState, isFetching: false}),
+            failure: prevState => ({...prevState, error: payload}),
+            success: prevState => ({...prevState, threads: [...payload]}),
+          })
         default:
           return categoryState
     }

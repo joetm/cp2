@@ -125,7 +125,7 @@ const fetchSubitemsForItem = (key, itemid, subitemtype = 'streamitems', limit = 
     if (limit) {
         url = `${url}?_start=1&_limit=${limit}`
     }
-    console.log('fetchSubitemsForItem', key, itemid, subitemtype, limit, url)
+    // console.log('fetchSubitemsForItem', key, itemid, subitemtype, limit, url)
     return fetch(url, { headers: JSON_HEADER })
       .then(response => response.json())
       .then(

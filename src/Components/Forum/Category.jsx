@@ -15,17 +15,18 @@ import Headline from '../Shared/Headline'
 
 class Category extends React.Component {
     componentDidMount() {
-        const { categoryid } = this.props
-        this.props.fetchCategory(categoryid)
-        this.props.fetchThreadsForCategory(categoryid)
+        const { categoryid, fetchCategory, fetchThreadsForCategory } = this.props
+        fetchCategory(categoryid)
+        fetchThreadsForCategory(categoryid)
     }
     // componentDidUpdate(prevProps) {
     // }
     render() {
-        const { category, isFetching, threads = [] } = this.props
-        const { title, thumb } = category
+        const { category = {}, isFetching, threads = [] } = this.props
 
-        const CategoryInfo = <div><InfoIcon /> {threads.length} threads</div>
+        const CategoryInfo = (<div>
+            <InfoIcon /> {threads.length} threads
+        </div>)
 
         return (
             <div>
@@ -33,18 +34,23 @@ class Category extends React.Component {
                 <Loader isLoading={isFetching} />
                 <List>
                   <ListItem
-                    primaryText={<Headline level="2">{title}</Headline>}
-                    leftAvatar={<Avatar src={thumb} />}
+                    primaryText={<Headline level="2">{category.title}</Headline>}
+                    leftAvatar={<Avatar src={category.thumb} />}
                     rightIconButton={CategoryInfo}
                     disableKeyboardFocus={true}
                     disabled={true}
                   />
                 </List>
                 <div>
-                    {threads && threads.length > 0 ?
-                        <Threads threads={threads} />
+                    {
+                        threads && threads.length > 0 ?
+                            <Threads threads={threads} />
                         :
-                        <div style={{textAlign: 'center'}}>This category is empty.</div>
+                            (
+                                <div style={{textAlign: 'center'}}>
+                                This category is empty.
+                                </div>
+                            )
                     }
                 </div>
             </div>
@@ -55,8 +61,8 @@ class Category extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     isFetching: state.category.isFetching,
     categoryid: ownProps.match.params.categoryid,
-    threads: state.category.threads,
     category: state.category[ownProps.match.params.categoryid],
+    threads: state.category.threads,
 })
 
 export default connect(
