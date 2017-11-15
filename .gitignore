@@ -1,6 +1,8 @@
 .coveralls.yml
 .vagrant
+.vscode/
 .README.md.swp
+yarn-error.log
 node_modules
 env/DEV
 env/PROD
