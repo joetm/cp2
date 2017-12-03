@@ -53,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   # Customize the amount of memory on the VM:
       vb.memory = "2048"
-
+      vb.cpus = "2"
       vb.name = "deepstream_VM"
 
   end

@@ -119,12 +119,12 @@ const initialState = {
     isStale: true,
     items: [],
   },
-  verifications: {
+  verificationImages: {
     isFetching: false,
     isStale: true,
     items: [],
   },
-  profileimgs: {
+  profileImages: {
     isFetching: false,
     isStale: true,
     items: [],
@@ -168,7 +168,6 @@ const initialState = {
     // email: null,
     token: null,
     avatar: '',
-    profileimg: '',
     status: 'unknown',
     verified: false,
     gender: false,

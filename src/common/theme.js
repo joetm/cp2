@@ -10,6 +10,7 @@ import blackTheme from './themes/black'
 import mountainlakeTheme from './themes/mountainlake'
 import sunsetparisTheme from './themes/sunsetparis'
 import brightparisTheme from './themes/brightparis'
+import yellowstoneTheme from './themes/yellowstone'
 
 
 export const THEME_NAMES = {
@@ -21,6 +22,7 @@ export const THEME_NAMES = {
   SUNSETPARIS: { name: 'sunsetparis', label: 'C\'était un rendez-vous' },
   BRIGHTPARIS: { name: 'brightparis', label: 'Bright Paris' },
   RETRO: { name: 'retro', label: 'Retro' },
+  YELLOWSTONE: { name: 'yellowstone', label: 'Yellowstone Eruption' },
 };
 
 export const DEFAULT_THEME = THEME_NAMES.DEFAULT.name;
@@ -41,6 +43,8 @@ export function getBaseTheme(themeName) {
       return brightparisTheme
     case THEME_NAMES.RETRO.name:
       return retroTheme
+    case THEME_NAMES.YELLOWSTONE.name:
+      return yellowstoneTheme
     case THEME_NAMES.DEFAULT.name:
     default:
       return defaultTheme

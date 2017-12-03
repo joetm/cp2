@@ -6,8 +6,6 @@
 import api from './api'
 // import jwtDecode from 'jwt-decode' // TODO
 
-import { checkHttpStatus, parseJSON } from './common/helpers'
-
 
 /*
  * Redux action types
@@ -134,18 +132,18 @@ export const setDeviceDetails = (payload) => ({ type: SET_DEVICE_DETAILS, payloa
 // Asynchronous action helpers
 // ----------------------------------------------------
 
-function shouldFetchSingle(state) {
-  let response
-  if (!state) {
-    response = true
-  } else if (state.isFetching) {
-    response = false
-  } else {
-    response = state.isStale
-  }
-  console.log('shouldFetchSingle', state, response)
-  return response
-}
+// function shouldFetchSingle(state) {
+//   let response
+//   if (!state) {
+//     response = true
+//   } else if (state.isFetching) {
+//     response = false
+//   } else {
+//     response = state.isStale
+//   }
+//   console.log('shouldFetchSingle', state, response)
+//   return response
+// }
 
 // ----------------------------------------------------
 // Asynchronous action creators
@@ -293,7 +291,6 @@ export const fetchPost = (postid) => (dispatch, getState) => {
  * @returns Redux-pack action
  */
 export const fetchCategories = () => (dispatch, getState) => {
-  const cachedState = getState()['categories']
   dispatch({
     type: FETCH_CATEGORIES,
     promise: api.fetchCategories(getState)

@@ -5,10 +5,8 @@ import { withRouter } from 'react-router-dom'
 import { Card, CardActions, CardHeader, CardMedia } from 'material-ui/Card'
 import { ApproveButton, RejectButton } from '../Shared/Buttons'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-// Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 import { Step, Stepper, StepLabel } from 'material-ui/Stepper'
-// import TextField from 'material-ui/TextField'
 
 import { PROFILE } from '../../routes'
 import { scrollToTop } from '../../common/helpers'
@@ -155,7 +153,7 @@ class ReviewCard extends React.Component {
               <StepLabel>Choose rating</StepLabel>
             </Step>
             <Step>
-              <StepLabel>Submit</StepLabel>
+              <StepLabel>Review</StepLabel>
             </Step>
           </Stepper>
 

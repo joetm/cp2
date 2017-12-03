@@ -61,11 +61,11 @@ class MessageHistory extends React.Component {
    * Submit the input field.
    */
   submitMsg = () => {
-    const { sendMessage, messageHistory = {}, currentUser } = this.props
+    const { currentUser } = this.props
     const { userid, username, avatar } = currentUser
     const msg = this.refs.inputfield.getValue().trim()
     if (msg) {
-      sendMessage({ userid, username, avatar, msg })
+      this.props.sendMessage({ userid, username, avatar, msg })
       // clear the input field
       this.refs.inputfield.getInputNode().value = ''
       // TODO: reset number of rows in the input field
@@ -109,14 +109,16 @@ class MessageHistory extends React.Component {
       <div style={styles.chatArea}>
         { errorMsg }
         {
-          messages.map((item, i) => (
+          messages.map(item => (
             <div
-            key={`msg_${i}`}
-            style={{clear: 'both'}}
+              key={`msg_${item.id}`}
+              style={{clear: 'both'}}
             >
               <Chip
-              style={{...styles.chip, ...{float: this.props.currentUserid === item.userid ? 'right' : 'left'}}}
-              >
+              style={{
+                ...styles.chip,
+                ...{float: this.props.currentUserid === item.userid ? 'right' : 'left'}
+              }}>
                 <Avatar src={item.avatar} />
                 { parser.toReact(item.content) }
                 {/* item.content */}

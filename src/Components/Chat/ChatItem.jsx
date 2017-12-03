@@ -39,8 +39,8 @@ class ChatItem extends React.Component {
         id,
         user,
         content,
-        timestamp,
-        removeChatMsg
+        timestamp, // TODO
+        removeMsg
       } = this.props
       return (
         <ListItem
@@ -63,7 +63,7 @@ class ChatItem extends React.Component {
           }
           rightIconButton={
             <IconButton
-              onTouchTap={() => removeChatMsg(id)}
+              onTouchTap={() => removeMsg(id)}
               iconStyle={{color: this.props.muiTheme.palette.secondaryTextColor}}
             >
               <DeleteIcon />
@@ -79,5 +79,5 @@ class ChatItem extends React.Component {
 
 export default withRouter(muiThemeable()(connect(
   null,
-  { removeChatMsg }
+  { removeMsg: removeChatMsg }
 )(ChatItem)))

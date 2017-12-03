@@ -72,19 +72,19 @@ class ProfileImg extends React.Component {
    * Render the component.
    */
   render() {
-    const { profileImages = [], numPosts, numThreads, numImages, numVideos, numFollowers, numLikes } = this.props
-    const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
+    const { profileImages = [] } = this.props
+    // const details = { numPosts, numThreads, numImages, numVideos, numFollowers, numLikes }
     // --
-    let profileImgDynamicStyle = {
-      height: `${this.state.profileImgHeight}px`,
-      backgroundImage: `url(${this.props.profileimg})`,
-    }
-    if (this.props.blurredImg) {
-      profileImgDynamicStyle = {
-        ...profileImgDynamicStyle,
-        ...blurFilters,
-      }
-    }
+    // let profileImgDynamicStyle = {
+    //   height: `${this.state.profileImgHeight}px`,
+    //   backgroundImage: `url(${this.props.profileimg})`,
+    // }
+    // if (this.props.blurredImg) {
+    //   profileImgDynamicStyle = {
+    //     ...profileImgDynamicStyle,
+    //     ...blurFilters,
+    //   }
+    // }
 
     // reformatting the signature of the images for the slideshow component
     const images = profileImages.map(item => ({

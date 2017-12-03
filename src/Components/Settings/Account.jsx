@@ -75,12 +75,11 @@ class AccountSettings extends React.Component {
    */
   changeUsername = () => {
     // must match and be > 0 length
-    const { fetchUserByUsername } = this.props
     const newUsername = this.usernamePrimary.getValue().trim()
     if (!this.state.usernamesMatching || !newUsername.length) {
       return
     }
-    fetchUserByUsername(newUsername).then(
+    this.props.fetchUserByUsername(newUsername).then(
       res => {
         if (res.response !== false) {
           // a user with this name was found

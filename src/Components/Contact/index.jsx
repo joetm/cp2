@@ -98,7 +98,6 @@ class Contact extends React.Component {
       console.log('Pre-processing DMCA request')
       if (!this.state.dmca) {
         this.setState({dmcaError: _ERRORS.DMCA})
-        return
       }
     }
   }
@@ -159,7 +158,6 @@ class Contact extends React.Component {
 
           <div style={styles.reCaptchaContainer}>
               <ReCaptcha
-                  ref="recaptcha"
                   sitekey="<client site key>"
                   onChange={this.recaptchaSuccess}
               />

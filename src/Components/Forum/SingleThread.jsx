@@ -23,7 +23,7 @@ class SingleThread extends React.Component {
    */
   render() {
     const { thread = {}, isFetching } = this.props
-    const { title, items = [] } = thread
+    const { items = [] } = thread
     return (
       <div style={{position: 'relative'}}>
         <ScrollToTop />

@@ -40,73 +40,72 @@ const styles = {
 }
 
 
-class PostTpl extends React.Component {
-  render() {
-    const {
-        id,
-        title,
-        content = '',
-        type,
-        isEmbedded,
-        user = {},
-        tags,
-        timestamp,
-        likes = 0,
-        macro,
-    } = this.props
-    const { username, avatar, numPosts, joinDate } = user
-    const postedOn = humanReadableDate(timestamp)
-    return (
-      <div style={styles.postTplContainer}>
+const PostTpl = (props) => {
+  const {
+    id,
+    // title,
+    content = '',
+    type,
+    // isEmbedded,
+    user = {},
+    tags,
+    timestamp,
+    likes = 0,
+    macro,
+  } = props
+  const { username, avatar, numPosts, joinDate } = user
+  const postedOn = humanReadableDate(timestamp)
+  return (
+    <div style={styles.postTplContainer}>
 
-        <div style={styles.userinfo}>
-            <Avatar src={avatar} macro={macro} />
-            <Headline level="3">{username}</Headline>
-            <ul style={{
-                ...styles.userinfoList,
-                color: this.props.muiTheme.palette.textColor,
-            }}>
-                <li>#Posts: {numPosts}</li>
-                <li>Joined: {humanReadableDate(joinDate).formattedDate}</li>
-            </ul>
-        </div>
-
-        {
-            parser.toReact(content)
-        }
-
-        <div style={{
-          ...styles.postFooter,
-          color: this.props.muiTheme.palette.secondaryTextColor,
-        }}>
-          <div style={{float: 'left', marginTop: '24px'}}>
-            <ClockIcon style={styles.clockIcon} />
-            {postedOn.formattedDate}
-            {' '}
-            {postedOn.formattedTime}
-          </div>
-          <div style={styles.socialToolsContainer}>
-            <SocialTools
-              {...{likes}}
-              type={type}
-              itemid={id}
-            />
-          </div>
-        </div>
-
-        <div style={styles.postFooter}>
-          {
-            tags && (
-              <div>
-                <Tags tags={tags} />
-              </div>
-            )
-          }
-        </div>
-
+      <div style={styles.userinfo}>
+          <Avatar src={avatar} macro={macro} />
+          <Headline level="3">{username}</Headline>
+          <ul style={{
+              ...styles.userinfoList,
+              color: props.muiTheme.palette.textColor,
+          }}>
+              <li>#Posts: {numPosts}</li>
+              <li>Joined: {humanReadableDate(joinDate).formattedDate}</li>
+          </ul>
       </div>
-    )
-  }
+
+      {
+        content &&
+          parser.toReact(content)
+      }
+
+      <div style={{
+        ...styles.postFooter,
+        color: props.muiTheme.palette.secondaryTextColor,
+      }}>
+        <div style={{float: 'left', marginTop: '24px'}}>
+          <ClockIcon style={styles.clockIcon} />
+          {postedOn.formattedDate}
+          {' '}
+          {postedOn.formattedTime}
+        </div>
+        <div style={styles.socialToolsContainer}>
+          <SocialTools
+            {...{likes}}
+            type={type}
+            itemid={id}
+          />
+        </div>
+      </div>
+
+      <div style={styles.postFooter}>
+        {
+          tags && (
+            <div>
+              <Tags tags={tags} />
+            </div>
+          )
+        }
+      </div>
+
+    </div>
+  )
 }
 
 export default withRouter(muiThemeable()(PostTpl))

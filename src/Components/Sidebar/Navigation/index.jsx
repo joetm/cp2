@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Drawer from 'material-ui/Drawer'
-import Subheader from 'material-ui/Subheader'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Divider from 'material-ui/Divider'
@@ -49,22 +48,22 @@ const tabindexCounter = () => {
 
 
 const Sidebar = (props) => {
-  const { sidebarOpen, closeSidebar, userid } = props
+  const { sidebarOpen, handleCloseSidebar, userid } = props
   return (
     <Drawer
       docked={false}
       width={200}
       open={sidebarOpen}
       tabIndex="0"
-      onBlur={closeSidebar}
-      onRequestChange={closeSidebar}
+      onBlur={handleCloseSidebar}
+      onRequestChange={handleCloseSidebar}
     >
 
       <div style={styles.logoContainer}>
         <Link to="/">
           <Headline
             style={styles.logo}
-            onTouchTap={closeSidebar}
+            onTouchTap={handleCloseSidebar}
           >SocNet v2</Headline>
         </Link>
       </div>
@@ -72,25 +71,27 @@ const Sidebar = (props) => {
       <MenuEntry
         route={routes.UPDATES}
         icon={<UpdatesIcon />}
-        text="Updates"
-        onTouchTap={closeSidebar}
+        text="All Updates"
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
+      {/*
       <MenuEntry
         route={routes.FORUM}
         icon={<ForumIcon />}
         text="Forum"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
+      */}
 
       {/*
       <MenuEntry
         route={routes.USERS}
         icon={<UsersIcon />}
         text="Users"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
       */}
@@ -100,8 +101,8 @@ const Sidebar = (props) => {
       <MenuEntry
         route={routes.STREAM}
         icon={<UpdatesIcon />}
-        text="Subscriptions"
-        onTouchTap={closeSidebar}
+        text="Stream"
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
@@ -111,7 +112,7 @@ const Sidebar = (props) => {
         route={routes.REVIEW}
         icon={<ReviewIcon />}
         text="Review"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
@@ -121,7 +122,7 @@ const Sidebar = (props) => {
         route={routes.MESSAGES}
         icon={<EmailIcon />}
         text="Messages"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
@@ -130,7 +131,7 @@ const Sidebar = (props) => {
         route={routes.PLAYLIST}
         icon={<WatchLaterIcon />}
         text="Watch Later"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
       */}
@@ -139,7 +140,7 @@ const Sidebar = (props) => {
         route={`${routes.STREAM}/${userid}${routes.FAVORITES}`}
         icon={<HeartIcon />}
         text="Favorites"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
@@ -147,25 +148,27 @@ const Sidebar = (props) => {
         route={`${routes.STREAM}/${userid}${routes.LIKES}`}
         icon={<LikeIcon />}
         text="Likes"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
       <Divider />
 
+      {/*
       <MenuEntry
         route={`${routes.PROFILE}/${userid}`}
         icon={<ProfileIcon />}
         text="Your Profile"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
+      */}
 
       <MenuEntry
         route={routes.SETTINGS.INDEX}
         icon={<SettingsIcon />}
         text="Settings"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
@@ -173,7 +176,7 @@ const Sidebar = (props) => {
         route={routes.LOGOUT}
         icon={<LogoutIcon />}
         text="Log Out"
-        onTouchTap={closeSidebar}
+        onTouchTap={handleCloseSidebar}
         tabindexCounter={tabindexCounter}
       />
 
@@ -188,5 +191,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { closeSidebar }
+  { handleCloseSidebar: closeSidebar }
 )(Sidebar)

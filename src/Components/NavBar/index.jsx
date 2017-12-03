@@ -53,22 +53,28 @@ const styles = {
 }
 
 
-const FirstGroup = (props) => (
-  <ToolbarGroup firstChild={true}>
-    <IconButton
-      tooltip="Menu"
-      style={styles.firstItem}
-      onTouchTap={props.openSidebar}
-    >
-      <MenuIcon />
-    </IconButton>
-    <NavLink to="/">
-      <IconButton tooltip="Home">
-        <HomeIcon />
+const FirstGroup = (props) => {
+  const { showHome = true } = props
+  return (
+    <ToolbarGroup firstChild={true}>
+      <IconButton
+        tooltip="Menu"
+        style={styles.firstItem}
+        onTouchTap={props.openSidebar}
+      >
+        <MenuIcon />
       </IconButton>
-    </NavLink>
-  </ToolbarGroup>
-)
+      {
+        showHome &&
+        <NavLink to="/">
+          <IconButton tooltip="Home">
+            <HomeIcon />
+          </IconButton>
+        </NavLink>
+      }
+    </ToolbarGroup>
+  )
+}
 
 
 class NavBar extends React.Component {
@@ -119,7 +125,6 @@ class NavBar extends React.Component {
   render() {
     const {
       unread,
-      openSidebar,
       userid,
       username,
       avatar,
@@ -136,7 +141,11 @@ class NavBar extends React.Component {
           <Toolbar style={styles.navbar}>
             {
               !this.state.searchExpanded ?
-                <FirstGroup openSidebar={openSidebar} /> : null
+                <FirstGroup
+                  openSidebar={this.props.openSidebar}
+                  showHome={false}
+                />
+              : null
             }
           </Toolbar>
         </div>
@@ -161,7 +170,7 @@ class NavBar extends React.Component {
           >
             {
               !searchExpanded ?
-                <FirstGroup openSidebar={openSidebar} /> : null
+                <FirstGroup openSidebar={this.props.openSidebar} /> : null
             }
           </ReactCSSTransitionGroup>
 

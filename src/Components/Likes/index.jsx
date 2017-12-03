@@ -3,7 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import Divider from 'material-ui/Divider'
 import IconButton from 'material-ui/IconButton'
 
@@ -54,7 +53,7 @@ class Likes extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   isFetching: state.likes.isFetching,
   likes: state.likes.items,
 })

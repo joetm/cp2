@@ -18,7 +18,7 @@ class ScaledImage extends React.Component {
   }
   render() {
     const { src, alt } = this.props
-    const { width, height } = this.state.dimensions
+    // const { width, height } = this.state.dimensions
     // the images should always be scaled to the max dimension of the browser window
     // console.log(window.innerWidth)
     // console.log(window.innerHeight)

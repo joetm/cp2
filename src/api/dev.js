@@ -106,7 +106,7 @@ const fetchItem = (key, getState, itemid) => {
   // -----------------------------------------------
   // first check if the data is cached and not stale
   // -----------------------------------------------
-  console.log('xxx', key, getState()[key], itemid)
+  console.log('xxx', key, getState(), itemid)
   const cachedState = getState()[key][itemid]
   let mustFetch
   if (!cachedState) {
@@ -251,8 +251,8 @@ export const fetchUserByUsername = selectItemByKeyCreator('users')
 
 // -------------------------------------------------------------------
 // this one is different - it selects images by the userid
-export const fetchUserVerificationImages = selectSpecificItemCreator('verifications')
-export const fetchUserProfileImages = selectSpecificItemCreator('profileimgs')
+export const fetchUserVerificationImages = selectSubitemsForItemCreator('verificationImages')
+export const fetchUserProfileImages = selectSubitemsForItemCreator('profileImages')
 
 // -------------------------------------------------------------------
 

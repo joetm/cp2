@@ -15,16 +15,16 @@ import Headline from '../Shared/Headline'
 
 class Category extends React.Component {
   componentDidMount() {
-    const { categoryid, fetchCategory, fetchThreadsForCategory } = this.props
-    fetchCategory(categoryid)
-    fetchThreadsForCategory(categoryid)
+    const { categoryid } = this.props
+    this.props.fetchCategory(categoryid)
+    this.props.fetchThreadsForCategory(categoryid)
   }
   render() {
     const { category = {}, isFetching, threads = [] } = this.props
 
-    const CategoryInfo = (<div>
-      <InfoIcon /> {threads.length} threads
-    </div>)
+    const CategoryInfo = (
+      <div><InfoIcon /> {threads.length} threads</div>
+    )
 
     return (
       <div>
@@ -32,7 +32,9 @@ class Category extends React.Component {
         <Loader isLoading={isFetching} />
         <List>
           <ListItem
-            primaryText={<Headline level="2">{category.title}</Headline>}
+            primaryText={
+              <Headline level="2">{category.title}</Headline>
+            }
             leftAvatar={<Avatar src={category.thumb} />}
             rightIconButton={CategoryInfo}
             disableKeyboardFocus={true}

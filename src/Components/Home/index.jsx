@@ -3,7 +3,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Paper from 'material-ui/Paper'
-// Material Component: Layout (Grid)
 import '@material/layout-grid/dist/mdc.layout-grid.css'
 
 import { fetchUpdates, fetchOnlineUsers } from '../../actions'
@@ -13,7 +12,7 @@ import CellWrapper from '../Shared/CellWrapper'
 import GridWrap from '../Shared/GridWrap'
 // import Update from '../Content/Update'
 import Box, { boxStyle } from '../Shared/Box'
-import routes from '../../routes'
+import * as routes from '../../routes'
 import ScrollToTop from '../Shared/ScrollToTop'
 
 

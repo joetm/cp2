@@ -10,13 +10,10 @@ import 'react-dropzone-component/styles/filepicker.css'
 import DropzoneComponent from 'react-dropzone-component/dist/react-dropzone'
 import RaisedButton from 'material-ui/RaisedButton'
 // import Snackbar from 'material-ui/Snackbar'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import { dropzoneConfig, dropzoneJsConfig, dropzoneEventHandlers, dropzoneStyle } from '../Shared/dropzoneConfig'
 import { removeProfileImg, fetchUserProfileImages } from '../../actions'
 import { blockMaxWidth } from './styles'
-import UpdateWrap from '../Shared/UpdateWrap'
-import Img from './Img'
 import ImgContainer from './ImgContainer'
 import Spacer from '../Shared/Spacer'
 
@@ -32,7 +29,7 @@ class ProfileImg extends React.Component {
     // TODO
   }
   render() {
-    const { userid, isFetching, profileImages, fetchUserProfileImages } = this.props
+    const { userid, isFetching, profileImages } = this.props
     const { selection } = this.state
     return (
       <div
@@ -58,7 +55,7 @@ class ProfileImg extends React.Component {
           userid &&
             <ImgContainer
               images={profileImages}
-              action={fetchUserProfileImages}
+              action={this.props.fetchUserProfileImages}
               userid={userid}
               selection={selection}
               setSelection={this.setSelection}

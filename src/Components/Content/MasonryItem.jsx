@@ -15,6 +15,7 @@ const styles = {
     maxWidth: '100%',
     padding: 0,
     margin: 0,
+    cursor: 'pointer',
     // overflow: 'hidden',
   },
 }

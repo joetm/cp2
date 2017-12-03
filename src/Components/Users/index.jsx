@@ -30,7 +30,7 @@ class Users extends React.Component {
     filtersOpen: false,
   }
   componentDidMount() {
-    this.props.fetchUsers(_PAGE_SIZE, filters)
+    this.props.fetchUsers(_PAGE_SIZE)
   }
   refreshUsers = (filters) => {
     // TODO

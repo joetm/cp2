@@ -13,7 +13,7 @@ import RecordDeviceDetails from './Config/DeviceDetails'
 // -- Components
 import NavBar from './NavBar'
 import Home from './Home'
-import Forum from './Forum'
+// import Forum from './Forum'
 import Messages from './Content/Messages'
 import MessageHistory from './MessageHistory'
 import Followers from './Followers'
@@ -72,7 +72,9 @@ class App extends React.Component {
 
               <Route exact path={routes.HOME} component={Home} />
 
+              {/*
               <Route path={routes.FORUM} component={Forum} />
+              */}
 
               <Route exact path={routes.CHAT} component={Chat} />
 
@@ -82,6 +84,11 @@ class App extends React.Component {
 
               <Route exact path={routes.IMAGES} component={Pictures} />
               <Route exact path={`${routes.IMAGES}/:imageid`} component={Image} />
+
+              {/*
+              TODO: Use the image/pictures component to filter for verification images
+              */}
+              <Route exact path={routes.VERIFICATIONS} component={Pictures} />
 
               <Route exact path={routes.VIDEOS} component={Videos} />
               <Route exact path={`${routes.VIDEOS}/:videoid`} component={Video} />

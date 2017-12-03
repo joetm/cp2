@@ -41,49 +41,51 @@ const styles = {
 const FullscreenImage = (props) => {
   const { title, user, src, userid, history } = props
   return (
-    <div style={{
-        ...styles.fullscreenContainer,
-        backgroundImage: `url(${src})`,
-    }}>
+    <div>
+        <div style={{
+            ...styles.fullscreenContainer,
+            backgroundImage: `url(${src})`,
+        }}>
 
-      <Headline style={{
-          ...styles.imageTitle,
-          color: props.muiTheme.palette.alternateTextColor,
-      }}>
-          {title}
-      </Headline>
+          <Headline style={{
+              ...styles.imageTitle,
+              color: props.muiTheme.palette.alternateTextColor,
+          }}>
+              {title}
+          </Headline>
 
-      {
-        user &&
-        <IconButton
-          style={{
-            position: 'absolute',
-            top: `${_OFFSETY}px`,
-            left: `${_OFFSETX + 60}px`,
-          }}
-        >
-          <Avatar
-            mini={true}
-            src={user.avatar}
-            onTouchTap={() => history.push(`${PROFILE}/${userid}`)}
-          />
-        </IconButton>
-      }
+          {
+            user &&
+            <IconButton
+              style={{
+                position: 'absolute',
+                top: `${_OFFSETY}px`,
+                left: `${_OFFSETX + 50}px`,
+              }}
+            >
+              <Avatar
+                mini={true}
+                src={user.avatar}
+                onTouchTap={() => history.push(`${PROFILE}/${userid}`)}
+              />
+            </IconButton>
+          }
 
-      <IconButton
-        style={{
-          position: 'absolute',
-          top: `${_OFFSETY}px`,
-          right: `${_OFFSETX}px`,
-        }}
-        iconStyle={{
-          color: props.muiTheme.palette.alternateTextColor,
-          textShadow: `10px 10px 5px ${props.muiTheme.palette.textColor}`,
-        }}
-        onTouchTap={history.goBack}
-      >
-        <CloseIcon />
-      </IconButton>
+          <IconButton
+            style={{
+              position: 'absolute',
+              top: `${_OFFSETY}px`,
+              right: `${_OFFSETX}px`,
+            }}
+            iconStyle={{
+              color: props.muiTheme.palette.alternateTextColor,
+              textShadow: `10px 10px 5px ${props.muiTheme.palette.textColor}`,
+            }}
+            onTouchTap={history.goBack}
+          >
+            <CloseIcon />
+          </IconButton>
+        </div>
 
     </div>
   )

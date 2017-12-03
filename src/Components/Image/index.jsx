@@ -13,8 +13,8 @@ import FullscreenImage from './FullscreenImage'
 
 class Image extends React.Component {
   componentDidMount() {
-    const { imageid, fetchPicture } = this.props
-    fetchPicture(imageid)
+    const { imageid } = this.props
+    this.props.fetchPicture(imageid)
   }
   /**
    * Render the component.

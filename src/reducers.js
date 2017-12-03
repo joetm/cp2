@@ -191,22 +191,6 @@ export function reviewReducer(reviewState = initialState.reviewitem, action) {
 }
 
 /**
- * reviewLeaderboardReducer
- * @returns reviewLeaderboardState
- **/
-export function reviewLeaderboardReducer(reviewLeaderboardState = initialState.reviewLeaderboard, action) {
-  const { type, payload } = action
-  switch (type) {
-    // Asynchronous actions
-    // -----------------------------------------------
-    // Synchronous actions
-    // -----------------------------------------------
-    default:
-      return reviewLeaderboardState
-  }
-}
-
-/**
  * updatesReducer
  * @returns updatesState
  **/

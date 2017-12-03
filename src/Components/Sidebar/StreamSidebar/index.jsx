@@ -25,14 +25,14 @@ const tabindexCounter = () => {
 
 class StreamSidebar extends React.PureComponent {
     render() {
-        const { closeStreamSidebar, userid } = this.props
+        const { handleCloseSidebar, userid } = this.props
         return (
           <Drawer
             docked={false}
             width={200}
             open={this.props.streamSidebarOpen}
             tabIndex="0"
-            onBlur={closeStreamSidebar}
+            onBlur={handleCloseSidebar}
             openSecondary={true}
             // onRequestChange={(open) => this.setState({open})}
           >
@@ -43,7 +43,7 @@ class StreamSidebar extends React.PureComponent {
                 route={IMAGES}
                 icon={<UpdatesIcon />}
                 text="Images"
-                onTouchTap={closeStreamSidebar}
+                onTouchTap={handleCloseSidebar}
                 tabindexCounter={tabindexCounter}
             />
 
@@ -51,7 +51,7 @@ class StreamSidebar extends React.PureComponent {
                 route={VIDEOS}
                 icon={<UpdatesIcon />}
                 text="Videos"
-                onTouchTap={closeStreamSidebar}
+                onTouchTap={handleCloseSidebar}
                 tabindexCounter={tabindexCounter}
             />
 
@@ -59,7 +59,7 @@ class StreamSidebar extends React.PureComponent {
                 route={MESSAGES}
                 icon={<EmailIcon />}
                 text="Messages"
-                onTouchTap={closeStreamSidebar}
+                onTouchTap={handleCloseSidebar}
                 tabindexCounter={tabindexCounter}
             />
 
@@ -68,7 +68,7 @@ class StreamSidebar extends React.PureComponent {
                 route={routes.PLAYLIST}
                 icon={<WatchLaterIcon />}
                 text="Watch Later"
-                onTouchTap={closeStreamSidebar}
+                onTouchTap={handleCloseSidebar}
                 tabindexCounter={tabindexCounter}
             />
             */}
@@ -77,7 +77,7 @@ class StreamSidebar extends React.PureComponent {
                 route={`${STREAM}/${userid}${FAVORITES}`}
                 icon={<HeartIcon />}
                 text="Favorites"
-                onTouchTap={closeStreamSidebar}
+                onTouchTap={handleCloseSidebar}
                 tabindexCounter={tabindexCounter}
             />
 
@@ -85,7 +85,7 @@ class StreamSidebar extends React.PureComponent {
                 route={`${STREAM}/${userid}${LIKES}`}
                 icon={<LikeIcon />}
                 text="Likes"
-                onTouchTap={closeStreamSidebar}
+                onTouchTap={handleCloseSidebar}
                 tabindexCounter={tabindexCounter}
             />
 
@@ -101,5 +101,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { closeStreamSidebar }
+    { handleCloseSidebar: closeStreamSidebar }
 )(StreamSidebar)
