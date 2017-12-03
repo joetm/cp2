@@ -27,7 +27,8 @@
     "loadProdEnv": "source ./env/PROD",
     "depcheck": "depcheck . --ignore-dirs=dist,node_modules",
     "jsdoc": "jsdoc -r -d ./dist/docs/html -c jsdoc-config.json src",
-    "docs": "yarn jsdoc"
+    "docs": "yarn jsdoc",
+    "reactopt": "node node_modules/reactopt/main.js"
   },
   "jest": {
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
@@ -194,6 +195,7 @@
     "react-addons-test-utils": "^15.6.0",
     "react-test-renderer": "^15.6.1",
     "react-to-html-webpack-plugin": "^2.2.0",
+    "reactopt": "^1.5.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "uglify-js-brunch": "^2.10.0",

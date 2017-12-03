@@ -3,6 +3,7 @@
 .vscode/
 .README.md.swp
 yarn-error.log
+yarn.lock
 node_modules
 env/DEV
 env/PROD

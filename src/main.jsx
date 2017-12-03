@@ -1,4 +1,11 @@
 import React from 'react'
+
+// reactopt
+if (process.env.NODE_ENV !== 'production') {
+    const { reactopt } = require('reactopt');
+    reactopt(React);
+}
+
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 

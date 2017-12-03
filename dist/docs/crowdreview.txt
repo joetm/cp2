@@ -40,8 +40,5 @@ Our crowd review genome*:
     </tr>
 </table>
 
-Future versions of the site will also allow reviewing forum posts.  Judging forum posts requires knowing the context of the post. For now, we start with a crowd review of the uploaded images and videos.
-
 <br />
-<br />
-* Malone, Thomas W., Laubacher, Robert, Dellarocas, Chrysanthos: Harnessing Crowds: Mapping the Genome of Collective Intelligence. Working paper no. 2009-001, 2009.
+* Malone, T.W., Laubacher, R., Dellarocas, C. (2009): <i>Harnessing Crowds: Mapping the Genome of Collective Intelligence</i>. Working paper no. 2009-001
